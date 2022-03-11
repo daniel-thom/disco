@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="Python" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Data Sources &mdash; DISCO 0.1 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="SMART-DS OpenDSS Model Preparation" href="data-sources/smart-ds-model-preparation.html" />
+    <link rel="prev" title="Quick Start" href="quick-start.html" />
+    <link href="_static/style.css" rel="stylesheet" type="text/css">
+
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> DISCO
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">User Guide</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#use-conda">Use Conda</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#use-docker">Use Docker</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#data-sources">Data Sources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#transform-model">Transform Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#config-jobs">Config Jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#submit-jobs">Submit Jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#result-analysis">Result Analysis</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="quick-start.html">Quick Start</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="quick-start.html#source-data">Source Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quick-start.html#transform-model">Transform Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quick-start.html#config-jobs">Config Jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quick-start.html#submit-jobs">Submit Jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quick-start.html#result-analysis">Result Analysis</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Data Sources</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="data-sources/smart-ds-model-preparation.html">SMART-DS OpenDSS Model Preparation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#gem-model">GEM Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#epri-model">EPRI Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#sourcetree1-model">SourceTree1 Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#sourcetree2-model">SourceTree2 Model</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="pv-deployments.html">PV Deployments</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pv-deployments.html#sourcetree1-pv-deployments">SourceTree1 PV Deployments</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="transform-models.html">Transform Models</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="transform-models.html#transform-model-help">Transform Model Help</a></li>
+<li class="toctree-l2"><a class="reference internal" href="transform-models.html#disco-model-in-depth">DISCO Model in Depth</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="analysis-workflows.html">Analysis Workflows</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="analysis-workflows/hosting-capacity-analysis.html">Hosting Capacity Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="analysis-workflows/upgrade-cost-analysis.html">Upgrade Cost Analysis</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="pipelines.html">Pipelines</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pipelines.html#sourcetree1model">SourceTree1Model</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="debugging-issues.html">Debugging Issues</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="debugging-issues.html#using-jade">Using JADE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="debugging-issues.html#using-pydss">Using PyDSS</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="data-ingestion.html">Data Ingestion</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="data-ingestion.html#ingest-to-new-database">Ingest to New Database</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data-ingestion.html#ingest-to-existing-database">Ingest to Existing Database</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data-ingestion.html#run-database-queries">Run Database Queries</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="advanced-guide.html">Advanced Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="advanced-guide/analysis-deployment.html">Analysis Deployment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="advanced-guide/automated-upgrade-simulation.html">Automated Upgrade Simulation</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contribution</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="build-docs.html">Build docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">DISCO</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Data Sources</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/data-sources.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="data-sources">
+<h1>Data Sources<a class="headerlink" href="#data-sources" title="Permalink to this headline">¶</a></h1>
+<p>DISCO currently supports OpenDSS models stored in several source formats,
+namely GEM, EPRI, SourceTree1, SourceTree2.</p>
+<p>The SMART-DS dataset is an open-source dataset which is in the SourceTree1 format.
+This dataset is prepared for performing DISCO hosting capacity analysis after some pre-processing which is described in the link below:</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="data-sources/smart-ds-model-preparation.html">SMART-DS OpenDSS Model Preparation</a></li>
+</ul>
+</div>
+<p>The following sections show how to
+prepare the source feeder models which are used as <em>input paths</em> for
+transforming models with a given analysis type.</p>
+<section id="gem-model">
+<span id="gem-json-schema"></span><h2>GEM Model<a class="headerlink" href="#gem-model" title="Permalink to this headline">¶</a></h2>
+<p>A GEM config file (JSON) contains paths to source models on a filesystem along with
+descriptor schema that describe all feeders and their possible deployments.</p>
+<p>Here is an example JSON file:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;include_voltage_deviation&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;path_base&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;gem/feeder_models&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;GemModel&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;feeders&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;base_case&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;deployment0&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;deployments&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">        </span><span class="p">{</span><span class="w"></span>
+<span class="w">          </span><span class="nt">&quot;dc_ac_ratios&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w"></span>
+<span class="w">          </span><span class="nt">&quot;kva_to_kw_ratings&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w"></span>
+<span class="w">          </span><span class="nt">&quot;loadshape_file&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w"></span>
+<span class="w">          </span><span class="nt">&quot;loadshape_location&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w"></span>
+<span class="w">          </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;deployment0&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">          </span><span class="nt">&quot;placement_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w"></span>
+<span class="w">          </span><span class="nt">&quot;project_data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;pydss_other_loads_dss_files&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">              </span><span class="nt">&quot;2010-03-11_12-00-00-000&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;/data/path/loads1.dss&quot;</span><span class="p">],</span><span class="w"></span>
+<span class="w">              </span><span class="nt">&quot;2010-12-25_15-00-00-000&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;/data/path/loads2.dss&quot;</span><span class="p">]</span><span class="w"></span>
+<span class="w">            </span><span class="p">},</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;pydss_other_pvs_dss_files&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">              </span><span class="nt">&quot;2010-03-11_12-00-00-000&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;/data/path/pvs1.dss&quot;</span><span class="p">],</span><span class="w"></span>
+<span class="w">              </span><span class="nt">&quot;2010-12-25_15-00-00-000&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;/data/path/pvs2.dss&quot;</span><span class="p">],</span><span class="w"></span>
+<span class="w">            </span><span class="p">}</span><span class="w"></span>
+<span class="w">          </span><span class="p">},</span><span class="w"></span>
+<span class="w">          </span><span class="nt">&quot;pv_locations&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w"></span>
+<span class="w">          </span><span class="nt">&quot;sample&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w"></span>
+<span class="w">          </span><span class="nt">&quot;pydss_controllers&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w"></span>
+<span class="w">          </span><span class="nt">&quot;job_order&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">      </span><span class="p">],</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;end_time&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2010-08-11_15:00:00.000&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;simulation_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Snapshot&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;load_multipliers&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">        </span><span class="mf">0.3</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="mf">1.0</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="mf">0.2</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="mf">0.9</span><span class="w"></span>
+<span class="w">      </span><span class="p">],</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;loadshape_location&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;MyFeeder&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;opendss_location&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/opendss/location/path/&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;start_time&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2010-08-11_15:00:00.000&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;step_resolution&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">900</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;thermal_upgrade_overrides&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;line_loading_limit&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">1.5</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;dt_loading_limit&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">1.5</span><span class="w"></span>
+<span class="w">      </span><span class="p">},</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;voltage_upgrade_overrides&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;initial_voltage_upper_limit&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">1.058333</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;initial_voltage_lower_limit&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.9167</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;final_voltage_upper_limit&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">1.05</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;final_voltage_lower_limit&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.95</span><span class="w"></span>
+<span class="w">      </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">},</span><span class="w"></span>
+<span class="w">  </span><span class="p">]</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Rules:</p>
+<blockquote>
+<div><ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">start_time</span></code> and <code class="docutils literal notranslate"><span class="pre">end_time</span></code> must be set with timestamps.</p></li>
+<li><p>If <code class="docutils literal notranslate"><span class="pre">simulation_type</span> <span class="pre">==</span> <span class="pre">&quot;Snapshot&quot;</span></code>, then <code class="docutils literal notranslate"><span class="pre">start_time</span></code> and <code class="docutils literal notranslate"><span class="pre">end_time</span></code> must be the same.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">dc_ac_ratios</span></code>, <code class="docutils literal notranslate"><span class="pre">kva_to_kw_ratings</span></code> may be empty arrays to represent no-PV scenarios.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pydss_controllers</span></code> has three attributes,</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">controller_type</span></code>: One controller type defined in PyDSS, for example, &quot;PvController&quot;.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">name</span></code>: One controller name registered in PyDSS registry.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">targets</span></code> (optional): null, a DSS file, or a list of DSS files. If null, then DISCO automatically sets the deployment file.</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</div></blockquote>
+</section>
+<section id="epri-model">
+<h2>EPRI Model<a class="headerlink" href="#epri-model" title="Permalink to this headline">¶</a></h2>
+<p>The source URL of EPRI J1, K1, and M1 feeder models is
+<a class="reference external" href="https://dpv.epri.com/feeder_models.html">https://dpv.epri.com/feeder_models.html</a>. You can download the source data with
+this command:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ disco download-source epri J1 K1 M1 --directory ./epri-feeders
+</pre></div>
+</div>
+</section>
+<section id="sourcetree1-model">
+<span id="sourcetree1model"></span><h2>SourceTree1 Model<a class="headerlink" href="#sourcetree1-model" title="Permalink to this headline">¶</a></h2>
+<p>This format requires the following directory structure:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>source_model_directory
+├── format.toml
+├── &lt;substation&gt;
+│   ├── *.dss
+│   └── &lt;substation&gt;--&lt;feeder&gt;
+│       ├── *.dss
+│       └── hc_pv_deployments
+│           ├── feeder_summary.csv
+│           └── &lt;placement&gt;
+│               ├── &lt;sample&gt;
+│               │   ├── &lt;penetration-level&gt;
+│               │   │   └── PVSystems.dss
+│               │   │   └── PVSystems.dss
+│               │   └── pv_config.json
+└── profiles
+    └── &lt;profile&gt;.csv
+</pre></div>
+</div>
+<p>Where in <em>format.toml</em>, it defines <code class="docutils literal notranslate"><span class="pre">type</span> <span class="pre">=</span> <span class="pre">&quot;SourceTree1Model&quot;</span></code>.
+To see how to generate the PV deployments data in <code class="docutils literal notranslate"><span class="pre">hc_pv_deployments</span></code> directory, please
+refer to <a class="reference internal" href="pv-deployments.html#sourcetree1pvdeployments"><span class="std std-ref">SourceTree1 PV Deployments</span></a>.</p>
+</section>
+<section id="sourcetree2-model">
+<span id="sourcetree2model"></span><h2>SourceTree2 Model<a class="headerlink" href="#sourcetree2-model" title="Permalink to this headline">¶</a></h2>
+<p>This format requires the following directory structure:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>source_model_directory
+├── inputs
+│   ├── &lt;feeder&gt;
+│   │   ├── LoadShapes
+│   │   │   ├── &lt;profile&gt;.csv
+│   │   ├── OpenDSS
+│   │   │   ├── *.dss
+│   │   ├── PVDeployments
+│   │   │   └── new
+│   │   │       ├── &lt;dc-ac-ratio&gt;
+│   │   │       │   ├── &lt;scale&gt;
+│   │   │       │   │   ├── &lt;placement&gt;
+│   │   │       │   │   │   ├── &lt;sample&gt;
+│   │   │       │   │   │   │   ├── PV_Gen_&lt;sample&gt;_&lt;penetration-level&gt;.txt
+├── format.toml
+</pre></div>
+</div>
+<p>Where in <em>format.toml</em>, it defines <code class="docutils literal notranslate"><span class="pre">type</span> <span class="pre">=</span> <span class="pre">&quot;SourceTree2Model&quot;</span></code>.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="quick-start.html" class="btn btn-neutral float-left" title="Quick Start" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="data-sources/smart-ds-model-preparation.html" class="btn btn-neutral float-right" title="SMART-DS OpenDSS Model Preparation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2019, NREL.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

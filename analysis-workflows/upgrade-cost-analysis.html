@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="Python" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Upgrade Cost Analysis &mdash; DISCO 0.1 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Pipelines" href="../pipelines.html" />
+    <link rel="prev" title="Hosting Capacity Analysis" href="hosting-capacity-analysis.html" />
+    <link href="../_static/style.css" rel="stylesheet" type="text/css">
+
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> DISCO
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">User Guide</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../installation.html#use-conda">Use Conda</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation.html#use-docker">Use Docker</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">Overview</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../overview.html#data-sources">Data Sources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview.html#transform-model">Transform Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview.html#config-jobs">Config Jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview.html#submit-jobs">Submit Jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview.html#result-analysis">Result Analysis</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../quick-start.html">Quick Start</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../quick-start.html#source-data">Source Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../quick-start.html#transform-model">Transform Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../quick-start.html#config-jobs">Config Jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../quick-start.html#submit-jobs">Submit Jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../quick-start.html#result-analysis">Result Analysis</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../data-sources.html">Data Sources</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../data-sources/smart-ds-model-preparation.html">SMART-DS OpenDSS Model Preparation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data-sources.html#gem-model">GEM Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data-sources.html#epri-model">EPRI Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data-sources.html#sourcetree1-model">SourceTree1 Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data-sources.html#sourcetree2-model">SourceTree2 Model</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../pv-deployments.html">PV Deployments</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../pv-deployments.html#sourcetree1-pv-deployments">SourceTree1 PV Deployments</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../transform-models.html">Transform Models</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../transform-models.html#transform-model-help">Transform Model Help</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../transform-models.html#disco-model-in-depth">DISCO Model in Depth</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="../analysis-workflows.html">Analysis Workflows</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="hosting-capacity-analysis.html">Hosting Capacity Analysis</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Upgrade Cost Analysis</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../pipelines.html">Pipelines</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../pipelines.html#sourcetree1model">SourceTree1Model</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../debugging-issues.html">Debugging Issues</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../debugging-issues.html#using-jade">Using JADE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../debugging-issues.html#using-pydss">Using PyDSS</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../data-ingestion.html">Data Ingestion</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../data-ingestion.html#ingest-to-new-database">Ingest to New Database</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data-ingestion.html#ingest-to-existing-database">Ingest to Existing Database</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data-ingestion.html#run-database-queries">Run Database Queries</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced-guide.html">Advanced Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../advanced-guide/analysis-deployment.html">Analysis Deployment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../advanced-guide/automated-upgrade-simulation.html">Automated Upgrade Simulation</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contribution</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../build-docs.html">Build docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../license.html">License</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">DISCO</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../analysis-workflows.html">Analysis Workflows</a> &raquo;</li>
+      <li>Upgrade Cost Analysis</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/analysis-workflows/upgrade-cost-analysis.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="upgrade-cost-analysis">
+<h1>Upgrade Cost Analysis<a class="headerlink" href="#upgrade-cost-analysis" title="Permalink to this headline">¶</a></h1>
+<p>After running the <code class="docutils literal notranslate"><span class="pre">transform-model</span></code> command on source models to get standard
+DISCO models we can configure the jobs for customized analysis.</p>
+<ul class="simple">
+<li><p>run single upgrade cost analysis if <code class="docutils literal notranslate"><span class="pre">job_order</span></code> field in model is <code class="docutils literal notranslate"><span class="pre">null</span></code>;</p></li>
+<li><p>or if <code class="docutils literal notranslate"><span class="pre">job_order</span></code> specified, run sequential upgrade cost analysis.</p></li>
+</ul>
+<p>The following steps show how to conduct upgrade cost analysis using DISCO models
+- <code class="docutils literal notranslate"><span class="pre">upgrade-models</span></code> generated from <code class="docutils literal notranslate"><span class="pre">transform-model</span></code>.</p>
+<p><strong>1. Config Jobs</strong></p>
+<p>We use DISCO <code class="docutils literal notranslate"><span class="pre">disco</span> <span class="pre">config</span></code> command to configure jobs.
+The <code class="docutils literal notranslate"><span class="pre">--help</span></code> option shows all available functionality.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ disco config upgrade --help
+Usage: disco config upgrade <span class="o">[</span>OPTIONS<span class="o">]</span> INPUTS
+
+Create JADE configuration <span class="k">for</span> upgrade cost analysis.
+
+Options:
+-d, --cost-database PATH  The unit cost database spreadsheet.  <span class="o">[</span>default:
+                            ~/disco/disco/analysis/generic_cost_database_v1.xlsx<span class="o">]</span>
+-p, --params-file PATH    Thermal <span class="p">&amp;</span> Voltage upgrade parameters file.
+                            <span class="o">[</span>default: upgrade-params.toml<span class="o">]</span>
+--show-params             Show the default upgrade parameters <span class="k">in</span> file.
+-n, --nearest-redirect    Redirect DSS files from nearest lower-order jobs.
+-s, --sequential-upgrade  Enable sequential upgrades.
+-c, --config-file PATH    JADE config file to create  <span class="o">[</span>default: config.json<span class="o">]</span>
+--verbose                 Enable debug logging.
+--help                    Show this message and exit.
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>disco-database</strong>: The path to the <em>unit cost database file</em>. The default is
+<code class="docutils literal notranslate"><span class="pre">~/disco/disco/analysis/generic_cost_database_v1.xlsx</span></code>.</p></li>
+<li><p><strong>show-params</strong>: an option for showing the upgrade parameters from
+<code class="docutils literal notranslate"><span class="pre">--params-file</span></code> that would be passed to PyDSS for upgrade simulation.
+By default, <code class="docutils literal notranslate"><span class="pre">--params-file=upgrade-params.toml</span></code>, DISCO creates that with
+pre-defined parameters if it does not exist.</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ disco config upgrade --show-params .
+Thermal Upgrade Config
+----------
+Parameter                 Value
+line_loading_limit      : <span class="m">1</span>.0
+dt_loading_limit        : <span class="m">1</span>.0
+line_safety_margin      : <span class="m">1</span>.5
+xfmr_safety_margin      : <span class="m">1</span>.5
+nominal_voltage         : <span class="m">120</span>
+max_iterations          : <span class="m">20</span>
+create_upgrade_plots    : <span class="nb">false</span>
+tps_to_test             : <span class="o">[</span><span class="m">0</span>.2, <span class="m">1</span>.8, <span class="m">0</span>.1, <span class="m">0</span>.9<span class="o">]</span>
+create_upgrades_library : <span class="nb">true</span>
+upgrade_library_path    :
+
+Voltage Upgrade Config
+----------
+Parameter                     Value
+target_v                    : <span class="m">1</span>
+initial_voltage_upper_limit : <span class="m">1</span>.0583
+initial_voltage_lower_limit : <span class="m">0</span>.9167
+final_voltage_upper_limit   : <span class="m">1</span>.05
+final_voltage_lower_limit   : <span class="m">0</span>.95
+nominal_voltage             : <span class="m">120</span>
+nominal_pu_voltage          : <span class="m">1</span>
+tps_to_test                 : <span class="o">[</span><span class="m">0</span>.2, <span class="m">1</span>.3, <span class="m">0</span>.1, <span class="m">0</span>.9<span class="o">]</span>
+create_topology_plots       : <span class="nb">false</span>
+cap_sweep_voltage_gap       : <span class="m">1</span>
+reg_control_bands           : <span class="o">[</span><span class="m">1</span>, <span class="m">2</span><span class="o">]</span>
+reg_v_delta                 : <span class="m">0</span>.5
+max_regulators              : <span class="m">4</span>
+use_ltc_placement           : <span class="nb">true</span>
+thermal_scenario_name       : ThermalUpgrade
+
+Upgrade params from <span class="s1">&#39;upgrade-params.toml&#39;</span>.
+</pre></div>
+</div>
+<p>These parameters would be applied to all upgrade simulation jobs globally.
+You can cutomize the values by editing this params file manually, then save.</p>
+<blockquote>
+<div><p>[1] Thermal Upgrade Config: a dict configuration for thermal upgrade post-processing in PyDSS.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">create_upgrades_library</span> <span class="pre">=</span> <span class="pre">true</span></code>, then <code class="docutils literal notranslate"><span class="pre">upgrade_library_path</span></code> is not
+a required filed. However, if <code class="docutils literal notranslate"><span class="pre">false</span></code>, then <code class="docutils literal notranslate"><span class="pre">upgrade_library_path</span></code>
+should be set correctly, and the path is a directory which contains your
+<code class="docutils literal notranslate"><span class="pre">Line_upgrades_library.json</span></code>, and <code class="docutils literal notranslate"><span class="pre">Transformer_upgrades_library.json</span></code>.
+Make sure these upgrades <code class="docutils literal notranslate"><span class="pre">json</span></code> files were created before the configuration.</p>
+</div>
+<p>[2] Voltage Upgrade Config: a dict configuration for voltage upgrade post-processing in PyDSS.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In this config, <code class="docutils literal notranslate"><span class="pre">Thermal</span> <span class="pre">scenario</span> <span class="pre">name</span></code> is default to <code class="docutils literal notranslate"><span class="pre">ThermalUpgrade</span></code>,
+your overrides to this would not apply.</p>
+</div>
+</div></blockquote>
+<ul class="simple">
+<li><p><strong>config-file</strong>: the output config file, by default, it's <code class="docutils literal notranslate"><span class="pre">config.json</span></code>.</p></li>
+</ul>
+<p>After configuring the parameters we are going to create the job configs for
+upgrade cost analysis.</p>
+<p><strong>- Single upgrade cost analysis</strong></p>
+<p>Run <code class="docutils literal notranslate"><span class="pre">disco</span> <span class="pre">config</span> <span class="pre">upgrade</span></code> to generate the job configuration file,
+which will create a <code class="docutils literal notranslate"><span class="pre">config.json</span></code> file,</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ disco config upgrade upgrade-models
+</pre></div>
+</div>
+<p><strong>- Sequential upgrade cost analysis</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ disco config upgrade --sequential-upgrade upgrade-models
+$ disco config upgrade --sequential-upgrade --nearest-redirect upgrade-models
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>sequential-upgrade</strong>: the value is <code class="docutils literal notranslate"><span class="pre">true</span></code> or <code class="docutils literal notranslate"><span class="pre">false</span></code>, default is <code class="docutils literal notranslate"><span class="pre">false</span></code>.
+If <code class="docutils literal notranslate"><span class="pre">true</span></code>, it will run upgrades sequentially based on the job order. The job
+order is determined by <code class="docutils literal notranslate"><span class="pre">job_order</span></code> value in model inputs, please
+make sure the values are provided if <code class="docutils literal notranslate"><span class="pre">sequential-upgrade</span></code> is
+<code class="docutils literal notranslate"><span class="pre">true</span></code>. Then upgrade simulation runs from lower level of <code class="docutils literal notranslate"><span class="pre">job_order</span></code>
+to higher level within each feeder.</p></li>
+<li><p><strong>nearest-redirect</strong>, by default <code class="docutils literal notranslate"><span class="pre">false</span></code>, it means DISCO redirects the
+upgrade DSS files from all lower-order jobs. If <code class="docutils literal notranslate"><span class="pre">true</span></code>, DISCO will redirect
+upgrade DSS files only from nearest lower-order jobs. For example, suppose we
+have four jobs, the job order are 1, 2, 3, 4. If <code class="docutils literal notranslate"><span class="pre">nearest-redirect=false</span></code>,
+DISCO will redirect upgrade DSS files generated from job-1, job-2 and job-3
+to job-4. If <code class="docutils literal notranslate"><span class="pre">nearest-redirect=true</span></code>, then DISCO will only redirect
+upgrade DSS files generated from job-3 to job-4.</p></li>
+</ul>
+<p><strong>2. Submit Jobs</strong></p>
+<p>Now, our <code class="docutils literal notranslate"><span class="pre">config.json</span></code> is created. Use the JADE command below to submit jobs.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ jade submit-jobs config.json
+</pre></div>
+</div>
+<p><strong>3. Job Analysis</strong></p>
+<p>After jobs finish, check the results using <code class="docutils literal notranslate"><span class="pre">jade</span> <span class="pre">show-results</span></code>.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ jade show-results
+Results from directory: output
+JADE Version: <span class="m">0</span>.1.0
+<span class="m">02</span>/23/2020 <span class="m">16</span>:20:12
+
++-----------------------------------------+-------------+----------+--------------------+----------------------------+
+<span class="p">|</span>                 Job Name                <span class="p">|</span> Return Code <span class="p">|</span>  Status  <span class="p">|</span> Execution Time <span class="o">(</span>s<span class="o">)</span> <span class="p">|</span>      Completion Time       <span class="p">|</span>
++-----------------------------------------+-------------+----------+--------------------+----------------------------+
+<span class="p">|</span> feeder_3__-1__None__None__deployment0.dss <span class="p">|</span>      <span class="m">0</span>      <span class="p">|</span> finished <span class="p">|</span> <span class="m">9</span>.103492021560669  <span class="p">|</span> <span class="m">2020</span>-02-23 <span class="m">16</span>:20:02.732357 <span class="p">|</span>
+<span class="p">|</span>  feeder_3__3__1.15__1.0__deployment1.dss  <span class="p">|</span>      <span class="m">0</span>      <span class="p">|</span> finished <span class="p">|</span>  <span class="m">9</span>.10144591331482  <span class="p">|</span> <span class="m">2020</span>-02-23 <span class="m">16</span>:20:02.734277 <span class="p">|</span>
+<span class="p">|</span>  feeder_3__3__1.15__1.0__deployment2.dss  <span class="p">|</span>      <span class="m">0</span>      <span class="p">|</span> finished <span class="p">|</span>  <span class="m">9</span>.09758710861206  <span class="p">|</span> <span class="m">2020</span>-02-23 <span class="m">16</span>:20:02.734846 <span class="p">|</span>
+<span class="p">|</span>  feeder_3__3__1.15__1.0__deployment3.dss  <span class="p">|</span>      <span class="m">0</span>      <span class="p">|</span> finished <span class="p">|</span> <span class="m">10</span>.095330953598022 <span class="p">|</span> <span class="m">2020</span>-02-23 <span class="m">16</span>:20:03.736296 <span class="p">|</span>
+<span class="p">|</span>  feeder_3__3__1.15__1.0__deployment4.dss  <span class="p">|</span>      <span class="m">0</span>      <span class="p">|</span> finished <span class="p">|</span> <span class="m">10</span>.09266185760498  <span class="p">|</span> <span class="m">2020</span>-02-23 <span class="m">16</span>:20:03.737270 <span class="p">|</span>
+<span class="p">|</span>  feeder_3__3__1.15__1.0__deployment5.dss  <span class="p">|</span>      <span class="m">0</span>      <span class="p">|</span> finished <span class="p">|</span> <span class="m">10</span>.08967399597168  <span class="p">|</span> <span class="m">2020</span>-02-23 <span class="m">16</span>:20:03.738050 <span class="p">|</span>
+<span class="p">|</span>  feeder_1__-1__None__None__deployment0.dss <span class="p">|</span>      <span class="m">0</span>      <span class="p">|</span> finished <span class="p">|</span> <span class="m">16</span>.100937843322754 <span class="p">|</span> <span class="m">2020</span>-02-23 <span class="m">16</span>:20:09.754281 <span class="p">|</span>
+<span class="p">|</span>   feeder_1__3__1.15__1.0__deployment1.dss  <span class="p">|</span>      <span class="m">0</span>      <span class="p">|</span> finished <span class="p">|</span> <span class="m">17</span>.099663019180298 <span class="p">|</span> <span class="m">2020</span>-02-23 <span class="m">16</span>:20:10.757113 <span class="p">|</span>
+<span class="p">|</span>   feeder_1__3__1.15__1.0__deployment2.dss  <span class="p">|</span>      <span class="m">0</span>      <span class="p">|</span> finished <span class="p">|</span> <span class="m">18</span>.098870992660522 <span class="p">|</span> <span class="m">2020</span>-02-23 <span class="m">16</span>:20:11.760401 <span class="p">|</span>
+<span class="p">|</span>   feeder_1__3__1.15__1.0__deployment3.dss  <span class="p">|</span>      <span class="m">0</span>      <span class="p">|</span> finished <span class="p">|</span>  <span class="m">18</span>.0959370136261  <span class="p">|</span> <span class="m">2020</span>-02-23 <span class="m">16</span>:20:11.761575 <span class="p">|</span>
+<span class="p">|</span>   feeder_1__3__1.15__1.0__deployment4.dss  <span class="p">|</span>      <span class="m">0</span>      <span class="p">|</span> finished <span class="p">|</span> <span class="m">18</span>.091224193572998 <span class="p">|</span> <span class="m">2020</span>-02-23 <span class="m">16</span>:20:11.762137 <span class="p">|</span>
+<span class="p">|</span>   feeder_1__3__1.15__1.0__deployment5.dss  <span class="p">|</span>      <span class="m">0</span>      <span class="p">|</span> finished <span class="p">|</span> <span class="m">18</span>.080937147140503 <span class="p">|</span> <span class="m">2020</span>-02-23 <span class="m">16</span>:20:11.762635 <span class="p">|</span>
++-----------------------------------------+-------------+----------+--------------------+----------------------------+
+
+Num successful: <span class="m">12</span>
+Num failed: <span class="m">0</span>
+Total: <span class="m">12</span>
+
+Avg execution <span class="nb">time</span> <span class="o">(</span>s<span class="o">)</span>: <span class="m">13</span>.60
+Min execution <span class="nb">time</span> <span class="o">(</span>s<span class="o">)</span>: <span class="m">9</span>.10
+Max execution <span class="nb">time</span> <span class="o">(</span>s<span class="o">)</span>: <span class="m">18</span>.10
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">UpgradeCostAnalysis</span></code> results are stored in each job output direcotry, please check <code class="docutils literal notranslate"><span class="pre">post-process-results.json</span></code>
+and <code class="docutils literal notranslate"><span class="pre">post_process</span></code> subfolder for CSV outputs. For example, in job directory <code class="docutils literal notranslate"><span class="pre">/data/tests/output/job-outputs/feeder_3__3__1.15__1.0__deployment3.dss</span></code>.
+The <code class="docutils literal notranslate"><span class="pre">post-process-results.json</span></code> looks like this,</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;job&quot;</span><span class="p">:</span> <span class="s2">&quot;feeder_3__3__1.15__1.0__deployment3.dss&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;post-process&quot;</span><span class="p">:</span> <span class="s2">&quot;UpgradeCostAnalysis&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;results&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;inputs&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="o">...</span>
+        <span class="p">],</span>
+        <span class="s2">&quot;outputs&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="p">{</span>
+                <span class="s2">&quot;result_type&quot;</span><span class="p">:</span> <span class="s2">&quot;detailed_line_upgrade_costs&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="s2">&quot;output/job-outputs/feeder_3__3__1.15__1.0__deployment3.dss/post_process/detailed_line_upgrade_costs.csv&quot;</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+                <span class="s2">&quot;result_type&quot;</span><span class="p">:</span> <span class="s2">&quot;detailed_transformer_costs&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="s2">&quot;output/job-outputs/feeder_3__3__1.15__1.0__deployment3.dss/post_process/detailed_transformer_costs.csv&quot;</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+                <span class="s2">&quot;result_type&quot;</span><span class="p">:</span> <span class="s2">&quot;summary_of_upgrade_costs&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="s2">&quot;output/job-outputs/feeder_3__3__1.15__1.0__deployment3.dss/post_process/summary_of_upgrade_costs.csv&quot;</span>
+            <span class="p">}</span>
+        <span class="p">]</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">post_process</span></code> subfolder contains the CSV files as shown in the JSON <code class="docutils literal notranslate"><span class="pre">outputs</span></code> section above.</p>
+<p>Done! You've already run the <em>upgrade cost analysis</em> successfully.</p>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="hosting-capacity-analysis.html" class="btn btn-neutral float-left" title="Hosting Capacity Analysis" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../pipelines.html" class="btn btn-neutral float-right" title="Pipelines" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2019, NREL.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

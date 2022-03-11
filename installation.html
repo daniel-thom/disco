@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="Python" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Installation &mdash; DISCO 0.1 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Overview" href="overview.html" />
+    <link rel="prev" title="DISCO Documentation" href="index.html" />
+    <link href="_static/style.css" rel="stylesheet" type="text/css">
+
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> DISCO
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">User Guide</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#use-conda">Use Conda</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#use-docker">Use Docker</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#data-sources">Data Sources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#transform-model">Transform Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#config-jobs">Config Jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#submit-jobs">Submit Jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#result-analysis">Result Analysis</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="quick-start.html">Quick Start</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="quick-start.html#source-data">Source Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quick-start.html#transform-model">Transform Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quick-start.html#config-jobs">Config Jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quick-start.html#submit-jobs">Submit Jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quick-start.html#result-analysis">Result Analysis</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="data-sources.html">Data Sources</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="data-sources/smart-ds-model-preparation.html">SMART-DS OpenDSS Model Preparation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data-sources.html#gem-model">GEM Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data-sources.html#epri-model">EPRI Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data-sources.html#sourcetree1-model">SourceTree1 Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data-sources.html#sourcetree2-model">SourceTree2 Model</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="pv-deployments.html">PV Deployments</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pv-deployments.html#sourcetree1-pv-deployments">SourceTree1 PV Deployments</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="transform-models.html">Transform Models</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="transform-models.html#transform-model-help">Transform Model Help</a></li>
+<li class="toctree-l2"><a class="reference internal" href="transform-models.html#disco-model-in-depth">DISCO Model in Depth</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="analysis-workflows.html">Analysis Workflows</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="analysis-workflows/hosting-capacity-analysis.html">Hosting Capacity Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="analysis-workflows/upgrade-cost-analysis.html">Upgrade Cost Analysis</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="pipelines.html">Pipelines</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pipelines.html#sourcetree1model">SourceTree1Model</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="debugging-issues.html">Debugging Issues</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="debugging-issues.html#using-jade">Using JADE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="debugging-issues.html#using-pydss">Using PyDSS</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="data-ingestion.html">Data Ingestion</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="data-ingestion.html#ingest-to-new-database">Ingest to New Database</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data-ingestion.html#ingest-to-existing-database">Ingest to Existing Database</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data-ingestion.html#run-database-queries">Run Database Queries</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="advanced-guide.html">Advanced Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="advanced-guide/analysis-deployment.html">Analysis Deployment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="advanced-guide/automated-upgrade-simulation.html">Automated Upgrade Simulation</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contribution</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="build-docs.html">Build docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">DISCO</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Installation</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/installation.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="installation">
+<span id="id1"></span><h1>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h1>
+<p>DISCO can be installed on your computer or HPC. If trying to install it on your
+computer, you can choose to install it in a conda environment or Docker
+container.</p>
+<section id="use-conda">
+<h2>Use Conda<a class="headerlink" href="#use-conda" title="Permalink to this headline">¶</a></h2>
+<p>This section shows how to create a virtual Python environment by using Conda,
+and install necessary packages required by DISCO, including JADE, PyDSS and
+third-party libraries.</p>
+<ol class="arabic simple">
+<li><p>Create a Conda virtual environment. This example uses the name <code class="docutils literal notranslate"><span class="pre">disco</span></code>
+as a convention.</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ conda create -n disco <span class="nv">python</span><span class="o">=</span><span class="m">3</span>.7
+$ conda activate disco
+<span class="c1"># Run this command if your git version is lower than 2.19.</span>
+$ conda install git<span class="s2">&quot;&gt;=2.19&quot;</span>
+</pre></div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Python 3.7 is required. Newer versions won't work.</p>
+</div>
+<p>Optional: Install desired packages.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ conda install ipython
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li><p>Clone DISCO repo from GitHub and install.</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> &lt;path-to-your-local-repos&gt;
+$ git clone git@github.com:NREL/disco.git
+$ <span class="nb">cd</span> disco
+$ pip install -e .
+
+<span class="c1"># If you will also be developing DISCO code then include dev packages.</span>
+$ pip install -e <span class="s1">&#39;.[dev]&#39;</span>
+</pre></div>
+</div>
+<p>Known Windows installation problem: DISCO requires PyDSS which requires the
+Shapely package. In some cases Shapely will fail to install.
+pip will report an error about <code class="docutils literal notranslate"><span class="pre">geos_c.dll</span></code>. Install it from conda and then
+retry.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ conda install shapely
+$ pip install -e .
+</pre></div>
+</div>
+<p>Now, the Conda environment <code class="docutils literal notranslate"><span class="pre">disco</span></code> is ready to use.
+To deactivate it, use commands below:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ conda deactivate
+</pre></div>
+</div>
+</section>
+<section id="use-docker">
+<h2>Use Docker<a class="headerlink" href="#use-docker" title="Permalink to this headline">¶</a></h2>
+<p>Docker can run on different OS platforms - Linux, Mac, Windows, etc.
+Please follow the document <a class="reference external" href="https://docs.docker.com/">https://docs.docker.com/</a> to install Docker CE
+on your machine first. Then, can continue DISCO installation with docker.</p>
+<ol class="arabic simple">
+<li><p>Clone DISCO source code to your machine.</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git clone git@github.com:NREL/disco.git
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li><p>Clone PyDSS source code to your <code class="docutils literal notranslate"><span class="pre">disco</span></code> folder.</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> disco
+$ git clone git@github.com:NREL/PyDSS.git
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li><p>Build <code class="docutils literal notranslate"><span class="pre">disco</span></code> docker image</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker build -t disco .
+</pre></div>
+</div>
+<ol class="arabic simple" start="4">
+<li><p>Run <code class="docutils literal notranslate"><span class="pre">disco</span></code> docker container</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker run --rm -it -v absolute-disco-models-path:/data/disco-models disco
+</pre></div>
+</div>
+<p>After the container starts, the terminal will show something like this</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">(</span>disco<span class="o">)</span> root@d14851e20888:/data#
+</pre></div>
+</div>
+<p>Then type <code class="docutils literal notranslate"><span class="pre">disco</span></code> to show DISCO related commands</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">(</span>disco<span class="o">)</span> root@d14851e20888:/data# disco
+Usage: disco <span class="o">[</span>OPTIONS<span class="o">]</span> COMMAND <span class="o">[</span>ARGS<span class="o">]</span>...
+
+  Entry point
+
+Options:
+  --help  Show this message and exit.
+
+Commands:
+  auto-config-analysis        Automatically create a configuration.
+  generate-input-data         Generate input data <span class="k">for</span> a model.
+</pre></div>
+</div>
+<p>This base image is <a class="reference external" href="https://hub.docker.com/r/continuumio/miniconda3">https://hub.docker.com/r/continuumio/miniconda3</a>, which is
+built on top of <code class="docutils literal notranslate"><span class="pre">debian</span></code>, so you can use Linux commands for operation.</p>
+<ol class="arabic simple" start="5">
+<li><p>To exit docker environment, just type</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">exit</span>
+</pre></div>
+</div>
+<p>For more about docker commands, please refer <a class="reference external" href="https://docs.docker.com/engine/reference/commandline/docker/">https://docs.docker.com/engine/reference/commandline/docker/</a>.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="DISCO Documentation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="overview.html" class="btn btn-neutral float-right" title="Overview" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2019, NREL.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

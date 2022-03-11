@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="Python" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hosting Capacity Analysis &mdash; DISCO 0.1 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Upgrade Cost Analysis" href="upgrade-cost-analysis.html" />
+    <link rel="prev" title="Analysis Workflows" href="../analysis-workflows.html" />
+    <link href="../_static/style.css" rel="stylesheet" type="text/css">
+
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> DISCO
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">User Guide</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../installation.html#use-conda">Use Conda</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation.html#use-docker">Use Docker</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">Overview</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../overview.html#data-sources">Data Sources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview.html#transform-model">Transform Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview.html#config-jobs">Config Jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview.html#submit-jobs">Submit Jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview.html#result-analysis">Result Analysis</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../quick-start.html">Quick Start</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../quick-start.html#source-data">Source Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../quick-start.html#transform-model">Transform Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../quick-start.html#config-jobs">Config Jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../quick-start.html#submit-jobs">Submit Jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../quick-start.html#result-analysis">Result Analysis</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../data-sources.html">Data Sources</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../data-sources/smart-ds-model-preparation.html">SMART-DS OpenDSS Model Preparation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data-sources.html#gem-model">GEM Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data-sources.html#epri-model">EPRI Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data-sources.html#sourcetree1-model">SourceTree1 Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data-sources.html#sourcetree2-model">SourceTree2 Model</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../pv-deployments.html">PV Deployments</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../pv-deployments.html#sourcetree1-pv-deployments">SourceTree1 PV Deployments</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../transform-models.html">Transform Models</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../transform-models.html#transform-model-help">Transform Model Help</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../transform-models.html#disco-model-in-depth">DISCO Model in Depth</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="../analysis-workflows.html">Analysis Workflows</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Hosting Capacity Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="upgrade-cost-analysis.html">Upgrade Cost Analysis</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../pipelines.html">Pipelines</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../pipelines.html#sourcetree1model">SourceTree1Model</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../debugging-issues.html">Debugging Issues</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../debugging-issues.html#using-jade">Using JADE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../debugging-issues.html#using-pydss">Using PyDSS</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../data-ingestion.html">Data Ingestion</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../data-ingestion.html#ingest-to-new-database">Ingest to New Database</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data-ingestion.html#ingest-to-existing-database">Ingest to Existing Database</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data-ingestion.html#run-database-queries">Run Database Queries</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced-guide.html">Advanced Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../advanced-guide/analysis-deployment.html">Analysis Deployment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../advanced-guide/automated-upgrade-simulation.html">Automated Upgrade Simulation</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contribution</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../build-docs.html">Build docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../license.html">License</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">DISCO</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../analysis-workflows.html">Analysis Workflows</a> &raquo;</li>
+      <li>Hosting Capacity Analysis</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/analysis-workflows/hosting-capacity-analysis.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="hosting-capacity-analysis">
+<h1>Hosting Capacity Analysis<a class="headerlink" href="#hosting-capacity-analysis" title="Permalink to this headline">¶</a></h1>
+<p>This section shows how to conduct <em>hosting capacity analysis</em> using DISCO pipeline with <em>snapshot</em>
+and <em>time-series</em> models as inputs. This tutorial assumes there's an existing <code class="docutils literal notranslate"><span class="pre">snapshot-models</span></code>
+directory generated from the <code class="docutils literal notranslate"><span class="pre">transform-model</span></code> command as below. The workflow below can also be
+applied to <code class="docutils literal notranslate"><span class="pre">time-series-models</span></code>.</p>
+<p><strong>1. Config Pipeline</strong></p>
+<p>Check the <code class="docutils literal notranslate"><span class="pre">--help</span></code> option for creating pipeline template.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ disco create-pipeline template --help
+Usage: disco create-pipeline template <span class="o">[</span>OPTIONS<span class="o">]</span> INPUTS
+
+  Create pipeline template file
+
+Options:
+  -P, --preconfigured             Whether inputs models are preconfigured
+                                  <span class="o">[</span>default: False<span class="o">]</span>
+  -s, --simulation-type <span class="o">[</span>snapshot<span class="p">|</span>time-series<span class="o">]</span>
+                                  Choose a DISCO simulation <span class="nb">type</span>  <span class="o">[</span>default:
+                                  snapshot<span class="o">]</span>
+  -i, --impact-analysis           Enable impact analysis computations
+                                  <span class="o">[</span>default: False<span class="o">]</span>
+  -h, --hosting-capacity          Enable hosting capacity computations
+                                  <span class="o">[</span>default: False<span class="o">]</span>
+  -p, --prescreen                 Enable PV penetration level prescreening
+                                  <span class="o">[</span>default: False<span class="o">]</span>
+  -t, --template-file TEXT        Output pipeline template file  <span class="o">[</span>default:
+                                  pipeline-template.toml<span class="o">]</span>
+  -r, --reports-filename TEXT     PyDSS report options. If None, use the
+                                  default <span class="k">for</span> the simulation type.
+  --help                          Show this message and exit.
+</pre></div>
+</div>
+<p>Given an output directory from <code class="docutils literal notranslate"><span class="pre">transform-model</span></code>, we use this command with <code class="docutils literal notranslate"><span class="pre">--preconfigured</span></code> option
+to create the template.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ disco create-pipeline template --simulation-type<span class="o">=</span>snapshot --hosting-capacity --preconfigured snapshot-models
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For configure time-series hosting capacity pipeline, use <code class="docutils literal notranslate"><span class="pre">--simulation-type=time-series</span></code></p>
+</div>
+<p>It creates the <code class="docutils literal notranslate"><span class="pre">pipeline-template.toml</span></code> with configurable parameters of different sections. Update
+parameter values if need, then run</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ disco create-pipeline config pipeline-template.toml
+</pre></div>
+</div>
+<p>This command creates a <code class="docutils literal notranslate"><span class="pre">pipeline.json</span></code> file containing two stages:</p>
+<ul class="simple">
+<li><p>stage 1 - simulation</p></li>
+<li><p>stage 2 - post-process</p></li>
+</ul>
+<p>Accordingly, there would be an output directories for each stage,</p>
+<ul class="simple">
+<li><p>output-stage1</p></li>
+<li><p>output-stage2</p></li>
+</ul>
+<p><strong>2. Submit Pipeline</strong></p>
+<p>With configured DISCO pipeline in <code class="docutils literal notranslate"><span class="pre">pipeline.json</span></code>, the next step is to submit the pipeline by using JADE:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ jade pipeline submit pipeline.json
+</pre></div>
+</div>
+<p>What does each stage do?
+* In simulation stage, it runs power flow simulation and collect report metrics in CSVs.
+* In post-process stage, it takes the metrics from previous stage and calculates the hosting capacity.</p>
+<p><strong>3. Check Results</strong></p>
+<p>Upon successful completion of DISCO model simulation, the following stage (post-process) will take
+the simulation results, collect metrics from it, and report in CSV formats. There are five tables in
+<code class="docutils literal notranslate"><span class="pre">output-stage1</span></code></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">feeder_head_table.csv</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">feeder_losses_table.csv</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">metadata_table.csv</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">thermal_metrics_table.csv</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">voltage_metrics_table.csv</span></code></p></li>
+</ul>
+<p>Each table contains different set of metrics related to the <em>snapshot</em> or <em>time-series</em> simulation.
+The hosting capacity results are computed based on these metrics, along with the CSV metrics in the
+same output directory <code class="docutils literal notranslate"><span class="pre">output-stage1</span></code>, there are hosting capacity results generated in JSON through
+post-processing.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">hosting_capacity_summary__&lt;scenario_name&gt;.json</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">hosting_capacity_overall__&lt;scenario_name&gt;.json</span></code></p></li>
+</ul>
+<p>The scenarion name could be <code class="docutils literal notranslate"><span class="pre">scenario</span></code>, <code class="docutils literal notranslate"><span class="pre">pf1</span></code> and/or <code class="docutils literal notranslate"><span class="pre">control_mode</span></code>, depending on your
+simulation type and/or <code class="docutils literal notranslate"><span class="pre">--with-loadshape</span></code> option.</p>
+<p><strong>4. Results database</strong></p>
+<p>With this pipeline, the hosting capacity results and report metrics would be ingested into a
+SQLite database named <code class="docutils literal notranslate"><span class="pre">results.sqlite</span></code> by default which could be found in <code class="docutils literal notranslate"><span class="pre">output-stage1</span></code>.
+You can use standard SQL to query data, and perform further analysis.</p>
+<p>If you want to ingest the results into another database, or an existing database, please specify
+the absolute path of the database.</p>
+<p>For sqlite query examples, please refer to the Jupyter notebook <code class="docutils literal notranslate"><span class="pre">notebooks/db-query.ipynb</span></code> in
+the source code repo.</p>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../analysis-workflows.html" class="btn btn-neutral float-left" title="Analysis Workflows" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="upgrade-cost-analysis.html" class="btn btn-neutral float-right" title="Upgrade Cost Analysis" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2019, NREL.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

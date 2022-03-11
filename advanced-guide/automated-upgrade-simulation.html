@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="Python" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Automated Upgrade Simulation &mdash; DISCO 0.1 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Build docs" href="../build-docs.html" />
+    <link rel="prev" title="Analysis Deployment" href="analysis-deployment.html" />
+    <link href="../_static/style.css" rel="stylesheet" type="text/css">
+
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> DISCO
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">User Guide</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../installation.html#use-conda">Use Conda</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation.html#use-docker">Use Docker</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">Overview</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../overview.html#data-sources">Data Sources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview.html#transform-model">Transform Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview.html#config-jobs">Config Jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview.html#submit-jobs">Submit Jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview.html#result-analysis">Result Analysis</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../quick-start.html">Quick Start</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../quick-start.html#source-data">Source Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../quick-start.html#transform-model">Transform Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../quick-start.html#config-jobs">Config Jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../quick-start.html#submit-jobs">Submit Jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../quick-start.html#result-analysis">Result Analysis</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../data-sources.html">Data Sources</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../data-sources/smart-ds-model-preparation.html">SMART-DS OpenDSS Model Preparation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data-sources.html#gem-model">GEM Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data-sources.html#epri-model">EPRI Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data-sources.html#sourcetree1-model">SourceTree1 Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data-sources.html#sourcetree2-model">SourceTree2 Model</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../pv-deployments.html">PV Deployments</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../pv-deployments.html#sourcetree1-pv-deployments">SourceTree1 PV Deployments</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../transform-models.html">Transform Models</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../transform-models.html#transform-model-help">Transform Model Help</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../transform-models.html#disco-model-in-depth">DISCO Model in Depth</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../analysis-workflows.html">Analysis Workflows</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../analysis-workflows/hosting-capacity-analysis.html">Hosting Capacity Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../analysis-workflows/upgrade-cost-analysis.html">Upgrade Cost Analysis</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../pipelines.html">Pipelines</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../pipelines.html#sourcetree1model">SourceTree1Model</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../debugging-issues.html">Debugging Issues</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../debugging-issues.html#using-jade">Using JADE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../debugging-issues.html#using-pydss">Using PyDSS</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../data-ingestion.html">Data Ingestion</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../data-ingestion.html#ingest-to-new-database">Ingest to New Database</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data-ingestion.html#ingest-to-existing-database">Ingest to Existing Database</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data-ingestion.html#run-database-queries">Run Database Queries</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="../advanced-guide.html">Advanced Guide</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="analysis-deployment.html">Analysis Deployment</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Automated Upgrade Simulation</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contribution</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../build-docs.html">Build docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../license.html">License</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">DISCO</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../advanced-guide.html">Advanced Guide</a> &raquo;</li>
+      <li>Automated Upgrade Simulation</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/advanced-guide/automated-upgrade-simulation.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="automated-upgrade-simulation">
+<h1>Automated Upgrade Simulation<a class="headerlink" href="#automated-upgrade-simulation" title="Permalink to this headline">¶</a></h1>
+<p>You can perform <cite>Automated Upgrade Simulation</cite> by using the
+<code class="docutils literal notranslate"><span class="pre">automated_upgrade_simulation</span></code> extension. It implements the following classes
+by inheriting the base classes in JADE:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">AutomatedUpgradeInputs</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">AutomatedUpgradeParameters</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">AutomatedUpgradeConfiguration</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">AutomatedUpgradeSimulation</span></code></p></li>
+</ul>
+<p>Here are the steps to run the simulation:</p>
+<ol class="arabic simple">
+<li><p>Generate DISCO models</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ disco transform-model &lt;source-data-inputs&gt; upgrade
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li><p>Generate job configuration file</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ disco config upgrade &lt;upgrade-models&gt;
+</pre></div>
+</div>
+<ol class="arabic simple" start="4">
+<li><p>Submit jobs via JADE</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ jade submit-jobs &lt;config.json&gt; -o &lt;output-directory&gt;
+</pre></div>
+</div>
+<section id="upgrade-parameters">
+<h2>Upgrade Parameters<a class="headerlink" href="#upgrade-parameters" title="Permalink to this headline">¶</a></h2>
+<p>To run automated upgrade simulation, the following parameters may need to be
+customized. Here are the default values in the <code class="docutils literal notranslate"><span class="pre">upgrade-params.toml</span></code> file.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ disco config upgrade --show-params .
+Thermal Upgrade Config
+----------
+Parameter                 Value
+line_loading_limit      : <span class="m">19</span>.0
+dt_loading_limit        : <span class="m">1</span>.0
+line_safety_margin      : <span class="m">1</span>.5
+xfmr_safety_margin      : <span class="m">1</span>.5
+nominal_voltage         : <span class="m">120</span>
+max_iterations          : <span class="m">20</span>
+create_upgrade_plots    : <span class="nb">false</span>
+tps_to_test             : <span class="o">[</span><span class="m">0</span>.2, <span class="m">1</span>.8, <span class="m">0</span>.1, <span class="m">0</span>.9<span class="o">]</span>
+create_upgrades_library : <span class="nb">true</span>
+upgrade_library_path    :
+
+Voltage Upgrade Config
+----------
+Parameter                     Value
+target_v                    : <span class="m">1</span>
+initial_voltage_upper_limit : <span class="m">1</span>.0583
+initial_voltage_lower_limit : <span class="m">0</span>.9167
+final_voltage_upper_limit   : <span class="m">1</span>.05
+final_voltage_lower_limit   : <span class="m">0</span>.95
+nominal_voltage             : <span class="m">120</span>
+nominal_pu_voltage          : <span class="m">1</span>
+tps_to_test                 : <span class="o">[</span><span class="m">0</span>.2, <span class="m">1</span>.3, <span class="m">0</span>.1, <span class="m">0</span>.9<span class="o">]</span>
+create_topology_plots       : <span class="nb">false</span>
+cap_sweep_voltage_gap       : <span class="m">1</span>
+reg_control_bands           : <span class="o">[</span><span class="m">1</span>, <span class="m">2</span><span class="o">]</span>
+reg_v_delta                 : <span class="m">0</span>.5
+max_regulators              : <span class="m">4</span>
+use_ltc_placement           : <span class="nb">true</span>
+thermal_scenario_name       : ThermalUpgrade
+
+Upgrade params from <span class="s1">&#39;upgrade-params.toml&#39;</span>.
+</pre></div>
+</div>
+<p>You can edit this file and provide customized values if need, or create your own
+parameter file and run the command <code class="docutils literal notranslate"><span class="pre">disco</span> <span class="pre">config</span> <span class="pre">upgrade</span></code>
+with the <code class="docutils literal notranslate"><span class="pre">--params-file</span></code> option.</p>
+</section>
+<section id="pydss-scenarios">
+<h2>PyDSS Scenarios<a class="headerlink" href="#pydss-scenarios" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Thermal Upgrade</p></li>
+<li><p>Voltage Upgrade</p></li>
+</ul>
+<p>In PyDSS, voltage upgrade scenario refers to thermal upgrade scenario by using
+the scenario name, that is, <cite>ThermalUpgrade</cite> here which could not be changed
+in configuration.</p>
+</section>
+<section id="job-order">
+<h2>Job Order<a class="headerlink" href="#job-order" title="Permalink to this headline">¶</a></h2>
+<p>If you need to run the upgrade simulation in sequential order, for example, the
+order is based on penetration levels or time sequences, then you need to provide
+the <code class="docutils literal notranslate"><span class="pre">job_order</span></code> value for the model inputs,</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">{</span>
+    <span class="s2">&quot;feeder&quot;</span>: <span class="s2">&quot;J1&quot;</span>,
+    <span class="s2">&quot;deployment&quot;</span>: <span class="o">{</span>
+        ...
+        <span class="s2">&quot;job_order&quot;</span>: <span class="m">1</span>
+    <span class="o">}</span>,
+    <span class="s2">&quot;simulation_type&quot;</span>: <span class="s2">&quot;Snapshot&quot;</span>
+    ...
+<span class="o">}</span>
+</pre></div>
+</div>
+<p>The jobs will run in sequential order based on <code class="docutils literal notranslate"><span class="pre">job_order</span></code>. Jobs with larger
+<code class="docutils literal notranslate"><span class="pre">job_order</span></code> values will redirect to upgrade files generated by earlier jobs.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="analysis-deployment.html" class="btn btn-neutral float-left" title="Analysis Deployment" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../build-docs.html" class="btn btn-neutral float-right" title="Build docs" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2019, NREL.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

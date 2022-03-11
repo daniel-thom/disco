@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="Python" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Quick Start &mdash; DISCO 0.1 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Data Sources" href="data-sources.html" />
+    <link rel="prev" title="Overview" href="overview.html" />
+    <link href="_static/style.css" rel="stylesheet" type="text/css">
+
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> DISCO
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">User Guide</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#use-conda">Use Conda</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#use-docker">Use Docker</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#data-sources">Data Sources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#transform-model">Transform Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#config-jobs">Config Jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#submit-jobs">Submit Jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#result-analysis">Result Analysis</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Quick Start</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#source-data">Source Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#transform-model">Transform Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#config-jobs">Config Jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#submit-jobs">Submit Jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#result-analysis">Result Analysis</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="data-sources.html">Data Sources</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="data-sources/smart-ds-model-preparation.html">SMART-DS OpenDSS Model Preparation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data-sources.html#gem-model">GEM Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data-sources.html#epri-model">EPRI Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data-sources.html#sourcetree1-model">SourceTree1 Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data-sources.html#sourcetree2-model">SourceTree2 Model</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="pv-deployments.html">PV Deployments</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pv-deployments.html#sourcetree1-pv-deployments">SourceTree1 PV Deployments</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="transform-models.html">Transform Models</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="transform-models.html#transform-model-help">Transform Model Help</a></li>
+<li class="toctree-l2"><a class="reference internal" href="transform-models.html#disco-model-in-depth">DISCO Model in Depth</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="analysis-workflows.html">Analysis Workflows</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="analysis-workflows/hosting-capacity-analysis.html">Hosting Capacity Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="analysis-workflows/upgrade-cost-analysis.html">Upgrade Cost Analysis</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="pipelines.html">Pipelines</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pipelines.html#sourcetree1model">SourceTree1Model</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="debugging-issues.html">Debugging Issues</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="debugging-issues.html#using-jade">Using JADE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="debugging-issues.html#using-pydss">Using PyDSS</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="data-ingestion.html">Data Ingestion</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="data-ingestion.html#ingest-to-new-database">Ingest to New Database</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data-ingestion.html#ingest-to-existing-database">Ingest to Existing Database</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data-ingestion.html#run-database-queries">Run Database Queries</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="advanced-guide.html">Advanced Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="advanced-guide/analysis-deployment.html">Analysis Deployment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="advanced-guide/automated-upgrade-simulation.html">Automated Upgrade Simulation</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contribution</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="build-docs.html">Build docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">DISCO</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Quick Start</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/quick-start.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="quick-start">
+<h1>Quick Start<a class="headerlink" href="#quick-start" title="Permalink to this headline">¶</a></h1>
+<p>This tutorial will show an example by using SMART-DS models with snapshot
+impact analysis.</p>
+<section id="source-data">
+<h2>Source Data<a class="headerlink" href="#source-data" title="Permalink to this headline">¶</a></h2>
+<p>Suppose the DISCO repo is downloaded to <code class="docutils literal notranslate"><span class="pre">~/disco</span></code> directory, where the
+SMART-DS data is located in the directory <code class="docutils literal notranslate"><span class="pre">tests/data/smart-ds/substations/</span></code>.</p>
+</section>
+<section id="transform-model">
+<h2>Transform Model<a class="headerlink" href="#transform-model" title="Permalink to this headline">¶</a></h2>
+<p>Given snapshot impact analysis type, DISCO takes directory inputs of SMART-DS
+models and transforms them into DISCO models.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ disco transform-model ~/disco/tests/data/smart-ds/substations/ snapshot
+Transformed data from ~/disco/tests/data/smart-ds/substations/ to snapshot-models <span class="k">for</span> Snapshot Analysis.
+</pre></div>
+</div>
+<p>By default, it generates a directory named <code class="docutils literal notranslate"><span class="pre">snapshot-models</span></code>
+with transformed models, i.e. DISCO mdoels.</p>
+</section>
+<section id="config-jobs">
+<h2>Config Jobs<a class="headerlink" href="#config-jobs" title="Permalink to this headline">¶</a></h2>
+<p>Then config jobs using DISCO with <code class="docutils literal notranslate"><span class="pre">snapshot</span></code> command,</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ disco config snapshot ./snapshot-models
+Created config.json <span class="k">for</span> Snapshot Analysis
+</pre></div>
+</div>
+<p>A job config file named <code class="docutils literal notranslate"><span class="pre">config.json</span></code> was created.</p>
+</section>
+<section id="submit-jobs">
+<h2>Submit Jobs<a class="headerlink" href="#submit-jobs" title="Permalink to this headline">¶</a></h2>
+<p>Then <code class="docutils literal notranslate"><span class="pre">config.json</span></code> can be submitted through JADE.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ jade submit-jobs config.json
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you are submitting jobs on HPC, you'll need the <code class="docutils literal notranslate"><span class="pre">hpc_config.toml</span></code> file
+which can be found in the root of JADE. Copy and modify it as necessary.
+Refer to <a class="reference external" href="https://nrel.github.io/jade/tutorial.html#cli-execution">JADE instructions</a>
+to submit and run the jobs.</p>
+</div>
+<p>Then, the submitted jobs run to completion and generate an output directory
+named <code class="docutils literal notranslate"><span class="pre">output</span></code>.</p>
+</section>
+<section id="result-analysis">
+<h2>Result Analysis<a class="headerlink" href="#result-analysis" title="Permalink to this headline">¶</a></h2>
+<p>To get a quick summary of job results using JADE:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ jade show-results
+Results from directory: output
+JADE Version: <span class="m">0</span>.1.1
+<span class="m">01</span>/04/2021 <span class="m">08</span>:52:36
+
++-----------------------------------------+-------------+----------+--------------------+----------------------------+
+<span class="p">|</span>                 Job Name                <span class="p">|</span> Return Code <span class="p">|</span>  Status  <span class="p">|</span> Execution Time <span class="o">(</span>s<span class="o">)</span> <span class="p">|</span>      Completion Time       <span class="p">|</span>
++-----------------------------------------+-------------+----------+--------------------+----------------------------+
+<span class="p">|</span>  p1uhs10_1247__p1udt14394__random__1__5 <span class="p">|</span>      <span class="m">0</span>      <span class="p">|</span> finished <span class="p">|</span> <span class="m">23</span>.069955110549927 <span class="p">|</span> <span class="m">2021</span>-01-04 <span class="m">08</span>:52:35.939785 <span class="p">|</span>
+<span class="p">|</span> p1uhs10_1247__p1udt14394__random__1__10 <span class="p">|</span>      <span class="m">0</span>      <span class="p">|</span> finished <span class="p">|</span> <span class="m">23</span>.06603503227234  <span class="p">|</span> <span class="m">2021</span>-01-04 <span class="m">08</span>:52:35.942345 <span class="p">|</span>
+<span class="p">|</span>  p1uhs10_1247__p1udt14394__random__2__5 <span class="p">|</span>      <span class="m">0</span>      <span class="p">|</span> finished <span class="p">|</span> <span class="m">23</span>.062479972839355 <span class="p">|</span> <span class="m">2021</span>-01-04 <span class="m">08</span>:52:35.943899 <span class="p">|</span>
+<span class="p">|</span> p1uhs10_1247__p1udt14394__random__2__10 <span class="p">|</span>      <span class="m">0</span>      <span class="p">|</span> finished <span class="p">|</span> <span class="m">23</span>.05748414993286  <span class="p">|</span> <span class="m">2021</span>-01-04 <span class="m">08</span>:52:35.944780 <span class="p">|</span>
++-----------------------------------------+-------------+----------+--------------------+----------------------------+
+
+Num successful: <span class="m">4</span>
+Num failed: <span class="m">0</span>
+Total: <span class="m">4</span>
+
+Avg execution <span class="nb">time</span> <span class="o">(</span>s<span class="o">)</span>: <span class="m">23</span>.06
+Min execution <span class="nb">time</span> <span class="o">(</span>s<span class="o">)</span>: <span class="m">23</span>.06
+Max execution <span class="nb">time</span> <span class="o">(</span>s<span class="o">)</span>: <span class="m">23</span>.07
+</pre></div>
+</div>
+<p>This is the complete workflow for conducting snapshot impact analysis on
+SMART_DS feeders.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="overview.html" class="btn btn-neutral float-left" title="Overview" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="data-sources.html" class="btn btn-neutral float-right" title="Data Sources" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2019, NREL.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
