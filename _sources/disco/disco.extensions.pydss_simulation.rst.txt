@@ -1,0 +1,61 @@
+disco.extensions.pydss\_simulation package
+==========================================
+
+Submodules
+----------
+
+disco.extensions.pydss\_simulation.cli module
+---------------------------------------------
+
+.. automodule:: disco.extensions.pydss_simulation.cli
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+disco.extensions.pydss\_simulation.estimate\_run\_minutes module
+----------------------------------------------------------------
+
+.. automodule:: disco.extensions.pydss_simulation.estimate_run_minutes
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+disco.extensions.pydss\_simulation.pydss\_configuration module
+--------------------------------------------------------------
+
+.. automodule:: disco.extensions.pydss_simulation.pydss_configuration
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+disco.extensions.pydss\_simulation.pydss\_inputs module
+-------------------------------------------------------
+
+.. automodule:: disco.extensions.pydss_simulation.pydss_inputs
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+disco.extensions.pydss\_simulation.pydss\_simulation module
+-----------------------------------------------------------
+
+.. automodule:: disco.extensions.pydss_simulation.pydss_simulation
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+disco.extensions.pydss\_simulation.time\_series\_impact\_analysis\_configuration module
+---------------------------------------------------------------------------------------
+
+.. automodule:: disco.extensions.pydss_simulation.time_series_impact_analysis_configuration
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: disco.extensions.pydss_simulation
+   :members:
+   :undoc-members:
+   :show-inheritance:

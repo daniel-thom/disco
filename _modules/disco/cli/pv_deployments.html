@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>disco.cli.pv_deployments &mdash; DISCO 0.1 documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link href="../../../_static/style.css" rel="stylesheet" type="text/css">
+
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../../index.html" class="icon icon-home"> DISCO
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">User Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../installation.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../installation.html#use-conda">Use Conda</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../installation.html#use-docker">Use Docker</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../overview.html">Overview</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../overview.html#data-sources">Data Sources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../overview.html#transform-model">Transform Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../overview.html#config-jobs">Config Jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../overview.html#submit-jobs">Submit Jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../overview.html#result-analysis">Result Analysis</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../quick-start.html">Quick Start</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../quick-start.html#source-data">Source Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../quick-start.html#transform-model">Transform Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../quick-start.html#config-jobs">Config Jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../quick-start.html#submit-jobs">Submit Jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../quick-start.html#result-analysis">Result Analysis</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../data-sources.html">Data Sources</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../data-sources/smart-ds-model-preparation.html">SMART-DS OpenDSS Model Preparation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../data-sources.html#gem-model">GEM Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../data-sources.html#epri-model">EPRI Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../data-sources.html#sourcetree1-model">SourceTree1 Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../data-sources.html#sourcetree2-model">SourceTree2 Model</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../pv-deployments.html">PV Deployments</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../pv-deployments.html#sourcetree1-pv-deployments">SourceTree1 PV Deployments</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../transform-models.html">Transform Models</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../transform-models.html#transform-model-help">Transform Model Help</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../transform-models.html#disco-model-in-depth">DISCO Model in Depth</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../analysis-workflows.html">Analysis Workflows</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../analysis-workflows/hosting-capacity-analysis.html">Hosting Capacity Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../analysis-workflows/upgrade-cost-analysis.html">Upgrade Cost Analysis</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../pipelines.html">Pipelines</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../pipelines.html#sourcetree1model">SourceTree1Model</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../debugging-issues.html">Debugging Issues</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../debugging-issues.html#using-jade">Using JADE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../debugging-issues.html#using-pydss">Using PyDSS</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../data-ingestion.html">Data Ingestion</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../data-ingestion.html#ingest-to-new-database">Ingest to New Database</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../data-ingestion.html#ingest-to-existing-database">Ingest to Existing Database</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../data-ingestion.html#run-database-queries">Run Database Queries</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../advanced-guide.html">Advanced Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../advanced-guide/analysis-deployment.html">Analysis Deployment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../advanced-guide/upgrade-cost-analysis-generic-models.html">Upgrade Cost Analysis JSON Schemas</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contribution</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../build-docs.html">Build docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../license.html">License</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">DISCO</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+      <li>disco.cli.pv_deployments</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for disco.cli.pv_deployments</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">import</span> <span class="nn">logging</span>
+<span class="kn">import</span> <span class="nn">random</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">from</span> <span class="nn">types</span> <span class="kn">import</span> <span class="n">SimpleNamespace</span>
+
+<span class="kn">import</span> <span class="nn">click</span>
+
+<span class="kn">from</span> <span class="nn">jade.loggers</span> <span class="kn">import</span> <span class="n">setup_logging</span>
+<span class="kn">from</span> <span class="nn">disco.enums</span> <span class="kn">import</span> <span class="n">Placement</span>
+<span class="kn">from</span> <span class="nn">disco.sources.base</span> <span class="kn">import</span> <span class="n">DEFAULT_PV_DEPLOYMENTS_DIRNAME</span>
+<span class="kn">from</span> <span class="nn">disco.sources.source_tree_1.pv_deployments</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">DeploymentHierarchy</span><span class="p">,</span>
+    <span class="n">DeploymentCategory</span><span class="p">,</span>
+    <span class="n">PVDataStorage</span><span class="p">,</span>
+    <span class="n">PVDataManager</span><span class="p">,</span>
+    <span class="n">PVDeploymentManager</span><span class="p">,</span>
+    <span class="n">PVConfigManager</span>
+<span class="p">)</span>
+
+<span class="n">HIERARCHY_CHOICE</span> <span class="o">=</span> <span class="p">[</span><span class="n">item</span><span class="o">.</span><span class="n">value</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">DeploymentHierarchy</span><span class="p">]</span>
+<span class="n">CATEGORY_CHOICE</span> <span class="o">=</span> <span class="p">[</span><span class="n">item</span><span class="o">.</span><span class="n">value</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">DeploymentCategory</span><span class="p">]</span>
+<span class="n">PLACEMENT_CHOICE</span> <span class="o">=</span> <span class="p">[</span><span class="n">item</span><span class="o">.</span><span class="n">value</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">Placement</span><span class="p">]</span>
+
+<span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="create_pv_deployments"><a class="viewcode-back" href="../../../disco/disco.cli.html#disco.cli.pv_deployments.create_pv_deployments">[docs]</a><span class="k">def</span> <span class="nf">create_pv_deployments</span><span class="p">(</span><span class="n">input_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">hierarchy</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">config</span><span class="p">:</span> <span class="nb">dict</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;A method for generating pv deployments&quot;&quot;&quot;</span>
+    <span class="n">hierarchy</span> <span class="o">=</span> <span class="n">DeploymentHierarchy</span><span class="p">(</span><span class="n">hierarchy</span><span class="p">)</span>
+    <span class="n">config</span> <span class="o">=</span> <span class="n">SimpleNamespace</span><span class="p">(</span><span class="o">**</span><span class="n">config</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">config</span><span class="o">.</span><span class="n">placement</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;&#39;-p&#39; or &#39;--placement&#39; should not be None for this action, choose from </span><span class="si">{</span><span class="n">PLACEMENT_CHOICE</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">()</span>
+    <span class="n">manager</span> <span class="o">=</span> <span class="n">PVDeploymentManager</span><span class="p">(</span><span class="n">input_path</span><span class="p">,</span> <span class="n">hierarchy</span><span class="p">,</span> <span class="n">config</span><span class="p">)</span>
+    <span class="n">summary</span> <span class="o">=</span> <span class="n">manager</span><span class="o">.</span><span class="n">generate_pv_deployments</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">summary</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">2</span><span class="p">))</span></div>
+
+
+<div class="viewcode-block" id="create_pv_configs"><a class="viewcode-back" href="../../../disco/disco.cli.html#disco.cli.pv_deployments.create_pv_configs">[docs]</a><span class="k">def</span> <span class="nf">create_pv_configs</span><span class="p">(</span><span class="n">input_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">hierarchy</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">config</span><span class="p">:</span> <span class="nb">dict</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;A method for generating pv config JSON files &quot;&quot;&quot;</span>
+    <span class="n">hierarchy</span> <span class="o">=</span> <span class="n">DeploymentHierarchy</span><span class="p">(</span><span class="n">hierarchy</span><span class="p">)</span>
+    <span class="n">config</span> <span class="o">=</span> <span class="n">SimpleNamespace</span><span class="p">(</span><span class="o">**</span><span class="n">config</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">config</span><span class="o">.</span><span class="n">placement</span><span class="p">:</span>
+        <span class="n">config</span><span class="o">.</span><span class="n">placement</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;&#39;-p&#39; or &#39;--placement&#39; option is ignored for this action.&quot;</span><span class="p">)</span>
+    
+    <span class="n">manager</span> <span class="o">=</span> <span class="n">PVConfigManager</span><span class="p">(</span><span class="n">input_path</span><span class="p">,</span> <span class="n">hierarchy</span><span class="p">,</span> <span class="n">config</span><span class="p">)</span>
+    <span class="n">config_files</span> <span class="o">=</span> <span class="n">manager</span><span class="o">.</span><span class="n">generate_pv_configs</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;PV configs created! Total: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">config_files</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="remove_pv_deployments"><a class="viewcode-back" href="../../../disco/disco.cli.html#disco.cli.pv_deployments.remove_pv_deployments">[docs]</a><span class="k">def</span> <span class="nf">remove_pv_deployments</span><span class="p">(</span><span class="n">input_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">hierarchy</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">config</span><span class="p">:</span> <span class="nb">dict</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;A method for removing deployed pv systems&quot;&quot;&quot;</span>
+    <span class="n">hierarchy</span> <span class="o">=</span> <span class="n">DeploymentHierarchy</span><span class="p">(</span><span class="n">hierarchy</span><span class="p">)</span>
+    <span class="n">config</span> <span class="o">=</span> <span class="n">SimpleNamespace</span><span class="p">(</span><span class="o">**</span><span class="n">config</span><span class="p">)</span>
+    <span class="n">manager</span> <span class="o">=</span> <span class="n">PVDeploymentManager</span><span class="p">(</span><span class="n">input_path</span><span class="p">,</span> <span class="n">hierarchy</span><span class="p">,</span> <span class="n">config</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">config</span><span class="o">.</span><span class="n">placement</span><span class="p">:</span>
+        <span class="n">placement</span> <span class="o">=</span> <span class="n">Placement</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">placement</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">placement</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">placement</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">manager</span><span class="o">.</span><span class="n">remove_pv_deployments</span><span class="p">(</span><span class="n">placement</span><span class="o">=</span><span class="n">placement</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;=========</span><span class="se">\n</span><span class="s2">Total removed deployments: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">result</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="check_pv_deployments"><a class="viewcode-back" href="../../../disco/disco.cli.html#disco.cli.pv_deployments.check_pv_deployments">[docs]</a><span class="k">def</span> <span class="nf">check_pv_deployments</span><span class="p">(</span><span class="n">input_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">hierarchy</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">config</span><span class="p">:</span> <span class="nb">dict</span><span class="p">):</span>
+    <span class="n">hierarchy</span> <span class="o">=</span> <span class="n">DeploymentHierarchy</span><span class="p">(</span><span class="n">hierarchy</span><span class="p">)</span>
+    <span class="n">config</span> <span class="o">=</span> <span class="n">SimpleNamespace</span><span class="p">(</span><span class="o">**</span><span class="n">config</span><span class="p">)</span>
+    <span class="n">manager</span> <span class="o">=</span> <span class="n">PVDeploymentManager</span><span class="p">(</span><span class="n">input_path</span><span class="p">,</span> <span class="n">hierarchy</span><span class="p">,</span> <span class="n">config</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">config</span><span class="o">.</span><span class="n">placement</span><span class="p">:</span>
+        <span class="n">placement</span> <span class="o">=</span> <span class="n">Placement</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">placement</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">placement</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">placement</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">manager</span><span class="o">.</span><span class="n">check_pv_deployments</span><span class="p">(</span><span class="n">placement</span><span class="o">=</span><span class="n">placement</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="vm">__dict__</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">2</span><span class="p">))</span></div>
+
+
+<div class="viewcode-block" id="remove_pv_configs"><a class="viewcode-back" href="../../../disco/disco.cli.html#disco.cli.pv_deployments.remove_pv_configs">[docs]</a><span class="k">def</span> <span class="nf">remove_pv_configs</span><span class="p">(</span><span class="n">input_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">hierarchy</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">config</span><span class="p">:</span> <span class="nb">dict</span><span class="p">):</span>
+    <span class="n">hierarchy</span> <span class="o">=</span> <span class="n">DeploymentHierarchy</span><span class="p">(</span><span class="n">hierarchy</span><span class="p">)</span>
+    <span class="n">config</span> <span class="o">=</span> <span class="n">SimpleNamespace</span><span class="p">(</span><span class="o">**</span><span class="n">config</span><span class="p">)</span>
+    <span class="n">manager</span> <span class="o">=</span> <span class="n">PVConfigManager</span><span class="p">(</span><span class="n">input_path</span><span class="p">,</span> <span class="n">hierarchy</span><span class="p">,</span> <span class="n">config</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">config</span><span class="o">.</span><span class="n">placement</span><span class="p">:</span>
+        <span class="n">placement</span> <span class="o">=</span> <span class="n">Placement</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">placement</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">placement</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">placement</span>
+    <span class="n">config_files</span> <span class="o">=</span> <span class="n">manager</span><span class="o">.</span><span class="n">remove_pv_configs</span><span class="p">(</span><span class="n">placement</span><span class="o">=</span><span class="n">placement</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;PV configs created! Total: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">config_files</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="check_pv_configs"><a class="viewcode-back" href="../../../disco/disco.cli.html#disco.cli.pv_deployments.check_pv_configs">[docs]</a><span class="k">def</span> <span class="nf">check_pv_configs</span><span class="p">(</span><span class="n">input_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">hierarchy</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">config</span><span class="p">:</span> <span class="nb">dict</span><span class="p">):</span>
+    <span class="n">hierarchy</span> <span class="o">=</span> <span class="n">DeploymentHierarchy</span><span class="p">(</span><span class="n">hierarchy</span><span class="p">)</span>
+    <span class="n">config</span> <span class="o">=</span> <span class="n">SimpleNamespace</span><span class="p">(</span><span class="o">**</span><span class="n">config</span><span class="p">)</span>
+    <span class="n">manager</span> <span class="o">=</span> <span class="n">PVConfigManager</span><span class="p">(</span><span class="n">input_path</span><span class="p">,</span> <span class="n">hierarchy</span><span class="p">,</span> <span class="n">config</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">config</span><span class="o">.</span><span class="n">placement</span><span class="p">:</span>
+        <span class="n">placement</span> <span class="o">=</span> <span class="n">Placement</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">placement</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">placement</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">placement</span>
+    <span class="n">total_missing</span> <span class="o">=</span> <span class="n">manager</span><span class="o">.</span><span class="n">check_pv_configs</span><span class="p">(</span><span class="n">placement</span><span class="o">=</span><span class="n">placement</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">total_missing</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">2</span><span class="p">))</span></div>
+
+
+<div class="viewcode-block" id="list_feeder_paths"><a class="viewcode-back" href="../../../disco/disco.cli.html#disco.cli.pv_deployments.list_feeder_paths">[docs]</a><span class="k">def</span> <span class="nf">list_feeder_paths</span><span class="p">(</span><span class="n">input_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">hierarchy</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">config</span><span class="p">:</span> <span class="nb">dict</span><span class="p">):</span>
+    <span class="n">hierarchy</span> <span class="o">=</span> <span class="n">DeploymentHierarchy</span><span class="p">(</span><span class="n">hierarchy</span><span class="p">)</span>
+    <span class="n">storage</span> <span class="o">=</span> <span class="n">PVDataStorage</span><span class="p">(</span><span class="n">input_path</span><span class="p">,</span> <span class="n">hierarchy</span><span class="p">,</span> <span class="n">config</span><span class="p">)</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">storage</span><span class="o">.</span><span class="n">get_feeder_paths</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">feeder_path</span> <span class="ow">in</span> <span class="n">result</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">feeder_path</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;=========</span><span class="se">\n</span><span class="s2">Total feeders: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">result</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="redirect_pv_shapes"><a class="viewcode-back" href="../../../disco/disco.cli.html#disco.cli.pv_deployments.redirect_pv_shapes">[docs]</a><span class="k">def</span> <span class="nf">redirect_pv_shapes</span><span class="p">(</span><span class="n">input_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">hierarchy</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">config</span><span class="p">:</span> <span class="nb">dict</span><span class="p">):</span>
+    <span class="n">hierarchy</span> <span class="o">=</span> <span class="n">DeploymentHierarchy</span><span class="p">(</span><span class="n">hierarchy</span><span class="p">)</span>
+    <span class="n">config</span> <span class="o">=</span> <span class="n">SimpleNamespace</span><span class="p">(</span><span class="o">**</span><span class="n">config</span><span class="p">)</span>
+    <span class="n">manager</span> <span class="o">=</span> <span class="n">PVDataManager</span><span class="p">(</span><span class="n">input_path</span><span class="p">,</span> <span class="n">hierarchy</span><span class="p">,</span> <span class="n">config</span><span class="p">)</span>
+    <span class="n">manager</span><span class="o">.</span><span class="n">redirect_substation_pv_shapes</span><span class="p">()</span>
+    <span class="n">manager</span><span class="o">.</span><span class="n">redirect_feeder_pv_shapes</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="generate_pv_deployment_jobs"><a class="viewcode-back" href="../../../disco/disco.cli.html#disco.cli.pv_deployments.generate_pv_deployment_jobs">[docs]</a><span class="k">def</span> <span class="nf">generate_pv_deployment_jobs</span><span class="p">(</span><span class="n">input_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">hierarchy</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">config</span><span class="p">:</span> <span class="nb">dict</span><span class="p">):</span>
+    <span class="n">hierarchy</span> <span class="o">=</span> <span class="n">DeploymentHierarchy</span><span class="p">(</span><span class="n">hierarchy</span><span class="p">)</span>
+    <span class="n">config</span> <span class="o">=</span> <span class="n">SimpleNamespace</span><span class="p">(</span><span class="o">**</span><span class="n">config</span><span class="p">)</span>
+    
+    <span class="n">manager</span> <span class="o">=</span> <span class="n">PVDeploymentManager</span><span class="p">(</span><span class="n">input_path</span><span class="p">,</span> <span class="n">hierarchy</span><span class="p">,</span> <span class="n">config</span><span class="p">)</span>
+    <span class="n">manager</span><span class="o">.</span><span class="n">generate_pv_creation_jobs</span><span class="p">()</span>
+    
+    <span class="n">manager</span> <span class="o">=</span> <span class="n">PVConfigManager</span><span class="p">(</span><span class="n">input_path</span><span class="p">,</span> <span class="n">hierarchy</span><span class="p">,</span> <span class="n">config</span><span class="p">)</span>
+    <span class="n">manager</span><span class="o">.</span><span class="n">generate_pv_config_jobs</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="restore_feeder_data"><a class="viewcode-back" href="../../../disco/disco.cli.html#disco.cli.pv_deployments.restore_feeder_data">[docs]</a><span class="k">def</span> <span class="nf">restore_feeder_data</span><span class="p">(</span><span class="n">input_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">hierarchy</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">config</span><span class="p">:</span> <span class="nb">dict</span><span class="p">):</span>
+    <span class="n">hierarchy</span> <span class="o">=</span> <span class="n">DeploymentHierarchy</span><span class="p">(</span><span class="n">hierarchy</span><span class="p">)</span>
+    <span class="n">config</span> <span class="o">=</span> <span class="n">SimpleNamespace</span><span class="p">(</span><span class="o">**</span><span class="n">config</span><span class="p">)</span>
+    <span class="n">manager</span> <span class="o">=</span> <span class="n">PVDataManager</span><span class="p">(</span><span class="n">input_path</span><span class="p">,</span> <span class="n">hierarchy</span><span class="p">,</span> <span class="n">config</span><span class="p">)</span>
+    <span class="n">manager</span><span class="o">.</span><span class="n">restore_feeder_data</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="transform_feeder_loads"><a class="viewcode-back" href="../../../disco/disco.cli.html#disco.cli.pv_deployments.transform_feeder_loads">[docs]</a><span class="k">def</span> <span class="nf">transform_feeder_loads</span><span class="p">(</span><span class="n">input_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">hierarchy</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">config</span><span class="p">:</span> <span class="nb">dict</span><span class="p">):</span>
+    <span class="n">hierarchy</span> <span class="o">=</span> <span class="n">DeploymentHierarchy</span><span class="p">(</span><span class="n">hierarchy</span><span class="p">)</span>
+    <span class="n">config</span> <span class="o">=</span> <span class="n">SimpleNamespace</span><span class="p">(</span><span class="o">**</span><span class="n">config</span><span class="p">)</span>
+    <span class="n">manager</span> <span class="o">=</span> <span class="n">PVDataManager</span><span class="p">(</span><span class="n">input_path</span><span class="p">,</span> <span class="n">hierarchy</span><span class="p">,</span> <span class="n">config</span><span class="p">)</span>
+    <span class="n">manager</span><span class="o">.</span><span class="n">transform_feeder_loads</span><span class="p">()</span></div>
+
+
+<span class="n">ACTION_MAPPING</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;redirect-pvshapes&quot;</span><span class="p">:</span> <span class="n">redirect_pv_shapes</span><span class="p">,</span>
+    <span class="s2">&quot;transform-loads&quot;</span><span class="p">:</span> <span class="n">transform_feeder_loads</span><span class="p">,</span>
+    <span class="s2">&quot;generate-jobs&quot;</span><span class="p">:</span> <span class="n">generate_pv_deployment_jobs</span><span class="p">,</span>
+    <span class="s2">&quot;restore-feeders&quot;</span><span class="p">:</span> <span class="n">restore_feeder_data</span><span class="p">,</span>
+    
+    <span class="s2">&quot;create-pv&quot;</span><span class="p">:</span> <span class="n">create_pv_deployments</span><span class="p">,</span>
+    <span class="s2">&quot;create-configs&quot;</span><span class="p">:</span> <span class="n">create_pv_configs</span><span class="p">,</span>
+    
+    <span class="s2">&quot;remove-pv&quot;</span><span class="p">:</span> <span class="n">remove_pv_deployments</span><span class="p">,</span>
+    <span class="s2">&quot;check-pv&quot;</span><span class="p">:</span> <span class="n">check_pv_deployments</span><span class="p">,</span>
+    <span class="s2">&quot;remove-configs&quot;</span><span class="p">:</span> <span class="n">remove_pv_configs</span><span class="p">,</span>
+    <span class="s2">&quot;check-configs&quot;</span><span class="p">:</span> <span class="n">check_pv_configs</span><span class="p">,</span>
+    <span class="s2">&quot;list-feeders&quot;</span><span class="p">:</span> <span class="n">list_feeder_paths</span>
+<span class="p">}</span>
+
+<span class="nd">@click</span><span class="o">.</span><span class="n">group</span><span class="p">()</span>
+<span class="k">def</span> <span class="nf">pv_deployments</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;Generate PV deployments from raw OpenDSS models&quot;&quot;&quot;</span>
+
+
+<span class="nd">@click</span><span class="o">.</span><span class="n">command</span><span class="p">()</span>
+<span class="nd">@click</span><span class="o">.</span><span class="n">argument</span><span class="p">(</span><span class="s2">&quot;input_path&quot;</span><span class="p">)</span>
+<span class="nd">@click</span><span class="o">.</span><span class="n">option</span><span class="p">(</span>
+    <span class="s2">&quot;-a&quot;</span><span class="p">,</span> <span class="s2">&quot;--action&quot;</span><span class="p">,</span>
+    <span class="nb">type</span><span class="o">=</span><span class="n">click</span><span class="o">.</span><span class="n">Choice</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">ACTION_MAPPING</span><span class="o">.</span><span class="n">keys</span><span class="p">()),</span> <span class="n">case_sensitive</span><span class="o">=</span><span class="kc">False</span><span class="p">),</span>
+    <span class="n">required</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Choose the action related to pv deployments&quot;</span>
+<span class="p">)</span>
+<span class="nd">@click</span><span class="o">.</span><span class="n">option</span><span class="p">(</span>
+    <span class="s2">&quot;-h&quot;</span><span class="p">,</span> <span class="s2">&quot;--hierarchy&quot;</span><span class="p">,</span>
+    <span class="nb">type</span><span class="o">=</span><span class="n">click</span><span class="o">.</span><span class="n">Choice</span><span class="p">(</span><span class="n">HIERARCHY_CHOICE</span><span class="p">,</span> <span class="n">case_sensitive</span><span class="o">=</span><span class="kc">False</span><span class="p">),</span>
+    <span class="n">required</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Choose the deployment hierarchy.&quot;</span>
+<span class="p">)</span>
+<span class="nd">@click</span><span class="o">.</span><span class="n">option</span><span class="p">(</span>
+    <span class="s2">&quot;-p&quot;</span><span class="p">,</span> <span class="s2">&quot;--placement&quot;</span><span class="p">,</span>
+    <span class="nb">type</span><span class="o">=</span><span class="n">click</span><span class="o">.</span><span class="n">Choice</span><span class="p">(</span><span class="n">PLACEMENT_CHOICE</span><span class="p">,</span> <span class="n">case_sensitive</span><span class="o">=</span><span class="kc">False</span><span class="p">),</span>
+    <span class="n">required</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">show_default</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Choose the placement type&quot;</span>
+<span class="p">)</span>
+<span class="nd">@click</span><span class="o">.</span><span class="n">option</span><span class="p">(</span>
+    <span class="s2">&quot;-c&quot;</span><span class="p">,</span> <span class="s2">&quot;--category&quot;</span><span class="p">,</span>
+    <span class="nb">type</span><span class="o">=</span><span class="n">click</span><span class="o">.</span><span class="n">Choice</span><span class="p">(</span><span class="n">CATEGORY_CHOICE</span><span class="p">,</span> <span class="n">case_sensitive</span><span class="o">=</span><span class="kc">False</span><span class="p">),</span>
+    <span class="n">default</span><span class="o">=</span><span class="n">DeploymentCategory</span><span class="o">.</span><span class="n">SMALL</span><span class="o">.</span><span class="n">value</span><span class="p">,</span>
+    <span class="n">show_default</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">help</span><span class="o">=</span><span class="s2">&quot;The PV size pdf value&quot;</span>
+<span class="p">)</span>
+<span class="nd">@click</span><span class="o">.</span><span class="n">option</span><span class="p">(</span>
+    <span class="s2">&quot;-f&quot;</span><span class="p">,</span> <span class="s2">&quot;--master-filename&quot;</span><span class="p">,</span>
+    <span class="nb">type</span><span class="o">=</span><span class="n">click</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span>
+    <span class="n">required</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">default</span><span class="o">=</span><span class="s2">&quot;Master.dss&quot;</span><span class="p">,</span>
+    <span class="n">show_default</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">help</span><span class="o">=</span><span class="s2">&quot;The filename of master dss&quot;</span>
+<span class="p">)</span>
+<span class="nd">@click</span><span class="o">.</span><span class="n">option</span><span class="p">(</span>
+  <span class="s2">&quot;-m&quot;</span><span class="p">,</span> <span class="s2">&quot;--min-penetration&quot;</span><span class="p">,</span>
+    <span class="nb">type</span><span class="o">=</span><span class="n">click</span><span class="o">.</span><span class="n">INT</span><span class="p">,</span>
+    <span class="n">default</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+    <span class="n">show_default</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">help</span><span class="o">=</span><span class="s2">&quot;The minimum level of PV penetration.&quot;</span>
+<span class="p">)</span>
+<span class="nd">@click</span><span class="o">.</span><span class="n">option</span><span class="p">(</span>
+    <span class="s2">&quot;-M&quot;</span><span class="p">,</span> <span class="s2">&quot;--max-penetration&quot;</span><span class="p">,</span>
+    <span class="nb">type</span><span class="o">=</span><span class="n">click</span><span class="o">.</span><span class="n">INT</span><span class="p">,</span>
+    <span class="n">default</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span>
+    <span class="n">show_default</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">help</span><span class="o">=</span><span class="s2">&quot;The maximum level of PV penetration.&quot;</span>
+<span class="p">)</span>
+<span class="nd">@click</span><span class="o">.</span><span class="n">option</span><span class="p">(</span>
+   <span class="s2">&quot;-s&quot;</span><span class="p">,</span> <span class="s2">&quot;--penetration-step&quot;</span><span class="p">,</span>
+    <span class="nb">type</span><span class="o">=</span><span class="n">click</span><span class="o">.</span><span class="n">INT</span><span class="p">,</span>
+    <span class="n">default</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+    <span class="n">show_default</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+    <span class="n">help</span><span class="o">=</span><span class="s2">&quot;The step of penetration level.&quot;</span>
+<span class="p">)</span>
+<span class="nd">@click</span><span class="o">.</span><span class="n">option</span><span class="p">(</span>
+    <span class="s2">&quot;-n&quot;</span><span class="p">,</span> <span class="s2">&quot;--sample-number&quot;</span><span class="p">,</span>
+    <span class="nb">type</span><span class="o">=</span><span class="n">click</span><span class="o">.</span><span class="n">INT</span><span class="p">,</span>
+    <span class="n">default</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+    <span class="n">show_default</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">help</span><span class="o">=</span><span class="s2">&quot;The number of deployments&quot;</span>
+<span class="p">)</span>
+<span class="nd">@click</span><span class="o">.</span><span class="n">option</span><span class="p">(</span>
+    <span class="s2">&quot;-S&quot;</span><span class="p">,</span> <span class="s2">&quot;--proximity-step&quot;</span><span class="p">,</span>
+    <span class="nb">type</span><span class="o">=</span><span class="n">click</span><span class="o">.</span><span class="n">INT</span><span class="p">,</span>
+    <span class="n">default</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+    <span class="n">show_default</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">help</span><span class="o">=</span><span class="s2">&quot;The proximity step in PV deployments.&quot;</span>
+<span class="p">)</span>
+<span class="c1"># TODO: Jianli, this code option causes an exception with the command below.</span>
+<span class="c1"># The option is not used, so I&#39;m commenting it out.</span>
+<span class="c1">#@click.option(</span>
+<span class="c1">#    &quot;-P&quot;, &quot;--percent-shares&quot;,</span>
+<span class="c1">#    default=[100, 0],</span>
+<span class="c1">#    show_default=True,</span>
+<span class="c1">#    help=&quot;The share pair - [share of residential PVs, share of utility scale PVs]&quot;</span>
+<span class="c1">#)</span>
+<span class="nd">@click</span><span class="o">.</span><span class="n">option</span><span class="p">(</span>
+    <span class="s2">&quot;-x&quot;</span><span class="p">,</span> <span class="s2">&quot;--pv-size-pdf&quot;</span><span class="p">,</span>
+    <span class="nb">type</span><span class="o">=</span><span class="n">click</span><span class="o">.</span><span class="n">INT</span><span class="p">,</span>
+    <span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">show_default</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">help</span><span class="o">=</span><span class="s2">&quot;The PV size pdf value&quot;</span>
+<span class="p">)</span>
+<span class="nd">@click</span><span class="o">.</span><span class="n">option</span><span class="p">(</span>
+    <span class="s2">&quot;--pv-upscale/--no-pv-upscale&quot;</span><span class="p">,</span>
+    <span class="n">is_flag</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">default</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">show_default</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Upscale PV in deployments.&quot;</span>
+<span class="p">)</span>
+<span class="nd">@click</span><span class="o">.</span><span class="n">option</span><span class="p">(</span>
+    <span class="s2">&quot;-o&quot;</span><span class="p">,</span> <span class="s2">&quot;--pv-deployments-dirname&quot;</span><span class="p">,</span>
+    <span class="nb">type</span><span class="o">=</span><span class="n">click</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span>
+    <span class="n">default</span><span class="o">=</span><span class="n">DEFAULT_PV_DEPLOYMENTS_DIRNAME</span><span class="p">,</span>
+    <span class="n">show_default</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Output directory name of PV deployments&quot;</span>
+<span class="p">)</span>
+<span class="nd">@click</span><span class="o">.</span><span class="n">option</span><span class="p">(</span>
+    <span class="s2">&quot;-r&quot;</span><span class="p">,</span> <span class="s2">&quot;--random-seed&quot;</span><span class="p">,</span>
+    <span class="nb">type</span><span class="o">=</span><span class="n">click</span><span class="o">.</span><span class="n">IntRange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1000000</span><span class="p">,</span> <span class="n">clamp</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
+    <span class="n">default</span><span class="o">=</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1000000</span><span class="p">),</span>
+    <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Set an initial integer seed for making PV deployments reproducible&quot;</span>
+<span class="p">)</span>
+<span class="nd">@click</span><span class="o">.</span><span class="n">option</span><span class="p">(</span>
+    <span class="s2">&quot;--verbose&quot;</span><span class="p">,</span>
+    <span class="nb">type</span><span class="o">=</span><span class="n">click</span><span class="o">.</span><span class="n">BOOL</span><span class="p">,</span>
+    <span class="n">is_flag</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">default</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">show_default</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Enable to show overbose information.&quot;</span>
+<span class="p">)</span>
+<span class="k">def</span> <span class="nf">source_tree_1</span><span class="p">(</span>
+    <span class="n">input_path</span><span class="p">,</span>
+    <span class="n">action</span><span class="p">,</span>
+    <span class="n">hierarchy</span><span class="p">,</span>
+    <span class="n">placement</span><span class="p">,</span>
+    <span class="n">category</span><span class="p">,</span>
+    <span class="n">master_filename</span><span class="p">,</span>
+    <span class="n">min_penetration</span><span class="p">,</span>
+    <span class="n">max_penetration</span><span class="p">,</span>
+    <span class="n">penetration_step</span><span class="p">,</span>
+    <span class="n">sample_number</span><span class="p">,</span>
+    <span class="n">proximity_step</span><span class="p">,</span>
+    <span class="c1">#percent_shares,</span>
+    <span class="n">pv_size_pdf</span><span class="p">,</span>
+    <span class="n">pv_upscale</span><span class="p">,</span>
+    <span class="n">pv_deployments_dirname</span><span class="p">,</span>
+    <span class="n">random_seed</span><span class="p">,</span>
+    <span class="n">verbose</span>
+<span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Generate PV deployments for source tree 1.&quot;&quot;&quot;</span>
+    <span class="n">level</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">DEBUG</span> <span class="k">if</span> <span class="n">verbose</span> <span class="k">else</span> <span class="n">logging</span><span class="o">.</span><span class="n">INFO</span>
+    <span class="n">setup_logging</span><span class="p">(</span><span class="s2">&quot;pv_deployments&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="n">console_level</span><span class="o">=</span><span class="n">level</span><span class="p">)</span>
+    
+    <span class="k">if</span> <span class="n">action</span> <span class="o">==</span> <span class="s2">&quot;create-pv&quot;</span><span class="p">:</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Set integer </span><span class="si">%s</span><span class="s2"> as initial random seed for PV deployments.&quot;</span><span class="p">,</span> <span class="n">random_seed</span><span class="p">)</span>
+    
+    <span class="n">config</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;placement&quot;</span><span class="p">:</span> <span class="n">placement</span><span class="p">,</span>
+        <span class="s2">&quot;category&quot;</span><span class="p">:</span> <span class="n">category</span><span class="p">,</span>
+        <span class="s2">&quot;master_filename&quot;</span><span class="p">:</span> <span class="n">master_filename</span><span class="p">,</span>
+        <span class="s2">&quot;pv_upscale&quot;</span><span class="p">:</span> <span class="n">pv_upscale</span><span class="p">,</span>
+        <span class="s2">&quot;min_penetration&quot;</span><span class="p">:</span> <span class="n">min_penetration</span><span class="p">,</span>
+        <span class="s2">&quot;max_penetration&quot;</span><span class="p">:</span> <span class="n">max_penetration</span><span class="p">,</span>
+        <span class="s2">&quot;penetration_step&quot;</span><span class="p">:</span> <span class="n">penetration_step</span><span class="p">,</span>
+        <span class="s2">&quot;sample_number&quot;</span><span class="p">:</span> <span class="n">sample_number</span><span class="p">,</span>
+        <span class="s2">&quot;proximity_step&quot;</span><span class="p">:</span> <span class="n">proximity_step</span><span class="p">,</span>
+        <span class="s2">&quot;percent_shares&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">100</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+        <span class="s2">&quot;pv_size_pdf&quot;</span><span class="p">:</span> <span class="n">pv_size_pdf</span><span class="p">,</span>
+        <span class="s2">&quot;pv_deployments_dirname&quot;</span><span class="p">:</span> <span class="n">pv_deployments_dirname</span><span class="p">,</span>
+        <span class="s2">&quot;random_seed&quot;</span><span class="p">:</span> <span class="n">random_seed</span>
+    <span class="p">}</span>
+    <span class="n">action_function</span> <span class="o">=</span> <span class="n">ACTION_MAPPING</span><span class="p">[</span><span class="n">action</span><span class="p">]</span>
+    <span class="n">action_function</span><span class="p">(</span><span class="n">input_path</span><span class="p">,</span> <span class="n">hierarchy</span><span class="p">,</span> <span class="n">config</span><span class="p">)</span>
+
+
+<span class="n">pv_deployments</span><span class="o">.</span><span class="n">add_command</span><span class="p">(</span><span class="n">source_tree_1</span><span class="p">)</span>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2019, NREL.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

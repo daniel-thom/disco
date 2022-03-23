@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>disco.extensions.upgrade_simulation.upgrades.thermal_upgrade_functions &mdash; DISCO 0.1 documentation</title>
+      <link rel="stylesheet" href="../../../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../../../" id="documentation_options" src="../../../../../_static/documentation_options.js"></script>
+        <script src="../../../../../_static/jquery.js"></script>
+        <script src="../../../../../_static/underscore.js"></script>
+        <script src="../../../../../_static/doctools.js"></script>
+    <script src="../../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../search.html" />
+    <link href="../../../../../_static/style.css" rel="stylesheet" type="text/css">
+
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../../../../index.html" class="icon icon-home"> DISCO
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">User Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../installation.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../installation.html#use-conda">Use Conda</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../installation.html#use-docker">Use Docker</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../overview.html">Overview</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../overview.html#data-sources">Data Sources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../overview.html#transform-model">Transform Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../overview.html#config-jobs">Config Jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../overview.html#submit-jobs">Submit Jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../overview.html#result-analysis">Result Analysis</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../quick-start.html">Quick Start</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../quick-start.html#source-data">Source Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../quick-start.html#transform-model">Transform Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../quick-start.html#config-jobs">Config Jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../quick-start.html#submit-jobs">Submit Jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../quick-start.html#result-analysis">Result Analysis</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../data-sources.html">Data Sources</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../data-sources/smart-ds-model-preparation.html">SMART-DS OpenDSS Model Preparation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../data-sources.html#gem-model">GEM Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../data-sources.html#epri-model">EPRI Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../data-sources.html#sourcetree1-model">SourceTree1 Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../data-sources.html#sourcetree2-model">SourceTree2 Model</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../pv-deployments.html">PV Deployments</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../pv-deployments.html#sourcetree1-pv-deployments">SourceTree1 PV Deployments</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../transform-models.html">Transform Models</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../transform-models.html#transform-model-help">Transform Model Help</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../transform-models.html#disco-model-in-depth">DISCO Model in Depth</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../analysis-workflows.html">Analysis Workflows</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../analysis-workflows/hosting-capacity-analysis.html">Hosting Capacity Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../analysis-workflows/upgrade-cost-analysis.html">Upgrade Cost Analysis</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../pipelines.html">Pipelines</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../pipelines.html#sourcetree1model">SourceTree1Model</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../debugging-issues.html">Debugging Issues</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../debugging-issues.html#using-jade">Using JADE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../debugging-issues.html#using-pydss">Using PyDSS</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../data-ingestion.html">Data Ingestion</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../data-ingestion.html#ingest-to-new-database">Ingest to New Database</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../data-ingestion.html#ingest-to-existing-database">Ingest to Existing Database</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../data-ingestion.html#run-database-queries">Run Database Queries</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../advanced-guide.html">Advanced Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../advanced-guide/analysis-deployment.html">Analysis Deployment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../advanced-guide/upgrade-cost-analysis-generic-models.html">Upgrade Cost Analysis JSON Schemas</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contribution</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../build-docs.html">Build docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../license.html">License</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../../index.html">DISCO</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../../../index.html">Module code</a> &raquo;</li>
+      <li>disco.extensions.upgrade_simulation.upgrades.thermal_upgrade_functions</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for disco.extensions.upgrade_simulation.upgrades.thermal_upgrade_functions</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">from</span> <span class="nn">.common_functions</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="correct_line_violations"><a class="viewcode-back" href="../../../../../disco/disco.extensions.upgrade_simulation.upgrades.html#disco.extensions.upgrade_simulation.upgrades.thermal_upgrade_functions.correct_line_violations">[docs]</a><span class="k">def</span> <span class="nf">correct_line_violations</span><span class="p">(</span>
+    <span class="n">line_loading_df</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">line_design_pu</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">line_upgrade_options</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">parallel_lines_limit</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
+<span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;This function determines line upgrades to correct line violations.</span>
+<span class="sd">    It also updates the opendss model with upgrades.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    line_loading_df</span>
+<span class="sd">    line_design_pu</span>
+<span class="sd">    line_upgrade_options</span>
+<span class="sd">    parallel_lines_limit</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">equipment_type</span> <span class="o">=</span> <span class="s2">&quot;Line&quot;</span>
+    <span class="n">line_upgrades_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
+    <span class="n">upgrades_dict</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="n">commands_list</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="c1"># This finds a line code which provides a specified safety margin to a line above its maximum observed loading.</span>
+    <span class="c1"># If a line code is not found or if line code is too overrated, one or more parallel lines (num_par_lns-1) are added</span>
+    <span class="n">overloaded_loading_df</span> <span class="o">=</span> <span class="n">line_loading_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span>
+        <span class="n">line_loading_df</span><span class="p">[</span><span class="s2">&quot;status&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;overloaded&quot;</span><span class="p">]</span>
+    <span class="n">overloaded_loading_df</span><span class="p">[</span><span class="s2">&quot;required_design_amp&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">overloaded_loading_df</span><span class="p">[</span><span class="s2">&quot;max_amp_loading&quot;</span><span class="p">]</span> <span class="o">/</span> <span class="n">line_design_pu</span>
+    <span class="n">property_list</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="s2">&quot;Switch&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;kV&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;phases&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;line_placement&quot;</span><span class="p">,</span>
+    <span class="p">]</span>  <span class="c1"># list of properties based on which upgrade is chosen</span>
+    <span class="n">line_upgrade_options</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="n">property_list</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">overloaded_loading_df</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="n">property_list</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">oversize_limit</span> <span class="o">=</span> <span class="mi">2</span>  <span class="c1"># limit to determine if chosen upgrade option is too oversized</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">overloaded_loading_df</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>  <span class="c1"># if overloading exists</span>
+        <span class="c1"># iterate over each overloaded line to find a solution</span>
+        <span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">overloaded_loading_df</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">])</span>
+            <span class="n">options</span> <span class="o">=</span> <span class="n">line_upgrade_options</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">index</span><span class="p">]</span>
+            <span class="n">options</span> <span class="o">=</span> <span class="n">options</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s2">&quot;normamps&quot;</span><span class="p">)</span>
+            <span class="n">chosen_option</span> <span class="o">=</span> <span class="n">options</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">options</span><span class="p">[</span><span class="s2">&quot;normamps&quot;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;required_design_amp&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s2">&quot;normamps&quot;</span><span class="p">)</span>
+            <span class="c1"># TODO: SWITCH - EXPLORE IF WE CAN HAVE OPTIONS: PARALLEL, REPLACE,</span>
+            <span class="c1"># if one chosen option exists and is not very oversized (which is determined by acceptable oversize limit)</span>
+            <span class="c1"># edit existing line and change line configuration/ampacity</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">chosen_option</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="ow">and</span> \
+                    <span class="p">(</span><span class="n">chosen_option</span><span class="p">[</span><span class="s2">&quot;normamps&quot;</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">oversize_limit</span> <span class="o">*</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;required_design_amp&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">any</span><span class="p">():</span>
+                <span class="n">chosen_option</span> <span class="o">=</span> <span class="n">chosen_option</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s2">&quot;normamps&quot;</span><span class="p">)</span>
+                <span class="n">chosen_option</span> <span class="o">=</span> <span class="n">chosen_option</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>  <span class="c1"># choose lowest available option</span>
+                <span class="n">new_config_type</span> <span class="o">=</span> <span class="n">chosen_option</span><span class="p">[</span><span class="s2">&quot;line_definition_type&quot;</span><span class="p">]</span>
+                <span class="c1"># edit existing line</span>
+                <span class="k">if</span> <span class="p">(</span><span class="n">new_config_type</span> <span class="o">==</span> <span class="s2">&quot;geometry&quot;</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="n">new_config_type</span> <span class="o">==</span> <span class="s2">&quot;linecode&quot;</span><span class="p">):</span>
+                    <span class="n">command_string</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;Edit Line.</span><span class="si">{</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">new_config_type</span><span class="si">}</span><span class="s2">=</span><span class="si">{</span><span class="n">chosen_option</span><span class="p">[</span><span class="n">new_config_type</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span>
+                    <span class="n">commands_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">command_string</span><span class="p">)</span>
+                <span class="c1"># if line geometry and line code is not available</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="c1"># TODO can add more parameters in command (like done for transformer)</span>
+                    <span class="n">command_string</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;Edit Line.</span><span class="si">{</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> normamps=</span><span class="si">{</span><span class="n">chosen_option</span><span class="p">[</span><span class="s1">&#39;normamps&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span>
+                    <span class="n">commands_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">command_string</span><span class="p">)</span>
+                <span class="c1"># create dictionary of original equipment</span>
+                <span class="n">upgrades_dict</span><span class="p">[</span><span class="n">row</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]]</span> <span class="o">=</span> <span class="p">{}</span>
+                <span class="n">upgrades_dict</span><span class="p">[</span><span class="n">row</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]][</span><span class="s2">&quot;original_equipment&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">row</span><span class="o">.</span><span class="n">to_dict</span><span class="p">()</span>
+                <span class="n">upgrades_dict</span><span class="p">[</span><span class="n">row</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]][</span><span class="s2">&quot;original_equipment&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s2">&quot;Equipment_Type&quot;</span><span class="p">:</span> <span class="n">equipment_type</span><span class="p">,</span>
+                                                                         <span class="s2">&quot;Upgrade_Type&quot;</span><span class="p">:</span> <span class="s2">&quot;upgrade&quot;</span><span class="p">,</span>
+                                                                         <span class="c1"># &quot;Parameter_Type&quot;: &quot;original_equipment&quot;,</span>
+                                                                         <span class="s2">&quot;Action&quot;</span><span class="p">:</span> <span class="s2">&quot;remove&quot;</span><span class="p">})</span>
+                <span class="n">upgrades_dict</span><span class="p">[</span><span class="n">row</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]][</span><span class="s2">&quot;original_equipment&quot;</span><span class="p">]</span> <span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">chosen_option</span><span class="p">[[</span><span class="s2">&quot;Switch&quot;</span><span class="p">,</span> <span class="s2">&quot;phases&quot;</span><span class="p">,</span>
+                                                                                        <span class="s2">&quot;line_placement&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">to_dict</span><span class="p">())</span>
+                <span class="c1"># create dictionary of new equipment</span>
+                <span class="n">upgrades_dict</span><span class="p">[</span><span class="n">row</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]][</span><span class="s2">&quot;new_equipment&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">chosen_option</span><span class="o">.</span><span class="n">to_dict</span><span class="p">()</span>
+                <span class="n">upgrades_dict</span><span class="p">[</span><span class="n">row</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]][</span><span class="s2">&quot;new_equipment&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s2">&quot;Equipment_Type&quot;</span><span class="p">:</span> <span class="n">equipment_type</span><span class="p">,</span>
+                                                                    <span class="s2">&quot;Upgrade_Type&quot;</span><span class="p">:</span> <span class="s2">&quot;upgrade&quot;</span><span class="p">,</span>
+                                                                    <span class="c1"># &quot;Parameter_Type&quot;: &quot;new_equipment&quot;,</span>
+                                                                    <span class="s2">&quot;Action&quot;</span><span class="p">:</span> <span class="s2">&quot;add&quot;</span><span class="p">,</span> <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]})</span>
+
+                <span class="n">check_dss_run_command</span><span class="p">(</span><span class="n">command_string</span><span class="p">)</span>  <span class="c1"># run command for upgraded equipment</span>
+                <span class="n">circuit_solve_and_check</span><span class="p">(</span><span class="n">raise_exception</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+            <span class="c1"># if higher upgrade is not available or chosen line upgrade rating is much higher than required,</span>
+            <span class="c1"># dont oversize. Instead, place lines in parallel</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">parallel_line_commands</span><span class="p">,</span> <span class="n">upgrades_dict_parallel</span> <span class="o">=</span> <span class="n">identify_parallel_lines</span><span class="p">(</span><span class="n">options</span><span class="o">=</span><span class="n">options</span><span class="p">,</span> <span class="n">row</span><span class="o">=</span><span class="n">row</span><span class="p">,</span>
+                                                                                         <span class="n">parallel_lines_limit</span><span class="o">=</span><span class="n">parallel_lines_limit</span><span class="p">)</span>
+                <span class="c1"># run command for all parallel equipment added, that resolves overloading for one equipment</span>
+                <span class="k">for</span> <span class="n">command_item</span> <span class="ow">in</span> <span class="n">parallel_line_commands</span><span class="p">:</span>
+                    <span class="n">check_dss_run_command</span><span class="p">(</span><span class="n">command_item</span><span class="p">)</span>
+                    <span class="n">circuit_solve_and_check</span><span class="p">(</span><span class="n">raise_exception</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+                <span class="n">commands_list</span> <span class="o">=</span> <span class="n">commands_list</span> <span class="o">+</span> <span class="n">parallel_line_commands</span>
+                <span class="n">upgrades_dict</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">upgrades_dict_parallel</span><span class="p">)</span>
+        <span class="n">index_names</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;original_equipment_name&quot;</span><span class="p">,</span> <span class="s2">&quot;Parameter_Type&quot;</span><span class="p">]</span>
+        <span class="n">line_upgrades_df</span> <span class="o">=</span> <span class="n">create_dataframe_from_nested_dict</span><span class="p">(</span><span class="n">user_dict</span><span class="o">=</span><span class="n">upgrades_dict</span><span class="p">,</span> <span class="n">index_names</span><span class="o">=</span><span class="n">index_names</span><span class="p">)</span>
+        <span class="n">line_upgrades_df</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;final_equipment_name&quot;</span><span class="p">},</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">line_upgrades_df</span> <span class="o">=</span> <span class="n">line_upgrades_df</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span>
+            <span class="p">[</span><span class="s2">&quot;Equipment_Type&quot;</span><span class="p">,</span> <span class="s2">&quot;Upgrade_Type&quot;</span><span class="p">,</span> <span class="s2">&quot;Parameter_Type&quot;</span><span class="p">,</span> <span class="s2">&quot;Action&quot;</span><span class="p">,</span> <span class="s2">&quot;final_equipment_name&quot;</span><span class="p">,</span>
+             <span class="s2">&quot;original_equipment_name&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+    <span class="k">else</span><span class="p">:</span>  <span class="c1"># if there is no overloading</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;This case has no line violations&quot;</span><span class="p">)</span>
+    <span class="n">circuit_solve_and_check</span><span class="p">(</span><span class="n">raise_exception</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>  <span class="c1"># this is added as a final check for convergence</span>
+    <span class="k">return</span> <span class="n">commands_list</span><span class="p">,</span> <span class="n">line_upgrades_df</span></div>
+
+
+<div class="viewcode-block" id="identify_parallel_lines"><a class="viewcode-back" href="../../../../../disco/disco.extensions.upgrade_simulation.upgrades.html#disco.extensions.upgrade_simulation.upgrades.thermal_upgrade_functions.identify_parallel_lines">[docs]</a><span class="k">def</span> <span class="nf">identify_parallel_lines</span><span class="p">(</span><span class="n">options</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">row</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">parallel_lines_limit</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;This function identifies parallel line solutions, when a direct upgrade solution is not available from catalogue</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    options</span>
+<span class="sd">    row</span>
+<span class="sd">    parallel_lines_limit</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">commands_list</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">upgrades_dict_parallel</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="c1"># calculate number of parallel lines needed to carry remaining amperes (in addition to existing line)</span>
+    <span class="n">options</span><span class="p">[</span><span class="s2">&quot;num_parallel_raw&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s2">&quot;required_design_amp&quot;</span><span class="p">]</span> <span class="o">-</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;normamps&quot;</span><span class="p">])</span> <span class="o">/</span> <span class="n">options</span><span class="p">[</span><span class="s2">&quot;normamps&quot;</span><span class="p">]</span>
+    <span class="n">options</span><span class="p">[</span><span class="s2">&quot;num_parallel&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">options</span><span class="p">[</span><span class="s2">&quot;num_parallel_raw&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ceil</span><span class="p">)</span>
+    <span class="n">options</span><span class="p">[</span><span class="s2">&quot;choose_parallel_metric&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">options</span><span class="p">[</span><span class="s2">&quot;num_parallel&quot;</span><span class="p">]</span> <span class="o">-</span> <span class="n">options</span><span class="p">[</span><span class="s2">&quot;num_parallel_raw&quot;</span><span class="p">]</span>
+    <span class="c1"># choose option that has the least value of this metric- since that represents the per unit oversizing</span>
+    <span class="n">chosen_option</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">options</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">options</span><span class="p">[</span><span class="s2">&quot;choose_parallel_metric&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">idxmin</span><span class="p">()])</span><span class="o">.</span><span class="n">T</span>
+    <span class="n">num_parallel_lines</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">chosen_option</span><span class="p">[</span><span class="s2">&quot;num_parallel&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="k">if</span> <span class="n">num_parallel_lines</span> <span class="o">&gt;</span> <span class="n">parallel_lines_limit</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Number of parallel lines is greater than limit!&quot;</span><span class="p">)</span>
+    <span class="n">new_config_type</span> <span class="o">=</span> <span class="n">chosen_option</span><span class="p">[</span><span class="s2">&quot;line_definition_type&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">line_count</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">num_parallel_lines</span><span class="p">):</span>
+        <span class="n">curr_time</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">())</span>
+        <span class="c1"># this is added to line name to ensure it is unique</span>
+        <span class="n">time_stamp</span> <span class="o">=</span> <span class="n">curr_time</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="s2">&quot;_&quot;</span> <span class="o">+</span> <span class="n">curr_time</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
+        <span class="n">new_name</span> <span class="o">=</span> <span class="s2">&quot;upgrade_&quot;</span> <span class="o">+</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="n">time_stamp</span>
+        <span class="n">chosen_option</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">new_name</span>
+        <span class="n">upgrades_dict_parallel</span><span class="p">[</span><span class="n">row</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]]</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="n">upgrades_dict_parallel</span><span class="p">[</span><span class="n">row</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]][</span><span class="s2">&quot;new_equipment&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">chosen_option</span><span class="o">.</span><span class="n">to_dict</span><span class="p">(</span><span class="s2">&quot;records&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">upgrades_dict_parallel</span><span class="p">[</span><span class="n">row</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]][</span><span class="s2">&quot;new_equipment&quot;</span><span class="p">][</span><span class="s2">&quot;length&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;length&quot;</span><span class="p">]</span>
+        <span class="n">upgrades_dict_parallel</span><span class="p">[</span><span class="n">row</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]][</span><span class="s2">&quot;new_equipment&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s2">&quot;Equipment_Type&quot;</span><span class="p">:</span> <span class="s2">&quot;Line&quot;</span><span class="p">,</span>
+                                                                     <span class="s2">&quot;Upgrade_Type&quot;</span><span class="p">:</span> <span class="s2">&quot;new (parallel)&quot;</span><span class="p">,</span>
+                                                                     <span class="c1"># &quot;Parameter_Type&quot;: &quot;new_equipment&quot;,</span>
+                                                                     <span class="s2">&quot;Action&quot;</span><span class="p">:</span> <span class="s2">&quot;add&quot;</span><span class="p">})</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">new_config_type</span> <span class="o">==</span> <span class="s2">&quot;geometry&quot;</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="n">new_config_type</span> <span class="o">==</span> <span class="s2">&quot;linecode&quot;</span><span class="p">):</span>
+            <span class="n">s</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;New Line.</span><span class="si">{</span><span class="n">new_name</span><span class="si">}</span><span class="s2"> bus1=</span><span class="si">{</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;bus1&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> bus2=</span><span class="si">{</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;bus2&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> length=</span><span class="si">{</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;length&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> &quot;</span> \
+                <span class="sa">f</span><span class="s2">&quot;units=</span><span class="si">{</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;units&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">new_config_type</span><span class="si">}</span><span class="s2">=</span><span class="si">{</span><span class="n">row</span><span class="p">[</span><span class="n">new_config_type</span><span class="p">]</span><span class="si">}</span><span class="s2"> &quot;</span> \
+                <span class="sa">f</span><span class="s2">&quot;phases=</span><span class="si">{</span><span class="n">chosen_option</span><span class="p">[</span><span class="s1">&#39;phases&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2"> enabled=True&quot;</span>
+            <span class="n">commands_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+        <span class="c1"># if line geometry and line code is not available</span>
+        <span class="c1"># TODO decide what other parameters need to be defined when linecode or geometry is not present</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">s</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;New Line.</span><span class="si">{</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> bus1=</span><span class="si">{</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;bus1&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> bus2=</span><span class="si">{</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;bus2&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> length=</span><span class="si">{</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;length&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> &quot;</span> \
+                <span class="sa">f</span><span class="s2">&quot;units=</span><span class="si">{</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;units&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> phases=</span><span class="si">{</span><span class="n">chosen_option</span><span class="p">[</span><span class="s1">&#39;phases&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2"> &quot;</span> \
+                <span class="sa">f</span><span class="s2">&quot;normamps=</span><span class="si">{</span><span class="n">chosen_option</span><span class="p">[</span><span class="s1">&#39;normamps&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2"> enabled=True&quot;</span>
+            <span class="n">commands_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">commands_list</span><span class="p">,</span> <span class="n">upgrades_dict_parallel</span></div>
+
+
+<div class="viewcode-block" id="define_xfmr_object"><a class="viewcode-back" href="../../../../../disco/disco.extensions.upgrade_simulation.upgrades.html#disco.extensions.upgrade_simulation.upgrades.thermal_upgrade_functions.define_xfmr_object">[docs]</a><span class="k">def</span> <span class="nf">define_xfmr_object</span><span class="p">(</span><span class="n">xfmr_name</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">xfmr_info_series</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">action_type</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">buses_list</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;This function is used to create a command string to define an opendss transformer object</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    xfmr_name</span>
+<span class="sd">    xfmr_info_series</span>
+<span class="sd">    action_type</span>
+<span class="sd">    buses_list</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    string</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">command_string</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">action_type</span><span class="si">}</span><span class="s2"> Transformer.</span><span class="si">{</span><span class="n">xfmr_name</span><span class="si">}</span><span class="s2">&quot;</span>
+    <span class="k">if</span> <span class="n">action_type</span> <span class="o">==</span> <span class="s2">&quot;New&quot;</span><span class="p">:</span>
+        <span class="n">s_temp</span> <span class="o">=</span> <span class="s2">&quot; buses=(&quot;</span>
+        <span class="k">for</span> <span class="n">bus</span> <span class="ow">in</span> <span class="n">buses_list</span><span class="p">:</span>
+            <span class="n">s_temp</span> <span class="o">=</span> <span class="n">s_temp</span> <span class="o">+</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">bus</span><span class="si">}</span><span class="s2"> &quot;</span>
+        <span class="n">s_temp</span> <span class="o">=</span> <span class="n">s_temp</span> <span class="o">+</span> <span class="s2">&quot;)&quot;</span>
+        <span class="n">s_temp</span> <span class="o">=</span> <span class="n">s_temp</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot; )&quot;</span><span class="p">,</span> <span class="s2">&quot;)&quot;</span><span class="p">)</span>
+        <span class="n">command_string</span> <span class="o">=</span> <span class="n">command_string</span> <span class="o">+</span> <span class="n">s_temp</span> <span class="o">+</span> <span class="sa">f</span><span class="s2">&quot; phases=</span><span class="si">{</span><span class="n">xfmr_info_series</span><span class="p">[</span><span class="s1">&#39;phases&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> &quot;</span> \
+                                                   <span class="sa">f</span><span class="s2">&quot;windings=</span><span class="si">{</span><span class="n">xfmr_info_series</span><span class="p">[</span><span class="s1">&#39;windings&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span>
+    <span class="k">for</span> <span class="n">wdg_count</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">xfmr_info_series</span><span class="p">[</span><span class="s2">&quot;wdg&quot;</span><span class="p">]):</span>
+        <span class="n">temp_s</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot; wdg=</span><span class="si">{</span><span class="n">wdg_count</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2"> kVA=</span><span class="si">{</span><span class="n">xfmr_info_series</span><span class="p">[</span><span class="s1">&#39;kVAs&#39;</span><span class="p">][</span><span class="n">wdg_count</span><span class="p">]</span><span class="si">}</span><span class="s2"> kV=</span><span class="si">{</span><span class="n">xfmr_info_series</span><span class="p">[</span><span class="s1">&#39;kVs&#39;</span><span class="p">][</span><span class="n">wdg_count</span><span class="p">]</span><span class="si">}</span><span class="s2"> &quot;</span> \
+                 <span class="sa">f</span><span class="s2">&quot;conn=</span><span class="si">{</span><span class="n">xfmr_info_series</span><span class="p">[</span><span class="s1">&#39;conns&#39;</span><span class="p">][</span><span class="n">wdg_count</span><span class="p">]</span><span class="si">}</span><span class="s2"> %r=</span><span class="si">{</span><span class="n">xfmr_info_series</span><span class="p">[</span><span class="s1">&#39;%Rs&#39;</span><span class="p">][</span><span class="n">wdg_count</span><span class="p">]</span><span class="si">}</span><span class="s2"> &quot;</span> \
+                 <span class="sa">f</span><span class="s2">&quot;rneut=</span><span class="si">{</span><span class="n">xfmr_info_series</span><span class="p">[</span><span class="s1">&#39;Rneut&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> xneut=</span><span class="si">{</span><span class="n">xfmr_info_series</span><span class="p">[</span><span class="s1">&#39;Xneut&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="n">command_string</span> <span class="o">=</span> <span class="n">command_string</span> <span class="o">+</span> <span class="n">temp_s</span>
+    <span class="k">if</span> <span class="n">xfmr_info_series</span><span class="p">[</span><span class="s2">&quot;wdg&quot;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="c1"># define reactances between windings</span>
+        <span class="n">temp_s</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot; XLT=</span><span class="si">{</span><span class="n">xfmr_info_series</span><span class="p">[</span><span class="s1">&#39;XLT&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> XHT=</span><span class="si">{</span><span class="n">xfmr_info_series</span><span class="p">[</span><span class="s1">&#39;XLT&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> XHL=</span><span class="si">{</span><span class="n">xfmr_info_series</span><span class="p">[</span><span class="s1">&#39;XHL&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="n">command_string</span> <span class="o">=</span> <span class="n">command_string</span> <span class="o">+</span> <span class="n">temp_s</span>
+    <span class="k">if</span> <span class="n">xfmr_info_series</span><span class="p">[</span><span class="s2">&quot;phases&quot;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="c1"># for higher phase order transformers, also define xscarray</span>
+        <span class="n">temp_s</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot; Xscarray=</span><span class="si">{</span><span class="n">xfmr_info_series</span><span class="p">[</span><span class="s1">&#39;Xscarray&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="n">command_string</span> <span class="o">=</span> <span class="n">command_string</span> <span class="o">+</span> <span class="n">temp_s</span>
+    <span class="c1"># these properties contain general transformer rating data</span>
+    <span class="c1"># (refer OpenDSS manual for more information on these parameters)</span>
+    <span class="n">general_property_list</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;LeadLag&quot;</span><span class="p">,</span> <span class="s2">&quot;Core&quot;</span><span class="p">,</span> <span class="s2">&quot;thermal&quot;</span><span class="p">,</span> <span class="s2">&quot;n&quot;</span><span class="p">,</span> <span class="s2">&quot;m&quot;</span><span class="p">,</span> <span class="s2">&quot;flrise&quot;</span><span class="p">,</span> <span class="s2">&quot;hsrise&quot;</span><span class="p">,</span> <span class="s2">&quot;%noloadloss&quot;</span><span class="p">,</span> <span class="s2">&quot;</span><span class="si">%lo</span><span class="s2">adloss&quot;</span><span class="p">,</span>
+                             <span class="s2">&quot;normhkVA&quot;</span><span class="p">,</span> <span class="s2">&quot;emerghkVA&quot;</span><span class="p">,</span> <span class="s2">&quot;NumTaps&quot;</span><span class="p">,</span> <span class="s2">&quot;</span><span class="si">%i</span><span class="s2">mag&quot;</span><span class="p">,</span> <span class="s2">&quot;ppm_antifloat&quot;</span><span class="p">,</span> <span class="s2">&quot;XRConst&quot;</span><span class="p">,</span>
+                             <span class="s2">&quot;faultrate&quot;</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">property_name</span> <span class="ow">in</span> <span class="n">general_property_list</span><span class="p">:</span>
+        <span class="n">temp_s</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot; </span><span class="si">{</span><span class="n">property_name</span><span class="si">}</span><span class="s2">=</span><span class="si">{</span><span class="n">xfmr_info_series</span><span class="p">[</span><span class="n">property_name</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="n">command_string</span> <span class="o">=</span> <span class="n">command_string</span> <span class="o">+</span> <span class="n">temp_s</span>
+    <span class="n">command_string</span> <span class="o">=</span> <span class="n">command_string</span> <span class="o">+</span> <span class="s2">&quot; enable=True&quot;</span>
+    <span class="k">return</span> <span class="n">command_string</span></div>
+
+
+<div class="viewcode-block" id="correct_xfmr_violations"><a class="viewcode-back" href="../../../../../disco/disco.extensions.upgrade_simulation.upgrades.html#disco.extensions.upgrade_simulation.upgrades.thermal_upgrade_functions.correct_xfmr_violations">[docs]</a><span class="k">def</span> <span class="nf">correct_xfmr_violations</span><span class="p">(</span><span class="n">xfmr_loading_df</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">xfmr_design_pu</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">xfmr_upgrade_options</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                            <span class="n">parallel_xfmrs_limit</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;This function determines transformer upgrades to correct transformer violations.</span>
+<span class="sd">    It also updates the opendss model with upgrades.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    xfmr_loading_df</span>
+<span class="sd">    xfmr_design_pu</span>
+<span class="sd">    xfmr_upgrade_options</span>
+<span class="sd">    parallel_xfmrs_limit</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">equipment_type</span> <span class="o">=</span> <span class="s2">&quot;Transformer&quot;</span>
+    <span class="n">xfmr_upgrades_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
+    <span class="n">upgrades_dict</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="n">commands_list</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="c1"># This finds a line code which provides a specified safety margin to a line above its maximum observed loading.</span>
+    <span class="c1"># If a line code is not found or if line code is too overrated, one or more parallel lines (num_par_lns-1) are added</span>
+    <span class="n">overloaded_loading_df</span> <span class="o">=</span> <span class="n">xfmr_loading_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">xfmr_loading_df</span><span class="p">[</span><span class="s2">&quot;status&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;overloaded&quot;</span><span class="p">]</span>
+    <span class="n">overloaded_loading_df</span><span class="p">[</span><span class="s2">&quot;required_design_amp&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">overloaded_loading_df</span><span class="p">[</span><span class="s2">&quot;max_amp_loading&quot;</span><span class="p">]</span> <span class="o">/</span> <span class="n">xfmr_design_pu</span>
+    <span class="c1"># list of properties based on which upgrade is chosen</span>
+    <span class="n">deciding_property_list</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;phases&quot;</span><span class="p">,</span> <span class="s2">&quot;wdg&quot;</span><span class="p">,</span> <span class="s2">&quot;conn&quot;</span><span class="p">,</span> <span class="s2">&quot;conns&quot;</span><span class="p">,</span> <span class="s2">&quot;kV&quot;</span><span class="p">,</span> <span class="s2">&quot;kVs&quot;</span><span class="p">,</span> <span class="s2">&quot;LeadLag&quot;</span><span class="p">,</span> <span class="s2">&quot;basefreq&quot;</span><span class="p">]</span>
+    <span class="n">xfmr_upgrade_options</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="n">deciding_property_list</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">overloaded_loading_df</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="n">deciding_property_list</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">oversize_limit</span> <span class="o">=</span> <span class="mi">2</span>  <span class="c1"># limit to determine if chosen upgrade option is too oversized</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">overloaded_loading_df</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>  <span class="c1"># if overloading exists</span>
+        <span class="c1"># iterate over each overloaded line to find a solution</span>
+        <span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">overloaded_loading_df</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
+            <span class="n">options</span> <span class="o">=</span> <span class="n">xfmr_upgrade_options</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">index</span><span class="p">]</span>
+            <span class="n">options</span> <span class="o">=</span> <span class="n">options</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s2">&quot;amp_limit_per_phase&quot;</span><span class="p">)</span>
+            <span class="n">chosen_option</span> <span class="o">=</span> <span class="n">options</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">options</span><span class="p">[</span><span class="s2">&quot;amp_limit_per_phase&quot;</span><span class="p">]</span> <span class="o">&gt;=</span>
+                                        <span class="n">row</span><span class="p">[</span><span class="s2">&quot;required_design_amp&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s2">&quot;amp_limit_per_phase&quot;</span><span class="p">)</span>
+            <span class="c1"># if one chosen option exists and is not very oversized (which is determined by acceptable oversize limit)</span>
+            <span class="c1"># edit existing object</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">chosen_option</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="ow">and</span> \
+                    <span class="p">(</span><span class="n">chosen_option</span><span class="p">[</span><span class="s2">&quot;amp_limit_per_phase&quot;</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">oversize_limit</span> <span class="o">*</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;required_design_amp&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">any</span><span class="p">():</span>
+                <span class="n">chosen_option</span> <span class="o">=</span> <span class="n">chosen_option</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s2">&quot;amp_limit_per_phase&quot;</span><span class="p">)</span>
+                <span class="n">chosen_option</span> <span class="o">=</span> <span class="n">chosen_option</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>  <span class="c1"># choose lowest available option</span>
+                <span class="n">chosen_option</span><span class="p">[</span><span class="s2">&quot;conns&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">convert_list_string_to_list</span><span class="p">(</span><span class="n">chosen_option</span><span class="p">[</span><span class="s2">&quot;conns&quot;</span><span class="p">])</span>
+                <span class="n">chosen_option</span><span class="p">[</span><span class="s2">&quot;kVs&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">convert_list_string_to_list</span><span class="p">(</span><span class="n">chosen_option</span><span class="p">[</span><span class="s2">&quot;kVs&quot;</span><span class="p">])</span>
+                <span class="c1"># edit existing transformer</span>
+                <span class="n">command_string</span> <span class="o">=</span> <span class="n">define_xfmr_object</span><span class="p">(</span><span class="n">xfmr_name</span><span class="o">=</span><span class="n">row</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">],</span> <span class="n">xfmr_info_series</span><span class="o">=</span><span class="n">chosen_option</span><span class="p">,</span>
+                                                    <span class="n">action_type</span><span class="o">=</span><span class="s2">&quot;Edit&quot;</span><span class="p">)</span>
+                <span class="n">commands_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">command_string</span><span class="p">)</span>
+                <span class="c1"># create dictionary of original equipment</span>
+                <span class="n">upgrades_dict</span><span class="p">[</span><span class="n">row</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]]</span> <span class="o">=</span> <span class="p">{}</span>
+                <span class="n">upgrades_dict</span><span class="p">[</span><span class="n">row</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]][</span><span class="s2">&quot;original_equipment&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">row</span><span class="o">.</span><span class="n">to_dict</span><span class="p">()</span>
+                <span class="n">upgrades_dict</span><span class="p">[</span><span class="n">row</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]][</span><span class="s2">&quot;original_equipment&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s2">&quot;Equipment_Type&quot;</span><span class="p">:</span> <span class="n">equipment_type</span><span class="p">,</span>
+                                                                         <span class="s2">&quot;Upgrade_Type&quot;</span><span class="p">:</span> <span class="s2">&quot;upgrade&quot;</span><span class="p">,</span>
+                                                                         <span class="c1"># &quot;Parameter_Type&quot;: &quot;original_equipment&quot;,</span>
+                                                                         <span class="s2">&quot;Action&quot;</span><span class="p">:</span> <span class="s2">&quot;remove&quot;</span><span class="p">})</span>
+                <span class="n">upgrades_dict</span><span class="p">[</span><span class="n">row</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]][</span><span class="s2">&quot;original_equipment&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">chosen_option</span><span class="p">[</span><span class="n">deciding_property_list</span><span class="p">]</span><span class="o">.</span><span class="n">to_dict</span><span class="p">())</span>
+                <span class="c1"># create dictionary of new equipment</span>
+                <span class="n">upgrades_dict</span><span class="p">[</span><span class="n">row</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]][</span><span class="s2">&quot;new_equipment&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">chosen_option</span><span class="o">.</span><span class="n">to_dict</span><span class="p">()</span>
+                <span class="n">upgrades_dict</span><span class="p">[</span><span class="n">row</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]][</span><span class="s2">&quot;new_equipment&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s2">&quot;Equipment_Type&quot;</span><span class="p">:</span> <span class="n">equipment_type</span><span class="p">,</span>
+                                                                    <span class="s2">&quot;Upgrade_Type&quot;</span><span class="p">:</span> <span class="s2">&quot;upgrade&quot;</span><span class="p">,</span>
+                                                                    <span class="c1"># &quot;Parameter_Type&quot;: &quot;new_equipment&quot;,</span>
+                                                                    <span class="s2">&quot;Action&quot;</span><span class="p">:</span> <span class="s2">&quot;add&quot;</span><span class="p">,</span> <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]})</span>
+                <span class="n">check_dss_run_command</span><span class="p">(</span><span class="n">command_string</span><span class="p">)</span>  <span class="c1"># run command for upgraded equipment</span>
+                <span class="n">circuit_solve_and_check</span><span class="p">(</span><span class="n">raise_exception</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+            <span class="c1"># if higher upgrade is not available or chosen upgrade rating is much higher than required,</span>
+            <span class="c1"># dont oversize. Instead, place equipment in parallel</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">parallel_xfmr_commands</span><span class="p">,</span> <span class="n">upgrades_dict_parallel</span> <span class="o">=</span> <span class="n">identify_parallel_xfmrs</span><span class="p">(</span><span class="n">options</span><span class="o">=</span><span class="n">options</span><span class="p">,</span> <span class="n">row</span><span class="o">=</span><span class="n">row</span><span class="p">,</span>
+                                                                                         <span class="n">parallel_xfmrs_limit</span><span class="o">=</span><span class="n">parallel_xfmrs_limit</span><span class="p">)</span>
+                <span class="c1"># run command for all parallel equipment added, that resolves overloading for one equipment</span>
+                <span class="k">for</span> <span class="n">command_item</span> <span class="ow">in</span> <span class="n">parallel_xfmr_commands</span><span class="p">:</span>
+                    <span class="n">check_dss_run_command</span><span class="p">(</span><span class="n">command_item</span><span class="p">)</span>
+                    <span class="n">circuit_solve_and_check</span><span class="p">(</span><span class="n">raise_exception</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+                <span class="n">commands_list</span> <span class="o">=</span> <span class="n">commands_list</span> <span class="o">+</span> <span class="n">parallel_xfmr_commands</span>
+                <span class="n">upgrades_dict</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">upgrades_dict_parallel</span><span class="p">)</span>
+        <span class="n">index_names</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;original_equipment_name&quot;</span><span class="p">,</span> <span class="s2">&quot;Parameter_Type&quot;</span><span class="p">]</span>
+        <span class="n">xfmr_upgrades_df</span> <span class="o">=</span> <span class="n">create_dataframe_from_nested_dict</span><span class="p">(</span><span class="n">user_dict</span><span class="o">=</span><span class="n">upgrades_dict</span><span class="p">,</span> <span class="n">index_names</span><span class="o">=</span><span class="n">index_names</span><span class="p">)</span>
+        <span class="n">xfmr_upgrades_df</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;final_equipment_name&quot;</span><span class="p">},</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">xfmr_upgrades_df</span> <span class="o">=</span> <span class="n">xfmr_upgrades_df</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span>
+            <span class="p">[</span><span class="s2">&quot;Equipment_Type&quot;</span><span class="p">,</span> <span class="s2">&quot;Upgrade_Type&quot;</span><span class="p">,</span> <span class="s2">&quot;Parameter_Type&quot;</span><span class="p">,</span> <span class="s2">&quot;Action&quot;</span><span class="p">,</span> <span class="s2">&quot;final_equipment_name&quot;</span><span class="p">,</span>
+             <span class="s2">&quot;original_equipment_name&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+
+    <span class="k">else</span><span class="p">:</span>  <span class="c1"># if there is no overloading</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;This case has no transformer violations&quot;</span><span class="p">)</span>
+    <span class="n">xfmr_upgrade_options</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">circuit_solve_and_check</span><span class="p">(</span><span class="n">raise_exception</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>  <span class="c1"># this is added as a final check for convergence</span>
+    <span class="k">return</span> <span class="n">commands_list</span><span class="p">,</span> <span class="n">xfmr_upgrades_df</span></div>
+
+
+<div class="viewcode-block" id="identify_parallel_xfmrs"><a class="viewcode-back" href="../../../../../disco/disco.extensions.upgrade_simulation.upgrades.html#disco.extensions.upgrade_simulation.upgrades.thermal_upgrade_functions.identify_parallel_xfmrs">[docs]</a><span class="k">def</span> <span class="nf">identify_parallel_xfmrs</span><span class="p">(</span><span class="n">options</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">row</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">parallel_xfmrs_limit</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;This function identifies parallel transformer solutions, when a direct upgrade solution is not available from catalogue</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    options</span>
+<span class="sd">    row</span>
+<span class="sd">    parallel_xfmrs_limit</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">equipment_type</span> <span class="o">=</span> <span class="s2">&quot;Transformer&quot;</span>
+    <span class="n">commands_list</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">upgrades_dict_parallel</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="c1"># calculate number of parallel equipment needed to carry remaining amperes (in addition to existing equipment)</span>
+    <span class="n">options</span><span class="p">[</span><span class="s2">&quot;num_parallel_raw&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s2">&quot;required_design_amp&quot;</span><span class="p">]</span> <span class="o">-</span>
+                                   <span class="n">row</span><span class="p">[</span><span class="s2">&quot;amp_limit_per_phase&quot;</span><span class="p">])</span> <span class="o">/</span> <span class="n">options</span><span class="p">[</span><span class="s2">&quot;amp_limit_per_phase&quot;</span><span class="p">]</span>
+    <span class="n">options</span><span class="p">[</span><span class="s2">&quot;num_parallel&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">options</span><span class="p">[</span><span class="s2">&quot;num_parallel_raw&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ceil</span><span class="p">)</span>
+    <span class="n">options</span><span class="p">[</span><span class="s2">&quot;choose_parallel_metric&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">options</span><span class="p">[</span><span class="s2">&quot;num_parallel&quot;</span><span class="p">]</span> <span class="o">-</span> <span class="n">options</span><span class="p">[</span><span class="s2">&quot;num_parallel_raw&quot;</span><span class="p">]</span>
+    <span class="n">options</span> <span class="o">=</span> <span class="n">options</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">options</span><span class="p">[</span><span class="s2">&quot;num_parallel&quot;</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">parallel_xfmrs_limit</span><span class="p">]</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">options</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Number of parallel transformers is greater than limit!&quot;</span><span class="p">)</span>
+    <span class="c1"># choose option that has the least value of this metric- since that represents the per unit oversizing</span>
+    <span class="n">chosen_option</span> <span class="o">=</span> <span class="n">options</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">options</span><span class="p">[</span><span class="s2">&quot;choose_parallel_metric&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">idxmin</span><span class="p">()]</span>
+    <span class="n">num_parallel_xfmrs</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">chosen_option</span><span class="p">[</span><span class="s2">&quot;num_parallel&quot;</span><span class="p">])</span>
+    <span class="n">chosen_option</span><span class="p">[</span><span class="s2">&quot;conns&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">convert_list_string_to_list</span><span class="p">(</span><span class="n">chosen_option</span><span class="p">[</span><span class="s2">&quot;conns&quot;</span><span class="p">])</span>
+    <span class="n">chosen_option</span><span class="p">[</span><span class="s2">&quot;kVs&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">convert_list_string_to_list</span><span class="p">(</span><span class="n">chosen_option</span><span class="p">[</span><span class="s2">&quot;kVs&quot;</span><span class="p">])</span>
+    <span class="k">for</span> <span class="n">xfmr_count</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">num_parallel_xfmrs</span><span class="p">):</span>
+        <span class="n">curr_time</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">())</span>
+        <span class="c1"># the timestamp is added to line name to ensure it is unique</span>
+        <span class="n">time_stamp</span> <span class="o">=</span> <span class="n">curr_time</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="s2">&quot;_&quot;</span> <span class="o">+</span> <span class="n">curr_time</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
+        <span class="n">new_name</span> <span class="o">=</span> <span class="s2">&quot;upgrade_&quot;</span> <span class="o">+</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="n">time_stamp</span>
+        <span class="n">chosen_option</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">new_name</span>
+        <span class="n">upgrades_dict_parallel</span><span class="p">[</span><span class="n">row</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]]</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="n">upgrades_dict_parallel</span><span class="p">[</span><span class="n">row</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]][</span><span class="s2">&quot;new_equipment&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">chosen_option</span><span class="o">.</span><span class="n">to_dict</span><span class="p">()</span>
+        <span class="n">upgrades_dict_parallel</span><span class="p">[</span><span class="n">row</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]][</span><span class="s2">&quot;new_equipment&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s2">&quot;Equipment_Type&quot;</span><span class="p">:</span> <span class="n">equipment_type</span><span class="p">,</span>
+                                                                     <span class="s2">&quot;Upgrade_Type&quot;</span><span class="p">:</span> <span class="s2">&quot;new (parallel)&quot;</span><span class="p">,</span>
+                                                                     <span class="c1"># &quot;Parameter_Type&quot;: &quot;new_equipment&quot;,</span>
+                                                                     <span class="s2">&quot;Action&quot;</span><span class="p">:</span> <span class="s2">&quot;add&quot;</span><span class="p">})</span>
+
+        <span class="n">command_string</span> <span class="o">=</span> <span class="n">define_xfmr_object</span><span class="p">(</span><span class="n">xfmr_name</span><span class="o">=</span><span class="n">new_name</span><span class="p">,</span> <span class="n">xfmr_info_series</span><span class="o">=</span><span class="n">chosen_option</span><span class="p">,</span> <span class="n">action_type</span><span class="o">=</span><span class="s2">&quot;New&quot;</span><span class="p">,</span>
+                                            <span class="n">buses_list</span><span class="o">=</span><span class="n">row</span><span class="p">[</span><span class="s2">&quot;buses&quot;</span><span class="p">])</span>
+        <span class="n">commands_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">command_string</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">commands_list</span><span class="p">,</span> <span class="n">upgrades_dict_parallel</span></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2019, NREL.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

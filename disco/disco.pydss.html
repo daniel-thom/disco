@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>disco.pydss package &mdash; DISCO 0.1 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link href="../_static/style.css" rel="stylesheet" type="text/css">
+
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> DISCO
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">User Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../installation.html#use-conda">Use Conda</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation.html#use-docker">Use Docker</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">Overview</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../overview.html#data-sources">Data Sources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview.html#transform-model">Transform Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview.html#config-jobs">Config Jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview.html#submit-jobs">Submit Jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview.html#result-analysis">Result Analysis</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../quick-start.html">Quick Start</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../quick-start.html#source-data">Source Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../quick-start.html#transform-model">Transform Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../quick-start.html#config-jobs">Config Jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../quick-start.html#submit-jobs">Submit Jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../quick-start.html#result-analysis">Result Analysis</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../data-sources.html">Data Sources</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../data-sources/smart-ds-model-preparation.html">SMART-DS OpenDSS Model Preparation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data-sources.html#gem-model">GEM Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data-sources.html#epri-model">EPRI Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data-sources.html#sourcetree1-model">SourceTree1 Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data-sources.html#sourcetree2-model">SourceTree2 Model</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../pv-deployments.html">PV Deployments</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../pv-deployments.html#sourcetree1-pv-deployments">SourceTree1 PV Deployments</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../transform-models.html">Transform Models</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../transform-models.html#transform-model-help">Transform Model Help</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../transform-models.html#disco-model-in-depth">DISCO Model in Depth</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../analysis-workflows.html">Analysis Workflows</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../analysis-workflows/hosting-capacity-analysis.html">Hosting Capacity Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../analysis-workflows/upgrade-cost-analysis.html">Upgrade Cost Analysis</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../pipelines.html">Pipelines</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../pipelines.html#sourcetree1model">SourceTree1Model</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../debugging-issues.html">Debugging Issues</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../debugging-issues.html#using-jade">Using JADE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../debugging-issues.html#using-pydss">Using PyDSS</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../data-ingestion.html">Data Ingestion</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../data-ingestion.html#ingest-to-new-database">Ingest to New Database</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data-ingestion.html#ingest-to-existing-database">Ingest to Existing Database</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data-ingestion.html#run-database-queries">Run Database Queries</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced-guide.html">Advanced Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../advanced-guide/analysis-deployment.html">Analysis Deployment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../advanced-guide/upgrade-cost-analysis-generic-models.html">Upgrade Cost Analysis JSON Schemas</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contribution</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../build-docs.html">Build docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../license.html">License</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">DISCO</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>disco.pydss package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/disco/disco.pydss.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="disco-pydss-package">
+<h1>disco.pydss package<a class="headerlink" href="#disco-pydss-package" title="Permalink to this headline">¶</a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="module-disco.pydss.common">
+<span id="disco-pydss-common-module"></span><h2>disco.pydss.common module<a class="headerlink" href="#module-disco.pydss.common" title="Permalink to this headline">¶</a></h2>
+<p>Common definitions for PyDSS-based simulations.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="disco.pydss.common.ConfigType">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">disco.pydss.common.</span></span><span class="sig-name descname"><span class="pre">ConfigType</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/pydss/common.html#ConfigType"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.pydss.common.ConfigType" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">enum.Enum</span></code></p>
+<p>Possible values for PyDSS config options</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.pydss.common.ConfigType.SIMULATION_CONFIG">
+<span class="sig-name descname"><span class="pre">SIMULATION_CONFIG</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Simulation'</span></em><a class="headerlink" href="#disco.pydss.common.ConfigType.SIMULATION_CONFIG" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.pydss.common.ConfigType.CONTROLLER_CONFIG">
+<span class="sig-name descname"><span class="pre">CONTROLLER_CONFIG</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'PvControllers'</span></em><a class="headerlink" href="#disco.pydss.common.ConfigType.CONTROLLER_CONFIG" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.pydss.common.ConfigType.SCENARIOS">
+<span class="sig-name descname"><span class="pre">SCENARIOS</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Scenarios'</span></em><a class="headerlink" href="#disco.pydss.common.ConfigType.SCENARIOS" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-disco.pydss.prescreen_pv_penetration_levels">
+<span id="disco-pydss-prescreen-pv-penetration-levels-module"></span><h2>disco.pydss.prescreen_pv_penetration_levels module<a class="headerlink" href="#module-disco.pydss.prescreen_pv_penetration_levels" title="Permalink to this headline">¶</a></h2>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.pydss.prescreen_pv_penetration_levels.JobKey">
+<span class="sig-prename descclassname"><span class="pre">disco.pydss.prescreen_pv_penetration_levels.</span></span><span class="sig-name descname"><span class="pre">JobKey</span></span><a class="headerlink" href="#disco.pydss.prescreen_pv_penetration_levels.JobKey" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">disco.pydss.prescreen_pv_penetration_levels.JobKeyByFeeder</span></code></p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.pydss.prescreen_pv_penetration_levels.create_job_key">
+<span class="sig-prename descclassname"><span class="pre">disco.pydss.prescreen_pv_penetration_levels.</span></span><span class="sig-name descname"><span class="pre">create_job_key</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">job</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/pydss/prescreen_pv_penetration_levels.html#create_job_key"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.pydss.prescreen_pv_penetration_levels.create_job_key" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.pydss.prescreen_pv_penetration_levels.run_prescreen">
+<span class="sig-prename descclassname"><span class="pre">disco.pydss.prescreen_pv_penetration_levels.</span></span><span class="sig-name descname"><span class="pre">run_prescreen</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">src_config</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">src_config_file</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">substation</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">feeder</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">placement</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sample</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prescreen_jobs_output</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/pydss/prescreen_pv_penetration_levels.html#run_prescreen"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.pydss.prescreen_pv_penetration_levels.run_prescreen" title="Permalink to this definition">¶</a></dt>
+<dd><p>Run a bisect on the penetration levels for a sample.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.pydss.prescreen_pv_penetration_levels.find_highest_passing_penetration_level">
+<span class="sig-prename descclassname"><span class="pre">disco.pydss.prescreen_pv_penetration_levels.</span></span><span class="sig-name descname"><span class="pre">find_highest_passing_penetration_level</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">jobs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">src_config_file</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prescreen_jobs_output</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/pydss/prescreen_pv_penetration_levels.html#find_highest_passing_penetration_level"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.pydss.prescreen_pv_penetration_levels.find_highest_passing_penetration_level" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.pydss.prescreen_pv_penetration_levels.create_job">
+<span class="sig-prename descclassname"><span class="pre">disco.pydss.prescreen_pv_penetration_levels.</span></span><span class="sig-name descname"><span class="pre">create_job</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config_file</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prescreen_base_output</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/pydss/prescreen_pv_penetration_levels.html#create_job"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.pydss.prescreen_pv_penetration_levels.create_job" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</section>
+<section id="module-disco.pydss.pydss_analysis">
+<span id="disco-pydss-pydss-analysis-module"></span><h2>disco.pydss.pydss_analysis module<a class="headerlink" href="#module-disco.pydss.pydss_analysis" title="Permalink to this headline">¶</a></h2>
+<p>Analysis of PyDSS simulations.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="disco.pydss.pydss_analysis.PyDssAnalysis">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">disco.pydss.pydss_analysis.</span></span><span class="sig-name descname"><span class="pre">PyDssAnalysis</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">output_dir</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/pydss/pydss_analysis.html#PyDssAnalysis"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.pydss.pydss_analysis.PyDssAnalysis" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">jade.jobs.job_analysis.JobAnalysis</span></code></p>
+<p>Performs analysis of PyDSS simulations.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.pydss.pydss_analysis.PyDssAnalysis.read_results">
+<span class="sig-name descname"><span class="pre">read_results</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">simulation</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/pydss/pydss_analysis.html#PyDssAnalysis.read_results"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.pydss.pydss_analysis.PyDssAnalysis.read_results" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return all results dataframes for a simulation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>simulation</strong> (<em>str</em><em> | </em><a class="reference internal" href="#disco.pydss.pydss_simulation_base.PyDssSimulationBase" title="disco.pydss.pydss_simulation_base.PyDssSimulationBase"><em>PyDssSimulationBase</em></a>) – </p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>class name : PyDssResult instance</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="disco.pydss.pydss_analysis.PyDssScenarioAnalysis">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">disco.pydss.pydss_analysis.</span></span><span class="sig-name descname"><span class="pre">PyDssScenarioAnalysis</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">job</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">results</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scenario_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/pydss/pydss_analysis.html#PyDssScenarioAnalysis"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.pydss.pydss_analysis.PyDssScenarioAnalysis" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Performs analysis on one PyDSS scenario results.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.pydss.pydss_analysis.PyDssScenarioAnalysis.get_pu_bus_voltage_magnitudes">
+<span class="sig-name descname"><span class="pre">get_pu_bus_voltage_magnitudes</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/pydss/pydss_analysis.html#PyDssScenarioAnalysis.get_pu_bus_voltage_magnitudes"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.pydss.pydss_analysis.PyDssScenarioAnalysis.get_pu_bus_voltage_magnitudes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return per-unit voltage magnitudes for each bus.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Maps bus name to list of voltages.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.pydss.pydss_analysis.PyDssScenarioAnalysis.get_line_loading_percentages">
+<span class="sig-name descname"><span class="pre">get_line_loading_percentages</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fmt</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'dataframe'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/pydss/pydss_analysis.html#PyDssScenarioAnalysis.get_line_loading_percentages"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.pydss.pydss_analysis.PyDssScenarioAnalysis.get_line_loading_percentages" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return line loading values as percents for all lines.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>fmt</strong> (<em>str</em>) – Controls output format. Must be ‘dataframe’ or ‘json’.”</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Maps line name to loading percentages.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.pydss.pydss_analysis.PyDssScenarioAnalysis.get_transformer_loading_percentages">
+<span class="sig-name descname"><span class="pre">get_transformer_loading_percentages</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fmt</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'dataframe'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/pydss/pydss_analysis.html#PyDssScenarioAnalysis.get_transformer_loading_percentages"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.pydss.pydss_analysis.PyDssScenarioAnalysis.get_transformer_loading_percentages" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return transformer loading values as percents for all transformers.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>fmt</strong> (<em>str</em>) – Controls output format. Must be ‘dataframe’ or ‘json’.”</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Maps transformer name to loading percentages pd.DataFrame.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.pydss.pydss_analysis.PyDssScenarioAnalysis.get_kw_at_bus_mapping">
+<span class="sig-name descname"><span class="pre">get_kw_at_bus_mapping</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/pydss/pydss_analysis.html#PyDssScenarioAnalysis.get_kw_at_bus_mapping"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.pydss.pydss_analysis.PyDssScenarioAnalysis.get_kw_at_bus_mapping" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a mapping of bus to PV system and load kW values</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><p>Key is bus name. Value is a list of dicts containing element info
+and kW values.</p>
+<p>Example: {“123456”: [{“type”: “pv_systems”, “name”: “pv_1234”, “kW”, 1.3}]}</p>
+</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-disco.pydss.pydss_configuration_base">
+<span id="disco-pydss-pydss-configuration-base-module"></span><h2>disco.pydss.pydss_configuration_base module<a class="headerlink" href="#module-disco.pydss.pydss_configuration_base" title="Permalink to this headline">¶</a></h2>
+<p>Contains functionality to configure PyDss simulations.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.pydss.pydss_configuration_base.get_default_exports_file">
+<span class="sig-prename descclassname"><span class="pre">disco.pydss.pydss_configuration_base.</span></span><span class="sig-name descname"><span class="pre">get_default_exports_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">simulation_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="disco.html#disco.enums.SimulationType" title="disco.enums.SimulationType"><span class="pre">disco.enums.SimulationType</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">analysis_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="disco.html#disco.enums.AnalysisType" title="disco.enums.AnalysisType"><span class="pre">disco.enums.AnalysisType</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/pydss/pydss_configuration_base.html#get_default_exports_file"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.pydss.pydss_configuration_base.get_default_exports_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the default exports file</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>simulation_type</strong> (<a class="reference internal" href="disco.html#disco.enums.SimulationType" title="disco.enums.SimulationType"><em>SimulationType</em></a>) – </p></li>
+<li><p><strong>analysis_type</strong> (<a class="reference internal" href="disco.html#disco.enums.AnalysisType" title="disco.enums.AnalysisType"><em>AnalysisType</em></a>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.pydss.pydss_configuration_base.get_default_reports_file">
+<span class="sig-prename descclassname"><span class="pre">disco.pydss.pydss_configuration_base.</span></span><span class="sig-name descname"><span class="pre">get_default_reports_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">simulation_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="disco.html#disco.enums.SimulationType" title="disco.enums.SimulationType"><span class="pre">disco.enums.SimulationType</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/pydss/pydss_configuration_base.html#get_default_reports_file"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.pydss.pydss_configuration_base.get_default_reports_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the default report file for the simulation type.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>simulation_type</strong> (<a class="reference internal" href="disco.html#disco.enums.SimulationType" title="disco.enums.SimulationType"><em>SimulationType</em></a>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="disco.pydss.pydss_configuration_base.PyDssConfigurationBase">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">disco.pydss.pydss_configuration_base.</span></span><span class="sig-name descname"><span class="pre">PyDssConfigurationBase</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/pydss/pydss_configuration_base.html#PyDssConfigurationBase"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.pydss.pydss_configuration_base.PyDssConfigurationBase" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="disco.distribution.html#disco.distribution.distribution_configuration.DistributionConfiguration" title="disco.distribution.distribution_configuration.DistributionConfiguration"><code class="xref py py-class docutils literal notranslate"><span class="pre">disco.distribution.distribution_configuration.DistributionConfiguration</span></code></a></p>
+<p>Represents the configuration options for a PyDSS simulation.</p>
+<p>Constructs PyDssConfiguration.</p>
+<dl class="py property">
+<dt class="sig sig-object py" id="disco.pydss.pydss_configuration_base.PyDssConfigurationBase.pydss_inputs">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">pydss_inputs</span></span><a class="headerlink" href="#disco.pydss.pydss_configuration_base.PyDssConfigurationBase.pydss_inputs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the PyDSS inputs configuration.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.pydss.pydss_configuration_base.PyDssConfigurationBase.get_pydss_config">
+<span class="sig-name descname"><span class="pre">get_pydss_config</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config_type</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/pydss/pydss_configuration_base.html#PyDssConfigurationBase.get_pydss_config"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.pydss.pydss_configuration_base.PyDssConfigurationBase.get_pydss_config" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the configuration for the given type.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>config_type</strong> (<a class="reference internal" href="#disco.pydss.common.ConfigType" title="disco.pydss.common.ConfigType"><em>ConfigType</em></a>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.pydss.pydss_configuration_base.PyDssConfigurationBase.set_pydss_config">
+<span class="sig-name descname"><span class="pre">set_pydss_config</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/pydss/pydss_configuration_base.html#PyDssConfigurationBase.set_pydss_config"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.pydss.pydss_configuration_base.PyDssConfigurationBase.set_pydss_config" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the configuration for the given type.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>config_type</strong> (<a class="reference internal" href="#disco.pydss.common.ConfigType" title="disco.pydss.common.ConfigType"><em>ConfigType</em></a>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.pydss.pydss_configuration_base.PyDssConfigurationBase.add_pydss_controller_config">
+<span class="sig-name descname"><span class="pre">add_pydss_controller_config</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">controller_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/pydss/pydss_configuration_base.html#PyDssConfigurationBase.add_pydss_controller_config"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.pydss.pydss_configuration_base.PyDssConfigurationBase.add_pydss_controller_config" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add a PyDSS controller to the configuration.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>controller_type</strong> (<em>str</em>) – The PyDSS controller type</p></li>
+<li><p><strong>name</strong> (<em>str</em>) – The PyDSS controller name</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.pydss.pydss_configuration_base.PyDssConfigurationBase.remove_pydss_controller_config">
+<span class="sig-name descname"><span class="pre">remove_pydss_controller_config</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">controller_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/pydss/pydss_configuration_base.html#PyDssConfigurationBase.remove_pydss_controller_config"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.pydss.pydss_configuration_base.PyDssConfigurationBase.remove_pydss_controller_config" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove a PyDSS controller from the configuration.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>controller_type</strong> (<em>str</em>) – The PyDSS controller type</p></li>
+<li><p><strong>name</strong> (<em>str</em>) – The PyDSS controller name</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>InvalidParameter</strong> – Raised if name is not stored.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.pydss.pydss_configuration_base.PyDssConfigurationBase.add_pydss_simulation_config">
+<span class="sig-name descname"><span class="pre">add_pydss_simulation_config</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">simulation</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/pydss/pydss_configuration_base.html#PyDssConfigurationBase.add_pydss_simulation_config"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.pydss.pydss_configuration_base.PyDssConfigurationBase.add_pydss_simulation_config" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add a PyDSS simulation config to the configuration.</p>
+<p>Call PyDssConfigurationBase.get_default_pydss_simulation_config() for a
+base simulation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>str</em>) – </p></li>
+<li><p><strong>simulation</strong> (<em>dict</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.pydss.pydss_configuration_base.PyDssConfigurationBase.remove_pydss_simulation_config">
+<span class="sig-name descname"><span class="pre">remove_pydss_simulation_config</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/pydss/pydss_configuration_base.html#PyDssConfigurationBase.remove_pydss_simulation_config"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.pydss.pydss_configuration_base.PyDssConfigurationBase.remove_pydss_simulation_config" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove a PyDSS simulation config from the configuration.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>name</strong> (<em>str</em>) – </p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>InvalidParameter</strong> – Raised if name is not stored.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.pydss.pydss_configuration_base.PyDssConfigurationBase.get_pydss_simulation_config">
+<span class="sig-name descname"><span class="pre">get_pydss_simulation_config</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/pydss/pydss_configuration_base.html#PyDssConfigurationBase.get_pydss_simulation_config"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.pydss.pydss_configuration_base.PyDssConfigurationBase.get_pydss_simulation_config" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the simulation config.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>name</strong> (<em>str</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>dict</p>
+</dd>
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><p><strong>InvalidParameter</strong> – Raised if name is not stored.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.pydss.pydss_configuration_base.PyDssConfigurationBase.serialize_pydss_inputs">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">serialize_pydss_inputs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inputs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/pydss/pydss_configuration_base.html#PyDssConfigurationBase.serialize_pydss_inputs"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.pydss.pydss_configuration_base.PyDssConfigurationBase.serialize_pydss_inputs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Serializes PyDSS input configuration, replacing enums with values.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>inputs</strong> (<em>dict</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.pydss.pydss_configuration_base.PyDssConfigurationBase.deserialize_pydss_inputs">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">deserialize_pydss_inputs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cfg</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/pydss/pydss_configuration_base.html#PyDssConfigurationBase.deserialize_pydss_inputs"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.pydss.pydss_configuration_base.PyDssConfigurationBase.deserialize_pydss_inputs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Deserializes PyDSS input configuration, replacing values with enums.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>inputs</strong> (<em>dict</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.pydss.pydss_configuration_base.PyDssConfigurationBase.get_default_pydss_config">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_default_pydss_config</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/pydss/pydss_configuration_base.html#PyDssConfigurationBase.get_default_pydss_config"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.pydss.pydss_configuration_base.PyDssConfigurationBase.get_default_pydss_config" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the default PyDSS configuration.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.pydss.pydss_configuration_base.PyDssConfigurationBase.get_default_pydss_simulation_config">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_default_pydss_simulation_config</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/pydss/pydss_configuration_base.html#PyDssConfigurationBase.get_default_pydss_simulation_config"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.pydss.pydss_configuration_base.PyDssConfigurationBase.get_default_pydss_simulation_config" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the default PyDSS simulation configuration.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.pydss.pydss_configuration_base.PyDssConfigurationBase.make_default_pydss_scenario">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">make_default_pydss_scenario</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">scenario_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">exports</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">post_process_infos</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/pydss/pydss_configuration_base.html#PyDssConfigurationBase.make_default_pydss_scenario"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.pydss.pydss_configuration_base.PyDssConfigurationBase.make_default_pydss_scenario" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a default scenario dictionary for a given name.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>scenario_name</strong> (<em>str</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-disco.pydss.pydss_simulation_base">
+<span id="disco-pydss-pydss-simulation-base-module"></span><h2>disco.pydss.pydss_simulation_base module<a class="headerlink" href="#module-disco.pydss.pydss_simulation_base" title="Permalink to this headline">¶</a></h2>
+<p>Base functionality for running PyDSS simulations.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="disco.pydss.pydss_simulation_base.PyDssSimulationBase">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">disco.pydss.pydss_simulation_base.</span></span><span class="sig-name descname"><span class="pre">PyDssSimulationBase</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pydss_inputs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">deployment_params</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">add_pct_pmpp</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">irradiance_scaling_factor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">100</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/pydss/pydss_simulation_base.html#PyDssSimulationBase"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.pydss.pydss_simulation_base.PyDssSimulationBase" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">jade.jobs.job_execution_interface.JobExecutionInterface</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code></p>
+<p>Runs a PyDss simulation.</p>
+<p>Constructs a PyDssSimulation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><p><strong>InvalidParameter</strong> – Raised if any parameter is invalid.</p>
+</dd>
+</dl>
+<dl class="py property">
+<dt class="sig sig-object py" id="disco.pydss.pydss_simulation_base.PyDssSimulationBase.pydss_project_path">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">pydss_project_path</span></span><a class="headerlink" href="#disco.pydss.pydss_simulation_base.PyDssSimulationBase.pydss_project_path" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="disco.pydss.pydss_simulation_base.PyDssSimulationBase.results_directory">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">results_directory</span></span><a class="headerlink" href="#disco.pydss.pydss_simulation_base.PyDssSimulationBase.results_directory" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the results directory created by the simulation.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.pydss.pydss_simulation_base.PyDssSimulationBase.list_results_files">
+<span class="sig-name descname"><span class="pre">list_results_files</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/pydss/pydss_simulation_base.html#PyDssSimulationBase.list_results_files"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.pydss.pydss_simulation_base.PyDssSimulationBase.list_results_files" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a list of result filenames created by the simulation.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.pydss.pydss_simulation_base.PyDssSimulationBase.post_process">
+<span class="sig-name descname"><span class="pre">post_process</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/pydss/pydss_simulation_base.html#PyDssSimulationBase.post_process"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.pydss.pydss_simulation_base.PyDssSimulationBase.post_process" title="Permalink to this definition">¶</a></dt>
+<dd><p>Run post-processing on the output files.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.pydss.pydss_simulation_base.PyDssSimulationBase.run">
+<span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/pydss/pydss_simulation_base.html#PyDssSimulationBase.run"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.pydss.pydss_simulation_base.PyDssSimulationBase.run" title="Permalink to this definition">¶</a></dt>
+<dd><p>Runs the simulation.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.pydss.pydss_simulation_base.PyDssSimulationBase.check_convergence_problems">
+<span class="sig-name descname"><span class="pre">check_convergence_problems</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/pydss/pydss_simulation_base.html#PyDssSimulationBase.check_convergence_problems"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.pydss.pydss_simulation_base.PyDssSimulationBase.check_convergence_problems" title="Permalink to this definition">¶</a></dt>
+<dd><p>Logs events for convergence errors.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-disco.pydss.pydss_utils">
+<span id="disco-pydss-pydss-utils-module"></span><h2>disco.pydss.pydss_utils module<a class="headerlink" href="#module-disco.pydss.pydss_utils" title="Permalink to this headline">¶</a></h2>
+<p>Contains PyDSS utility functions</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.pydss.pydss_utils.detect_convergence_problems">
+<span class="sig-prename descclassname"><span class="pre">disco.pydss.pydss_utils.</span></span><span class="sig-name descname"><span class="pre">detect_convergence_problems</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">project_path</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/pydss/pydss_utils.html#detect_convergence_problems"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.pydss.pydss_utils.detect_convergence_problems" title="Permalink to this definition">¶</a></dt>
+<dd><p>Detects convergence problems in a PyDSS run.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>project_path</strong> (<em>str</em>) – </p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>list of dicts with keys: ‘scenario’, ‘priority’, ‘step’</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-disco.pydss">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-disco.pydss" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2019, NREL.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

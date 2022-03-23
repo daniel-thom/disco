@@ -1,0 +1,53 @@
+disco.sources.gem package
+=========================
+
+Submodules
+----------
+
+disco.sources.gem.factory module
+--------------------------------
+
+.. automodule:: disco.sources.gem.factory
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+disco.sources.gem.gem\_model module
+-----------------------------------
+
+.. automodule:: disco.sources.gem.gem_model
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+disco.sources.gem.make\_element\_bus\_mapping module
+----------------------------------------------------
+
+.. automodule:: disco.sources.gem.make_element_bus_mapping
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+disco.sources.gem.model\_input\_interface module
+------------------------------------------------
+
+.. automodule:: disco.sources.gem.model_input_interface
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+disco.sources.gem.open\_dss\_generator module
+---------------------------------------------
+
+.. automodule:: disco.sources.gem.open_dss_generator
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: disco.sources.gem
+   :members:
+   :undoc-members:
+   :show-inheritance:

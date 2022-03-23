@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="Python" >
+<html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
@@ -101,7 +101,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="advanced-guide.html">Advanced Guide</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="advanced-guide/analysis-deployment.html">Analysis Deployment</a></li>
-<li class="toctree-l2"><a class="reference internal" href="advanced-guide/automated-upgrade-simulation.html">Automated Upgrade Simulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="advanced-guide/upgrade-cost-analysis-generic-models.html">Upgrade Cost Analysis JSON Schemas</a></li>
 </ul>
 </li>
 </ul>
@@ -168,8 +168,8 @@ use this group command below:</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>When creating the pipeline template for snapshot simulation (default), the flag <code class="docutils literal notranslate"><span class="pre">--with-loadshape</span></code>
-or <code class="docutils literal notranslate"><span class="pre">--no-with-loadshape</span></code> must be set to indicate if there's <code class="docutils literal notranslate"><span class="pre">LoadShapes.dss</span></code> redirected in  models
-and the according mode it's going to run with,</p>
+or <code class="docutils literal notranslate"><span class="pre">--no-with-loadshape</span></code> must be set to indicate if there’s <code class="docutils literal notranslate"><span class="pre">LoadShapes.dss</span></code> redirected in  models
+and the according mode it’s going to run with,</p>
 <ul class="simple">
 <li><p>if <code class="docutils literal notranslate"><span class="pre">--no-with-loadshape</span></code>, DISCO runs snapshot simulation by using <code class="docutils literal notranslate"><span class="pre">Snapshot</span></code> mode.</p></li>
 <li><p>if <code class="docutils literal notranslate"><span class="pre">--with-loadshape</span></code>, DISCO runs snapshot simulation by using <code class="docutils literal notranslate"><span class="pre">QSTS</span></code> mode with only one timestamp.</p></li>
@@ -229,7 +229,7 @@ the status of each util it completes the whole workflow.</p>
 </pre></div>
 </div>
 <p>Pipeline output directory is <code class="docutils literal notranslate"><span class="pre">snapshot-pipeline-output</span></code> in this example,
-which contains two stages' results, as shown below:</p>
+which contains two stages’ results, as shown below:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">$tree</span> snapshot-pipeline-output/ -L <span class="m">2</span>
 snapshot-pipeline-output/
 ├── config-stage1.json

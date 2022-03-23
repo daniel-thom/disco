@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="Python" >
+<html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
@@ -101,7 +101,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="advanced-guide.html">Advanced Guide</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="advanced-guide/analysis-deployment.html">Analysis Deployment</a></li>
-<li class="toctree-l2"><a class="reference internal" href="advanced-guide/automated-upgrade-simulation.html">Automated Upgrade Simulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="advanced-guide/upgrade-cost-analysis-generic-models.html">Upgrade Cost Analysis JSON Schemas</a></li>
 </ul>
 </li>
 </ul>
@@ -162,11 +162,10 @@ The source types are:</p>
 For example, if the input path is a GEM file:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ disco transform-model ./gem-file.json --help
 
-Available analysis types: snapshot upgrade
+Available analysis types: snapshot
 
 For additional <span class="nb">help</span> run one of the following:
     disco transform-model ./gem-file.json snapshot --help
-    disco transform-model ./gem-file.json upgrade --help
 </pre></div>
 </div>
 </section>
@@ -176,18 +175,17 @@ For additional <span class="nb">help</span> run one of the following:
 in <em>format.toml</em>.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ disco transform-model tests/data/smart-ds/substations/ --help
 
-Available analysis types: snapshot time-series upgrade
+Available analysis types: snapshot time-series
 
 For additional <span class="nb">help</span> run one of the following:
     disco transform-model tests/data/smart-ds/substations/ snapshot --help
     disco transform-model tests/data/smart-ds/substations/ time-series --help
-    disco transform-model tests/data/smart-ds/substations/ upgrade --help
 </pre></div>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>By default, the name of PV deployments directory is <code class="docutils literal notranslate"><span class="pre">hc_pv_deployments</span></code>, if the PV deployments
-are located in other directory, please specify the right directory by using option <cite>-P/--pv-deployments-dirname</cite>
+are located in other directory, please specify the right directory by using option <cite>-P/–pv-deployments-dirname</cite>
 in command <code class="docutils literal notranslate"><span class="pre">transform-model</span></code>.</p>
 </div>
 </section>

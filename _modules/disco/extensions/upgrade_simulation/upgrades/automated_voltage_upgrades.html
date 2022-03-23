@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>disco.extensions.upgrade_simulation.upgrades.automated_voltage_upgrades &mdash; DISCO 0.1 documentation</title>
+      <link rel="stylesheet" href="../../../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../../../" id="documentation_options" src="../../../../../_static/documentation_options.js"></script>
+        <script src="../../../../../_static/jquery.js"></script>
+        <script src="../../../../../_static/underscore.js"></script>
+        <script src="../../../../../_static/doctools.js"></script>
+    <script src="../../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../search.html" />
+    <link href="../../../../../_static/style.css" rel="stylesheet" type="text/css">
+
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../../../../index.html" class="icon icon-home"> DISCO
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">User Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../installation.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../installation.html#use-conda">Use Conda</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../installation.html#use-docker">Use Docker</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../overview.html">Overview</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../overview.html#data-sources">Data Sources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../overview.html#transform-model">Transform Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../overview.html#config-jobs">Config Jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../overview.html#submit-jobs">Submit Jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../overview.html#result-analysis">Result Analysis</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../quick-start.html">Quick Start</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../quick-start.html#source-data">Source Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../quick-start.html#transform-model">Transform Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../quick-start.html#config-jobs">Config Jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../quick-start.html#submit-jobs">Submit Jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../quick-start.html#result-analysis">Result Analysis</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../data-sources.html">Data Sources</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../data-sources/smart-ds-model-preparation.html">SMART-DS OpenDSS Model Preparation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../data-sources.html#gem-model">GEM Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../data-sources.html#epri-model">EPRI Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../data-sources.html#sourcetree1-model">SourceTree1 Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../data-sources.html#sourcetree2-model">SourceTree2 Model</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../pv-deployments.html">PV Deployments</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../pv-deployments.html#sourcetree1-pv-deployments">SourceTree1 PV Deployments</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../transform-models.html">Transform Models</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../transform-models.html#transform-model-help">Transform Model Help</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../transform-models.html#disco-model-in-depth">DISCO Model in Depth</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../analysis-workflows.html">Analysis Workflows</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../analysis-workflows/hosting-capacity-analysis.html">Hosting Capacity Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../analysis-workflows/upgrade-cost-analysis.html">Upgrade Cost Analysis</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../pipelines.html">Pipelines</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../pipelines.html#sourcetree1model">SourceTree1Model</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../debugging-issues.html">Debugging Issues</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../debugging-issues.html#using-jade">Using JADE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../debugging-issues.html#using-pydss">Using PyDSS</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../data-ingestion.html">Data Ingestion</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../data-ingestion.html#ingest-to-new-database">Ingest to New Database</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../data-ingestion.html#ingest-to-existing-database">Ingest to Existing Database</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../data-ingestion.html#run-database-queries">Run Database Queries</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../advanced-guide.html">Advanced Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../advanced-guide/analysis-deployment.html">Analysis Deployment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../advanced-guide/upgrade-cost-analysis-generic-models.html">Upgrade Cost Analysis JSON Schemas</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contribution</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../build-docs.html">Build docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../license.html">License</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../../index.html">DISCO</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../../../index.html">Module code</a> &raquo;</li>
+      <li>disco.extensions.upgrade_simulation.upgrades.automated_voltage_upgrades</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for disco.extensions.upgrade_simulation.upgrades.automated_voltage_upgrades</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">import</span> <span class="nn">logging</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">time</span>
+
+<span class="kn">from</span> <span class="nn">.fixed_upgrade_parameters</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">CAPACITOR_ACTION_FLAG</span><span class="p">,</span>
+    <span class="n">DEFAULT_CAPACITOR_SETTINGS</span><span class="p">,</span>
+    <span class="n">DEFAULT_SUBLTC_SETTINGS</span><span class="p">,</span>
+    <span class="n">EXISTING_REGULATOR_SWEEP_ACTION</span><span class="p">,</span>
+    <span class="n">DEFAULT_REGCONTROL_SETTINGS</span>
+<span class="p">)</span>
+<span class="kn">from</span> <span class="nn">.voltage_upgrade_functions</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="determine_voltage_upgrades"><a class="viewcode-back" href="../../../../../disco/disco.extensions.upgrade_simulation.upgrades.html#disco.extensions.upgrade_simulation.upgrades.automated_voltage_upgrades.determine_voltage_upgrades">[docs]</a><span class="k">def</span> <span class="nf">determine_voltage_upgrades</span><span class="p">(</span>
+    <span class="n">master_path</span><span class="p">,</span>
+    <span class="n">enable_pydss_solve</span><span class="p">,</span>
+    <span class="n">pydss_volt_var_model</span><span class="p">,</span>
+    <span class="n">thermal_config</span><span class="p">,</span>
+    <span class="n">voltage_config</span><span class="p">,</span>
+    <span class="n">thermal_upgrades_dss_filepath</span><span class="p">,</span>
+    <span class="n">voltage_upgrades_dss_filepath</span><span class="p">,</span>
+    <span class="n">voltage_summary_file</span><span class="p">,</span>
+    <span class="n">output_csv_voltage_upgrades_filepath</span><span class="p">,</span>
+    <span class="n">output_folder</span><span class="p">,</span>
+    <span class="n">ignore_switch</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span>
+<span class="p">):</span>
+    <span class="c1"># default_capacitor settings and customization</span>
+    <span class="n">default_capacitor_settings</span> <span class="o">=</span> <span class="n">DEFAULT_CAPACITOR_SETTINGS</span>
+    <span class="n">default_capacitor_settings</span><span class="p">[</span><span class="s2">&quot;capON&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span>
+        <span class="p">(</span>
+            <span class="n">voltage_config</span><span class="p">[</span><span class="s2">&quot;nominal_voltage&quot;</span><span class="p">]</span> <span class="o">-</span>
+            <span class="n">voltage_config</span><span class="p">[</span><span class="s2">&quot;capacitor_sweep_voltage_gap&quot;</span><span class="p">]</span> <span class="o">/</span> <span class="mi">2</span>
+        <span class="p">),</span>
+        <span class="mi">1</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">default_capacitor_settings</span><span class="p">[</span><span class="s2">&quot;capOFF&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span>
+        <span class="p">(</span>
+            <span class="n">voltage_config</span><span class="p">[</span><span class="s2">&quot;nominal_voltage&quot;</span><span class="p">]</span> <span class="o">+</span>
+            <span class="n">voltage_config</span><span class="p">[</span><span class="s2">&quot;capacitor_sweep_voltage_gap&quot;</span><span class="p">]</span> <span class="o">/</span> <span class="mi">2</span>
+        <span class="p">),</span>
+        <span class="mi">1</span><span class="p">,</span>
+    <span class="p">)</span>
+
+    <span class="c1"># default subltc settings and customization</span>
+    <span class="n">default_subltc_settings</span> <span class="o">=</span> <span class="n">DEFAULT_SUBLTC_SETTINGS</span>
+    <span class="n">default_subltc_settings</span><span class="p">[</span><span class="s2">&quot;vreg&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1.03</span> <span class="o">*</span> <span class="n">voltage_config</span><span class="p">[</span><span class="s2">&quot;nominal_voltage&quot;</span><span class="p">]</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">thermal_upgrades_dss_filepath</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;AutomatedThermalUpgrade did not produce thermal upgrades dss file&quot;</span>
+        <span class="p">)</span>
+    <span class="n">pydss_params</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;enable_pydss_solve&quot;</span><span class="p">:</span> <span class="n">enable_pydss_solve</span><span class="p">,</span>
+        <span class="s2">&quot;pydss_volt_var_model&quot;</span><span class="p">:</span> <span class="n">pydss_volt_var_model</span>
+    <span class="p">}</span>
+    <span class="n">dss_file_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">master_path</span><span class="p">,</span> <span class="n">thermal_upgrades_dss_filepath</span><span class="p">]</span>
+    <span class="n">pydss_params</span> <span class="o">=</span> <span class="n">reload_dss_circuit</span><span class="p">(</span>
+        <span class="n">dss_file_list</span><span class="o">=</span><span class="n">dss_file_list</span><span class="p">,</span> <span class="n">commands_list</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">pydss_params</span>
+    <span class="p">)</span>
+
+    <span class="c1"># reading original objects (before upgrades)</span>
+    <span class="n">orig_ckt_info</span> <span class="o">=</span> <span class="n">get_circuit_info</span><span class="p">()</span>
+    <span class="n">orig_xfmrs_df</span> <span class="o">=</span> <span class="n">get_all_transformer_info</span><span class="p">(</span><span class="n">compute_loading</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">orig_regcontrols_df</span> <span class="o">=</span> <span class="n">get_regcontrol_info</span><span class="p">(</span><span class="n">correct_PT_ratio</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">nominal_voltage</span><span class="o">=</span><span class="n">voltage_config</span><span class="p">[</span><span class="s2">&quot;nominal_voltage&quot;</span><span class="p">])</span>
+    <span class="n">orig_capacitors_df</span> <span class="o">=</span> <span class="n">get_capacitor_info</span><span class="p">(</span><span class="n">correct_PT_ratio</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">nominal_voltage</span><span class="o">=</span><span class="n">voltage_config</span><span class="p">[</span><span class="s1">&#39;nominal_voltage&#39;</span><span class="p">])</span>
+
+    <span class="c1"># Initialize dss upgrades file</span>
+    <span class="n">dss_commands_list</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;//This file has all the voltage upgrades</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">]</span>
+    <span class="n">upgrade_status</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>  <span class="c1"># status - whether voltage upgrades done or not</span>
+
+    <span class="c1"># determine voltage violations based on initial limits</span>
+    <span class="n">voltage_upper_limit</span> <span class="o">=</span> <span class="n">voltage_config</span><span class="p">[</span><span class="s2">&quot;initial_upper_limit&quot;</span><span class="p">]</span>
+    <span class="n">voltage_lower_limit</span> <span class="o">=</span> <span class="n">voltage_config</span><span class="p">[</span><span class="s2">&quot;initial_lower_limit&quot;</span><span class="p">]</span>
+
+    <span class="n">initial_xfmr_loading_df</span> <span class="o">=</span> <span class="n">get_all_transformer_info</span><span class="p">(</span><span class="n">compute_loading</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                                                       <span class="n">upper_limit</span><span class="o">=</span><span class="n">thermal_config</span><span class="p">[</span><span class="s1">&#39;xfmr_upper_limit&#39;</span><span class="p">])</span>
+    <span class="n">initial_line_loading_df</span> <span class="o">=</span> <span class="n">get_all_line_info</span><span class="p">(</span><span class="n">compute_loading</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">upper_limit</span><span class="o">=</span><span class="n">thermal_config</span><span class="p">[</span><span class="s1">&#39;line_upper_limit&#39;</span><span class="p">],</span>
+                                                <span class="n">ignore_switch</span><span class="o">=</span><span class="n">ignore_switch</span><span class="p">)</span>
+    <span class="n">initial_bus_voltages_df</span><span class="p">,</span> <span class="n">initial_undervoltage_bus_list</span><span class="p">,</span> <span class="n">initial_overvoltage_bus_list</span><span class="p">,</span> \
+        <span class="n">initial_buses_with_violations</span> <span class="o">=</span> <span class="n">get_bus_voltages</span><span class="p">(</span>
+            <span class="n">voltage_upper_limit</span><span class="o">=</span><span class="n">thermal_config</span><span class="p">[</span><span class="s1">&#39;voltage_upper_limit&#39;</span><span class="p">],</span> <span class="n">voltage_lower_limit</span><span class="o">=</span><span class="n">thermal_config</span><span class="p">[</span><span class="s1">&#39;voltage_lower_limit&#39;</span><span class="p">],</span>
+            <span class="o">**</span><span class="n">pydss_params</span><span class="p">)</span>
+
+    <span class="n">initial_overloaded_xfmr_list</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">initial_xfmr_loading_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">initial_xfmr_loading_df</span><span class="p">[</span><span class="s1">&#39;status&#39;</span><span class="p">]</span> <span class="o">==</span>
+                                                                    <span class="s1">&#39;overloaded&#39;</span><span class="p">][</span><span class="s1">&#39;name&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">())</span>
+    <span class="n">initial_overloaded_line_list</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">initial_line_loading_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">initial_line_loading_df</span><span class="p">[</span><span class="s1">&#39;status&#39;</span><span class="p">]</span> <span class="o">==</span>
+                                                                    <span class="s1">&#39;overloaded&#39;</span><span class="p">][</span><span class="s1">&#39;name&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">())</span>
+
+    <span class="n">output_text</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="n">output_text</span><span class="p">[</span><span class="s1">&#39;Initial&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;max_voltage_on_any_bus&#39;</span><span class="p">:</span> <span class="n">initial_bus_voltages_df</span><span class="p">[</span><span class="s1">&#39;Max per unit voltage&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span>
+        <span class="s1">&#39;min_voltage_on_any_bus&#39;</span><span class="p">:</span> <span class="n">initial_bus_voltages_df</span><span class="p">[</span><span class="s1">&#39;Min per unit voltage&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span>
+        <span class="s1">&#39;num_of_buses_with_voltage_violations&#39;</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">initial_undervoltage_bus_list</span><span class="p">)</span> <span class="o">+</span> <span class="nb">len</span><span class="p">(</span><span class="n">initial_overvoltage_bus_list</span><span class="p">),</span>
+        <span class="s1">&#39;num_of_overvoltage_violations_buses_above_voltage_upper_limit&#39;</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">initial_overvoltage_bus_list</span><span class="p">),</span>
+        <span class="s1">&#39;voltage_upper_limit&#39;</span><span class="p">:</span> <span class="n">voltage_upper_limit</span><span class="p">,</span>
+        <span class="s1">&#39;num_of_undervoltage_violations_buses_below_voltage_lower_limit&#39;</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">initial_undervoltage_bus_list</span><span class="p">),</span>
+        <span class="s1">&#39;voltage_lower_limit&#39;</span><span class="p">:</span> <span class="n">voltage_lower_limit</span><span class="p">,</span>
+        <span class="s1">&#39;max_line_loading&#39;</span><span class="p">:</span> <span class="n">initial_line_loading_df</span><span class="p">[</span><span class="s1">&#39;max_per_unit_loading&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span>
+        <span class="s1">&#39;max_xfmr_loading&#39;</span><span class="p">:</span> <span class="n">initial_xfmr_loading_df</span><span class="p">[</span><span class="s1">&#39;max_per_unit_loading&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span>
+        <span class="s1">&#39;num_of_lines_with_violations_above_line_upper_limit&#39;</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">initial_overloaded_line_list</span><span class="p">),</span>
+        <span class="s1">&#39;line_upper_limit&#39;</span><span class="p">:</span> <span class="n">thermal_config</span><span class="p">[</span><span class="s1">&#39;line_upper_limit&#39;</span><span class="p">],</span>
+        <span class="s1">&#39;num_of_xfmrs_with_violations_above_xfmr_upper_limit&#39;</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">initial_overloaded_xfmr_list</span><span class="p">),</span>
+        <span class="s1">&#39;xfmr_upper_limit&#39;</span><span class="p">:</span> <span class="n">thermal_config</span><span class="p">[</span><span class="s1">&#39;xfmr_upper_limit&#39;</span><span class="p">]</span>
+    <span class="p">}</span>
+
+    <span class="n">convert_summary_dict_to_df</span><span class="p">(</span><span class="n">output_text</span><span class="p">)</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">voltage_summary_file</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="c1"># if there are no buses with violations based on initial check, don&#39;t get into upgrade process</span>
+    <span class="c1"># directly go to end of file</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">initial_buses_with_violations</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;No Voltage Upgrades Required.&quot;</span><span class="p">)</span>
+        <span class="n">upgrade_status</span> <span class="o">=</span> <span class="s1">&#39;No Voltage Upgrades needed&#39;</span>  <span class="c1"># status - whether voltage upgrades done or not</span>
+    <span class="c1"># else, if there are bus violations based on initial check, start voltage upgrades process</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="c1"># change voltage checking thresholds. determine violations based on final limits</span>
+        <span class="n">voltage_upper_limit</span> <span class="o">=</span> <span class="n">voltage_config</span><span class="p">[</span><span class="s2">&quot;final_upper_limit&quot;</span><span class="p">]</span>
+        <span class="n">voltage_lower_limit</span> <span class="o">=</span> <span class="n">voltage_config</span><span class="p">[</span><span class="s2">&quot;final_lower_limit&quot;</span><span class="p">]</span>
+
+        <span class="n">upgrade_status</span> <span class="o">=</span> <span class="s1">&#39;Voltage Upgrades were needed&#39;</span>  <span class="c1"># status - whether voltage upgrades done or not</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Voltage Upgrades Required.&quot;</span><span class="p">)</span>
+
+        <span class="n">start_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Simulation Start time: </span><span class="si">{</span><span class="n">start_time</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="c1"># start with capacitors</span>
+        <span class="k">if</span> <span class="n">CAPACITOR_ACTION_FLAG</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">orig_capacitors_df</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Capacitors are present in the network. Perform capacitor bank control modifications.&quot;</span><span class="p">)</span>
+            <span class="c1"># correct cap control parameters: change to voltage controlled, correct PT ratio. Add cap control if not present</span>
+            <span class="n">capcontrol_parameter_commands_list</span> <span class="o">=</span> <span class="n">correct_capacitor_parameters</span><span class="p">(</span>
+                <span class="n">default_capacitor_settings</span><span class="o">=</span><span class="n">default_capacitor_settings</span><span class="p">,</span> <span class="n">orig_capacitors_df</span><span class="o">=</span><span class="n">orig_capacitors_df</span><span class="p">,</span>
+                <span class="n">nominal_voltage</span><span class="o">=</span><span class="n">voltage_config</span><span class="p">[</span><span class="s1">&#39;nominal_voltage&#39;</span><span class="p">],</span> <span class="o">**</span><span class="n">pydss_params</span><span class="p">)</span>
+            <span class="n">dss_commands_list</span> <span class="o">=</span> <span class="n">dss_commands_list</span> <span class="o">+</span> <span class="n">capcontrol_parameter_commands_list</span>
+            <span class="n">bus_voltages_df</span><span class="p">,</span> <span class="n">undervoltage_bus_list</span><span class="p">,</span> <span class="n">overvoltage_bus_list</span><span class="p">,</span> <span class="n">buses_with_violations</span> <span class="o">=</span> <span class="n">get_bus_voltages</span><span class="p">(</span>
+                <span class="n">voltage_upper_limit</span><span class="o">=</span><span class="n">voltage_upper_limit</span><span class="p">,</span> <span class="n">voltage_lower_limit</span><span class="o">=</span><span class="n">voltage_lower_limit</span><span class="p">,</span> <span class="o">**</span><span class="n">pydss_params</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">buses_with_violations</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="c1"># get capacitors dataframe before any settings changes are made</span>
+                <span class="n">nosetting_changes_capacitors_df</span> <span class="o">=</span> <span class="n">get_capacitor_info</span><span class="p">(</span><span class="n">correct_PT_ratio</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+                <span class="c1"># sweep through all capacitor settings, and store objective function</span>
+                <span class="n">capacitor_sweep_df</span> <span class="o">=</span> <span class="n">sweep_capacitor_settings</span><span class="p">(</span><span class="n">voltage_config</span><span class="o">=</span><span class="n">voltage_config</span><span class="p">,</span>
+                                                              <span class="n">initial_capacitors_df</span><span class="o">=</span><span class="n">nosetting_changes_capacitors_df</span><span class="p">,</span>
+                                                              <span class="n">default_capacitor_settings</span><span class="o">=</span><span class="n">default_capacitor_settings</span><span class="p">,</span>
+                                                              <span class="n">voltage_upper_limit</span><span class="o">=</span><span class="n">voltage_upper_limit</span><span class="p">,</span>
+                                                              <span class="n">voltage_lower_limit</span><span class="o">=</span><span class="n">voltage_lower_limit</span><span class="p">,</span> <span class="o">**</span><span class="n">pydss_params</span><span class="p">)</span>
+                <span class="c1"># choose best capacitor settings</span>
+                <span class="n">capacitors_df</span><span class="p">,</span> <span class="n">capcontrol_settings_commands_list</span> <span class="o">=</span> <span class="n">choose_best_capacitor_sweep_setting</span><span class="p">(</span>
+                    <span class="n">capacitor_sweep_df</span><span class="o">=</span><span class="n">capacitor_sweep_df</span><span class="p">,</span> <span class="n">initial_capacitors_df</span><span class="o">=</span><span class="n">nosetting_changes_capacitors_df</span><span class="p">,</span>
+                    <span class="o">**</span><span class="n">pydss_params</span><span class="p">)</span>
+                <span class="n">dss_commands_list</span> <span class="o">=</span> <span class="n">dss_commands_list</span> <span class="o">+</span> <span class="n">capcontrol_settings_commands_list</span>
+            <span class="c1"># determine voltage violations after capacitor changes</span>
+            <span class="n">bus_voltages_df</span><span class="p">,</span> <span class="n">undervoltage_bus_list</span><span class="p">,</span> <span class="n">overvoltage_bus_list</span><span class="p">,</span> <span class="n">buses_with_violations</span> <span class="o">=</span> <span class="n">get_bus_voltages</span><span class="p">(</span>
+                <span class="n">voltage_upper_limit</span><span class="o">=</span><span class="n">voltage_upper_limit</span><span class="p">,</span> <span class="n">voltage_lower_limit</span><span class="o">=</span><span class="n">voltage_lower_limit</span><span class="p">,</span> <span class="o">**</span><span class="n">pydss_params</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;No capacitor banks exist in the system&quot;</span><span class="p">)</span>
+
+        <span class="c1"># next: existing regulators</span>
+        <span class="c1"># Do a settings sweep of existing reg control devices (other than sub LTC) after correcting their other</span>
+        <span class="c1">#  parameters such as ratios etc</span>
+        <span class="k">if</span> <span class="n">EXISTING_REGULATOR_SWEEP_ACTION</span> <span class="ow">and</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">orig_regcontrols_df</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">buses_with_violations</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">):</span>
+            <span class="c1"># first correct regcontrol parameters (ptratio) including substation LTC, if present</span>
+            <span class="n">regcontrols_parameter_command_list</span> <span class="o">=</span> <span class="n">correct_regcontrol_parameters</span><span class="p">(</span><span class="n">orig_regcontrols_df</span><span class="o">=</span><span class="n">orig_regcontrols_df</span><span class="p">,</span>
+                                                                               <span class="o">**</span><span class="n">pydss_params</span><span class="p">)</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Settings sweep for existing reg control devices (excluding substation LTC).&quot;</span><span class="p">)</span>
+            <span class="n">regcontrol_sweep_df</span> <span class="o">=</span> <span class="n">sweep_regcontrol_settings</span><span class="p">(</span><span class="n">voltage_config</span><span class="o">=</span><span class="n">voltage_config</span><span class="p">,</span>
+                                                            <span class="n">initial_regcontrols_df</span><span class="o">=</span><span class="n">orig_regcontrols_df</span><span class="p">,</span>
+                                                            <span class="n">voltage_upper_limit</span><span class="o">=</span><span class="n">voltage_upper_limit</span><span class="p">,</span> <span class="n">voltage_lower_limit</span><span class="o">=</span><span class="n">voltage_lower_limit</span><span class="p">,</span>
+                                                            <span class="n">exclude_sub_ltc</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">only_sub_ltc</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="o">**</span><span class="n">pydss_params</span><span class="p">)</span>
+            <span class="c1"># reload circuit after settings sweep</span>
+            <span class="n">reload_dss_circuit</span><span class="p">(</span><span class="n">dss_file_list</span><span class="o">=</span><span class="n">dss_file_list</span><span class="p">,</span> <span class="n">commands_list</span><span class="o">=</span><span class="n">dss_commands_list</span><span class="p">,</span> <span class="o">**</span><span class="n">pydss_params</span><span class="p">)</span>
+            <span class="n">regcontrols_df</span><span class="p">,</span> <span class="n">regcontrol_settings_commands_list</span> <span class="o">=</span> <span class="n">choose_best_regcontrol_sweep_setting</span><span class="p">(</span>
+                <span class="n">regcontrol_sweep_df</span><span class="o">=</span><span class="n">regcontrol_sweep_df</span><span class="p">,</span> <span class="n">initial_regcontrols_df</span><span class="o">=</span><span class="n">orig_regcontrols_df</span><span class="p">,</span> <span class="n">exclude_sub_ltc</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                <span class="n">only_sub_ltc</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="o">**</span><span class="n">pydss_params</span><span class="p">)</span>
+            <span class="c1"># added to commands list only if it is different from original</span>
+            <span class="c1"># will this need to be removed if it&#39;s different later</span>
+            <span class="n">dss_commands_list</span> <span class="o">=</span> <span class="n">dss_commands_list</span> <span class="o">+</span> <span class="n">regcontrol_settings_commands_list</span> <span class="o">+</span> \
+                <span class="n">regcontrols_parameter_command_list</span>
+        <span class="c1"># Writing out the results before adding new devices</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Write upgrades to dss file, before adding new devices.&quot;</span><span class="p">)</span>
+        <span class="n">write_text_file</span><span class="p">(</span><span class="n">string_list</span><span class="o">=</span><span class="n">dss_commands_list</span><span class="p">,</span> <span class="n">text_file_path</span><span class="o">=</span><span class="n">voltage_upgrades_dss_filepath</span><span class="p">)</span>
+
+        <span class="c1"># determine voltage violations after changes</span>
+        <span class="n">bus_voltages_df</span><span class="p">,</span> <span class="n">undervoltage_bus_list</span><span class="p">,</span> <span class="n">overvoltage_bus_list</span><span class="p">,</span> <span class="n">buses_with_violations</span> <span class="o">=</span> <span class="n">get_bus_voltages</span><span class="p">(</span>
+            <span class="n">voltage_upper_limit</span><span class="o">=</span><span class="n">voltage_upper_limit</span><span class="p">,</span> <span class="n">voltage_lower_limit</span><span class="o">=</span><span class="n">voltage_lower_limit</span><span class="p">,</span> <span class="o">**</span><span class="n">pydss_params</span><span class="p">)</span>
+
+        <span class="c1"># Use this block for adding a substation LTC, correcting its settings and running a sub LTC settings sweep.</span>
+        <span class="c1"># if LTC exists, first try to correct its non set point simulation settings.</span>
+        <span class="c1"># If this does not correct everything, correct its set points through a sweep.</span>
+        <span class="c1"># If LTC does not exist, add one including a xfmr if required, then do a settings sweep if required</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">voltage_config</span><span class="p">[</span><span class="s1">&#39;use_ltc_placement&#39;</span><span class="p">])</span> <span class="ow">and</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">buses_with_violations</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">):</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Enter Substation LTC module.&quot;</span><span class="p">)</span>
+            <span class="n">subltc_present_flag</span> <span class="o">=</span> <span class="p">(</span>
+                <span class="nb">len</span><span class="p">(</span><span class="n">orig_regcontrols_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">orig_regcontrols_df</span><span class="p">[</span><span class="s1">&#39;at_substation_xfmr_flag&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="kc">True</span><span class="p">])</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span>
+            <span class="c1"># if there is no substation transformer in the network</span>
+            <span class="k">if</span> <span class="n">orig_ckt_info</span><span class="p">[</span><span class="s1">&#39;substation_xfmr&#39;</span><span class="p">]</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="c1"># check add substation transformer and add ltc reg control on it</span>
+                <span class="n">add_subxfmr_commands</span> <span class="o">=</span> <span class="n">add_substation_xfmr</span><span class="p">(</span><span class="o">**</span><span class="n">pydss_params</span><span class="p">)</span>
+                <span class="n">pass_flag</span><span class="p">,</span> <span class="n">add_subltc_commands</span> <span class="o">=</span> <span class="n">add_new_regcontrol_command</span><span class="p">(</span>
+                    <span class="n">xfmr_info_series</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">orig_ckt_info</span><span class="p">[</span><span class="s1">&#39;substation_xfmr&#39;</span><span class="p">]),</span>
+                    <span class="n">default_regcontrol_settings</span><span class="o">=</span><span class="n">default_subltc_settings</span><span class="p">,</span>
+                    <span class="n">nominal_voltage</span><span class="o">=</span><span class="n">voltage_config</span><span class="p">[</span><span class="s2">&quot;nominal_voltage&quot;</span><span class="p">],</span> <span class="o">**</span><span class="n">pydss_params</span><span class="p">)</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="n">pass_flag</span><span class="p">:</span>
+                    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;No convergence after adding regulator control at substation LTC. &quot;</span>
+                                <span class="s2">&quot;Check if there is any setting that has convergence. Else remove substation LTC&quot;</span><span class="p">)</span>
+                    <span class="n">reload_dss_circuit</span><span class="p">(</span><span class="n">dss_file_list</span><span class="o">=</span><span class="n">dss_file_list</span><span class="p">,</span> <span class="n">commands_list</span><span class="o">=</span><span class="n">dss_commands_list</span> <span class="o">+</span> <span class="n">add_subltc_commands</span><span class="p">,</span>
+                                       <span class="o">**</span><span class="n">pydss_params</span><span class="p">)</span>
+                <span class="c1"># this needs to be collected again, since a new regulator control might have been added at the substation</span>
+                <span class="n">initial_sub_regcontrols_df</span> <span class="o">=</span> <span class="n">get_regcontrol_info</span><span class="p">(</span><span class="n">correct_PT_ratio</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                                                                 <span class="n">nominal_voltage</span><span class="o">=</span><span class="n">voltage_config</span><span class="p">[</span><span class="s2">&quot;nominal_voltage&quot;</span><span class="p">])</span>
+                <span class="c1"># sweep through settings and identify best setting</span>
+                <span class="n">subltc_controls_df</span><span class="p">,</span> <span class="n">subltc_control_settings_commands_list</span> <span class="o">=</span> <span class="n">sweep_and_choose_regcontrol_setting</span><span class="p">(</span>
+                    <span class="n">voltage_config</span><span class="o">=</span><span class="n">voltage_config</span><span class="p">,</span> <span class="n">initial_regcontrols_df</span><span class="o">=</span><span class="n">initial_sub_regcontrols_df</span><span class="p">,</span>
+                    <span class="n">upper_limit</span><span class="o">=</span><span class="n">voltage_upper_limit</span><span class="p">,</span> <span class="n">lower_limit</span><span class="o">=</span><span class="n">voltage_lower_limit</span><span class="p">,</span> <span class="n">exclude_sub_ltc</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                    <span class="n">only_sub_ltc</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">dss_file_list</span><span class="o">=</span><span class="n">dss_file_list</span><span class="p">,</span>
+                    <span class="n">dss_commands_list</span><span class="o">=</span><span class="n">dss_commands_list</span> <span class="o">+</span> <span class="n">add_subltc_commands</span><span class="p">,</span> <span class="o">**</span><span class="n">pydss_params</span><span class="p">)</span>
+                <span class="n">circuit_solve_and_check</span><span class="p">(</span><span class="n">raise_exception</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="o">**</span><span class="n">pydss_params</span><span class="p">)</span>
+                <span class="n">dss_commands_list</span> <span class="o">=</span> <span class="n">dss_commands_list</span> <span class="o">+</span> <span class="n">add_subxfmr_commands</span> <span class="o">+</span> <span class="n">add_subltc_commands</span> <span class="o">+</span> \
+                    <span class="n">subltc_control_settings_commands_list</span>
+            <span class="c1"># if substation transformer is present but there are no regulator controls on the subltc</span>
+            <span class="k">elif</span> <span class="p">(</span><span class="n">orig_ckt_info</span><span class="p">[</span><span class="s1">&#39;substation_xfmr&#39;</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="ow">not</span> <span class="n">subltc_present_flag</span><span class="p">):</span>
+                <span class="n">pass_flag</span><span class="p">,</span> <span class="n">add_subltc_commands</span> <span class="o">=</span> <span class="n">add_new_regcontrol_command</span><span class="p">(</span>
+                    <span class="n">xfmr_info_series</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">orig_ckt_info</span><span class="p">[</span><span class="s1">&#39;substation_xfmr&#39;</span><span class="p">]),</span>
+                    <span class="n">default_regcontrol_settings</span><span class="o">=</span><span class="n">default_subltc_settings</span><span class="p">,</span>
+                    <span class="n">nominal_voltage</span><span class="o">=</span><span class="n">voltage_config</span><span class="p">[</span><span class="s2">&quot;nominal_voltage&quot;</span><span class="p">],</span> <span class="o">**</span><span class="n">pydss_params</span><span class="p">)</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="n">pass_flag</span><span class="p">:</span>
+                    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;No convergence after adding regulator control at substation LTC. &quot;</span>
+                                <span class="s2">&quot;Check if there is any setting that has convergence. Else remove substation LTC&quot;</span><span class="p">)</span>
+                    <span class="n">reload_dss_circuit</span><span class="p">(</span><span class="n">dss_file_list</span><span class="o">=</span><span class="n">dss_file_list</span><span class="p">,</span> <span class="n">commands_list</span><span class="o">=</span><span class="n">dss_commands_list</span> <span class="o">+</span> <span class="n">add_subltc_commands</span><span class="p">,</span>
+                                       <span class="o">**</span><span class="n">pydss_params</span><span class="p">)</span>
+                <span class="c1"># this needs to be collected again, since a new regulator control might have been added at the substation</span>
+                <span class="n">initial_sub_regcontrols_df</span> <span class="o">=</span> <span class="n">get_regcontrol_info</span><span class="p">(</span><span class="n">correct_PT_ratio</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                                                                 <span class="n">nominal_voltage</span><span class="o">=</span><span class="n">voltage_config</span><span class="p">[</span><span class="s2">&quot;nominal_voltage&quot;</span><span class="p">])</span>
+                <span class="c1"># sweep through settings and identify best setting</span>
+                <span class="n">subltc_controls_df</span><span class="p">,</span> <span class="n">subltc_control_settings_commands_list</span> <span class="o">=</span> <span class="n">sweep_and_choose_regcontrol_setting</span><span class="p">(</span>
+                    <span class="n">voltage_config</span><span class="o">=</span><span class="n">voltage_config</span><span class="p">,</span> <span class="n">initial_regcontrols_df</span><span class="o">=</span><span class="n">initial_sub_regcontrols_df</span><span class="p">,</span>
+                    <span class="n">upper_limit</span><span class="o">=</span><span class="n">voltage_upper_limit</span><span class="p">,</span> <span class="n">lower_limit</span><span class="o">=</span><span class="n">voltage_lower_limit</span><span class="p">,</span> <span class="n">exclude_sub_ltc</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                    <span class="n">only_sub_ltc</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">dss_file_list</span><span class="o">=</span><span class="n">dss_file_list</span><span class="p">,</span>
+                    <span class="n">dss_commands_list</span><span class="o">=</span><span class="n">dss_commands_list</span> <span class="o">+</span> <span class="n">add_subltc_commands</span><span class="p">,</span> <span class="o">**</span><span class="n">pydss_params</span><span class="p">)</span>
+                <span class="n">circuit_solve_and_check</span><span class="p">(</span><span class="n">raise_exception</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="o">**</span><span class="n">pydss_params</span><span class="p">)</span>
+                <span class="n">dss_commands_list</span> <span class="o">=</span> <span class="n">dss_commands_list</span> <span class="o">+</span> <span class="n">add_subltc_commands</span> <span class="o">+</span> <span class="n">subltc_control_settings_commands_list</span>
+            <span class="c1"># if substation transformer, and reg controls are both present</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">initial_sub_regcontrols_df</span> <span class="o">=</span> <span class="n">get_regcontrol_info</span><span class="p">(</span><span class="n">correct_PT_ratio</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                                                                 <span class="n">nominal_voltage</span><span class="o">=</span><span class="n">voltage_config</span><span class="p">[</span><span class="s2">&quot;nominal_voltage&quot;</span><span class="p">])</span>
+                <span class="c1"># sweep through settings and identify best setting</span>
+                <span class="n">subltc_controls_df</span><span class="p">,</span> <span class="n">subltc_control_settings_commands_list</span> <span class="o">=</span> <span class="n">sweep_and_choose_regcontrol_setting</span><span class="p">(</span>
+                    <span class="n">voltage_config</span><span class="o">=</span><span class="n">voltage_config</span><span class="p">,</span> <span class="n">initial_regcontrols_df</span><span class="o">=</span><span class="n">initial_sub_regcontrols_df</span><span class="p">,</span>
+                    <span class="n">upper_limit</span><span class="o">=</span><span class="n">voltage_upper_limit</span><span class="p">,</span> <span class="n">lower_limit</span><span class="o">=</span><span class="n">voltage_lower_limit</span><span class="p">,</span> <span class="n">exclude_sub_ltc</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                    <span class="n">only_sub_ltc</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">dss_file_list</span><span class="o">=</span><span class="n">dss_file_list</span><span class="p">,</span>
+                    <span class="n">dss_commands_list</span><span class="o">=</span><span class="n">dss_commands_list</span><span class="p">,</span> <span class="o">**</span><span class="n">pydss_params</span><span class="p">)</span>
+                <span class="n">circuit_solve_and_check</span><span class="p">(</span><span class="n">raise_exception</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="o">**</span><span class="n">pydss_params</span><span class="p">)</span>
+                <span class="n">dss_commands_list</span> <span class="o">=</span> <span class="n">dss_commands_list</span> <span class="o">+</span> <span class="n">subltc_control_settings_commands_list</span>
+
+        <span class="c1"># determine voltage violations after changes</span>
+        <span class="n">bus_voltages_df</span><span class="p">,</span> <span class="n">undervoltage_bus_list</span><span class="p">,</span> <span class="n">overvoltage_bus_list</span><span class="p">,</span> <span class="n">buses_with_violations</span> <span class="o">=</span> <span class="n">get_bus_voltages</span><span class="p">(</span>
+            <span class="n">voltage_upper_limit</span><span class="o">=</span><span class="n">voltage_upper_limit</span><span class="p">,</span> <span class="n">voltage_lower_limit</span><span class="o">=</span><span class="n">voltage_lower_limit</span><span class="p">,</span> <span class="o">**</span><span class="n">pydss_params</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">buses_with_violations</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="nb">min</span><span class="p">((</span><span class="mi">100</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">initial_buses_with_violations</span><span class="p">)),</span> <span class="mi">500</span><span class="p">,</span>
+                                             <span class="nb">len</span><span class="p">(</span><span class="n">dss</span><span class="o">.</span><span class="n">Circuit</span><span class="o">.</span><span class="n">AllBusNames</span><span class="p">())):</span>
+            <span class="c1"># if number of buses with violations is very high, the loop for adding new regulators will take very long</span>
+            <span class="c1"># so disable this block</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;At this point, number of buses with violations is </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">buses_with_violations</span><span class="p">)</span><span class="si">}</span><span class="s2">, but initial &quot;</span>
+                        <span class="sa">f</span><span class="s2">&quot;number of buses with violations is </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">initial_buses_with_violations</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;So disable option for addition of new regulators&quot;</span><span class="p">)</span>
+            <span class="n">voltage_config</span><span class="p">[</span><span class="s2">&quot;place_new_regulators&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span>
+
+        <span class="k">if</span> <span class="n">voltage_config</span><span class="p">[</span><span class="s2">&quot;place_new_regulators&quot;</span><span class="p">]</span> <span class="ow">and</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">buses_with_violations</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">):</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Place new regulators.&quot;</span><span class="p">)</span>
+            <span class="c1"># do compare objective function and choose best scenario, before placement of new regulators</span>
+            <span class="n">max_regulators</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="n">voltage_config</span><span class="p">[</span><span class="s2">&quot;max_regulators&quot;</span><span class="p">],</span> <span class="nb">len</span><span class="p">(</span><span class="n">buses_with_violations</span><span class="p">)))</span>
+            <span class="n">circuit_source</span> <span class="o">=</span> <span class="n">orig_ckt_info</span><span class="p">[</span><span class="s2">&quot;source_bus&quot;</span><span class="p">]</span>
+            <span class="n">regcontrol_cluster_commands</span> <span class="o">=</span> <span class="n">determine_new_regulator_location</span><span class="p">(</span><span class="n">max_regs</span><span class="o">=</span><span class="n">max_regulators</span><span class="p">,</span>
+                                                                           <span class="n">circuit_source</span><span class="o">=</span><span class="n">circuit_source</span><span class="p">,</span>
+                                                                           <span class="n">buses_with_violations</span><span class="o">=</span><span class="n">buses_with_violations</span><span class="p">,</span>
+                                                                           <span class="n">voltage_upper_limit</span><span class="o">=</span><span class="n">voltage_upper_limit</span><span class="p">,</span>
+                                                                           <span class="n">voltage_lower_limit</span><span class="o">=</span><span class="n">voltage_lower_limit</span><span class="p">,</span> <span class="n">create_plot</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                                                                           <span class="n">voltage_config</span><span class="o">=</span><span class="n">voltage_config</span><span class="p">,</span>
+                                                                           <span class="n">default_regcontrol_settings</span><span class="o">=</span><span class="n">DEFAULT_REGCONTROL_SETTINGS</span><span class="p">,</span> <span class="o">**</span><span class="n">pydss_params</span><span class="p">)</span>
+            <span class="n">dss_commands_list</span> <span class="o">=</span> <span class="n">dss_commands_list</span> <span class="o">+</span> <span class="n">regcontrol_cluster_commands</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Settings sweep for existing reg control devices (other than sub LTC).&quot;</span><span class="p">)</span>
+            <span class="n">regcontrol_sweep_df</span> <span class="o">=</span> <span class="n">sweep_regcontrol_settings</span><span class="p">(</span><span class="n">voltage_config</span><span class="o">=</span><span class="n">voltage_config</span><span class="p">,</span>
+                                                            <span class="n">initial_regcontrols_df</span><span class="o">=</span><span class="n">orig_regcontrols_df</span><span class="p">,</span>
+                                                            <span class="n">voltage_upper_limit</span><span class="o">=</span><span class="n">voltage_upper_limit</span><span class="p">,</span> <span class="n">voltage_lower_limit</span><span class="o">=</span><span class="n">voltage_lower_limit</span><span class="p">,</span>
+                                                            <span class="n">exclude_sub_ltc</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">only_sub_ltc</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="o">**</span><span class="n">pydss_params</span><span class="p">)</span>
+            <span class="c1"># reload circuit after settings sweep</span>
+            <span class="n">reload_dss_circuit</span><span class="p">(</span><span class="n">dss_file_list</span><span class="o">=</span><span class="n">dss_file_list</span><span class="p">,</span> <span class="n">commands_list</span><span class="o">=</span><span class="n">dss_commands_list</span><span class="p">,</span>
+                               <span class="o">**</span><span class="n">pydss_params</span><span class="p">)</span>  <span class="c1"># reload circuit after settings sweep</span>
+            <span class="n">regcontrols_df</span><span class="p">,</span> <span class="n">regcontrol_settings_commands_list</span> <span class="o">=</span> <span class="n">choose_best_regcontrol_sweep_setting</span><span class="p">(</span>
+                <span class="n">regcontrol_sweep_df</span><span class="o">=</span><span class="n">regcontrol_sweep_df</span><span class="p">,</span> <span class="n">initial_regcontrols_df</span><span class="o">=</span><span class="n">orig_regcontrols_df</span><span class="p">,</span> <span class="o">**</span><span class="n">pydss_params</span><span class="p">)</span>
+            <span class="n">dss_commands_list</span> <span class="o">=</span> <span class="n">dss_commands_list</span> <span class="o">+</span> <span class="n">regcontrol_settings_commands_list</span>
+
+        <span class="c1"># logger.info(f&quot;Checking objective function to determine best possible upgrades.\n &quot;</span>
+        <span class="c1">#             f&quot;At stages: 1) Before addition of new devices. 2) With Substation LTC.&quot;)</span>
+        <span class="c1"># final_settings_commands = compare_objective_function()</span>
+        <span class="n">dss_commands_list</span> <span class="o">=</span> <span class="n">dss_commands_list</span>
+
+    <span class="n">write_text_file</span><span class="p">(</span><span class="n">string_list</span><span class="o">=</span><span class="n">dss_commands_list</span><span class="p">,</span> <span class="n">text_file_path</span><span class="o">=</span><span class="n">voltage_upgrades_dss_filepath</span><span class="p">)</span>
+    <span class="n">reload_dss_circuit</span><span class="p">(</span><span class="n">dss_file_list</span><span class="o">=</span><span class="p">[</span><span class="n">master_path</span><span class="p">,</span> <span class="n">thermal_upgrades_dss_filepath</span><span class="p">,</span> <span class="n">voltage_upgrades_dss_filepath</span><span class="p">],</span>
+                       <span class="n">commands_list</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">pydss_params</span><span class="p">)</span>
+    <span class="c1"># reading new objects (after upgrades)</span>
+    <span class="n">new_ckt_info</span> <span class="o">=</span> <span class="n">get_circuit_info</span><span class="p">()</span>
+    <span class="n">new_xfmrs_df</span> <span class="o">=</span> <span class="n">get_all_transformer_info</span><span class="p">(</span><span class="n">compute_loading</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">new_regcontrols_df</span> <span class="o">=</span> <span class="n">get_regcontrol_info</span><span class="p">(</span><span class="n">correct_PT_ratio</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">nominal_voltage</span><span class="o">=</span><span class="n">voltage_config</span><span class="p">[</span><span class="s2">&quot;nominal_voltage&quot;</span><span class="p">])</span>
+    <span class="n">new_capacitors_df</span> <span class="o">=</span> <span class="n">get_capacitor_info</span><span class="p">(</span><span class="n">correct_PT_ratio</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">nominal_voltage</span><span class="o">=</span><span class="n">voltage_config</span><span class="p">[</span><span class="s1">&#39;nominal_voltage&#39;</span><span class="p">])</span>
+    <span class="n">processed_cap</span> <span class="o">=</span> <span class="n">get_capacitor_upgrades</span><span class="p">(</span><span class="n">orig_capacitors_df</span><span class="o">=</span><span class="n">orig_capacitors_df</span><span class="p">,</span> <span class="n">new_capacitors_df</span><span class="o">=</span><span class="n">new_capacitors_df</span><span class="p">)</span>
+    <span class="n">processed_reg</span> <span class="o">=</span> <span class="n">get_regulator_upgrades</span><span class="p">(</span><span class="n">orig_regcontrols_df</span><span class="o">=</span><span class="n">orig_regcontrols_df</span><span class="p">,</span> <span class="n">new_regcontrols_df</span><span class="o">=</span><span class="n">new_regcontrols_df</span><span class="p">,</span> 
+                                           <span class="n">orig_xfmrs_df</span><span class="o">=</span><span class="n">orig_xfmrs_df</span><span class="p">,</span> <span class="n">new_ckt_info</span><span class="o">=</span><span class="n">new_ckt_info</span><span class="p">)</span>
+    <span class="n">processed_cap</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">processed_reg</span><span class="p">)</span>
+    <span class="n">processed_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="o">.</span><span class="n">from_dict</span><span class="p">(</span><span class="n">processed_cap</span><span class="p">,</span> <span class="n">orient</span><span class="o">=</span><span class="s1">&#39;index&#39;</span><span class="p">)</span>
+    <span class="n">processed_df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">output_csv_voltage_upgrades_filepath</span><span class="p">)</span>
+    <span class="n">bus_voltages_df</span><span class="p">,</span> <span class="n">undervoltage_bus_list</span><span class="p">,</span> <span class="n">overvoltage_bus_list</span><span class="p">,</span> <span class="n">buses_with_violations</span> <span class="o">=</span> <span class="n">get_bus_voltages</span><span class="p">(</span>
+        <span class="n">voltage_upper_limit</span><span class="o">=</span><span class="n">voltage_upper_limit</span><span class="p">,</span> <span class="n">voltage_lower_limit</span><span class="o">=</span><span class="n">voltage_lower_limit</span><span class="p">,</span> <span class="o">**</span><span class="n">pydss_params</span><span class="p">)</span>
+    
+    <span class="n">xfmr_loading_df</span> <span class="o">=</span> <span class="n">get_all_transformer_info</span><span class="p">(</span><span class="n">compute_loading</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">upper_limit</span><span class="o">=</span><span class="n">thermal_config</span><span class="p">[</span><span class="s1">&#39;xfmr_upper_limit&#39;</span><span class="p">])</span>
+    <span class="n">line_loading_df</span> <span class="o">=</span> <span class="n">get_all_line_info</span><span class="p">(</span><span class="n">compute_loading</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">upper_limit</span><span class="o">=</span><span class="n">thermal_config</span><span class="p">[</span><span class="s1">&#39;line_upper_limit&#39;</span><span class="p">],</span> <span class="n">ignore_switch</span><span class="o">=</span><span class="n">ignore_switch</span><span class="p">)</span>
+    <span class="n">overloaded_xfmr_list</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">xfmr_loading_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">xfmr_loading_df</span><span class="p">[</span><span class="s1">&#39;status&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;overloaded&#39;</span><span class="p">][</span><span class="s1">&#39;name&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">())</span>
+    <span class="n">overloaded_line_list</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">line_loading_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">line_loading_df</span><span class="p">[</span><span class="s1">&#39;status&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;overloaded&#39;</span><span class="p">][</span><span class="s1">&#39;name&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">())</span>
+
+    <span class="n">output_text</span><span class="p">[</span><span class="s1">&#39;Final&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;max_voltage_on_any_bus&#39;</span><span class="p">:</span> <span class="n">bus_voltages_df</span><span class="p">[</span><span class="s1">&#39;Max per unit voltage&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span>
+        <span class="s1">&#39;min_voltage_on_any_bus&#39;</span><span class="p">:</span> <span class="n">bus_voltages_df</span><span class="p">[</span><span class="s1">&#39;Min per unit voltage&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span>
+        <span class="s1">&#39;num_of_buses_with_voltage_violations&#39;</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">undervoltage_bus_list</span><span class="p">)</span> <span class="o">+</span> <span class="nb">len</span><span class="p">(</span><span class="n">overvoltage_bus_list</span><span class="p">),</span>
+        <span class="s1">&#39;num_of_overvoltage_violations_buses_above_voltage_upper_limit&#39;</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">overvoltage_bus_list</span><span class="p">),</span>
+        <span class="s1">&#39;voltage_upper_limit&#39;</span><span class="p">:</span> <span class="n">voltage_upper_limit</span><span class="p">,</span>
+        <span class="s1">&#39;num_of_undervoltage_violations_buses_below_voltage_lower_limit&#39;</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">undervoltage_bus_list</span><span class="p">),</span>
+        <span class="s1">&#39;voltage_lower_limit&#39;</span><span class="p">:</span> <span class="n">voltage_lower_limit</span><span class="p">,</span>
+        <span class="s1">&#39;max_line_loading&#39;</span><span class="p">:</span> <span class="n">line_loading_df</span><span class="p">[</span><span class="s1">&#39;max_per_unit_loading&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span>
+        <span class="s1">&#39;max_xfmr_loading&#39;</span><span class="p">:</span> <span class="n">xfmr_loading_df</span><span class="p">[</span><span class="s1">&#39;max_per_unit_loading&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span>
+        <span class="s1">&#39;num_of_lines_with_violations_above_line_upper_limit&#39;</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">overloaded_line_list</span><span class="p">),</span>
+        <span class="s1">&#39;line_upper_limit&#39;</span><span class="p">:</span> <span class="n">thermal_config</span><span class="p">[</span><span class="s1">&#39;line_upper_limit&#39;</span><span class="p">],</span>
+        <span class="s1">&#39;num_of_xfmrs_with_violations_above_xfmr_upper_limit&#39;</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">overloaded_xfmr_list</span><span class="p">),</span>
+        <span class="s1">&#39;xfmr_upper_limit&#39;</span><span class="p">:</span> <span class="n">thermal_config</span><span class="p">[</span><span class="s1">&#39;xfmr_upper_limit&#39;</span><span class="p">]</span>
+    <span class="p">}</span>
+    <span class="n">convert_summary_dict_to_df</span><span class="p">(</span><span class="n">output_text</span><span class="p">)</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">voltage_summary_file</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2019, NREL.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

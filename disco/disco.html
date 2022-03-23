@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>disco package &mdash; DISCO 0.1 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link href="../_static/style.css" rel="stylesheet" type="text/css">
+
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> DISCO
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">User Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../installation.html#use-conda">Use Conda</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation.html#use-docker">Use Docker</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">Overview</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../overview.html#data-sources">Data Sources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview.html#transform-model">Transform Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview.html#config-jobs">Config Jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview.html#submit-jobs">Submit Jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview.html#result-analysis">Result Analysis</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../quick-start.html">Quick Start</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../quick-start.html#source-data">Source Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../quick-start.html#transform-model">Transform Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../quick-start.html#config-jobs">Config Jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../quick-start.html#submit-jobs">Submit Jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../quick-start.html#result-analysis">Result Analysis</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../data-sources.html">Data Sources</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../data-sources/smart-ds-model-preparation.html">SMART-DS OpenDSS Model Preparation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data-sources.html#gem-model">GEM Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data-sources.html#epri-model">EPRI Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data-sources.html#sourcetree1-model">SourceTree1 Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data-sources.html#sourcetree2-model">SourceTree2 Model</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../pv-deployments.html">PV Deployments</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../pv-deployments.html#sourcetree1-pv-deployments">SourceTree1 PV Deployments</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../transform-models.html">Transform Models</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../transform-models.html#transform-model-help">Transform Model Help</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../transform-models.html#disco-model-in-depth">DISCO Model in Depth</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../analysis-workflows.html">Analysis Workflows</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../analysis-workflows/hosting-capacity-analysis.html">Hosting Capacity Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../analysis-workflows/upgrade-cost-analysis.html">Upgrade Cost Analysis</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../pipelines.html">Pipelines</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../pipelines.html#sourcetree1model">SourceTree1Model</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../debugging-issues.html">Debugging Issues</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../debugging-issues.html#using-jade">Using JADE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../debugging-issues.html#using-pydss">Using PyDSS</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../data-ingestion.html">Data Ingestion</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../data-ingestion.html#ingest-to-new-database">Ingest to New Database</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data-ingestion.html#ingest-to-existing-database">Ingest to Existing Database</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data-ingestion.html#run-database-queries">Run Database Queries</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced-guide.html">Advanced Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../advanced-guide/analysis-deployment.html">Analysis Deployment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../advanced-guide/upgrade-cost-analysis-generic-models.html">Upgrade Cost Analysis JSON Schemas</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contribution</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../build-docs.html">Build docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../license.html">License</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">DISCO</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>disco package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/disco/disco.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="disco-package">
+<h1>disco package<a class="headerlink" href="#disco-package" title="Permalink to this headline">¶</a></h1>
+<section id="subpackages">
+<h2>Subpackages<a class="headerlink" href="#subpackages" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="disco.analysis.html">disco.analysis package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="disco.analysis.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="disco.analysis.html#module-disco.analysis.analysis">disco.analysis.analysis module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="disco.analysis.html#module-disco.analysis.configure">disco.analysis.configure module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="disco.analysis.html#module-disco.analysis.input">disco.analysis.input module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="disco.analysis.html#module-disco.analysis.option">disco.analysis.option module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="disco.analysis.html#module-disco.analysis.postprocess_time_series">disco.analysis.postprocess_time_series module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="disco.analysis.html#module-disco.analysis.snapshot_impact_analysis">disco.analysis.snapshot_impact_analysis module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="disco.analysis.html#module-disco.analysis.time_series_impact_analysis">disco.analysis.time_series_impact_analysis module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="disco.analysis.html#module-disco.analysis">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="disco.cli.html">disco.cli package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="disco.cli.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="disco.cli.html#module-disco.cli.cba_post_process">disco.cli.cba_post_process module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="disco.cli.html#module-disco.cli.collect_feeder_stats">disco.cli.collect_feeder_stats module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="disco.cli.html#module-disco.cli.common">disco.cli.common module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="disco.cli.html#module-disco.cli.compute_hosting_capacity">disco.cli.compute_hosting_capacity module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="disco.cli.html#module-disco.cli.compute_pv_swad">disco.cli.compute_pv_swad module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="disco.cli.html#module-disco.cli.compute_snapshot_hosting_capacity">disco.cli.compute_snapshot_hosting_capacity module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="disco.cli.html#module-disco.cli.compute_snapshot_impact_analysis">disco.cli.compute_snapshot_impact_analysis module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="disco.cli.html#module-disco.cli.compute_time_series_hosting_capacity">disco.cli.compute_time_series_hosting_capacity module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="disco.cli.html#module-disco.cli.compute_time_series_impact_analysis">disco.cli.compute_time_series_impact_analysis module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="disco.cli.html#module-disco.cli.config">disco.cli.config module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="disco.cli.html#module-disco.cli.config_snapshot">disco.cli.config_snapshot module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="disco.cli.html#module-disco.cli.config_time_series">disco.cli.config_time_series module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="disco.cli.html#module-disco.cli.config_upgrade">disco.cli.config_upgrade module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="disco.cli.html#module-disco.cli.configure_analysis">disco.cli.configure_analysis module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="disco.cli.html#module-disco.cli.create_pipeline">disco.cli.create_pipeline module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="disco.cli.html#module-disco.cli.disco">disco.cli.disco module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="disco.cli.html#module-disco.cli.disco_internal">disco.cli.disco_internal module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="disco.cli.html#module-disco.cli.download_source">disco.cli.download_source module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="disco.cli.html#module-disco.cli.ingest_tables">disco.cli.ingest_tables module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="disco.cli.html#module-disco.cli.make_cba_tables">disco.cli.make_cba_tables module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="disco.cli.html#module-disco.cli.make_summary_tables">disco.cli.make_summary_tables module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="disco.cli.html#module-disco.cli.make_upgrade_tables">disco.cli.make_upgrade_tables module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="disco.cli.html#module-disco.cli.prescreen_pv_penetration_levels">disco.cli.prescreen_pv_penetration_levels module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="disco.cli.html#module-disco.cli.pv_deployments">disco.cli.pv_deployments module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="disco.cli.html#module-disco.cli.simulation_models">disco.cli.simulation_models module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="disco.cli.html#module-disco.cli.summarize_hosting_capacity">disco.cli.summarize_hosting_capacity module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="disco.cli.html#module-disco.cli.transform_model">disco.cli.transform_model module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="disco.cli.html#module-disco.cli.upgrade_cost_analysis">disco.cli.upgrade_cost_analysis module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="disco.cli.html#module-disco.cli">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="disco.distribution.html">disco.distribution package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="disco.distribution.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="disco.distribution.html#module-disco.distribution.deployment_parameters">disco.distribution.deployment_parameters module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="disco.distribution.html#module-disco.distribution.distribution_configuration">disco.distribution.distribution_configuration module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="disco.distribution.html#module-disco.distribution.distribution_inputs">disco.distribution.distribution_inputs module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="disco.distribution.html#module-disco.distribution">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="disco.extensions.html">disco.extensions package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="disco.extensions.html#subpackages">Subpackages</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="disco.extensions.pydss_simulation.html">disco.extensions.pydss_simulation package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="disco.extensions.pydss_simulation.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="disco.extensions.pydss_simulation.html#module-disco.extensions.pydss_simulation.cli">disco.extensions.pydss_simulation.cli module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="disco.extensions.pydss_simulation.html#module-disco.extensions.pydss_simulation.estimate_run_minutes">disco.extensions.pydss_simulation.estimate_run_minutes module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="disco.extensions.pydss_simulation.html#module-disco.extensions.pydss_simulation.pydss_configuration">disco.extensions.pydss_simulation.pydss_configuration module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="disco.extensions.pydss_simulation.html#module-disco.extensions.pydss_simulation.pydss_inputs">disco.extensions.pydss_simulation.pydss_inputs module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="disco.extensions.pydss_simulation.html#module-disco.extensions.pydss_simulation.pydss_simulation">disco.extensions.pydss_simulation.pydss_simulation module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="disco.extensions.pydss_simulation.html#module-disco.extensions.pydss_simulation.time_series_impact_analysis_configuration">disco.extensions.pydss_simulation.time_series_impact_analysis_configuration module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="disco.extensions.pydss_simulation.html#module-disco.extensions.pydss_simulation">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="disco.extensions.upgrade_simulation.html">disco.extensions.upgrade_simulation package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="disco.extensions.upgrade_simulation.html#subpackages">Subpackages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="disco.extensions.upgrade_simulation.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="disco.extensions.upgrade_simulation.html#module-disco.extensions.upgrade_simulation.cli">disco.extensions.upgrade_simulation.cli module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="disco.extensions.upgrade_simulation.html#module-disco.extensions.upgrade_simulation.upgrade_configuration">disco.extensions.upgrade_simulation.upgrade_configuration module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="disco.extensions.upgrade_simulation.html#module-disco.extensions.upgrade_simulation.upgrade_inputs">disco.extensions.upgrade_simulation.upgrade_inputs module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="disco.extensions.upgrade_simulation.html#module-disco.extensions.upgrade_simulation.upgrade_parameters">disco.extensions.upgrade_simulation.upgrade_parameters module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="disco.extensions.upgrade_simulation.html#module-disco.extensions.upgrade_simulation.upgrade_simulation">disco.extensions.upgrade_simulation.upgrade_simulation module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="disco.extensions.upgrade_simulation.html#module-disco.extensions.upgrade_simulation">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="disco.extensions.html#module-disco.extensions">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="disco.models.html">disco.models package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="disco.models.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="disco.models.html#module-disco.models.base">disco.models.base module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="disco.models.html#module-disco.models.factory">disco.models.factory module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="disco.models.html#module-disco.models.snapshot_impact_analysis_model">disco.models.snapshot_impact_analysis_model module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="disco.models.html#module-disco.models.time_series_analysis_model">disco.models.time_series_analysis_model module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="disco.models.html#module-disco.models.upgrade_cost_analysis_generic_model">disco.models.upgrade_cost_analysis_generic_model module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="disco.models.html#module-disco.models.upgrade_cost_analysis_model">disco.models.upgrade_cost_analysis_model module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="disco.models.html#module-disco.models.utils">disco.models.utils module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="disco.models.html#module-disco.models">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="disco.pipelines.html">disco.pipelines package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="disco.pipelines.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="disco.pipelines.html#module-disco.pipelines.auto_config">disco.pipelines.auto_config module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="disco.pipelines.html#module-disco.pipelines.base">disco.pipelines.base module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="disco.pipelines.html#module-disco.pipelines.creator">disco.pipelines.creator module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="disco.pipelines.html#module-disco.pipelines.enums">disco.pipelines.enums module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="disco.pipelines.html#module-disco.pipelines.factory">disco.pipelines.factory module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="disco.pipelines.html#module-disco.pipelines.update_config">disco.pipelines.update_config module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="disco.pipelines.html#module-disco.pipelines.utils">disco.pipelines.utils module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="disco.pipelines.html#module-disco.pipelines">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="disco.postprocess.html">disco.postprocess package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="disco.postprocess.html#subpackages">Subpackages</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="disco.postprocess.config.html">disco.postprocess.config package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="disco.postprocess.config.html#module-disco.postprocess.config">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="disco.postprocess.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="disco.postprocess.html#module-disco.postprocess.hcdb">disco.postprocess.hcdb module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="disco.postprocess.html#module-disco.postprocess.hosting_capacity">disco.postprocess.hosting_capacity module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="disco.postprocess.html#module-disco.postprocess">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="disco.pydss.html">disco.pydss package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="disco.pydss.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="disco.pydss.html#module-disco.pydss.common">disco.pydss.common module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="disco.pydss.html#module-disco.pydss.prescreen_pv_penetration_levels">disco.pydss.prescreen_pv_penetration_levels module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="disco.pydss.html#module-disco.pydss.pydss_analysis">disco.pydss.pydss_analysis module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="disco.pydss.html#module-disco.pydss.pydss_configuration_base">disco.pydss.pydss_configuration_base module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="disco.pydss.html#module-disco.pydss.pydss_simulation_base">disco.pydss.pydss_simulation_base module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="disco.pydss.html#module-disco.pydss.pydss_utils">disco.pydss.pydss_utils module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="disco.pydss.html#module-disco.pydss">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="disco.sources.html">disco.sources package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="disco.sources.html#subpackages">Subpackages</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="disco.sources.epri.html">disco.sources.epri package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="disco.sources.epri.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="disco.sources.epri.html#module-disco.sources.epri.download">disco.sources.epri.download module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="disco.sources.epri.html#module-disco.sources.epri.epri_model">disco.sources.epri.epri_model module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="disco.sources.epri.html#module-disco.sources.epri">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="disco.sources.gem.html">disco.sources.gem package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="disco.sources.gem.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="disco.sources.gem.html#module-disco.sources.gem.factory">disco.sources.gem.factory module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="disco.sources.gem.html#module-disco.sources.gem.gem_model">disco.sources.gem.gem_model module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="disco.sources.gem.html#module-disco.sources.gem.make_element_bus_mapping">disco.sources.gem.make_element_bus_mapping module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="disco.sources.gem.html#module-disco.sources.gem.model_input_interface">disco.sources.gem.model_input_interface module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="disco.sources.gem.html#module-disco.sources.gem.open_dss_generator">disco.sources.gem.open_dss_generator module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="disco.sources.gem.html#module-disco.sources.gem">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="disco.sources.source_tree_1.html">disco.sources.source_tree_1 package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="disco.sources.source_tree_1.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="disco.sources.source_tree_1.html#module-disco.sources.source_tree_1.pv_deployments">disco.sources.source_tree_1.pv_deployments module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="disco.sources.source_tree_1.html#module-disco.sources.source_tree_1.source_tree_1_model">disco.sources.source_tree_1.source_tree_1_model module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="disco.sources.source_tree_1.html#module-disco.sources.source_tree_1.source_tree_1_model_inputs">disco.sources.source_tree_1.source_tree_1_model_inputs module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="disco.sources.source_tree_1.html#module-disco.sources.source_tree_1">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="disco.sources.source_tree_2.html">disco.sources.source_tree_2 package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="disco.sources.source_tree_2.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="disco.sources.source_tree_2.html#module-disco.sources.source_tree_2.source_tree_2_model">disco.sources.source_tree_2.source_tree_2_model module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="disco.sources.source_tree_2.html#module-disco.sources.source_tree_2.source_tree_2_model_inputs">disco.sources.source_tree_2.source_tree_2_model_inputs module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="disco.sources.source_tree_2.html#module-disco.sources.source_tree_2">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="disco.sources.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="disco.sources.html#module-disco.sources.base">disco.sources.base module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="disco.sources.html#module-disco.sources.factory">disco.sources.factory module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="disco.sources.html#module-disco.sources">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="disco.storage.html">disco.storage package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="disco.storage.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="disco.storage.html#module-disco.storage.core">disco.storage.core module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="disco.storage.html#module-disco.storage.db">disco.storage.db module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="disco.storage.html#module-disco.storage.exceptions">disco.storage.exceptions module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="disco.storage.html#module-disco.storage.ingesters">disco.storage.ingesters module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="disco.storage.html#module-disco.storage.outputs">disco.storage.outputs module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="disco.storage.html#module-disco.storage.parsers">disco.storage.parsers module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="disco.storage.html#module-disco.storage">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="disco.utils.html">disco.utils package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="disco.utils.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="disco.utils.html#module-disco.utils.custom_type">disco.utils.custom_type module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="disco.utils.html#module-disco.utils.dss_utils">disco.utils.dss_utils module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="disco.utils.html#module-disco.utils.failing_test_bisector">disco.utils.failing_test_bisector module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="disco.utils.html#module-disco.utils">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="module-disco.common">
+<span id="disco-common-module"></span><h2>disco.common module<a class="headerlink" href="#module-disco.common" title="Permalink to this headline">¶</a></h2>
+<p>Common definitions for DISCO</p>
+</section>
+<section id="module-disco.enums">
+<span id="disco-enums-module"></span><h2>disco.enums module<a class="headerlink" href="#module-disco.enums" title="Permalink to this headline">¶</a></h2>
+<p>Enums for the disco package.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="disco.enums.Status">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">disco.enums.</span></span><span class="sig-name descname"><span class="pre">Status</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/enums.html#Status"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.enums.Status" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">enum.Enum</span></code></p>
+<p>Return status.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.enums.Status.GOOD">
+<span class="sig-name descname"><span class="pre">GOOD</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0</span></em><a class="headerlink" href="#disco.enums.Status.GOOD" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.enums.Status.ERROR">
+<span class="sig-name descname"><span class="pre">ERROR</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">1</span></em><a class="headerlink" href="#disco.enums.Status.ERROR" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="disco.enums.Scale">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">disco.enums.</span></span><span class="sig-name descname"><span class="pre">Scale</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/enums.html#Scale"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.enums.Scale" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">enum.Enum</span></code></p>
+<p>Possible values for scale</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.enums.Scale.SMALL">
+<span class="sig-name descname"><span class="pre">SMALL</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'small'</span></em><a class="headerlink" href="#disco.enums.Scale.SMALL" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.enums.Scale.LARGE">
+<span class="sig-name descname"><span class="pre">LARGE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'large'</span></em><a class="headerlink" href="#disco.enums.Scale.LARGE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.enums.get_scale_from_value">
+<span class="sig-prename descclassname"><span class="pre">disco.enums.</span></span><span class="sig-name descname"><span class="pre">get_scale_from_value</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/enums.html#get_scale_from_value"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.enums.get_scale_from_value" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the enum for the given value.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#disco.enums.Scale" title="disco.enums.Scale">Scale</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="disco.enums.Placement">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">disco.enums.</span></span><span class="sig-name descname"><span class="pre">Placement</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/enums.html#Placement"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.enums.Placement" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">enum.Enum</span></code></p>
+<p>Possible values for placement</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.enums.Placement.RANDOM">
+<span class="sig-name descname"><span class="pre">RANDOM</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'random'</span></em><a class="headerlink" href="#disco.enums.Placement.RANDOM" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.enums.Placement.CLOSE">
+<span class="sig-name descname"><span class="pre">CLOSE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'close'</span></em><a class="headerlink" href="#disco.enums.Placement.CLOSE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.enums.Placement.FAR">
+<span class="sig-name descname"><span class="pre">FAR</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'far'</span></em><a class="headerlink" href="#disco.enums.Placement.FAR" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.enums.get_placement_from_value">
+<span class="sig-prename descclassname"><span class="pre">disco.enums.</span></span><span class="sig-name descname"><span class="pre">get_placement_from_value</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/enums.html#get_placement_from_value"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.enums.get_placement_from_value" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the enum for the given value.</p>
+<p>Note: this performs a case-insensitive search because some input
+directories are inconsistent.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#disco.enums.Placement" title="disco.enums.Placement">Placement</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="disco.enums.Mode">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">disco.enums.</span></span><span class="sig-name descname"><span class="pre">Mode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/enums.html#Mode"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.enums.Mode" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">enum.Enum</span></code></p>
+<p>Possible values for computational sequencing mode</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.enums.Mode.PARALLEL">
+<span class="sig-name descname"><span class="pre">PARALLEL</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'parallel'</span></em><a class="headerlink" href="#disco.enums.Mode.PARALLEL" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.enums.Mode.SEQUENTIAL">
+<span class="sig-name descname"><span class="pre">SEQUENTIAL</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'sequential'</span></em><a class="headerlink" href="#disco.enums.Mode.SEQUENTIAL" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="disco.enums.SimulationHierarchy">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">disco.enums.</span></span><span class="sig-name descname"><span class="pre">SimulationHierarchy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/enums.html#SimulationHierarchy"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.enums.SimulationHierarchy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">enum.Enum</span></code></p>
+<p>An enumeration.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.enums.SimulationHierarchy.SUBSTATION">
+<span class="sig-name descname"><span class="pre">SUBSTATION</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'substation'</span></em><a class="headerlink" href="#disco.enums.SimulationHierarchy.SUBSTATION" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.enums.SimulationHierarchy.FEEDER">
+<span class="sig-name descname"><span class="pre">FEEDER</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'feeder'</span></em><a class="headerlink" href="#disco.enums.SimulationHierarchy.FEEDER" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="disco.enums.SimulationOutputs">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">disco.enums.</span></span><span class="sig-name descname"><span class="pre">SimulationOutputs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/enums.html#SimulationOutputs"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.enums.SimulationOutputs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">enum.Enum</span></code></p>
+<p>Defines the possible simulation output types.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.enums.SimulationOutputs.LINE_LOADINGS">
+<span class="sig-name descname"><span class="pre">LINE_LOADINGS</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'line_loadings'</span></em><a class="headerlink" href="#disco.enums.SimulationOutputs.LINE_LOADINGS" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.enums.SimulationOutputs.LINE_LOSSES">
+<span class="sig-name descname"><span class="pre">LINE_LOSSES</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'line_losses'</span></em><a class="headerlink" href="#disco.enums.SimulationOutputs.LINE_LOSSES" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.enums.SimulationOutputs.NODAL_VOLTAGES">
+<span class="sig-name descname"><span class="pre">NODAL_VOLTAGES</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'nodal_voltages'</span></em><a class="headerlink" href="#disco.enums.SimulationOutputs.NODAL_VOLTAGES" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.enums.SimulationOutputs.PV_OUTPUTS">
+<span class="sig-name descname"><span class="pre">PV_OUTPUTS</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'pv_outputs'</span></em><a class="headerlink" href="#disco.enums.SimulationOutputs.PV_OUTPUTS" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.enums.SimulationOutputs.TOTAL_CIRCUIT_POWER">
+<span class="sig-name descname"><span class="pre">TOTAL_CIRCUIT_POWER</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'total_circuit_power'</span></em><a class="headerlink" href="#disco.enums.SimulationOutputs.TOTAL_CIRCUIT_POWER" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.enums.SimulationOutputs.TOTAL_LOSSES">
+<span class="sig-name descname"><span class="pre">TOTAL_LOSSES</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'total_losses'</span></em><a class="headerlink" href="#disco.enums.SimulationOutputs.TOTAL_LOSSES" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.enums.SimulationOutputs.TRANSFORMER_LOADINGS">
+<span class="sig-name descname"><span class="pre">TRANSFORMER_LOADINGS</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'transformer_loadings'</span></em><a class="headerlink" href="#disco.enums.SimulationOutputs.TRANSFORMER_LOADINGS" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="disco.enums.SimulationType">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">disco.enums.</span></span><span class="sig-name descname"><span class="pre">SimulationType</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/enums.html#SimulationType"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.enums.SimulationType" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">enum.Enum</span></code></p>
+<p>Defines the possible simulation types.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.enums.SimulationType.SNAPSHOT">
+<span class="sig-name descname"><span class="pre">SNAPSHOT</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'snapshot'</span></em><a class="headerlink" href="#disco.enums.SimulationType.SNAPSHOT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.enums.SimulationType.QSTS">
+<span class="sig-name descname"><span class="pre">QSTS</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'QSTS'</span></em><a class="headerlink" href="#disco.enums.SimulationType.QSTS" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.enums.SimulationType.TIME_SERIES">
+<span class="sig-name descname"><span class="pre">TIME_SERIES</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'time-series'</span></em><a class="headerlink" href="#disco.enums.SimulationType.TIME_SERIES" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.enums.SimulationType.UPGRADE">
+<span class="sig-name descname"><span class="pre">UPGRADE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'upgrade'</span></em><a class="headerlink" href="#disco.enums.SimulationType.UPGRADE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="disco.enums.AnalysisModelType">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">disco.enums.</span></span><span class="sig-name descname"><span class="pre">AnalysisModelType</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/enums.html#AnalysisModelType"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.enums.AnalysisModelType" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">enum.Enum</span></code></p>
+<p>Represents the type of model used for each analysis type.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.enums.AnalysisModelType.SnapshotImpactAnalysis">
+<span class="sig-name descname"><span class="pre">SnapshotImpactAnalysis</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'SnapshotImpactAnalysis'</span></em><a class="headerlink" href="#disco.enums.AnalysisModelType.SnapshotImpactAnalysis" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.enums.AnalysisModelType.TimeSeriesImpactAnalysis">
+<span class="sig-name descname"><span class="pre">TimeSeriesImpactAnalysis</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'TimeSeriesImpactAnalysis'</span></em><a class="headerlink" href="#disco.enums.AnalysisModelType.TimeSeriesImpactAnalysis" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.enums.AnalysisModelType.UpgradeCostAnalysis">
+<span class="sig-name descname"><span class="pre">UpgradeCostAnalysis</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'UpgradeCostAnalysis'</span></em><a class="headerlink" href="#disco.enums.AnalysisModelType.UpgradeCostAnalysis" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="disco.enums.AnalysisType">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">disco.enums.</span></span><span class="sig-name descname"><span class="pre">AnalysisType</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/enums.html#AnalysisType"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.enums.AnalysisType" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">enum.Enum</span></code></p>
+<p>DISCO user analysis types</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.enums.AnalysisType.IMPACT_ANALYSIS">
+<span class="sig-name descname"><span class="pre">IMPACT_ANALYSIS</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'impact-analysis'</span></em><a class="headerlink" href="#disco.enums.AnalysisType.IMPACT_ANALYSIS" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.enums.AnalysisType.HOSTING_CAPACITY">
+<span class="sig-name descname"><span class="pre">HOSTING_CAPACITY</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'hosting-capacity'</span></em><a class="headerlink" href="#disco.enums.AnalysisType.HOSTING_CAPACITY" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.enums.AnalysisType.COST_BENEFIT">
+<span class="sig-name descname"><span class="pre">COST_BENEFIT</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'cost-benefit'</span></em><a class="headerlink" href="#disco.enums.AnalysisType.COST_BENEFIT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.enums.AnalysisType.UPGRADE_ANALYSIS">
+<span class="sig-name descname"><span class="pre">UPGRADE_ANALYSIS</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'upgrade-analysis'</span></em><a class="headerlink" href="#disco.enums.AnalysisType.UPGRADE_ANALYSIS" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.enums.AnalysisType.NONE">
+<span class="sig-name descname"><span class="pre">NONE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'none'</span></em><a class="headerlink" href="#disco.enums.AnalysisType.NONE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.enums.get_enum_from_str">
+<span class="sig-prename descclassname"><span class="pre">disco.enums.</span></span><span class="sig-name descname"><span class="pre">get_enum_from_str</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">string</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/enums.html#get_enum_from_str"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.enums.get_enum_from_str" title="Permalink to this definition">¶</a></dt>
+<dd><p>Converts a enum that’s been written as a string back to an enum.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>string</strong> (<em>str</em>) – string to convert</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>converted, converted enum or original</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>tuple</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.enums.get_enum_from_value">
+<span class="sig-prename descclassname"><span class="pre">disco.enums.</span></span><span class="sig-name descname"><span class="pre">get_enum_from_value</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cls</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/enums.html#get_enum_from_value"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.enums.get_enum_from_value" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the enum for the given value.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="disco.enums.EnumEncoder">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">disco.enums.</span></span><span class="sig-name descname"><span class="pre">EnumEncoder</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">_dict=&lt;class</span> <span class="pre">'dict'&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">preserve=False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/enums.html#EnumEncoder"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.enums.EnumEncoder" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">toml.encoder.TomlEncoder</span></code></p>
+<p>Custom encoder for enums.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.enums.EnumEncoder.dump_enum">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">dump_enum</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">val</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/enums.html#EnumEncoder.dump_enum"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.enums.EnumEncoder.dump_enum" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the enum value converted to string.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-disco.events">
+<span id="disco-events-module"></span><h2>disco.events module<a class="headerlink" href="#module-disco.events" title="Permalink to this headline">¶</a></h2>
+<p>Defines disco structured log events</p>
+</section>
+<section id="module-disco.exceptions">
+<span id="disco-exceptions-module"></span><h2>disco.exceptions module<a class="headerlink" href="#module-disco.exceptions" title="Permalink to this headline">¶</a></h2>
+<p>Exceptions raised by DISCO</p>
+<dl class="py exception">
+<dt class="sig sig-object py" id="disco.exceptions.DiscoBaseException">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">disco.exceptions.</span></span><span class="sig-name descname"><span class="pre">DiscoBaseException</span></span><a class="reference internal" href="../_modules/disco/exceptions.html#DiscoBaseException"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.exceptions.DiscoBaseException" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">jade.exceptions.JadeBaseException</span></code></p>
+<p>All DISCO exceptions should derive from this.</p>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="disco.exceptions.AnalysisRunException">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">disco.exceptions.</span></span><span class="sig-name descname"><span class="pre">AnalysisRunException</span></span><a class="reference internal" href="../_modules/disco/exceptions.html#AnalysisRunException"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.exceptions.AnalysisRunException" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#disco.exceptions.DiscoBaseException" title="disco.exceptions.DiscoBaseException"><code class="xref py py-class docutils literal notranslate"><span class="pre">disco.exceptions.DiscoBaseException</span></code></a></p>
+<p>Raise when Analysis post-process run failed.</p>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="disco.exceptions.AnalysisConfigurationException">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">disco.exceptions.</span></span><span class="sig-name descname"><span class="pre">AnalysisConfigurationException</span></span><a class="reference internal" href="../_modules/disco/exceptions.html#AnalysisConfigurationException"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.exceptions.AnalysisConfigurationException" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#disco.exceptions.DiscoBaseException" title="disco.exceptions.DiscoBaseException"><code class="xref py py-class docutils literal notranslate"><span class="pre">disco.exceptions.DiscoBaseException</span></code></a></p>
+<p>Raise when Analysis configuration is not valid.</p>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="disco.exceptions.PyDssException">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">disco.exceptions.</span></span><span class="sig-name descname"><span class="pre">PyDssException</span></span><a class="reference internal" href="../_modules/disco/exceptions.html#PyDssException"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.exceptions.PyDssException" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#disco.exceptions.DiscoBaseException" title="disco.exceptions.DiscoBaseException"><code class="xref py py-class docutils literal notranslate"><span class="pre">disco.exceptions.DiscoBaseException</span></code></a></p>
+<p>Raise when PyDSS-related operations failed</p>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="disco.exceptions.PyDssConfigurationException">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">disco.exceptions.</span></span><span class="sig-name descname"><span class="pre">PyDssConfigurationException</span></span><a class="reference internal" href="../_modules/disco/exceptions.html#PyDssConfigurationException"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.exceptions.PyDssConfigurationException" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#disco.exceptions.PyDssException" title="disco.exceptions.PyDssException"><code class="xref py py-class docutils literal notranslate"><span class="pre">disco.exceptions.PyDssException</span></code></a></p>
+<p>Raise when failed to configure PyDSS.</p>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="disco.exceptions.PyDssJobException">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">disco.exceptions.</span></span><span class="sig-name descname"><span class="pre">PyDssJobException</span></span><a class="reference internal" href="../_modules/disco/exceptions.html#PyDssJobException"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.exceptions.PyDssJobException" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#disco.exceptions.DiscoBaseException" title="disco.exceptions.DiscoBaseException"><code class="xref py py-class docutils literal notranslate"><span class="pre">disco.exceptions.DiscoBaseException</span></code></a></p>
+<p>Raise when PyDSS related job operations failed</p>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="disco.exceptions.UnknownSourceType">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">disco.exceptions.</span></span><span class="sig-name descname"><span class="pre">UnknownSourceType</span></span><a class="reference internal" href="../_modules/disco/exceptions.html#UnknownSourceType"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.exceptions.UnknownSourceType" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#disco.exceptions.DiscoBaseException" title="disco.exceptions.DiscoBaseException"><code class="xref py py-class docutils literal notranslate"><span class="pre">disco.exceptions.DiscoBaseException</span></code></a></p>
+<p>Raise when failed to parse the source format</p>
+</dd></dl>
+
+</section>
+<section id="module-disco.version">
+<span id="disco-version-module"></span><h2>disco.version module<a class="headerlink" href="#module-disco.version" title="Permalink to this headline">¶</a></h2>
+<p>disco version number</p>
+</section>
+<section id="module-disco">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-disco" title="Permalink to this headline">¶</a></h2>
+<p>Jade package</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2019, NREL.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

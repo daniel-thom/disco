@@ -1,0 +1,1279 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>disco.models package &mdash; DISCO 0.1 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link href="../_static/style.css" rel="stylesheet" type="text/css">
+
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> DISCO
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">User Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../installation.html#use-conda">Use Conda</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation.html#use-docker">Use Docker</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">Overview</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../overview.html#data-sources">Data Sources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview.html#transform-model">Transform Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview.html#config-jobs">Config Jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview.html#submit-jobs">Submit Jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview.html#result-analysis">Result Analysis</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../quick-start.html">Quick Start</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../quick-start.html#source-data">Source Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../quick-start.html#transform-model">Transform Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../quick-start.html#config-jobs">Config Jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../quick-start.html#submit-jobs">Submit Jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../quick-start.html#result-analysis">Result Analysis</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../data-sources.html">Data Sources</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../data-sources/smart-ds-model-preparation.html">SMART-DS OpenDSS Model Preparation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data-sources.html#gem-model">GEM Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data-sources.html#epri-model">EPRI Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data-sources.html#sourcetree1-model">SourceTree1 Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data-sources.html#sourcetree2-model">SourceTree2 Model</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../pv-deployments.html">PV Deployments</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../pv-deployments.html#sourcetree1-pv-deployments">SourceTree1 PV Deployments</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../transform-models.html">Transform Models</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../transform-models.html#transform-model-help">Transform Model Help</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../transform-models.html#disco-model-in-depth">DISCO Model in Depth</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../analysis-workflows.html">Analysis Workflows</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../analysis-workflows/hosting-capacity-analysis.html">Hosting Capacity Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../analysis-workflows/upgrade-cost-analysis.html">Upgrade Cost Analysis</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../pipelines.html">Pipelines</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../pipelines.html#sourcetree1model">SourceTree1Model</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../debugging-issues.html">Debugging Issues</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../debugging-issues.html#using-jade">Using JADE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../debugging-issues.html#using-pydss">Using PyDSS</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../data-ingestion.html">Data Ingestion</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../data-ingestion.html#ingest-to-new-database">Ingest to New Database</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data-ingestion.html#ingest-to-existing-database">Ingest to Existing Database</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data-ingestion.html#run-database-queries">Run Database Queries</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced-guide.html">Advanced Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../advanced-guide/analysis-deployment.html">Analysis Deployment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../advanced-guide/upgrade-cost-analysis-generic-models.html">Upgrade Cost Analysis JSON Schemas</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contribution</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../build-docs.html">Build docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../license.html">License</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">DISCO</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>disco.models package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/disco/disco.models.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="disco-models-package">
+<h1>disco.models package<a class="headerlink" href="#disco-models-package" title="Permalink to this headline">¶</a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="module-disco.models.base">
+<span id="disco-models-base-module"></span><h2>disco.models.base module<a class="headerlink" href="#module-disco.models.base" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="disco.models.base.DiscoBaseModel">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">disco.models.base.</span></span><span class="sig-name descname"><span class="pre">DiscoBaseModel</span></span><a class="reference internal" href="../_modules/disco/models/base.html#DiscoBaseModel"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.models.base.DiscoBaseModel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">pydantic.main.BaseModel</span></code></p>
+<p>Base input model for DISCO types.</p>
+<p>Create a new model by parsing and validating input data from keyword arguments.</p>
+<p>Raises ValidationError if the input data cannot be parsed to form a valid model.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.models.base.DiscoBaseModel.schema_json">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">schema_json</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">by_alias</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">indent</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">2</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="../_modules/disco/models/base.html#DiscoBaseModel.schema_json"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.models.base.DiscoBaseModel.schema_json" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.models.base.DiscoBaseModel.example">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">example</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">in_list</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="reference internal" href="../_modules/disco/models/base.html#DiscoBaseModel.example"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.models.base.DiscoBaseModel.example" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create an data example for an inputs model</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.models.base.DiscoBaseModel.example_json">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">example_json</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">indent</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">2</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="../_modules/disco/models/base.html#DiscoBaseModel.example_json"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.models.base.DiscoBaseModel.example_json" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a JSON example for an inputs model.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="disco.models.base.PyDSSControllerModel">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">disco.models.base.</span></span><span class="sig-name descname"><span class="pre">PyDSSControllerModel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">controller_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">PyDSS.common.ControllerType</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">disco.models.base.ConstrainedStrValue</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">targets</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">pydantic.types.FilePath</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">pydantic.types.FilePath</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/models/base.html#PyDSSControllerModel"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.models.base.PyDSSControllerModel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#disco.models.base.DiscoBaseModel" title="disco.models.base.DiscoBaseModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">disco.models.base.DiscoBaseModel</span></code></a></p>
+<p>PV Controller on deployment</p>
+<p>Create a new model by parsing and validating input data from keyword arguments.</p>
+<p>Raises ValidationError if the input data cannot be parsed to form a valid model.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.models.base.PyDSSControllerModel.controller_type">
+<span class="sig-name descname"><span class="pre">controller_type</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">PyDSS.common.ControllerType</span></em><a class="headerlink" href="#disco.models.base.PyDSSControllerModel.controller_type" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.models.base.PyDSSControllerModel.name">
+<span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#disco.models.base.PyDSSControllerModel.name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.models.base.PyDSSControllerModel.targets">
+<span class="sig-name descname"><span class="pre">targets</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">pydantic.types.FilePath</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">pydantic.types.FilePath</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#disco.models.base.PyDSSControllerModel.targets" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="disco.models.base.PyDSSControllerModel.Config">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Config</span></span><a class="reference internal" href="../_modules/disco/models/base.html#PyDSSControllerModel.Config"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.models.base.PyDSSControllerModel.Config" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.models.base.PyDSSControllerModel.Config.title">
+<span class="sig-name descname"><span class="pre">title</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'PyDSSControllerModel'</span></em><a class="headerlink" href="#disco.models.base.PyDSSControllerModel.Config.title" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.models.base.PyDSSControllerModel.Config.anystr_strip_whitespace">
+<span class="sig-name descname"><span class="pre">anystr_strip_whitespace</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">True</span></em><a class="headerlink" href="#disco.models.base.PyDSSControllerModel.Config.anystr_strip_whitespace" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.models.base.PyDSSControllerModel.Config.validate_assignment">
+<span class="sig-name descname"><span class="pre">validate_assignment</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">True</span></em><a class="headerlink" href="#disco.models.base.PyDSSControllerModel.Config.validate_assignment" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.models.base.PyDSSControllerModel.validate_pydss_controller_registration">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">validate_pydss_controller_registration</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">values</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="reference internal" href="../_modules/disco/models/base.html#PyDSSControllerModel.validate_pydss_controller_registration"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.models.base.PyDSSControllerModel.validate_pydss_controller_registration" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="disco.models.base.OpenDssDeploymentModel">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">disco.models.base.</span></span><span class="sig-name descname"><span class="pre">OpenDssDeploymentModel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">deployment_file</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">disco.models.base.ConstrainedStrValue</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">substation</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">disco.models.base.ConstrainedStrValue</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">feeder</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">disco.models.base.ConstrainedStrValue</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dc_ac_ratio</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">disco.models.base.ConstrainedFloatValue</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">directory</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pydantic.types.DirectoryPath</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'model-inputs'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kva_to_kw_rating</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">disco.models.base.ConstrainedFloatValue</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">project_data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">{}</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pydss_controllers</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#disco.models.base.PyDSSControllerModel" title="disco.models.base.PyDSSControllerModel"><span class="pre">disco.models.base.PyDSSControllerModel</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#disco.models.base.PyDSSControllerModel" title="disco.models.base.PyDSSControllerModel"><span class="pre">disco.models.base.PyDSSControllerModel</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/models/base.html#OpenDssDeploymentModel"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.models.base.OpenDssDeploymentModel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#disco.models.base.DiscoBaseModel" title="disco.models.base.DiscoBaseModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">disco.models.base.DiscoBaseModel</span></code></a></p>
+<p>PV Deployment on Feeder</p>
+<p>Create a new model by parsing and validating input data from keyword arguments.</p>
+<p>Raises ValidationError if the input data cannot be parsed to form a valid model.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.models.base.OpenDssDeploymentModel.deployment_file">
+<span class="sig-name descname"><span class="pre">deployment_file</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#disco.models.base.OpenDssDeploymentModel.deployment_file" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.models.base.OpenDssDeploymentModel.substation">
+<span class="sig-name descname"><span class="pre">substation</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#disco.models.base.OpenDssDeploymentModel.substation" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.models.base.OpenDssDeploymentModel.feeder">
+<span class="sig-name descname"><span class="pre">feeder</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#disco.models.base.OpenDssDeploymentModel.feeder" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.models.base.OpenDssDeploymentModel.dc_ac_ratio">
+<span class="sig-name descname"><span class="pre">dc_ac_ratio</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><a class="headerlink" href="#disco.models.base.OpenDssDeploymentModel.dc_ac_ratio" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.models.base.OpenDssDeploymentModel.directory">
+<span class="sig-name descname"><span class="pre">directory</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">pydantic.types.DirectoryPath</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#disco.models.base.OpenDssDeploymentModel.directory" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.models.base.OpenDssDeploymentModel.kva_to_kw_rating">
+<span class="sig-name descname"><span class="pre">kva_to_kw_rating</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><a class="headerlink" href="#disco.models.base.OpenDssDeploymentModel.kva_to_kw_rating" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.models.base.OpenDssDeploymentModel.project_data">
+<span class="sig-name descname"><span class="pre">project_data</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">dict</span></em><a class="headerlink" href="#disco.models.base.OpenDssDeploymentModel.project_data" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.models.base.OpenDssDeploymentModel.pydss_controllers">
+<span class="sig-name descname"><span class="pre">pydss_controllers</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#disco.models.base.PyDSSControllerModel" title="disco.models.base.PyDSSControllerModel"><span class="pre">disco.models.base.PyDSSControllerModel</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#disco.models.base.PyDSSControllerModel" title="disco.models.base.PyDSSControllerModel"><span class="pre">disco.models.base.PyDSSControllerModel</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#disco.models.base.OpenDssDeploymentModel.pydss_controllers" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="disco.models.base.OpenDssDeploymentModel.Config">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Config</span></span><a class="reference internal" href="../_modules/disco/models/base.html#OpenDssDeploymentModel.Config"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.models.base.OpenDssDeploymentModel.Config" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.models.base.OpenDssDeploymentModel.Config.title">
+<span class="sig-name descname"><span class="pre">title</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'OpenDssDeploymentModel'</span></em><a class="headerlink" href="#disco.models.base.OpenDssDeploymentModel.Config.title" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.models.base.OpenDssDeploymentModel.Config.anystr_strip_whitespace">
+<span class="sig-name descname"><span class="pre">anystr_strip_whitespace</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">True</span></em><a class="headerlink" href="#disco.models.base.OpenDssDeploymentModel.Config.anystr_strip_whitespace" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.models.base.OpenDssDeploymentModel.Config.validate_assignment">
+<span class="sig-name descname"><span class="pre">validate_assignment</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">True</span></em><a class="headerlink" href="#disco.models.base.OpenDssDeploymentModel.Config.validate_assignment" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="disco.models.base.SimulationModel">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">disco.models.base.</span></span><span class="sig-name descname"><span class="pre">SimulationModel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start_time</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">datetime.datetime</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">end_time</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">datetime.datetime</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">step_resolution</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">disco.models.base.ConstrainedIntValue</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">900</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">simulation_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="disco.html#disco.enums.SimulationType" title="disco.enums.SimulationType"><span class="pre">disco.enums.SimulationType</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">SimulationType.SNAPSHOT</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/models/base.html#SimulationModel"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.models.base.SimulationModel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#disco.models.base.DiscoBaseModel" title="disco.models.base.DiscoBaseModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">disco.models.base.DiscoBaseModel</span></code></a></p>
+<p>DISCO Simulation Configurations</p>
+<p>Create a new model by parsing and validating input data from keyword arguments.</p>
+<p>Raises ValidationError if the input data cannot be parsed to form a valid model.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.models.base.SimulationModel.start_time">
+<span class="sig-name descname"><span class="pre">start_time</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">datetime.datetime</span></em><a class="headerlink" href="#disco.models.base.SimulationModel.start_time" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.models.base.SimulationModel.end_time">
+<span class="sig-name descname"><span class="pre">end_time</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">datetime.datetime</span></em><a class="headerlink" href="#disco.models.base.SimulationModel.end_time" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.models.base.SimulationModel.step_resolution">
+<span class="sig-name descname"><span class="pre">step_resolution</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#disco.models.base.SimulationModel.step_resolution" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.models.base.SimulationModel.simulation_type">
+<span class="sig-name descname"><span class="pre">simulation_type</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="disco.html#disco.enums.SimulationType" title="disco.enums.SimulationType"><span class="pre">disco.enums.SimulationType</span></a></em><a class="headerlink" href="#disco.models.base.SimulationModel.simulation_type" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="disco.models.base.SimulationModel.Config">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Config</span></span><a class="reference internal" href="../_modules/disco/models/base.html#SimulationModel.Config"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.models.base.SimulationModel.Config" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.models.base.SimulationModel.Config.title">
+<span class="sig-name descname"><span class="pre">title</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'SimulationModel'</span></em><a class="headerlink" href="#disco.models.base.SimulationModel.Config.title" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.models.base.SimulationModel.Config.validate_assignment">
+<span class="sig-name descname"><span class="pre">validate_assignment</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">True</span></em><a class="headerlink" href="#disco.models.base.SimulationModel.Config.validate_assignment" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.models.base.SimulationModel.validate_start_time">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">validate_start_time</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">datetime.datetime</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="../_modules/disco/models/base.html#SimulationModel.validate_start_time"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.models.base.SimulationModel.validate_start_time" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.models.base.SimulationModel.validate_end_time">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">validate_end_time</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">datetime.datetime</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="../_modules/disco/models/base.html#SimulationModel.validate_end_time"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.models.base.SimulationModel.validate_end_time" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.models.base.SimulationModel.check_start_end_time">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">check_start_end_time</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">values</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/models/base.html#SimulationModel.check_start_end_time"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.models.base.SimulationModel.check_start_end_time" title="Permalink to this definition">¶</a></dt>
+<dd><p>Validate start/end time for Snapshot simulation.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="disco.models.base.BaseAnalysisModel">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">disco.models.base.</span></span><span class="sig-name descname"><span class="pre">BaseAnalysisModel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">disco.models.base.ConstrainedStrValue</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">disco.models.base.ConstrainedStrValue</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">blocked_by</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Set</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">{}</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">job_order</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">disco.models.base.ConstrainedIntValue</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">disco.models.base.ConstrainedFloatValue</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/models/base.html#BaseAnalysisModel"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.models.base.BaseAnalysisModel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#disco.models.base.DiscoBaseModel" title="disco.models.base.DiscoBaseModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">disco.models.base.DiscoBaseModel</span></code></a></p>
+<p>Base input model for DISCO simulation types.</p>
+<p>Create a new model by parsing and validating input data from keyword arguments.</p>
+<p>Raises ValidationError if the input data cannot be parsed to form a valid model.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.models.base.BaseAnalysisModel.name">
+<span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#disco.models.base.BaseAnalysisModel.name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.models.base.BaseAnalysisModel.model_type">
+<span class="sig-name descname"><span class="pre">model_type</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#disco.models.base.BaseAnalysisModel.model_type" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.models.base.BaseAnalysisModel.blocked_by">
+<span class="sig-name descname"><span class="pre">blocked_by</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Set</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#disco.models.base.BaseAnalysisModel.blocked_by" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.models.base.BaseAnalysisModel.job_order">
+<span class="sig-name descname"><span class="pre">job_order</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#disco.models.base.BaseAnalysisModel.job_order" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="disco.models.base.ImpactAnalysisBaseModel">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">disco.models.base.</span></span><span class="sig-name descname"><span class="pre">ImpactAnalysisBaseModel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">disco.models.base.ConstrainedStrValue</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">disco.models.base.ConstrainedStrValue</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">blocked_by</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Set</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">{}</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">job_order</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">disco.models.base.ConstrainedIntValue</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">disco.models.base.ConstrainedFloatValue</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">base_case</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">disco.models.base.ConstrainedStrValue</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_base_case</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">deployment</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#disco.models.base.OpenDssDeploymentModel" title="disco.models.base.OpenDssDeploymentModel"><span class="pre">disco.models.base.OpenDssDeploymentModel</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">simulation</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#disco.models.base.SimulationModel" title="disco.models.base.SimulationModel"><span class="pre">disco.models.base.SimulationModel</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/models/base.html#ImpactAnalysisBaseModel"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.models.base.ImpactAnalysisBaseModel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#disco.models.base.BaseAnalysisModel" title="disco.models.base.BaseAnalysisModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">disco.models.base.BaseAnalysisModel</span></code></a>, <code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code></p>
+<p>A base model for impact analysis types.</p>
+<p>Create a new model by parsing and validating input data from keyword arguments.</p>
+<p>Raises ValidationError if the input data cannot be parsed to form a valid model.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.models.base.ImpactAnalysisBaseModel.base_case">
+<span class="sig-name descname"><span class="pre">base_case</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#disco.models.base.ImpactAnalysisBaseModel.base_case" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.models.base.ImpactAnalysisBaseModel.is_base_case">
+<span class="sig-name descname"><span class="pre">is_base_case</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">bool</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#disco.models.base.ImpactAnalysisBaseModel.is_base_case" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.models.base.ImpactAnalysisBaseModel.deployment">
+<span class="sig-name descname"><span class="pre">deployment</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#disco.models.base.OpenDssDeploymentModel" title="disco.models.base.OpenDssDeploymentModel"><span class="pre">disco.models.base.OpenDssDeploymentModel</span></a></em><a class="headerlink" href="#disco.models.base.ImpactAnalysisBaseModel.deployment" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.models.base.ImpactAnalysisBaseModel.simulation">
+<span class="sig-name descname"><span class="pre">simulation</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#disco.models.base.SimulationModel" title="disco.models.base.SimulationModel"><span class="pre">disco.models.base.SimulationModel</span></a></em><a class="headerlink" href="#disco.models.base.ImpactAnalysisBaseModel.simulation" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="disco.models.base.ImpactAnalysisBaseModel.Config">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Config</span></span><a class="reference internal" href="../_modules/disco/models/base.html#ImpactAnalysisBaseModel.Config"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.models.base.ImpactAnalysisBaseModel.Config" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.models.base.ImpactAnalysisBaseModel.Config.title">
+<span class="sig-name descname"><span class="pre">title</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'ImpactAnalysisBaseModel'</span></em><a class="headerlink" href="#disco.models.base.ImpactAnalysisBaseModel.Config.title" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.models.base.ImpactAnalysisBaseModel.Config.anystr_strip_whitespace">
+<span class="sig-name descname"><span class="pre">anystr_strip_whitespace</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">True</span></em><a class="headerlink" href="#disco.models.base.ImpactAnalysisBaseModel.Config.anystr_strip_whitespace" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.models.base.ImpactAnalysisBaseModel.Config.validate_assignment">
+<span class="sig-name descname"><span class="pre">validate_assignment</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">True</span></em><a class="headerlink" href="#disco.models.base.ImpactAnalysisBaseModel.Config.validate_assignment" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-disco.models.factory">
+<span id="disco-models-factory-module"></span><h2>disco.models.factory module<a class="headerlink" href="#module-disco.models.factory" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.models.factory.get_model_class_by_analysis_type">
+<span class="sig-prename descclassname"><span class="pre">disco.models.factory.</span></span><span class="sig-name descname"><span class="pre">get_model_class_by_analysis_type</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">analysis_type</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/models/factory.html#get_model_class_by_analysis_type"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.models.factory.get_model_class_by_analysis_type" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the model class for an analysis_type.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>analysis_type</strong> (<a class="reference internal" href="disco.html#disco.enums.AnalysisModelType" title="disco.enums.AnalysisModelType"><em>AnalysisModelType</em></a>) – </p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Will be a subtype of DiscoBaseModel</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>class</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.models.factory.get_model_class_by_name">
+<span class="sig-prename descclassname"><span class="pre">disco.models.factory.</span></span><span class="sig-name descname"><span class="pre">get_model_class_by_name</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/models/factory.html#get_model_class_by_name"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.models.factory.get_model_class_by_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the model class for a name.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>name</strong> (<em>str</em>) – </p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Will be a subtype of DiscoBaseModel</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>class</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.models.factory.make_model">
+<span class="sig-prename descclassname"><span class="pre">disco.models.factory.</span></span><span class="sig-name descname"><span class="pre">make_model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/models/factory.html#make_model"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.models.factory.make_model" title="Permalink to this definition">¶</a></dt>
+<dd><p>Make a model from serialized data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>data</strong> (<em>dict</em>) – </p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Will be a subtype of DiscoBaseModel</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>class</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.models.factory.list_model_classes">
+<span class="sig-prename descclassname"><span class="pre">disco.models.factory.</span></span><span class="sig-name descname"><span class="pre">list_model_classes</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/models/factory.html#list_model_classes"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.models.factory.list_model_classes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return all simulation input models.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>list of model classes</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-disco.models.snapshot_impact_analysis_model">
+<span id="disco-models-snapshot-impact-analysis-model-module"></span><h2>disco.models.snapshot_impact_analysis_model module<a class="headerlink" href="#module-disco.models.snapshot_impact_analysis_model" title="Permalink to this headline">¶</a></h2>
+<p>Defines snapshot impact analysis data model</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="disco.models.snapshot_impact_analysis_model.SnapshotImpactAnalysisModel">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">disco.models.snapshot_impact_analysis_model.</span></span><span class="sig-name descname"><span class="pre">SnapshotImpactAnalysisModel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">disco.models.base.ConstrainedStrValue</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">disco.models.base.ConstrainedStrValue</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">blocked_by</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Set</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">{}</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">job_order</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">disco.models.base.ConstrainedIntValue</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">disco.models.base.ConstrainedFloatValue</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">base_case</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">disco.models.base.ConstrainedStrValue</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_base_case</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">deployment</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#disco.models.base.OpenDssDeploymentModel" title="disco.models.base.OpenDssDeploymentModel"><span class="pre">disco.models.base.OpenDssDeploymentModel</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">simulation</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#disco.models.base.SimulationModel" title="disco.models.base.SimulationModel"><span class="pre">disco.models.base.SimulationModel</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">include_voltage_deviation</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/models/snapshot_impact_analysis_model.html#SnapshotImpactAnalysisModel"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.models.snapshot_impact_analysis_model.SnapshotImpactAnalysisModel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#disco.models.base.ImpactAnalysisBaseModel" title="disco.models.base.ImpactAnalysisBaseModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">disco.models.base.ImpactAnalysisBaseModel</span></code></a></p>
+<p>Data model for snapshot impact analysis</p>
+<p>Create a new model by parsing and validating input data from keyword arguments.</p>
+<p>Raises ValidationError if the input data cannot be parsed to form a valid model.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.models.snapshot_impact_analysis_model.SnapshotImpactAnalysisModel.include_voltage_deviation">
+<span class="sig-name descname"><span class="pre">include_voltage_deviation</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">bool</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#disco.models.snapshot_impact_analysis_model.SnapshotImpactAnalysisModel.include_voltage_deviation" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="disco.models.snapshot_impact_analysis_model.SnapshotImpactAnalysisModel.Config">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Config</span></span><a class="reference internal" href="../_modules/disco/models/snapshot_impact_analysis_model.html#SnapshotImpactAnalysisModel.Config"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.models.snapshot_impact_analysis_model.SnapshotImpactAnalysisModel.Config" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.models.snapshot_impact_analysis_model.SnapshotImpactAnalysisModel.Config.title">
+<span class="sig-name descname"><span class="pre">title</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'SnapshotImpactAnalysisModel'</span></em><a class="headerlink" href="#disco.models.snapshot_impact_analysis_model.SnapshotImpactAnalysisModel.Config.title" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.models.snapshot_impact_analysis_model.SnapshotImpactAnalysisModel.Config.anystr_strip_whitespace">
+<span class="sig-name descname"><span class="pre">anystr_strip_whitespace</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">True</span></em><a class="headerlink" href="#disco.models.snapshot_impact_analysis_model.SnapshotImpactAnalysisModel.Config.anystr_strip_whitespace" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.models.snapshot_impact_analysis_model.SnapshotImpactAnalysisModel.Config.validate_assignment">
+<span class="sig-name descname"><span class="pre">validate_assignment</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">True</span></em><a class="headerlink" href="#disco.models.snapshot_impact_analysis_model.SnapshotImpactAnalysisModel.Config.validate_assignment" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-disco.models.time_series_analysis_model">
+<span id="disco-models-time-series-analysis-model-module"></span><h2>disco.models.time_series_analysis_model module<a class="headerlink" href="#module-disco.models.time_series_analysis_model" title="Permalink to this headline">¶</a></h2>
+<p>Defines time series impact analysis model.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="disco.models.time_series_analysis_model.TimeSeriesAnalysisModel">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">disco.models.time_series_analysis_model.</span></span><span class="sig-name descname"><span class="pre">TimeSeriesAnalysisModel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">disco.models.base.ConstrainedStrValue</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">disco.models.base.ConstrainedStrValue</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">blocked_by</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Set</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">{}</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">job_order</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">disco.models.base.ConstrainedIntValue</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">disco.models.base.ConstrainedFloatValue</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">base_case</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">disco.models.base.ConstrainedStrValue</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_base_case</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">deployment</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#disco.models.base.OpenDssDeploymentModel" title="disco.models.base.OpenDssDeploymentModel"><span class="pre">disco.models.base.OpenDssDeploymentModel</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">simulation</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#disco.models.base.SimulationModel" title="disco.models.base.SimulationModel"><span class="pre">disco.models.base.SimulationModel</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/models/time_series_analysis_model.html#TimeSeriesAnalysisModel"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.models.time_series_analysis_model.TimeSeriesAnalysisModel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#disco.models.base.ImpactAnalysisBaseModel" title="disco.models.base.ImpactAnalysisBaseModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">disco.models.base.ImpactAnalysisBaseModel</span></code></a></p>
+<p>Data model for time series impact analysis</p>
+<p>Create a new model by parsing and validating input data from keyword arguments.</p>
+<p>Raises ValidationError if the input data cannot be parsed to form a valid model.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="disco.models.time_series_analysis_model.TimeSeriesAnalysisModel.Config">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Config</span></span><a class="reference internal" href="../_modules/disco/models/time_series_analysis_model.html#TimeSeriesAnalysisModel.Config"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.models.time_series_analysis_model.TimeSeriesAnalysisModel.Config" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.models.time_series_analysis_model.TimeSeriesAnalysisModel.Config.title">
+<span class="sig-name descname"><span class="pre">title</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'TimeSeriesAnalysisModel'</span></em><a class="headerlink" href="#disco.models.time_series_analysis_model.TimeSeriesAnalysisModel.Config.title" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.models.time_series_analysis_model.TimeSeriesAnalysisModel.Config.anystr_strip_whitespace">
+<span class="sig-name descname"><span class="pre">anystr_strip_whitespace</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">True</span></em><a class="headerlink" href="#disco.models.time_series_analysis_model.TimeSeriesAnalysisModel.Config.anystr_strip_whitespace" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.models.time_series_analysis_model.TimeSeriesAnalysisModel.Config.validate_assignment">
+<span class="sig-name descname"><span class="pre">validate_assignment</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">True</span></em><a class="headerlink" href="#disco.models.time_series_analysis_model.TimeSeriesAnalysisModel.Config.validate_assignment" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.models.time_series_analysis_model.TimeSeriesAnalysisModel.base_case">
+<span class="sig-name descname"><span class="pre">base_case</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#disco.models.time_series_analysis_model.TimeSeriesAnalysisModel.base_case" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.models.time_series_analysis_model.TimeSeriesAnalysisModel.is_base_case">
+<span class="sig-name descname"><span class="pre">is_base_case</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">bool</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#disco.models.time_series_analysis_model.TimeSeriesAnalysisModel.is_base_case" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.models.time_series_analysis_model.TimeSeriesAnalysisModel.deployment">
+<span class="sig-name descname"><span class="pre">deployment</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#disco.models.base.OpenDssDeploymentModel" title="disco.models.base.OpenDssDeploymentModel"><span class="pre">disco.models.base.OpenDssDeploymentModel</span></a></em><a class="headerlink" href="#disco.models.time_series_analysis_model.TimeSeriesAnalysisModel.deployment" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.models.time_series_analysis_model.TimeSeriesAnalysisModel.simulation">
+<span class="sig-name descname"><span class="pre">simulation</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#disco.models.base.SimulationModel" title="disco.models.base.SimulationModel"><span class="pre">disco.models.base.SimulationModel</span></a></em><a class="headerlink" href="#disco.models.time_series_analysis_model.TimeSeriesAnalysisModel.simulation" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.models.time_series_analysis_model.TimeSeriesAnalysisModel.model_type">
+<span class="sig-name descname"><span class="pre">model_type</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#disco.models.time_series_analysis_model.TimeSeriesAnalysisModel.model_type" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.models.time_series_analysis_model.TimeSeriesAnalysisModel.name">
+<span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#disco.models.time_series_analysis_model.TimeSeriesAnalysisModel.name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.models.time_series_analysis_model.TimeSeriesAnalysisModel.blocked_by">
+<span class="sig-name descname"><span class="pre">blocked_by</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Set</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#disco.models.time_series_analysis_model.TimeSeriesAnalysisModel.blocked_by" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.models.time_series_analysis_model.TimeSeriesAnalysisModel.job_order">
+<span class="sig-name descname"><span class="pre">job_order</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#disco.models.time_series_analysis_model.TimeSeriesAnalysisModel.job_order" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-disco.models.upgrade_cost_analysis_generic_model">
+<span id="disco-models-upgrade-cost-analysis-generic-model-module"></span><h2>disco.models.upgrade_cost_analysis_generic_model module<a class="headerlink" href="#module-disco.models.upgrade_cost_analysis_generic_model" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="disco.models.upgrade_cost_analysis_generic_model.UpgradeParamsBaseModel">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">disco.models.upgrade_cost_analysis_generic_model.</span></span><span class="sig-name descname"><span class="pre">UpgradeParamsBaseModel</span></span><a class="reference internal" href="../_modules/disco/models/upgrade_cost_analysis_generic_model.html#UpgradeParamsBaseModel"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.models.upgrade_cost_analysis_generic_model.UpgradeParamsBaseModel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">pydantic.main.BaseModel</span></code></p>
+<p>Base model for all upgrade cost analysis parameters</p>
+<p>Create a new model by parsing and validating input data from keyword arguments.</p>
+<p>Raises ValidationError if the input data cannot be parsed to form a valid model.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="disco.models.upgrade_cost_analysis_generic_model.UpgradeParamsBaseModel.Config">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Config</span></span><a class="reference internal" href="../_modules/disco/models/upgrade_cost_analysis_generic_model.html#UpgradeParamsBaseModel.Config"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.models.upgrade_cost_analysis_generic_model.UpgradeParamsBaseModel.Config" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.models.upgrade_cost_analysis_generic_model.UpgradeParamsBaseModel.Config.title">
+<span class="sig-name descname"><span class="pre">title</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'UpgradeParamsBaseModel'</span></em><a class="headerlink" href="#disco.models.upgrade_cost_analysis_generic_model.UpgradeParamsBaseModel.Config.title" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.models.upgrade_cost_analysis_generic_model.UpgradeParamsBaseModel.Config.anystr_strip_whitespace">
+<span class="sig-name descname"><span class="pre">anystr_strip_whitespace</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">True</span></em><a class="headerlink" href="#disco.models.upgrade_cost_analysis_generic_model.UpgradeParamsBaseModel.Config.anystr_strip_whitespace" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.models.upgrade_cost_analysis_generic_model.UpgradeParamsBaseModel.Config.validate_assignment">
+<span class="sig-name descname"><span class="pre">validate_assignment</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">True</span></em><a class="headerlink" href="#disco.models.upgrade_cost_analysis_generic_model.UpgradeParamsBaseModel.Config.validate_assignment" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.models.upgrade_cost_analysis_generic_model.UpgradeParamsBaseModel.Config.validate_all">
+<span class="sig-name descname"><span class="pre">validate_all</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">True</span></em><a class="headerlink" href="#disco.models.upgrade_cost_analysis_generic_model.UpgradeParamsBaseModel.Config.validate_all" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.models.upgrade_cost_analysis_generic_model.UpgradeParamsBaseModel.Config.extra">
+<span class="sig-name descname"><span class="pre">extra</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'forbid'</span></em><a class="headerlink" href="#disco.models.upgrade_cost_analysis_generic_model.UpgradeParamsBaseModel.Config.extra" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.models.upgrade_cost_analysis_generic_model.UpgradeParamsBaseModel.Config.use_enum_values">
+<span class="sig-name descname"><span class="pre">use_enum_values</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></em><a class="headerlink" href="#disco.models.upgrade_cost_analysis_generic_model.UpgradeParamsBaseModel.Config.use_enum_values" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="disco.models.upgrade_cost_analysis_generic_model.ThermalUpgradeParamsModel">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">disco.models.upgrade_cost_analysis_generic_model.</span></span><span class="sig-name descname"><span class="pre">ThermalUpgradeParamsModel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xfmr_upper_limit</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1.25</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">line_upper_limit</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1.25</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">line_design_pu</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.75</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xfmr_design_pu</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.75</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">voltage_upper_limit</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1.05</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">voltage_lower_limit</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.95</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/models/upgrade_cost_analysis_generic_model.html#ThermalUpgradeParamsModel"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.models.upgrade_cost_analysis_generic_model.ThermalUpgradeParamsModel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#disco.models.upgrade_cost_analysis_generic_model.UpgradeParamsBaseModel" title="disco.models.upgrade_cost_analysis_generic_model.UpgradeParamsBaseModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">disco.models.upgrade_cost_analysis_generic_model.UpgradeParamsBaseModel</span></code></a></p>
+<p>Thermal Upgrade Parameters for all jobs in a simulation</p>
+<p>Create a new model by parsing and validating input data from keyword arguments.</p>
+<p>Raises ValidationError if the input data cannot be parsed to form a valid model.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.models.upgrade_cost_analysis_generic_model.ThermalUpgradeParamsModel.xfmr_upper_limit">
+<span class="sig-name descname"><span class="pre">xfmr_upper_limit</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><a class="headerlink" href="#disco.models.upgrade_cost_analysis_generic_model.ThermalUpgradeParamsModel.xfmr_upper_limit" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.models.upgrade_cost_analysis_generic_model.ThermalUpgradeParamsModel.line_upper_limit">
+<span class="sig-name descname"><span class="pre">line_upper_limit</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><a class="headerlink" href="#disco.models.upgrade_cost_analysis_generic_model.ThermalUpgradeParamsModel.line_upper_limit" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.models.upgrade_cost_analysis_generic_model.ThermalUpgradeParamsModel.line_design_pu">
+<span class="sig-name descname"><span class="pre">line_design_pu</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><a class="headerlink" href="#disco.models.upgrade_cost_analysis_generic_model.ThermalUpgradeParamsModel.line_design_pu" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.models.upgrade_cost_analysis_generic_model.ThermalUpgradeParamsModel.xfmr_design_pu">
+<span class="sig-name descname"><span class="pre">xfmr_design_pu</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><a class="headerlink" href="#disco.models.upgrade_cost_analysis_generic_model.ThermalUpgradeParamsModel.xfmr_design_pu" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.models.upgrade_cost_analysis_generic_model.ThermalUpgradeParamsModel.voltage_upper_limit">
+<span class="sig-name descname"><span class="pre">voltage_upper_limit</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><a class="headerlink" href="#disco.models.upgrade_cost_analysis_generic_model.ThermalUpgradeParamsModel.voltage_upper_limit" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.models.upgrade_cost_analysis_generic_model.ThermalUpgradeParamsModel.voltage_lower_limit">
+<span class="sig-name descname"><span class="pre">voltage_lower_limit</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><a class="headerlink" href="#disco.models.upgrade_cost_analysis_generic_model.ThermalUpgradeParamsModel.voltage_lower_limit" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="disco.models.upgrade_cost_analysis_generic_model.VoltageUpgradeParamsModel">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">disco.models.upgrade_cost_analysis_generic_model.</span></span><span class="sig-name descname"><span class="pre">VoltageUpgradeParamsModel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">initial_upper_limit</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1.05</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">initial_lower_limit</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.95</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">final_upper_limit</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1.05</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">final_lower_limit</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.95</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_v</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nominal_voltage</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">120.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nominal_pu_voltage</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tps_to_test</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">capacitor_sweep_voltage_gap</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reg_control_bands</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">[1,</span> <span class="pre">2]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reg_v_delta</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_regulators</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">4</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">place_new_regulators</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_ltc_placement</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/models/upgrade_cost_analysis_generic_model.html#VoltageUpgradeParamsModel"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.models.upgrade_cost_analysis_generic_model.VoltageUpgradeParamsModel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#disco.models.upgrade_cost_analysis_generic_model.UpgradeParamsBaseModel" title="disco.models.upgrade_cost_analysis_generic_model.UpgradeParamsBaseModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">disco.models.upgrade_cost_analysis_generic_model.UpgradeParamsBaseModel</span></code></a></p>
+<p>Voltage Upgrade Parameters for all jobs in a simulation</p>
+<p>Create a new model by parsing and validating input data from keyword arguments.</p>
+<p>Raises ValidationError if the input data cannot be parsed to form a valid model.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.models.upgrade_cost_analysis_generic_model.VoltageUpgradeParamsModel.initial_upper_limit">
+<span class="sig-name descname"><span class="pre">initial_upper_limit</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><a class="headerlink" href="#disco.models.upgrade_cost_analysis_generic_model.VoltageUpgradeParamsModel.initial_upper_limit" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.models.upgrade_cost_analysis_generic_model.VoltageUpgradeParamsModel.initial_lower_limit">
+<span class="sig-name descname"><span class="pre">initial_lower_limit</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><a class="headerlink" href="#disco.models.upgrade_cost_analysis_generic_model.VoltageUpgradeParamsModel.initial_lower_limit" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.models.upgrade_cost_analysis_generic_model.VoltageUpgradeParamsModel.final_upper_limit">
+<span class="sig-name descname"><span class="pre">final_upper_limit</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><a class="headerlink" href="#disco.models.upgrade_cost_analysis_generic_model.VoltageUpgradeParamsModel.final_upper_limit" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.models.upgrade_cost_analysis_generic_model.VoltageUpgradeParamsModel.final_lower_limit">
+<span class="sig-name descname"><span class="pre">final_lower_limit</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><a class="headerlink" href="#disco.models.upgrade_cost_analysis_generic_model.VoltageUpgradeParamsModel.final_lower_limit" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.models.upgrade_cost_analysis_generic_model.VoltageUpgradeParamsModel.target_v">
+<span class="sig-name descname"><span class="pre">target_v</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><a class="headerlink" href="#disco.models.upgrade_cost_analysis_generic_model.VoltageUpgradeParamsModel.target_v" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.models.upgrade_cost_analysis_generic_model.VoltageUpgradeParamsModel.nominal_voltage">
+<span class="sig-name descname"><span class="pre">nominal_voltage</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><a class="headerlink" href="#disco.models.upgrade_cost_analysis_generic_model.VoltageUpgradeParamsModel.nominal_voltage" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.models.upgrade_cost_analysis_generic_model.VoltageUpgradeParamsModel.nominal_pu_voltage">
+<span class="sig-name descname"><span class="pre">nominal_pu_voltage</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><a class="headerlink" href="#disco.models.upgrade_cost_analysis_generic_model.VoltageUpgradeParamsModel.nominal_pu_voltage" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.models.upgrade_cost_analysis_generic_model.VoltageUpgradeParamsModel.tps_to_test">
+<span class="sig-name descname"><span class="pre">tps_to_test</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#disco.models.upgrade_cost_analysis_generic_model.VoltageUpgradeParamsModel.tps_to_test" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.models.upgrade_cost_analysis_generic_model.VoltageUpgradeParamsModel.capacitor_sweep_voltage_gap">
+<span class="sig-name descname"><span class="pre">capacitor_sweep_voltage_gap</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><a class="headerlink" href="#disco.models.upgrade_cost_analysis_generic_model.VoltageUpgradeParamsModel.capacitor_sweep_voltage_gap" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.models.upgrade_cost_analysis_generic_model.VoltageUpgradeParamsModel.reg_control_bands">
+<span class="sig-name descname"><span class="pre">reg_control_bands</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#disco.models.upgrade_cost_analysis_generic_model.VoltageUpgradeParamsModel.reg_control_bands" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.models.upgrade_cost_analysis_generic_model.VoltageUpgradeParamsModel.reg_v_delta">
+<span class="sig-name descname"><span class="pre">reg_v_delta</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><a class="headerlink" href="#disco.models.upgrade_cost_analysis_generic_model.VoltageUpgradeParamsModel.reg_v_delta" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.models.upgrade_cost_analysis_generic_model.VoltageUpgradeParamsModel.max_regulators">
+<span class="sig-name descname"><span class="pre">max_regulators</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#disco.models.upgrade_cost_analysis_generic_model.VoltageUpgradeParamsModel.max_regulators" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.models.upgrade_cost_analysis_generic_model.VoltageUpgradeParamsModel.place_new_regulators">
+<span class="sig-name descname"><span class="pre">place_new_regulators</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#disco.models.upgrade_cost_analysis_generic_model.VoltageUpgradeParamsModel.place_new_regulators" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.models.upgrade_cost_analysis_generic_model.VoltageUpgradeParamsModel.use_ltc_placement">
+<span class="sig-name descname"><span class="pre">use_ltc_placement</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#disco.models.upgrade_cost_analysis_generic_model.VoltageUpgradeParamsModel.use_ltc_placement" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="disco.models.upgrade_cost_analysis_generic_model.UpgradeCostAnalysisGenericModel">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">disco.models.upgrade_cost_analysis_generic_model.</span></span><span class="sig-name descname"><span class="pre">UpgradeCostAnalysisGenericModel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'UpgradeCostAnalysisGenericModel'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">blocked_by</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Set</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">{}</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">job_order</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">disco.models.base.ConstrainedIntValue</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">disco.models.base.ConstrainedFloatValue</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">opendss_model_file</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">estimated_run_minutes</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/models/upgrade_cost_analysis_generic_model.html#UpgradeCostAnalysisGenericModel"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.models.upgrade_cost_analysis_generic_model.UpgradeCostAnalysisGenericModel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#disco.models.base.BaseAnalysisModel" title="disco.models.base.BaseAnalysisModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">disco.models.base.BaseAnalysisModel</span></code></a></p>
+<p>Parameters for each job in a simulation</p>
+<p>Create a new model by parsing and validating input data from keyword arguments.</p>
+<p>Raises ValidationError if the input data cannot be parsed to form a valid model.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.models.upgrade_cost_analysis_generic_model.UpgradeCostAnalysisGenericModel.name">
+<span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#disco.models.upgrade_cost_analysis_generic_model.UpgradeCostAnalysisGenericModel.name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.models.upgrade_cost_analysis_generic_model.UpgradeCostAnalysisGenericModel.opendss_model_file">
+<span class="sig-name descname"><span class="pre">opendss_model_file</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#disco.models.upgrade_cost_analysis_generic_model.UpgradeCostAnalysisGenericModel.opendss_model_file" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.models.upgrade_cost_analysis_generic_model.UpgradeCostAnalysisGenericModel.model_type">
+<span class="sig-name descname"><span class="pre">model_type</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#disco.models.upgrade_cost_analysis_generic_model.UpgradeCostAnalysisGenericModel.model_type" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.models.upgrade_cost_analysis_generic_model.UpgradeCostAnalysisGenericModel.blocked_by">
+<span class="sig-name descname"><span class="pre">blocked_by</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Set</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#disco.models.upgrade_cost_analysis_generic_model.UpgradeCostAnalysisGenericModel.blocked_by" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.models.upgrade_cost_analysis_generic_model.UpgradeCostAnalysisGenericModel.estimated_run_minutes">
+<span class="sig-name descname"><span class="pre">estimated_run_minutes</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#disco.models.upgrade_cost_analysis_generic_model.UpgradeCostAnalysisGenericModel.estimated_run_minutes" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="disco.models.upgrade_cost_analysis_generic_model.PyDssControllerModels">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">disco.models.upgrade_cost_analysis_generic_model.</span></span><span class="sig-name descname"><span class="pre">PyDssControllerModels</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pv_controller</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">PyDSS.controllers.PvControllerModel</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/models/upgrade_cost_analysis_generic_model.html#PyDssControllerModels"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.models.upgrade_cost_analysis_generic_model.PyDssControllerModels" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#disco.models.upgrade_cost_analysis_generic_model.UpgradeParamsBaseModel" title="disco.models.upgrade_cost_analysis_generic_model.UpgradeParamsBaseModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">disco.models.upgrade_cost_analysis_generic_model.UpgradeParamsBaseModel</span></code></a></p>
+<p>Defines the settings for PyDSS controllers</p>
+<p>Create a new model by parsing and validating input data from keyword arguments.</p>
+<p>Raises ValidationError if the input data cannot be parsed to form a valid model.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.models.upgrade_cost_analysis_generic_model.PyDssControllerModels.pv_controller">
+<span class="sig-name descname"><span class="pre">pv_controller</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">PyDSS.controllers.PvControllerModel</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#disco.models.upgrade_cost_analysis_generic_model.PyDssControllerModels.pv_controller" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="disco.models.upgrade_cost_analysis_generic_model.UpgradeCostAnalysisSimulationModel">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">disco.models.upgrade_cost_analysis_generic_model.</span></span><span class="sig-name descname"><span class="pre">UpgradeCostAnalysisSimulationModel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">thermal_upgrade_params</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#disco.models.upgrade_cost_analysis_generic_model.ThermalUpgradeParamsModel" title="disco.models.upgrade_cost_analysis_generic_model.ThermalUpgradeParamsModel"><span class="pre">disco.models.upgrade_cost_analysis_generic_model.ThermalUpgradeParamsModel</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">ThermalUpgradeParamsModel(xfmr_upper_limit=1.25,</span> <span class="pre">line_upper_limit=1.25,</span> <span class="pre">line_design_pu=0.75,</span> <span class="pre">xfmr_design_pu=0.75,</span> <span class="pre">voltage_upper_limit=1.05,</span> <span class="pre">voltage_lower_limit=0.95)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">voltage_upgrade_params</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#disco.models.upgrade_cost_analysis_generic_model.VoltageUpgradeParamsModel" title="disco.models.upgrade_cost_analysis_generic_model.VoltageUpgradeParamsModel"><span class="pre">disco.models.upgrade_cost_analysis_generic_model.VoltageUpgradeParamsModel</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">VoltageUpgradeParamsModel(initial_upper_limit=1.05,</span> <span class="pre">initial_lower_limit=0.95,</span> <span class="pre">final_upper_limit=1.05,</span> <span class="pre">final_lower_limit=0.95,</span> <span class="pre">target_v=1.0,</span> <span class="pre">nominal_voltage=120.0,</span> <span class="pre">nominal_pu_voltage=1.0,</span> <span class="pre">tps_to_test=[],</span> <span class="pre">capacitor_sweep_voltage_gap=1.0,</span> <span class="pre">reg_control_bands=[1,</span> <span class="pre">2],</span> <span class="pre">reg_v_delta=0.5,</span> <span class="pre">max_regulators=4,</span> <span class="pre">place_new_regulators=False,</span> <span class="pre">use_ltc_placement=False)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">upgrade_cost_database</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pydss_controllers</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#disco.models.upgrade_cost_analysis_generic_model.PyDssControllerModels" title="disco.models.upgrade_cost_analysis_generic_model.PyDssControllerModels"><span class="pre">disco.models.upgrade_cost_analysis_generic_model.PyDssControllerModels</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">PyDssControllerModels(pv_controller=None)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">enable_pydss_controllers</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">include_pf1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">jobs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#disco.models.upgrade_cost_analysis_generic_model.UpgradeCostAnalysisGenericModel" title="disco.models.upgrade_cost_analysis_generic_model.UpgradeCostAnalysisGenericModel"><span class="pre">disco.models.upgrade_cost_analysis_generic_model.UpgradeCostAnalysisGenericModel</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/models/upgrade_cost_analysis_generic_model.html#UpgradeCostAnalysisSimulationModel"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.models.upgrade_cost_analysis_generic_model.UpgradeCostAnalysisSimulationModel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">pydantic.main.BaseModel</span></code></p>
+<p>Defines the jobs in an upgrade cost analysis simulation.</p>
+<p>Create a new model by parsing and validating input data from keyword arguments.</p>
+<p>Raises ValidationError if the input data cannot be parsed to form a valid model.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="disco.models.upgrade_cost_analysis_generic_model.UpgradeCostAnalysisSimulationModel.Config">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Config</span></span><a class="reference internal" href="../_modules/disco/models/upgrade_cost_analysis_generic_model.html#UpgradeCostAnalysisSimulationModel.Config"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.models.upgrade_cost_analysis_generic_model.UpgradeCostAnalysisSimulationModel.Config" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.models.upgrade_cost_analysis_generic_model.UpgradeCostAnalysisSimulationModel.Config.title">
+<span class="sig-name descname"><span class="pre">title</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'UpgradeCostAnalysisSimulationModel'</span></em><a class="headerlink" href="#disco.models.upgrade_cost_analysis_generic_model.UpgradeCostAnalysisSimulationModel.Config.title" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.models.upgrade_cost_analysis_generic_model.UpgradeCostAnalysisSimulationModel.Config.anystr_strip_whitespace">
+<span class="sig-name descname"><span class="pre">anystr_strip_whitespace</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">True</span></em><a class="headerlink" href="#disco.models.upgrade_cost_analysis_generic_model.UpgradeCostAnalysisSimulationModel.Config.anystr_strip_whitespace" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.models.upgrade_cost_analysis_generic_model.UpgradeCostAnalysisSimulationModel.Config.validate_assignment">
+<span class="sig-name descname"><span class="pre">validate_assignment</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">True</span></em><a class="headerlink" href="#disco.models.upgrade_cost_analysis_generic_model.UpgradeCostAnalysisSimulationModel.Config.validate_assignment" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.models.upgrade_cost_analysis_generic_model.UpgradeCostAnalysisSimulationModel.Config.validate_all">
+<span class="sig-name descname"><span class="pre">validate_all</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">True</span></em><a class="headerlink" href="#disco.models.upgrade_cost_analysis_generic_model.UpgradeCostAnalysisSimulationModel.Config.validate_all" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.models.upgrade_cost_analysis_generic_model.UpgradeCostAnalysisSimulationModel.Config.extra">
+<span class="sig-name descname"><span class="pre">extra</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'forbid'</span></em><a class="headerlink" href="#disco.models.upgrade_cost_analysis_generic_model.UpgradeCostAnalysisSimulationModel.Config.extra" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.models.upgrade_cost_analysis_generic_model.UpgradeCostAnalysisSimulationModel.Config.use_enum_values">
+<span class="sig-name descname"><span class="pre">use_enum_values</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></em><a class="headerlink" href="#disco.models.upgrade_cost_analysis_generic_model.UpgradeCostAnalysisSimulationModel.Config.use_enum_values" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.models.upgrade_cost_analysis_generic_model.UpgradeCostAnalysisSimulationModel.thermal_upgrade_params">
+<span class="sig-name descname"><span class="pre">thermal_upgrade_params</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#disco.models.upgrade_cost_analysis_generic_model.ThermalUpgradeParamsModel" title="disco.models.upgrade_cost_analysis_generic_model.ThermalUpgradeParamsModel"><span class="pre">disco.models.upgrade_cost_analysis_generic_model.ThermalUpgradeParamsModel</span></a></em><a class="headerlink" href="#disco.models.upgrade_cost_analysis_generic_model.UpgradeCostAnalysisSimulationModel.thermal_upgrade_params" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.models.upgrade_cost_analysis_generic_model.UpgradeCostAnalysisSimulationModel.voltage_upgrade_params">
+<span class="sig-name descname"><span class="pre">voltage_upgrade_params</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#disco.models.upgrade_cost_analysis_generic_model.VoltageUpgradeParamsModel" title="disco.models.upgrade_cost_analysis_generic_model.VoltageUpgradeParamsModel"><span class="pre">disco.models.upgrade_cost_analysis_generic_model.VoltageUpgradeParamsModel</span></a></em><a class="headerlink" href="#disco.models.upgrade_cost_analysis_generic_model.UpgradeCostAnalysisSimulationModel.voltage_upgrade_params" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.models.upgrade_cost_analysis_generic_model.UpgradeCostAnalysisSimulationModel.upgrade_cost_database">
+<span class="sig-name descname"><span class="pre">upgrade_cost_database</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#disco.models.upgrade_cost_analysis_generic_model.UpgradeCostAnalysisSimulationModel.upgrade_cost_database" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.models.upgrade_cost_analysis_generic_model.UpgradeCostAnalysisSimulationModel.pydss_controllers">
+<span class="sig-name descname"><span class="pre">pydss_controllers</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#disco.models.upgrade_cost_analysis_generic_model.PyDssControllerModels" title="disco.models.upgrade_cost_analysis_generic_model.PyDssControllerModels"><span class="pre">disco.models.upgrade_cost_analysis_generic_model.PyDssControllerModels</span></a></em><a class="headerlink" href="#disco.models.upgrade_cost_analysis_generic_model.UpgradeCostAnalysisSimulationModel.pydss_controllers" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.models.upgrade_cost_analysis_generic_model.UpgradeCostAnalysisSimulationModel.enable_pydss_controllers">
+<span class="sig-name descname"><span class="pre">enable_pydss_controllers</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#disco.models.upgrade_cost_analysis_generic_model.UpgradeCostAnalysisSimulationModel.enable_pydss_controllers" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.models.upgrade_cost_analysis_generic_model.UpgradeCostAnalysisSimulationModel.include_pf1">
+<span class="sig-name descname"><span class="pre">include_pf1</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#disco.models.upgrade_cost_analysis_generic_model.UpgradeCostAnalysisSimulationModel.include_pf1" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.models.upgrade_cost_analysis_generic_model.UpgradeCostAnalysisSimulationModel.jobs">
+<span class="sig-name descname"><span class="pre">jobs</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#disco.models.upgrade_cost_analysis_generic_model.UpgradeCostAnalysisGenericModel" title="disco.models.upgrade_cost_analysis_generic_model.UpgradeCostAnalysisGenericModel"><span class="pre">disco.models.upgrade_cost_analysis_generic_model.UpgradeCostAnalysisGenericModel</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#disco.models.upgrade_cost_analysis_generic_model.UpgradeCostAnalysisSimulationModel.jobs" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.models.upgrade_cost_analysis_generic_model.UpgradeCostAnalysisSimulationModel.check_job_names">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">check_job_names</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">values</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/models/upgrade_cost_analysis_generic_model.html#UpgradeCostAnalysisSimulationModel.check_job_names"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.models.upgrade_cost_analysis_generic_model.UpgradeCostAnalysisSimulationModel.check_job_names" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.models.upgrade_cost_analysis_generic_model.UpgradeCostAnalysisSimulationModel.from_file">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pathlib.Path</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/models/upgrade_cost_analysis_generic_model.html#UpgradeCostAnalysisSimulationModel.from_file"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.models.upgrade_cost_analysis_generic_model.UpgradeCostAnalysisSimulationModel.from_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return an instance of UpgradeCostAnalysisSimulationModel from a file</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>filename</strong> (<em>Path</em>) – </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.models.upgrade_cost_analysis_generic_model.UpgradeCostAnalysisSimulationModel.has_pydss_controllers">
+<span class="sig-name descname"><span class="pre">has_pydss_controllers</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/models/upgrade_cost_analysis_generic_model.html#UpgradeCostAnalysisSimulationModel.has_pydss_controllers"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.models.upgrade_cost_analysis_generic_model.UpgradeCostAnalysisSimulationModel.has_pydss_controllers" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return True if a PyDSS controller is defined.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="disco.models.upgrade_cost_analysis_generic_model.UpgradeResultModel">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">disco.models.upgrade_cost_analysis_generic_model.</span></span><span class="sig-name descname"><span class="pre">UpgradeResultModel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scenario</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'control_mode'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stage</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">upgrade_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_voltage_on_any_bus</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_voltage_on_any_bus</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_of_buses_with_voltage_violations</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_of_overvoltage_violations_buses_above_voltage_upper_limit</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">voltage_upper_limit</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_of_undervoltage_violations_buses_below_voltage_lower_limit</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">voltage_lower_limit</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_line_loading</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_xfmr_loading</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_of_lines_with_violations_above_line_upper_limit</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">line_upper_limit</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_of_xfmrs_with_violations_above_xfmr_upper_limit</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xfmr_upper_limit</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/models/upgrade_cost_analysis_generic_model.html#UpgradeResultModel"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.models.upgrade_cost_analysis_generic_model.UpgradeResultModel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#disco.models.upgrade_cost_analysis_generic_model.UpgradeParamsBaseModel" title="disco.models.upgrade_cost_analysis_generic_model.UpgradeParamsBaseModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">disco.models.upgrade_cost_analysis_generic_model.UpgradeParamsBaseModel</span></code></a></p>
+<p>Defines result parameters for thermal upgrades.</p>
+<p>Create a new model by parsing and validating input data from keyword arguments.</p>
+<p>Raises ValidationError if the input data cannot be parsed to form a valid model.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.models.upgrade_cost_analysis_generic_model.UpgradeResultModel.name">
+<span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#disco.models.upgrade_cost_analysis_generic_model.UpgradeResultModel.name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.models.upgrade_cost_analysis_generic_model.UpgradeResultModel.scenario">
+<span class="sig-name descname"><span class="pre">scenario</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#disco.models.upgrade_cost_analysis_generic_model.UpgradeResultModel.scenario" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.models.upgrade_cost_analysis_generic_model.UpgradeResultModel.stage">
+<span class="sig-name descname"><span class="pre">stage</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#disco.models.upgrade_cost_analysis_generic_model.UpgradeResultModel.stage" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.models.upgrade_cost_analysis_generic_model.UpgradeResultModel.upgrade_type">
+<span class="sig-name descname"><span class="pre">upgrade_type</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#disco.models.upgrade_cost_analysis_generic_model.UpgradeResultModel.upgrade_type" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.models.upgrade_cost_analysis_generic_model.UpgradeResultModel.max_voltage_on_any_bus">
+<span class="sig-name descname"><span class="pre">max_voltage_on_any_bus</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><a class="headerlink" href="#disco.models.upgrade_cost_analysis_generic_model.UpgradeResultModel.max_voltage_on_any_bus" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.models.upgrade_cost_analysis_generic_model.UpgradeResultModel.min_voltage_on_any_bus">
+<span class="sig-name descname"><span class="pre">min_voltage_on_any_bus</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><a class="headerlink" href="#disco.models.upgrade_cost_analysis_generic_model.UpgradeResultModel.min_voltage_on_any_bus" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.models.upgrade_cost_analysis_generic_model.UpgradeResultModel.num_of_buses_with_voltage_violations">
+<span class="sig-name descname"><span class="pre">num_of_buses_with_voltage_violations</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#disco.models.upgrade_cost_analysis_generic_model.UpgradeResultModel.num_of_buses_with_voltage_violations" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.models.upgrade_cost_analysis_generic_model.UpgradeResultModel.num_of_overvoltage_violations_buses_above_voltage_upper_limit">
+<span class="sig-name descname"><span class="pre">num_of_overvoltage_violations_buses_above_voltage_upper_limit</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#disco.models.upgrade_cost_analysis_generic_model.UpgradeResultModel.num_of_overvoltage_violations_buses_above_voltage_upper_limit" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.models.upgrade_cost_analysis_generic_model.UpgradeResultModel.voltage_upper_limit">
+<span class="sig-name descname"><span class="pre">voltage_upper_limit</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><a class="headerlink" href="#disco.models.upgrade_cost_analysis_generic_model.UpgradeResultModel.voltage_upper_limit" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.models.upgrade_cost_analysis_generic_model.UpgradeResultModel.num_of_undervoltage_violations_buses_below_voltage_lower_limit">
+<span class="sig-name descname"><span class="pre">num_of_undervoltage_violations_buses_below_voltage_lower_limit</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#disco.models.upgrade_cost_analysis_generic_model.UpgradeResultModel.num_of_undervoltage_violations_buses_below_voltage_lower_limit" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.models.upgrade_cost_analysis_generic_model.UpgradeResultModel.voltage_lower_limit">
+<span class="sig-name descname"><span class="pre">voltage_lower_limit</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><a class="headerlink" href="#disco.models.upgrade_cost_analysis_generic_model.UpgradeResultModel.voltage_lower_limit" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.models.upgrade_cost_analysis_generic_model.UpgradeResultModel.max_line_loading">
+<span class="sig-name descname"><span class="pre">max_line_loading</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><a class="headerlink" href="#disco.models.upgrade_cost_analysis_generic_model.UpgradeResultModel.max_line_loading" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.models.upgrade_cost_analysis_generic_model.UpgradeResultModel.max_xfmr_loading">
+<span class="sig-name descname"><span class="pre">max_xfmr_loading</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><a class="headerlink" href="#disco.models.upgrade_cost_analysis_generic_model.UpgradeResultModel.max_xfmr_loading" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.models.upgrade_cost_analysis_generic_model.UpgradeResultModel.num_of_lines_with_violations_above_line_upper_limit">
+<span class="sig-name descname"><span class="pre">num_of_lines_with_violations_above_line_upper_limit</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#disco.models.upgrade_cost_analysis_generic_model.UpgradeResultModel.num_of_lines_with_violations_above_line_upper_limit" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.models.upgrade_cost_analysis_generic_model.UpgradeResultModel.line_upper_limit">
+<span class="sig-name descname"><span class="pre">line_upper_limit</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><a class="headerlink" href="#disco.models.upgrade_cost_analysis_generic_model.UpgradeResultModel.line_upper_limit" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.models.upgrade_cost_analysis_generic_model.UpgradeResultModel.num_of_xfmrs_with_violations_above_xfmr_upper_limit">
+<span class="sig-name descname"><span class="pre">num_of_xfmrs_with_violations_above_xfmr_upper_limit</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#disco.models.upgrade_cost_analysis_generic_model.UpgradeResultModel.num_of_xfmrs_with_violations_above_xfmr_upper_limit" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.models.upgrade_cost_analysis_generic_model.UpgradeResultModel.xfmr_upper_limit">
+<span class="sig-name descname"><span class="pre">xfmr_upper_limit</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><a class="headerlink" href="#disco.models.upgrade_cost_analysis_generic_model.UpgradeResultModel.xfmr_upper_limit" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="disco.models.upgrade_cost_analysis_generic_model.EquipmentTypeUpgradeCostsModel">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">disco.models.upgrade_cost_analysis_generic_model.</span></span><span class="sig-name descname"><span class="pre">EquipmentTypeUpgradeCostsModel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">count</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">total_cost_usd</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">comment</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/models/upgrade_cost_analysis_generic_model.html#EquipmentTypeUpgradeCostsModel"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.models.upgrade_cost_analysis_generic_model.EquipmentTypeUpgradeCostsModel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#disco.models.upgrade_cost_analysis_generic_model.UpgradeParamsBaseModel" title="disco.models.upgrade_cost_analysis_generic_model.UpgradeParamsBaseModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">disco.models.upgrade_cost_analysis_generic_model.UpgradeParamsBaseModel</span></code></a></p>
+<p>Provides costs for upgrading a type of equipment.</p>
+<p>Create a new model by parsing and validating input data from keyword arguments.</p>
+<p>Raises ValidationError if the input data cannot be parsed to form a valid model.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.models.upgrade_cost_analysis_generic_model.EquipmentTypeUpgradeCostsModel.name">
+<span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#disco.models.upgrade_cost_analysis_generic_model.EquipmentTypeUpgradeCostsModel.name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.models.upgrade_cost_analysis_generic_model.EquipmentTypeUpgradeCostsModel.type">
+<span class="sig-name descname"><span class="pre">type</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#disco.models.upgrade_cost_analysis_generic_model.EquipmentTypeUpgradeCostsModel.type" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.models.upgrade_cost_analysis_generic_model.EquipmentTypeUpgradeCostsModel.count">
+<span class="sig-name descname"><span class="pre">count</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#disco.models.upgrade_cost_analysis_generic_model.EquipmentTypeUpgradeCostsModel.count" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.models.upgrade_cost_analysis_generic_model.EquipmentTypeUpgradeCostsModel.total_cost_usd">
+<span class="sig-name descname"><span class="pre">total_cost_usd</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><a class="headerlink" href="#disco.models.upgrade_cost_analysis_generic_model.EquipmentTypeUpgradeCostsModel.total_cost_usd" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.models.upgrade_cost_analysis_generic_model.EquipmentTypeUpgradeCostsModel.comment">
+<span class="sig-name descname"><span class="pre">comment</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#disco.models.upgrade_cost_analysis_generic_model.EquipmentTypeUpgradeCostsModel.comment" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="disco.models.upgrade_cost_analysis_generic_model.UpgradeSummaryResultsModel">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">disco.models.upgrade_cost_analysis_generic_model.</span></span><span class="sig-name descname"><span class="pre">UpgradeSummaryResultsModel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">violation_summary</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#disco.models.upgrade_cost_analysis_generic_model.UpgradeResultModel" title="disco.models.upgrade_cost_analysis_generic_model.UpgradeResultModel"><span class="pre">disco.models.upgrade_cost_analysis_generic_model.UpgradeResultModel</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">upgrade_costs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#disco.models.upgrade_cost_analysis_generic_model.EquipmentTypeUpgradeCostsModel" title="disco.models.upgrade_cost_analysis_generic_model.EquipmentTypeUpgradeCostsModel"><span class="pre">disco.models.upgrade_cost_analysis_generic_model.EquipmentTypeUpgradeCostsModel</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/models/upgrade_cost_analysis_generic_model.html#UpgradeSummaryResultsModel"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.models.upgrade_cost_analysis_generic_model.UpgradeSummaryResultsModel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#disco.models.upgrade_cost_analysis_generic_model.UpgradeParamsBaseModel" title="disco.models.upgrade_cost_analysis_generic_model.UpgradeParamsBaseModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">disco.models.upgrade_cost_analysis_generic_model.UpgradeParamsBaseModel</span></code></a></p>
+<p>Contains results from all jobs in the simulation.</p>
+<p>Create a new model by parsing and validating input data from keyword arguments.</p>
+<p>Raises ValidationError if the input data cannot be parsed to form a valid model.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.models.upgrade_cost_analysis_generic_model.UpgradeSummaryResultsModel.violation_summary">
+<span class="sig-name descname"><span class="pre">violation_summary</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#disco.models.upgrade_cost_analysis_generic_model.UpgradeResultModel" title="disco.models.upgrade_cost_analysis_generic_model.UpgradeResultModel"><span class="pre">disco.models.upgrade_cost_analysis_generic_model.UpgradeResultModel</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#disco.models.upgrade_cost_analysis_generic_model.UpgradeSummaryResultsModel.violation_summary" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.models.upgrade_cost_analysis_generic_model.UpgradeSummaryResultsModel.upgrade_costs">
+<span class="sig-name descname"><span class="pre">upgrade_costs</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#disco.models.upgrade_cost_analysis_generic_model.EquipmentTypeUpgradeCostsModel" title="disco.models.upgrade_cost_analysis_generic_model.EquipmentTypeUpgradeCostsModel"><span class="pre">disco.models.upgrade_cost_analysis_generic_model.EquipmentTypeUpgradeCostsModel</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#disco.models.upgrade_cost_analysis_generic_model.UpgradeSummaryResultsModel.upgrade_costs" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-disco.models.upgrade_cost_analysis_model">
+<span id="disco-models-upgrade-cost-analysis-model-module"></span><h2>disco.models.upgrade_cost_analysis_model module<a class="headerlink" href="#module-disco.models.upgrade_cost_analysis_model" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="disco.models.upgrade_cost_analysis_model.ParameterOverridesModel">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">disco.models.upgrade_cost_analysis_model.</span></span><span class="sig-name descname"><span class="pre">ParameterOverridesModel</span></span><a class="reference internal" href="../_modules/disco/models/upgrade_cost_analysis_model.html#ParameterOverridesModel"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.models.upgrade_cost_analysis_model.ParameterOverridesModel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#disco.models.base.DiscoBaseModel" title="disco.models.base.DiscoBaseModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">disco.models.base.DiscoBaseModel</span></code></a></p>
+<p>Create a new model by parsing and validating input data from keyword arguments.</p>
+<p>Raises ValidationError if the input data cannot be parsed to form a valid model.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="disco.models.upgrade_cost_analysis_model.ParameterOverridesModel.Config">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Config</span></span><a class="reference internal" href="../_modules/disco/models/upgrade_cost_analysis_model.html#ParameterOverridesModel.Config"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.models.upgrade_cost_analysis_model.ParameterOverridesModel.Config" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.models.upgrade_cost_analysis_model.ParameterOverridesModel.Config.title">
+<span class="sig-name descname"><span class="pre">title</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'ParameterOverridesModel'</span></em><a class="headerlink" href="#disco.models.upgrade_cost_analysis_model.ParameterOverridesModel.Config.title" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.models.upgrade_cost_analysis_model.ParameterOverridesModel.Config.validate_assignment">
+<span class="sig-name descname"><span class="pre">validate_assignment</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">True</span></em><a class="headerlink" href="#disco.models.upgrade_cost_analysis_model.ParameterOverridesModel.Config.validate_assignment" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="disco.models.upgrade_cost_analysis_model.UpgradeCostAnalysisModel">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">disco.models.upgrade_cost_analysis_model.</span></span><span class="sig-name descname"><span class="pre">UpgradeCostAnalysisModel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">disco.models.base.ConstrainedStrValue</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">disco.models.base.ConstrainedStrValue</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">blocked_by</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Set</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">{}</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">job_order</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">disco.models.base.ConstrainedIntValue</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">disco.models.base.ConstrainedFloatValue</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">deployment</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#disco.models.base.OpenDssDeploymentModel" title="disco.models.base.OpenDssDeploymentModel"><span class="pre">disco.models.base.OpenDssDeploymentModel</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">simulation</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#disco.models.base.SimulationModel" title="disco.models.base.SimulationModel"><span class="pre">disco.models.base.SimulationModel</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parameter_overrides</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#disco.models.upgrade_cost_analysis_model.ParameterOverridesModel" title="disco.models.upgrade_cost_analysis_model.ParameterOverridesModel"><span class="pre">disco.models.upgrade_cost_analysis_model.ParameterOverridesModel</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">{}</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/models/upgrade_cost_analysis_model.html#UpgradeCostAnalysisModel"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.models.upgrade_cost_analysis_model.UpgradeCostAnalysisModel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#disco.models.base.BaseAnalysisModel" title="disco.models.base.BaseAnalysisModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">disco.models.base.BaseAnalysisModel</span></code></a></p>
+<p>Create a new model by parsing and validating input data from keyword arguments.</p>
+<p>Raises ValidationError if the input data cannot be parsed to form a valid model.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.models.upgrade_cost_analysis_model.UpgradeCostAnalysisModel.deployment">
+<span class="sig-name descname"><span class="pre">deployment</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#disco.models.base.OpenDssDeploymentModel" title="disco.models.base.OpenDssDeploymentModel"><span class="pre">disco.models.base.OpenDssDeploymentModel</span></a></em><a class="headerlink" href="#disco.models.upgrade_cost_analysis_model.UpgradeCostAnalysisModel.deployment" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.models.upgrade_cost_analysis_model.UpgradeCostAnalysisModel.simulation">
+<span class="sig-name descname"><span class="pre">simulation</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#disco.models.base.SimulationModel" title="disco.models.base.SimulationModel"><span class="pre">disco.models.base.SimulationModel</span></a></em><a class="headerlink" href="#disco.models.upgrade_cost_analysis_model.UpgradeCostAnalysisModel.simulation" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.models.upgrade_cost_analysis_model.UpgradeCostAnalysisModel.parameter_overrides">
+<span class="sig-name descname"><span class="pre">parameter_overrides</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#disco.models.upgrade_cost_analysis_model.ParameterOverridesModel" title="disco.models.upgrade_cost_analysis_model.ParameterOverridesModel"><span class="pre">disco.models.upgrade_cost_analysis_model.ParameterOverridesModel</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#disco.models.upgrade_cost_analysis_model.UpgradeCostAnalysisModel.parameter_overrides" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="disco.models.upgrade_cost_analysis_model.UpgradeCostAnalysisModel.Config">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Config</span></span><a class="reference internal" href="../_modules/disco/models/upgrade_cost_analysis_model.html#UpgradeCostAnalysisModel.Config"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.models.upgrade_cost_analysis_model.UpgradeCostAnalysisModel.Config" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.models.upgrade_cost_analysis_model.UpgradeCostAnalysisModel.Config.title">
+<span class="sig-name descname"><span class="pre">title</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'UpgradeCostAnalysisModel'</span></em><a class="headerlink" href="#disco.models.upgrade_cost_analysis_model.UpgradeCostAnalysisModel.Config.title" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.models.upgrade_cost_analysis_model.UpgradeCostAnalysisModel.Config.anystr_strip_whitespace">
+<span class="sig-name descname"><span class="pre">anystr_strip_whitespace</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">True</span></em><a class="headerlink" href="#disco.models.upgrade_cost_analysis_model.UpgradeCostAnalysisModel.Config.anystr_strip_whitespace" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.models.upgrade_cost_analysis_model.UpgradeCostAnalysisModel.Config.validate_assignment">
+<span class="sig-name descname"><span class="pre">validate_assignment</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">True</span></em><a class="headerlink" href="#disco.models.upgrade_cost_analysis_model.UpgradeCostAnalysisModel.Config.validate_assignment" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-disco.models.utils">
+<span id="disco-models-utils-module"></span><h2>disco.models.utils module<a class="headerlink" href="#module-disco.models.utils" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="disco.models.utils.SchemaDict">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">disco.models.utils.</span></span><span class="sig-name descname"><span class="pre">SchemaDict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/models/utils.html#SchemaDict"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.models.utils.SchemaDict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">collections.UserDict</span></code></p>
+<dl class="py property">
+<dt class="sig sig-object py" id="disco.models.utils.SchemaDict.title">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">title</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#disco.models.utils.SchemaDict.title" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="disco.models.utils.SchemaDict.description">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">description</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#disco.models.utils.SchemaDict.description" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="disco.models.utils.SchemaDict.type">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">type</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Any</span></em><a class="headerlink" href="#disco.models.utils.SchemaDict.type" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="disco.models.utils.SchemaDict.required">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">required</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#disco.models.utils.SchemaDict.required" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="disco.models.utils.SchemaDict.properties">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">properties</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">dict</span></em><a class="headerlink" href="#disco.models.utils.SchemaDict.properties" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="disco.models.utils.SchemaDict.definitions">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">definitions</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">dict</span></em><a class="headerlink" href="#disco.models.utils.SchemaDict.definitions" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="disco.models.utils.SchemaDict.optional">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">optional</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#disco.models.utils.SchemaDict.optional" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.models.utils.SchemaDict.get_refs">
+<span class="sig-name descname"><span class="pre">get_refs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">prop</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/models/utils.html#SchemaDict.get_refs"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.models.utils.SchemaDict.get_refs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Given a property, find its model references,
+and the sub model references in schema.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>prop</strong> (<em>str</em>) – Property name in the model.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A list of model names referred by the property.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.models.utils.SchemaDict.remove_property">
+<span class="sig-name descname"><span class="pre">remove_property</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">prop</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/models/utils.html#SchemaDict.remove_property"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.models.utils.SchemaDict.remove_property" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.models.utils.SchemaDict.remove_properties">
+<span class="sig-name descname"><span class="pre">remove_properties</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">props</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/models/utils.html#SchemaDict.remove_properties"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.models.utils.SchemaDict.remove_properties" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.models.utils.SchemaDict.remove_definition">
+<span class="sig-name descname"><span class="pre">remove_definition</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ref</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/models/utils.html#SchemaDict.remove_definition"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.models.utils.SchemaDict.remove_definition" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.models.utils.SchemaDict.remove_definitions">
+<span class="sig-name descname"><span class="pre">remove_definitions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">refs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/models/utils.html#SchemaDict.remove_definitions"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.models.utils.SchemaDict.remove_definitions" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.models.utils.remove_key_from_dict">
+<span class="sig-prename descclassname"><span class="pre">disco.models.utils.</span></span><span class="sig-name descname"><span class="pre">remove_key_from_dict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/models/utils.html#remove_key_from_dict"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.models.utils.remove_key_from_dict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove key from dict data recursively.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> (<em>dict</em>) – The dict data</p></li>
+<li><p><strong>key</strong> (<em>Any</em>) – The key value</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-disco.models">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-disco.models" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2019, NREL.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

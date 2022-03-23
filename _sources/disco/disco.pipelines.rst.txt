@@ -1,0 +1,69 @@
+disco.pipelines package
+=======================
+
+Submodules
+----------
+
+disco.pipelines.auto\_config module
+-----------------------------------
+
+.. automodule:: disco.pipelines.auto_config
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+disco.pipelines.base module
+---------------------------
+
+.. automodule:: disco.pipelines.base
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+disco.pipelines.creator module
+------------------------------
+
+.. automodule:: disco.pipelines.creator
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+disco.pipelines.enums module
+----------------------------
+
+.. automodule:: disco.pipelines.enums
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+disco.pipelines.factory module
+------------------------------
+
+.. automodule:: disco.pipelines.factory
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+disco.pipelines.update\_config module
+-------------------------------------
+
+.. automodule:: disco.pipelines.update_config
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+disco.pipelines.utils module
+----------------------------
+
+.. automodule:: disco.pipelines.utils
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: disco.pipelines
+   :members:
+   :undoc-members:
+   :show-inheritance:

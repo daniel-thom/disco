@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="Python" >
+<html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
@@ -101,7 +101,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="advanced-guide.html">Advanced Guide</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="advanced-guide/analysis-deployment.html">Analysis Deployment</a></li>
-<li class="toctree-l2"><a class="reference internal" href="advanced-guide/automated-upgrade-simulation.html">Automated Upgrade Simulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="advanced-guide/upgrade-cost-analysis-generic-models.html">Upgrade Cost Analysis JSON Schemas</a></li>
 </ul>
 </li>
 </ul>
@@ -197,17 +197,7 @@ descriptor schema that describe all feeders and their possible deployments.</p>
 <span class="w">      </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;MyFeeder&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">      </span><span class="nt">&quot;opendss_location&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/opendss/location/path/&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">      </span><span class="nt">&quot;start_time&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2010-08-11_15:00:00.000&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">      </span><span class="nt">&quot;step_resolution&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">900</span><span class="p">,</span><span class="w"></span>
-<span class="w">      </span><span class="nt">&quot;thermal_upgrade_overrides&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">        </span><span class="nt">&quot;line_loading_limit&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">1.5</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="nt">&quot;dt_loading_limit&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">1.5</span><span class="w"></span>
-<span class="w">      </span><span class="p">},</span><span class="w"></span>
-<span class="w">      </span><span class="nt">&quot;voltage_upgrade_overrides&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">        </span><span class="nt">&quot;initial_voltage_upper_limit&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">1.058333</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="nt">&quot;initial_voltage_lower_limit&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.9167</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="nt">&quot;final_voltage_upper_limit&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">1.05</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="nt">&quot;final_voltage_lower_limit&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.95</span><span class="w"></span>
-<span class="w">      </span><span class="p">}</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;step_resolution&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">900</span><span class="w"></span>
 <span class="w">    </span><span class="p">},</span><span class="w"></span>
 <span class="w">  </span><span class="p">]</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
@@ -222,7 +212,7 @@ descriptor schema that describe all feeders and their possible deployments.</p>
 <li><p><code class="docutils literal notranslate"><span class="pre">pydss_controllers</span></code> has three attributes,</p>
 <blockquote>
 <div><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">controller_type</span></code>: One controller type defined in PyDSS, for example, &quot;PvController&quot;.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">controller_type</span></code>: One controller type defined in PyDSS, for example, “PvController”.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">name</span></code>: One controller name registered in PyDSS registry.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">targets</span></code> (optional): null, a DSS file, or a list of DSS files. If null, then DISCO automatically sets the deployment file.</p></li>
 </ul>

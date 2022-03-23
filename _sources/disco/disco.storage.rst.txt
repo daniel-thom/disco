@@ -1,0 +1,61 @@
+disco.storage package
+=====================
+
+Submodules
+----------
+
+disco.storage.core module
+-------------------------
+
+.. automodule:: disco.storage.core
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+disco.storage.db module
+-----------------------
+
+.. automodule:: disco.storage.db
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+disco.storage.exceptions module
+-------------------------------
+
+.. automodule:: disco.storage.exceptions
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+disco.storage.ingesters module
+------------------------------
+
+.. automodule:: disco.storage.ingesters
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+disco.storage.outputs module
+----------------------------
+
+.. automodule:: disco.storage.outputs
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+disco.storage.parsers module
+----------------------------
+
+.. automodule:: disco.storage.parsers
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: disco.storage
+   :members:
+   :undoc-members:
+   :show-inheritance:

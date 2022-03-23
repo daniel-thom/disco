@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>disco.sources.gem.make_element_bus_mapping &mdash; DISCO 0.1 documentation</title>
+      <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+    <link href="../../../../_static/style.css" rel="stylesheet" type="text/css">
+
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../../../index.html" class="icon icon-home"> DISCO
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">User Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../installation.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../installation.html#use-conda">Use Conda</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../installation.html#use-docker">Use Docker</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../overview.html">Overview</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../overview.html#data-sources">Data Sources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../overview.html#transform-model">Transform Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../overview.html#config-jobs">Config Jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../overview.html#submit-jobs">Submit Jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../overview.html#result-analysis">Result Analysis</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../quick-start.html">Quick Start</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../quick-start.html#source-data">Source Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../quick-start.html#transform-model">Transform Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../quick-start.html#config-jobs">Config Jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../quick-start.html#submit-jobs">Submit Jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../quick-start.html#result-analysis">Result Analysis</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../data-sources.html">Data Sources</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../data-sources/smart-ds-model-preparation.html">SMART-DS OpenDSS Model Preparation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../data-sources.html#gem-model">GEM Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../data-sources.html#epri-model">EPRI Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../data-sources.html#sourcetree1-model">SourceTree1 Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../data-sources.html#sourcetree2-model">SourceTree2 Model</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../pv-deployments.html">PV Deployments</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../pv-deployments.html#sourcetree1-pv-deployments">SourceTree1 PV Deployments</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../transform-models.html">Transform Models</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../transform-models.html#transform-model-help">Transform Model Help</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../transform-models.html#disco-model-in-depth">DISCO Model in Depth</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../analysis-workflows.html">Analysis Workflows</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../analysis-workflows/hosting-capacity-analysis.html">Hosting Capacity Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../analysis-workflows/upgrade-cost-analysis.html">Upgrade Cost Analysis</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../pipelines.html">Pipelines</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../pipelines.html#sourcetree1model">SourceTree1Model</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../debugging-issues.html">Debugging Issues</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../debugging-issues.html#using-jade">Using JADE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../debugging-issues.html#using-pydss">Using PyDSS</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../data-ingestion.html">Data Ingestion</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../data-ingestion.html#ingest-to-new-database">Ingest to New Database</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../data-ingestion.html#ingest-to-existing-database">Ingest to Existing Database</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../data-ingestion.html#run-database-queries">Run Database Queries</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../advanced-guide.html">Advanced Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../advanced-guide/analysis-deployment.html">Analysis Deployment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../advanced-guide/upgrade-cost-analysis-generic-models.html">Upgrade Cost Analysis JSON Schemas</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contribution</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../build-docs.html">Build docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../license.html">License</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">DISCO</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../../index.html">Module code</a> &raquo;</li>
+      <li>disco.sources.gem.make_element_bus_mapping</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for disco.sources.gem.make_element_bus_mapping</h1><div class="highlight"><pre>
+<span></span><span class="ch">#!/usr/bin/env python</span>
+
+<span class="sd">&quot;&quot;&quot;Maps elements to attached buses for each feeder in a path.&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">import</span> <span class="nn">logging</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+
+<span class="kn">from</span> <span class="nn">jade.loggers</span> <span class="kn">import</span> <span class="n">setup_logging</span>
+<span class="kn">from</span> <span class="nn">jade.utils.utils</span> <span class="kn">import</span> <span class="n">get_cli_string</span>
+
+<span class="n">REGION_BUS_MAPPING_FILENAME</span> <span class="o">=</span> <span class="s2">&quot;bus_mapping_summary.json&quot;</span>
+
+<span class="n">logger</span> <span class="o">=</span> <span class="kc">None</span>
+
+
+<div class="viewcode-block" id="MissingBus"><a class="viewcode-back" href="../../../../disco/disco.sources.gem.html#disco.sources.gem.make_element_bus_mapping.MissingBus">[docs]</a><span class="k">class</span> <span class="nc">MissingBus</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span>
+    <span class="k">pass</span></div>
+
+
+<div class="viewcode-block" id="BadFormat"><a class="viewcode-back" href="../../../../disco/disco.sources.gem.html#disco.sources.gem.make_element_bus_mapping.BadFormat">[docs]</a><span class="k">class</span> <span class="nc">BadFormat</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span>
+    <span class="k">pass</span></div>
+
+
+<span class="c1"># This matches 1423_0_1409_0 and 242228 from</span>
+<span class="c1"># New Capacitor.1423_0_1409_0 Bus1=242228 phases=3 Kv=4.8 conn=delta Kvar=450.0</span>
+<span class="n">REGEX_CAPACITOR</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;New (?P&lt;capacitor&gt;Capacitor\.\w+).*Bus\w+=(?P&lt;bus&gt;\w+)&quot;</span><span class="p">,</span> <span class="n">re</span><span class="o">.</span><span class="n">IGNORECASE</span><span class="p">)</span>
+
+<span class="c1"># This matches 1418_0_7958_0, 242223, and 242246 from</span>
+<span class="c1"># New Line.1418_0_7958_0 Units=km Length=0.15155920328177602 bus1=242223.1.2.3 bus2=242246.1.2.3 switch=n enabled=y phases=3 geometry=oh__314784__</span>
+<span class="n">REGEX_LINE</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;New (?P&lt;line&gt;Line\.\w+).*bus\w+=(?P&lt;bus_from&gt;\w+).*bus\w+=(?P&lt;bus_to&gt;\w+)&quot;</span><span class="p">,</span> <span class="n">re</span><span class="o">.</span><span class="n">IGNORECASE</span><span class="p">)</span>
+
+<span class="c1"># This matches load_694781 and 242205_xfmr from</span>
+<span class="c1"># New Load.load_694781 conn=delta bus1=242205_xfmr.1.2.3 kV=0.48 model=1 kW=3.225882583335277 kvar=0.7400682202361257 Phases=3</span>
+<span class="n">REGEX_LOAD</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;New (?P&lt;load&gt;Load\.\w+).*bus\w+=(?P&lt;bus&gt;\w+)&quot;</span><span class="p">,</span> <span class="n">re</span><span class="o">.</span><span class="n">IGNORECASE</span><span class="p">)</span>
+
+<span class="c1"># This matches pv_865744 and 242208_xfmr from</span>
+<span class="c1"># New PVSystem.pv_865744 bus1=242208_xfmr.1.2 phases=2 kV=0.20784609690826525 kVA=1.5829000000000002 Pmpp=1.439 conn=wye</span>
+<span class="n">REGEX_PV_SYSTEM</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;New (?P&lt;pv_system&gt;PVSystem\.[\w-]+) bus\w+=(?P&lt;bus&gt;\w+)&quot;</span><span class="p">,</span> <span class="n">re</span><span class="o">.</span><span class="n">IGNORECASE</span><span class="p">)</span>
+
+<span class="c1"># This matches 1417_0_4346_0 and 3 from</span>
+<span class="c1"># New Transformer.1417_0_4346_0 phases=1 windings=3 wdg=1 conn=delta bus=242214.2.3 Kv=4.8 kva=15.0 EmergHKVA=22.5 %r=0.1 wdg=2 conn=wye bus=242214_xfmr.1.0 Kv=0.12 kva=15.0 EmergHKVA=22.5 %r=0.1 wdg=3 conn=wye bus=242214_xfmr.0.2 Kv=0.12 kva=15.0 EmergHKVA=22.5 %r=0.1 XHL=0.1 XLT=0.1 XHT=0.1</span>
+<span class="n">REGEX_TRANSFORMER</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;New (?P&lt;transformer&gt;Transformer\.\w+).*windings=(?P&lt;windings&gt;\d+).*bus=&quot;</span><span class="p">,</span> <span class="n">re</span><span class="o">.</span><span class="n">IGNORECASE</span><span class="p">)</span>
+<span class="c1"># After the above string has been split by &quot;wdg=&quot; this matches each wdg number and bus.</span>
+<span class="n">REGEX_TRANSFORMER_BUSES</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;^(?P&lt;winding&gt;\d+).*conn=\w+.*bus=(?P&lt;bus&gt;\w+)&quot;</span><span class="p">,</span> <span class="n">re</span><span class="o">.</span><span class="n">IGNORECASE</span><span class="p">)</span>
+
+<span class="c1"># This matches an alternate transformer representation.</span>
+<span class="c1"># New Transformer.trans_242188_reg phases=3 windings=2 buses=(242188_src.1.2.3,242188_dummy.1.2.3) conns=(Delta, Wye) kvs=(4.8, 4.8) kvas=(100000.0, 100000.0) XHL=0.1</span>
+<span class="n">REGEX_TRANSFORMER_ALT</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;New (?P&lt;transformer&gt;Transformer\.\w+).*windings=(?P&lt;windings&gt;\d+).*buses=\((?P&lt;buses&gt;[\w\.,]+)\)&quot;</span><span class="p">,</span> <span class="n">re</span><span class="o">.</span><span class="n">IGNORECASE</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">_check_bus</span><span class="p">(</span><span class="n">feeder_mapping</span><span class="p">,</span> <span class="n">bus</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">bus</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">feeder_mapping</span><span class="p">[</span><span class="s2">&quot;bus_coords&quot;</span><span class="p">]:</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;element=</span><span class="si">%s</span><span class="s2"> bus=</span><span class="si">%s</span><span class="s2"> is not present&quot;</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">bus</span><span class="p">)</span>
+        <span class="c1">#raise MissingBus(f&quot;bus={bus} element={elem_type}.{name} is not present&quot;)</span>
+        <span class="k">return</span> <span class="kc">False</span>
+    <span class="k">return</span> <span class="kc">True</span>
+
+
+<span class="k">def</span> <span class="nf">_check_transformer_buses</span><span class="p">(</span><span class="n">feeder_mapping</span><span class="p">,</span> <span class="n">transformer</span><span class="p">,</span> <span class="n">buses</span><span class="p">):</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">_check_bus</span><span class="p">(</span><span class="n">feeder_mapping</span><span class="p">,</span> <span class="n">buses</span><span class="p">[</span><span class="s2">&quot;primary&quot;</span><span class="p">],</span> <span class="n">transformer</span><span class="p">):</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;Missing coordinates for transformer=</span><span class="si">%s</span><span class="s2"> primary bus&quot;</span><span class="p">,</span> <span class="n">transformer</span><span class="p">)</span>
+        <span class="k">return</span> <span class="kc">False</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">_check_bus</span><span class="p">(</span><span class="n">feeder_mapping</span><span class="p">,</span> <span class="n">buses</span><span class="p">[</span><span class="s2">&quot;secondary&quot;</span><span class="p">],</span> <span class="n">transformer</span><span class="p">):</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;Missing coordinates for transformer=</span><span class="si">%s</span><span class="s2"> secondary bus&quot;</span><span class="p">,</span> <span class="n">transformer</span><span class="p">)</span>
+        <span class="n">feeder_mapping</span><span class="p">[</span><span class="s2">&quot;bus_coords&quot;</span><span class="p">][</span><span class="n">buses</span><span class="p">[</span><span class="s2">&quot;secondary&quot;</span><span class="p">]]</span> <span class="o">=</span> \
+            <span class="n">feeder_mapping</span><span class="p">[</span><span class="s2">&quot;bus_coords&quot;</span><span class="p">][</span><span class="n">buses</span><span class="p">[</span><span class="s2">&quot;primary&quot;</span><span class="p">]]</span>
+
+    <span class="k">return</span> <span class="kc">True</span>
+
+
+<span class="k">def</span> <span class="nf">_check_bus_presence</span><span class="p">(</span><span class="n">feeder_mapping</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">element_type</span><span class="p">,</span> <span class="n">element_mapping</span> <span class="ow">in</span> <span class="n">feeder_mapping</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="k">if</span> <span class="n">element_type</span> <span class="o">==</span> <span class="s2">&quot;bus_coords&quot;</span><span class="p">:</span>
+            <span class="k">continue</span>
+        <span class="k">if</span> <span class="n">element_type</span> <span class="o">==</span> <span class="s2">&quot;transformers&quot;</span><span class="p">:</span>
+            <span class="c1"># Already checked.</span>
+            <span class="k">continue</span>
+        <span class="k">if</span> <span class="n">element_type</span> <span class="o">==</span> <span class="s2">&quot;lines&quot;</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">element</span><span class="p">,</span> <span class="n">bus</span> <span class="ow">in</span> <span class="n">element_mapping</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                <span class="n">_check_bus</span><span class="p">(</span><span class="n">feeder_mapping</span><span class="p">,</span> <span class="n">bus</span><span class="p">[</span><span class="s2">&quot;from&quot;</span><span class="p">],</span> <span class="n">element</span><span class="p">)</span>
+                <span class="n">_check_bus</span><span class="p">(</span><span class="n">feeder_mapping</span><span class="p">,</span> <span class="n">bus</span><span class="p">[</span><span class="s2">&quot;to&quot;</span><span class="p">],</span> <span class="n">element</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">element</span><span class="p">,</span> <span class="n">bus</span> <span class="ow">in</span> <span class="n">element_mapping</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                <span class="n">_check_bus</span><span class="p">(</span><span class="n">feeder_mapping</span><span class="p">,</span> <span class="n">bus</span><span class="p">,</span> <span class="n">element</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">_handle_capacitor</span><span class="p">(</span><span class="n">feeder_mapping</span><span class="p">,</span> <span class="n">line</span><span class="p">):</span>
+    <span class="n">match</span> <span class="o">=</span> <span class="n">REGEX_CAPACITOR</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">match</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">BadFormat</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;unsupported capacitor format: </span><span class="si">{</span><span class="n">line</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="n">groupdict</span> <span class="o">=</span> <span class="n">match</span><span class="o">.</span><span class="n">groupdict</span><span class="p">()</span>
+    <span class="n">capacitor</span> <span class="o">=</span> <span class="n">groupdict</span><span class="p">[</span><span class="s2">&quot;capacitor&quot;</span><span class="p">]</span>
+    <span class="n">bus</span> <span class="o">=</span> <span class="n">groupdict</span><span class="p">[</span><span class="s2">&quot;bus&quot;</span><span class="p">]</span>
+    <span class="k">if</span> <span class="n">capacitor</span> <span class="ow">in</span> <span class="n">feeder_mapping</span><span class="p">[</span><span class="s2">&quot;capacitors&quot;</span><span class="p">]:</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;Detected duplicate capacitor=</span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">capacitor</span><span class="p">)</span>
+        <span class="k">return</span>
+    <span class="n">feeder_mapping</span><span class="p">[</span><span class="s2">&quot;capacitors&quot;</span><span class="p">][</span><span class="n">capacitor</span><span class="p">]</span> <span class="o">=</span> <span class="n">bus</span>
+
+
+<span class="k">def</span> <span class="nf">_handle_line</span><span class="p">(</span><span class="n">feeder_mapping</span><span class="p">,</span> <span class="n">line</span><span class="p">):</span>
+    <span class="n">match</span> <span class="o">=</span> <span class="n">REGEX_LINE</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">match</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">BadFormat</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;unsupported line format: </span><span class="si">{</span><span class="n">line</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="n">groupdict</span> <span class="o">=</span> <span class="n">match</span><span class="o">.</span><span class="n">groupdict</span><span class="p">()</span>
+    <span class="n">line_elem</span> <span class="o">=</span> <span class="n">groupdict</span><span class="p">[</span><span class="s2">&quot;line&quot;</span><span class="p">]</span>
+    <span class="n">bus_from</span> <span class="o">=</span> <span class="n">groupdict</span><span class="p">[</span><span class="s2">&quot;bus_from&quot;</span><span class="p">]</span>
+    <span class="n">bus_to</span> <span class="o">=</span> <span class="n">groupdict</span><span class="p">[</span><span class="s2">&quot;bus_to&quot;</span><span class="p">]</span>
+    <span class="k">if</span> <span class="n">line_elem</span> <span class="ow">in</span> <span class="n">feeder_mapping</span><span class="p">[</span><span class="s2">&quot;lines&quot;</span><span class="p">]:</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;Detected duplicate line=</span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">line_elem</span><span class="p">)</span>
+        <span class="k">return</span>
+    <span class="n">feeder_mapping</span><span class="p">[</span><span class="s2">&quot;lines&quot;</span><span class="p">][</span><span class="n">line_elem</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;from&quot;</span><span class="p">:</span> <span class="n">bus_from</span><span class="p">,</span>
+        <span class="s2">&quot;to&quot;</span><span class="p">:</span> <span class="n">bus_to</span><span class="p">,</span>
+    <span class="p">}</span>
+
+
+<span class="k">def</span> <span class="nf">_handle_load</span><span class="p">(</span><span class="n">feeder_mapping</span><span class="p">,</span> <span class="n">line</span><span class="p">):</span>
+    <span class="n">match</span> <span class="o">=</span> <span class="n">REGEX_LOAD</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">match</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">BadFormat</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;unsupported load format: </span><span class="si">{</span><span class="n">line</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="n">groupdict</span> <span class="o">=</span> <span class="n">match</span><span class="o">.</span><span class="n">groupdict</span><span class="p">()</span>
+    <span class="n">load</span> <span class="o">=</span> <span class="n">groupdict</span><span class="p">[</span><span class="s2">&quot;load&quot;</span><span class="p">]</span>
+    <span class="n">bus</span> <span class="o">=</span> <span class="n">groupdict</span><span class="p">[</span><span class="s2">&quot;bus&quot;</span><span class="p">]</span>
+    <span class="k">if</span> <span class="n">load</span> <span class="ow">in</span> <span class="n">feeder_mapping</span><span class="p">[</span><span class="s2">&quot;loads&quot;</span><span class="p">]:</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;Detected duplicate load=</span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">load</span><span class="p">)</span>
+        <span class="k">return</span>
+    <span class="n">feeder_mapping</span><span class="p">[</span><span class="s2">&quot;loads&quot;</span><span class="p">][</span><span class="n">load</span><span class="p">]</span> <span class="o">=</span> <span class="n">bus</span>
+
+
+<span class="k">def</span> <span class="nf">_handle_pv_system</span><span class="p">(</span><span class="n">feeder_mapping</span><span class="p">,</span> <span class="n">line</span><span class="p">):</span>
+    <span class="n">match</span> <span class="o">=</span> <span class="n">REGEX_PV_SYSTEM</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">match</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">BadFormat</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;unsupported pv_system format: </span><span class="si">{</span><span class="n">line</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="n">groupdict</span> <span class="o">=</span> <span class="n">match</span><span class="o">.</span><span class="n">groupdict</span><span class="p">()</span>
+    <span class="n">pv_system</span> <span class="o">=</span> <span class="n">groupdict</span><span class="p">[</span><span class="s2">&quot;pv_system&quot;</span><span class="p">]</span>
+    <span class="n">bus</span> <span class="o">=</span> <span class="n">groupdict</span><span class="p">[</span><span class="s2">&quot;bus&quot;</span><span class="p">]</span>
+    <span class="k">if</span> <span class="n">pv_system</span> <span class="ow">in</span> <span class="n">feeder_mapping</span><span class="p">[</span><span class="s2">&quot;pv_systems&quot;</span><span class="p">]:</span>
+        <span class="k">assert</span> <span class="n">bus</span> <span class="o">==</span> <span class="n">feeder_mapping</span><span class="p">[</span><span class="s2">&quot;pv_systems&quot;</span><span class="p">][</span><span class="n">pv_system</span><span class="p">]</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">feeder_mapping</span><span class="p">[</span><span class="s2">&quot;pv_systems&quot;</span><span class="p">][</span><span class="n">pv_system</span><span class="p">]</span> <span class="o">=</span> <span class="n">bus</span>
+
+
+<span class="k">def</span> <span class="nf">_handle_transformer</span><span class="p">(</span><span class="n">feeder_mapping</span><span class="p">,</span> <span class="n">line</span><span class="p">):</span>
+    <span class="n">match</span> <span class="o">=</span> <span class="n">REGEX_TRANSFORMER</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">match</span><span class="p">:</span>
+        <span class="n">groupdict</span> <span class="o">=</span> <span class="n">match</span><span class="o">.</span><span class="n">groupdict</span><span class="p">()</span>
+        <span class="n">transformer</span> <span class="o">=</span> <span class="n">groupdict</span><span class="p">[</span><span class="s2">&quot;transformer&quot;</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">transformer</span> <span class="ow">in</span> <span class="n">feeder_mapping</span><span class="p">[</span><span class="s2">&quot;transformers&quot;</span><span class="p">]:</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;Detected duplicate transformer=</span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">transformer</span><span class="p">)</span>
+            <span class="k">return</span>
+
+        <span class="n">sections</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;wdg=&quot;</span><span class="p">)</span>
+        <span class="c1"># First section does not contain wdg + bus.</span>
+        <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">sections</span><span class="p">)</span> <span class="o">==</span> <span class="nb">int</span><span class="p">(</span><span class="n">groupdict</span><span class="p">[</span><span class="s2">&quot;windings&quot;</span><span class="p">])</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">line</span>
+        <span class="n">buses</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">section</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">sections</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="k">continue</span>
+            <span class="n">match</span> <span class="o">=</span> <span class="n">REGEX_TRANSFORMER_BUSES</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">section</span><span class="p">)</span>
+            <span class="k">assert</span> <span class="n">match</span>
+            <span class="k">assert</span> <span class="nb">int</span><span class="p">(</span><span class="n">match</span><span class="o">.</span><span class="n">groupdict</span><span class="p">()[</span><span class="s2">&quot;winding&quot;</span><span class="p">])</span> <span class="o">==</span> <span class="n">i</span>
+            <span class="n">bus</span> <span class="o">=</span> <span class="n">match</span><span class="o">.</span><span class="n">groupdict</span><span class="p">()[</span><span class="s2">&quot;bus&quot;</span><span class="p">]</span>
+            <span class="k">if</span> <span class="n">bus</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">buses</span><span class="p">:</span>
+                <span class="n">buses</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">bus</span><span class="p">)</span>
+
+        <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">buses</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">2</span>
+        <span class="n">t_buses</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;primary&quot;</span><span class="p">:</span> <span class="n">buses</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+            <span class="s2">&quot;secondary&quot;</span><span class="p">:</span> <span class="n">buses</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
+        <span class="p">}</span>
+        <span class="n">_check_transformer_buses</span><span class="p">(</span><span class="n">feeder_mapping</span><span class="p">,</span> <span class="n">transformer</span><span class="p">,</span> <span class="n">t_buses</span><span class="p">)</span>
+        <span class="n">feeder_mapping</span><span class="p">[</span><span class="s2">&quot;transformers&quot;</span><span class="p">][</span><span class="n">transformer</span><span class="p">]</span> <span class="o">=</span> <span class="n">t_buses</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">match</span> <span class="o">=</span> <span class="n">REGEX_TRANSFORMER_ALT</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">match</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">BadFormat</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;unsupported transformer format: </span><span class="si">{</span><span class="n">line</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+        <span class="n">groupdict</span> <span class="o">=</span> <span class="n">match</span><span class="o">.</span><span class="n">groupdict</span><span class="p">()</span>
+        <span class="n">transformer</span> <span class="o">=</span> <span class="n">groupdict</span><span class="p">[</span><span class="s2">&quot;transformer&quot;</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">transformer</span> <span class="ow">in</span> <span class="n">feeder_mapping</span><span class="p">[</span><span class="s2">&quot;transformers&quot;</span><span class="p">]:</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;Detected duplicate transformer=</span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">transformer</span><span class="p">)</span>
+            <span class="k">return</span>
+
+        <span class="n">buses</span> <span class="o">=</span> <span class="n">groupdict</span><span class="p">[</span><span class="s2">&quot;buses&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">)</span>
+        <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">buses</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">2</span><span class="p">,</span> <span class="n">line</span>
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">bus</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">buses</span><span class="p">):</span>
+            <span class="n">index</span> <span class="o">=</span> <span class="n">bus</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">index</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="n">BadFormat</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;unsupported bus format </span><span class="si">{</span><span class="n">bus</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="n">buses</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">bus</span><span class="p">[:</span><span class="n">index</span><span class="p">]</span>
+        <span class="n">t_buses</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;primary&quot;</span><span class="p">:</span> <span class="n">buses</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+            <span class="s2">&quot;secondary&quot;</span><span class="p">:</span> <span class="n">buses</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
+        <span class="p">}</span>
+        <span class="n">_check_transformer_buses</span><span class="p">(</span><span class="n">feeder_mapping</span><span class="p">,</span> <span class="n">transformer</span><span class="p">,</span> <span class="n">t_buses</span><span class="p">)</span>
+        <span class="n">feeder_mapping</span><span class="p">[</span><span class="s2">&quot;transformers&quot;</span><span class="p">][</span><span class="n">transformer</span><span class="p">]</span> <span class="o">=</span> <span class="n">t_buses</span>
+
+
+<span class="k">def</span> <span class="nf">_make_feeder_dict</span><span class="p">():</span>
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="s2">&quot;bus_coords&quot;</span><span class="p">:</span> <span class="p">{},</span>
+        <span class="s2">&quot;capacitors&quot;</span><span class="p">:</span> <span class="p">{},</span>
+        <span class="s2">&quot;lines&quot;</span><span class="p">:</span> <span class="p">{},</span>
+        <span class="s2">&quot;loads&quot;</span><span class="p">:</span> <span class="p">{},</span>
+        <span class="s2">&quot;pv_systems&quot;</span><span class="p">:</span> <span class="p">{},</span>
+        <span class="s2">&quot;transformers&quot;</span><span class="p">:</span> <span class="p">{},</span>
+    <span class="p">}</span>
+
+
+<span class="k">def</span> <span class="nf">_process_bus_coords_file</span><span class="p">(</span><span class="n">mapping</span><span class="p">,</span> <span class="n">filename</span><span class="p">):</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span> <span class="k">as</span> <span class="n">f_in</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">f_in</span><span class="p">:</span>
+            <span class="n">fields</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">fields</span><span class="p">:</span>
+                <span class="k">continue</span>
+            <span class="n">bus</span> <span class="o">=</span> <span class="n">fields</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="n">x</span> <span class="o">=</span> <span class="n">fields</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+            <span class="n">y</span> <span class="o">=</span> <span class="n">fields</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+            <span class="k">assert</span> <span class="n">bus</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">mapping</span>
+            <span class="n">mapping</span><span class="p">[</span><span class="s2">&quot;bus_coords&quot;</span><span class="p">][</span><span class="n">bus</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;x&quot;</span><span class="p">:</span> <span class="n">x</span><span class="p">,</span> <span class="s2">&quot;y&quot;</span><span class="p">:</span> <span class="n">y</span><span class="p">}</span>
+
+
+<span class="n">ELEMENT_HANDLERS</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;new capacitor.&quot;</span><span class="p">:</span> <span class="n">_handle_capacitor</span><span class="p">,</span>
+    <span class="s2">&quot;new line.&quot;</span><span class="p">:</span> <span class="n">_handle_line</span><span class="p">,</span>
+    <span class="s2">&quot;new load.&quot;</span><span class="p">:</span> <span class="n">_handle_load</span><span class="p">,</span>
+    <span class="s2">&quot;new pvsystem.&quot;</span><span class="p">:</span> <span class="n">_handle_pv_system</span><span class="p">,</span>
+    <span class="s2">&quot;new transformer.&quot;</span><span class="p">:</span> <span class="n">_handle_transformer</span><span class="p">,</span>
+<span class="p">}</span>
+
+
+<span class="k">def</span> <span class="nf">_process_element_file</span><span class="p">(</span><span class="n">mapping</span><span class="p">,</span> <span class="n">filename</span><span class="p">):</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span> <span class="k">as</span> <span class="n">f_in</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">f_in</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">substring</span><span class="p">,</span> <span class="n">handler</span> <span class="ow">in</span> <span class="n">ELEMENT_HANDLERS</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                <span class="k">if</span> <span class="n">substring</span> <span class="ow">in</span> <span class="n">line</span><span class="o">.</span><span class="n">lower</span><span class="p">():</span>
+                    <span class="n">handler</span><span class="p">(</span><span class="n">mapping</span><span class="p">,</span> <span class="n">line</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">_get_bus_coords_files</span><span class="p">(</span><span class="n">directory</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">dirpath</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">filenames</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">walk</span><span class="p">(</span><span class="n">directory</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">filename</span> <span class="ow">in</span> <span class="n">filenames</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">filename</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s2">&quot;buscoords.dss&quot;</span><span class="p">:</span>
+                <span class="k">yield</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">dirpath</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">_get_dss_files</span><span class="p">(</span><span class="n">directory</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">dirpath</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">filenames</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">walk</span><span class="p">(</span><span class="n">directory</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">filename</span> <span class="ow">in</span> <span class="n">filenames</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">splitext</span><span class="p">(</span><span class="n">filename</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;.dss&quot;</span> <span class="ow">and</span> <span class="n">filename</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">!=</span> <span class="s2">&quot;buscoords.dss&quot;</span><span class="p">:</span>
+                <span class="k">yield</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">dirpath</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="get_bus_to_element"><a class="viewcode-back" href="../../../../disco/disco.sources.gem.html#disco.sources.gem.make_element_bus_mapping.get_bus_to_element">[docs]</a><span class="k">def</span> <span class="nf">get_bus_to_element</span><span class="p">(</span><span class="n">bus_to_elems</span><span class="p">,</span> <span class="n">feeder_mapping</span><span class="p">,</span> <span class="n">element_type</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Builds a dict that maps bus names to a list of attached elements.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    feeder_mapping : dict</span>
+<span class="sd">        dictionary created by this module at a feeder level</span>
+<span class="sd">    element_type : str</span>
+<span class="sd">        Only consider this element type.</span>
+<span class="sd">    bus_to_elems : dict</span>
+<span class="sd">        Output dictionary to fill in.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    dict</span>
+<span class="sd">        Example::</span>
+
+<span class="sd">        {123456: [{&quot;type&quot;: &quot;pv_systems&quot;, &quot;name&quot;: &quot;pv_123456&quot;}]}</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">element_type</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">&quot;transformers&quot;</span><span class="p">,</span> <span class="s2">&quot;lines&quot;</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;not supported&quot;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">element</span><span class="p">,</span> <span class="n">bus</span> <span class="ow">in</span> <span class="n">feeder_mapping</span><span class="p">[</span><span class="n">element_type</span><span class="p">]</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="n">item</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="n">element_type</span><span class="p">,</span> <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="n">element</span><span class="p">}</span>
+        <span class="k">if</span> <span class="n">bus</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">bus_to_elems</span><span class="p">:</span>
+            <span class="n">bus_to_elems</span><span class="p">[</span><span class="n">bus</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">item</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">bus_to_elems</span><span class="p">[</span><span class="n">bus</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">item</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="get_element_coordinates"><a class="viewcode-back" href="../../../../disco/disco.sources.gem.html#disco.sources.gem.make_element_bus_mapping.get_element_coordinates">[docs]</a><span class="k">def</span> <span class="nf">get_element_coordinates</span><span class="p">(</span><span class="n">feeder_mapping</span><span class="p">,</span> <span class="n">element_type</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Return the coordinates of the bus to which the element is attached.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    feeder_mapping : dict</span>
+<span class="sd">        dictionary created by this module at a feeder level</span>
+<span class="sd">    element_type : str</span>
+<span class="sd">        capacitors, lines, loads, etc.</span>
+<span class="sd">    name : str</span>
+<span class="sd">        Element name</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    dict | None</span>
+<span class="sd">        None is returned if no coordinates are stored.</span>
+
+<span class="sd">        Example output::</span>
+
+<span class="sd">        {&#39;x&#39;: &#39;34374.509&#39;, &#39;y&#39;: &#39;206624.15&#39;}</span>
+
+<span class="sd">        If element_type == &#39;lines&#39;</span>
+<span class="sd">        {&#39;from&#39;: None, &#39;to&#39;: {&#39;x&#39;: &#39;34802.251&#39;, &#39;y&#39;: &#39;206769.654&#39;}}</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">bus</span> <span class="o">=</span> <span class="n">feeder_mapping</span><span class="p">[</span><span class="n">element_type</span><span class="p">][</span><span class="n">name</span><span class="p">]</span>
+    <span class="k">if</span> <span class="n">element_type</span> <span class="o">==</span> <span class="s2">&quot;lines&quot;</span><span class="p">:</span>
+        <span class="n">from_coords</span> <span class="o">=</span> <span class="n">feeder_mapping</span><span class="p">[</span><span class="s2">&quot;bus_coords&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">bus</span><span class="p">[</span><span class="s2">&quot;from&quot;</span><span class="p">])</span>
+        <span class="n">to_coords</span> <span class="o">=</span> <span class="n">feeder_mapping</span><span class="p">[</span><span class="s2">&quot;bus_coords&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">bus</span><span class="p">[</span><span class="s2">&quot;to&quot;</span><span class="p">])</span>
+        <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;from&quot;</span><span class="p">:</span> <span class="n">from_coords</span><span class="p">,</span> <span class="s2">&quot;to&quot;</span><span class="p">:</span> <span class="n">to_coords</span><span class="p">}</span>
+    <span class="k">if</span> <span class="n">element_type</span> <span class="o">==</span> <span class="s2">&quot;transformers&quot;</span><span class="p">:</span>
+        <span class="n">bus</span> <span class="o">=</span> <span class="n">bus</span><span class="p">[</span><span class="s2">&quot;primary&quot;</span><span class="p">]</span>
+
+    <span class="k">return</span> <span class="n">feeder_mapping</span><span class="p">[</span><span class="s2">&quot;bus_coords&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">bus</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="make_element_bus_mapping_file"><a class="viewcode-back" href="../../../../disco/disco.sources.gem.html#disco.sources.gem.make_element_bus_mapping.make_element_bus_mapping_file">[docs]</a><span class="k">def</span> <span class="nf">make_element_bus_mapping_file</span><span class="p">(</span><span class="n">file_obj</span><span class="p">,</span> <span class="n">output_file</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Make a mapping of elements to attached buses in a model-inputs path.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    text : str</span>
+<span class="sd">        Text of a .dss file</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    dict</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">feeder_mapping</span> <span class="o">=</span> <span class="n">_make_feeder_dict</span><span class="p">()</span>
+    <span class="n">_process_element_file</span><span class="p">(</span><span class="n">feeder_mapping</span><span class="p">,</span> <span class="n">file_obj</span><span class="p">)</span>
+
+    <span class="c1"># Much of the data has missing bus coordinates for transformer secondary</span>
+    <span class="c1"># buses. The transformer processing code above implemented a workaround,</span>
+    <span class="c1"># and so now they have coordinates.</span>
+    <span class="c1"># Now, we check buses connected to the rest of the elements.</span>
+    <span class="n">_check_bus_presence</span><span class="p">(</span><span class="n">feeder_mapping</span><span class="p">)</span>
+
+    <span class="n">write_element_bus_mapping</span><span class="p">(</span><span class="n">feeder_mapping</span><span class="p">,</span> <span class="n">output_file</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Wrote </span><span class="si">{</span><span class="n">output_file</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">feeder_mapping</span></div>
+
+
+<div class="viewcode-block" id="merge_feeder_mappings"><a class="viewcode-back" href="../../../../disco/disco.sources.gem.html#disco.sources.gem.make_element_bus_mapping.merge_feeder_mappings">[docs]</a><span class="k">def</span> <span class="nf">merge_feeder_mappings</span><span class="p">(</span><span class="n">mapping_main</span><span class="p">,</span> <span class="n">mapping_new</span><span class="p">):</span>
+    <span class="k">assert</span> <span class="nb">sorted</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">mapping_main</span><span class="o">.</span><span class="n">keys</span><span class="p">()))</span> <span class="o">==</span> <span class="nb">sorted</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">mapping_new</span><span class="o">.</span><span class="n">keys</span><span class="p">()))</span>
+    <span class="k">for</span> <span class="n">element_type</span> <span class="ow">in</span> <span class="n">mapping_new</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+        <span class="k">if</span> <span class="n">element_type</span> <span class="o">==</span> <span class="s2">&quot;bus_coords&quot;</span><span class="p">:</span>
+            <span class="k">continue</span>
+        <span class="k">for</span> <span class="n">element</span><span class="p">,</span> <span class="n">data</span> <span class="ow">in</span> <span class="n">mapping_new</span><span class="p">[</span><span class="n">element_type</span><span class="p">]</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="k">if</span> <span class="n">element</span> <span class="ow">in</span> <span class="n">mapping_main</span><span class="p">[</span><span class="n">element_type</span><span class="p">]:</span>
+                <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Overwriting element </span><span class="si">%s</span><span class="s2"> </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">element_type</span><span class="p">,</span> <span class="n">element</span><span class="p">)</span>
+            <span class="n">mapping_main</span><span class="p">[</span><span class="n">element_type</span><span class="p">][</span><span class="n">element</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span></div>
+
+
+<div class="viewcode-block" id="make_element_bus_mapping"><a class="viewcode-back" href="../../../../disco/disco.sources.gem.html#disco.sources.gem.make_element_bus_mapping.make_element_bus_mapping">[docs]</a><span class="k">def</span> <span class="nf">make_element_bus_mapping</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Make a mapping of elements to attached buses in a model-inputs path.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    path : str</span>
+<span class="sd">        Path to model-inputs directory (created by generate-input-data)</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    dict</span>
+<span class="sd">        Maps feeder name to feeder mapping file.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">config_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="s2">&quot;configurations.json&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">config_file</span><span class="p">):</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;Did not detect </span><span class="si">%s</span><span class="s2"> in &#39;</span><span class="si">%s</span><span class="s2">&#39;. Please pass a model-inputs directory.&quot;</span><span class="p">,</span>
+                     <span class="n">config_file</span><span class="p">,</span> <span class="n">path</span><span class="p">)</span>
+        <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="n">feeders</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">path</span><span class="p">)</span> <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">x</span><span class="p">))]</span>
+
+    <span class="n">feeder_files</span> <span class="o">=</span> <span class="p">{}</span>
+
+    <span class="c1"># Get the bus coordinates first so that we can ensure that all element</span>
+    <span class="c1"># buses are present.</span>
+    <span class="k">for</span> <span class="n">feeder</span> <span class="ow">in</span> <span class="n">feeders</span><span class="p">:</span>
+        <span class="n">feeder_mapping</span> <span class="o">=</span> <span class="n">_make_feeder_dict</span><span class="p">()</span>
+        <span class="n">feeder_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">feeder</span><span class="p">,</span> <span class="n">path</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">filename</span> <span class="ow">in</span> <span class="n">_get_bus_coords_files</span><span class="p">(</span><span class="n">feeder_path</span><span class="p">):</span>
+            <span class="n">_process_bus_coords_file</span><span class="p">(</span><span class="n">feeder_mapping</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">filename</span> <span class="ow">in</span> <span class="n">_get_dss_files</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
+            <span class="n">_process_element_file</span><span class="p">(</span><span class="n">feeder_mapping</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span>
+
+        <span class="c1"># Much of the data has missing bus coordinates for transformer</span>
+        <span class="c1"># secondary buses. The transformer processing code above implemented a</span>
+        <span class="c1"># workaround, and so now they have coordinates.  Now, we check buses</span>
+        <span class="c1"># connected to the rest of the elements.</span>
+        <span class="n">_check_bus_presence</span><span class="p">(</span><span class="n">feeder_mapping</span><span class="p">)</span>
+
+        <span class="n">output_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;bus_mapping_feeder__</span><span class="si">{</span><span class="n">feeder</span><span class="si">}</span><span class="s2">.json&quot;</span><span class="p">)</span>
+        <span class="n">write_element_bus_mapping</span><span class="p">(</span><span class="n">feeder_mapping</span><span class="p">,</span> <span class="n">output_file</span><span class="p">)</span>
+        <span class="n">feeder_files</span><span class="p">[</span><span class="n">feeder</span><span class="p">]</span> <span class="o">=</span> <span class="n">output_file</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Wrote </span><span class="si">{</span><span class="n">output_file</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">feeder_files</span></div>
+
+
+<div class="viewcode-block" id="write_element_bus_mapping"><a class="viewcode-back" href="../../../../disco/disco.sources.gem.html#disco.sources.gem.make_element_bus_mapping.write_element_bus_mapping">[docs]</a><span class="k">def</span> <span class="nf">write_element_bus_mapping</span><span class="p">(</span><span class="n">mapping</span><span class="p">,</span> <span class="n">output_file</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Write the mapping to output_file.&quot;&quot;&quot;</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">output_file</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f_out</span><span class="p">:</span>
+        <span class="n">json</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">mapping</span><span class="p">,</span> <span class="n">f_out</span><span class="p">)</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Wrote </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">output_file</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="main"><a class="viewcode-back" href="../../../../disco/disco.sources.gem.html#disco.sources.gem.make_element_bus_mapping.main">[docs]</a><span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="k">global</span> <span class="n">logger</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">2</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Usage:  </span><span class="si">{</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2"> MODEL-INPUTS-DIRECTORY&quot;</span><span class="p">)</span>
+        <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="n">path</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">level</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">INFO</span>
+    <span class="n">log_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="s2">&quot;bus_mapping.log&quot;</span><span class="p">)</span>
+    <span class="n">logger</span> <span class="o">=</span> <span class="n">setup_logging</span><span class="p">(</span><span class="s2">&quot;bus_mapping&quot;</span><span class="p">,</span> <span class="n">log_file</span><span class="p">,</span> <span class="n">console_level</span><span class="o">=</span><span class="n">logging</span><span class="o">.</span><span class="n">ERROR</span><span class="p">,</span> <span class="n">file_level</span><span class="o">=</span><span class="n">level</span><span class="p">)</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="n">get_cli_string</span><span class="p">())</span>
+
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">feeder_files</span> <span class="o">=</span> <span class="n">make_element_bus_mapping</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+        <span class="n">summary_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">REGION_BUS_MAPPING_FILENAME</span><span class="p">)</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">summary_file</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f_out</span><span class="p">:</span>
+            <span class="n">json</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">feeder_files</span><span class="p">,</span> <span class="n">f_out</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Wrote summary file </span><span class="si">{</span><span class="n">summary_file</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Check </span><span class="si">{</span><span class="n">log_file</span><span class="si">}</span><span class="s2"> for warnings&quot;</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">exception</span><span class="p">(</span><span class="s2">&quot;Failed to make bus mapping for </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">path</span><span class="p">)</span>
+        <span class="k">raise</span></div>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2019, NREL.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

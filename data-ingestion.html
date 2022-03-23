@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="Python" >
+<html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
@@ -101,7 +101,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="advanced-guide.html">Advanced Guide</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="advanced-guide/analysis-deployment.html">Analysis Deployment</a></li>
-<li class="toctree-l2"><a class="reference internal" href="advanced-guide/automated-upgrade-simulation.html">Automated Upgrade Simulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="advanced-guide/upgrade-cost-analysis-generic-models.html">Upgrade Cost Analysis JSON Schemas</a></li>
 </ul>
 </li>
 </ul>
@@ -158,7 +158,7 @@ time-series simulation. After the task was complete, we got the output with <cod
 Again, we would like to ingest the database into the database.</p>
 <p>We have two choices for data ingestion,</p>
 <ol class="arabic simple">
-<li><p>Ingest the results into a new database, let's say, <code class="docutils literal notranslate"><span class="pre">data.sqlite</span></code>.</p></li>
+<li><p>Ingest the results into a new database, let’s say, <code class="docutils literal notranslate"><span class="pre">data.sqlite</span></code>.</p></li>
 <li><p>Or ingest the results into existing database, for example, the one we created above <code class="docutils literal notranslate"><span class="pre">test.sqlite</span></code>.</p></li>
 </ol>
 <p>If choose option 1, then just run the command above with new <code class="docutils literal notranslate"><span class="pre">--database</span></code> value specified.
@@ -167,7 +167,7 @@ Here, we would like to choose option2, and ingest the results of second task int
 otherwise, it would prevent the data ingestion, as the task for each ingestion is unique.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Task names need to be unique. It's recommended to create a naming convention of task names
+<p>Task names need to be unique. It’s recommended to create a naming convention of task names
 for better managing the simulation and analysis results, for example, <code class="docutils literal notranslate"><span class="pre">&lt;geography&gt;</span> <span class="pre">&lt;simulation_type&gt;</span></code>.</p>
 </div>
 </section>

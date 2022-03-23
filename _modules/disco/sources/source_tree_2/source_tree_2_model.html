@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>disco.sources.source_tree_2.source_tree_2_model &mdash; DISCO 0.1 documentation</title>
+      <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+    <link href="../../../../_static/style.css" rel="stylesheet" type="text/css">
+
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../../../index.html" class="icon icon-home"> DISCO
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">User Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../installation.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../installation.html#use-conda">Use Conda</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../installation.html#use-docker">Use Docker</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../overview.html">Overview</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../overview.html#data-sources">Data Sources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../overview.html#transform-model">Transform Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../overview.html#config-jobs">Config Jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../overview.html#submit-jobs">Submit Jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../overview.html#result-analysis">Result Analysis</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../quick-start.html">Quick Start</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../quick-start.html#source-data">Source Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../quick-start.html#transform-model">Transform Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../quick-start.html#config-jobs">Config Jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../quick-start.html#submit-jobs">Submit Jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../quick-start.html#result-analysis">Result Analysis</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../data-sources.html">Data Sources</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../data-sources/smart-ds-model-preparation.html">SMART-DS OpenDSS Model Preparation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../data-sources.html#gem-model">GEM Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../data-sources.html#epri-model">EPRI Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../data-sources.html#sourcetree1-model">SourceTree1 Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../data-sources.html#sourcetree2-model">SourceTree2 Model</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../pv-deployments.html">PV Deployments</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../pv-deployments.html#sourcetree1-pv-deployments">SourceTree1 PV Deployments</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../transform-models.html">Transform Models</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../transform-models.html#transform-model-help">Transform Model Help</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../transform-models.html#disco-model-in-depth">DISCO Model in Depth</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../analysis-workflows.html">Analysis Workflows</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../analysis-workflows/hosting-capacity-analysis.html">Hosting Capacity Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../analysis-workflows/upgrade-cost-analysis.html">Upgrade Cost Analysis</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../pipelines.html">Pipelines</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../pipelines.html#sourcetree1model">SourceTree1Model</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../debugging-issues.html">Debugging Issues</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../debugging-issues.html#using-jade">Using JADE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../debugging-issues.html#using-pydss">Using PyDSS</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../data-ingestion.html">Data Ingestion</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../data-ingestion.html#ingest-to-new-database">Ingest to New Database</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../data-ingestion.html#ingest-to-existing-database">Ingest to Existing Database</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../data-ingestion.html#run-database-queries">Run Database Queries</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../advanced-guide.html">Advanced Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../advanced-guide/analysis-deployment.html">Analysis Deployment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../advanced-guide/upgrade-cost-analysis-generic-models.html">Upgrade Cost Analysis JSON Schemas</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contribution</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../build-docs.html">Build docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../license.html">License</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">DISCO</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../../index.html">Module code</a> &raquo;</li>
+      <li>disco.sources.source_tree_2.source_tree_2_model</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for disco.sources.source_tree_2.source_tree_2_model</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;Model for Source Type 2 feeder input data&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">copy</span>
+<span class="kn">import</span> <span class="nn">itertools</span>
+<span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">import</span> <span class="nn">logging</span>
+<span class="kn">import</span> <span class="nn">os</span>
+
+<span class="kn">import</span> <span class="nn">click</span>
+
+<span class="kn">from</span> <span class="nn">jade.exceptions</span> <span class="kn">import</span> <span class="n">InvalidParameter</span>
+<span class="kn">from</span> <span class="nn">jade.utils.utils</span> <span class="kn">import</span> <span class="n">ExtendedJSONEncoder</span>
+<span class="kn">from</span> <span class="nn">PyDSS.common</span> <span class="kn">import</span> <span class="n">ControllerType</span>
+<span class="kn">from</span> <span class="nn">disco.cli.common</span> <span class="kn">import</span> <span class="n">handle_existing_dir</span>
+<span class="kn">from</span> <span class="nn">disco.enums</span> <span class="kn">import</span> <span class="n">Placement</span><span class="p">,</span> <span class="n">Scale</span><span class="p">,</span> <span class="n">SimulationType</span>
+<span class="kn">from</span> <span class="nn">disco.models.base</span> <span class="kn">import</span> <span class="n">PyDSSControllerModel</span>
+<span class="kn">from</span> <span class="nn">disco.models.snapshot_impact_analysis_model</span> <span class="kn">import</span> <span class="n">SnapshotImpactAnalysisModel</span>
+<span class="kn">from</span> <span class="nn">disco.models.time_series_analysis_model</span> <span class="kn">import</span> <span class="n">TimeSeriesAnalysisModel</span>
+<span class="kn">from</span> <span class="nn">disco.sources.base</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">BaseSourceDataModel</span><span class="p">,</span>
+    <span class="n">BaseOpenDssModel</span><span class="p">,</span>
+    <span class="n">SOURCE_CONFIGURATION_FILENAME</span><span class="p">,</span>
+    <span class="n">DEFAULT_SNAPSHOT_IMPACT_ANALYSIS_PARAMS</span><span class="p">,</span>
+    <span class="n">DEFAULT_TIME_SERIES_IMPACT_ANALYSIS_PARAMS</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="kn">from</span> <span class="nn">.source_tree_2_model_inputs</span> <span class="kn">import</span> <span class="n">SourceTree2ModelInputs</span>
+
+
+<span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+
+
+<span class="n">COMMON_OPTIONS</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">click</span><span class="o">.</span><span class="n">option</span><span class="p">(</span>
+        <span class="s2">&quot;-f&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;--feeders&quot;</span><span class="p">,</span>
+        <span class="n">default</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;all&quot;</span><span class="p">],</span>
+        <span class="n">multiple</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">show_default</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">help</span><span class="o">=</span><span class="s2">&quot;feeders to add; use (&#39;all&#39;,) to auto-detect and add all feeders&quot;</span><span class="p">,</span>
+    <span class="p">),</span>
+    <span class="n">click</span><span class="o">.</span><span class="n">option</span><span class="p">(</span>
+        <span class="s2">&quot;-d&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;--dc-ac-ratios&quot;</span><span class="p">,</span>
+        <span class="n">default</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;all&quot;</span><span class="p">],</span>
+        <span class="n">multiple</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">show_default</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">help</span><span class="o">=</span><span class="s2">&quot;DC/AC ratios to add; use (&#39;all&#39;,) to auto-detect and add all DC/AC ratios&quot;</span><span class="p">,</span>
+    <span class="p">),</span>
+    <span class="n">click</span><span class="o">.</span><span class="n">option</span><span class="p">(</span>
+        <span class="s2">&quot;-s&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;--scales&quot;</span><span class="p">,</span>
+        <span class="n">default</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;all&quot;</span><span class="p">],</span>
+        <span class="n">multiple</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">show_default</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">help</span><span class="o">=</span><span class="s2">&quot;scales to add; use (&#39;all&#39;,) to auto-detect and add all scales&quot;</span><span class="p">,</span>
+    <span class="p">),</span>
+    <span class="n">click</span><span class="o">.</span><span class="n">option</span><span class="p">(</span>
+        <span class="s2">&quot;-p&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;--placements&quot;</span><span class="p">,</span>
+        <span class="n">default</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;all&quot;</span><span class="p">],</span>
+        <span class="n">multiple</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">show_default</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">help</span><span class="o">=</span><span class="s2">&quot;placements to add; use (&#39;all&#39;,) to auto-detect and add all placements&quot;</span><span class="p">,</span>
+    <span class="p">),</span>
+    <span class="n">click</span><span class="o">.</span><span class="n">option</span><span class="p">(</span>
+        <span class="s2">&quot;-d&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;--deployments&quot;</span><span class="p">,</span>
+        <span class="n">default</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;all&quot;</span><span class="p">],</span>
+        <span class="n">multiple</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">show_default</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">help</span><span class="o">=</span><span class="s2">&quot;deployments to add; use (&#39;all&#39;,) to auto-detect and add all deployments&quot;</span><span class="p">,</span>
+    <span class="p">),</span>
+    <span class="n">click</span><span class="o">.</span><span class="n">option</span><span class="p">(</span>
+        <span class="s2">&quot;-l&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;--penetration-levels&quot;</span><span class="p">,</span>
+        <span class="n">default</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;all&quot;</span><span class="p">],</span>
+        <span class="n">multiple</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">show_default</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">help</span><span class="o">=</span><span class="s2">&quot;penetration-levels to add; use (&#39;all&#39;,) to auto-detect and add all penetration-levels&quot;</span><span class="p">,</span>
+    <span class="p">),</span>
+    <span class="n">click</span><span class="o">.</span><span class="n">option</span><span class="p">(</span>
+        <span class="s2">&quot;-m&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;--master-file&quot;</span><span class="p">,</span>
+        <span class="n">default</span><span class="o">=</span><span class="s2">&quot;Master_noPV.dss&quot;</span><span class="p">,</span>
+        <span class="n">show_default</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Master file for the OpenDSS model&quot;</span><span class="p">,</span>
+    <span class="p">),</span>
+    <span class="n">click</span><span class="o">.</span><span class="n">option</span><span class="p">(</span>
+        <span class="s2">&quot;-F&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;--force&quot;</span><span class="p">,</span>
+        <span class="n">help</span><span class="o">=</span><span class="s2">&quot;overwrite existing directory&quot;</span><span class="p">,</span>
+        <span class="n">is_flag</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">default</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+        <span class="n">show_default</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="p">),</span>
+<span class="p">)</span>
+
+
+<div class="viewcode-block" id="common_options"><a class="viewcode-back" href="../../../../disco/disco.sources.source_tree_2.html#disco.sources.source_tree_2.source_tree_2_model.common_options">[docs]</a><span class="k">def</span> <span class="nf">common_options</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">option</span> <span class="ow">in</span> <span class="nb">reversed</span><span class="p">(</span><span class="n">COMMON_OPTIONS</span><span class="p">):</span>
+        <span class="n">func</span> <span class="o">=</span> <span class="n">option</span><span class="p">(</span><span class="n">func</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">func</span></div>
+
+
+<span class="nd">@click</span><span class="o">.</span><span class="n">command</span><span class="p">()</span>
+<span class="nd">@common_options</span>
+<span class="nd">@click</span><span class="o">.</span><span class="n">option</span><span class="p">(</span>
+    <span class="s2">&quot;-s&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;--start&quot;</span><span class="p">,</span>
+    <span class="n">default</span><span class="o">=</span><span class="n">DEFAULT_SNAPSHOT_IMPACT_ANALYSIS_PARAMS</span><span class="p">[</span><span class="s2">&quot;start_time&quot;</span><span class="p">],</span>
+    <span class="n">show_default</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">help</span><span class="o">=</span><span class="s2">&quot;simulation start time&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="nd">@click</span><span class="o">.</span><span class="n">option</span><span class="p">(</span>
+    <span class="s2">&quot;-o&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;--output&quot;</span><span class="p">,</span>
+    <span class="n">default</span><span class="o">=</span><span class="n">DEFAULT_SNAPSHOT_IMPACT_ANALYSIS_PARAMS</span><span class="p">[</span><span class="s2">&quot;output_dir&quot;</span><span class="p">],</span>
+    <span class="n">show_default</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">help</span><span class="o">=</span><span class="s2">&quot;output directory&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="nd">@click</span><span class="o">.</span><span class="n">pass_context</span>
+<span class="k">def</span> <span class="nf">snapshot</span><span class="p">(</span>
+    <span class="n">ctx</span><span class="p">,</span>
+    <span class="n">feeders</span><span class="p">,</span>
+    <span class="n">dc_ac_ratios</span><span class="p">,</span>
+    <span class="n">scales</span><span class="p">,</span>
+    <span class="n">placements</span><span class="p">,</span>
+    <span class="n">deployments</span><span class="p">,</span>
+    <span class="n">penetration_levels</span><span class="p">,</span>
+    <span class="n">master_file</span><span class="p">,</span>
+    <span class="n">force</span><span class="p">,</span>
+    <span class="n">start</span><span class="p">,</span>
+    <span class="n">output</span><span class="p">,</span>
+<span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Transform input data for a snapshot simulation&quot;&quot;&quot;</span>
+    <span class="n">input_path</span> <span class="o">=</span> <span class="n">ctx</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;input_path&quot;</span><span class="p">]</span>
+    <span class="n">handle_existing_dir</span><span class="p">(</span><span class="n">output</span><span class="p">,</span> <span class="n">force</span><span class="p">)</span>
+    <span class="n">simulation_params</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;start_time&quot;</span><span class="p">:</span> <span class="n">start</span><span class="p">,</span>
+        <span class="s2">&quot;end_time&quot;</span><span class="p">:</span> <span class="n">start</span><span class="p">,</span>
+        <span class="s2">&quot;step_resolution&quot;</span><span class="p">:</span> <span class="mi">900</span><span class="p">,</span>
+        <span class="s2">&quot;simulation_type&quot;</span><span class="p">:</span> <span class="n">SimulationType</span><span class="o">.</span><span class="n">SNAPSHOT</span><span class="p">,</span>
+    <span class="p">}</span>
+    <span class="n">SourceTree2Model</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span>
+        <span class="n">input_path</span><span class="o">=</span><span class="n">input_path</span><span class="p">,</span>
+        <span class="n">output_path</span><span class="o">=</span><span class="n">output</span><span class="p">,</span>
+        <span class="n">simulation_params</span><span class="o">=</span><span class="n">simulation_params</span><span class="p">,</span>
+        <span class="n">simulation_model</span><span class="o">=</span><span class="n">SnapshotImpactAnalysisModel</span><span class="p">,</span>
+        <span class="n">feeders</span><span class="o">=</span><span class="n">feeders</span><span class="p">,</span>
+        <span class="n">dc_ac_ratios</span><span class="o">=</span><span class="n">dc_ac_ratios</span><span class="p">,</span>
+        <span class="n">scales</span><span class="o">=</span><span class="n">scales</span><span class="p">,</span>
+        <span class="n">placements</span><span class="o">=</span><span class="n">placements</span><span class="p">,</span>
+        <span class="n">deployments</span><span class="o">=</span><span class="n">deployments</span><span class="p">,</span>
+        <span class="n">penetration_levels</span><span class="o">=</span><span class="n">penetration_levels</span><span class="p">,</span>
+        <span class="n">master_file</span><span class="o">=</span><span class="n">master_file</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Transformed data from </span><span class="si">{</span><span class="n">input_path</span><span class="si">}</span><span class="s2"> to </span><span class="si">{</span><span class="n">output</span><span class="si">}</span><span class="s2"> for Snapshot Analysis.&quot;</span><span class="p">)</span>
+
+
+<span class="nd">@click</span><span class="o">.</span><span class="n">command</span><span class="p">()</span>
+<span class="nd">@common_options</span>
+<span class="nd">@click</span><span class="o">.</span><span class="n">option</span><span class="p">(</span>
+    <span class="s2">&quot;-s&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;--start&quot;</span><span class="p">,</span>
+    <span class="n">default</span><span class="o">=</span><span class="n">DEFAULT_TIME_SERIES_IMPACT_ANALYSIS_PARAMS</span><span class="p">[</span><span class="s2">&quot;start_time&quot;</span><span class="p">],</span>
+    <span class="n">show_default</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">help</span><span class="o">=</span><span class="s2">&quot;simulation start time&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="nd">@click</span><span class="o">.</span><span class="n">option</span><span class="p">(</span>
+    <span class="s2">&quot;-e&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;--end&quot;</span><span class="p">,</span>
+    <span class="n">default</span><span class="o">=</span><span class="n">DEFAULT_TIME_SERIES_IMPACT_ANALYSIS_PARAMS</span><span class="p">[</span><span class="s2">&quot;end_time&quot;</span><span class="p">],</span>
+    <span class="n">show_default</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">help</span><span class="o">=</span><span class="s2">&quot;simulation end time&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="nd">@click</span><span class="o">.</span><span class="n">option</span><span class="p">(</span>
+    <span class="s2">&quot;-r&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;--resolution&quot;</span><span class="p">,</span>
+    <span class="n">default</span><span class="o">=</span><span class="n">DEFAULT_TIME_SERIES_IMPACT_ANALYSIS_PARAMS</span><span class="p">[</span><span class="s2">&quot;step_resolution&quot;</span><span class="p">],</span>
+    <span class="nb">type</span><span class="o">=</span><span class="nb">int</span><span class="p">,</span>
+    <span class="n">show_default</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">help</span><span class="o">=</span><span class="s2">&quot;simulation step resolution in seconds&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="nd">@click</span><span class="o">.</span><span class="n">option</span><span class="p">(</span>
+    <span class="s2">&quot;-o&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;--output&quot;</span><span class="p">,</span>
+    <span class="n">default</span><span class="o">=</span><span class="n">DEFAULT_TIME_SERIES_IMPACT_ANALYSIS_PARAMS</span><span class="p">[</span><span class="s2">&quot;output_dir&quot;</span><span class="p">],</span>
+    <span class="n">show_default</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">help</span><span class="o">=</span><span class="s2">&quot;output directory&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="nd">@click</span><span class="o">.</span><span class="n">option</span><span class="p">(</span>
+    <span class="s2">&quot;--pv-profile&quot;</span><span class="p">,</span>
+    <span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span>
+    <span class="n">help</span><span class="o">=</span><span class="s2">&quot;profile to use for all PV Systems&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="nd">@click</span><span class="o">.</span><span class="n">pass_context</span>
+<span class="k">def</span> <span class="nf">time_series</span><span class="p">(</span>
+    <span class="n">ctx</span><span class="p">,</span>
+    <span class="n">feeders</span><span class="p">,</span>
+    <span class="n">dc_ac_ratios</span><span class="p">,</span>
+    <span class="n">scales</span><span class="p">,</span>
+    <span class="n">placements</span><span class="p">,</span>
+    <span class="n">deployments</span><span class="p">,</span>
+    <span class="n">penetration_levels</span><span class="p">,</span>
+    <span class="n">master_file</span><span class="p">,</span>
+    <span class="n">force</span><span class="p">,</span>
+    <span class="n">start</span><span class="p">,</span>
+    <span class="n">end</span><span class="p">,</span>
+    <span class="n">resolution</span><span class="p">,</span>
+    <span class="n">output</span><span class="p">,</span>
+    <span class="n">pv_profile</span><span class="p">,</span>
+<span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Transform input data for a time series simulation&quot;&quot;&quot;</span>
+    <span class="n">input_path</span> <span class="o">=</span> <span class="n">ctx</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;input_path&quot;</span><span class="p">]</span>
+    <span class="n">handle_existing_dir</span><span class="p">(</span><span class="n">output</span><span class="p">,</span> <span class="n">force</span><span class="p">)</span>
+    <span class="n">simulation_params</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;start_time&quot;</span><span class="p">:</span> <span class="n">start</span><span class="p">,</span>
+        <span class="s2">&quot;end_time&quot;</span><span class="p">:</span> <span class="n">end</span><span class="p">,</span>
+        <span class="s2">&quot;step_resolution&quot;</span><span class="p">:</span> <span class="n">resolution</span><span class="p">,</span>
+        <span class="s2">&quot;simulation_type&quot;</span><span class="p">:</span> <span class="n">SimulationType</span><span class="o">.</span><span class="n">QSTS</span><span class="p">,</span>
+    <span class="p">}</span>
+    <span class="n">SourceTree2Model</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span>
+        <span class="n">input_path</span><span class="o">=</span><span class="n">input_path</span><span class="p">,</span>
+        <span class="n">output_path</span><span class="o">=</span><span class="n">output</span><span class="p">,</span>
+        <span class="n">simulation_params</span><span class="o">=</span><span class="n">simulation_params</span><span class="p">,</span>
+        <span class="n">simulation_model</span><span class="o">=</span><span class="n">TimeSeriesAnalysisModel</span><span class="p">,</span>
+        <span class="n">feeders</span><span class="o">=</span><span class="n">feeders</span><span class="p">,</span>
+        <span class="n">dc_ac_ratios</span><span class="o">=</span><span class="n">dc_ac_ratios</span><span class="p">,</span>
+        <span class="n">scales</span><span class="o">=</span><span class="n">scales</span><span class="p">,</span>
+        <span class="n">placements</span><span class="o">=</span><span class="n">placements</span><span class="p">,</span>
+        <span class="n">deployments</span><span class="o">=</span><span class="n">deployments</span><span class="p">,</span>
+        <span class="n">penetration_levels</span><span class="o">=</span><span class="n">penetration_levels</span><span class="p">,</span>
+        <span class="n">master_file</span><span class="o">=</span><span class="n">master_file</span><span class="p">,</span>
+        <span class="n">pv_profile</span><span class="o">=</span><span class="n">pv_profile</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span>
+        <span class="sa">f</span><span class="s2">&quot;Transformed data from </span><span class="si">{</span><span class="n">input_path</span><span class="si">}</span><span class="s2"> to </span><span class="si">{</span><span class="n">output</span><span class="si">}</span><span class="s2"> for TimeSeries Analysis.&quot;</span>
+    <span class="p">)</span>
+
+
+<div class="viewcode-block" id="SourceTree2Model"><a class="viewcode-back" href="../../../../disco/disco.sources.source_tree_2.html#disco.sources.source_tree_2.source_tree_2_model.SourceTree2Model">[docs]</a><span class="k">class</span> <span class="nc">SourceTree2Model</span><span class="p">(</span><span class="n">BaseOpenDssModel</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Source Type 2 Feeder Model Inputs Class&quot;&quot;&quot;</span>
+
+    <span class="n">TRANSFORM_SUBCOMMANDS</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;snapshot&quot;</span><span class="p">:</span> <span class="n">snapshot</span><span class="p">,</span>
+        <span class="s2">&quot;time-series&quot;</span><span class="p">:</span> <span class="n">time_series</span><span class="p">,</span>
+    <span class="p">}</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_path</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;path&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_feeder</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;feeder&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_master</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;master&quot;</span><span class="p">,</span> <span class="s2">&quot;Master_noPV.dss&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_dcac</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;dcac&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_scale</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;scale&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_placement</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;placement&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_deployment</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;deployment&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_penetration_level</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;penetration_level&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_loadshape_directory</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;loadshape_directory&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_opendss_directory</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;opendss_directory&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_pv_locations</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;pv_locations&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_metadata_directory</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;metadata_directory&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">data</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;is_base_case&quot;</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_name</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">make_base_case_name</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_feeder</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dcac</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_name</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">make_name</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_feeder</span><span class="p">,</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_dcac</span><span class="p">,</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_scale</span><span class="p">,</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_placement</span><span class="p">,</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_deployment</span><span class="p">,</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_penetration_level</span><span class="p">,</span>
+            <span class="p">)</span>
+        <span class="n">data</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;deployment_file&quot;</span><span class="p">)</span>
+        <span class="k">assert</span> <span class="ow">not</span> <span class="n">data</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">dc_ac_ratio</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dcac</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">substation</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="kc">None</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">feeder</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_feeder</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">loadshape_directory</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_loadshape_directory</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">opendss_directory</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_opendss_directory</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">master_file</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_opendss_directory</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_master</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">metadata_directory</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_metadata_directory</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">name</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_name</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">pv_locations</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pv_locations</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">pydss_controllers</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">PyDSSControllerModel</span><span class="p">(</span>
+            <span class="n">controller_type</span><span class="o">=</span><span class="n">ControllerType</span><span class="o">.</span><span class="n">PV_CONTROLLER</span><span class="p">,</span>
+            <span class="n">name</span><span class="o">=</span><span class="s2">&quot;volt-var&quot;</span><span class="p">,</span>
+        <span class="p">)</span>
+
+<div class="viewcode-block" id="SourceTree2Model.get_transform_subcommand"><a class="viewcode-back" href="../../../../disco/disco.sources.source_tree_2.html#disco.sources.source_tree_2.source_tree_2_model.SourceTree2Model.get_transform_subcommand">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">get_transform_subcommand</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">SourceTree2Model</span><span class="o">.</span><span class="n">TRANSFORM_SUBCOMMANDS</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">InvalidParameter</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2"> is not supported&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">SourceTree2Model</span><span class="o">.</span><span class="n">TRANSFORM_SUBCOMMANDS</span><span class="p">[</span><span class="n">name</span><span class="p">]</span></div>
+
+<div class="viewcode-block" id="SourceTree2Model.list_transform_subcommands"><a class="viewcode-back" href="../../../../disco/disco.sources.source_tree_2.html#disco.sources.source_tree_2.source_tree_2_model.SourceTree2Model.list_transform_subcommands">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">list_transform_subcommands</span><span class="p">():</span>
+        <span class="k">return</span> <span class="nb">sorted</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">SourceTree2Model</span><span class="o">.</span><span class="n">TRANSFORM_SUBCOMMANDS</span><span class="o">.</span><span class="n">keys</span><span class="p">()))</span></div>
+
+<div class="viewcode-block" id="SourceTree2Model.transform"><a class="viewcode-back" href="../../../../disco/disco.sources.source_tree_2.html#disco.sources.source_tree_2.source_tree_2_model.SourceTree2Model.transform">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">transform</span><span class="p">(</span>
+        <span class="bp">cls</span><span class="p">,</span>
+        <span class="n">input_path</span><span class="p">,</span>
+        <span class="n">output_path</span><span class="p">,</span>
+        <span class="n">simulation_model</span><span class="p">,</span>
+        <span class="n">simulation_params</span><span class="p">,</span>
+        <span class="n">feeders</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;all&quot;</span><span class="p">,),</span>
+        <span class="n">dc_ac_ratios</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;all&quot;</span><span class="p">,),</span>
+        <span class="n">scales</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;all&quot;</span><span class="p">,),</span>
+        <span class="n">placements</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;all&quot;</span><span class="p">,),</span>
+        <span class="n">deployments</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;all&quot;</span><span class="p">,),</span>
+        <span class="n">penetration_levels</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;all&quot;</span><span class="p">,),</span>
+        <span class="n">master_file</span><span class="o">=</span><span class="s2">&quot;Master.dss&quot;</span><span class="p">,</span>
+        <span class="n">pv_profile</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="p">):</span>
+        <span class="n">inputs</span> <span class="o">=</span> <span class="n">SourceTree2ModelInputs</span><span class="p">(</span><span class="n">input_path</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">feeders</span> <span class="o">==</span> <span class="p">(</span><span class="s2">&quot;all&quot;</span><span class="p">,):</span>
+            <span class="n">feeders</span> <span class="o">=</span> <span class="n">inputs</span><span class="o">.</span><span class="n">list_feeders</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">dc_ac_ratios</span> <span class="o">==</span> <span class="p">(</span><span class="s2">&quot;all&quot;</span><span class="p">,):</span>
+            <span class="n">dc_ac_ratios</span> <span class="o">=</span> <span class="n">inputs</span><span class="o">.</span><span class="n">list_dcac_ratios</span><span class="p">()</span>
+        <span class="k">elif</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">dc_ac_ratios</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="nb">float</span><span class="p">):</span>
+            <span class="n">dc_ac_ratios</span> <span class="o">=</span> <span class="p">[</span><span class="nb">float</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">dc_ac_ratios</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">scales</span> <span class="o">==</span> <span class="p">(</span><span class="s2">&quot;all&quot;</span><span class="p">,):</span>
+            <span class="n">scales</span> <span class="o">=</span> <span class="n">inputs</span><span class="o">.</span><span class="n">list_scales</span><span class="p">()</span>
+        <span class="k">elif</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">scales</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">Scale</span><span class="p">):</span>
+            <span class="n">scales</span> <span class="o">=</span> <span class="p">[</span><span class="n">Scale</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">scales</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">placements</span> <span class="o">==</span> <span class="p">(</span><span class="s2">&quot;all&quot;</span><span class="p">,):</span>
+            <span class="n">placements</span> <span class="o">=</span> <span class="n">inputs</span><span class="o">.</span><span class="n">list_placements</span><span class="p">()</span>
+        <span class="k">elif</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">placements</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="nb">float</span><span class="p">):</span>
+            <span class="n">placements</span> <span class="o">=</span> <span class="p">[</span><span class="n">Placement</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">placements</span><span class="p">]</span>
+
+        <span class="n">config</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">feeder</span><span class="p">,</span> <span class="n">dcac</span><span class="p">,</span> <span class="n">scale</span><span class="p">,</span> <span class="n">placement</span> <span class="ow">in</span> <span class="n">itertools</span><span class="o">.</span><span class="n">product</span><span class="p">(</span>
+            <span class="n">feeders</span><span class="p">,</span> <span class="n">dc_ac_ratios</span><span class="p">,</span> <span class="n">scales</span><span class="p">,</span> <span class="n">placements</span>
+        <span class="p">):</span>
+            <span class="n">key</span> <span class="o">=</span> <span class="n">inputs</span><span class="o">.</span><span class="n">create_key</span><span class="p">(</span><span class="n">feeder</span><span class="p">,</span> <span class="n">dcac</span><span class="p">,</span> <span class="n">scale</span><span class="p">,</span> <span class="n">placement</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">deployments</span> <span class="o">==</span> <span class="p">(</span><span class="s2">&quot;all&quot;</span><span class="p">,):</span>
+                <span class="n">_deployments</span> <span class="o">=</span> <span class="n">inputs</span><span class="o">.</span><span class="n">list_deployments</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">_deployments</span> <span class="o">=</span> <span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">deployments</span><span class="p">]</span>
+            <span class="k">for</span> <span class="n">deployment</span> <span class="ow">in</span> <span class="n">_deployments</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">penetration_levels</span> <span class="o">==</span> <span class="p">(</span><span class="s2">&quot;all&quot;</span><span class="p">,):</span>
+                    <span class="n">levels</span> <span class="o">=</span> <span class="n">inputs</span><span class="o">.</span><span class="n">list_penetration_levels</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">deployment</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">levels</span> <span class="o">=</span> <span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">penetration_levels</span><span class="p">]</span>
+                <span class="k">for</span> <span class="n">level</span> <span class="ow">in</span> <span class="n">levels</span><span class="p">:</span>
+                    <span class="n">deployment_file</span> <span class="o">=</span> <span class="n">inputs</span><span class="o">.</span><span class="n">get_deployment_file</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">deployment</span><span class="p">,</span> <span class="n">level</span><span class="p">)</span>
+                    <span class="n">data</span> <span class="o">=</span> <span class="p">{</span>
+                        <span class="s2">&quot;path&quot;</span><span class="p">:</span> <span class="n">input_path</span><span class="p">,</span>
+                        <span class="s2">&quot;feeder&quot;</span><span class="p">:</span> <span class="n">feeder</span><span class="p">,</span>
+                        <span class="s2">&quot;master&quot;</span><span class="p">:</span> <span class="n">master_file</span><span class="p">,</span>
+                        <span class="s2">&quot;dcac&quot;</span><span class="p">:</span> <span class="n">dcac</span><span class="p">,</span>
+                        <span class="s2">&quot;scale&quot;</span><span class="p">:</span> <span class="n">scale</span><span class="o">.</span><span class="n">value</span><span class="p">,</span>
+                        <span class="s2">&quot;placement&quot;</span><span class="p">:</span> <span class="n">placement</span><span class="o">.</span><span class="n">value</span><span class="p">,</span>
+                        <span class="s2">&quot;deployment&quot;</span><span class="p">:</span> <span class="n">deployment</span><span class="p">,</span>
+                        <span class="s2">&quot;penetration_level&quot;</span><span class="p">:</span> <span class="n">level</span><span class="p">,</span>
+                        <span class="s2">&quot;deployment_file&quot;</span><span class="p">:</span> <span class="n">deployment_file</span><span class="p">,</span>
+                        <span class="s2">&quot;loadshape_directory&quot;</span><span class="p">:</span> <span class="n">inputs</span><span class="o">.</span><span class="n">get_loadshape_directory</span><span class="p">(</span><span class="n">feeder</span><span class="p">),</span>
+                        <span class="s2">&quot;opendss_directory&quot;</span><span class="p">:</span> <span class="n">inputs</span><span class="o">.</span><span class="n">get_opendss_directory</span><span class="p">(</span><span class="n">feeder</span><span class="p">),</span>
+                        <span class="s2">&quot;pv_locations&quot;</span><span class="p">:</span> <span class="p">[</span><span class="n">deployment_file</span><span class="p">],</span>
+                        <span class="s2">&quot;is_base_case&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+                    <span class="p">}</span>
+                    <span class="n">model</span> <span class="o">=</span> <span class="bp">cls</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+                    <span class="n">path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">output_path</span><span class="p">,</span> <span class="n">feeder</span><span class="p">)</span>
+                    <span class="n">out_deployment</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">create_deployment</span><span class="p">(</span>
+                        <span class="n">model</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="n">pv_profile</span><span class="o">=</span><span class="n">pv_profile</span>
+                    <span class="p">)</span>
+                    <span class="n">item</span> <span class="o">=</span> <span class="p">{</span>
+                        <span class="s2">&quot;deployment&quot;</span><span class="p">:</span> <span class="n">out_deployment</span><span class="p">,</span>
+                        <span class="s2">&quot;simulation&quot;</span><span class="p">:</span> <span class="n">simulation_params</span><span class="p">,</span>
+                        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="n">model</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+                        <span class="s2">&quot;model_type&quot;</span><span class="p">:</span> <span class="n">simulation_model</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,</span>
+                    <span class="p">}</span>
+                    <span class="n">config</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">simulation_model</span><span class="o">.</span><span class="n">validate</span><span class="p">(</span><span class="n">item</span><span class="p">)</span><span class="o">.</span><span class="n">dict</span><span class="p">())</span>
+
+        <span class="n">filename</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">output_path</span><span class="p">,</span> <span class="n">SOURCE_CONFIGURATION_FILENAME</span><span class="p">)</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f_out</span><span class="p">:</span>
+            <span class="n">json</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">config</span><span class="p">,</span> <span class="n">f_out</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="bp">cls</span><span class="o">=</span><span class="n">ExtendedJSONEncoder</span><span class="p">)</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Wrote config to </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="SourceTree2Model.make_name"><a class="viewcode-back" href="../../../../disco/disco.sources.source_tree_2.html#disco.sources.source_tree_2.source_tree_2_model.SourceTree2Model.make_name">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">make_name</span><span class="p">(</span><span class="n">feeder</span><span class="p">,</span> <span class="n">dcac</span><span class="p">,</span> <span class="n">scale</span><span class="p">,</span> <span class="n">placement</span><span class="p">,</span> <span class="n">deployment</span><span class="p">,</span> <span class="n">penetration_level</span><span class="p">):</span>
+        <span class="n">fields</span> <span class="o">=</span> <span class="p">(</span><span class="n">feeder</span><span class="p">,</span> <span class="n">dcac</span><span class="p">,</span> <span class="n">scale</span><span class="p">,</span> <span class="n">placement</span><span class="p">,</span> <span class="n">deployment</span><span class="p">,</span> <span class="n">penetration_level</span><span class="p">)</span>
+        <span class="k">return</span> <span class="s2">&quot;__&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="nb">str</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">fields</span><span class="p">])</span></div>
+
+<div class="viewcode-block" id="SourceTree2Model.make_base_case_name"><a class="viewcode-back" href="../../../../disco/disco.sources.source_tree_2.html#disco.sources.source_tree_2.source_tree_2_model.SourceTree2Model.make_base_case_name">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">make_base_case_name</span><span class="p">(</span><span class="n">feeder</span><span class="p">,</span> <span class="n">dcac</span><span class="p">):</span>
+        <span class="n">fields</span> <span class="o">=</span> <span class="p">(</span><span class="n">feeder</span><span class="p">,</span> <span class="n">dcac</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+        <span class="k">return</span> <span class="s2">&quot;__&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="nb">str</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">fields</span><span class="p">])</span></div></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2019, NREL.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

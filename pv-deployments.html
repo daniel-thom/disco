@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="Python" >
+<html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
@@ -101,7 +101,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="advanced-guide.html">Advanced Guide</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="advanced-guide/analysis-deployment.html">Analysis Deployment</a></li>
-<li class="toctree-l2"><a class="reference internal" href="advanced-guide/automated-upgrade-simulation.html">Automated Upgrade Simulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="advanced-guide/upgrade-cost-analysis-generic-models.html">Upgrade Cost Analysis JSON Schemas</a></li>
 </ul>
 </li>
 </ul>
@@ -152,10 +152,10 @@
 <li><p><code class="docutils literal notranslate"><span class="pre">restore-feeders</span></code>: Before and during PV deployments, Loads.dss and Master.dss files were modified, need to restore after that.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">create-pv</span></code>: create PV deployments on feeders based on <cite>placement</cite>, <cite>sample</cite> and <cite>penetration</cite> levels.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">check-pv</span></code>: check if there are PV deployments missing at each <cite>placement</cite>, <cite>sample</cite> and <cite>penetration</cite> level.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">remove-pv</span></code>: delete PV deployments in case there's something wrong.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">remove-pv</span></code>: delete PV deployments in case there’s something wrong.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">create-configs</span></code>: create PV config files at each <cite>sample</cite> deployment level.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">check-configs</span></code>: check if there are PV config files missing in deployment directories.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">remove-configs</span></code>: remove PV config files in case there's something wrong.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">remove-configs</span></code>: remove PV config files in case there’s something wrong.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">list-feeders</span></code>: list feeder paths given input of region, substation or feeder.</p></li>
 </ul>
 <section id="redirect-pvshapes">
@@ -195,7 +195,7 @@ change load model to suitable center-tap schema if needed. The command to run th
 <p>We recommand to run this <code class="docutils literal notranslate"><span class="pre">generate-jobs</span></code> command with <code class="docutils literal notranslate"><span class="pre">--hierarchy=city</span></code> and generate jobs on all
 feeders within the city path, if your simulation/analysis jobs run relatively stable, this way can help avoid
 the repeated job generation work on regions, substations, or feeders.
-For test or debug purpose,it's good to specify <code class="docutils literal notranslate"><span class="pre">--hierarchy=feeder</span></code> for generating config file with one job,
+For test or debug purpose,it’s good to specify <code class="docutils literal notranslate"><span class="pre">--hierarchy=feeder</span></code> for generating config file with one job,
 or <code class="docutils literal notranslate"><span class="pre">--hierarchy=substation</span></code> with a few jobs.</p>
 <p>This command will generate two JADE config files:</p>
 <blockquote>
@@ -219,7 +219,7 @@ jobs to complete, before to submit PV config jobs.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ jade submit-jobs &lt;OPTIONS&gt; create-pv-jobs.json
 </pre></div>
 </div>
-<p>If the jobs pass, then the PV deployments task is done. If you'd like to explore details
+<p>If the jobs pass, then the PV deployments task is done. If you’d like to explore details
 about <code class="docutils literal notranslate"><span class="pre">create-pv</span></code> action based on your hierarchy and according input path, please check the section below.</p>
 </section>
 <section id="details-exploration">
@@ -255,7 +255,7 @@ $ disco pv-deployments source-tree-1 -a check-pv -h substation  -p random &lt;su
 $ disco pv-deployments source-tree-1 -a check-pv -h region  -p random &lt;region1_path&gt;
 </pre></div>
 </div>
-<p>It returns the missing samples and penetrations on each feeder. If don't have <code class="docutils literal notranslate"><span class="pre">--placement</span></code> specified,
+<p>It returns the missing samples and penetrations on each feeder. If don’t have <code class="docutils literal notranslate"><span class="pre">--placement</span></code> specified,
 the result would include <cite>placement</cite> missing information on each feeder.</p>
 <ol class="arabic simple" start="5">
 <li><p>If you found some issues with the PV deployments, and like to delete them, here are example commands,</p></li>
@@ -275,7 +275,7 @@ $ disco pv-deployments source-tree-1 -a remove-pv -h region  -p random &lt;regio
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ jade submit-jobs &lt;OPTIONS&gt; create-config-jobs.json
 </pre></div>
 </div>
-<p>If the jobs pass, then the PV configs task is done. If you'd like to explore details
+<p>If the jobs pass, then the PV configs task is done. If you’d like to explore details
 about <code class="docutils literal notranslate"><span class="pre">create-configs</span></code> action based on your hierarchy and according input path, please check the section below.</p>
 </section>
 <section id="id3">

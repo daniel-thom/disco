@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>disco.cli.compute_pv_swad &mdash; DISCO 0.1 documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link href="../../../_static/style.css" rel="stylesheet" type="text/css">
+
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../../index.html" class="icon icon-home"> DISCO
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">User Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../installation.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../installation.html#use-conda">Use Conda</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../installation.html#use-docker">Use Docker</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../overview.html">Overview</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../overview.html#data-sources">Data Sources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../overview.html#transform-model">Transform Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../overview.html#config-jobs">Config Jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../overview.html#submit-jobs">Submit Jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../overview.html#result-analysis">Result Analysis</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../quick-start.html">Quick Start</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../quick-start.html#source-data">Source Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../quick-start.html#transform-model">Transform Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../quick-start.html#config-jobs">Config Jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../quick-start.html#submit-jobs">Submit Jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../quick-start.html#result-analysis">Result Analysis</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../data-sources.html">Data Sources</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../data-sources/smart-ds-model-preparation.html">SMART-DS OpenDSS Model Preparation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../data-sources.html#gem-model">GEM Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../data-sources.html#epri-model">EPRI Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../data-sources.html#sourcetree1-model">SourceTree1 Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../data-sources.html#sourcetree2-model">SourceTree2 Model</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../pv-deployments.html">PV Deployments</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../pv-deployments.html#sourcetree1-pv-deployments">SourceTree1 PV Deployments</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../transform-models.html">Transform Models</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../transform-models.html#transform-model-help">Transform Model Help</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../transform-models.html#disco-model-in-depth">DISCO Model in Depth</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../analysis-workflows.html">Analysis Workflows</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../analysis-workflows/hosting-capacity-analysis.html">Hosting Capacity Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../analysis-workflows/upgrade-cost-analysis.html">Upgrade Cost Analysis</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../pipelines.html">Pipelines</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../pipelines.html#sourcetree1model">SourceTree1Model</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../debugging-issues.html">Debugging Issues</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../debugging-issues.html#using-jade">Using JADE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../debugging-issues.html#using-pydss">Using PyDSS</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../data-ingestion.html">Data Ingestion</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../data-ingestion.html#ingest-to-new-database">Ingest to New Database</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../data-ingestion.html#ingest-to-existing-database">Ingest to Existing Database</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../data-ingestion.html#run-database-queries">Run Database Queries</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../advanced-guide.html">Advanced Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../advanced-guide/analysis-deployment.html">Analysis Deployment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../advanced-guide/upgrade-cost-analysis-generic-models.html">Upgrade Cost Analysis JSON Schemas</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contribution</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../build-docs.html">Build docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../license.html">License</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">DISCO</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+      <li>disco.cli.compute_pv_swad</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for disco.cli.compute_pv_swad</h1><div class="highlight"><pre>
+<span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Created on Thu Feb 24 15:26:33 2022</span>
+
+<span class="sd">@author: senam</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">logging</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+
+<span class="kn">import</span> <span class="nn">click</span>
+<span class="kn">import</span> <span class="nn">opendssdirect</span> <span class="k">as</span> <span class="nn">dss</span>
+
+<span class="kn">from</span> <span class="nn">jade.loggers</span> <span class="kn">import</span> <span class="n">setup_logging</span>
+
+
+<span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="s2">&quot;swad&quot;</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="get_load_info"><a class="viewcode-back" href="../../../disco/disco.cli.html#disco.cli.compute_pv_swad.get_load_info">[docs]</a><span class="k">def</span> <span class="nf">get_load_info</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    This function returns the following information pertaining to loads on a feeder:</span>
+<span class="sd">        load name</span>
+<span class="sd">        bus where each load is connected</span>
+<span class="sd">        kW load capacity</span>
+<span class="sd">        number of phases</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">load_info</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="c1"># load_names = dss.Loads.AllNames()</span>
+
+    <span class="n">dss</span><span class="o">.</span><span class="n">Circuit</span><span class="o">.</span><span class="n">SetActiveClass</span><span class="p">(</span><span class="s2">&quot;Load&quot;</span><span class="p">)</span>
+    <span class="n">flag</span> <span class="o">=</span> <span class="n">dss</span><span class="o">.</span><span class="n">ActiveClass</span><span class="o">.</span><span class="n">First</span><span class="p">()</span>
+    <span class="k">while</span> <span class="n">flag</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">name</span> <span class="o">=</span> <span class="n">dss</span><span class="o">.</span><span class="n">CktElement</span><span class="o">.</span><span class="n">Name</span><span class="p">()</span>
+        <span class="n">bus</span> <span class="o">=</span> <span class="n">dss</span><span class="o">.</span><span class="n">CktElement</span><span class="o">.</span><span class="n">BusNames</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">load_kw</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">dss</span><span class="o">.</span><span class="n">CktElement</span><span class="o">.</span><span class="n">Powers</span><span class="p">()[</span><span class="mi">0</span><span class="p">::</span><span class="mi">2</span><span class="p">])</span>
+        <span class="n">nphases</span> <span class="o">=</span> <span class="n">dss</span><span class="o">.</span><span class="n">CktElement</span><span class="o">.</span><span class="n">NumPhases</span><span class="p">()</span>
+        <span class="n">load_info</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="n">name</span><span class="p">,</span> <span class="s2">&quot;bus&quot;</span><span class="p">:</span> <span class="n">bus</span><span class="p">,</span> <span class="s2">&quot;kW&quot;</span><span class="p">:</span> <span class="n">load_kw</span><span class="p">,</span> <span class="s2">&quot;nphases&quot;</span><span class="p">:</span> <span class="n">nphases</span><span class="p">}</span>
+        <span class="n">flag</span> <span class="o">=</span> <span class="n">dss</span><span class="o">.</span><span class="n">ActiveClass</span><span class="o">.</span><span class="n">Next</span><span class="p">()</span>
+
+    <span class="k">return</span> <span class="n">load_info</span></div>
+
+
+<div class="viewcode-block" id="get_existing_pvs"><a class="viewcode-back" href="../../../disco/disco.cli.html#disco.cli.compute_pv_swad.get_existing_pvs">[docs]</a><span class="k">def</span> <span class="nf">get_existing_pvs</span><span class="p">():</span>
+    <span class="n">total_existing_pv</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">existing_pv_dict</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="n">existing_pv_dist_dict</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="n">flag</span> <span class="o">=</span> <span class="n">dss</span><span class="o">.</span><span class="n">PVsystems</span><span class="o">.</span><span class="n">First</span><span class="p">()</span>
+
+    <span class="k">while</span> <span class="n">flag</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">bus</span> <span class="o">=</span> <span class="n">dss</span><span class="o">.</span><span class="n">Properties</span><span class="o">.</span><span class="n">Value</span><span class="p">(</span><span class="s2">&quot;bus1&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">bus</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">existing_pv_dict</span><span class="p">:</span>
+            <span class="n">dss</span><span class="o">.</span><span class="n">Circuit</span><span class="o">.</span><span class="n">SetActiveBus</span><span class="p">(</span><span class="n">bus</span><span class="p">)</span>
+            <span class="n">existing_pv_dist_dict</span><span class="p">[</span><span class="n">bus</span><span class="p">]</span> <span class="o">=</span> <span class="n">dss</span><span class="o">.</span><span class="n">Bus</span><span class="o">.</span><span class="n">Distance</span><span class="p">()</span>
+            <span class="n">existing_pv_dict</span><span class="p">[</span><span class="n">bus</span><span class="p">]</span> <span class="o">=</span> <span class="n">dss</span><span class="o">.</span><span class="n">PVsystems</span><span class="o">.</span><span class="n">kVARated</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">existing_pv_dict</span><span class="p">[</span><span class="n">bus</span><span class="p">]</span> <span class="o">+=</span> <span class="n">dss</span><span class="o">.</span><span class="n">PVsystems</span><span class="o">.</span><span class="n">kVARated</span><span class="p">()</span>
+
+        <span class="n">total_existing_pv</span> <span class="o">+=</span> <span class="n">dss</span><span class="o">.</span><span class="n">PVsystems</span><span class="o">.</span><span class="n">kVARated</span><span class="p">()</span>
+        <span class="n">flag</span> <span class="o">=</span> <span class="n">dss</span><span class="o">.</span><span class="n">PVsystems</span><span class="o">.</span><span class="n">Next</span><span class="p">()</span>
+
+    <span class="k">return</span> <span class="n">total_existing_pv</span><span class="p">,</span> <span class="n">existing_pv_dict</span><span class="p">,</span> <span class="n">existing_pv_dist_dict</span></div>
+
+
+<div class="viewcode-block" id="compute_weighted_average_pv_distance"><a class="viewcode-back" href="../../../disco/disco.cli.html#disco.cli.compute_pv_swad.compute_weighted_average_pv_distance">[docs]</a><span class="k">def</span> <span class="nf">compute_weighted_average_pv_distance</span><span class="p">(</span><span class="n">load_info</span><span class="p">,</span> <span class="n">option</span><span class="o">=</span><span class="s2">&quot;size&quot;</span><span class="p">):</span>
+    <span class="n">wavg_pv_distance</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">total_existing_pv</span><span class="p">,</span> <span class="n">existing_pv_dict</span><span class="p">,</span> <span class="n">existing_pv_dist_dict</span> <span class="o">=</span> <span class="n">get_existing_pvs</span><span class="p">()</span>
+
+    <span class="n">slack_dico</span> <span class="o">=</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span> <span class="n">v</span> <span class="o">*</span> <span class="n">existing_pv_dist_dict</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">existing_pv_dict</span><span class="o">.</span><span class="n">items</span><span class="p">()}</span>
+
+    <span class="k">if</span> <span class="n">option</span> <span class="o">==</span> <span class="s2">&quot;size&quot;</span><span class="p">:</span>
+        <span class="n">wavg_pv_distance</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">slack_dico</span><span class="o">.</span><span class="n">values</span><span class="p">())</span> <span class="o">/</span> <span class="nb">max</span><span class="p">(</span><span class="mf">0.001</span><span class="p">,</span> <span class="n">total_existing_pv</span><span class="p">)</span>
+
+    <span class="k">elif</span> <span class="n">option</span> <span class="o">==</span> <span class="s2">&quot;nodal_ratio&quot;</span><span class="p">:</span>
+        <span class="n">load_per_bus</span> <span class="o">=</span> <span class="p">{</span><span class="n">v</span><span class="p">[</span><span class="s2">&quot;bus&quot;</span><span class="p">]:</span> <span class="n">v</span><span class="p">[</span><span class="s2">&quot;kW&quot;</span><span class="p">]</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">load_info</span><span class="o">.</span><span class="n">items</span><span class="p">()}</span>
+
+        <span class="n">slack_dico</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="n">k</span><span class="p">:</span> <span class="n">v</span> <span class="o">*</span> <span class="n">existing_pv_dist_dict</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">/</span> <span class="nb">max</span><span class="p">(</span><span class="mf">0.001</span><span class="p">,</span> <span class="n">load_per_bus</span><span class="p">[</span><span class="n">k</span><span class="p">])</span>
+            <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">existing_pv_dict</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
+        <span class="p">}</span>
+        <span class="n">ratio_sum</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">([</span><span class="n">v</span> <span class="o">/</span> <span class="nb">max</span><span class="p">(</span><span class="mf">0.001</span><span class="p">,</span> <span class="n">load_per_bus</span><span class="p">[</span><span class="n">k</span><span class="p">])</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">existing_pv_dict</span><span class="o">.</span><span class="n">items</span><span class="p">()])</span>
+        <span class="n">wavg_pv_distance</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">slack_dico</span><span class="o">.</span><span class="n">values</span><span class="p">())</span> <span class="o">/</span> <span class="nb">max</span><span class="p">(</span><span class="mf">0.001</span><span class="p">,</span> <span class="n">ratio_sum</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">wavg_pv_distance</span></div>
+
+
+<div class="viewcode-block" id="collect_weighted_average_pv_distance"><a class="viewcode-back" href="../../../disco/disco.cli.html#disco.cli.compute_pv_swad.collect_weighted_average_pv_distance">[docs]</a><span class="k">def</span> <span class="nf">collect_weighted_average_pv_distance</span><span class="p">(</span><span class="n">filename</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span> <span class="n">option</span><span class="p">):</span>
+    <span class="n">orig</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">reply</span> <span class="o">=</span> <span class="n">dss</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">run_command</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;compile </span><span class="si">{</span><span class="n">filename</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">reply</span> <span class="o">!=</span> <span class="s2">&quot;&quot;</span><span class="p">:</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;Failed to compile OpenDSS model </span><span class="si">%s</span><span class="s2">: </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">filename</span><span class="p">,</span> <span class="n">reply</span><span class="p">)</span>
+            <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+        <span class="n">load_info</span> <span class="o">=</span> <span class="n">get_load_info</span><span class="p">()</span>
+        <span class="n">avg</span> <span class="o">=</span> <span class="n">compute_weighted_average_pv_distance</span><span class="p">(</span><span class="n">load_info</span><span class="p">,</span> <span class="n">option</span><span class="o">=</span><span class="n">option</span><span class="p">)</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Computed weighted average PV distance </span><span class="si">%s</span><span class="s2"> for </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">avg</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span>
+    <span class="k">finally</span><span class="p">:</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="n">orig</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">avg</span></div>
+
+
+<div class="viewcode-block" id="collect_weighted_average_pv_distances"><a class="viewcode-back" href="../../../disco/disco.cli.html#disco.cli.compute_pv_swad.collect_weighted_average_pv_distances">[docs]</a><span class="k">def</span> <span class="nf">collect_weighted_average_pv_distances</span><span class="p">(</span><span class="n">path</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span> <span class="n">option</span><span class="p">):</span>
+    <span class="n">results</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">substation_path</span> <span class="ow">in</span> <span class="n">path</span><span class="o">.</span><span class="n">iterdir</span><span class="p">():</span>
+        <span class="k">if</span> <span class="n">substation_path</span><span class="o">.</span><span class="n">is_dir</span><span class="p">():</span>
+            <span class="k">for</span> <span class="n">feeder_path</span> <span class="ow">in</span> <span class="n">substation_path</span><span class="o">.</span><span class="n">iterdir</span><span class="p">():</span>
+                <span class="n">pv_path</span> <span class="o">=</span> <span class="n">feeder_path</span> <span class="o">/</span> <span class="s2">&quot;PVDeployments&quot;</span>
+                <span class="k">if</span> <span class="n">pv_path</span><span class="o">.</span><span class="n">is_dir</span><span class="p">():</span>
+                    <span class="k">for</span> <span class="n">filename</span> <span class="ow">in</span> <span class="n">pv_path</span><span class="o">.</span><span class="n">iterdir</span><span class="p">():</span>
+                        <span class="n">job_name</span> <span class="o">=</span> <span class="n">filename</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;.dss&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+                        <span class="n">fields</span> <span class="o">=</span> <span class="n">job_name</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;__&quot;</span><span class="p">)</span>
+                        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">fields</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">5</span><span class="p">:</span>
+                            <span class="k">continue</span>
+                        <span class="n">substation</span><span class="p">,</span> <span class="n">feeder</span><span class="p">,</span> <span class="n">placement</span><span class="p">,</span> <span class="n">sample</span><span class="p">,</span> <span class="n">penetration_level</span> <span class="o">=</span> <span class="n">fields</span>
+                        <span class="n">wavg_pv_distance</span> <span class="o">=</span> <span class="n">collect_weighted_average_pv_distance</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">option</span><span class="p">)</span>
+                        <span class="n">results</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                            <span class="p">{</span>
+                                <span class="s2">&quot;job_name&quot;</span><span class="p">:</span> <span class="n">job_name</span><span class="p">,</span>
+                                <span class="s2">&quot;substation&quot;</span><span class="p">:</span> <span class="n">substation</span><span class="p">,</span>
+                                <span class="s2">&quot;feeder&quot;</span><span class="p">:</span> <span class="n">feeder</span><span class="p">,</span>
+                                <span class="s2">&quot;placement&quot;</span><span class="p">:</span> <span class="n">placement</span><span class="p">,</span>
+                                <span class="s2">&quot;sample&quot;</span><span class="p">:</span> <span class="n">sample</span><span class="p">,</span>
+                                <span class="s2">&quot;penetration_level&quot;</span><span class="p">:</span> <span class="n">penetration_level</span><span class="p">,</span>
+                                <span class="s2">&quot;weighted_average_pv_distance&quot;</span><span class="p">:</span> <span class="n">wavg_pv_distance</span><span class="p">,</span>
+                                <span class="s2">&quot;option&quot;</span><span class="p">:</span> <span class="n">option</span><span class="p">,</span>
+                            <span class="p">}</span>
+                        <span class="p">)</span>
+    <span class="k">return</span> <span class="n">results</span></div>
+
+
+<span class="nd">@click</span><span class="o">.</span><span class="n">command</span><span class="p">()</span>
+<span class="nd">@click</span><span class="o">.</span><span class="n">argument</span><span class="p">(</span><span class="s2">&quot;path&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="n">click</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="n">exists</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span> <span class="n">callback</span><span class="o">=</span><span class="k">lambda</span> <span class="n">_</span><span class="p">,</span> <span class="n">__</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span> <span class="n">Path</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+<span class="nd">@click</span><span class="o">.</span><span class="n">option</span><span class="p">(</span>
+    <span class="s2">&quot;--option&quot;</span><span class="p">,</span>
+    <span class="n">default</span><span class="o">=</span><span class="s2">&quot;size&quot;</span><span class="p">,</span>
+    <span class="nb">type</span><span class="o">=</span><span class="n">click</span><span class="o">.</span><span class="n">Choice</span><span class="p">([</span><span class="s2">&quot;size&quot;</span><span class="p">,</span> <span class="s2">&quot;nodal_ratio&quot;</span><span class="p">],</span> <span class="n">case_sensitive</span><span class="o">=</span><span class="kc">False</span><span class="p">),</span>
+    <span class="n">show_default</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Computation methodology&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="nd">@click</span><span class="o">.</span><span class="n">option</span><span class="p">(</span>
+    <span class="s2">&quot;--verbose&quot;</span><span class="p">,</span> <span class="n">is_flag</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">show_default</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Enable verbose logging&quot;</span>
+<span class="p">)</span>
+<span class="k">def</span> <span class="nf">compute_pv_swad</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">option</span><span class="p">,</span> <span class="n">verbose</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Compute weighted average PV distance for each model. Requires an EnergyMeter.&quot;&quot;&quot;</span>
+    <span class="n">level</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">DEBUG</span> <span class="k">if</span> <span class="n">verbose</span> <span class="k">else</span> <span class="n">logging</span><span class="o">.</span><span class="n">INFO</span>
+    <span class="n">setup_logging</span><span class="p">(</span><span class="s2">&quot;swad&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="n">console_level</span><span class="o">=</span><span class="n">level</span><span class="p">)</span>
+    <span class="n">results</span> <span class="o">=</span> <span class="n">collect_weighted_average_pv_distances</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">option</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">results</span><span class="p">:</span>
+        <span class="n">output_file</span> <span class="o">=</span> <span class="n">path</span> <span class="o">/</span> <span class="s2">&quot;weighted_average_pv_distances.csv&quot;</span>
+        <span class="n">fields</span> <span class="o">=</span> <span class="n">results</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">output_file</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f_out</span><span class="p">:</span>
+            <span class="n">f_out</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">fields</span><span class="p">))</span>
+            <span class="n">f_out</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">result</span> <span class="ow">in</span> <span class="n">results</span><span class="p">:</span>
+                <span class="n">f_out</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="nb">str</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">result</span><span class="o">.</span><span class="n">values</span><span class="p">()]))</span>
+                <span class="n">f_out</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Created </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">output_file</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;There were no PV deployment files in </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">path</span><span class="p">)</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">compute_pv_swad</span><span class="p">()</span>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2019, NREL.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>disco.storage.parsers &mdash; DISCO 0.1 documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link href="../../../_static/style.css" rel="stylesheet" type="text/css">
+
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../../index.html" class="icon icon-home"> DISCO
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">User Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../installation.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../installation.html#use-conda">Use Conda</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../installation.html#use-docker">Use Docker</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../overview.html">Overview</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../overview.html#data-sources">Data Sources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../overview.html#transform-model">Transform Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../overview.html#config-jobs">Config Jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../overview.html#submit-jobs">Submit Jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../overview.html#result-analysis">Result Analysis</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../quick-start.html">Quick Start</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../quick-start.html#source-data">Source Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../quick-start.html#transform-model">Transform Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../quick-start.html#config-jobs">Config Jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../quick-start.html#submit-jobs">Submit Jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../quick-start.html#result-analysis">Result Analysis</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../data-sources.html">Data Sources</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../data-sources/smart-ds-model-preparation.html">SMART-DS OpenDSS Model Preparation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../data-sources.html#gem-model">GEM Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../data-sources.html#epri-model">EPRI Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../data-sources.html#sourcetree1-model">SourceTree1 Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../data-sources.html#sourcetree2-model">SourceTree2 Model</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../pv-deployments.html">PV Deployments</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../pv-deployments.html#sourcetree1-pv-deployments">SourceTree1 PV Deployments</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../transform-models.html">Transform Models</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../transform-models.html#transform-model-help">Transform Model Help</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../transform-models.html#disco-model-in-depth">DISCO Model in Depth</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../analysis-workflows.html">Analysis Workflows</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../analysis-workflows/hosting-capacity-analysis.html">Hosting Capacity Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../analysis-workflows/upgrade-cost-analysis.html">Upgrade Cost Analysis</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../pipelines.html">Pipelines</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../pipelines.html#sourcetree1model">SourceTree1Model</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../debugging-issues.html">Debugging Issues</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../debugging-issues.html#using-jade">Using JADE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../debugging-issues.html#using-pydss">Using PyDSS</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../data-ingestion.html">Data Ingestion</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../data-ingestion.html#ingest-to-new-database">Ingest to New Database</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../data-ingestion.html#ingest-to-existing-database">Ingest to Existing Database</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../data-ingestion.html#run-database-queries">Run Database Queries</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../advanced-guide.html">Advanced Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../advanced-guide/analysis-deployment.html">Analysis Deployment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../advanced-guide/upgrade-cost-analysis-generic-models.html">Upgrade Cost Analysis JSON Schemas</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contribution</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../build-docs.html">Build docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../license.html">License</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">DISCO</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+      <li>disco.storage.parsers</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for disco.storage.parsers</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">logging</span>
+<span class="kn">import</span> <span class="nn">uuid</span>
+<span class="kn">from</span> <span class="nn">abc</span> <span class="kn">import</span> <span class="n">ABC</span><span class="p">,</span> <span class="n">abstractmethod</span>
+<span class="kn">from</span> <span class="nn">concurrent.futures</span> <span class="kn">import</span> <span class="n">ProcessPoolExecutor</span>
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
+<span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">partial</span>
+<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">dateutil.parser</span> <span class="kn">import</span> <span class="n">parse</span>
+
+<span class="kn">from</span> <span class="nn">jade.utils.utils</span> <span class="kn">import</span> <span class="n">load_data</span>
+<span class="kn">from</span> <span class="nn">opendssdirect._version</span> <span class="kn">import</span> <span class="n">__version__</span> <span class="k">as</span> <span class="n">__opendssdirect_version__</span>
+<span class="kn">from</span> <span class="nn">PyDSS</span> <span class="kn">import</span> <span class="n">__version__</span> <span class="k">as</span> <span class="n">__pydss_version__</span>
+<span class="kn">from</span> <span class="nn">PyDSS.common</span> <span class="kn">import</span> <span class="n">SnapshotTimePointSelectionMode</span>
+<span class="kn">from</span> <span class="nn">disco.pydss.common</span> <span class="kn">import</span> <span class="n">SNAPSHOT_SCENARIO</span><span class="p">,</span> <span class="n">TIME_SERIES_SCENARIOS</span><span class="p">,</span> <span class="n">SCENARIO_NAME_DELIMITER</span>
+<span class="kn">from</span> <span class="nn">disco.storage.outputs</span> <span class="kn">import</span> <span class="n">get_simulation_output</span><span class="p">,</span> <span class="n">get_creation_time</span><span class="p">,</span> <span class="n">OutputType</span>
+<span class="kn">from</span> <span class="nn">disco.version</span> <span class="kn">import</span> <span class="n">__version__</span> <span class="k">as</span> <span class="n">__disco_version__</span>
+
+<span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="ParserBase"><a class="viewcode-back" href="../../../disco/disco.storage.html#disco.storage.parsers.ParserBase">[docs]</a><span class="k">class</span> <span class="nc">ParserBase</span><span class="p">(</span><span class="n">ABC</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Abstract parser class&quot;&quot;&quot;</span>
+    
+<div class="viewcode-block" id="ParserBase.parse"><a class="viewcode-back" href="../../../disco/disco.storage.html#disco.storage.parsers.ParserBase.parse">[docs]</a>    <span class="nd">@abstractmethod</span>
+    <span class="k">def</span> <span class="nf">parse</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">output</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Given output, parse result data from it&quot;&quot;&quot;</span></div>
+    
+    <span class="k">def</span> <span class="nf">_get_uuid</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Return an random UUID string&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="n">uuid</span><span class="o">.</span><span class="n">uuid4</span><span class="p">())</span></div>
+
+
+<div class="viewcode-block" id="TaskParser"><a class="viewcode-back" href="../../../disco/disco.storage.html#disco.storage.parsers.TaskParser">[docs]</a><span class="k">class</span> <span class="nc">TaskParser</span><span class="p">(</span><span class="n">ParserBase</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">model_inputs</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">notes</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">model_inputs</span> <span class="o">=</span> <span class="n">model_inputs</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">notes</span> <span class="o">=</span> <span class="n">notes</span>
+
+<div class="viewcode-block" id="TaskParser.parse"><a class="viewcode-back" href="../../../disco/disco.storage.html#disco.storage.parsers.TaskParser.parse">[docs]</a>    <span class="k">def</span> <span class="nf">parse</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">output</span><span class="p">):</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Parsing data - &#39;task&#39;...&quot;</span><span class="p">)</span>
+        
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">output</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+            <span class="n">output</span> <span class="o">=</span> <span class="n">get_simulation_output</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
+        
+        <span class="n">data</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_uuid</span><span class="p">(),</span>
+            <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+            <span class="s2">&quot;inputs&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">model_inputs</span><span class="p">,</span>
+            <span class="s2">&quot;output&quot;</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">output</span><span class="p">),</span>
+            <span class="s2">&quot;image_version&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_image_version</span><span class="p">(),</span>
+            <span class="s2">&quot;notes&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">notes</span><span class="p">,</span>
+            <span class="s2">&quot;creation_time&quot;</span><span class="p">:</span> <span class="n">output</span><span class="o">.</span><span class="n">creation_time</span><span class="p">,</span>
+        <span class="p">}</span>
+        <span class="n">package_versions</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_package_versions</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
+        <span class="n">data</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">package_versions</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">data</span></div>
+
+    <span class="k">def</span> <span class="nf">_get_task_id</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_uuid</span><span class="p">()</span>
+    
+    <span class="k">def</span> <span class="nf">_get_task_inputs</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">model_inputs</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Invalid model model_inputs for the simulation task.&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">model_inputs</span>
+    
+    <span class="k">def</span> <span class="nf">_get_image_version</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Return the version of docker image&quot;&quot;&quot;</span>
+        <span class="c1"># TODO: get image version if applicable</span>
+        <span class="k">return</span> <span class="s2">&quot;&quot;</span>
+    
+    <span class="k">def</span> <span class="nf">_get_package_versions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">output</span><span class="p">):</span>
+        <span class="n">results</span> <span class="o">=</span> <span class="n">load_data</span><span class="p">(</span><span class="n">output</span><span class="o">.</span><span class="n">result_file</span><span class="p">)</span>
+        <span class="n">package_versions</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;disco_version&quot;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+            <span class="s2">&quot;pydss_version&quot;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+            <span class="s2">&quot;jade_version&quot;</span><span class="p">:</span> <span class="n">results</span><span class="p">[</span><span class="s2">&quot;jade_version&quot;</span><span class="p">],</span>
+            <span class="s2">&quot;opendssdirect_version&quot;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+            <span class="s2">&quot;opendss_version&quot;</span><span class="p">:</span> <span class="kc">None</span>
+        <span class="p">}</span>
+        
+        <span class="k">if</span> <span class="n">output</span><span class="o">.</span><span class="n">output_type</span> <span class="o">==</span> <span class="n">OutputType</span><span class="o">.</span><span class="n">DERMS</span><span class="p">:</span>
+            <span class="n">data</span> <span class="o">=</span> <span class="n">load_data</span><span class="p">(</span><span class="n">output</span><span class="o">.</span><span class="n">derms_info_file</span><span class="p">)</span>
+            <span class="n">package_versions</span><span class="p">[</span><span class="s2">&quot;opendssdirect_version&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;opendssdirect_version&quot;</span><span class="p">]</span>
+            <span class="n">package_versions</span><span class="p">[</span><span class="s2">&quot;opendss_version&quot;</span><span class="p">]</span> <span class="o">=</span> \
+                <span class="bp">self</span><span class="o">.</span><span class="n">_extract_opendss_svn_number</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;opendss_version&quot;</span><span class="p">])</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">logfile</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_job0_run_log_file</span><span class="p">(</span><span class="n">output</span><span class="p">,</span> <span class="n">results</span><span class="p">)</span>
+            <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">logfile</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+                <span class="n">lines</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>
+            
+            <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">lines</span><span class="p">:</span>
+                <span class="n">line</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+                <span class="k">if</span> <span class="s2">&quot;disco version&quot;</span> <span class="ow">in</span> <span class="n">line</span><span class="p">:</span>
+                    <span class="n">package_versions</span><span class="p">[</span><span class="s2">&quot;disco_version&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;=&quot;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+                <span class="k">if</span> <span class="s2">&quot;PyDSS version&quot;</span> <span class="ow">in</span> <span class="n">line</span><span class="p">:</span>
+                    <span class="n">package_versions</span><span class="p">[</span><span class="s2">&quot;pydss_version&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;=&quot;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+                <span class="k">if</span> <span class="s2">&quot;OpenDSSDirect version&quot;</span> <span class="ow">in</span> <span class="n">line</span><span class="p">:</span>
+                    <span class="n">package_versions</span><span class="p">[</span><span class="s2">&quot;opendssdirect_version&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;=&quot;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+                <span class="k">if</span> <span class="s2">&quot;OpendDSS version&quot;</span> <span class="ow">in</span> <span class="n">line</span><span class="p">:</span>
+                    <span class="n">package_versions</span><span class="p">[</span><span class="s2">&quot;opendss_version&quot;</span><span class="p">]</span> <span class="o">=</span> \
+                        <span class="bp">self</span><span class="o">.</span><span class="n">_extract_opendss_svn_number</span><span class="p">(</span><span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;=&quot;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span>
+        <span class="k">return</span> <span class="n">package_versions</span>
+    
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">_extract_opendss_svn_number</span><span class="p">(</span><span class="n">value</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">value</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;OpenDSS SVN &quot;</span><span class="p">)[</span><span class="mi">1</span><span class="p">][:</span><span class="mi">4</span><span class="p">]</span>
+    
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">_get_job0_run_log_file</span><span class="p">(</span><span class="n">output</span><span class="p">,</span> <span class="n">results</span><span class="p">):</span>
+        <span class="n">job_name</span> <span class="o">=</span> <span class="n">results</span><span class="p">[</span><span class="s2">&quot;results&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;name&quot;</span><span class="p">]</span>
+        <span class="n">job_dir</span> <span class="o">=</span> <span class="n">output</span><span class="o">.</span><span class="n">job_outputs</span> <span class="o">/</span> <span class="n">job_name</span>
+        
+        <span class="n">log_file</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">job_dir</span><span class="o">.</span><span class="n">iterdir</span><span class="p">():</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="nb">str</span><span class="p">(</span><span class="n">d</span><span class="o">.</span><span class="n">name</span><span class="p">)</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;run.log&quot;</span><span class="p">):</span>
+                <span class="k">continue</span>
+            <span class="n">log_file</span> <span class="o">=</span> <span class="n">output</span><span class="o">.</span><span class="n">job_outputs</span> <span class="o">/</span> <span class="n">job_name</span> <span class="o">/</span> <span class="nb">str</span><span class="p">(</span><span class="n">d</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">log_file</span></div>
+
+
+<div class="viewcode-block" id="JobParser"><a class="viewcode-back" href="../../../disco/disco.storage.html#disco.storage.parsers.JobParser">[docs]</a><span class="k">class</span> <span class="nc">JobParser</span><span class="p">(</span><span class="n">ParserBase</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Parse jobs data from output&quot;&quot;&quot;</span>
+    
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">task</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">task</span> <span class="o">=</span> <span class="n">task</span>
+
+<div class="viewcode-block" id="JobParser.parse"><a class="viewcode-back" href="../../../disco/disco.storage.html#disco.storage.parsers.JobParser.parse">[docs]</a>    <span class="k">def</span> <span class="nf">parse</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">output</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Parse jobs data from output&quot;&quot;&quot;</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Parsing data - &#39;jobs&#39;...&quot;</span><span class="p">)</span>
+        
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">output</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+            <span class="n">output</span> <span class="o">=</span> <span class="n">get_simulation_output</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
+        
+        <span class="n">results</span> <span class="o">=</span> <span class="n">load_data</span><span class="p">(</span><span class="n">output</span><span class="o">.</span><span class="n">result_file</span><span class="p">)</span>
+        <span class="n">jobs</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="p">{</span>
+                <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_job_id</span><span class="p">(),</span>
+                <span class="s2">&quot;task_id&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">task</span><span class="p">[</span><span class="s2">&quot;id&quot;</span><span class="p">],</span>
+                <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="n">item</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">],</span>
+                <span class="s2">&quot;project_path&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_project_path</span><span class="p">(</span><span class="n">output</span><span class="o">.</span><span class="n">job_outputs</span> <span class="o">/</span> <span class="n">item</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]),</span>
+                <span class="s2">&quot;return_code&quot;</span><span class="p">:</span> <span class="n">item</span><span class="p">[</span><span class="s2">&quot;return_code&quot;</span><span class="p">],</span>
+                <span class="s2">&quot;status&quot;</span><span class="p">:</span> <span class="n">item</span><span class="p">[</span><span class="s2">&quot;status&quot;</span><span class="p">],</span>
+                <span class="s2">&quot;exec_time_s&quot;</span><span class="p">:</span> <span class="n">item</span><span class="p">[</span><span class="s2">&quot;exec_time_s&quot;</span><span class="p">],</span>
+                <span class="s2">&quot;completion_time&quot;</span><span class="p">:</span> <span class="n">datetime</span><span class="o">.</span><span class="n">fromtimestamp</span><span class="p">(</span><span class="n">item</span><span class="p">[</span><span class="s2">&quot;completion_time&quot;</span><span class="p">])</span>
+            <span class="p">}</span>
+            <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">results</span><span class="p">[</span><span class="s2">&quot;results&quot;</span><span class="p">]</span>
+        <span class="p">]</span>
+        <span class="k">return</span> <span class="n">jobs</span></div>
+
+    <span class="k">def</span> <span class="nf">_get_job_id</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_uuid</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">_get_project_path</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">job_dir</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="n">job_dir</span> <span class="o">/</span> <span class="s2">&quot;pydss_project&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="PyDssScenarioParser"><a class="viewcode-back" href="../../../disco/disco.storage.html#disco.storage.parsers.PyDssScenarioParser">[docs]</a><span class="k">class</span> <span class="nc">PyDssScenarioParser</span><span class="p">(</span><span class="n">ParserBase</span><span class="p">):</span>
+    
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">jobs</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">jobs</span> <span class="o">=</span> <span class="n">jobs</span>  <span class="c1"># Parsed jobs wiht uuid</span>
+    
+    <span class="k">def</span> <span class="nf">_get_scenario_id</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_uuid</span><span class="p">()</span>
+
+<div class="viewcode-block" id="PyDssScenarioParser.parse"><a class="viewcode-back" href="../../../disco/disco.storage.html#disco.storage.parsers.PyDssScenarioParser.parse">[docs]</a>    <span class="k">def</span> <span class="nf">parse</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config_file</span><span class="p">,</span> <span class="n">snapshot_time_points_table</span><span class="p">):</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Parsing data - &#39;scenarios&#39;...&quot;</span><span class="p">)</span>
+        
+        <span class="k">if</span> <span class="n">snapshot_time_points_table</span><span class="o">.</span><span class="n">exists</span><span class="p">():</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parse_scenarios_from_snapshot_time_points</span><span class="p">(</span><span class="n">snapshot_time_points_table</span><span class="p">)</span>
+        
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parse_scenarios_from_config_file</span><span class="p">(</span><span class="n">config_file</span><span class="p">)</span></div>
+    
+    <span class="k">def</span> <span class="nf">_parse_scenarios_from_snapshot_time_points</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">snapshot_time_points_table</span><span class="p">):</span>
+        <span class="n">mapping</span> <span class="o">=</span> <span class="p">{</span><span class="n">job</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]:</span> <span class="n">job</span> <span class="k">for</span> <span class="n">job</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">jobs</span><span class="p">}</span>
+        <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">snapshot_time_points_table</span><span class="p">)</span>
+        <span class="n">time_points</span> <span class="o">=</span> <span class="p">{</span><span class="n">item</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]:</span> <span class="n">item</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">to_dict</span><span class="p">(</span><span class="n">orient</span><span class="o">=</span><span class="s2">&quot;records&quot;</span><span class="p">)}</span>
+        
+        <span class="n">scenarios</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">job</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">jobs</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">job</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">time_points</span><span class="p">:</span>
+                <span class="k">continue</span>
+            <span class="n">tp</span> <span class="o">=</span> <span class="n">time_points</span><span class="p">[</span><span class="n">job</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]]</span>
+            <span class="k">for</span> <span class="n">scenario_name</span> <span class="ow">in</span> <span class="n">TIME_SERIES_SCENARIOS</span><span class="p">:</span>
+                <span class="k">for</span> <span class="n">mode</span> <span class="ow">in</span> <span class="n">SnapshotTimePointSelectionMode</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="n">mode</span> <span class="o">==</span> <span class="n">SnapshotTimePointSelectionMode</span><span class="o">.</span><span class="n">NONE</span><span class="p">:</span>
+                        <span class="k">continue</span>
+                    <span class="n">_scenario_name</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">scenario_name</span><span class="si">}{</span><span class="n">SCENARIO_NAME_DELIMITER</span><span class="si">}{</span><span class="n">mode</span><span class="o">.</span><span class="n">value</span><span class="si">}</span><span class="s2">&quot;</span>
+                    <span class="n">scenarios</span><span class="o">.</span><span class="n">append</span><span class="p">({</span>
+                        <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_scenario_id</span><span class="p">(),</span>
+                        <span class="s2">&quot;job_id&quot;</span><span class="p">:</span> <span class="n">job</span><span class="p">[</span><span class="s2">&quot;id&quot;</span><span class="p">],</span>
+                        <span class="s2">&quot;simulation_type&quot;</span><span class="p">:</span> <span class="s2">&quot;snapshot&quot;</span><span class="p">,</span>
+                        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="n">_scenario_name</span><span class="p">,</span>
+                        <span class="s2">&quot;start_time&quot;</span><span class="p">:</span> <span class="n">tp</span><span class="p">[</span><span class="n">mode</span><span class="o">.</span><span class="n">value</span><span class="p">],</span>
+                        <span class="s2">&quot;end_time&quot;</span><span class="p">:</span> <span class="kc">None</span>
+                    <span class="p">})</span>
+        <span class="k">return</span> <span class="n">scenarios</span>
+    
+    <span class="k">def</span> <span class="nf">_parse_scenarios_from_config_file</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config_file</span><span class="p">):</span>
+        <span class="n">config</span> <span class="o">=</span> <span class="n">load_data</span><span class="p">(</span><span class="n">config_file</span><span class="p">)</span>
+        <span class="n">simulations</span> <span class="o">=</span> <span class="p">{</span><span class="n">item</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]:</span> <span class="n">item</span><span class="p">[</span><span class="s2">&quot;simulation&quot;</span><span class="p">]</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">config</span><span class="p">[</span><span class="s2">&quot;jobs&quot;</span><span class="p">]}</span>
+        <span class="n">simulation_type</span> <span class="o">=</span> <span class="n">config</span><span class="p">[</span><span class="s2">&quot;jobs&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;simulation&quot;</span><span class="p">][</span><span class="s2">&quot;simulation_type&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+        
+        <span class="n">scenarios</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">if</span> <span class="n">simulation_type</span> <span class="o">==</span> <span class="s2">&quot;snapshot&quot;</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">job</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">jobs</span><span class="p">:</span>
+                <span class="n">simulation</span> <span class="o">=</span> <span class="n">simulations</span><span class="p">[</span><span class="n">job</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]]</span>
+                <span class="n">scenario</span> <span class="o">=</span> <span class="p">{</span>
+                    <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_scenario_id</span><span class="p">(),</span>
+                    <span class="s2">&quot;job_id&quot;</span><span class="p">:</span> <span class="n">job</span><span class="p">[</span><span class="s2">&quot;id&quot;</span><span class="p">],</span>
+                    <span class="s2">&quot;simulation_type&quot;</span><span class="p">:</span> <span class="s2">&quot;snapshot&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="n">SNAPSHOT_SCENARIO</span><span class="p">,</span>
+                    <span class="s2">&quot;start_time&quot;</span><span class="p">:</span> <span class="n">parse</span><span class="p">(</span><span class="n">simulation</span><span class="p">[</span><span class="s2">&quot;start_time&quot;</span><span class="p">]),</span>
+                    <span class="s2">&quot;end_time&quot;</span><span class="p">:</span> <span class="kc">None</span>
+                <span class="p">}</span>
+                <span class="n">scenarios</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">scenario</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">scenarios</span>
+        
+        <span class="k">if</span> <span class="n">simulation_type</span> <span class="o">==</span> <span class="s2">&quot;qsts&quot;</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">job</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">jobs</span><span class="p">:</span>
+                <span class="n">simulation</span> <span class="o">=</span> <span class="n">simulations</span><span class="p">[</span><span class="n">job</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]]</span>
+                <span class="n">job_scenarios</span> <span class="o">=</span> <span class="p">[</span>
+                    <span class="p">{</span>
+                        <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_scenario_id</span><span class="p">(),</span>
+                        <span class="s2">&quot;job_id&quot;</span><span class="p">:</span> <span class="n">job</span><span class="p">[</span><span class="s2">&quot;id&quot;</span><span class="p">],</span>
+                        <span class="s2">&quot;simulation_type&quot;</span><span class="p">:</span> <span class="s2">&quot;time-series&quot;</span><span class="p">,</span>
+                        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="n">scenario_name</span><span class="p">,</span>
+                        <span class="s2">&quot;start_time&quot;</span><span class="p">:</span> <span class="n">parse</span><span class="p">(</span><span class="n">simulation</span><span class="p">[</span><span class="s2">&quot;start_time&quot;</span><span class="p">]),</span>
+                        <span class="s2">&quot;end_time&quot;</span><span class="p">:</span> <span class="n">parse</span><span class="p">(</span><span class="n">simulation</span><span class="p">[</span><span class="s2">&quot;end_time&quot;</span><span class="p">])</span>
+                    <span class="p">}</span>
+                    <span class="k">for</span> <span class="n">scenario_name</span> <span class="ow">in</span> <span class="n">TIME_SERIES_SCENARIOS</span>
+                <span class="p">]</span>
+                <span class="n">scenarios</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">job_scenarios</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">scenarios</span>
+        
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;The simulation_type &#39;</span><span class="si">{</span><span class="n">simulation_type</span><span class="si">}</span><span class="s2">&#39; for storage is not supported currently.&quot;</span>
+        <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="DermsScenaioParser"><a class="viewcode-back" href="../../../disco/disco.storage.html#disco.storage.parsers.DermsScenaioParser">[docs]</a><span class="k">class</span> <span class="nc">DermsScenaioParser</span><span class="p">(</span><span class="n">ParserBase</span><span class="p">):</span>
+    
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">jobs</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">jobs</span> <span class="o">=</span> <span class="n">jobs</span>
+    
+    <span class="k">def</span> <span class="nf">_get_scenario_id</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_uuid</span><span class="p">()</span>
+
+<div class="viewcode-block" id="DermsScenaioParser.parse"><a class="viewcode-back" href="../../../disco/disco.storage.html#disco.storage.parsers.DermsScenaioParser.parse">[docs]</a>    <span class="k">def</span> <span class="nf">parse</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">derms_info_file</span><span class="p">):</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Parsing data - &#39;scenarios&#39;...&quot;</span><span class="p">)</span>
+        
+        <span class="k">with</span> <span class="n">ProcessPoolExecutor</span><span class="p">()</span> <span class="k">as</span> <span class="n">executor</span><span class="p">:</span>
+            <span class="n">results</span> <span class="o">=</span> <span class="n">executor</span><span class="o">.</span><span class="n">map</span><span class="p">(</span>
+                <span class="n">partial</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_parse_job_scenario</span><span class="p">,</span> <span class="n">derms_info_file</span><span class="o">=</span><span class="n">derms_info_file</span><span class="p">),</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">jobs</span>
+            <span class="p">)</span>
+            <span class="n">scenarios</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">results</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">scenarios</span></div>
+    
+    <span class="k">def</span> <span class="nf">_parse_job_scenario</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">job</span><span class="p">,</span> <span class="n">derms_info_file</span><span class="p">):</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">load_data</span><span class="p">(</span><span class="n">derms_info_file</span><span class="p">)</span>
+        <span class="n">scenario</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_scenario_id</span><span class="p">(),</span>
+            <span class="s2">&quot;job_id&quot;</span><span class="p">:</span> <span class="n">job</span><span class="p">[</span><span class="s2">&quot;id&quot;</span><span class="p">],</span>
+            <span class="s2">&quot;simulation_type&quot;</span><span class="p">:</span> <span class="s2">&quot;time-series&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;derms&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;start_time&quot;</span><span class="p">:</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;start_time&quot;</span><span class="p">],</span>
+            <span class="s2">&quot;end_time&quot;</span><span class="p">:</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;end_time&quot;</span><span class="p">]</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="n">scenario</span></div>
+
+
+<div class="viewcode-block" id="ReportParser"><a class="viewcode-back" href="../../../disco/disco.storage.html#disco.storage.parsers.ReportParser">[docs]</a><span class="k">class</span> <span class="nc">ReportParser</span><span class="p">(</span><span class="n">ParserBase</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">task</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">task</span> <span class="o">=</span> <span class="n">task</span>
+
+<div class="viewcode-block" id="ReportParser.parse"><a class="viewcode-back" href="../../../disco/disco.storage.html#disco.storage.parsers.ReportParser.parse">[docs]</a>    <span class="k">def</span> <span class="nf">parse</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">output</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Parse reports information from output&quot;&quot;&quot;</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Parsing data - &#39;reports&#39;...&quot;</span><span class="p">)</span>
+        
+        <span class="n">reports</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">if</span> <span class="n">output</span><span class="o">.</span><span class="n">snapshot_time_points_table</span><span class="o">.</span><span class="n">exists</span><span class="p">():</span>
+            <span class="n">table_names</span> <span class="o">=</span> <span class="n">output</span><span class="o">.</span><span class="n">table_names</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">table_names</span> <span class="o">=</span> <span class="n">output</span><span class="o">.</span><span class="n">table_names</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+        <span class="n">report_files</span> <span class="o">=</span> <span class="p">[</span><span class="n">output</span><span class="o">.</span><span class="n">output</span> <span class="o">/</span> <span class="n">table_name</span> <span class="k">for</span> <span class="n">table_name</span> <span class="ow">in</span> <span class="n">table_names</span><span class="p">]</span>
+        
+        <span class="k">for</span> <span class="n">report_file</span> <span class="ow">in</span> <span class="n">report_files</span><span class="p">:</span>
+            <span class="n">report</span> <span class="o">=</span> <span class="p">{</span>
+                <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_report_id</span><span class="p">(),</span>
+                <span class="s2">&quot;task_id&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">task</span><span class="p">[</span><span class="s2">&quot;id&quot;</span><span class="p">],</span>
+                <span class="s2">&quot;file_name&quot;</span><span class="p">:</span> <span class="n">report_file</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+                <span class="s2">&quot;file_path&quot;</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">report_file</span><span class="p">),</span>
+                <span class="s2">&quot;file_size&quot;</span><span class="p">:</span> <span class="n">report_file</span><span class="o">.</span><span class="n">stat</span><span class="p">()</span><span class="o">.</span><span class="n">st_size</span><span class="p">,</span>
+                <span class="s2">&quot;creation_time&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_creation_time</span><span class="p">(</span><span class="n">report_file</span><span class="p">),</span>
+            <span class="p">}</span>
+            <span class="n">key</span> <span class="o">=</span> <span class="n">report_file</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;_table&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="n">reports</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">report</span>
+        <span class="k">return</span> <span class="n">reports</span></div>
+    
+    <span class="k">def</span> <span class="nf">_get_report_id</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_uuid</span><span class="p">()</span>
+    
+    <span class="k">def</span> <span class="nf">_get_creation_time</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">report_file</span><span class="p">):</span>
+        <span class="n">timestamp</span> <span class="o">=</span> <span class="n">get_creation_time</span><span class="p">(</span><span class="n">report_file</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">datetime</span><span class="o">.</span><span class="n">fromtimestamp</span><span class="p">(</span><span class="n">timestamp</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="TableParserMixin"><a class="viewcode-back" href="../../../disco/disco.storage.html#disco.storage.parsers.TableParserMixin">[docs]</a><span class="k">class</span> <span class="nc">TableParserMixin</span><span class="p">:</span>
+
+    <span class="k">def</span> <span class="nf">_set_record_index</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        data: list[dict], A list of records in dict.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">indexed_data</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">job_indexes</span> <span class="o">=</span> <span class="p">{</span><span class="n">job</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]:</span> <span class="n">job</span><span class="p">[</span><span class="s2">&quot;id&quot;</span><span class="p">]</span> <span class="k">for</span> <span class="n">job</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">jobs</span><span class="p">}</span>
+        <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
+            <span class="n">item</span><span class="o">.</span><span class="n">update</span><span class="p">({</span>
+                <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_uuid</span><span class="p">(),</span>
+                <span class="s2">&quot;report_id&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">report</span><span class="p">[</span><span class="s2">&quot;id&quot;</span><span class="p">],</span>
+                <span class="s2">&quot;job_id&quot;</span><span class="p">:</span> <span class="n">job_indexes</span><span class="p">[</span><span class="n">item</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]]</span>
+            <span class="p">})</span>
+            <span class="n">indexed_data</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">indexed_data</span></div>
+
+
+<div class="viewcode-block" id="FeederHeadParser"><a class="viewcode-back" href="../../../disco/disco.storage.html#disco.storage.parsers.FeederHeadParser">[docs]</a><span class="k">class</span> <span class="nc">FeederHeadParser</span><span class="p">(</span><span class="n">ParserBase</span><span class="p">,</span> <span class="n">TableParserMixin</span><span class="p">):</span>
+
+    <span class="n">field_mappings</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;FeederHeadLine&quot;</span><span class="p">:</span> <span class="s2">&quot;line&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;FeederHeadLoading&quot;</span><span class="p">:</span> <span class="s2">&quot;loading&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;FeederHeadLoadKW&quot;</span><span class="p">:</span> <span class="s2">&quot;load_kw&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;FeederHeadLoadKVar&quot;</span><span class="p">:</span> <span class="s2">&quot;load_kvar&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;ReversePowerFlow&quot;</span><span class="p">:</span> <span class="s2">&quot;reverse_power_flow&quot;</span>
+    <span class="p">}</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">report</span><span class="p">,</span> <span class="n">jobs</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">report</span> <span class="o">=</span> <span class="n">report</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">jobs</span> <span class="o">=</span> <span class="n">jobs</span>
+    
+<div class="viewcode-block" id="FeederHeadParser.parse"><a class="viewcode-back" href="../../../disco/disco.storage.html#disco.storage.parsers.FeederHeadParser.parse">[docs]</a>    <span class="k">def</span> <span class="nf">parse</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">output</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Parse feeder head data from output report file&quot;&quot;&quot;</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Parsing data - &#39;feeder_head&#39;...&quot;</span><span class="p">)</span>
+        <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">output</span><span class="o">.</span><span class="n">feeder_head_table</span><span class="p">)</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">field_mappings</span><span class="p">)</span><span class="o">.</span><span class="n">to_dict</span><span class="p">(</span><span class="n">orient</span><span class="o">=</span><span class="s2">&quot;records&quot;</span><span class="p">)</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_set_record_index</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">data</span></div></div>
+
+
+<div class="viewcode-block" id="FeederLossesParser"><a class="viewcode-back" href="../../../disco/disco.storage.html#disco.storage.parsers.FeederLossesParser">[docs]</a><span class="k">class</span> <span class="nc">FeederLossesParser</span><span class="p">(</span><span class="n">ParserBase</span><span class="p">,</span> <span class="n">TableParserMixin</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">report</span><span class="p">,</span> <span class="n">jobs</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">report</span> <span class="o">=</span> <span class="n">report</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">jobs</span> <span class="o">=</span> <span class="n">jobs</span>
+    
+<div class="viewcode-block" id="FeederLossesParser.parse"><a class="viewcode-back" href="../../../disco/disco.storage.html#disco.storage.parsers.FeederLossesParser.parse">[docs]</a>    <span class="k">def</span> <span class="nf">parse</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">output</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Parse feeder losses data from output report file&quot;&quot;&quot;</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Parsing data - &#39;feeder_losses&#39;...&quot;</span><span class="p">)</span>
+        <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">output</span><span class="o">.</span><span class="n">feeder_losses_table</span><span class="p">)</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">to_dict</span><span class="p">(</span><span class="n">orient</span><span class="o">=</span><span class="s2">&quot;records&quot;</span><span class="p">)</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_set_record_index</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">data</span></div></div>
+
+
+<div class="viewcode-block" id="MetadataParser"><a class="viewcode-back" href="../../../disco/disco.storage.html#disco.storage.parsers.MetadataParser">[docs]</a><span class="k">class</span> <span class="nc">MetadataParser</span><span class="p">(</span><span class="n">ParserBase</span><span class="p">,</span> <span class="n">TableParserMixin</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">report</span><span class="p">,</span> <span class="n">jobs</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">report</span> <span class="o">=</span> <span class="n">report</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">jobs</span> <span class="o">=</span> <span class="n">jobs</span>
+    
+<div class="viewcode-block" id="MetadataParser.parse"><a class="viewcode-back" href="../../../disco/disco.storage.html#disco.storage.parsers.MetadataParser.parse">[docs]</a>    <span class="k">def</span> <span class="nf">parse</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">output</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Parse metadata data from output report file&quot;&quot;&quot;</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Parsing data - &#39;metadata&#39;...&quot;</span><span class="p">)</span>
+        <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">output</span><span class="o">.</span><span class="n">metadata_table</span><span class="p">)</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">to_dict</span><span class="p">(</span><span class="n">orient</span><span class="o">=</span><span class="s2">&quot;records&quot;</span><span class="p">)</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_set_record_index</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">data</span></div></div>
+
+
+<div class="viewcode-block" id="ThermalMetricsParser"><a class="viewcode-back" href="../../../disco/disco.storage.html#disco.storage.parsers.ThermalMetricsParser">[docs]</a><span class="k">class</span> <span class="nc">ThermalMetricsParser</span><span class="p">(</span><span class="n">ParserBase</span><span class="p">,</span> <span class="n">TableParserMixin</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">report</span><span class="p">,</span> <span class="n">jobs</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">report</span> <span class="o">=</span> <span class="n">report</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">jobs</span> <span class="o">=</span> <span class="n">jobs</span>
+    
+<div class="viewcode-block" id="ThermalMetricsParser.parse"><a class="viewcode-back" href="../../../disco/disco.storage.html#disco.storage.parsers.ThermalMetricsParser.parse">[docs]</a>    <span class="k">def</span> <span class="nf">parse</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">output</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Parse thermal metrics data from output report file&quot;&quot;&quot;</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Parsing data - &#39;thermal_metrics&#39;...&quot;</span><span class="p">)</span>
+        <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">output</span><span class="o">.</span><span class="n">thermal_metrics_table</span><span class="p">)</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">to_dict</span><span class="p">(</span><span class="n">orient</span><span class="o">=</span><span class="s2">&quot;records&quot;</span><span class="p">)</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_set_record_index</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">data</span></div></div>
+
+
+<div class="viewcode-block" id="VoltageMetricsParser"><a class="viewcode-back" href="../../../disco/disco.storage.html#disco.storage.parsers.VoltageMetricsParser">[docs]</a><span class="k">class</span> <span class="nc">VoltageMetricsParser</span><span class="p">(</span><span class="n">ParserBase</span><span class="p">,</span> <span class="n">TableParserMixin</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">report</span><span class="p">,</span> <span class="n">jobs</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">report</span> <span class="o">=</span> <span class="n">report</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">jobs</span> <span class="o">=</span> <span class="n">jobs</span>
+    
+<div class="viewcode-block" id="VoltageMetricsParser.parse"><a class="viewcode-back" href="../../../disco/disco.storage.html#disco.storage.parsers.VoltageMetricsParser.parse">[docs]</a>    <span class="k">def</span> <span class="nf">parse</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">output</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Parse voltage metrics data from output report file&quot;&quot;&quot;</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Parsing data - &#39;voltage_metrics&#39;...&quot;</span><span class="p">)</span>
+        <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">output</span><span class="o">.</span><span class="n">voltage_metrics_table</span><span class="p">)</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">to_dict</span><span class="p">(</span><span class="n">orient</span><span class="o">=</span><span class="s2">&quot;records&quot;</span><span class="p">)</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_set_record_index</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">data</span></div></div>
+
+
+<div class="viewcode-block" id="SnapshotTimePointsParser"><a class="viewcode-back" href="../../../disco/disco.storage.html#disco.storage.parsers.SnapshotTimePointsParser">[docs]</a><span class="k">class</span> <span class="nc">SnapshotTimePointsParser</span><span class="p">(</span><span class="n">ParserBase</span><span class="p">,</span> <span class="n">TableParserMixin</span><span class="p">):</span>
+    
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">report</span><span class="p">,</span> <span class="n">jobs</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">report</span> <span class="o">=</span> <span class="n">report</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">jobs</span> <span class="o">=</span> <span class="n">jobs</span>
+    
+<div class="viewcode-block" id="SnapshotTimePointsParser.parse"><a class="viewcode-back" href="../../../disco/disco.storage.html#disco.storage.parsers.SnapshotTimePointsParser.parse">[docs]</a>    <span class="k">def</span> <span class="nf">parse</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">output</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Parse time points data for snapshot simulation&quot;&quot;&quot;</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Parsing data - &#39;snapshot_time_points&#39;...&quot;</span><span class="p">)</span>
+        <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">output</span><span class="o">.</span><span class="n">snapshot_time_points_table</span><span class="p">)</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">to_dict</span><span class="p">(</span><span class="n">orient</span><span class="o">=</span><span class="s2">&quot;records&quot;</span><span class="p">)</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_set_record_index</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">data</span></div></div>
+
+
+<div class="viewcode-block" id="HostingCapacityParser"><a class="viewcode-back" href="../../../disco/disco.storage.html#disco.storage.parsers.HostingCapacityParser">[docs]</a><span class="k">class</span> <span class="nc">HostingCapacityParser</span><span class="p">(</span><span class="n">ParserBase</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">task</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">task</span> <span class="o">=</span> <span class="n">task</span>
+    
+    <span class="k">def</span> <span class="nf">_get_hc_id</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_uuid</span><span class="p">()</span>
+    
+<div class="viewcode-block" id="HostingCapacityParser.parse"><a class="viewcode-back" href="../../../disco/disco.storage.html#disco.storage.parsers.HostingCapacityParser.parse">[docs]</a>    <span class="k">def</span> <span class="nf">parse</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">output</span><span class="p">):</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Parsing data - &#39;hosting_capacity&#39;...&quot;</span><span class="p">)</span>
+        
+        <span class="n">data</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">result_file</span> <span class="ow">in</span> <span class="n">output</span><span class="o">.</span><span class="n">hosting_capacity_results</span><span class="p">:</span>
+            <span class="n">results</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parse_result</span><span class="p">(</span><span class="n">result_file</span><span class="p">)</span>
+            <span class="n">data</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">results</span><span class="p">))</span>
+        <span class="k">return</span> <span class="n">data</span></div>
+
+    <span class="k">def</span> <span class="nf">_parse_result</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">hosting_capacity_filename</span><span class="p">):</span>
+        <span class="n">items</span> <span class="o">=</span> <span class="n">hosting_capacity_filename</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">SCENARIO_NAME_DELIMITER</span><span class="p">)</span>
+        <span class="n">hc_type</span> <span class="o">=</span> <span class="s2">&quot;summary_by_metric&quot;</span> <span class="k">if</span> <span class="s2">&quot;summary&quot;</span> <span class="ow">in</span> <span class="n">items</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">else</span> <span class="s2">&quot;overall&quot;</span>
+        <span class="n">scenario</span> <span class="o">=</span> <span class="n">items</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+        <span class="n">time_point</span> <span class="o">=</span> <span class="kc">None</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">items</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">3</span> <span class="k">else</span> <span class="n">items</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+        
+        <span class="n">result</span> <span class="o">=</span> <span class="n">load_data</span><span class="p">(</span><span class="n">hosting_capacity_filename</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">hc_type</span> <span class="o">==</span> <span class="s2">&quot;summary_by_metric&quot;</span><span class="p">:</span>
+            <span class="n">data</span> <span class="o">=</span> <span class="p">[</span>
+                <span class="p">{</span>
+                    <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_hc_id</span><span class="p">(),</span>
+                    <span class="s2">&quot;task_id&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">task</span><span class="p">[</span><span class="s2">&quot;id&quot;</span><span class="p">],</span>
+                    <span class="s2">&quot;hc_type&quot;</span><span class="p">:</span> <span class="n">hc_type</span><span class="p">,</span>
+                    <span class="s2">&quot;metric_type&quot;</span><span class="p">:</span> <span class="n">metric_type</span><span class="p">,</span>
+                    <span class="s2">&quot;feeder&quot;</span><span class="p">:</span> <span class="n">feeder</span><span class="p">,</span>
+                    <span class="s2">&quot;scenario&quot;</span><span class="p">:</span> <span class="n">scenario</span><span class="p">,</span>
+                    <span class="s2">&quot;time_point&quot;</span><span class="p">:</span> <span class="n">time_point</span><span class="p">,</span>
+                    <span class="s2">&quot;min_hc_pct&quot;</span><span class="p">:</span> <span class="n">value</span><span class="p">[</span><span class="s2">&quot;min_hc_pct&quot;</span><span class="p">],</span>
+                    <span class="s2">&quot;max_hc_pct&quot;</span><span class="p">:</span> <span class="n">value</span><span class="p">[</span><span class="s2">&quot;max_hc_pct&quot;</span><span class="p">],</span>
+                    <span class="s2">&quot;min_hc_kw&quot;</span><span class="p">:</span> <span class="n">value</span><span class="p">[</span><span class="s2">&quot;min_hc_kw&quot;</span><span class="p">],</span>
+                    <span class="s2">&quot;max_hc_kw&quot;</span><span class="p">:</span> <span class="n">value</span><span class="p">[</span><span class="s2">&quot;max_hc_kw&quot;</span><span class="p">]</span>
+                <span class="p">}</span>
+                <span class="k">for</span> <span class="n">feeder</span><span class="p">,</span> <span class="n">values</span> <span class="ow">in</span> <span class="n">result</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
+                <span class="k">for</span> <span class="n">metric_type</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">values</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
+            <span class="p">]</span>
+        <span class="k">elif</span> <span class="n">hc_type</span> <span class="o">==</span> <span class="s2">&quot;overall&quot;</span><span class="p">:</span>
+            <span class="n">data</span> <span class="o">=</span> <span class="p">[</span>
+                <span class="p">{</span>
+                    <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_hc_id</span><span class="p">(),</span>
+                    <span class="s2">&quot;task_id&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">task</span><span class="p">[</span><span class="s2">&quot;id&quot;</span><span class="p">],</span>
+                    <span class="s2">&quot;hc_type&quot;</span><span class="p">:</span> <span class="n">hc_type</span><span class="p">,</span>
+                    <span class="s2">&quot;metric_type&quot;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+                    <span class="s2">&quot;feeder&quot;</span><span class="p">:</span> <span class="n">feeder</span><span class="p">,</span>
+                    <span class="s2">&quot;scenario&quot;</span><span class="p">:</span> <span class="n">scenario</span><span class="p">,</span>
+                    <span class="s2">&quot;time_point&quot;</span><span class="p">:</span> <span class="n">time_point</span><span class="p">,</span>
+                    <span class="s2">&quot;min_hc_pct&quot;</span><span class="p">:</span> <span class="n">value</span><span class="p">[</span><span class="s2">&quot;min_hc_pct&quot;</span><span class="p">],</span>
+                    <span class="s2">&quot;max_hc_pct&quot;</span><span class="p">:</span> <span class="n">value</span><span class="p">[</span><span class="s2">&quot;max_hc_pct&quot;</span><span class="p">],</span>
+                    <span class="s2">&quot;min_hc_kw&quot;</span><span class="p">:</span> <span class="n">value</span><span class="p">[</span><span class="s2">&quot;min_hc_kw&quot;</span><span class="p">],</span>
+                    <span class="s2">&quot;max_hc_kw&quot;</span><span class="p">:</span> <span class="n">value</span><span class="p">[</span><span class="s2">&quot;max_hc_kw&quot;</span><span class="p">]</span>
+                <span class="p">}</span>
+                <span class="k">for</span> <span class="n">feeder</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">result</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
+            <span class="p">]</span>
+        <span class="k">return</span> <span class="n">data</span></div>
+
+
+<div class="viewcode-block" id="PvDistancesParser"><a class="viewcode-back" href="../../../disco/disco.storage.html#disco.storage.parsers.PvDistancesParser">[docs]</a><span class="k">class</span> <span class="nc">PvDistancesParser</span><span class="p">(</span><span class="n">ParserBase</span><span class="p">,</span> <span class="n">TableParserMixin</span><span class="p">):</span>
+
+<div class="viewcode-block" id="PvDistancesParser.parse"><a class="viewcode-back" href="../../../disco/disco.storage.html#disco.storage.parsers.PvDistancesParser.parse">[docs]</a>    <span class="k">def</span> <span class="nf">parse</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model_inputs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Parse PV distances data from output report file&quot;&quot;&quot;</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Parsing data - &#39;pv_distances&#39;...&quot;</span><span class="p">)</span>
+        <span class="n">path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">model_inputs</span><span class="p">)</span> <span class="o">/</span> <span class="s2">&quot;weighted_average_pv_distances.csv&quot;</span>
+        <span class="k">if</span> <span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">():</span>
+            <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+            <span class="n">data</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">to_dict</span><span class="p">(</span><span class="n">orient</span><span class="o">=</span><span class="s2">&quot;records&quot;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">data</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">return</span> <span class="n">data</span></div></div>
+
+
+<div class="viewcode-block" id="OutputParser"><a class="viewcode-back" href="../../../disco/disco.storage.html#disco.storage.parsers.OutputParser">[docs]</a><span class="k">class</span> <span class="nc">OutputParser</span><span class="p">(</span><span class="n">ParserBase</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">task_name</span><span class="p">,</span> <span class="n">model_inputs</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">notes</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">task_name</span> <span class="o">=</span> <span class="n">task_name</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">model_inputs</span> <span class="o">=</span> <span class="n">model_inputs</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">notes</span> <span class="o">=</span> <span class="n">notes</span>
+
+<div class="viewcode-block" id="OutputParser.parse"><a class="viewcode-back" href="../../../disco/disco.storage.html#disco.storage.parsers.OutputParser.parse">[docs]</a>    <span class="k">def</span> <span class="nf">parse</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">output</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Parse task, jobs, and reports data from output&quot;&quot;&quot;</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Parsing results from output directory...&quot;</span><span class="p">)</span>
+        
+        <span class="n">result</span> <span class="o">=</span> <span class="p">{}</span>
+        
+        <span class="n">task</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">parse_task</span><span class="p">(</span><span class="n">output</span><span class="o">=</span><span class="n">output</span><span class="p">)</span>
+        <span class="n">result</span><span class="p">[</span><span class="s2">&quot;task&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">task</span>
+        
+        <span class="n">jobs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">parse_jobs</span><span class="p">(</span><span class="n">task</span><span class="o">=</span><span class="n">task</span><span class="p">,</span> <span class="n">output</span><span class="o">=</span><span class="n">output</span><span class="p">)</span>
+        <span class="n">scenarios</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">parse_scenarios</span><span class="p">(</span><span class="n">jobs</span><span class="o">=</span><span class="n">jobs</span><span class="p">,</span> <span class="n">output</span><span class="o">=</span><span class="n">output</span><span class="p">)</span>
+        <span class="n">result</span><span class="p">[</span><span class="s2">&quot;jobs&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">jobs</span>
+        <span class="n">result</span><span class="p">[</span><span class="s2">&quot;scenarios&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">scenarios</span>
+        
+        <span class="n">reports</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">parse_reports</span><span class="p">(</span><span class="n">task</span><span class="o">=</span><span class="n">task</span><span class="p">,</span> <span class="n">output</span><span class="o">=</span><span class="n">output</span><span class="p">)</span>
+        <span class="n">result</span><span class="p">[</span><span class="s2">&quot;reports&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">reports</span><span class="o">.</span><span class="n">values</span><span class="p">()</span>
+        
+        <span class="n">feeder_head</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">parse_feeder_head</span><span class="p">(</span>
+            <span class="n">report</span><span class="o">=</span><span class="n">reports</span><span class="p">[</span><span class="s2">&quot;feeder_head&quot;</span><span class="p">],</span>
+            <span class="n">jobs</span><span class="o">=</span><span class="n">jobs</span><span class="p">,</span>
+            <span class="n">output</span><span class="o">=</span><span class="n">output</span>
+        <span class="p">)</span>
+        <span class="n">result</span><span class="p">[</span><span class="s2">&quot;feeder_head&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">feeder_head</span>
+        
+        <span class="n">feeder_losses</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">parse_feeder_losses</span><span class="p">(</span>
+            <span class="n">report</span><span class="o">=</span><span class="n">reports</span><span class="p">[</span><span class="s2">&quot;feeder_losses&quot;</span><span class="p">],</span>
+            <span class="n">jobs</span><span class="o">=</span><span class="n">jobs</span><span class="p">,</span>
+            <span class="n">output</span><span class="o">=</span><span class="n">output</span>
+        <span class="p">)</span>
+        <span class="n">result</span><span class="p">[</span><span class="s2">&quot;feeder_losses&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">feeder_losses</span>
+        
+        <span class="n">metadata</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">parse_metadata</span><span class="p">(</span>
+            <span class="n">report</span><span class="o">=</span><span class="n">reports</span><span class="p">[</span><span class="s2">&quot;metadata&quot;</span><span class="p">],</span>
+            <span class="n">jobs</span><span class="o">=</span><span class="n">jobs</span><span class="p">,</span>
+            <span class="n">output</span><span class="o">=</span><span class="n">output</span>
+        <span class="p">)</span>
+        <span class="n">result</span><span class="p">[</span><span class="s2">&quot;metadata&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">metadata</span>
+        
+        <span class="n">thermal_metrics</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">parse_thermal_metrics</span><span class="p">(</span>
+            <span class="n">report</span><span class="o">=</span><span class="n">reports</span><span class="p">[</span><span class="s2">&quot;thermal_metrics&quot;</span><span class="p">],</span>
+            <span class="n">jobs</span><span class="o">=</span><span class="n">jobs</span><span class="p">,</span>
+            <span class="n">output</span><span class="o">=</span><span class="n">output</span>
+        <span class="p">)</span>
+        <span class="n">result</span><span class="p">[</span><span class="s2">&quot;thermal_metrics&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">thermal_metrics</span>
+        
+        <span class="n">voltage_metrics</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">parse_voltage_metrics</span><span class="p">(</span>
+            <span class="n">report</span><span class="o">=</span><span class="n">reports</span><span class="p">[</span><span class="s2">&quot;voltage_metrics&quot;</span><span class="p">],</span>
+            <span class="n">jobs</span><span class="o">=</span><span class="n">jobs</span><span class="p">,</span>
+            <span class="n">output</span><span class="o">=</span><span class="n">output</span>
+        <span class="p">)</span>
+        <span class="n">result</span><span class="p">[</span><span class="s2">&quot;voltage_metrics&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">voltage_metrics</span>
+        
+        <span class="k">if</span> <span class="n">output</span><span class="o">.</span><span class="n">snapshot_time_points_table</span><span class="o">.</span><span class="n">exists</span><span class="p">():</span>
+            <span class="n">snapshot_time_points</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">parse_snapshot_time_points</span><span class="p">(</span>
+                <span class="n">report</span><span class="o">=</span><span class="n">reports</span><span class="p">[</span><span class="s2">&quot;snapshot_time_points&quot;</span><span class="p">],</span>
+                <span class="n">jobs</span><span class="o">=</span><span class="n">jobs</span><span class="p">,</span>
+                <span class="n">output</span><span class="o">=</span><span class="n">output</span>
+            <span class="p">)</span>
+            <span class="n">result</span><span class="p">[</span><span class="s2">&quot;snapshot_time_points&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">snapshot_time_points</span>
+        
+        <span class="n">hosting_capacity</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">parse_hosting_capacity</span><span class="p">(</span>
+            <span class="n">task</span><span class="o">=</span><span class="n">task</span><span class="p">,</span>
+            <span class="n">output</span><span class="o">=</span><span class="n">output</span>
+        <span class="p">)</span>
+        <span class="n">result</span><span class="p">[</span><span class="s2">&quot;hosting_capacity&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">hosting_capacity</span>
+        <span class="n">pv_distances</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">parse_pv_distances</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">model_inputs</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">pv_distances</span><span class="p">:</span>
+            <span class="n">result</span><span class="p">[</span><span class="s2">&quot;pv_distances&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">parse_pv_distances</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">model_inputs</span><span class="p">)</span>
+        
+        <span class="k">return</span> <span class="n">result</span></div>
+
+<div class="viewcode-block" id="OutputParser.parse_task"><a class="viewcode-back" href="../../../disco/disco.storage.html#disco.storage.parsers.OutputParser.parse_task">[docs]</a>    <span class="k">def</span> <span class="nf">parse_task</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">output</span><span class="p">):</span>
+        <span class="n">parser</span> <span class="o">=</span> <span class="n">TaskParser</span><span class="p">(</span>
+            <span class="n">name</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">task_name</span><span class="p">,</span>
+            <span class="n">model_inputs</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">model_inputs</span><span class="p">,</span>
+            <span class="n">notes</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">notes</span>
+        <span class="p">)</span>
+        <span class="n">task</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">task</span></div>
+
+<div class="viewcode-block" id="OutputParser.parse_jobs"><a class="viewcode-back" href="../../../disco/disco.storage.html#disco.storage.parsers.OutputParser.parse_jobs">[docs]</a>    <span class="k">def</span> <span class="nf">parse_jobs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">task</span><span class="p">,</span> <span class="n">output</span><span class="p">):</span>
+        <span class="n">parser</span> <span class="o">=</span> <span class="n">JobParser</span><span class="p">(</span><span class="n">task</span><span class="o">=</span><span class="n">task</span><span class="p">)</span>
+        <span class="n">jobs</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">jobs</span></div>
+
+<div class="viewcode-block" id="OutputParser.parse_scenarios"><a class="viewcode-back" href="../../../disco/disco.storage.html#disco.storage.parsers.OutputParser.parse_scenarios">[docs]</a>    <span class="k">def</span> <span class="nf">parse_scenarios</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">jobs</span><span class="p">,</span> <span class="n">output</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">output</span><span class="o">.</span><span class="n">output_type</span> <span class="o">==</span> <span class="n">OutputType</span><span class="o">.</span><span class="n">DERMS</span><span class="p">:</span>
+            <span class="n">parser</span> <span class="o">=</span> <span class="n">DermsScenaioParser</span><span class="p">(</span><span class="n">jobs</span><span class="p">)</span>
+            <span class="n">scenarios</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">output</span><span class="o">.</span><span class="n">derms_info_file</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">parser</span> <span class="o">=</span> <span class="n">PyDssScenarioParser</span><span class="p">(</span><span class="n">jobs</span><span class="p">)</span>
+            <span class="n">scenarios</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">output</span><span class="o">.</span><span class="n">config_file</span><span class="p">,</span> <span class="n">output</span><span class="o">.</span><span class="n">snapshot_time_points_table</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">scenarios</span></div>
+
+<div class="viewcode-block" id="OutputParser.parse_reports"><a class="viewcode-back" href="../../../disco/disco.storage.html#disco.storage.parsers.OutputParser.parse_reports">[docs]</a>    <span class="k">def</span> <span class="nf">parse_reports</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">task</span><span class="p">,</span> <span class="n">output</span><span class="p">):</span>
+        <span class="n">parser</span> <span class="o">=</span> <span class="n">ReportParser</span><span class="p">(</span><span class="n">task</span><span class="o">=</span><span class="n">task</span><span class="p">)</span>
+        <span class="n">reports</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">reports</span></div>
+
+<div class="viewcode-block" id="OutputParser.parse_feeder_head"><a class="viewcode-back" href="../../../disco/disco.storage.html#disco.storage.parsers.OutputParser.parse_feeder_head">[docs]</a>    <span class="k">def</span> <span class="nf">parse_feeder_head</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">report</span><span class="p">,</span> <span class="n">jobs</span><span class="p">,</span> <span class="n">output</span><span class="p">):</span>
+        <span class="n">parser</span> <span class="o">=</span> <span class="n">FeederHeadParser</span><span class="p">(</span><span class="n">report</span><span class="o">=</span><span class="n">report</span><span class="p">,</span> <span class="n">jobs</span><span class="o">=</span><span class="n">jobs</span><span class="p">)</span>
+        <span class="n">feeder_head</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">feeder_head</span></div>
+
+<div class="viewcode-block" id="OutputParser.parse_feeder_losses"><a class="viewcode-back" href="../../../disco/disco.storage.html#disco.storage.parsers.OutputParser.parse_feeder_losses">[docs]</a>    <span class="k">def</span> <span class="nf">parse_feeder_losses</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">report</span><span class="p">,</span> <span class="n">jobs</span><span class="p">,</span> <span class="n">output</span><span class="p">):</span>
+        <span class="n">parser</span> <span class="o">=</span> <span class="n">FeederLossesParser</span><span class="p">(</span><span class="n">report</span><span class="o">=</span><span class="n">report</span><span class="p">,</span> <span class="n">jobs</span><span class="o">=</span><span class="n">jobs</span><span class="p">)</span>
+        <span class="n">feeder_losses</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">feeder_losses</span></div>
+
+<div class="viewcode-block" id="OutputParser.parse_metadata"><a class="viewcode-back" href="../../../disco/disco.storage.html#disco.storage.parsers.OutputParser.parse_metadata">[docs]</a>    <span class="k">def</span> <span class="nf">parse_metadata</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">report</span><span class="p">,</span> <span class="n">jobs</span><span class="p">,</span> <span class="n">output</span><span class="p">):</span>
+        <span class="n">parser</span> <span class="o">=</span> <span class="n">MetadataParser</span><span class="p">(</span><span class="n">report</span><span class="o">=</span><span class="n">report</span><span class="p">,</span> <span class="n">jobs</span><span class="o">=</span><span class="n">jobs</span><span class="p">)</span>
+        <span class="n">metadata</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">metadata</span></div>
+    
+<div class="viewcode-block" id="OutputParser.parse_thermal_metrics"><a class="viewcode-back" href="../../../disco/disco.storage.html#disco.storage.parsers.OutputParser.parse_thermal_metrics">[docs]</a>    <span class="k">def</span> <span class="nf">parse_thermal_metrics</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">report</span><span class="p">,</span> <span class="n">jobs</span><span class="p">,</span> <span class="n">output</span><span class="p">):</span>
+        <span class="n">parser</span> <span class="o">=</span> <span class="n">ThermalMetricsParser</span><span class="p">(</span><span class="n">report</span><span class="o">=</span><span class="n">report</span><span class="p">,</span> <span class="n">jobs</span><span class="o">=</span><span class="n">jobs</span><span class="p">)</span>
+        <span class="n">thermal_metrics</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">thermal_metrics</span></div>
+
+<div class="viewcode-block" id="OutputParser.parse_voltage_metrics"><a class="viewcode-back" href="../../../disco/disco.storage.html#disco.storage.parsers.OutputParser.parse_voltage_metrics">[docs]</a>    <span class="k">def</span> <span class="nf">parse_voltage_metrics</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">report</span><span class="p">,</span> <span class="n">jobs</span><span class="p">,</span> <span class="n">output</span><span class="p">):</span>
+        <span class="n">parser</span> <span class="o">=</span> <span class="n">VoltageMetricsParser</span><span class="p">(</span><span class="n">report</span><span class="o">=</span><span class="n">report</span><span class="p">,</span> <span class="n">jobs</span><span class="o">=</span><span class="n">jobs</span><span class="p">)</span>
+        <span class="n">voltage_metrics</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">voltage_metrics</span></div>
+
+<div class="viewcode-block" id="OutputParser.parse_snapshot_time_points"><a class="viewcode-back" href="../../../disco/disco.storage.html#disco.storage.parsers.OutputParser.parse_snapshot_time_points">[docs]</a>    <span class="k">def</span> <span class="nf">parse_snapshot_time_points</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">report</span><span class="p">,</span> <span class="n">jobs</span><span class="p">,</span> <span class="n">output</span><span class="p">):</span>
+        <span class="n">parser</span> <span class="o">=</span> <span class="n">SnapshotTimePointsParser</span><span class="p">(</span><span class="n">report</span><span class="o">=</span><span class="n">report</span><span class="p">,</span> <span class="n">jobs</span><span class="o">=</span><span class="n">jobs</span><span class="p">)</span>
+        <span class="n">time_points</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">time_points</span></div>
+
+<div class="viewcode-block" id="OutputParser.parse_hosting_capacity"><a class="viewcode-back" href="../../../disco/disco.storage.html#disco.storage.parsers.OutputParser.parse_hosting_capacity">[docs]</a>    <span class="k">def</span> <span class="nf">parse_hosting_capacity</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">task</span><span class="p">,</span> <span class="n">output</span><span class="p">):</span>
+        <span class="n">parser</span> <span class="o">=</span> <span class="n">HostingCapacityParser</span><span class="p">(</span><span class="n">task</span><span class="o">=</span><span class="n">task</span><span class="p">)</span>
+        <span class="n">hosting_capacity</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">output</span><span class="o">=</span><span class="n">output</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">hosting_capacity</span></div>
+
+<div class="viewcode-block" id="OutputParser.parse_pv_distances"><a class="viewcode-back" href="../../../disco/disco.storage.html#disco.storage.parsers.OutputParser.parse_pv_distances">[docs]</a>    <span class="k">def</span> <span class="nf">parse_pv_distances</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model_inputs</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">PvDistancesParser</span><span class="p">()</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">model_inputs</span><span class="p">)</span></div></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2019, NREL.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,61 @@
+disco.extensions.upgrade\_simulation package
+============================================
+
+Subpackages
+-----------
+
+.. toctree::
+   :maxdepth: 4
+
+   disco.extensions.upgrade_simulation.upgrades
+
+Submodules
+----------
+
+disco.extensions.upgrade\_simulation.cli module
+-----------------------------------------------
+
+.. automodule:: disco.extensions.upgrade_simulation.cli
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+disco.extensions.upgrade\_simulation.upgrade\_configuration module
+------------------------------------------------------------------
+
+.. automodule:: disco.extensions.upgrade_simulation.upgrade_configuration
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+disco.extensions.upgrade\_simulation.upgrade\_inputs module
+-----------------------------------------------------------
+
+.. automodule:: disco.extensions.upgrade_simulation.upgrade_inputs
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+disco.extensions.upgrade\_simulation.upgrade\_parameters module
+---------------------------------------------------------------
+
+.. automodule:: disco.extensions.upgrade_simulation.upgrade_parameters
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+disco.extensions.upgrade\_simulation.upgrade\_simulation module
+---------------------------------------------------------------
+
+.. automodule:: disco.extensions.upgrade_simulation.upgrade_simulation
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: disco.extensions.upgrade_simulation
+   :members:
+   :undoc-members:
+   :show-inheritance:

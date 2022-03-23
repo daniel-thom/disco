@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>disco.pydss.pydss_analysis &mdash; DISCO 0.1 documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link href="../../../_static/style.css" rel="stylesheet" type="text/css">
+
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../../index.html" class="icon icon-home"> DISCO
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">User Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../installation.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../installation.html#use-conda">Use Conda</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../installation.html#use-docker">Use Docker</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../overview.html">Overview</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../overview.html#data-sources">Data Sources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../overview.html#transform-model">Transform Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../overview.html#config-jobs">Config Jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../overview.html#submit-jobs">Submit Jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../overview.html#result-analysis">Result Analysis</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../quick-start.html">Quick Start</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../quick-start.html#source-data">Source Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../quick-start.html#transform-model">Transform Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../quick-start.html#config-jobs">Config Jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../quick-start.html#submit-jobs">Submit Jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../quick-start.html#result-analysis">Result Analysis</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../data-sources.html">Data Sources</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../data-sources/smart-ds-model-preparation.html">SMART-DS OpenDSS Model Preparation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../data-sources.html#gem-model">GEM Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../data-sources.html#epri-model">EPRI Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../data-sources.html#sourcetree1-model">SourceTree1 Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../data-sources.html#sourcetree2-model">SourceTree2 Model</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../pv-deployments.html">PV Deployments</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../pv-deployments.html#sourcetree1-pv-deployments">SourceTree1 PV Deployments</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../transform-models.html">Transform Models</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../transform-models.html#transform-model-help">Transform Model Help</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../transform-models.html#disco-model-in-depth">DISCO Model in Depth</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../analysis-workflows.html">Analysis Workflows</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../analysis-workflows/hosting-capacity-analysis.html">Hosting Capacity Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../analysis-workflows/upgrade-cost-analysis.html">Upgrade Cost Analysis</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../pipelines.html">Pipelines</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../pipelines.html#sourcetree1model">SourceTree1Model</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../debugging-issues.html">Debugging Issues</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../debugging-issues.html#using-jade">Using JADE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../debugging-issues.html#using-pydss">Using PyDSS</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../data-ingestion.html">Data Ingestion</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../data-ingestion.html#ingest-to-new-database">Ingest to New Database</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../data-ingestion.html#ingest-to-existing-database">Ingest to Existing Database</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../data-ingestion.html#run-database-queries">Run Database Queries</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../advanced-guide.html">Advanced Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../advanced-guide/analysis-deployment.html">Analysis Deployment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../advanced-guide/upgrade-cost-analysis-generic-models.html">Upgrade Cost Analysis JSON Schemas</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contribution</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../build-docs.html">Build docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../license.html">License</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">DISCO</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+      <li>disco.pydss.pydss_analysis</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for disco.pydss.pydss_analysis</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;Analysis of PyDSS simulations.&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">logging</span>
+<span class="kn">import</span> <span class="nn">math</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">re</span>
+
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="kn">from</span> <span class="nn">jade.exceptions</span> <span class="kn">import</span> <span class="n">InvalidParameter</span><span class="p">,</span> <span class="n">InvalidConfiguration</span>
+<span class="kn">from</span> <span class="nn">jade.jobs.job_analysis</span> <span class="kn">import</span> <span class="n">JobAnalysis</span>
+<span class="kn">from</span> <span class="nn">jade.utils.utils</span> <span class="kn">import</span> <span class="n">load_data</span>
+<span class="kn">from</span> <span class="nn">PyDSS.pydss_results</span> <span class="kn">import</span> <span class="n">PyDssResults</span>
+<span class="kn">from</span> <span class="nn">disco.sources.gem.make_element_bus_mapping</span> <span class="kn">import</span> <span class="n">get_bus_to_element</span><span class="p">,</span> \
+    <span class="n">REGION_BUS_MAPPING_FILENAME</span>
+
+
+<span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="PyDssAnalysis"><a class="viewcode-back" href="../../../disco/disco.pydss.html#disco.pydss.pydss_analysis.PyDssAnalysis">[docs]</a><span class="k">class</span> <span class="nc">PyDssAnalysis</span><span class="p">(</span><span class="n">JobAnalysis</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Performs analysis of PyDSS simulations.&quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="PyDssAnalysis.read_results"><a class="viewcode-back" href="../../../disco/disco.pydss.html#disco.pydss.pydss_analysis.PyDssAnalysis.read_results">[docs]</a>    <span class="k">def</span> <span class="nf">read_results</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">simulation</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Return all results dataframes for a simulation.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        simulation : str | PyDssSimulationBase</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        dict</span>
+<span class="sd">            class name : PyDssResult instance</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">simulation</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+            <span class="n">simulation</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_simulation</span><span class="p">(</span><span class="n">simulation</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">PyDssResults</span><span class="p">(</span><span class="n">simulation</span><span class="o">.</span><span class="n">pydss_project_path</span><span class="p">)</span></div></div>
+
+
+<div class="viewcode-block" id="PyDssScenarioAnalysis"><a class="viewcode-back" href="../../../disco/disco.pydss.html#disco.pydss.pydss_analysis.PyDssScenarioAnalysis">[docs]</a><span class="k">class</span> <span class="nc">PyDssScenarioAnalysis</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Performs analysis on one PyDSS scenario results.&quot;&quot;&quot;</span>
+
+    <span class="n">_REGEX_PHASE_ANY_TERMINAL_1</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">rf</span><span class="s2">&quot;[ABCN]1&quot;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">job</span><span class="p">,</span> <span class="n">results</span><span class="p">,</span> <span class="n">scenario_name</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_job</span> <span class="o">=</span> <span class="n">job</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_feeder</span> <span class="o">=</span> <span class="n">job</span><span class="o">.</span><span class="n">feeder</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">results</span><span class="o">.</span><span class="n">scenarios</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">InvalidParameter</span><span class="p">(</span><span class="s2">&quot;there are no scenarios in the results&quot;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">scenario_name</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_scenario</span> <span class="o">=</span> <span class="n">results</span><span class="o">.</span><span class="n">scenarios</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_scenario</span> <span class="o">=</span> <span class="n">results</span><span class="o">.</span><span class="n">get_scenario</span><span class="p">(</span><span class="n">scenario_name</span><span class="p">)</span>
+
+<div class="viewcode-block" id="PyDssScenarioAnalysis.get_pu_bus_voltage_magnitudes"><a class="viewcode-back" href="../../../disco/disco.pydss.html#disco.pydss.pydss_analysis.PyDssScenarioAnalysis.get_pu_bus_voltage_magnitudes">[docs]</a>    <span class="k">def</span> <span class="nf">get_pu_bus_voltage_magnitudes</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Return per-unit voltage magnitudes for each bus.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        dict</span>
+<span class="sd">            Maps bus name to list of voltages.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">voltages</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_scenario</span><span class="o">.</span><span class="n">list_element_names</span><span class="p">(</span><span class="s2">&quot;Buses&quot;</span><span class="p">,</span> <span class="s2">&quot;puVmagAngle&quot;</span><span class="p">):</span>
+            <span class="n">df</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_scenario</span><span class="o">.</span><span class="n">get_dataframe</span><span class="p">(</span>
+                <span class="s2">&quot;Buses&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;puVmagAngle&quot;</span><span class="p">,</span>
+                <span class="n">name</span><span class="p">,</span>
+                <span class="n">phase_terminal</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_REGEX_PHASE_ANY_TERMINAL_1</span><span class="p">,</span>
+                <span class="n">mag_ang</span><span class="o">=</span><span class="s2">&quot;mag&quot;</span><span class="p">,</span>
+            <span class="p">)</span>
+            <span class="n">voltages</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">row</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span> <span class="k">for</span> <span class="n">_</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">iterrows</span><span class="p">()]</span>
+
+        <span class="k">return</span> <span class="n">voltages</span></div>
+
+<div class="viewcode-block" id="PyDssScenarioAnalysis.get_line_loading_percentages"><a class="viewcode-back" href="../../../disco/disco.pydss.html#disco.pydss.pydss_analysis.PyDssScenarioAnalysis.get_line_loading_percentages">[docs]</a>    <span class="k">def</span> <span class="nf">get_line_loading_percentages</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s2">&quot;dataframe&quot;</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Return line loading values as percents for all lines.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        fmt : str</span>
+<span class="sd">            Controls output format. Must be &#39;dataframe&#39; or &#39;json&#39;.&quot;</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        dict</span>
+<span class="sd">            Maps line name to loading percentages.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">fmt</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">&quot;dataframe&quot;</span><span class="p">,</span> <span class="s2">&quot;json&quot;</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="n">InvalidParameter</span><span class="p">(</span><span class="s2">&quot;fmt must be &#39;dataframe&#39; or &#39;json&#39;&quot;</span><span class="p">)</span>
+
+        <span class="n">loadings</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Line Loading (%)&quot;</span><span class="p">]</span>
+
+        <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_scenario</span><span class="o">.</span><span class="n">list_element_names</span><span class="p">(</span><span class="s2">&quot;Lines&quot;</span><span class="p">,</span> <span class="s2">&quot;Currents&quot;</span><span class="p">):</span>
+            <span class="n">df</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_scenario</span><span class="o">.</span><span class="n">get_dataframe</span><span class="p">(</span>
+                <span class="s2">&quot;Lines&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;Currents&quot;</span><span class="p">,</span>
+                <span class="n">name</span><span class="p">,</span>
+                <span class="n">phase_terminal</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_REGEX_PHASE_ANY_TERMINAL_1</span>
+            <span class="p">)</span>
+            <span class="n">normal_amps</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_scenario</span><span class="o">.</span><span class="n">get_dataframe</span><span class="p">(</span>
+                <span class="s2">&quot;Lines&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;NormalAmps&quot;</span><span class="p">,</span>
+                <span class="n">name</span><span class="p">,</span>
+            <span class="p">)</span>
+            <span class="n">values</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
+                <span class="n">val</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">row</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">real</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">x</span><span class="o">.</span><span class="n">imag</span><span class="o">**</span><span class="mi">2</span><span class="p">)))</span>
+                <span class="n">normal_amps_val</span> <span class="o">=</span> <span class="n">normal_amps</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">normal_amps</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span>
+                <span class="n">values</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">val</span> <span class="o">/</span> <span class="n">normal_amps_val</span> <span class="o">*</span> <span class="mi">100</span><span class="p">)</span>
+
+            <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">values</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">columns</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">fmt</span> <span class="o">==</span> <span class="s2">&quot;json&quot;</span><span class="p">:</span>
+                <span class="n">loadings</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">to_json</span><span class="p">(</span><span class="n">orient</span><span class="o">=</span><span class="s2">&quot;records&quot;</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">loadings</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span>
+
+        <span class="k">return</span> <span class="n">loadings</span></div>
+
+<div class="viewcode-block" id="PyDssScenarioAnalysis.get_transformer_loading_percentages"><a class="viewcode-back" href="../../../disco/disco.pydss.html#disco.pydss.pydss_analysis.PyDssScenarioAnalysis.get_transformer_loading_percentages">[docs]</a>    <span class="k">def</span> <span class="nf">get_transformer_loading_percentages</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s2">&quot;dataframe&quot;</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Return transformer loading values as percents for all transformers.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        fmt : str</span>
+<span class="sd">            Controls output format. Must be &#39;dataframe&#39; or &#39;json&#39;.&quot;</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        dict</span>
+<span class="sd">            Maps transformer name to loading percentages pd.DataFrame.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">fmt</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">&quot;dataframe&quot;</span><span class="p">,</span> <span class="s2">&quot;json&quot;</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="n">InvalidParameter</span><span class="p">(</span><span class="s2">&quot;fmt must be &#39;dataframe&#39; or &#39;json&#39;&quot;</span><span class="p">)</span>
+
+        <span class="c1">#transformers = self._scenario.read_element_info_file(&quot;Transformers&quot;)</span>
+        <span class="c1">#transformers_phase_info = self._scenario.read_element_info_file(&quot;TransformersPhase&quot;)</span>
+
+        <span class="n">loadings</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Transformer Loading (%)&quot;</span><span class="p">]</span>
+        <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_scenario</span><span class="o">.</span><span class="n">list_element_names</span><span class="p">(</span><span class="s2">&quot;Transformers&quot;</span><span class="p">,</span> <span class="s2">&quot;Currents&quot;</span><span class="p">):</span>
+            <span class="c1">#short_name = name.replace(&quot;Transformer.&quot;, &quot;&quot;)</span>
+            <span class="n">df</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_scenario</span><span class="o">.</span><span class="n">get_dataframe</span><span class="p">(</span>
+                <span class="s2">&quot;Transformers&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;Currents&quot;</span><span class="p">,</span>
+                <span class="n">name</span><span class="p">,</span>
+                <span class="n">phase_terminal</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_REGEX_PHASE_ANY_TERMINAL_1</span>
+            <span class="p">)</span>
+            <span class="n">normal_amps</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_scenario</span><span class="o">.</span><span class="n">get_dataframe</span><span class="p">(</span>
+                <span class="s2">&quot;Transformers&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;NormalAmps&quot;</span><span class="p">,</span>
+                <span class="n">name</span><span class="p">,</span>
+            <span class="p">)</span>
+
+            <span class="c1"># TODO: this needs some minor correction</span>
+
+            <span class="c1">#transformer = transformers.query(f&quot;Name == &#39;{short_name}&#39;&quot;).iloc[0]</span>
+            <span class="c1">#transformer_phase = transformers_phase_info.query(f&quot;Transformer == &#39;{name}&#39;&quot;).iloc[0]</span>
+            <span class="c1">#num_windings = transformer[&quot;NumWindings&quot;]</span>
+            <span class="c1">#high_side_connection = transformer_phase[&quot;HighSideConnection&quot;]</span>
+            <span class="c1">#num_phases = len(df.columns)</span>
+            <span class="c1">#if num_phases == 3 and high_side_connection == &quot;wye&quot;:</span>
+            <span class="c1">#    phase = 4</span>
+            <span class="c1">#elif num_phases == 3 and high_side_connection == &quot;delta&quot;:</span>
+            <span class="c1">#    phase = 3</span>
+            <span class="c1">#else:</span>
+            <span class="c1">#    phase = num_phases</span>
+
+            <span class="n">values</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
+                <span class="n">val</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">row</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">real</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">x</span><span class="o">.</span><span class="n">imag</span><span class="o">**</span><span class="mi">2</span><span class="p">)))</span>
+                <span class="n">normal_amps_val</span> <span class="o">=</span> <span class="n">normal_amps</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">normal_amps</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span>
+                <span class="n">values</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">val</span> <span class="o">/</span> <span class="n">normal_amps_val</span> <span class="o">*</span> <span class="mi">100</span><span class="p">)</span>
+
+            <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">values</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">columns</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">fmt</span> <span class="o">==</span> <span class="s2">&quot;json&quot;</span><span class="p">:</span>
+                <span class="n">loadings</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">to_json</span><span class="p">(</span><span class="n">orient</span><span class="o">=</span><span class="s2">&quot;records&quot;</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">loadings</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span>
+
+        <span class="k">return</span> <span class="n">loadings</span></div>
+
+<div class="viewcode-block" id="PyDssScenarioAnalysis.get_kw_at_bus_mapping"><a class="viewcode-back" href="../../../disco/disco.pydss.html#disco.pydss.pydss_analysis.PyDssScenarioAnalysis.get_kw_at_bus_mapping">[docs]</a>    <span class="k">def</span> <span class="nf">get_kw_at_bus_mapping</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Return a mapping of bus to PV system and load kW values</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        dict</span>
+<span class="sd">            Key is bus name. Value is a list of dicts containing element info</span>
+<span class="sd">            and kW values.</span>
+
+<span class="sd">            Example: {&quot;123456&quot;: [{&quot;type&quot;: &quot;pv_systems&quot;, &quot;name&quot;: &quot;pv_1234&quot;, &quot;kW&quot;, 1.3}]}</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">input_directory</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_job</span><span class="o">.</span><span class="n">deployment</span><span class="o">.</span><span class="n">directory</span>
+        <span class="n">bus_mapping_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+            <span class="n">input_directory</span><span class="p">,</span> <span class="n">REGION_BUS_MAPPING_FILENAME</span>
+        <span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">bus_mapping_file</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="n">InvalidConfiguration</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">bus_mapping_file</span><span class="si">}</span><span class="s2"> does not exist&quot;</span><span class="p">)</span>
+
+        <span class="n">summary</span> <span class="o">=</span> <span class="n">load_data</span><span class="p">(</span><span class="n">bus_mapping_file</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_feeder</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">summary</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">InvalidConfiguration</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">bus_mapping_file</span><span class="si">}</span><span class="s2"> does not contain feeder=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_feeder</span><span class="si">}</span><span class="s2">&quot;</span>
+            <span class="p">)</span>
+
+        <span class="n">feeder_file</span> <span class="o">=</span> <span class="n">summary</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_feeder</span><span class="p">]</span>
+        <span class="n">feeder_mapping</span> <span class="o">=</span> <span class="n">load_data</span><span class="p">(</span><span class="n">feeder_file</span><span class="p">)</span>
+
+        <span class="n">bus_to_elems</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="n">get_bus_to_element</span><span class="p">(</span><span class="n">bus_to_elems</span><span class="p">,</span> <span class="n">feeder_mapping</span><span class="p">,</span> <span class="s2">&quot;pv_systems&quot;</span><span class="p">)</span>
+        <span class="n">get_bus_to_element</span><span class="p">(</span><span class="n">bus_to_elems</span><span class="p">,</span> <span class="n">feeder_mapping</span><span class="p">,</span> <span class="s2">&quot;loads&quot;</span><span class="p">)</span>
+
+        <span class="n">pv_systems</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_scenario</span><span class="o">.</span><span class="n">read_element_info_file</span><span class="p">(</span><span class="s2">&quot;PVSystems&quot;</span><span class="p">)</span>
+        <span class="n">loads</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_scenario</span><span class="o">.</span><span class="n">read_element_info_file</span><span class="p">(</span><span class="s2">&quot;Loads&quot;</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">elements</span> <span class="ow">in</span> <span class="n">bus_to_elems</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
+            <span class="n">to_delete</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">element</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">elements</span><span class="p">):</span>
+                <span class="n">src</span> <span class="o">=</span> <span class="n">pv_systems</span> <span class="k">if</span> <span class="n">element</span><span class="p">[</span><span class="s2">&quot;type&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;pv_systems&quot;</span> <span class="k">else</span> <span class="n">loads</span>
+                <span class="n">df</span> <span class="o">=</span> <span class="n">src</span><span class="p">[</span><span class="n">src</span><span class="p">[</span><span class="s2">&quot;Name&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="n">element</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]]</span>
+                <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                    <span class="c1"># The data may include other PV systems.</span>
+                    <span class="n">to_delete</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+                    <span class="k">continue</span>
+                <span class="n">element</span><span class="p">[</span><span class="s2">&quot;kW&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;kW&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">reversed</span><span class="p">(</span><span class="n">to_delete</span><span class="p">):</span>
+                <span class="n">elements</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">bus_to_elems</span></div></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2019, NREL.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

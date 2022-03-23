@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>disco.postprocess package &mdash; DISCO 0.1 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link href="../_static/style.css" rel="stylesheet" type="text/css">
+
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> DISCO
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">User Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../installation.html#use-conda">Use Conda</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation.html#use-docker">Use Docker</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">Overview</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../overview.html#data-sources">Data Sources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview.html#transform-model">Transform Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview.html#config-jobs">Config Jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview.html#submit-jobs">Submit Jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview.html#result-analysis">Result Analysis</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../quick-start.html">Quick Start</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../quick-start.html#source-data">Source Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../quick-start.html#transform-model">Transform Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../quick-start.html#config-jobs">Config Jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../quick-start.html#submit-jobs">Submit Jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../quick-start.html#result-analysis">Result Analysis</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../data-sources.html">Data Sources</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../data-sources/smart-ds-model-preparation.html">SMART-DS OpenDSS Model Preparation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data-sources.html#gem-model">GEM Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data-sources.html#epri-model">EPRI Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data-sources.html#sourcetree1-model">SourceTree1 Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data-sources.html#sourcetree2-model">SourceTree2 Model</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../pv-deployments.html">PV Deployments</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../pv-deployments.html#sourcetree1-pv-deployments">SourceTree1 PV Deployments</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../transform-models.html">Transform Models</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../transform-models.html#transform-model-help">Transform Model Help</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../transform-models.html#disco-model-in-depth">DISCO Model in Depth</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../analysis-workflows.html">Analysis Workflows</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../analysis-workflows/hosting-capacity-analysis.html">Hosting Capacity Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../analysis-workflows/upgrade-cost-analysis.html">Upgrade Cost Analysis</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../pipelines.html">Pipelines</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../pipelines.html#sourcetree1model">SourceTree1Model</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../debugging-issues.html">Debugging Issues</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../debugging-issues.html#using-jade">Using JADE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../debugging-issues.html#using-pydss">Using PyDSS</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../data-ingestion.html">Data Ingestion</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../data-ingestion.html#ingest-to-new-database">Ingest to New Database</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data-ingestion.html#ingest-to-existing-database">Ingest to Existing Database</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data-ingestion.html#run-database-queries">Run Database Queries</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced-guide.html">Advanced Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../advanced-guide/analysis-deployment.html">Analysis Deployment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../advanced-guide/upgrade-cost-analysis-generic-models.html">Upgrade Cost Analysis JSON Schemas</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contribution</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../build-docs.html">Build docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../license.html">License</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">DISCO</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>disco.postprocess package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/disco/disco.postprocess.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="disco-postprocess-package">
+<h1>disco.postprocess package<a class="headerlink" href="#disco-postprocess-package" title="Permalink to this headline">¶</a></h1>
+<section id="subpackages">
+<h2>Subpackages<a class="headerlink" href="#subpackages" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="disco.postprocess.config.html">disco.postprocess.config package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="disco.postprocess.config.html#module-disco.postprocess.config">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="module-disco.postprocess.hcdb">
+<span id="disco-postprocess-hcdb-module"></span><h2>disco.postprocess.hcdb module<a class="headerlink" href="#module-disco.postprocess.hcdb" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.postprocess.hcdb.build_thermal_queries">
+<span class="sig-prename descclassname"><span class="pre">disco.postprocess.hcdb.</span></span><span class="sig-name descname"><span class="pre">build_thermal_queries</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">thresholds</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/postprocess/hcdb.html#build_thermal_queries"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.postprocess.hcdb.build_thermal_queries" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.postprocess.hcdb.build_queries">
+<span class="sig-prename descclassname"><span class="pre">disco.postprocess.hcdb.</span></span><span class="sig-name descname"><span class="pre">build_queries</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">columns</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">thresholds</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metric_class</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">on</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'all'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/postprocess/hcdb.html#build_queries"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.postprocess.hcdb.build_queries" title="Permalink to this definition">¶</a></dt>
+<dd><p>Build queries for filtering metrics dataframes</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.postprocess.hcdb.synthesize_voltage">
+<span class="sig-prename descclassname"><span class="pre">disco.postprocess.hcdb.</span></span><span class="sig-name descname"><span class="pre">synthesize_voltage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">results_df</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/postprocess/hcdb.html#synthesize_voltage"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.postprocess.hcdb.synthesize_voltage" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reduce voltage metrics table to one time-point like table
+where for each metric, only the worst metric value of all time-points
+is recorded</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.postprocess.hcdb.synthesize_thermal">
+<span class="sig-prename descclassname"><span class="pre">disco.postprocess.hcdb.</span></span><span class="sig-name descname"><span class="pre">synthesize_thermal</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">results_df</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/postprocess/hcdb.html#synthesize_thermal"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.postprocess.hcdb.synthesize_thermal" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reduce thermal metrics table to one time-point like table
+where for each metric, only the worst metric value of all time-points
+is recorded</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.postprocess.hcdb.synthesize">
+<span class="sig-prename descclassname"><span class="pre">disco.postprocess.hcdb.</span></span><span class="sig-name descname"><span class="pre">synthesize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">metrics_df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metadata_df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metric_class</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/postprocess/hcdb.html#synthesize"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.postprocess.hcdb.synthesize" title="Permalink to this definition">¶</a></dt>
+<dd><p>For snapshot hosting capacity analysis,
+reduce metrics and metadata tables to one time-point like tables
+where for each metric, only the worst metric value of all time-points
+is recorded</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.postprocess.hcdb.get_hosting_capacity">
+<span class="sig-prename descclassname"><span class="pre">disco.postprocess.hcdb.</span></span><span class="sig-name descname"><span class="pre">get_hosting_capacity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">meta_df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metric_df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">query_phrase</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metric_class</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hc_summary</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/postprocess/hcdb.html#get_hosting_capacity"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.postprocess.hcdb.get_hosting_capacity" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the hosting capacity summary</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.postprocess.hcdb.compute_hc">
+<span class="sig-prename descclassname"><span class="pre">disco.postprocess.hcdb.</span></span><span class="sig-name descname"><span class="pre">compute_hc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">task_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">thresholds</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metric_classes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scenario</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">node_types</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">on</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'all'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/postprocess/hcdb.html#compute_hc"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.postprocess.hcdb.compute_hc" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute hosting capacity</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>result_path</strong> (<em>str</em><em>, </em><em>the output directory of metrics summary tables</em>) – </p></li>
+<li><p><strong>thresholds</strong> (<em>dict</em><em>, </em><em>the mapping of metric thresholds</em>) – </p></li>
+<li><p><strong>metric_classes</strong> (<em>list</em><em>, </em><em>the list of metric class</em>) – </p></li>
+<li><p><strong>node_types</strong> (<em>list</em><em>, </em><em>the node types in voltage scenario</em>) – </p></li>
+<li><p><strong>on</strong> (<em>list</em><em> | </em><em>str</em><em>, </em><em>the list of metrics of interest</em>) – example: on = [‘min_voltage’, ‘max_voltage’]</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>dict</strong> (<em>hc_summary</em>)</p></li>
+<li><p><strong>dict</strong> (<em>hc_overall</em>)</p></li>
+<li><p><strong>list</strong> (<em>query strings</em>)</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="disco.postprocess.hcdb.HostingCapacity">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">disco.postprocess.hcdb.</span></span><span class="sig-name descname"><span class="pre">HostingCapacity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">session</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">sqlalchemy.orm.session.Session</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/postprocess/hcdb.html#HostingCapacity"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.postprocess.hcdb.HostingCapacity" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.postprocess.hcdb.HostingCapacity.compute_thermal_hc">
+<span class="sig-name descname"><span class="pre">compute_thermal_hc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">thresholds</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">on</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hc_summary</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/postprocess/hcdb.html#HostingCapacity.compute_thermal_hc"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.postprocess.hcdb.HostingCapacity.compute_thermal_hc" title="Permalink to this definition">¶</a></dt>
+<dd><p>Given the metric class, compute its hosting capacity</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>result_path</strong> (<em>str</em><em>, </em><em>the output directory of metrics summary tables</em>) – </p></li>
+<li><p><strong>thresholds</strong> (<em>dict</em><em>, </em><em>the mapping of metric thresholds</em>) – </p></li>
+<li><p><strong>metric_class</strong> (<em>str</em><em>, </em><em>the metric class</em><em>, </em><em>'voltage'</em><em> or </em><em>'thermal'</em>) – </p></li>
+<li><p><strong>on</strong> (<em>list</em><em> | </em><em>str</em><em>, </em><em>the list of metrics of interest</em>) – example: on = [‘min_voltage’, ‘max_voltage’]</p></li>
+<li><p><strong>hc_summary</strong> (<em>dict</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.postprocess.hcdb.HostingCapacity.get_thermal_hosting_capacity">
+<span class="sig-name descname"><span class="pre">get_thermal_hosting_capacity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stmt</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/postprocess/hcdb.html#HostingCapacity.get_thermal_hosting_capacity"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.postprocess.hcdb.HostingCapacity.get_thermal_hosting_capacity" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the hosting capacity summary</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.postprocess.hcdb.HostingCapacity.compute_hc">
+<span class="sig-name descname"><span class="pre">compute_hc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">task_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">thresholds</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metric_classes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scenario</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">node_types</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">on</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'all'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/postprocess/hcdb.html#HostingCapacity.compute_hc"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.postprocess.hcdb.HostingCapacity.compute_hc" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-disco.postprocess.hosting_capacity">
+<span id="disco-postprocess-hosting-capacity-module"></span><h2>disco.postprocess.hosting_capacity module<a class="headerlink" href="#module-disco.postprocess.hosting_capacity" title="Permalink to this headline">¶</a></h2>
+<p>Created on Thu May 27 01:28:38 2021</p>
+<p>&#64;author: senam</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.postprocess.hosting_capacity.build_queries">
+<span class="sig-prename descclassname"><span class="pre">disco.postprocess.hosting_capacity.</span></span><span class="sig-name descname"><span class="pre">build_queries</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">columns</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">thresholds</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metric_class</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">on</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'all'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/postprocess/hosting_capacity.html#build_queries"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.postprocess.hosting_capacity.build_queries" title="Permalink to this definition">¶</a></dt>
+<dd><p>Build queries for filtering metrics dataframes</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.postprocess.hosting_capacity.synthesize_voltage">
+<span class="sig-prename descclassname"><span class="pre">disco.postprocess.hosting_capacity.</span></span><span class="sig-name descname"><span class="pre">synthesize_voltage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">results_df</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/postprocess/hosting_capacity.html#synthesize_voltage"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.postprocess.hosting_capacity.synthesize_voltage" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reduce voltage metrics table to one time-point like table
+where for each metric, only the worst metric value of all time-points
+is recorded</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.postprocess.hosting_capacity.synthesize_thermal">
+<span class="sig-prename descclassname"><span class="pre">disco.postprocess.hosting_capacity.</span></span><span class="sig-name descname"><span class="pre">synthesize_thermal</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">results_df</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/postprocess/hosting_capacity.html#synthesize_thermal"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.postprocess.hosting_capacity.synthesize_thermal" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reduce thermal metrics table to one time-point like table
+where for each metric, only the worst metric value of all time-points
+is recorded</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.postprocess.hosting_capacity.synthesize">
+<span class="sig-prename descclassname"><span class="pre">disco.postprocess.hosting_capacity.</span></span><span class="sig-name descname"><span class="pre">synthesize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">metrics_df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metadata_df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metric_class</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/postprocess/hosting_capacity.html#synthesize"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.postprocess.hosting_capacity.synthesize" title="Permalink to this definition">¶</a></dt>
+<dd><p>For snapshot hosting capacity analysis,
+reduce metrics and metadata tables to one time-point like tables
+where for each metric, only the worst metric value of all time-points
+is recorded</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.postprocess.hosting_capacity.compute_hc_per_metric_class">
+<span class="sig-prename descclassname"><span class="pre">disco.postprocess.hosting_capacity.</span></span><span class="sig-name descname"><span class="pre">compute_hc_per_metric_class</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">result_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">thresholds</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metric_class</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scenario</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">node_types</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">on</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hc_summary</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/postprocess/hosting_capacity.html#compute_hc_per_metric_class"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.postprocess.hosting_capacity.compute_hc_per_metric_class" title="Permalink to this definition">¶</a></dt>
+<dd><p>Given the metric class, compute its hosting capacity</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>result_path</strong> (<em>str</em><em>, </em><em>the output directory of metrics summary tables</em>) – </p></li>
+<li><p><strong>thresholds</strong> (<em>dict</em><em>, </em><em>the mapping of metric thresholds</em>) – </p></li>
+<li><p><strong>metric_class</strong> (<em>str</em><em>, </em><em>the metric class</em><em>, </em><em>'voltage'</em><em> or </em><em>'thermal'</em>) – </p></li>
+<li><p><strong>node_types</strong> (<em>list</em><em>, </em><em>the node types in voltage scenario</em>) – </p></li>
+<li><p><strong>on</strong> (<em>list</em><em> | </em><em>str</em><em>, </em><em>the list of metrics of interest</em>) – example: on = [‘min_voltage’, ‘max_voltage’]</p></li>
+<li><p><strong>hc_summary</strong> (<em>dict</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.postprocess.hosting_capacity.get_hosting_capacity">
+<span class="sig-prename descclassname"><span class="pre">disco.postprocess.hosting_capacity.</span></span><span class="sig-name descname"><span class="pre">get_hosting_capacity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">meta_df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metric_df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">query_phrase</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metric_class</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hc_summary</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/postprocess/hosting_capacity.html#get_hosting_capacity"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.postprocess.hosting_capacity.get_hosting_capacity" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the hosting capacity summary</p>
+<p>violation_starting_penetration: the lowest penetration level at which the analysis revealed a violation
+candidate_cba_samples: list of all deployments or samples that have violations at the lowest penetration level
+violation_frequency_by_sample: the ratio between the number of scenarios yielding violations and the total number of scenarios investigated in a given deployment sample
+recommended_cba_sample: the sample with the highest violation frequency, recommended for further cost benefit analysis or upgrade</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.postprocess.hosting_capacity.compute_hc">
+<span class="sig-prename descclassname"><span class="pre">disco.postprocess.hosting_capacity.</span></span><span class="sig-name descname"><span class="pre">compute_hc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">result_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">thresholds</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metric_classes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scenario</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">node_types</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">on</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'all'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/postprocess/hosting_capacity.html#compute_hc"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.postprocess.hosting_capacity.compute_hc" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute hosting capacity</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>result_path</strong> (<em>str</em><em>, </em><em>the output directory of metrics summary tables</em>) – </p></li>
+<li><p><strong>thresholds</strong> (<em>dict</em><em>, </em><em>the mapping of metric thresholds</em>) – </p></li>
+<li><p><strong>metric_classes</strong> (<em>list</em><em>, </em><em>the list of metric class</em>) – </p></li>
+<li><p><strong>node_types</strong> (<em>list</em><em>, </em><em>the node types in voltage scenario</em>) – </p></li>
+<li><p><strong>on</strong> (<em>list</em><em> | </em><em>str</em><em>, </em><em>the list of metrics of interest</em>) – example: on = [‘min_voltage’, ‘max_voltage’]</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>dict</strong> (<em>hc_summary</em>)</p></li>
+<li><p><strong>dict</strong> (<em>hc_overall</em>)</p></li>
+<li><p><strong>list</strong> (<em>query strings</em>)</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-disco.postprocess">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-disco.postprocess" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2019, NREL.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

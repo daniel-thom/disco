@@ -1,0 +1,29 @@
+disco.sources.source\_tree\_2 package
+=====================================
+
+Submodules
+----------
+
+disco.sources.source\_tree\_2.source\_tree\_2\_model module
+-----------------------------------------------------------
+
+.. automodule:: disco.sources.source_tree_2.source_tree_2_model
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+disco.sources.source\_tree\_2.source\_tree\_2\_model\_inputs module
+-------------------------------------------------------------------
+
+.. automodule:: disco.sources.source_tree_2.source_tree_2_model_inputs
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: disco.sources.source_tree_2
+   :members:
+   :undoc-members:
+   :show-inheritance:

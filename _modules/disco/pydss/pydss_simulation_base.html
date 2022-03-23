@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>disco.pydss.pydss_simulation_base &mdash; DISCO 0.1 documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link href="../../../_static/style.css" rel="stylesheet" type="text/css">
+
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../../index.html" class="icon icon-home"> DISCO
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">User Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../installation.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../installation.html#use-conda">Use Conda</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../installation.html#use-docker">Use Docker</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../overview.html">Overview</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../overview.html#data-sources">Data Sources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../overview.html#transform-model">Transform Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../overview.html#config-jobs">Config Jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../overview.html#submit-jobs">Submit Jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../overview.html#result-analysis">Result Analysis</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../quick-start.html">Quick Start</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../quick-start.html#source-data">Source Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../quick-start.html#transform-model">Transform Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../quick-start.html#config-jobs">Config Jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../quick-start.html#submit-jobs">Submit Jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../quick-start.html#result-analysis">Result Analysis</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../data-sources.html">Data Sources</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../data-sources/smart-ds-model-preparation.html">SMART-DS OpenDSS Model Preparation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../data-sources.html#gem-model">GEM Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../data-sources.html#epri-model">EPRI Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../data-sources.html#sourcetree1-model">SourceTree1 Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../data-sources.html#sourcetree2-model">SourceTree2 Model</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../pv-deployments.html">PV Deployments</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../pv-deployments.html#sourcetree1-pv-deployments">SourceTree1 PV Deployments</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../transform-models.html">Transform Models</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../transform-models.html#transform-model-help">Transform Model Help</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../transform-models.html#disco-model-in-depth">DISCO Model in Depth</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../analysis-workflows.html">Analysis Workflows</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../analysis-workflows/hosting-capacity-analysis.html">Hosting Capacity Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../analysis-workflows/upgrade-cost-analysis.html">Upgrade Cost Analysis</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../pipelines.html">Pipelines</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../pipelines.html#sourcetree1model">SourceTree1Model</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../debugging-issues.html">Debugging Issues</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../debugging-issues.html#using-jade">Using JADE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../debugging-issues.html#using-pydss">Using PyDSS</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../data-ingestion.html">Data Ingestion</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../data-ingestion.html#ingest-to-new-database">Ingest to New Database</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../data-ingestion.html#ingest-to-existing-database">Ingest to Existing Database</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../data-ingestion.html#run-database-queries">Run Database Queries</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../advanced-guide.html">Advanced Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../advanced-guide/analysis-deployment.html">Analysis Deployment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../advanced-guide/upgrade-cost-analysis-generic-models.html">Upgrade Cost Analysis JSON Schemas</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contribution</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../build-docs.html">Build docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../license.html">License</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">DISCO</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+      <li>disco.pydss.pydss_simulation_base</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for disco.pydss.pydss_simulation_base</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;Base functionality for running PyDSS simulations.&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">abc</span>
+<span class="kn">import</span> <span class="nn">copy</span>
+<span class="kn">import</span> <span class="nn">logging</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">re</span>
+
+<span class="kn">from</span> <span class="nn">PyDSS.exceptions</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">PyDssConvergenceError</span><span class="p">,</span>
+    <span class="n">PyDssConvergenceErrorCountExceeded</span><span class="p">,</span>
+    <span class="n">PyDssConvergenceMaxError</span><span class="p">,</span>
+    <span class="n">OpenDssConvergenceErrorCountExceeded</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="kn">from</span> <span class="nn">PyDSS.pydss_project</span> <span class="kn">import</span> <span class="n">update_pydss_controllers</span>
+<span class="kn">from</span> <span class="nn">PyDSS.pydss_project</span> <span class="kn">import</span> <span class="n">PyDssProject</span><span class="p">,</span> <span class="n">PyDssScenario</span>
+
+<span class="kn">from</span> <span class="nn">jade.events</span> <span class="kn">import</span> <span class="n">StructuredLogEvent</span><span class="p">,</span> <span class="n">EVENT_CATEGORY_ERROR</span>
+<span class="kn">from</span> <span class="nn">jade.jobs.job_execution_interface</span> <span class="kn">import</span> <span class="n">JobExecutionInterface</span>
+<span class="kn">from</span> <span class="nn">jade.loggers</span> <span class="kn">import</span> <span class="n">log_event</span>
+<span class="kn">from</span> <span class="nn">jade.utils.utils</span> <span class="kn">import</span> <span class="n">dump_data</span>
+<span class="kn">from</span> <span class="nn">jade.utils.timing_utils</span> <span class="kn">import</span> <span class="n">timed_info</span>
+
+<span class="kn">from</span> <span class="nn">disco.common</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">EXIT_CODE_GOOD</span><span class="p">,</span>
+    <span class="n">EXIT_CODE_CONVERGENCE_ERROR</span><span class="p">,</span>
+    <span class="n">LOADS_SUM_GROUP_FILENAME</span><span class="p">,</span>
+    <span class="n">PV_SYSTEMS_SUM_GROUP_FILENAME</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="kn">from</span> <span class="nn">disco.pydss.common</span> <span class="kn">import</span> <span class="n">ConfigType</span>
+<span class="kn">from</span> <span class="nn">disco.events</span> <span class="kn">import</span> <span class="n">EVENT_NO_CONVERGENCE</span>
+<span class="kn">from</span> <span class="nn">disco.models.base</span> <span class="kn">import</span> <span class="n">PyDSSControllerModel</span>
+<span class="kn">from</span> <span class="nn">disco.pydss.pydss_utils</span> <span class="kn">import</span> <span class="n">detect_convergence_problems</span>
+
+
+<span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="PyDssSimulationBase"><a class="viewcode-back" href="../../../disco/disco.pydss.html#disco.pydss.pydss_simulation_base.PyDssSimulationBase">[docs]</a><span class="k">class</span> <span class="nc">PyDssSimulationBase</span><span class="p">(</span><span class="n">JobExecutionInterface</span><span class="p">,</span> <span class="n">abc</span><span class="o">.</span><span class="n">ABC</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Runs a PyDss simulation.&quot;&quot;&quot;</span>
+
+    <span class="n">_CONTROLLERS_FILENAME</span> <span class="o">=</span> <span class="s2">&quot;PvController.toml&quot;</span>
+    <span class="n">_EXPORTS_FILENAME</span> <span class="o">=</span> <span class="s2">&quot;Exports.toml&quot;</span>
+    <span class="n">_PYDSS_PROJECT_NAME</span> <span class="o">=</span> <span class="s2">&quot;pydss_project&quot;</span>
+    <span class="n">_REGEX_YEAR</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;^(\d\d\d\d)(-.*)&quot;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+                 <span class="n">pydss_inputs</span><span class="p">,</span>
+                 <span class="n">deployment_params</span><span class="p">,</span>
+                 <span class="n">output</span><span class="p">,</span>
+                 <span class="c1"># TODO: these two parameters should be config options</span>
+                 <span class="c1"># and add_pct_pmpp should be required to be passed</span>
+                 <span class="n">add_pct_pmpp</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                 <span class="n">irradiance_scaling_factor</span><span class="o">=</span><span class="mi">100</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Constructs a PyDssSimulation.</span>
+
+<span class="sd">        Raises</span>
+<span class="sd">        ------</span>
+<span class="sd">        InvalidParameter</span>
+<span class="sd">            Raised if any parameter is invalid.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_pydss_inputs</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">(</span><span class="n">pydss_inputs</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_model</span> <span class="o">=</span> <span class="n">deployment_params</span><span class="o">.</span><span class="n">model</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_output</span> <span class="o">=</span> <span class="n">output</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_run_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_output</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_model</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_logs_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_run_dir</span><span class="p">,</span>
+            <span class="s2">&quot;logs&quot;</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_pydss_project</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_dss_dir</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_results_dir</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_add_pct_pmpp</span> <span class="o">=</span> <span class="n">add_pct_pmpp</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_irradiance_scaling_factor</span> <span class="o">=</span> <span class="n">irradiance_scaling_factor</span>
+
+    <span class="k">def</span> <span class="nf">_get_control_mode</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_model</span><span class="o">.</span><span class="n">model_type</span> <span class="ow">in</span> <span class="p">(</span>
+            <span class="s2">&quot;SnapshotImpactAnalysisModel&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;TimeSeriesAnalysisModel&quot;</span><span class="p">,</span>
+        <span class="p">):</span>
+            <span class="k">return</span> <span class="s2">&quot;Static&quot;</span>
+        <span class="k">assert</span> <span class="kc">False</span><span class="p">,</span> <span class="s2">&quot;unsupported type = </span><span class="si">{self._model.model_type}</span><span class="s2">&quot;</span>
+
+    <span class="nd">@abc</span><span class="o">.</span><span class="n">abstractmethod</span>
+    <span class="k">def</span> <span class="nf">_get_deployment_input_path</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Return the full path to the user input deployment filename.&quot;&quot;&quot;</span>
+
+    <span class="nd">@abc</span><span class="o">.</span><span class="n">abstractmethod</span>
+    <span class="k">def</span> <span class="nf">_get_deployment_input_filename</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Return the user input deployment filename.&quot;&quot;&quot;</span>
+
+    <span class="nd">@abc</span><span class="o">.</span><span class="n">abstractmethod</span>
+    <span class="k">def</span> <span class="nf">_get_scenario_names</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Return the scenario name.&quot;&quot;&quot;</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="nd">@abc</span><span class="o">.</span><span class="n">abstractmethod</span>
+    <span class="k">def</span> <span class="nf">_is_dss_file_path_absolute</span><span class="p">():</span>
+        <span class="sd">&quot;&quot;&quot;Return True if the deployment file path is absolute.&quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">_make_years_match</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">start_time_year</span><span class="p">,</span> <span class="n">other_dict</span><span class="p">,</span> <span class="n">other_dict_key</span><span class="p">):</span>
+        <span class="n">match</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_REGEX_YEAR</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">other_dict</span><span class="p">[</span><span class="n">other_dict_key</span><span class="p">])</span>
+        <span class="k">assert</span> <span class="n">match</span><span class="p">,</span> <span class="n">other_dict</span><span class="p">[</span><span class="n">other_dict_key</span><span class="p">]</span>
+        <span class="n">other_start_year</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">match</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+        <span class="k">if</span> <span class="n">start_time_year</span> <span class="o">!=</span> <span class="n">other_start_year</span><span class="p">:</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;start_time_year=</span><span class="si">%s</span><span class="s2"> does not match </span><span class="si">%s</span><span class="s2"> year=</span><span class="si">%s</span><span class="s2">. Setting them to match.&quot;</span><span class="p">,</span>
+                           <span class="n">start_time_year</span><span class="p">,</span> <span class="n">other_dict_key</span><span class="p">,</span> <span class="n">other_start_year</span><span class="p">)</span>
+            <span class="n">other_dict</span><span class="p">[</span><span class="n">other_dict_key</span><span class="p">]</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">start_time_year</span><span class="si">}{</span><span class="n">match</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
+
+    <span class="nd">@abc</span><span class="o">.</span><span class="n">abstractmethod</span>
+    <span class="k">def</span> <span class="nf">_modify_open_dss_parameters</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Modify parameters in OpenDSS file; can be a no-op.&quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">_setup_pydss_project</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_is_dss_file_path_absolute</span><span class="p">():</span>
+            <span class="n">deployment_filename</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_deployment_input_path</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># PyDSS will join the directories with the name.</span>
+            <span class="n">deployment_filename</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_deployment_input_filename</span><span class="p">()</span>
+
+        <span class="n">dss_args</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;plots&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s2">&quot;create_dynamic_plots&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+                <span class="s2">&quot;open_plots_in_browser&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+            <span class="p">},</span>
+            <span class="s2">&quot;project&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s2">&quot;project_path&quot;</span><span class="p">:</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_run_dir</span><span class="p">),</span>
+                <span class="s2">&quot;dss_file&quot;</span><span class="p">:</span> <span class="n">deployment_filename</span><span class="p">,</span>
+                <span class="s2">&quot;dss_file_absolute_path&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_is_dss_file_path_absolute</span><span class="p">(),</span>
+                <span class="s2">&quot;control_mode&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_control_mode</span><span class="p">(),</span>
+            <span class="p">},</span>
+            <span class="s2">&quot;logging&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s2">&quot;logging_level&quot;</span><span class="p">:</span> <span class="s2">&quot;DEBUG&quot;</span> <span class="k">if</span> <span class="n">verbose</span> <span class="k">else</span> <span class="s2">&quot;INFO&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;enable_file&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+                <span class="s2">&quot;enable_console&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+                <span class="s2">&quot;clear_old_log_file&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+                <span class="s2">&quot;log_time_step_updates&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+            <span class="p">},</span>
+            <span class="s2">&quot;exports&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s2">&quot;hdf_max_chunk_bytes&quot;</span><span class="p">:</span> <span class="mi">1048576</span><span class="p">,</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+
+        <span class="n">simulation_config</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pydss_inputs</span><span class="p">[</span><span class="n">ConfigType</span><span class="o">.</span><span class="n">SIMULATION_CONFIG</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_modify_pydss_simulation_params</span><span class="p">(</span><span class="n">simulation_config</span><span class="p">[</span><span class="s2">&quot;project&quot;</span><span class="p">])</span>
+
+        <span class="k">for</span> <span class="n">category</span><span class="p">,</span> <span class="n">params</span> <span class="ow">in</span> <span class="n">simulation_config</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="k">if</span> <span class="n">category</span> <span class="ow">in</span> <span class="n">dss_args</span><span class="p">:</span>
+                <span class="n">dss_args</span><span class="p">[</span><span class="n">category</span><span class="p">]</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">dss_args</span><span class="p">[</span><span class="n">category</span><span class="p">]</span> <span class="o">=</span> <span class="n">params</span>
+
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;PyDSS args: </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">dss_args</span><span class="p">)</span>
+        <span class="n">scenarios</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_make_pydss_scenarios</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">scenario</span> <span class="ow">in</span> <span class="n">scenarios</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">scenario</span><span class="o">.</span><span class="n">snapshot_time_point_selection_config</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_make_years_match</span><span class="p">(</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_model</span><span class="o">.</span><span class="n">simulation</span><span class="o">.</span><span class="n">start_time</span><span class="o">.</span><span class="n">year</span><span class="p">,</span>
+                    <span class="n">scenario</span><span class="o">.</span><span class="n">snapshot_time_point_selection_config</span><span class="p">,</span>
+                    <span class="s2">&quot;start_time&quot;</span><span class="p">,</span>
+                <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_pydss_project</span> <span class="o">=</span> <span class="n">PyDssProject</span><span class="o">.</span><span class="n">create_project</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_run_dir</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_PYDSS_PROJECT_NAME</span><span class="p">,</span>
+            <span class="n">scenarios</span><span class="p">,</span>
+            <span class="n">options</span><span class="o">=</span><span class="n">dss_args</span><span class="p">,</span>
+            <span class="n">master_dss_file</span><span class="o">=</span><span class="n">dss_args</span><span class="p">[</span><span class="s2">&quot;project&quot;</span><span class="p">][</span><span class="s2">&quot;dss_file&quot;</span><span class="p">],</span>
+            <span class="n">force</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>  <span class="c1"># This allows us to resubmit failed/missing jobs.</span>
+        <span class="p">)</span>
+        <span class="c1"># TODO: this needs a better way of handling pf1</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_apply_pydss_controllers</span><span class="p">(</span>
+            <span class="n">project_path</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_pydss_project</span><span class="o">.</span><span class="n">project_path</span><span class="p">,</span>
+            <span class="n">scenario_names</span><span class="o">=</span><span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">name</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">scenarios</span> <span class="k">if</span> <span class="s2">&quot;pf1&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">s</span><span class="o">.</span><span class="n">name</span><span class="p">]</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_dss_dir</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pydss_project</span><span class="o">.</span><span class="n">dss_files_path</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_results_dir</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_pydss_project</span><span class="o">.</span><span class="n">export_path</span><span class="p">(</span><span class="n">scenario_name</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">scenario_name</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_scenario_names</span><span class="p">()</span>
+        <span class="p">]</span>
+
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Setup folders at </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_run_dir</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_modify_open_dss_parameters</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">_apply_pydss_controllers</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">project_path</span><span class="p">,</span> <span class="n">scenario_names</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Update PyDSS controllers.&quot;&quot;&quot;</span>
+        <span class="n">controllers</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_model</span><span class="o">.</span><span class="n">deployment</span><span class="o">.</span><span class="n">pydss_controllers</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">controllers</span><span class="p">:</span>
+            <span class="k">return</span>
+
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">controllers</span><span class="p">,</span> <span class="n">PyDSSControllerModel</span><span class="p">):</span>
+            <span class="n">controllers</span> <span class="o">=</span> <span class="p">[</span><span class="n">controllers</span><span class="p">]</span>
+
+        <span class="k">for</span> <span class="n">controller</span> <span class="ow">in</span> <span class="n">controllers</span><span class="p">:</span>
+            <span class="n">targets</span> <span class="o">=</span> <span class="n">controller</span><span class="o">.</span><span class="n">targets</span>
+            <span class="n">targets</span> <span class="o">=</span> <span class="n">targets</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">_model</span><span class="o">.</span><span class="n">deployment</span><span class="o">.</span><span class="n">deployment_file</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">targets</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+                <span class="n">targets</span> <span class="o">=</span> <span class="p">[</span><span class="n">targets</span><span class="p">]</span>
+            <span class="k">for</span> <span class="n">scenario_name</span> <span class="ow">in</span> <span class="n">scenario_names</span><span class="p">:</span>
+                <span class="k">for</span> <span class="n">target</span> <span class="ow">in</span> <span class="n">targets</span><span class="p">:</span>
+                    <span class="n">update_pydss_controllers</span><span class="p">(</span>
+                        <span class="n">project_path</span><span class="o">=</span><span class="n">project_path</span><span class="p">,</span>
+                        <span class="n">scenario</span><span class="o">=</span><span class="n">scenario_name</span><span class="p">,</span>
+                        <span class="n">controller_type</span><span class="o">=</span><span class="n">controller</span><span class="o">.</span><span class="n">controller_type</span><span class="o">.</span><span class="n">value</span><span class="p">,</span>
+                        <span class="n">controller</span><span class="o">=</span><span class="n">controller</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+                        <span class="n">dss_file</span><span class="o">=</span><span class="n">target</span>
+                    <span class="p">)</span>
+
+    <span class="c1"># TODO: not in use?</span>
+    <span class="k">def</span> <span class="nf">_get_pydss_scenarios</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Return a list of PyDssScenario objects.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="p">[</span>
+            <span class="n">PyDssScenario</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">exports</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_make_pydss_exports</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+            <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_scenario_names</span><span class="p">()</span>
+        <span class="p">]</span>
+
+    <span class="nd">@abc</span><span class="o">.</span><span class="n">abstractmethod</span>
+    <span class="k">def</span> <span class="nf">_modify_pydss_simulation_params</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config</span><span class="p">):</span>
+        <span class="k">pass</span>
+
+    <span class="k">def</span> <span class="nf">_make_pydss_exports</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">scenario</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">class_name</span><span class="p">,</span> <span class="n">properties</span> <span class="ow">in</span> <span class="n">scenario</span><span class="p">[</span><span class="s2">&quot;exports&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="k">for</span> <span class="n">vals</span> <span class="ow">in</span> <span class="n">properties</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
+                <span class="k">if</span> <span class="n">vals</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;sum_groups_file&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;assign at runtime&quot;</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="n">class_name</span> <span class="o">==</span> <span class="s2">&quot;Loads&quot;</span><span class="p">:</span>
+                        <span class="n">filename</span> <span class="o">=</span> <span class="n">LOADS_SUM_GROUP_FILENAME</span>
+                    <span class="k">elif</span> <span class="n">class_name</span> <span class="o">==</span> <span class="s2">&quot;PVSystems&quot;</span><span class="p">:</span>
+                        <span class="n">filename</span> <span class="o">=</span> <span class="n">PV_SYSTEMS_SUM_GROUP_FILENAME</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Not supported: </span><span class="si">{</span><span class="n">class_name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+                    <span class="n">vals</span><span class="p">[</span><span class="s2">&quot;sum_groups_file&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_model</span><span class="o">.</span><span class="n">deployment</span><span class="o">.</span><span class="n">directory</span> <span class="o">/</span> <span class="s2">&quot;Metadata&quot;</span> <span class="o">/</span> <span class="n">filename</span><span class="p">)</span>
+        <span class="n">filename</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_run_dir</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_EXPORTS_FILENAME</span><span class="p">)</span>
+        <span class="n">dump_data</span><span class="p">(</span><span class="n">scenario</span><span class="p">[</span><span class="s2">&quot;exports&quot;</span><span class="p">],</span> <span class="n">filename</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">filename</span>
+
+    <span class="k">def</span> <span class="nf">_make_pydss_scenarios</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># TODO DT: how does this create different exports per scenario?</span>
+        <span class="k">return</span> <span class="p">[</span>
+            <span class="n">PyDssScenario</span><span class="p">(</span>
+                <span class="n">x</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">],</span>
+                <span class="n">exports</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_make_pydss_exports</span><span class="p">(</span><span class="n">x</span><span class="p">),</span>
+                <span class="n">post_process_infos</span><span class="o">=</span><span class="n">x</span><span class="p">[</span><span class="s2">&quot;post_process_infos&quot;</span><span class="p">],</span>
+                <span class="n">snapshot_time_point_selection_config</span><span class="o">=</span><span class="n">x</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;snapshot_time_point_selection_config&quot;</span><span class="p">),</span>
+            <span class="p">)</span>
+            <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pydss_inputs</span><span class="p">[</span><span class="n">ConfigType</span><span class="o">.</span><span class="n">SCENARIOS</span><span class="p">]</span>
+        <span class="p">]</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">pydss_project_path</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pydss_project</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_pydss_project</span> <span class="o">=</span> <span class="n">PyDssProject</span><span class="o">.</span><span class="n">load_project</span><span class="p">(</span>
+                <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_run_dir</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_PYDSS_PROJECT_NAME</span><span class="p">)</span>
+            <span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pydss_project</span><span class="o">.</span><span class="n">project_path</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">results_directory</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_results_dir</span>
+
+<div class="viewcode-block" id="PyDssSimulationBase.list_results_files"><a class="viewcode-back" href="../../../disco/disco.pydss.html#disco.pydss.pydss_simulation_base.PyDssSimulationBase.list_results_files">[docs]</a>    <span class="k">def</span> <span class="nf">list_results_files</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">results_files</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="n">scenario_names</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_scenario_names</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">scenario_name</span><span class="p">,</span> <span class="n">results_dir</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">scenario_names</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_results_dir</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">results_dir</span><span class="p">):</span>
+                <span class="n">files</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">results_dir</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="c1"># Exports may be disabled.</span>
+                <span class="n">files</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;Results files: </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">files</span><span class="p">)</span>
+            <span class="n">results_files</span><span class="p">[</span><span class="n">scenario_name</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">results_dir</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">files</span><span class="p">]</span>
+        <span class="k">return</span> <span class="n">results_files</span></div>
+
+<div class="viewcode-block" id="PyDssSimulationBase.post_process"><a class="viewcode-back" href="../../../disco/disco.pydss.html#disco.pydss.pydss_simulation_base.PyDssSimulationBase.post_process">[docs]</a>    <span class="k">def</span> <span class="nf">post_process</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Run post-processing on the output files.&quot;&quot;&quot;</span></div>
+
+<div class="viewcode-block" id="PyDssSimulationBase.run"><a class="viewcode-back" href="../../../disco/disco.pydss.html#disco.pydss.pydss_simulation_base.PyDssSimulationBase.run">[docs]</a>    <span class="nd">@timed_info</span>
+    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Runs the simulation.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_setup_pydss_project</span><span class="p">()</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Run simulation name=</span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_model</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;Run simulation </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span>
+
+        <span class="n">orig_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()</span>
+        <span class="n">ret</span> <span class="o">=</span> <span class="n">EXIT_CODE_GOOD</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_pydss_project</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">logging_configured</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">zip_project</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+            <span class="n">ret</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">check_convergence_problems</span><span class="p">()</span>
+            <span class="c1"># TODO DT:</span>
+            <span class="n">ret</span> <span class="o">=</span> <span class="n">EXIT_CODE_GOOD</span>
+        <span class="k">except</span> <span class="p">(</span>
+            <span class="n">PyDssConvergenceError</span><span class="p">,</span>
+            <span class="n">PyDssConvergenceErrorCountExceeded</span><span class="p">,</span>
+            <span class="n">PyDssConvergenceMaxError</span><span class="p">,</span>
+            <span class="n">OpenDssConvergenceErrorCountExceeded</span><span class="p">,</span>
+        <span class="p">):</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">exception</span><span class="p">(</span><span class="s2">&quot;Simulation failed with a convergence error&quot;</span><span class="p">)</span>
+            <span class="n">ret</span> <span class="o">=</span> <span class="n">EXIT_CODE_CONVERGENCE_ERROR</span>
+        <span class="k">finally</span><span class="p">:</span>
+            <span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="n">orig_dir</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">list_results_files</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">ret</span></div>
+
+<div class="viewcode-block" id="PyDssSimulationBase.check_convergence_problems"><a class="viewcode-back" href="../../../disco/disco.pydss.html#disco.pydss.pydss_simulation_base.PyDssSimulationBase.check_convergence_problems">[docs]</a>    <span class="k">def</span> <span class="nf">check_convergence_problems</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Logs events for convergence errors.&quot;&quot;&quot;</span>
+        <span class="n">problems</span> <span class="o">=</span> <span class="n">detect_convergence_problems</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_pydss_project</span><span class="o">.</span><span class="n">project_path</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">problems</span><span class="p">:</span>
+            <span class="k">return</span> <span class="mi">0</span>
+
+        <span class="c1"># This is disabled because there can be huge counts. There is no need to duplicate them.</span>
+        <span class="c1">#for problem in problems:</span>
+        <span class="c1">#    event = StructuredLogEvent(</span>
+        <span class="c1">#        source=self._model.name,</span>
+        <span class="c1">#        category=EVENT_CATEGORY_ERROR,</span>
+        <span class="c1">#        name=EVENT_NO_CONVERGENCE,</span>
+        <span class="c1">#        message=&quot;Detected convergence problem in PyDSS log.&quot;,</span>
+        <span class="c1">#        **problem,</span>
+        <span class="c1">#    )</span>
+        <span class="c1">#    log_event(event)</span>
+
+        <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;Job failed with </span><span class="si">%s</span><span class="s2"> convergence problems&quot;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">problems</span><span class="p">))</span>
+
+        <span class="k">return</span> <span class="mi">1</span></div></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2019, NREL.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,71 @@
+disco package
+=============
+
+Subpackages
+-----------
+
+.. toctree::
+   :maxdepth: 4
+
+   disco.analysis
+   disco.cli
+   disco.distribution
+   disco.extensions
+   disco.models
+   disco.pipelines
+   disco.postprocess
+   disco.pydss
+   disco.sources
+   disco.storage
+   disco.utils
+
+Submodules
+----------
+
+disco.common module
+-------------------
+
+.. automodule:: disco.common
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+disco.enums module
+------------------
+
+.. automodule:: disco.enums
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+disco.events module
+-------------------
+
+.. automodule:: disco.events
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+disco.exceptions module
+-----------------------
+
+.. automodule:: disco.exceptions
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+disco.version module
+--------------------
+
+.. automodule:: disco.version
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: disco
+   :members:
+   :undoc-members:
+   :show-inheritance:

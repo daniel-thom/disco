@@ -1,0 +1,69 @@
+disco.models package
+====================
+
+Submodules
+----------
+
+disco.models.base module
+------------------------
+
+.. automodule:: disco.models.base
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+disco.models.factory module
+---------------------------
+
+.. automodule:: disco.models.factory
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+disco.models.snapshot\_impact\_analysis\_model module
+-----------------------------------------------------
+
+.. automodule:: disco.models.snapshot_impact_analysis_model
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+disco.models.time\_series\_analysis\_model module
+-------------------------------------------------
+
+.. automodule:: disco.models.time_series_analysis_model
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+disco.models.upgrade\_cost\_analysis\_generic\_model module
+-----------------------------------------------------------
+
+.. automodule:: disco.models.upgrade_cost_analysis_generic_model
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+disco.models.upgrade\_cost\_analysis\_model module
+--------------------------------------------------
+
+.. automodule:: disco.models.upgrade_cost_analysis_model
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+disco.models.utils module
+-------------------------
+
+.. automodule:: disco.models.utils
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: disco.models
+   :members:
+   :undoc-members:
+   :show-inheritance:

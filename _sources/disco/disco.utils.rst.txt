@@ -1,0 +1,37 @@
+disco.utils package
+===================
+
+Submodules
+----------
+
+disco.utils.custom\_type module
+-------------------------------
+
+.. automodule:: disco.utils.custom_type
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+disco.utils.dss\_utils module
+-----------------------------
+
+.. automodule:: disco.utils.dss_utils
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+disco.utils.failing\_test\_bisector module
+------------------------------------------
+
+.. automodule:: disco.utils.failing_test_bisector
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: disco.utils
+   :members:
+   :undoc-members:
+   :show-inheritance:

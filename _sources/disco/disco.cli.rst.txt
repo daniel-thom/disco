@@ -1,0 +1,237 @@
+disco.cli package
+=================
+
+Submodules
+----------
+
+disco.cli.cba\_post\_process module
+-----------------------------------
+
+.. automodule:: disco.cli.cba_post_process
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+disco.cli.collect\_feeder\_stats module
+---------------------------------------
+
+.. automodule:: disco.cli.collect_feeder_stats
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+disco.cli.common module
+-----------------------
+
+.. automodule:: disco.cli.common
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+disco.cli.compute\_hosting\_capacity module
+-------------------------------------------
+
+.. automodule:: disco.cli.compute_hosting_capacity
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+disco.cli.compute\_pv\_swad module
+----------------------------------
+
+.. automodule:: disco.cli.compute_pv_swad
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+disco.cli.compute\_snapshot\_hosting\_capacity module
+-----------------------------------------------------
+
+.. automodule:: disco.cli.compute_snapshot_hosting_capacity
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+disco.cli.compute\_snapshot\_impact\_analysis module
+----------------------------------------------------
+
+.. automodule:: disco.cli.compute_snapshot_impact_analysis
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+disco.cli.compute\_time\_series\_hosting\_capacity module
+---------------------------------------------------------
+
+.. automodule:: disco.cli.compute_time_series_hosting_capacity
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+disco.cli.compute\_time\_series\_impact\_analysis module
+--------------------------------------------------------
+
+.. automodule:: disco.cli.compute_time_series_impact_analysis
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+disco.cli.config module
+-----------------------
+
+.. automodule:: disco.cli.config
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+disco.cli.config\_snapshot module
+---------------------------------
+
+.. automodule:: disco.cli.config_snapshot
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+disco.cli.config\_time\_series module
+-------------------------------------
+
+.. automodule:: disco.cli.config_time_series
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+disco.cli.config\_upgrade module
+--------------------------------
+
+.. automodule:: disco.cli.config_upgrade
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+disco.cli.configure\_analysis module
+------------------------------------
+
+.. automodule:: disco.cli.configure_analysis
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+disco.cli.create\_pipeline module
+---------------------------------
+
+.. automodule:: disco.cli.create_pipeline
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+disco.cli.disco module
+----------------------
+
+.. automodule:: disco.cli.disco
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+disco.cli.disco\_internal module
+--------------------------------
+
+.. automodule:: disco.cli.disco_internal
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+disco.cli.download\_source module
+---------------------------------
+
+.. automodule:: disco.cli.download_source
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+disco.cli.ingest\_tables module
+-------------------------------
+
+.. automodule:: disco.cli.ingest_tables
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+disco.cli.make\_cba\_tables module
+----------------------------------
+
+.. automodule:: disco.cli.make_cba_tables
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+disco.cli.make\_summary\_tables module
+--------------------------------------
+
+.. automodule:: disco.cli.make_summary_tables
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+disco.cli.make\_upgrade\_tables module
+--------------------------------------
+
+.. automodule:: disco.cli.make_upgrade_tables
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+disco.cli.prescreen\_pv\_penetration\_levels module
+---------------------------------------------------
+
+.. automodule:: disco.cli.prescreen_pv_penetration_levels
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+disco.cli.pv\_deployments module
+--------------------------------
+
+.. automodule:: disco.cli.pv_deployments
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+disco.cli.simulation\_models module
+-----------------------------------
+
+.. automodule:: disco.cli.simulation_models
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+disco.cli.summarize\_hosting\_capacity module
+---------------------------------------------
+
+.. automodule:: disco.cli.summarize_hosting_capacity
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+disco.cli.transform\_model module
+---------------------------------
+
+.. automodule:: disco.cli.transform_model
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+disco.cli.upgrade\_cost\_analysis module
+----------------------------------------
+
+.. automodule:: disco.cli.upgrade_cost_analysis
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: disco.cli
+   :members:
+   :undoc-members:
+   :show-inheritance:

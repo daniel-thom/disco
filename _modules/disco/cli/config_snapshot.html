@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>disco.cli.config_snapshot &mdash; DISCO 0.1 documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link href="../../../_static/style.css" rel="stylesheet" type="text/css">
+
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../../index.html" class="icon icon-home"> DISCO
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">User Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../installation.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../installation.html#use-conda">Use Conda</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../installation.html#use-docker">Use Docker</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../overview.html">Overview</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../overview.html#data-sources">Data Sources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../overview.html#transform-model">Transform Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../overview.html#config-jobs">Config Jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../overview.html#submit-jobs">Submit Jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../overview.html#result-analysis">Result Analysis</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../quick-start.html">Quick Start</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../quick-start.html#source-data">Source Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../quick-start.html#transform-model">Transform Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../quick-start.html#config-jobs">Config Jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../quick-start.html#submit-jobs">Submit Jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../quick-start.html#result-analysis">Result Analysis</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../data-sources.html">Data Sources</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../data-sources/smart-ds-model-preparation.html">SMART-DS OpenDSS Model Preparation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../data-sources.html#gem-model">GEM Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../data-sources.html#epri-model">EPRI Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../data-sources.html#sourcetree1-model">SourceTree1 Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../data-sources.html#sourcetree2-model">SourceTree2 Model</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../pv-deployments.html">PV Deployments</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../pv-deployments.html#sourcetree1-pv-deployments">SourceTree1 PV Deployments</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../transform-models.html">Transform Models</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../transform-models.html#transform-model-help">Transform Model Help</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../transform-models.html#disco-model-in-depth">DISCO Model in Depth</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../analysis-workflows.html">Analysis Workflows</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../analysis-workflows/hosting-capacity-analysis.html">Hosting Capacity Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../analysis-workflows/upgrade-cost-analysis.html">Upgrade Cost Analysis</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../pipelines.html">Pipelines</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../pipelines.html#sourcetree1model">SourceTree1Model</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../debugging-issues.html">Debugging Issues</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../debugging-issues.html#using-jade">Using JADE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../debugging-issues.html#using-pydss">Using PyDSS</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../data-ingestion.html">Data Ingestion</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../data-ingestion.html#ingest-to-new-database">Ingest to New Database</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../data-ingestion.html#ingest-to-existing-database">Ingest to Existing Database</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../data-ingestion.html#run-database-queries">Run Database Queries</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../advanced-guide.html">Advanced Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../advanced-guide/analysis-deployment.html">Analysis Deployment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../advanced-guide/upgrade-cost-analysis-generic-models.html">Upgrade Cost Analysis JSON Schemas</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contribution</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../build-docs.html">Build docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../license.html">License</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">DISCO</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+      <li>disco.cli.config_snapshot</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for disco.cli.config_snapshot</h1><div class="highlight"><pre>
+<span></span><span class="ch">#!/usr/bin/env python</span>
+
+<span class="sd">&quot;&quot;&quot;Creates JADE configuration for stage 1 of pydss_simulation pipeline.&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">logging</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">timedelta</span>
+
+<span class="kn">import</span> <span class="nn">click</span>
+
+<span class="kn">from</span> <span class="nn">jade.common</span> <span class="kn">import</span> <span class="n">CONFIG_FILE</span>
+<span class="kn">from</span> <span class="nn">jade.loggers</span> <span class="kn">import</span> <span class="n">setup_logging</span>
+<span class="kn">from</span> <span class="nn">jade.utils.utils</span> <span class="kn">import</span> <span class="n">load_data</span>
+<span class="kn">from</span> <span class="nn">PyDSS.common</span> <span class="kn">import</span> <span class="n">SnapshotTimePointSelectionMode</span>
+<span class="kn">from</span> <span class="nn">PyDSS.reports.pv_reports</span> <span class="kn">import</span> <span class="n">PF1_SCENARIO</span><span class="p">,</span> <span class="n">CONTROL_MODE_SCENARIO</span>
+
+<span class="kn">from</span> <span class="nn">disco.enums</span> <span class="kn">import</span> <span class="n">SimulationType</span><span class="p">,</span> <span class="n">AnalysisType</span>
+<span class="kn">from</span> <span class="nn">disco.extensions.pydss_simulation.pydss_configuration</span> <span class="kn">import</span> <span class="n">PyDssConfiguration</span>
+<span class="kn">from</span> <span class="nn">disco.pydss.pydss_configuration_base</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">get_default_exports_file</span><span class="p">,</span>
+    <span class="n">get_default_reports_file</span><span class="p">,</span>
+    <span class="n">DEFAULT_LOAD_SHAPE_START_TIME</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="kn">from</span> <span class="nn">disco.pydss.common</span> <span class="kn">import</span> <span class="n">SCENARIO_NAME_DELIMITER</span>
+
+<span class="n">ESTIMATED_EXEC_SECS_PER_JOB</span> <span class="o">=</span> <span class="mi">10</span>
+
+<span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+
+
+<span class="nd">@click</span><span class="o">.</span><span class="n">command</span><span class="p">()</span>
+<span class="nd">@click</span><span class="o">.</span><span class="n">argument</span><span class="p">(</span><span class="s2">&quot;inputs&quot;</span><span class="p">)</span>
+<span class="nd">@click</span><span class="o">.</span><span class="n">option</span><span class="p">(</span>
+    <span class="s2">&quot;-c&quot;</span><span class="p">,</span> <span class="s2">&quot;--config-file&quot;</span><span class="p">,</span>
+    <span class="n">default</span><span class="o">=</span><span class="n">CONFIG_FILE</span><span class="p">,</span>
+    <span class="n">show_default</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">help</span><span class="o">=</span><span class="s2">&quot;JADE config file to create&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="nd">@click</span><span class="o">.</span><span class="n">option</span><span class="p">(</span>
+    <span class="s2">&quot;-e&quot;</span><span class="p">,</span> <span class="s2">&quot;--exports-filename&quot;</span><span class="p">,</span>
+    <span class="n">default</span><span class="o">=</span><span class="n">get_default_exports_file</span><span class="p">(</span><span class="n">SimulationType</span><span class="o">.</span><span class="n">SNAPSHOT</span><span class="p">,</span> <span class="n">AnalysisType</span><span class="o">.</span><span class="n">IMPACT_ANALYSIS</span><span class="p">),</span>
+    <span class="n">show_default</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">help</span><span class="o">=</span><span class="s2">&quot;PyDSS export options&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="nd">@click</span><span class="o">.</span><span class="n">option</span><span class="p">(</span>
+    <span class="s2">&quot;-r&quot;</span><span class="p">,</span> <span class="s2">&quot;--reports-filename&quot;</span><span class="p">,</span>
+    <span class="n">default</span><span class="o">=</span><span class="n">get_default_reports_file</span><span class="p">(</span><span class="n">SimulationType</span><span class="o">.</span><span class="n">SNAPSHOT</span><span class="p">),</span>
+    <span class="n">show_default</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">help</span><span class="o">=</span><span class="s2">&quot;PyDSS report options.&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="nd">@click</span><span class="o">.</span><span class="n">option</span><span class="p">(</span>
+    <span class="s2">&quot;--pf1/--no-pf1&quot;</span><span class="p">,</span>
+    <span class="n">is_flag</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">default</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">show_default</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Include PF1 scenario or not&quot;</span>
+<span class="p">)</span>
+<span class="nd">@click</span><span class="o">.</span><span class="n">option</span><span class="p">(</span>
+    <span class="s2">&quot;--order-by-penetration/--no-order-by-penetration&quot;</span><span class="p">,</span>
+    <span class="n">default</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">show_default</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Make jobs with higher penetration levels blocked by those with lower levels.&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="nd">@click</span><span class="o">.</span><span class="n">option</span><span class="p">(</span>
+    <span class="s2">&quot;--with-loadshape/--no-with-loadshape&quot;</span><span class="p">,</span>
+    <span class="n">is_flag</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">required</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Configure snapshot simulation with loashape profile.&quot;</span>
+<span class="p">)</span>
+<span class="nd">@click</span><span class="o">.</span><span class="n">option</span><span class="p">(</span>
+    <span class="s2">&quot;--auto-select-time-points/--no-auto-select-time-points&quot;</span><span class="p">,</span>
+    <span class="n">is_flag</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">default</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">show_default</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Automatically select the time point based on max PV-load ratio. Only applicable if &quot;</span>
+         <span class="s2">&quot;--with-loadshape.&quot;</span>
+<span class="p">)</span>
+<span class="nd">@click</span><span class="o">.</span><span class="n">option</span><span class="p">(</span>
+    <span class="s2">&quot;-d&quot;</span><span class="p">,</span> <span class="s2">&quot;--auto-select-time-points-search-duration-days&quot;</span><span class="p">,</span>
+    <span class="n">default</span><span class="o">=</span><span class="mi">365</span><span class="p">,</span>
+    <span class="n">show_default</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Search duration in days. Only applicable with --auto-select-time-points.&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="nd">@click</span><span class="o">.</span><span class="n">option</span><span class="p">(</span>
+    <span class="s2">&quot;--shuffle/--no-shuffle&quot;</span><span class="p">,</span>
+    <span class="n">is_flag</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">default</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">show_default</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Shuffle order of jobs.&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="nd">@click</span><span class="o">.</span><span class="n">option</span><span class="p">(</span>
+    <span class="s2">&quot;--store-per-element-data/--no-store-per-element-data&quot;</span><span class="p">,</span>
+    <span class="n">is_flag</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">default</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">show_default</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Store per-element data in thermal and voltage metrics.&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="nd">@click</span><span class="o">.</span><span class="n">option</span><span class="p">(</span>
+    <span class="s2">&quot;--strip-whitespace/--no-strip-whitespace&quot;</span><span class="p">,</span>
+    <span class="n">is_flag</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">default</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">show_default</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Strip whitespace in file.&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="nd">@click</span><span class="o">.</span><span class="n">option</span><span class="p">(</span>
+    <span class="s2">&quot;--verbose&quot;</span><span class="p">,</span>
+    <span class="n">is_flag</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">default</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Enable debug logging&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="k">def</span> <span class="nf">snapshot</span><span class="p">(</span>
+    <span class="n">inputs</span><span class="p">,</span>
+    <span class="n">config_file</span><span class="p">,</span>
+    <span class="n">exports_filename</span><span class="p">,</span>
+    <span class="n">reports_filename</span><span class="p">,</span>
+    <span class="n">pf1</span><span class="p">,</span>
+    <span class="n">order_by_penetration</span><span class="p">,</span>
+    <span class="n">with_loadshape</span><span class="p">,</span>
+    <span class="n">auto_select_time_points</span><span class="p">,</span>
+    <span class="n">auto_select_time_points_search_duration_days</span><span class="p">,</span>
+    <span class="n">shuffle</span><span class="p">,</span>
+    <span class="n">store_per_element_data</span><span class="p">,</span>
+    <span class="n">strip_whitespace</span><span class="p">,</span>
+    <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+<span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Create JADE configuration for snapshot simulations.&quot;&quot;&quot;</span>
+    <span class="n">level</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">DEBUG</span> <span class="k">if</span> <span class="n">verbose</span> <span class="k">else</span> <span class="n">logging</span><span class="o">.</span><span class="n">INFO</span>
+    <span class="n">setup_logging</span><span class="p">(</span><span class="vm">__name__</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="n">console_level</span><span class="o">=</span><span class="n">level</span><span class="p">)</span>
+
+    <span class="n">simulation_config</span> <span class="o">=</span> <span class="n">PyDssConfiguration</span><span class="o">.</span><span class="n">get_default_pydss_simulation_config</span><span class="p">()</span>
+    <span class="n">simulation_config</span><span class="p">[</span><span class="s2">&quot;reports&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">load_data</span><span class="p">(</span><span class="n">reports_filename</span><span class="p">)[</span><span class="s2">&quot;reports&quot;</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">report</span> <span class="ow">in</span> <span class="n">simulation_config</span><span class="p">[</span><span class="s2">&quot;reports&quot;</span><span class="p">][</span><span class="s2">&quot;types&quot;</span><span class="p">]:</span>
+        <span class="k">if</span> <span class="n">report</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">&quot;Thermal Metrics&quot;</span><span class="p">,</span> <span class="s2">&quot;Voltage Metrics&quot;</span><span class="p">):</span>
+            <span class="n">report</span><span class="p">[</span><span class="s2">&quot;store_per_element_data&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">store_per_element_data</span>
+
+    <span class="k">if</span> <span class="n">with_loadshape</span><span class="p">:</span>
+        <span class="n">simulation_config</span><span class="p">[</span><span class="s2">&quot;project&quot;</span><span class="p">][</span><span class="s2">&quot;simulation_type&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">SimulationType</span><span class="o">.</span><span class="n">QSTS</span><span class="o">.</span><span class="n">value</span>
+        <span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="n">CONTROL_MODE_SCENARIO</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">pf1</span><span class="p">:</span>
+            <span class="n">names</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">PF1_SCENARIO</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">auto_select_time_points</span><span class="p">:</span>
+            <span class="n">scenarios</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">for</span> <span class="n">scenario_name</span> <span class="ow">in</span> <span class="n">names</span><span class="p">:</span>
+                <span class="k">for</span> <span class="n">mode</span> <span class="ow">in</span> <span class="n">SnapshotTimePointSelectionMode</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="n">mode</span> <span class="o">==</span> <span class="n">SnapshotTimePointSelectionMode</span><span class="o">.</span><span class="n">NONE</span><span class="p">:</span>
+                        <span class="k">continue</span>
+                    <span class="n">name</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">scenario_name</span><span class="si">}{</span><span class="n">SCENARIO_NAME_DELIMITER</span><span class="si">}{</span><span class="n">mode</span><span class="o">.</span><span class="n">value</span><span class="si">}</span><span class="s2">&quot;</span>
+                    <span class="n">duration_min</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">auto_select_time_points_search_duration_days</span><span class="p">)</span> <span class="o">*</span> <span class="mi">24</span> <span class="o">*</span> <span class="mi">60</span>
+                    <span class="n">scenario</span> <span class="o">=</span> <span class="n">PyDssConfiguration</span><span class="o">.</span><span class="n">make_default_pydss_scenario</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+                    <span class="n">scenario</span><span class="p">[</span><span class="s2">&quot;snapshot_time_point_selection_config&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+                        <span class="s2">&quot;mode&quot;</span><span class="p">:</span> <span class="n">mode</span><span class="o">.</span><span class="n">value</span><span class="p">,</span>
+                        <span class="s2">&quot;start_time&quot;</span><span class="p">:</span> <span class="n">DEFAULT_LOAD_SHAPE_START_TIME</span><span class="p">,</span>
+                        <span class="s2">&quot;search_duration_min&quot;</span><span class="p">:</span> <span class="n">duration_min</span><span class="p">,</span>
+                    <span class="p">}</span>
+                    <span class="n">scenarios</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">scenario</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">scenarios</span> <span class="o">=</span> <span class="p">[</span><span class="n">PyDssConfiguration</span><span class="o">.</span><span class="n">make_default_pydss_scenario</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">names</span><span class="p">]</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">exports</span> <span class="o">=</span> <span class="p">{}</span> <span class="k">if</span> <span class="n">exports_filename</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">load_data</span><span class="p">(</span><span class="n">exports_filename</span><span class="p">)</span>
+        <span class="n">simulation_config</span><span class="p">[</span><span class="s2">&quot;project&quot;</span><span class="p">][</span><span class="s2">&quot;simulation_type&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">SimulationType</span><span class="o">.</span><span class="n">SNAPSHOT</span><span class="o">.</span><span class="n">value</span>
+        <span class="n">scenarios</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="n">PyDssConfiguration</span><span class="o">.</span><span class="n">make_default_pydss_scenario</span><span class="p">(</span>
+                <span class="s2">&quot;scenario&quot;</span><span class="p">,</span>
+                <span class="n">exports</span><span class="o">=</span><span class="n">exports</span><span class="p">,</span>
+            <span class="p">)</span>
+        <span class="p">]</span>
+
+    <span class="n">config</span> <span class="o">=</span> <span class="n">PyDssConfiguration</span><span class="o">.</span><span class="n">auto_config</span><span class="p">(</span>
+        <span class="n">inputs</span><span class="p">,</span>
+        <span class="n">simulation_config</span><span class="o">=</span><span class="n">simulation_config</span><span class="p">,</span>
+        <span class="n">scenarios</span><span class="o">=</span><span class="n">scenarios</span><span class="p">,</span>
+        <span class="n">order_by_penetration</span><span class="o">=</span><span class="n">order_by_penetration</span><span class="p">,</span>
+        <span class="n">estimated_exec_secs_per_job</span><span class="o">=</span><span class="n">ESTIMATED_EXEC_SECS_PER_JOB</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="c1"># We can&#39;t currently predict how long each job will take. If we did, we could set</span>
+    <span class="c1"># estimated_run_minutes for each job.</span>
+    <span class="c1"># Shuffle the jobs randomly so that we have a better chance of getting batches with similar</span>
+    <span class="c1"># runtimes.</span>
+    <span class="k">if</span> <span class="n">shuffle</span><span class="p">:</span>
+        <span class="n">config</span><span class="o">.</span><span class="n">shuffle_jobs</span><span class="p">()</span>
+
+    <span class="k">if</span> <span class="n">with_loadshape</span><span class="p">:</span>
+        <span class="n">config</span> <span class="o">=</span> <span class="n">switch_snapshot_to_qsts</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>
+
+    <span class="n">indent</span> <span class="o">=</span> <span class="kc">None</span> <span class="k">if</span> <span class="n">strip_whitespace</span> <span class="k">else</span> <span class="mi">2</span>
+    <span class="n">config</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="n">config_file</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="n">indent</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Created </span><span class="si">{</span><span class="n">config_file</span><span class="si">}</span><span class="s2"> for Snapshot Analysis&quot;</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="switch_snapshot_to_qsts"><a class="viewcode-back" href="../../../disco/disco.cli.html#disco.cli.config_snapshot.switch_snapshot_to_qsts">[docs]</a><span class="k">def</span> <span class="nf">switch_snapshot_to_qsts</span><span class="p">(</span><span class="n">config</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Use QSTS at one time point to perform SNAPSHOT simulation with loadshape profile&quot;&quot;&quot;</span>
+    <span class="k">for</span> <span class="n">job</span> <span class="ow">in</span> <span class="n">config</span><span class="o">.</span><span class="n">iter_pydss_simulation_jobs</span><span class="p">():</span>
+        <span class="n">job</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">simulation</span><span class="o">.</span><span class="n">simulation_type</span> <span class="o">=</span> <span class="n">SimulationType</span><span class="o">.</span><span class="n">QSTS</span>
+        <span class="n">job</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">simulation</span><span class="o">.</span><span class="n">end_time</span> <span class="o">=</span> <span class="n">job</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">simulation</span><span class="o">.</span><span class="n">start_time</span> <span class="o">+</span> <span class="n">timedelta</span><span class="p">(</span>
+            <span class="n">seconds</span><span class="o">=</span><span class="n">job</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">simulation</span><span class="o">.</span><span class="n">step_resolution</span>
+        <span class="p">)</span>
+    <span class="k">return</span> <span class="n">config</span></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2019, NREL.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

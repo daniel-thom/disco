@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>disco.sources.epri package &mdash; DISCO 0.1 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link href="../_static/style.css" rel="stylesheet" type="text/css">
+
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> DISCO
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">User Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../installation.html#use-conda">Use Conda</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation.html#use-docker">Use Docker</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">Overview</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../overview.html#data-sources">Data Sources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview.html#transform-model">Transform Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview.html#config-jobs">Config Jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview.html#submit-jobs">Submit Jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview.html#result-analysis">Result Analysis</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../quick-start.html">Quick Start</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../quick-start.html#source-data">Source Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../quick-start.html#transform-model">Transform Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../quick-start.html#config-jobs">Config Jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../quick-start.html#submit-jobs">Submit Jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../quick-start.html#result-analysis">Result Analysis</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../data-sources.html">Data Sources</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../data-sources/smart-ds-model-preparation.html">SMART-DS OpenDSS Model Preparation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data-sources.html#gem-model">GEM Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data-sources.html#epri-model">EPRI Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data-sources.html#sourcetree1-model">SourceTree1 Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data-sources.html#sourcetree2-model">SourceTree2 Model</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../pv-deployments.html">PV Deployments</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../pv-deployments.html#sourcetree1-pv-deployments">SourceTree1 PV Deployments</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../transform-models.html">Transform Models</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../transform-models.html#transform-model-help">Transform Model Help</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../transform-models.html#disco-model-in-depth">DISCO Model in Depth</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../analysis-workflows.html">Analysis Workflows</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../analysis-workflows/hosting-capacity-analysis.html">Hosting Capacity Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../analysis-workflows/upgrade-cost-analysis.html">Upgrade Cost Analysis</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../pipelines.html">Pipelines</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../pipelines.html#sourcetree1model">SourceTree1Model</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../debugging-issues.html">Debugging Issues</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../debugging-issues.html#using-jade">Using JADE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../debugging-issues.html#using-pydss">Using PyDSS</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../data-ingestion.html">Data Ingestion</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../data-ingestion.html#ingest-to-new-database">Ingest to New Database</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data-ingestion.html#ingest-to-existing-database">Ingest to Existing Database</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data-ingestion.html#run-database-queries">Run Database Queries</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced-guide.html">Advanced Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../advanced-guide/analysis-deployment.html">Analysis Deployment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../advanced-guide/upgrade-cost-analysis-generic-models.html">Upgrade Cost Analysis JSON Schemas</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contribution</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../build-docs.html">Build docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../license.html">License</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">DISCO</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>disco.sources.epri package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/disco/disco.sources.epri.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="disco-sources-epri-package">
+<h1>disco.sources.epri package<a class="headerlink" href="#disco-sources-epri-package" title="Permalink to this headline">¶</a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="module-disco.sources.epri.download">
+<span id="disco-sources-epri-download-module"></span><h2>disco.sources.epri.download module<a class="headerlink" href="#module-disco.sources.epri.download" title="Permalink to this headline">¶</a></h2>
+<p>Download EPRI source data of J1, K1, and M1 feeders.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.sources.epri.download.download_epri_feeder_opendss_data">
+<span class="sig-prename descclassname"><span class="pre">disco.sources.epri.download.</span></span><span class="sig-name descname"><span class="pre">download_epri_feeder_opendss_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">feeder</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_directory</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/sources/epri/download.html#download_epri_feeder_opendss_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.sources.epri.download.download_epri_feeder_opendss_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Download EPRI feeder OpenDSS model from website.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>feeder</strong> (<em>str</em>) – The feeder name</p></li>
+<li><p><strong>outdir</strong> (<em>str</em>) – The output directory for downloaded OpenDSS model.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the directory of downloaded OpenDSS model.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>ValueError</strong> – Invalid feeder, choose from - ‘J1’, ‘K1’, ‘M1’.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.sources.epri.download.define_epri_source_format">
+<span class="sig-prename descclassname"><span class="pre">disco.sources.epri.download.</span></span><span class="sig-name descname"><span class="pre">define_epri_source_format</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">output_directory</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/sources/epri/download.html#define_epri_source_format"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.sources.epri.download.define_epri_source_format" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</section>
+<section id="module-disco.sources.epri.epri_model">
+<span id="disco-sources-epri-epri-model-module"></span><h2>disco.sources.epri.epri_model module<a class="headerlink" href="#module-disco.sources.epri.epri_model" title="Permalink to this headline">¶</a></h2>
+<p>Defines EPRI Open DSS model.
+The model can be transformed into DISCO OpenDSS model with PV deployments.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.sources.epri.epri_model.common_options">
+<span class="sig-prename descclassname"><span class="pre">disco.sources.epri.epri_model.</span></span><span class="sig-name descname"><span class="pre">common_options</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">func</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/sources/epri/epri_model.html#common_options"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.sources.epri.epri_model.common_options" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="disco.sources.epri.epri_model.EpriModel">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">disco.sources.epri.epri_model.</span></span><span class="sig-name descname"><span class="pre">EpriModel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/sources/epri/epri_model.html#EpriModel"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.sources.epri.epri_model.EpriModel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="disco.sources.html#disco.sources.base.BaseOpenDssModel" title="disco.sources.base.BaseOpenDssModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">disco.sources.base.BaseOpenDssModel</span></code></a></p>
+<p>EPRI Feeder Model Inputs Class</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.sources.epri.epri_model.EpriModel.TRANSFORM_SUBCOMMANDS">
+<span class="sig-name descname"><span class="pre">TRANSFORM_SUBCOMMANDS</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{'snapshot':</span> <span class="pre">&lt;Command</span> <span class="pre">snapshot&gt;,</span> <span class="pre">'time-series':</span> <span class="pre">&lt;Command</span> <span class="pre">time-series&gt;}</span></em><a class="headerlink" href="#disco.sources.epri.epri_model.EpriModel.TRANSFORM_SUBCOMMANDS" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.sources.epri.epri_model.EpriModel.MASTER_FILENAME_BY_FEEDER">
+<span class="sig-name descname"><span class="pre">MASTER_FILENAME_BY_FEEDER</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{'J1':</span> <span class="pre">'Master_noPV.dss',</span> <span class="pre">'K1':</span> <span class="pre">'Master_NoPV.dss',</span> <span class="pre">'M1':</span> <span class="pre">'Master_NoPV.dss'}</span></em><a class="headerlink" href="#disco.sources.epri.epri_model.EpriModel.MASTER_FILENAME_BY_FEEDER" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="disco.sources.epri.epri_model.EpriModel.dc_ac_ratio">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">dc_ac_ratio</span></span><a class="headerlink" href="#disco.sources.epri.epri_model.EpriModel.dc_ac_ratio" title="Permalink to this definition">¶</a></dt>
+<dd><p>The DC/AC ratio</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="disco.sources.epri.epri_model.EpriModel.substation">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">substation</span></span><a class="headerlink" href="#disco.sources.epri.epri_model.EpriModel.substation" title="Permalink to this definition">¶</a></dt>
+<dd><p>The substation name</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="disco.sources.epri.epri_model.EpriModel.feeder">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">feeder</span></span><a class="headerlink" href="#disco.sources.epri.epri_model.EpriModel.feeder" title="Permalink to this definition">¶</a></dt>
+<dd><p>The feeder name</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="disco.sources.epri.epri_model.EpriModel.loadshape_directory">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">loadshape_directory</span></span><a class="headerlink" href="#disco.sources.epri.epri_model.EpriModel.loadshape_directory" title="Permalink to this definition">¶</a></dt>
+<dd><p>The directory containing load shapes</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="disco.sources.epri.epri_model.EpriModel.opendss_directory">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">opendss_directory</span></span><a class="headerlink" href="#disco.sources.epri.epri_model.EpriModel.opendss_directory" title="Permalink to this definition">¶</a></dt>
+<dd><p>The directory of OpenDSS model</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="disco.sources.epri.epri_model.EpriModel.master_file">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">master_file</span></span><a class="headerlink" href="#disco.sources.epri.epri_model.EpriModel.master_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>Master file of OpenDSS model</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="disco.sources.epri.epri_model.EpriModel.metadata_directory">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">metadata_directory</span></span><a class="headerlink" href="#disco.sources.epri.epri_model.EpriModel.metadata_directory" title="Permalink to this definition">¶</a></dt>
+<dd><p>The directory of project metadata</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="disco.sources.epri.epri_model.EpriModel.name">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">name</span></span><a class="headerlink" href="#disco.sources.epri.epri_model.EpriModel.name" title="Permalink to this definition">¶</a></dt>
+<dd><p>The name of the deployment</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="disco.sources.epri.epri_model.EpriModel.pv_locations">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">pv_locations</span></span><a class="headerlink" href="#disco.sources.epri.epri_model.EpriModel.pv_locations" title="Permalink to this definition">¶</a></dt>
+<dd><p>PV systems file of OpenDSS model.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="disco.sources.epri.epri_model.EpriModel.pydss_controllers">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">pydss_controllers</span></span><a class="headerlink" href="#disco.sources.epri.epri_model.EpriModel.pydss_controllers" title="Permalink to this definition">¶</a></dt>
+<dd><p>PyDSS controllers</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.sources.epri.epri_model.EpriModel.get_transform_subcommand">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_transform_subcommand</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/sources/epri/epri_model.html#EpriModel.get_transform_subcommand"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.sources.epri.epri_model.EpriModel.get_transform_subcommand" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the click transform-model command.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>click.command</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.sources.epri.epri_model.EpriModel.list_transform_subcommands">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">list_transform_subcommands</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/sources/epri/epri_model.html#EpriModel.list_transform_subcommands"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.sources.epri.epri_model.EpriModel.list_transform_subcommands" title="Permalink to this definition">¶</a></dt>
+<dd><p>List the available click transform-model subcommands.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>List of click command objects</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.sources.epri.epri_model.EpriModel.transform">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">transform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">simulation_params</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">simulation_model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">feeders</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">('all',)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">existing_pv</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pv_profile</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/sources/epri/epri_model.html#EpriModel.transform"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.sources.epri.epri_model.EpriModel.transform" title="Permalink to this definition">¶</a></dt>
+<dd><p>Transform the input data to a DISCO data model.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>config</strong> (<em>dict</em>) – </p></li>
+<li><p><strong>simulation_model</strong> (<a class="reference internal" href="disco.models.html#disco.models.base.BaseAnalysisModel" title="disco.models.base.BaseAnalysisModel"><em>BaseAnalysisModel</em></a>) – </p></li>
+<li><p><strong>output_path</strong> (<em>str</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-disco.sources.epri">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-disco.sources.epri" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2019, NREL.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

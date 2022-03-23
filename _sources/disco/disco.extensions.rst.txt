@@ -1,0 +1,19 @@
+disco.extensions package
+========================
+
+Subpackages
+-----------
+
+.. toctree::
+   :maxdepth: 4
+
+   disco.extensions.pydss_simulation
+   disco.extensions.upgrade_simulation
+
+Module contents
+---------------
+
+.. automodule:: disco.extensions
+   :members:
+   :undoc-members:
+   :show-inheritance:

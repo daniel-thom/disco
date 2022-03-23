@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>disco.distribution package &mdash; DISCO 0.1 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link href="../_static/style.css" rel="stylesheet" type="text/css">
+
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> DISCO
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">User Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../installation.html#use-conda">Use Conda</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation.html#use-docker">Use Docker</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">Overview</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../overview.html#data-sources">Data Sources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview.html#transform-model">Transform Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview.html#config-jobs">Config Jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview.html#submit-jobs">Submit Jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview.html#result-analysis">Result Analysis</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../quick-start.html">Quick Start</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../quick-start.html#source-data">Source Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../quick-start.html#transform-model">Transform Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../quick-start.html#config-jobs">Config Jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../quick-start.html#submit-jobs">Submit Jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../quick-start.html#result-analysis">Result Analysis</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../data-sources.html">Data Sources</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../data-sources/smart-ds-model-preparation.html">SMART-DS OpenDSS Model Preparation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data-sources.html#gem-model">GEM Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data-sources.html#epri-model">EPRI Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data-sources.html#sourcetree1-model">SourceTree1 Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data-sources.html#sourcetree2-model">SourceTree2 Model</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../pv-deployments.html">PV Deployments</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../pv-deployments.html#sourcetree1-pv-deployments">SourceTree1 PV Deployments</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../transform-models.html">Transform Models</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../transform-models.html#transform-model-help">Transform Model Help</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../transform-models.html#disco-model-in-depth">DISCO Model in Depth</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../analysis-workflows.html">Analysis Workflows</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../analysis-workflows/hosting-capacity-analysis.html">Hosting Capacity Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../analysis-workflows/upgrade-cost-analysis.html">Upgrade Cost Analysis</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../pipelines.html">Pipelines</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../pipelines.html#sourcetree1model">SourceTree1Model</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../debugging-issues.html">Debugging Issues</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../debugging-issues.html#using-jade">Using JADE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../debugging-issues.html#using-pydss">Using PyDSS</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../data-ingestion.html">Data Ingestion</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../data-ingestion.html#ingest-to-new-database">Ingest to New Database</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data-ingestion.html#ingest-to-existing-database">Ingest to Existing Database</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data-ingestion.html#run-database-queries">Run Database Queries</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced-guide.html">Advanced Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../advanced-guide/analysis-deployment.html">Analysis Deployment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../advanced-guide/upgrade-cost-analysis-generic-models.html">Upgrade Cost Analysis JSON Schemas</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contribution</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../build-docs.html">Build docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../license.html">License</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">DISCO</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>disco.distribution package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/disco/disco.distribution.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="disco-distribution-package">
+<h1>disco.distribution package<a class="headerlink" href="#disco-distribution-package" title="Permalink to this headline">¶</a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="module-disco.distribution.deployment_parameters">
+<span id="disco-distribution-deployment-parameters-module"></span><h2>disco.distribution.deployment_parameters module<a class="headerlink" href="#module-disco.distribution.deployment_parameters" title="Permalink to this headline">¶</a></h2>
+<p>Defines deployment parameters for auto-generated scenarios.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="disco.distribution.deployment_parameters.DeploymentParameters">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">disco.distribution.deployment_parameters.</span></span><span class="sig-name descname"><span class="pre">DeploymentParameters</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">estimated_run_minutes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/distribution/deployment_parameters.html#DeploymentParameters"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.distribution.deployment_parameters.DeploymentParameters" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">jade.jobs.job_parameters_interface.JobParametersInterface</span></code></p>
+<p>Represents deployment parameters for auto-generated scenarios.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.distribution.deployment_parameters.DeploymentParameters.parameters_type">
+<span class="sig-name descname"><span class="pre">parameters_type</span></span><a class="headerlink" href="#disco.distribution.deployment_parameters.DeploymentParameters.parameters_type" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">disco.distribution.deployment_parameters.DeploymentKeys</span></code></p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.distribution.deployment_parameters.DeploymentParameters.DEFAULT_STEP_RESOLUTION">
+<span class="sig-name descname"><span class="pre">DEFAULT_STEP_RESOLUTION</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">900</span></em><a class="headerlink" href="#disco.distribution.deployment_parameters.DeploymentParameters.DEFAULT_STEP_RESOLUTION" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="disco.distribution.deployment_parameters.DeploymentParameters.estimated_run_minutes">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">estimated_run_minutes</span></span><a class="headerlink" href="#disco.distribution.deployment_parameters.DeploymentParameters.estimated_run_minutes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the estimated execution time or None if it isn’t known.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float | None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.distribution.deployment_parameters.DeploymentParameters.list_extensions">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">list_extensions</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/distribution/deployment_parameters.html#DeploymentParameters.list_extensions"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.distribution.deployment_parameters.DeploymentParameters.list_extensions" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="disco.distribution.deployment_parameters.DeploymentParameters.extension">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">extension</span></span><a class="headerlink" href="#disco.distribution.deployment_parameters.DeploymentParameters.extension" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the extension name.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="disco.distribution.deployment_parameters.DeploymentParameters.model">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">model</span></span><a class="headerlink" href="#disco.distribution.deployment_parameters.DeploymentParameters.model" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the input data model for the job.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="disco.distribution.deployment_parameters.DeploymentParameters.base_case">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">base_case</span></span><a class="headerlink" href="#disco.distribution.deployment_parameters.DeploymentParameters.base_case" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the base case or None.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="disco.distribution.deployment_parameters.DeploymentParameters.name">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">name</span></span><a class="headerlink" href="#disco.distribution.deployment_parameters.DeploymentParameters.name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the job name. The job name must be unique in a configuration
+and must be usable as a directory or file name on any filesystem.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="disco.distribution.deployment_parameters.DeploymentParameters.feeder">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">feeder</span></span><a class="headerlink" href="#disco.distribution.deployment_parameters.DeploymentParameters.feeder" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the job’s feeder.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.distribution.deployment_parameters.DeploymentParameters.serialize">
+<span class="sig-name descname"><span class="pre">serialize</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/distribution/deployment_parameters.html#DeploymentParameters.serialize"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.distribution.deployment_parameters.DeploymentParameters.serialize" title="Permalink to this definition">¶</a></dt>
+<dd><p>Serialize deployment into a dictionary.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.distribution.deployment_parameters.DeploymentParameters.deserialize">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">deserialize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/distribution/deployment_parameters.html#DeploymentParameters.deserialize"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.distribution.deployment_parameters.DeploymentParameters.deserialize" title="Permalink to this definition">¶</a></dt>
+<dd><p>Deserialize parameters from a dictionary.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>data</strong> (<em>dict</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>JobParametersInterface</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.distribution.deployment_parameters.DeploymentParameters.add_blocking_job">
+<span class="sig-name descname"><span class="pre">add_blocking_job</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/distribution/deployment_parameters.html#DeploymentParameters.add_blocking_job"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.distribution.deployment_parameters.DeploymentParameters.add_blocking_job" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.distribution.deployment_parameters.DeploymentParameters.add_blocking_jobs">
+<span class="sig-name descname"><span class="pre">add_blocking_jobs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">names</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/distribution/deployment_parameters.html#DeploymentParameters.add_blocking_jobs"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.distribution.deployment_parameters.DeploymentParameters.add_blocking_jobs" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.distribution.deployment_parameters.DeploymentParameters.get_blocking_jobs">
+<span class="sig-name descname"><span class="pre">get_blocking_jobs</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/distribution/deployment_parameters.html#DeploymentParameters.get_blocking_jobs"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.distribution.deployment_parameters.DeploymentParameters.get_blocking_jobs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the job names blocking this job.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Empty set means that the job is not blocked.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>set</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.distribution.deployment_parameters.DeploymentParameters.remove_blocking_job">
+<span class="sig-name descname"><span class="pre">remove_blocking_job</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/distribution/deployment_parameters.html#DeploymentParameters.remove_blocking_job"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.distribution.deployment_parameters.DeploymentParameters.remove_blocking_job" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove the name from the job’s blocking list.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>name</strong> (<em>str</em>) – name of job that is now finished</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.distribution.deployment_parameters.DeploymentParameters.set_blocking_jobs">
+<span class="sig-name descname"><span class="pre">set_blocking_jobs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">blocking_jobs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/distribution/deployment_parameters.html#DeploymentParameters.set_blocking_jobs"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.distribution.deployment_parameters.DeploymentParameters.set_blocking_jobs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the blocking jobs.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>blocking_jobs</strong> (<em>set</em>) – </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="disco.distribution.deployment_parameters.DeploymentParameters.cancel_on_blocking_job_failure">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">cancel_on_blocking_job_failure</span></span><a class="headerlink" href="#disco.distribution.deployment_parameters.DeploymentParameters.cancel_on_blocking_job_failure" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return False if the job should be canceled if any blocking job fails.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="disco.distribution.deployment_parameters.DeploymentParameters.submission_group">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">submission_group</span></span><a class="headerlink" href="#disco.distribution.deployment_parameters.DeploymentParameters.submission_group" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the submission group for the job.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-disco.distribution.distribution_configuration">
+<span id="disco-distribution-distribution-configuration-module"></span><h2>disco.distribution.distribution_configuration module<a class="headerlink" href="#module-disco.distribution.distribution_configuration" title="Permalink to this headline">¶</a></h2>
+<p>Base functionality for distribution configurations.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="disco.distribution.distribution_configuration.DistributionConfiguration">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">disco.distribution.distribution_configuration.</span></span><span class="sig-name descname"><span class="pre">DistributionConfiguration</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">container</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">job_global_config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">job_post_process_config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">user_data</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">submission_groups</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/distribution/distribution_configuration.html#DistributionConfiguration"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.distribution.distribution_configuration.DistributionConfiguration" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">jade.jobs.job_configuration.JobConfiguration</span></code></p>
+<p>Represents the configuration options for a distribution simulation.</p>
+<p>Constructs JobConfiguration.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>inputs</strong> (<em>JobInputsInterface</em>) – </p></li>
+<li><p><strong>container</strong> (<em>JobContainerInterface</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.distribution.distribution_configuration.DistributionConfiguration.deserialize">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">deserialize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename_or_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">do_not_deserialize_jobs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/distribution/distribution_configuration.html#DistributionConfiguration.deserialize"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.distribution.distribution_configuration.DistributionConfiguration.deserialize" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a class instance from a saved configuration file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>filename</strong> (<em>str</em><em> | </em><em>dict</em>) – path to configuration file or that file loaded as a dict</p></li>
+<li><p><strong>do_not_deserialize_jobs</strong> (<em>bool</em>) – Set to True to avoid the overhead of loading all jobs from disk.
+Job_names will be stored instead of jobs.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>class</p>
+</dd>
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><p><strong>InvalidParameter</strong> – Raised if the config file has invalid parameters.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-disco.distribution.distribution_inputs">
+<span id="disco-distribution-distribution-inputs-module"></span><h2>disco.distribution.distribution_inputs module<a class="headerlink" href="#module-disco.distribution.distribution_inputs" title="Permalink to this headline">¶</a></h2>
+<p>Defines DistributionInputs.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="disco.distribution.distribution_inputs.DistributionInputs">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">disco.distribution.distribution_inputs.</span></span><span class="sig-name descname"><span class="pre">DistributionInputs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">base_directory</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/distribution/distribution_inputs.html#DistributionInputs"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.distribution.distribution_inputs.DistributionInputs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">jade.jobs.job_inputs_interface.JobInputsInterface</span></code></p>
+<p>Helper class to access Distribution input files.</p>
+<p>Constructs DistributionInputs.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>base_directory</strong> (<em>str</em>) – </p>
+</dd>
+</dl>
+<dl class="py property">
+<dt class="sig sig-object py" id="disco.distribution.distribution_inputs.DistributionInputs.base_directory">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">base_directory</span></span><a class="headerlink" href="#disco.distribution.distribution_inputs.DistributionInputs.base_directory" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the base directory.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.distribution.distribution_inputs.DistributionInputs.get_job">
+<span class="sig-name descname"><span class="pre">get_job</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/distribution/distribution_inputs.html#DistributionInputs.get_job"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.distribution.distribution_inputs.DistributionInputs.get_job" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the job object from a key.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>key</strong> (<em>namedtuple</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="#disco.distribution.deployment_parameters.DeploymentParameters" title="disco.distribution.deployment_parameters.DeploymentParameters">DeploymentParameters</a></p>
+</dd>
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><p><strong>InvalidParameter</strong> – thrown if the key is not stored</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.distribution.distribution_inputs.DistributionInputs.get_available_parameters">
+<span class="sig-name descname"><span class="pre">get_available_parameters</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/distribution/distribution_inputs.html#DistributionInputs.get_available_parameters"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.distribution.distribution_inputs.DistributionInputs.get_available_parameters" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a dictionary containing all available parameters.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.distribution.distribution_inputs.DistributionInputs.iter_jobs">
+<span class="sig-name descname"><span class="pre">iter_jobs</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/distribution/distribution_inputs.html#DistributionInputs.iter_jobs"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.distribution.distribution_inputs.DistributionInputs.iter_jobs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return an iterator of jobs.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.distribution.distribution_inputs.DistributionInputs.list_jobs">
+<span class="sig-name descname"><span class="pre">list_jobs</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/distribution/distribution_inputs.html#DistributionInputs.list_jobs"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.distribution.distribution_inputs.DistributionInputs.list_jobs" title="Permalink to this definition">¶</a></dt>
+<dd><p>List the available jobs.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>list of DeploymentParameters</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.distribution.distribution_inputs.DistributionInputs.list_feeders">
+<span class="sig-name descname"><span class="pre">list_feeders</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/distribution/distribution_inputs.html#DistributionInputs.list_feeders"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.distribution.distribution_inputs.DistributionInputs.list_feeders" title="Permalink to this definition">¶</a></dt>
+<dd><p>List available feeders.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>list of strings</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.distribution.distribution_inputs.DistributionInputs.list_parameters">
+<span class="sig-name descname"><span class="pre">list_parameters</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">feeders</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dc_ac_ratios</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kva_to_kw_ratings</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">deployment_names</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/distribution/distribution_inputs.html#DistributionInputs.list_parameters"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.distribution.distribution_inputs.DistributionInputs.list_parameters" title="Permalink to this definition">¶</a></dt>
+<dd><p>List the parameters after applying filters. The filter values can be
+single objects or lists.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>list of DeploymentParameters</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.distribution.distribution_inputs.DistributionInputs.list_keys">
+<span class="sig-name descname"><span class="pre">list_keys</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/distribution/distribution_inputs.html#DistributionInputs.list_keys"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.distribution.distribution_inputs.DistributionInputs.list_keys" title="Permalink to this definition">¶</a></dt>
+<dd><p>List the available job keys.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>list of namedtuple</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-disco.distribution">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-disco.distribution" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2019, NREL.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

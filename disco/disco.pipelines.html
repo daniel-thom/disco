@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>disco.pipelines package &mdash; DISCO 0.1 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link href="../_static/style.css" rel="stylesheet" type="text/css">
+
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> DISCO
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">User Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../installation.html#use-conda">Use Conda</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation.html#use-docker">Use Docker</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">Overview</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../overview.html#data-sources">Data Sources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview.html#transform-model">Transform Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview.html#config-jobs">Config Jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview.html#submit-jobs">Submit Jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview.html#result-analysis">Result Analysis</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../quick-start.html">Quick Start</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../quick-start.html#source-data">Source Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../quick-start.html#transform-model">Transform Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../quick-start.html#config-jobs">Config Jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../quick-start.html#submit-jobs">Submit Jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../quick-start.html#result-analysis">Result Analysis</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../data-sources.html">Data Sources</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../data-sources/smart-ds-model-preparation.html">SMART-DS OpenDSS Model Preparation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data-sources.html#gem-model">GEM Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data-sources.html#epri-model">EPRI Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data-sources.html#sourcetree1-model">SourceTree1 Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data-sources.html#sourcetree2-model">SourceTree2 Model</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../pv-deployments.html">PV Deployments</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../pv-deployments.html#sourcetree1-pv-deployments">SourceTree1 PV Deployments</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../transform-models.html">Transform Models</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../transform-models.html#transform-model-help">Transform Model Help</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../transform-models.html#disco-model-in-depth">DISCO Model in Depth</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../analysis-workflows.html">Analysis Workflows</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../analysis-workflows/hosting-capacity-analysis.html">Hosting Capacity Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../analysis-workflows/upgrade-cost-analysis.html">Upgrade Cost Analysis</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../pipelines.html">Pipelines</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../pipelines.html#sourcetree1model">SourceTree1Model</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../debugging-issues.html">Debugging Issues</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../debugging-issues.html#using-jade">Using JADE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../debugging-issues.html#using-pydss">Using PyDSS</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../data-ingestion.html">Data Ingestion</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../data-ingestion.html#ingest-to-new-database">Ingest to New Database</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data-ingestion.html#ingest-to-existing-database">Ingest to Existing Database</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data-ingestion.html#run-database-queries">Run Database Queries</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced-guide.html">Advanced Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../advanced-guide/analysis-deployment.html">Analysis Deployment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../advanced-guide/upgrade-cost-analysis-generic-models.html">Upgrade Cost Analysis JSON Schemas</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contribution</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../build-docs.html">Build docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../license.html">License</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">DISCO</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>disco.pipelines package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/disco/disco.pipelines.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="disco-pipelines-package">
+<h1>disco.pipelines package<a class="headerlink" href="#disco-pipelines-package" title="Permalink to this headline">¶</a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="module-disco.pipelines.auto_config">
+<span id="disco-pipelines-auto-config-module"></span><h2>disco.pipelines.auto_config module<a class="headerlink" href="#module-disco.pipelines.auto_config" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="module-disco.pipelines.base">
+<span id="disco-pipelines-base-module"></span><h2>disco.pipelines.base module<a class="headerlink" href="#module-disco.pipelines.base" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="disco.pipelines.base.PipelineTemplate">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">disco.pipelines.base.</span></span><span class="sig-name descname"><span class="pre">PipelineTemplate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">template_file</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/pipelines/base.html#PipelineTemplate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.pipelines.base.PipelineTemplate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>class for handling pipeline template data</p>
+<dl class="py property">
+<dt class="sig sig-object py" id="disco.pipelines.base.PipelineTemplate.task_name">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">task_name</span></span><a class="headerlink" href="#disco.pipelines.base.PipelineTemplate.task_name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="disco.pipelines.base.PipelineTemplate.inputs">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">inputs</span></span><a class="headerlink" href="#disco.pipelines.base.PipelineTemplate.inputs" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="disco.pipelines.base.PipelineTemplate.preconfigured">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">preconfigured</span></span><a class="headerlink" href="#disco.pipelines.base.PipelineTemplate.preconfigured" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="disco.pipelines.base.PipelineTemplate.simulation_type">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">simulation_type</span></span><a class="headerlink" href="#disco.pipelines.base.PipelineTemplate.simulation_type" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="disco.pipelines.base.PipelineTemplate.analysis_type">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">analysis_type</span></span><a class="headerlink" href="#disco.pipelines.base.PipelineTemplate.analysis_type" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="disco.pipelines.base.PipelineTemplate.database">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">database</span></span><a class="headerlink" href="#disco.pipelines.base.PipelineTemplate.database" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="disco.pipelines.base.PipelineTemplate.reports">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">reports</span></span><a class="headerlink" href="#disco.pipelines.base.PipelineTemplate.reports" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.pipelines.base.PipelineTemplate.contains_prescreen">
+<span class="sig-name descname"><span class="pre">contains_prescreen</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/pipelines/base.html#PipelineTemplate.contains_prescreen"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.pipelines.base.PipelineTemplate.contains_prescreen" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.pipelines.base.PipelineTemplate.contains_postprocess">
+<span class="sig-name descname"><span class="pre">contains_postprocess</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/pipelines/base.html#PipelineTemplate.contains_postprocess"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.pipelines.base.PipelineTemplate.contains_postprocess" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.pipelines.base.PipelineTemplate.update_transform_params">
+<span class="sig-name descname"><span class="pre">update_transform_params</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/pipelines/base.html#PipelineTemplate.update_transform_params"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.pipelines.base.PipelineTemplate.update_transform_params" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.pipelines.base.PipelineTemplate.update_config_params">
+<span class="sig-name descname"><span class="pre">update_config_params</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">section</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/pipelines/base.html#PipelineTemplate.update_config_params"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.pipelines.base.PipelineTemplate.update_config_params" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.pipelines.base.PipelineTemplate.update_reports_params">
+<span class="sig-name descname"><span class="pre">update_reports_params</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/pipelines/base.html#PipelineTemplate.update_reports_params"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.pipelines.base.PipelineTemplate.update_reports_params" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.pipelines.base.PipelineTemplate.get_command_params">
+<span class="sig-name descname"><span class="pre">get_command_params</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">section</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params_type</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/pipelines/base.html#PipelineTemplate.get_command_params"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.pipelines.base.PipelineTemplate.get_command_params" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return command params in dict</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.pipelines.base.PipelineTemplate.get_transform_params">
+<span class="sig-name descname"><span class="pre">get_transform_params</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">section</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/pipelines/base.html#PipelineTemplate.get_transform_params"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.pipelines.base.PipelineTemplate.get_transform_params" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.pipelines.base.PipelineTemplate.get_prescreen_params">
+<span class="sig-name descname"><span class="pre">get_prescreen_params</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">section</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/pipelines/base.html#PipelineTemplate.get_prescreen_params"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.pipelines.base.PipelineTemplate.get_prescreen_params" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.pipelines.base.PipelineTemplate.get_config_params">
+<span class="sig-name descname"><span class="pre">get_config_params</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">section</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/pipelines/base.html#PipelineTemplate.get_config_params"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.pipelines.base.PipelineTemplate.get_config_params" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.pipelines.base.PipelineTemplate.get_submitter_params">
+<span class="sig-name descname"><span class="pre">get_submitter_params</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">section</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/pipelines/base.html#PipelineTemplate.get_submitter_params"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.pipelines.base.PipelineTemplate.get_submitter_params" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.pipelines.base.PipelineTemplate.get_command_options">
+<span class="sig-name descname"><span class="pre">get_command_options</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">section</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params_type</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/pipelines/base.html#PipelineTemplate.get_command_options"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.pipelines.base.PipelineTemplate.get_command_options" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return command options in constructed string</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.pipelines.base.PipelineTemplate.get_model_transform_output">
+<span class="sig-name descname"><span class="pre">get_model_transform_output</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/pipelines/base.html#PipelineTemplate.get_model_transform_output"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.pipelines.base.PipelineTemplate.get_model_transform_output" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.pipelines.base.PipelineTemplate.get_transform_options">
+<span class="sig-name descname"><span class="pre">get_transform_options</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">section</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/pipelines/base.html#PipelineTemplate.get_transform_options"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.pipelines.base.PipelineTemplate.get_transform_options" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.pipelines.base.PipelineTemplate.get_config_options">
+<span class="sig-name descname"><span class="pre">get_config_options</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">section</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/pipelines/base.html#PipelineTemplate.get_config_options"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.pipelines.base.PipelineTemplate.get_config_options" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.pipelines.base.PipelineTemplate.get_submitter_options">
+<span class="sig-name descname"><span class="pre">get_submitter_options</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">section</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/pipelines/base.html#PipelineTemplate.get_submitter_options"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.pipelines.base.PipelineTemplate.get_submitter_options" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.pipelines.base.PipelineTemplate.remove_section">
+<span class="sig-name descname"><span class="pre">remove_section</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">section</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/pipelines/base.html#PipelineTemplate.remove_section"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.pipelines.base.PipelineTemplate.remove_section" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.pipelines.base.PipelineTemplate.remove_params">
+<span class="sig-name descname"><span class="pre">remove_params</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">section</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params_type</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/pipelines/base.html#PipelineTemplate.remove_params"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.pipelines.base.PipelineTemplate.remove_params" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.pipelines.base.PipelineTemplate.set_preconfigured_models">
+<span class="sig-name descname"><span class="pre">set_preconfigured_models</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/pipelines/base.html#PipelineTemplate.set_preconfigured_models"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.pipelines.base.PipelineTemplate.set_preconfigured_models" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="disco.pipelines.base.PipelineCreatorBase">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">disco.pipelines.base.</span></span><span class="sig-name descname"><span class="pre">PipelineCreatorBase</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">template_file</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/pipelines/base.html#PipelineCreatorBase"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.pipelines.base.PipelineCreatorBase" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code></p>
+<p>A base class for pipeline creator</p>
+<dl class="py property">
+<dt class="sig sig-object py" id="disco.pipelines.base.PipelineCreatorBase.template">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">template</span></span><a class="headerlink" href="#disco.pipelines.base.PipelineCreatorBase.template" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.pipelines.base.PipelineCreatorBase.get_auto_config_python_file">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_auto_config_python_file</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/pipelines/base.html#PipelineCreatorBase.get_auto_config_python_file"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.pipelines.base.PipelineCreatorBase.get_auto_config_python_file" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.pipelines.base.PipelineCreatorBase.get_prescreen_auto_config_text_file">
+<span class="sig-name descname"><span class="pre">get_prescreen_auto_config_text_file</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/pipelines/base.html#PipelineCreatorBase.get_prescreen_auto_config_text_file"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.pipelines.base.PipelineCreatorBase.get_prescreen_auto_config_text_file" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.pipelines.base.PipelineCreatorBase.get_simulation_auto_config_text_file">
+<span class="sig-name descname"><span class="pre">get_simulation_auto_config_text_file</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/pipelines/base.html#PipelineCreatorBase.get_simulation_auto_config_text_file"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.pipelines.base.PipelineCreatorBase.get_simulation_auto_config_text_file" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.pipelines.base.PipelineCreatorBase.get_postprocess_auto_config_text_file">
+<span class="sig-name descname"><span class="pre">get_postprocess_auto_config_text_file</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/pipelines/base.html#PipelineCreatorBase.get_postprocess_auto_config_text_file"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.pipelines.base.PipelineCreatorBase.get_postprocess_auto_config_text_file" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.pipelines.base.PipelineCreatorBase.get_postprocess_command_text_file">
+<span class="sig-name descname"><span class="pre">get_postprocess_command_text_file</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/pipelines/base.html#PipelineCreatorBase.get_postprocess_command_text_file"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.pipelines.base.PipelineCreatorBase.get_postprocess_command_text_file" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.pipelines.base.PipelineCreatorBase.create_pipeline">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">create_pipeline</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pipline_config_file</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/pipelines/base.html#PipelineCreatorBase.create_pipeline"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.pipelines.base.PipelineCreatorBase.create_pipeline" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create pipeline config file</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.pipelines.base.PipelineCreatorBase.make_model_transform_command">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">make_model_transform_command</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/pipelines/base.html#PipelineCreatorBase.make_model_transform_command"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.pipelines.base.PipelineCreatorBase.make_model_transform_command" title="Permalink to this definition">¶</a></dt>
+<dd><p>Make disco transform-model command</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.pipelines.base.PipelineCreatorBase.make_prescreen_create_command">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">make_prescreen_create_command</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/pipelines/base.html#PipelineCreatorBase.make_prescreen_create_command"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.pipelines.base.PipelineCreatorBase.make_prescreen_create_command" title="Permalink to this definition">¶</a></dt>
+<dd><p>Make disco prescreen-pv-penetration-levels command</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.pipelines.base.PipelineCreatorBase.make_prescreen_filter_command">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">make_prescreen_filter_command</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/pipelines/base.html#PipelineCreatorBase.make_prescreen_filter_command"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.pipelines.base.PipelineCreatorBase.make_prescreen_filter_command" title="Permalink to this definition">¶</a></dt>
+<dd><p>Make disco prescreen-pv-penetration-levels filter-config command</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.pipelines.base.PipelineCreatorBase.make_disco_config_command">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">make_disco_config_command</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">section</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/pipelines/base.html#PipelineCreatorBase.make_disco_config_command"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.pipelines.base.PipelineCreatorBase.make_disco_config_command" title="Permalink to this definition">¶</a></dt>
+<dd><p>Make disco config command</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.pipelines.base.PipelineCreatorBase.make_postprocess_command">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">make_postprocess_command</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/pipelines/base.html#PipelineCreatorBase.make_postprocess_command"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.pipelines.base.PipelineCreatorBase.make_postprocess_command" title="Permalink to this definition">¶</a></dt>
+<dd><p>Make disco-internal make-summary-tables &amp; compute-hosting-capacity command</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.pipelines.base.PipelineCreatorBase.create_prescreen_auto_config_text_file">
+<span class="sig-name descname"><span class="pre">create_prescreen_auto_config_text_file</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/pipelines/base.html#PipelineCreatorBase.create_prescreen_auto_config_text_file"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.pipelines.base.PipelineCreatorBase.create_prescreen_auto_config_text_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create script for generating prescreen config file</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.pipelines.base.PipelineCreatorBase.create_simulation_auto_config_text_file">
+<span class="sig-name descname"><span class="pre">create_simulation_auto_config_text_file</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/pipelines/base.html#PipelineCreatorBase.create_simulation_auto_config_text_file"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.pipelines.base.PipelineCreatorBase.create_simulation_auto_config_text_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create script for generating disco config file</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.pipelines.base.PipelineCreatorBase.create_postprocess_auto_config_text_file">
+<span class="sig-name descname"><span class="pre">create_postprocess_auto_config_text_file</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/pipelines/base.html#PipelineCreatorBase.create_postprocess_auto_config_text_file"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.pipelines.base.PipelineCreatorBase.create_postprocess_auto_config_text_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create script for generating postprocess config file</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.pipelines.base.PipelineCreatorBase.create_postprocess_command_text_file">
+<span class="sig-name descname"><span class="pre">create_postprocess_command_text_file</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/pipelines/base.html#PipelineCreatorBase.create_postprocess_command_text_file"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.pipelines.base.PipelineCreatorBase.create_postprocess_command_text_file" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.pipelines.base.PipelineCreatorBase.make_prescreen_stage">
+<span class="sig-name descname"><span class="pre">make_prescreen_stage</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/pipelines/base.html#PipelineCreatorBase.make_prescreen_stage"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.pipelines.base.PipelineCreatorBase.make_prescreen_stage" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.pipelines.base.PipelineCreatorBase.make_simulation_stage">
+<span class="sig-name descname"><span class="pre">make_simulation_stage</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/pipelines/base.html#PipelineCreatorBase.make_simulation_stage"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.pipelines.base.PipelineCreatorBase.make_simulation_stage" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.pipelines.base.PipelineCreatorBase.make_postprocess_stage">
+<span class="sig-name descname"><span class="pre">make_postprocess_stage</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/pipelines/base.html#PipelineCreatorBase.make_postprocess_stage"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.pipelines.base.PipelineCreatorBase.make_postprocess_stage" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-disco.pipelines.creator">
+<span id="disco-pipelines-creator-module"></span><h2>disco.pipelines.creator module<a class="headerlink" href="#module-disco.pipelines.creator" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="disco.pipelines.creator.SnapshotPipelineCreator">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">disco.pipelines.creator.</span></span><span class="sig-name descname"><span class="pre">SnapshotPipelineCreator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">template_file</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/pipelines/creator.html#SnapshotPipelineCreator"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.pipelines.creator.SnapshotPipelineCreator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#disco.pipelines.base.PipelineCreatorBase" title="disco.pipelines.base.PipelineCreatorBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">disco.pipelines.base.PipelineCreatorBase</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.pipelines.creator.SnapshotPipelineCreator.create_pipeline">
+<span class="sig-name descname"><span class="pre">create_pipeline</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config_file</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/pipelines/creator.html#SnapshotPipelineCreator.create_pipeline"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.pipelines.creator.SnapshotPipelineCreator.create_pipeline" title="Permalink to this definition">¶</a></dt>
+<dd><p>Make snapshot pipeline config file</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.pipelines.creator.SnapshotPipelineCreator.make_model_transform_command">
+<span class="sig-name descname"><span class="pre">make_model_transform_command</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/pipelines/creator.html#SnapshotPipelineCreator.make_model_transform_command"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.pipelines.creator.SnapshotPipelineCreator.make_model_transform_command" title="Permalink to this definition">¶</a></dt>
+<dd><p>Make disco transform-model command</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.pipelines.creator.SnapshotPipelineCreator.make_disco_config_command">
+<span class="sig-name descname"><span class="pre">make_disco_config_command</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">section</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/pipelines/creator.html#SnapshotPipelineCreator.make_disco_config_command"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.pipelines.creator.SnapshotPipelineCreator.make_disco_config_command" title="Permalink to this definition">¶</a></dt>
+<dd><p>Make disco config command</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.pipelines.creator.SnapshotPipelineCreator.make_prescreen_create_command">
+<span class="sig-name descname"><span class="pre">make_prescreen_create_command</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/pipelines/creator.html#SnapshotPipelineCreator.make_prescreen_create_command"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.pipelines.creator.SnapshotPipelineCreator.make_prescreen_create_command" title="Permalink to this definition">¶</a></dt>
+<dd><p>Make disco prescreen-pv-penetration-levels command</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.pipelines.creator.SnapshotPipelineCreator.make_prescreen_filter_command">
+<span class="sig-name descname"><span class="pre">make_prescreen_filter_command</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/pipelines/creator.html#SnapshotPipelineCreator.make_prescreen_filter_command"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.pipelines.creator.SnapshotPipelineCreator.make_prescreen_filter_command" title="Permalink to this definition">¶</a></dt>
+<dd><p>Make disco prescreen-pv-penetration-levels filter-config command</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.pipelines.creator.SnapshotPipelineCreator.make_postprocess_command">
+<span class="sig-name descname"><span class="pre">make_postprocess_command</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/pipelines/creator.html#SnapshotPipelineCreator.make_postprocess_command"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.pipelines.creator.SnapshotPipelineCreator.make_postprocess_command" title="Permalink to this definition">¶</a></dt>
+<dd><p>Make disco-internal make-summary-tables &amp; compute-hosting-capacity command</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="disco.pipelines.creator.TimeSeriesPipelineCreator">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">disco.pipelines.creator.</span></span><span class="sig-name descname"><span class="pre">TimeSeriesPipelineCreator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">template_file</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/pipelines/creator.html#TimeSeriesPipelineCreator"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.pipelines.creator.TimeSeriesPipelineCreator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#disco.pipelines.base.PipelineCreatorBase" title="disco.pipelines.base.PipelineCreatorBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">disco.pipelines.base.PipelineCreatorBase</span></code></a></p>
+<p>Time-series pipeline creator class</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.pipelines.creator.TimeSeriesPipelineCreator.create_pipeline">
+<span class="sig-name descname"><span class="pre">create_pipeline</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config_file</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/pipelines/creator.html#TimeSeriesPipelineCreator.create_pipeline"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.pipelines.creator.TimeSeriesPipelineCreator.create_pipeline" title="Permalink to this definition">¶</a></dt>
+<dd><p>Make time-series pipeline config file</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.pipelines.creator.TimeSeriesPipelineCreator.make_model_transform_command">
+<span class="sig-name descname"><span class="pre">make_model_transform_command</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/pipelines/creator.html#TimeSeriesPipelineCreator.make_model_transform_command"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.pipelines.creator.TimeSeriesPipelineCreator.make_model_transform_command" title="Permalink to this definition">¶</a></dt>
+<dd><p>Make disco transform-model command</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.pipelines.creator.TimeSeriesPipelineCreator.make_disco_config_command">
+<span class="sig-name descname"><span class="pre">make_disco_config_command</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">section</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/pipelines/creator.html#TimeSeriesPipelineCreator.make_disco_config_command"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.pipelines.creator.TimeSeriesPipelineCreator.make_disco_config_command" title="Permalink to this definition">¶</a></dt>
+<dd><p>Make disco config command</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.pipelines.creator.TimeSeriesPipelineCreator.make_prescreen_create_command">
+<span class="sig-name descname"><span class="pre">make_prescreen_create_command</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/pipelines/creator.html#TimeSeriesPipelineCreator.make_prescreen_create_command"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.pipelines.creator.TimeSeriesPipelineCreator.make_prescreen_create_command" title="Permalink to this definition">¶</a></dt>
+<dd><p>Make disco prescreen-pv-penetration-levels command</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.pipelines.creator.TimeSeriesPipelineCreator.make_prescreen_filter_command">
+<span class="sig-name descname"><span class="pre">make_prescreen_filter_command</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/pipelines/creator.html#TimeSeriesPipelineCreator.make_prescreen_filter_command"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.pipelines.creator.TimeSeriesPipelineCreator.make_prescreen_filter_command" title="Permalink to this definition">¶</a></dt>
+<dd><p>Make disco prescreen-pv-penetration-levels filter-config command</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.pipelines.creator.TimeSeriesPipelineCreator.make_postprocess_command">
+<span class="sig-name descname"><span class="pre">make_postprocess_command</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/pipelines/creator.html#TimeSeriesPipelineCreator.make_postprocess_command"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.pipelines.creator.TimeSeriesPipelineCreator.make_postprocess_command" title="Permalink to this definition">¶</a></dt>
+<dd><p>Make disco-internal make-summary-tables &amp; compute-hosting-capacity command</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="disco.pipelines.creator.UpgradePipelineCreator">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">disco.pipelines.creator.</span></span><span class="sig-name descname"><span class="pre">UpgradePipelineCreator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">template_file</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/pipelines/creator.html#UpgradePipelineCreator"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.pipelines.creator.UpgradePipelineCreator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#disco.pipelines.base.PipelineCreatorBase" title="disco.pipelines.base.PipelineCreatorBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">disco.pipelines.base.PipelineCreatorBase</span></code></a></p>
+<p>Upgrade pipeline creator class</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.pipelines.creator.UpgradePipelineCreator.create_pipeline">
+<span class="sig-name descname"><span class="pre">create_pipeline</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config_file</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/pipelines/creator.html#UpgradePipelineCreator.create_pipeline"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.pipelines.creator.UpgradePipelineCreator.create_pipeline" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create pipeline config file</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.pipelines.creator.UpgradePipelineCreator.make_model_transform_command">
+<span class="sig-name descname"><span class="pre">make_model_transform_command</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/pipelines/creator.html#UpgradePipelineCreator.make_model_transform_command"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.pipelines.creator.UpgradePipelineCreator.make_model_transform_command" title="Permalink to this definition">¶</a></dt>
+<dd><p>Make disco transform-model command</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.pipelines.creator.UpgradePipelineCreator.make_prescreen_create_command">
+<span class="sig-name descname"><span class="pre">make_prescreen_create_command</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/pipelines/creator.html#UpgradePipelineCreator.make_prescreen_create_command"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.pipelines.creator.UpgradePipelineCreator.make_prescreen_create_command" title="Permalink to this definition">¶</a></dt>
+<dd><p>Make disco prescreen-pv-penetration-levels command</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.pipelines.creator.UpgradePipelineCreator.make_prescreen_filter_command">
+<span class="sig-name descname"><span class="pre">make_prescreen_filter_command</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/pipelines/creator.html#UpgradePipelineCreator.make_prescreen_filter_command"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.pipelines.creator.UpgradePipelineCreator.make_prescreen_filter_command" title="Permalink to this definition">¶</a></dt>
+<dd><p>Make disco prescreen-pv-penetration-levels filter-config command</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.pipelines.creator.UpgradePipelineCreator.make_disco_config_command">
+<span class="sig-name descname"><span class="pre">make_disco_config_command</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">section</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/pipelines/creator.html#UpgradePipelineCreator.make_disco_config_command"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.pipelines.creator.UpgradePipelineCreator.make_disco_config_command" title="Permalink to this definition">¶</a></dt>
+<dd><p>Make disco config command</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.pipelines.creator.UpgradePipelineCreator.make_postprocess_command">
+<span class="sig-name descname"><span class="pre">make_postprocess_command</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/pipelines/creator.html#UpgradePipelineCreator.make_postprocess_command"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.pipelines.creator.UpgradePipelineCreator.make_postprocess_command" title="Permalink to this definition">¶</a></dt>
+<dd><p>Make disco-internal make-summary-tables &amp; compute-hosting-capacity command</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-disco.pipelines.enums">
+<span id="disco-pipelines-enums-module"></span><h2>disco.pipelines.enums module<a class="headerlink" href="#module-disco.pipelines.enums" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="disco.pipelines.enums.TemplateSection">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">disco.pipelines.enums.</span></span><span class="sig-name descname"><span class="pre">TemplateSection</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/pipelines/enums.html#TemplateSection"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.pipelines.enums.TemplateSection" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">enum.Enum</span></code></p>
+<p>An enumeration.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.pipelines.enums.TemplateSection.PRESCREEN">
+<span class="sig-name descname"><span class="pre">PRESCREEN</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'prescreen'</span></em><a class="headerlink" href="#disco.pipelines.enums.TemplateSection.PRESCREEN" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.pipelines.enums.TemplateSection.SIMULATION">
+<span class="sig-name descname"><span class="pre">SIMULATION</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'simulation'</span></em><a class="headerlink" href="#disco.pipelines.enums.TemplateSection.SIMULATION" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.pipelines.enums.TemplateSection.POSTPROCESS">
+<span class="sig-name descname"><span class="pre">POSTPROCESS</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'postprocess'</span></em><a class="headerlink" href="#disco.pipelines.enums.TemplateSection.POSTPROCESS" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.pipelines.enums.TemplateSection.MODEL">
+<span class="sig-name descname"><span class="pre">MODEL</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'model'</span></em><a class="headerlink" href="#disco.pipelines.enums.TemplateSection.MODEL" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.pipelines.enums.TemplateSection.REPORTS">
+<span class="sig-name descname"><span class="pre">REPORTS</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'reports'</span></em><a class="headerlink" href="#disco.pipelines.enums.TemplateSection.REPORTS" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="disco.pipelines.enums.TemplateParams">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">disco.pipelines.enums.</span></span><span class="sig-name descname"><span class="pre">TemplateParams</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/pipelines/enums.html#TemplateParams"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.pipelines.enums.TemplateParams" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">enum.Enum</span></code></p>
+<p>An enumeration.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.pipelines.enums.TemplateParams.TRANSFORM_PARAMS">
+<span class="sig-name descname"><span class="pre">TRANSFORM_PARAMS</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'transform-params'</span></em><a class="headerlink" href="#disco.pipelines.enums.TemplateParams.TRANSFORM_PARAMS" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.pipelines.enums.TemplateParams.CONFIG_PARAMS">
+<span class="sig-name descname"><span class="pre">CONFIG_PARAMS</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'config-params'</span></em><a class="headerlink" href="#disco.pipelines.enums.TemplateParams.CONFIG_PARAMS" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.pipelines.enums.TemplateParams.PRESCREEN_PARAMS">
+<span class="sig-name descname"><span class="pre">PRESCREEN_PARAMS</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'prescreen-params'</span></em><a class="headerlink" href="#disco.pipelines.enums.TemplateParams.PRESCREEN_PARAMS" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.pipelines.enums.TemplateParams.SUMITTER_PARAMS">
+<span class="sig-name descname"><span class="pre">SUMITTER_PARAMS</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'submitter-params'</span></em><a class="headerlink" href="#disco.pipelines.enums.TemplateParams.SUMITTER_PARAMS" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-disco.pipelines.factory">
+<span id="disco-pipelines-factory-module"></span><h2>disco.pipelines.factory module<a class="headerlink" href="#module-disco.pipelines.factory" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="disco.pipelines.factory.PipelineCreatorFactory">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">disco.pipelines.factory.</span></span><span class="sig-name descname"><span class="pre">PipelineCreatorFactory</span></span><a class="reference internal" href="../_modules/disco/pipelines/factory.html#PipelineCreatorFactory"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.pipelines.factory.PipelineCreatorFactory" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Factory class for getting pipeline creator</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.pipelines.factory.PipelineCreatorFactory.create">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">create</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">template_file</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/pipelines/factory.html#PipelineCreatorFactory.create"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.pipelines.factory.PipelineCreatorFactory.create" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create pipeline creator</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-disco.pipelines.update_config">
+<span id="disco-pipelines-update-config-module"></span><h2>disco.pipelines.update_config module<a class="headerlink" href="#module-disco.pipelines.update_config" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.pipelines.update_config.set_hc_postprocess_blocked_by">
+<span class="sig-prename descclassname"><span class="pre">disco.pipelines.update_config.</span></span><span class="sig-name descname"><span class="pre">set_hc_postprocess_blocked_by</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">commands_file</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/pipelines/update_config.html#set_hc_postprocess_blocked_by"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.pipelines.update_config.set_hc_postprocess_blocked_by" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update blocked_by of hosting capacity postprocess job</p>
+</dd></dl>
+
+</section>
+<section id="module-disco.pipelines.utils">
+<span id="disco-pipelines-utils-module"></span><h2>disco.pipelines.utils module<a class="headerlink" href="#module-disco.pipelines.utils" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.pipelines.utils.get_default_pipeline_template">
+<span class="sig-prename descclassname"><span class="pre">disco.pipelines.utils.</span></span><span class="sig-name descname"><span class="pre">get_default_pipeline_template</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">simulation_type</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/pipelines/utils.html#get_default_pipeline_template"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.pipelines.utils.get_default_pipeline_template" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the default pipeline template file</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.pipelines.utils.check_hpc_config">
+<span class="sig-prename descclassname"><span class="pre">disco.pipelines.utils.</span></span><span class="sig-name descname"><span class="pre">check_hpc_config</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">template_file</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/pipelines/utils.html#check_hpc_config"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.pipelines.utils.check_hpc_config" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.pipelines.utils.ensure_jade_pipeline_output_dir">
+<span class="sig-prename descclassname"><span class="pre">disco.pipelines.utils.</span></span><span class="sig-name descname"><span class="pre">ensure_jade_pipeline_output_dir</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/pipelines/utils.html#ensure_jade_pipeline_output_dir"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.pipelines.utils.ensure_jade_pipeline_output_dir" title="Permalink to this definition">¶</a></dt>
+<dd><p>Replace JADE_PIPELINE_OUTPUT_DIR by using its value.</p>
+</dd></dl>
+
+</section>
+<section id="module-disco.pipelines">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-disco.pipelines" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2019, NREL.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

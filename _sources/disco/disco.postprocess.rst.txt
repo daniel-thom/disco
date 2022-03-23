@@ -1,0 +1,37 @@
+disco.postprocess package
+=========================
+
+Subpackages
+-----------
+
+.. toctree::
+   :maxdepth: 4
+
+   disco.postprocess.config
+
+Submodules
+----------
+
+disco.postprocess.hcdb module
+-----------------------------
+
+.. automodule:: disco.postprocess.hcdb
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+disco.postprocess.hosting\_capacity module
+------------------------------------------
+
+.. automodule:: disco.postprocess.hosting_capacity
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: disco.postprocess
+   :members:
+   :undoc-members:
+   :show-inheritance:

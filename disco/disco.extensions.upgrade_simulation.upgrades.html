@@ -1,0 +1,1260 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>disco.extensions.upgrade_simulation.upgrades package &mdash; DISCO 0.1 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link href="../_static/style.css" rel="stylesheet" type="text/css">
+
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> DISCO
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">User Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../installation.html#use-conda">Use Conda</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation.html#use-docker">Use Docker</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">Overview</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../overview.html#data-sources">Data Sources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview.html#transform-model">Transform Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview.html#config-jobs">Config Jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview.html#submit-jobs">Submit Jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview.html#result-analysis">Result Analysis</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../quick-start.html">Quick Start</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../quick-start.html#source-data">Source Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../quick-start.html#transform-model">Transform Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../quick-start.html#config-jobs">Config Jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../quick-start.html#submit-jobs">Submit Jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../quick-start.html#result-analysis">Result Analysis</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../data-sources.html">Data Sources</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../data-sources/smart-ds-model-preparation.html">SMART-DS OpenDSS Model Preparation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data-sources.html#gem-model">GEM Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data-sources.html#epri-model">EPRI Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data-sources.html#sourcetree1-model">SourceTree1 Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data-sources.html#sourcetree2-model">SourceTree2 Model</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../pv-deployments.html">PV Deployments</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../pv-deployments.html#sourcetree1-pv-deployments">SourceTree1 PV Deployments</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../transform-models.html">Transform Models</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../transform-models.html#transform-model-help">Transform Model Help</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../transform-models.html#disco-model-in-depth">DISCO Model in Depth</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../analysis-workflows.html">Analysis Workflows</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../analysis-workflows/hosting-capacity-analysis.html">Hosting Capacity Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../analysis-workflows/upgrade-cost-analysis.html">Upgrade Cost Analysis</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../pipelines.html">Pipelines</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../pipelines.html#sourcetree1model">SourceTree1Model</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../debugging-issues.html">Debugging Issues</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../debugging-issues.html#using-jade">Using JADE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../debugging-issues.html#using-pydss">Using PyDSS</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../data-ingestion.html">Data Ingestion</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../data-ingestion.html#ingest-to-new-database">Ingest to New Database</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data-ingestion.html#ingest-to-existing-database">Ingest to Existing Database</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data-ingestion.html#run-database-queries">Run Database Queries</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced-guide.html">Advanced Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../advanced-guide/analysis-deployment.html">Analysis Deployment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../advanced-guide/upgrade-cost-analysis-generic-models.html">Upgrade Cost Analysis JSON Schemas</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contribution</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../build-docs.html">Build docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../license.html">License</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">DISCO</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>disco.extensions.upgrade_simulation.upgrades package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/disco/disco.extensions.upgrade_simulation.upgrades.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="disco-extensions-upgrade-simulation-upgrades-package">
+<h1>disco.extensions.upgrade_simulation.upgrades package<a class="headerlink" href="#disco-extensions-upgrade-simulation-upgrades-package" title="Permalink to this headline">¶</a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="module-disco.extensions.upgrade_simulation.upgrades.automated_thermal_upgrades">
+<span id="disco-extensions-upgrade-simulation-upgrades-automated-thermal-upgrades-module"></span><h2>disco.extensions.upgrade_simulation.upgrades.automated_thermal_upgrades module<a class="headerlink" href="#module-disco.extensions.upgrade_simulation.upgrades.automated_thermal_upgrades" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.extensions.upgrade_simulation.upgrades.automated_thermal_upgrades.determine_thermal_upgrades">
+<span class="sig-prename descclassname"><span class="pre">disco.extensions.upgrade_simulation.upgrades.automated_thermal_upgrades.</span></span><span class="sig-name descname"><span class="pre">determine_thermal_upgrades</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">master_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">enable_pydss_solve</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pydss_volt_var_model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">thermal_config</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">line_upgrade_options_file</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xfmr_upgrade_options_file</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">thermal_summary_file</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">thermal_upgrades_dss_filepath</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_csv_line_upgrades_filepath</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_csv_xfmr_upgrades_filepath</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ignore_switch</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/extensions/upgrade_simulation/upgrades/automated_thermal_upgrades.html#determine_thermal_upgrades"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.extensions.upgrade_simulation.upgrades.automated_thermal_upgrades.determine_thermal_upgrades" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</section>
+<section id="module-disco.extensions.upgrade_simulation.upgrades.automated_voltage_upgrades">
+<span id="disco-extensions-upgrade-simulation-upgrades-automated-voltage-upgrades-module"></span><h2>disco.extensions.upgrade_simulation.upgrades.automated_voltage_upgrades module<a class="headerlink" href="#module-disco.extensions.upgrade_simulation.upgrades.automated_voltage_upgrades" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.extensions.upgrade_simulation.upgrades.automated_voltage_upgrades.determine_voltage_upgrades">
+<span class="sig-prename descclassname"><span class="pre">disco.extensions.upgrade_simulation.upgrades.automated_voltage_upgrades.</span></span><span class="sig-name descname"><span class="pre">determine_voltage_upgrades</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">master_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">enable_pydss_solve</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pydss_volt_var_model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">thermal_config</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">voltage_config</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">thermal_upgrades_dss_filepath</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">voltage_upgrades_dss_filepath</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">voltage_summary_file</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_csv_voltage_upgrades_filepath</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_folder</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ignore_switch</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/extensions/upgrade_simulation/upgrades/automated_voltage_upgrades.html#determine_voltage_upgrades"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.extensions.upgrade_simulation.upgrades.automated_voltage_upgrades.determine_voltage_upgrades" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</section>
+<section id="module-disco.extensions.upgrade_simulation.upgrades.common_functions">
+<span id="disco-extensions-upgrade-simulation-upgrades-common-functions-module"></span><h2>disco.extensions.upgrade_simulation.upgrades.common_functions module<a class="headerlink" href="#module-disco.extensions.upgrade_simulation.upgrades.common_functions" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.extensions.upgrade_simulation.upgrades.common_functions.get_default_upgrade_cost_database">
+<span class="sig-prename descclassname"><span class="pre">disco.extensions.upgrade_simulation.upgrades.common_functions.</span></span><span class="sig-name descname"><span class="pre">get_default_upgrade_cost_database</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/extensions/upgrade_simulation/upgrades/common_functions.html#get_default_upgrade_cost_database"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.extensions.upgrade_simulation.upgrades.common_functions.get_default_upgrade_cost_database" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.extensions.upgrade_simulation.upgrades.common_functions.get_default_upgrade_params_file">
+<span class="sig-prename descclassname"><span class="pre">disco.extensions.upgrade_simulation.upgrades.common_functions.</span></span><span class="sig-name descname"><span class="pre">get_default_upgrade_params_file</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/extensions/upgrade_simulation/upgrades/common_functions.html#get_default_upgrade_params_file"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.extensions.upgrade_simulation.upgrades.common_functions.get_default_upgrade_params_file" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.extensions.upgrade_simulation.upgrades.common_functions.reload_dss_circuit">
+<span class="sig-prename descclassname"><span class="pre">disco.extensions.upgrade_simulation.upgrades.common_functions.</span></span><span class="sig-name descname"><span class="pre">reload_dss_circuit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dss_file_list</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">commands_list</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/extensions/upgrade_simulation/upgrades/common_functions.html#reload_dss_circuit"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.extensions.upgrade_simulation.upgrades.common_functions.reload_dss_circuit" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function clears the circuit and loads dss files and commands.
+Also solves the circuit and checks for convergence errors</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dss_file_list</strong> – </p></li>
+<li><p><strong>commands_list</strong> – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.extensions.upgrade_simulation.upgrades.common_functions.run_selective_master_dss">
+<span class="sig-prename descclassname"><span class="pre">disco.extensions.upgrade_simulation.upgrades.common_functions.</span></span><span class="sig-name descname"><span class="pre">run_selective_master_dss</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">master_filepath</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/extensions/upgrade_simulation/upgrades/common_functions.html#run_selective_master_dss"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.extensions.upgrade_simulation.upgrades.common_functions.run_selective_master_dss" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function executes master.dss file line by line and ignores some commands that Solve yearly mode,
+export or plot data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>master_filepath</strong> – </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.extensions.upgrade_simulation.upgrades.common_functions.circuit_solve_and_check">
+<span class="sig-prename descclassname"><span class="pre">disco.extensions.upgrade_simulation.upgrades.common_functions.</span></span><span class="sig-name descname"><span class="pre">circuit_solve_and_check</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">raise_exception</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/extensions/upgrade_simulation/upgrades/common_functions.html#circuit_solve_and_check"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.extensions.upgrade_simulation.upgrades.common_functions.circuit_solve_and_check" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function solves the circuit (both OpenDSS and PyDSS-if enabled)
+and can raise exception if convergence error occurs</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>raise_exception</strong> – </p></li>
+<li><p><strong>kwargs</strong> – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.extensions.upgrade_simulation.upgrades.common_functions.dss_solve_and_check">
+<span class="sig-prename descclassname"><span class="pre">disco.extensions.upgrade_simulation.upgrades.common_functions.</span></span><span class="sig-name descname"><span class="pre">dss_solve_and_check</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">raise_exception</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/extensions/upgrade_simulation/upgrades/common_functions.html#dss_solve_and_check"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.extensions.upgrade_simulation.upgrades.common_functions.dss_solve_and_check" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function solves OpenDSS and returns bool flag which shows if it has converged or not.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>raise_exception</strong> – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.extensions.upgrade_simulation.upgrades.common_functions.dss_run_command_list">
+<span class="sig-prename descclassname"><span class="pre">disco.extensions.upgrade_simulation.upgrades.common_functions.</span></span><span class="sig-name descname"><span class="pre">dss_run_command_list</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">command_list</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/extensions/upgrade_simulation/upgrades/common_functions.html#dss_run_command_list"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.extensions.upgrade_simulation.upgrades.common_functions.dss_run_command_list" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.extensions.upgrade_simulation.upgrades.common_functions.convert_list_string_to_list">
+<span class="sig-prename descclassname"><span class="pre">disco.extensions.upgrade_simulation.upgrades.common_functions.</span></span><span class="sig-name descname"><span class="pre">convert_list_string_to_list</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">user_string</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/extensions/upgrade_simulation/upgrades/common_functions.html#convert_list_string_to_list"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.extensions.upgrade_simulation.upgrades.common_functions.convert_list_string_to_list" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function converts a string representation of a list to a type: list of elements</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>user_string</strong> – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.extensions.upgrade_simulation.upgrades.common_functions.write_text_file">
+<span class="sig-prename descclassname"><span class="pre">disco.extensions.upgrade_simulation.upgrades.common_functions.</span></span><span class="sig-name descname"><span class="pre">write_text_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">string_list</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">text_file_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/extensions/upgrade_simulation/upgrades/common_functions.html#write_text_file"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.extensions.upgrade_simulation.upgrades.common_functions.write_text_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function writes the string contents of a list to a text file</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>string_list</strong> – </p></li>
+<li><p><strong>text_file_path</strong> – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.extensions.upgrade_simulation.upgrades.common_functions.create_dataframe_from_nested_dict">
+<span class="sig-prename descclassname"><span class="pre">disco.extensions.upgrade_simulation.upgrades.common_functions.</span></span><span class="sig-name descname"><span class="pre">create_dataframe_from_nested_dict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">user_dict</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">index_names</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/extensions/upgrade_simulation/upgrades/common_functions.html#create_dataframe_from_nested_dict"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.extensions.upgrade_simulation.upgrades.common_functions.create_dataframe_from_nested_dict" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function creates dataframe from a nested dictionary</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>user_dict</strong> – </p></li>
+<li><p><strong>index_names</strong> – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.extensions.upgrade_simulation.upgrades.common_functions.get_dictionary_of_duplicates">
+<span class="sig-prename descclassname"><span class="pre">disco.extensions.upgrade_simulation.upgrades.common_functions.</span></span><span class="sig-name descname"><span class="pre">get_dictionary_of_duplicates</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">subset</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">index_field</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/extensions/upgrade_simulation/upgrades/common_functions.html#get_dictionary_of_duplicates"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.extensions.upgrade_simulation.upgrades.common_functions.get_dictionary_of_duplicates" title="Permalink to this definition">¶</a></dt>
+<dd><p>This creates a mapping dictionary of duplicate indices in a dataframe</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>df</strong> – </p></li>
+<li><p><strong>subset</strong> – </p></li>
+<li><p><strong>index_field</strong> – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>Dictionary</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.extensions.upgrade_simulation.upgrades.common_functions.get_circuit_info">
+<span class="sig-prename descclassname"><span class="pre">disco.extensions.upgrade_simulation.upgrades.common_functions.</span></span><span class="sig-name descname"><span class="pre">get_circuit_info</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/extensions/upgrade_simulation/upgrades/common_functions.html#get_circuit_info"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.extensions.upgrade_simulation.upgrades.common_functions.get_circuit_info" title="Permalink to this definition">¶</a></dt>
+<dd><p>This collects circuit information</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>Dictionary</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.extensions.upgrade_simulation.upgrades.common_functions.get_all_transformer_info">
+<span class="sig-prename descclassname"><span class="pre">disco.extensions.upgrade_simulation.upgrades.common_functions.</span></span><span class="sig-name descname"><span class="pre">get_all_transformer_info</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">compute_loading</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">upper_limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.5</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/extensions/upgrade_simulation/upgrades/common_functions.html#get_all_transformer_info"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.extensions.upgrade_simulation.upgrades.common_functions.get_all_transformer_info" title="Permalink to this definition">¶</a></dt>
+<dd><p>This collects transformer information</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.extensions.upgrade_simulation.upgrades.common_functions.get_all_line_info">
+<span class="sig-prename descclassname"><span class="pre">disco.extensions.upgrade_simulation.upgrades.common_functions.</span></span><span class="sig-name descname"><span class="pre">get_all_line_info</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">compute_loading</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">upper_limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ignore_switch</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/extensions/upgrade_simulation/upgrades/common_functions.html#get_all_line_info"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.extensions.upgrade_simulation.upgrades.common_functions.get_all_line_info" title="Permalink to this definition">¶</a></dt>
+<dd><p>This collects line information</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.extensions.upgrade_simulation.upgrades.common_functions.get_regcontrol_info">
+<span class="sig-prename descclassname"><span class="pre">disco.extensions.upgrade_simulation.upgrades.common_functions.</span></span><span class="sig-name descname"><span class="pre">get_regcontrol_info</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">correct_PT_ratio</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nominal_voltage</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/extensions/upgrade_simulation/upgrades/common_functions.html#get_regcontrol_info"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.extensions.upgrade_simulation.upgrades.common_functions.get_regcontrol_info" title="Permalink to this definition">¶</a></dt>
+<dd><p>This collects regulator control information</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.extensions.upgrade_simulation.upgrades.common_functions.get_capacitor_info">
+<span class="sig-prename descclassname"><span class="pre">disco.extensions.upgrade_simulation.upgrades.common_functions.</span></span><span class="sig-name descname"><span class="pre">get_capacitor_info</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">nominal_voltage</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">correct_PT_ratio</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/extensions/upgrade_simulation/upgrades/common_functions.html#get_capacitor_info"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.extensions.upgrade_simulation.upgrades.common_functions.get_capacitor_info" title="Permalink to this definition">¶</a></dt>
+<dd><p>This collects capacitor information</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.extensions.upgrade_simulation.upgrades.common_functions.get_cap_control_info">
+<span class="sig-prename descclassname"><span class="pre">disco.extensions.upgrade_simulation.upgrades.common_functions.</span></span><span class="sig-name descname"><span class="pre">get_cap_control_info</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/extensions/upgrade_simulation/upgrades/common_functions.html#get_cap_control_info"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.extensions.upgrade_simulation.upgrades.common_functions.get_cap_control_info" title="Permalink to this definition">¶</a></dt>
+<dd><p>This collects capacitor control information</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.extensions.upgrade_simulation.upgrades.common_functions.get_line_geometry">
+<span class="sig-prename descclassname"><span class="pre">disco.extensions.upgrade_simulation.upgrades.common_functions.</span></span><span class="sig-name descname"><span class="pre">get_line_geometry</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/extensions/upgrade_simulation/upgrades/common_functions.html#get_line_geometry"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.extensions.upgrade_simulation.upgrades.common_functions.get_line_geometry" title="Permalink to this definition">¶</a></dt>
+<dd><p>This collects all line geometry information</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.extensions.upgrade_simulation.upgrades.common_functions.get_line_code">
+<span class="sig-prename descclassname"><span class="pre">disco.extensions.upgrade_simulation.upgrades.common_functions.</span></span><span class="sig-name descname"><span class="pre">get_line_code</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/extensions/upgrade_simulation/upgrades/common_functions.html#get_line_code"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.extensions.upgrade_simulation.upgrades.common_functions.get_line_code" title="Permalink to this definition">¶</a></dt>
+<dd><p>This collects all line codes information</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.extensions.upgrade_simulation.upgrades.common_functions.get_wire_data">
+<span class="sig-prename descclassname"><span class="pre">disco.extensions.upgrade_simulation.upgrades.common_functions.</span></span><span class="sig-name descname"><span class="pre">get_wire_data</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/extensions/upgrade_simulation/upgrades/common_functions.html#get_wire_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.extensions.upgrade_simulation.upgrades.common_functions.get_wire_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>This collects all wire data information</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.extensions.upgrade_simulation.upgrades.common_functions.get_cn_data">
+<span class="sig-prename descclassname"><span class="pre">disco.extensions.upgrade_simulation.upgrades.common_functions.</span></span><span class="sig-name descname"><span class="pre">get_cn_data</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/extensions/upgrade_simulation/upgrades/common_functions.html#get_cn_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.extensions.upgrade_simulation.upgrades.common_functions.get_cn_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>This collects all cn data information</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.extensions.upgrade_simulation.upgrades.common_functions.check_dss_run_command">
+<span class="sig-prename descclassname"><span class="pre">disco.extensions.upgrade_simulation.upgrades.common_functions.</span></span><span class="sig-name descname"><span class="pre">check_dss_run_command</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">command_string</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/extensions/upgrade_simulation/upgrades/common_functions.html#check_dss_run_command"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.extensions.upgrade_simulation.upgrades.common_functions.check_dss_run_command" title="Permalink to this definition">¶</a></dt>
+<dd><p>Runs dss command
+And checks for exception</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>command_string</strong> (<em>str</em>) – dss command to be run</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>Exception</strong> – Raised if the command fails</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.extensions.upgrade_simulation.upgrades.common_functions.get_bus_voltages">
+<span class="sig-prename descclassname"><span class="pre">disco.extensions.upgrade_simulation.upgrades.common_functions.</span></span><span class="sig-name descname"><span class="pre">get_bus_voltages</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">voltage_upper_limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.05</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">voltage_lower_limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.95</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">raise_exception</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/extensions/upgrade_simulation/upgrades/common_functions.html#get_bus_voltages"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.extensions.upgrade_simulation.upgrades.common_functions.get_bus_voltages" title="Permalink to this definition">¶</a></dt>
+<dd><p>This computes per unit voltages for all buses in network</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.extensions.upgrade_simulation.upgrades.common_functions.determine_available_line_upgrades">
+<span class="sig-prename descclassname"><span class="pre">disco.extensions.upgrade_simulation.upgrades.common_functions.</span></span><span class="sig-name descname"><span class="pre">determine_available_line_upgrades</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">line_loading_df</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/extensions/upgrade_simulation/upgrades/common_functions.html#determine_available_line_upgrades"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.extensions.upgrade_simulation.upgrades.common_functions.determine_available_line_upgrades" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.extensions.upgrade_simulation.upgrades.common_functions.determine_available_xfmr_upgrades">
+<span class="sig-prename descclassname"><span class="pre">disco.extensions.upgrade_simulation.upgrades.common_functions.</span></span><span class="sig-name descname"><span class="pre">determine_available_xfmr_upgrades</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">xfmr_loading_df</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/extensions/upgrade_simulation/upgrades/common_functions.html#determine_available_xfmr_upgrades"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.extensions.upgrade_simulation.upgrades.common_functions.determine_available_xfmr_upgrades" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.extensions.upgrade_simulation.upgrades.common_functions.get_pv_buses">
+<span class="sig-prename descclassname"><span class="pre">disco.extensions.upgrade_simulation.upgrades.common_functions.</span></span><span class="sig-name descname"><span class="pre">get_pv_buses</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dss</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/extensions/upgrade_simulation/upgrades/common_functions.html#get_pv_buses"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.extensions.upgrade_simulation.upgrades.common_functions.get_pv_buses" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.extensions.upgrade_simulation.upgrades.common_functions.get_load_buses">
+<span class="sig-prename descclassname"><span class="pre">disco.extensions.upgrade_simulation.upgrades.common_functions.</span></span><span class="sig-name descname"><span class="pre">get_load_buses</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dss</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/extensions/upgrade_simulation/upgrades/common_functions.html#get_load_buses"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.extensions.upgrade_simulation.upgrades.common_functions.get_load_buses" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.extensions.upgrade_simulation.upgrades.common_functions.get_bus_coordinates">
+<span class="sig-prename descclassname"><span class="pre">disco.extensions.upgrade_simulation.upgrades.common_functions.</span></span><span class="sig-name descname"><span class="pre">get_bus_coordinates</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/extensions/upgrade_simulation/upgrades/common_functions.html#get_bus_coordinates"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.extensions.upgrade_simulation.upgrades.common_functions.get_bus_coordinates" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function creates a dataframe of all buses in the circuit with their x and y coordinates</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.extensions.upgrade_simulation.upgrades.common_functions.convert_summary_dict_to_df">
+<span class="sig-prename descclassname"><span class="pre">disco.extensions.upgrade_simulation.upgrades.common_functions.</span></span><span class="sig-name descname"><span class="pre">convert_summary_dict_to_df</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">summary_dict</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/extensions/upgrade_simulation/upgrades/common_functions.html#convert_summary_dict_to_df"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.extensions.upgrade_simulation.upgrades.common_functions.convert_summary_dict_to_df" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.extensions.upgrade_simulation.upgrades.common_functions.filter_dictionary">
+<span class="sig-prename descclassname"><span class="pre">disco.extensions.upgrade_simulation.upgrades.common_functions.</span></span><span class="sig-name descname"><span class="pre">filter_dictionary</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dict_data</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wanted_keys</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/extensions/upgrade_simulation/upgrades/common_functions.html#filter_dictionary"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.extensions.upgrade_simulation.upgrades.common_functions.filter_dictionary" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.extensions.upgrade_simulation.upgrades.common_functions.compare_dict">
+<span class="sig-prename descclassname"><span class="pre">disco.extensions.upgrade_simulation.upgrades.common_functions.</span></span><span class="sig-name descname"><span class="pre">compare_dict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">old</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">new</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/extensions/upgrade_simulation/upgrades/common_functions.html#compare_dict"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.extensions.upgrade_simulation.upgrades.common_functions.compare_dict" title="Permalink to this definition">¶</a></dt>
+<dd><p>function to compare two dictionaries with same format.
+Only compares common elements present in both original and new dictionaries</p>
+</dd></dl>
+
+</section>
+<section id="module-disco.extensions.upgrade_simulation.upgrades.cost_computation">
+<span id="disco-extensions-upgrade-simulation-upgrades-cost-computation-module"></span><h2>disco.extensions.upgrade_simulation.upgrades.cost_computation module<a class="headerlink" href="#module-disco.extensions.upgrade_simulation.upgrades.cost_computation" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.extensions.upgrade_simulation.upgrades.cost_computation.compute_all_costs">
+<span class="sig-prename descclassname"><span class="pre">disco.extensions.upgrade_simulation.upgrades.cost_computation.</span></span><span class="sig-name descname"><span class="pre">compute_all_costs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">output_csv_xfmr_upgrades_filepath</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_csv_line_upgrades_filepath</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_csv_voltage_upgrades_filepath</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cost_database_filepath</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">thermal_cost_output_filepath</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">voltage_cost_output_filepath</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">total_cost_output_filepath</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/extensions/upgrade_simulation/upgrades/cost_computation.html#compute_all_costs"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.extensions.upgrade_simulation.upgrades.cost_computation.compute_all_costs" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.extensions.upgrade_simulation.upgrades.cost_computation.compute_transformer_costs">
+<span class="sig-prename descclassname"><span class="pre">disco.extensions.upgrade_simulation.upgrades.cost_computation.</span></span><span class="sig-name descname"><span class="pre">compute_transformer_costs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">xfmr_upgrades_df</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xfmr_cost_database</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/extensions/upgrade_simulation/upgrades/cost_computation.html#compute_transformer_costs"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.extensions.upgrade_simulation.upgrades.cost_computation.compute_transformer_costs" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function computes the transformer costs.
+-Unit equipment cost for new(parallel) and “upgrade” transformers are the same in the database.
+The difference would be the fixed costs added (if present in misc_database)
+-For transformers that are of ActionType “upgrade”:
+transformers of old rating are removed, and that of upgraded rating is added.
+-For transformers that are of ActionType “new(parallel)”:
+A new transformer is placed in parallel with the existing transformer
+-These are the properties considered while choosing unit cost:
+[“rated_kVA”, “phases”, “primary_kV”, “secondary_kV”, “primary_connection_type”, “secondary_connection_type”,
+“num_windings”]
+-For a given transformer, if unit cost pertaining to these properties is not available,
+then the closest “rated_kVA” unit cost is chosen.
+User can decide if they want to choose backup based on another property.
+:param xfmr_upgrades_df:
+:param xfmr_cost_database:
+:param kwargs:</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.extensions.upgrade_simulation.upgrades.cost_computation.reformat_xfmr_files">
+<span class="sig-prename descclassname"><span class="pre">disco.extensions.upgrade_simulation.upgrades.cost_computation.</span></span><span class="sig-name descname"><span class="pre">reformat_xfmr_files</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">xfmr_upgrades_df</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xfmr_cost_database</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/extensions/upgrade_simulation/upgrades/cost_computation.html#reformat_xfmr_files"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.extensions.upgrade_simulation.upgrades.cost_computation.reformat_xfmr_files" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function renames, reformats transformer upgrades dataframe to match cost database columns</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>xfmr_upgrades_df</strong> – </p></li>
+<li><p><strong>xfmr_cost_database</strong> – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.extensions.upgrade_simulation.upgrades.cost_computation.compute_line_costs">
+<span class="sig-prename descclassname"><span class="pre">disco.extensions.upgrade_simulation.upgrades.cost_computation.</span></span><span class="sig-name descname"><span class="pre">compute_line_costs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">line_upgrades_df</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">line_cost_database</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/extensions/upgrade_simulation/upgrades/cost_computation.html#compute_line_costs"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.extensions.upgrade_simulation.upgrades.cost_computation.compute_line_costs" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function computes the line costs.
+-Unit equipment cost for new(parallel) and “upgrade” line are the not same in the database.
+There are different costs given for reconductored and new lines
+-For lines that are of ActionType “upgrade”: “reconductored” line unit costs need to be used
+-For lines that are of ActionType “new (parallel)”: “new” line unit costs need to be used
+-Upgraded lines and new lines run along existing circuit, so length is the same for both
+-These are the properties considered while choosing unit cost:
+[“phases”, “voltage_kV”, “ampere_rating”, “line_placement”, “Description” (i.e. whether new or reconductored)]
+-For a given line, if unit cost pertaining to these properties is not available,
+then the closest “ampere_rating” unit cost is chosen.
+User can decide if they want to choose backup based on another property.
+For 3 phase lines, voltage_kV should be LN voltage (# TODO check if this is correct)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>line_upgrades_df</strong> – </p></li>
+<li><p><strong>line_cost_database</strong> – </p></li>
+<li><p><strong>kwargs</strong> – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.extensions.upgrade_simulation.upgrades.cost_computation.reformat_line_files">
+<span class="sig-prename descclassname"><span class="pre">disco.extensions.upgrade_simulation.upgrades.cost_computation.</span></span><span class="sig-name descname"><span class="pre">reformat_line_files</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">line_upgrades_df</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">line_cost_database</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/extensions/upgrade_simulation/upgrades/cost_computation.html#reformat_line_files"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.extensions.upgrade_simulation.upgrades.cost_computation.reformat_line_files" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function renames, reformats line upgrades dataframe to match cost database columns</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>line_upgrades_df</strong> – </p></li>
+<li><p><strong>line_cost_database</strong> – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.extensions.upgrade_simulation.upgrades.cost_computation.compute_capcontrol_cost">
+<span class="sig-prename descclassname"><span class="pre">disco.extensions.upgrade_simulation.upgrades.cost_computation.</span></span><span class="sig-name descname"><span class="pre">compute_capcontrol_cost</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">voltage_upgrades_df</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">controls_cost_database</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/extensions/upgrade_simulation/upgrades/cost_computation.html#compute_capcontrol_cost"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.extensions.upgrade_simulation.upgrades.cost_computation.compute_capcontrol_cost" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function computes the capacitor controller related costs.
+Note we currently are not adding new capacitors to integrate PV.
+Considered here: new controllers, control setting changes</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>voltage_upgrades_df</strong> – </p></li>
+<li><p><strong>controls_cost_database</strong> – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.extensions.upgrade_simulation.upgrades.cost_computation.compute_voltage_regcontrol_cost">
+<span class="sig-prename descclassname"><span class="pre">disco.extensions.upgrade_simulation.upgrades.cost_computation.</span></span><span class="sig-name descname"><span class="pre">compute_voltage_regcontrol_cost</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">voltage_upgrades_df</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">controls_cost_database</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keyword</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'RegControl'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/extensions/upgrade_simulation/upgrades/cost_computation.html#compute_voltage_regcontrol_cost"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.extensions.upgrade_simulation.upgrades.cost_computation.compute_voltage_regcontrol_cost" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function computes the voltage regulator controller related costs.
+Considered here: new voltage regulator controllers, control setting changes</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>voltage_upgrades_df</strong> – </p></li>
+<li><p><strong>controls_cost_database</strong> – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.extensions.upgrade_simulation.upgrades.cost_computation.get_total_costs">
+<span class="sig-prename descclassname"><span class="pre">disco.extensions.upgrade_simulation.upgrades.cost_computation.</span></span><span class="sig-name descname"><span class="pre">get_total_costs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">thermal_cost_df</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">voltage_cost_df</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/extensions/upgrade_simulation/upgrades/cost_computation.html#get_total_costs"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.extensions.upgrade_simulation.upgrades.cost_computation.get_total_costs" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</section>
+<section id="module-disco.extensions.upgrade_simulation.upgrades.fixed_upgrade_parameters">
+<span id="disco-extensions-upgrade-simulation-upgrades-fixed-upgrade-parameters-module"></span><h2>disco.extensions.upgrade_simulation.upgrades.fixed_upgrade_parameters module<a class="headerlink" href="#module-disco.extensions.upgrade_simulation.upgrades.fixed_upgrade_parameters" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="module-disco.extensions.upgrade_simulation.upgrades.pydss_parameters">
+<span id="disco-extensions-upgrade-simulation-upgrades-pydss-parameters-module"></span><h2>disco.extensions.upgrade_simulation.upgrades.pydss_parameters module<a class="headerlink" href="#module-disco.extensions.upgrade_simulation.upgrades.pydss_parameters" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.extensions.upgrade_simulation.upgrades.pydss_parameters.define_initial_pydss_settings">
+<span class="sig-prename descclassname"><span class="pre">disco.extensions.upgrade_simulation.upgrades.pydss_parameters.</span></span><span class="sig-name descname"><span class="pre">define_initial_pydss_settings</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/extensions/upgrade_simulation/upgrades/pydss_parameters.html#define_initial_pydss_settings"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.extensions.upgrade_simulation.upgrades.pydss_parameters.define_initial_pydss_settings" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.extensions.upgrade_simulation.upgrades.pydss_parameters.pydss_solve_and_check">
+<span class="sig-prename descclassname"><span class="pre">disco.extensions.upgrade_simulation.upgrades.pydss_parameters.</span></span><span class="sig-name descname"><span class="pre">pydss_solve_and_check</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">raise_exception</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/extensions/upgrade_simulation/upgrades/pydss_parameters.html#pydss_solve_and_check"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.extensions.upgrade_simulation.upgrades.pydss_parameters.pydss_solve_and_check" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</section>
+<section id="module-disco.extensions.upgrade_simulation.upgrades.thermal_upgrade_functions">
+<span id="disco-extensions-upgrade-simulation-upgrades-thermal-upgrade-functions-module"></span><h2>disco.extensions.upgrade_simulation.upgrades.thermal_upgrade_functions module<a class="headerlink" href="#module-disco.extensions.upgrade_simulation.upgrades.thermal_upgrade_functions" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.extensions.upgrade_simulation.upgrades.thermal_upgrade_functions.correct_line_violations">
+<span class="sig-prename descclassname"><span class="pre">disco.extensions.upgrade_simulation.upgrades.thermal_upgrade_functions.</span></span><span class="sig-name descname"><span class="pre">correct_line_violations</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">line_loading_df</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">line_design_pu</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">line_upgrade_options</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parallel_lines_limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/extensions/upgrade_simulation/upgrades/thermal_upgrade_functions.html#correct_line_violations"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.extensions.upgrade_simulation.upgrades.thermal_upgrade_functions.correct_line_violations" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function determines line upgrades to correct line violations.
+It also updates the opendss model with upgrades.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>line_loading_df</strong> – </p></li>
+<li><p><strong>line_design_pu</strong> – </p></li>
+<li><p><strong>line_upgrade_options</strong> – </p></li>
+<li><p><strong>parallel_lines_limit</strong> – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.extensions.upgrade_simulation.upgrades.thermal_upgrade_functions.identify_parallel_lines">
+<span class="sig-prename descclassname"><span class="pre">disco.extensions.upgrade_simulation.upgrades.thermal_upgrade_functions.</span></span><span class="sig-name descname"><span class="pre">identify_parallel_lines</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">options</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">row</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parallel_lines_limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/extensions/upgrade_simulation/upgrades/thermal_upgrade_functions.html#identify_parallel_lines"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.extensions.upgrade_simulation.upgrades.thermal_upgrade_functions.identify_parallel_lines" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function identifies parallel line solutions, when a direct upgrade solution is not available from catalogue</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>options</strong> – </p></li>
+<li><p><strong>row</strong> – </p></li>
+<li><p><strong>parallel_lines_limit</strong> – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.extensions.upgrade_simulation.upgrades.thermal_upgrade_functions.define_xfmr_object">
+<span class="sig-prename descclassname"><span class="pre">disco.extensions.upgrade_simulation.upgrades.thermal_upgrade_functions.</span></span><span class="sig-name descname"><span class="pre">define_xfmr_object</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">xfmr_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xfmr_info_series</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">action_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">buses_list</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/extensions/upgrade_simulation/upgrades/thermal_upgrade_functions.html#define_xfmr_object"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.extensions.upgrade_simulation.upgrades.thermal_upgrade_functions.define_xfmr_object" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function is used to create a command string to define an opendss transformer object</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>xfmr_name</strong> – </p></li>
+<li><p><strong>xfmr_info_series</strong> – </p></li>
+<li><p><strong>action_type</strong> – </p></li>
+<li><p><strong>buses_list</strong> – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>string</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.extensions.upgrade_simulation.upgrades.thermal_upgrade_functions.correct_xfmr_violations">
+<span class="sig-prename descclassname"><span class="pre">disco.extensions.upgrade_simulation.upgrades.thermal_upgrade_functions.</span></span><span class="sig-name descname"><span class="pre">correct_xfmr_violations</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">xfmr_loading_df</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xfmr_design_pu</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xfmr_upgrade_options</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parallel_xfmrs_limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/extensions/upgrade_simulation/upgrades/thermal_upgrade_functions.html#correct_xfmr_violations"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.extensions.upgrade_simulation.upgrades.thermal_upgrade_functions.correct_xfmr_violations" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function determines transformer upgrades to correct transformer violations.
+It also updates the opendss model with upgrades.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>xfmr_loading_df</strong> – </p></li>
+<li><p><strong>xfmr_design_pu</strong> – </p></li>
+<li><p><strong>xfmr_upgrade_options</strong> – </p></li>
+<li><p><strong>parallel_xfmrs_limit</strong> – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.extensions.upgrade_simulation.upgrades.thermal_upgrade_functions.identify_parallel_xfmrs">
+<span class="sig-prename descclassname"><span class="pre">disco.extensions.upgrade_simulation.upgrades.thermal_upgrade_functions.</span></span><span class="sig-name descname"><span class="pre">identify_parallel_xfmrs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">options</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">row</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parallel_xfmrs_limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/extensions/upgrade_simulation/upgrades/thermal_upgrade_functions.html#identify_parallel_xfmrs"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.extensions.upgrade_simulation.upgrades.thermal_upgrade_functions.identify_parallel_xfmrs" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function identifies parallel transformer solutions, when a direct upgrade solution is not available from catalogue</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>options</strong> – </p></li>
+<li><p><strong>row</strong> – </p></li>
+<li><p><strong>parallel_xfmrs_limit</strong> – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-disco.extensions.upgrade_simulation.upgrades.voltage_upgrade_functions">
+<span id="disco-extensions-upgrade-simulation-upgrades-voltage-upgrade-functions-module"></span><h2>disco.extensions.upgrade_simulation.upgrades.voltage_upgrade_functions module<a class="headerlink" href="#module-disco.extensions.upgrade_simulation.upgrades.voltage_upgrade_functions" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.extensions.upgrade_simulation.upgrades.voltage_upgrade_functions.edit_capacitor_settings_for_convergence">
+<span class="sig-prename descclassname"><span class="pre">disco.extensions.upgrade_simulation.upgrades.voltage_upgrade_functions.</span></span><span class="sig-name descname"><span class="pre">edit_capacitor_settings_for_convergence</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">voltage_config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">control_command</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/extensions/upgrade_simulation/upgrades/voltage_upgrade_functions.html#edit_capacitor_settings_for_convergence"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.extensions.upgrade_simulation.upgrades.voltage_upgrade_functions.edit_capacitor_settings_for_convergence" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function edits the dss command string with new capacitor settings, in case of convergence issues</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>voltage_config</strong> – </p></li>
+<li><p><strong>control_command</strong> – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>string</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.extensions.upgrade_simulation.upgrades.voltage_upgrade_functions.correct_capacitor_parameters">
+<span class="sig-prename descclassname"><span class="pre">disco.extensions.upgrade_simulation.upgrades.voltage_upgrade_functions.</span></span><span class="sig-name descname"><span class="pre">correct_capacitor_parameters</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">default_capacitor_settings</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">orig_capacitors_df</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nominal_voltage</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/extensions/upgrade_simulation/upgrades/voltage_upgrade_functions.html#correct_capacitor_parameters"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.extensions.upgrade_simulation.upgrades.voltage_upgrade_functions.correct_capacitor_parameters" title="Permalink to this definition">¶</a></dt>
+<dd><p>Corrects cap control parameters: change to voltage controlled, correct PT ratio. Add cap control if not present</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>default_capacitor_settings</strong> – </p></li>
+<li><p><strong>orig_capacitors_df</strong> – </p></li>
+<li><p><strong>nominal_voltage</strong> – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.extensions.upgrade_simulation.upgrades.voltage_upgrade_functions.sweep_capacitor_settings">
+<span class="sig-prename descclassname"><span class="pre">disco.extensions.upgrade_simulation.upgrades.voltage_upgrade_functions.</span></span><span class="sig-name descname"><span class="pre">sweep_capacitor_settings</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">voltage_config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">initial_capacitors_df</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default_capacitor_settings</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">voltage_upper_limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">voltage_lower_limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/extensions/upgrade_simulation/upgrades/voltage_upgrade_functions.html#sweep_capacitor_settings"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.extensions.upgrade_simulation.upgrades.voltage_upgrade_functions.sweep_capacitor_settings" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function sweeps through capacitor settings and returns dataframe of severity metrics for all the sweeps of capacitor controls with best settings</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>voltage_config</strong> – </p></li>
+<li><p><strong>initial_capacitors_df</strong> – </p></li>
+<li><p><strong>default_capacitor_settings</strong> – </p></li>
+<li><p><strong>upper_limit</strong> – </p></li>
+<li><p><strong>lower_limit</strong> – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.extensions.upgrade_simulation.upgrades.voltage_upgrade_functions.choose_best_capacitor_sweep_setting">
+<span class="sig-prename descclassname"><span class="pre">disco.extensions.upgrade_simulation.upgrades.voltage_upgrade_functions.</span></span><span class="sig-name descname"><span class="pre">choose_best_capacitor_sweep_setting</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">capacitor_sweep_df</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">initial_capacitors_df</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/extensions/upgrade_simulation/upgrades/voltage_upgrade_functions.html#choose_best_capacitor_sweep_setting"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.extensions.upgrade_simulation.upgrades.voltage_upgrade_functions.choose_best_capacitor_sweep_setting" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function takes the dataframe containing severity metrics, identifies the best cap control setting out
+of all the sweeps and returns dataframe of capacitor controls with best settings</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>capacitor_sweep_df</strong> – </p></li>
+<li><p><strong>initial_capacitors_df</strong> – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.extensions.upgrade_simulation.upgrades.voltage_upgrade_functions.create_capcontrol_settings_commands">
+<span class="sig-prename descclassname"><span class="pre">disco.extensions.upgrade_simulation.upgrades.voltage_upgrade_functions.</span></span><span class="sig-name descname"><span class="pre">create_capcontrol_settings_commands</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">properties_list</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">capacitors_df</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">creation_action</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'New'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/extensions/upgrade_simulation/upgrades/voltage_upgrade_functions.html#create_capcontrol_settings_commands"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.extensions.upgrade_simulation.upgrades.voltage_upgrade_functions.create_capcontrol_settings_commands" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function creates a list of capacitor control commands, based on the properties list and cap dataframe passed</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>properties_list</strong> – </p></li>
+<li><p><strong>capacitors_df</strong> – </p></li>
+<li><p><strong>creation_action</strong> – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.extensions.upgrade_simulation.upgrades.voltage_upgrade_functions.compute_voltage_violation_severity">
+<span class="sig-prename descclassname"><span class="pre">disco.extensions.upgrade_simulation.upgrades.voltage_upgrade_functions.</span></span><span class="sig-name descname"><span class="pre">compute_voltage_violation_severity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">voltage_upper_limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">voltage_lower_limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/extensions/upgrade_simulation/upgrades/voltage_upgrade_functions.html#compute_voltage_violation_severity"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.extensions.upgrade_simulation.upgrades.voltage_upgrade_functions.compute_voltage_violation_severity" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function computes voltage violation severity metrics, based on bus voltages</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>bus_voltages_df</strong> – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>Dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.extensions.upgrade_simulation.upgrades.voltage_upgrade_functions.correct_regcontrol_parameters">
+<span class="sig-prename descclassname"><span class="pre">disco.extensions.upgrade_simulation.upgrades.voltage_upgrade_functions.</span></span><span class="sig-name descname"><span class="pre">correct_regcontrol_parameters</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">orig_regcontrols_df</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/extensions/upgrade_simulation/upgrades/voltage_upgrade_functions.html#correct_regcontrol_parameters"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.extensions.upgrade_simulation.upgrades.voltage_upgrade_functions.correct_regcontrol_parameters" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function corrects regcontrol ptratio is different from original. And generates commands list</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>orig_regcontrols_df</strong> – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.extensions.upgrade_simulation.upgrades.voltage_upgrade_functions.sweep_regcontrol_settings">
+<span class="sig-prename descclassname"><span class="pre">disco.extensions.upgrade_simulation.upgrades.voltage_upgrade_functions.</span></span><span class="sig-name descname"><span class="pre">sweep_regcontrol_settings</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">voltage_config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">initial_regcontrols_df</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">voltage_upper_limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">voltage_lower_limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">exclude_sub_ltc</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">only_sub_ltc</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/extensions/upgrade_simulation/upgrades/voltage_upgrade_functions.html#sweep_regcontrol_settings"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.extensions.upgrade_simulation.upgrades.voltage_upgrade_functions.sweep_regcontrol_settings" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function increases differences vreg in user defined increments, until upper and lower bounds are reached.
+At a time, same settings are applied to all regulator controls</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>voltage_config</strong> – </p></li>
+<li><p><strong>initial_regcontrols_df</strong> – </p></li>
+<li><p><strong>upper_limit</strong> – </p></li>
+<li><p><strong>lower_limit</strong> – </p></li>
+<li><p><strong>exclude_sub_ltc</strong> – </p></li>
+<li><p><strong>only_sub_ltc</strong> – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.extensions.upgrade_simulation.upgrades.voltage_upgrade_functions.choose_best_regcontrol_sweep_setting">
+<span class="sig-prename descclassname"><span class="pre">disco.extensions.upgrade_simulation.upgrades.voltage_upgrade_functions.</span></span><span class="sig-name descname"><span class="pre">choose_best_regcontrol_sweep_setting</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">regcontrol_sweep_df</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">initial_regcontrols_df</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">exclude_sub_ltc</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">only_sub_ltc</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/extensions/upgrade_simulation/upgrades/voltage_upgrade_functions.html#choose_best_regcontrol_sweep_setting"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.extensions.upgrade_simulation.upgrades.voltage_upgrade_functions.choose_best_regcontrol_sweep_setting" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function takes the dataframe containing severity metrics, identifies the best regcontrol setting out
+of all the sweeps and returns dataframe of regcontrols with best settings</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>regcontrol_sweep_df</strong> – </p></li>
+<li><p><strong>initial_regcontrols_df</strong> – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.extensions.upgrade_simulation.upgrades.voltage_upgrade_functions.create_regcontrol_settings_commands">
+<span class="sig-prename descclassname"><span class="pre">disco.extensions.upgrade_simulation.upgrades.voltage_upgrade_functions.</span></span><span class="sig-name descname"><span class="pre">create_regcontrol_settings_commands</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">properties_list</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">regcontrols_df</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">creation_action</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'New'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/extensions/upgrade_simulation/upgrades/voltage_upgrade_functions.html#create_regcontrol_settings_commands"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.extensions.upgrade_simulation.upgrades.voltage_upgrade_functions.create_regcontrol_settings_commands" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function creates a list of regcontrol commands, based on the properties list and regcontrol dataframe passed</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>properties_list</strong> – </p></li>
+<li><p><strong>regcontrols_df</strong> – </p></li>
+<li><p><strong>creation_action</strong> – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.extensions.upgrade_simulation.upgrades.voltage_upgrade_functions.add_new_regcontrol_command">
+<span class="sig-prename descclassname"><span class="pre">disco.extensions.upgrade_simulation.upgrades.voltage_upgrade_functions.</span></span><span class="sig-name descname"><span class="pre">add_new_regcontrol_command</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">xfmr_info_series</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default_regcontrol_settings</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nominal_voltage</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">action_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'New'</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/extensions/upgrade_simulation/upgrades/voltage_upgrade_functions.html#add_new_regcontrol_command"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.extensions.upgrade_simulation.upgrades.voltage_upgrade_functions.add_new_regcontrol_command" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function runs and returns the dss command to add regulator control at a transformer.
+It also solves the circuit and calculates voltage bases after the regulator has been added to the circuit.
+It calls another function to create the dss command.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>xfmr_info_series</strong> – </p></li>
+<li><p><strong>default_regcontrol_settings</strong> – </p></li>
+<li><p><strong>nominal_voltage</strong> – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.extensions.upgrade_simulation.upgrades.voltage_upgrade_functions.define_regcontrol_object">
+<span class="sig-prename descclassname"><span class="pre">disco.extensions.upgrade_simulation.upgrades.voltage_upgrade_functions.</span></span><span class="sig-name descname"><span class="pre">define_regcontrol_object</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">regcontrol_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">action_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">regcontrol_info_series</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">general_property_list</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/extensions/upgrade_simulation/upgrades/voltage_upgrade_functions.html#define_regcontrol_object"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.extensions.upgrade_simulation.upgrades.voltage_upgrade_functions.define_regcontrol_object" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function is used to create a command string to define an opendss regcontrol object at a given bus.
+A transformer should already exist at this bus. Regulator control will be placed on this transformer.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>regcontrol_name</strong> – </p></li>
+<li><p><strong>action_type</strong> – </p></li>
+<li><p><strong>regcontrol_info_series</strong> – </p></li>
+<li><p><strong>general_property_list</strong> – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.extensions.upgrade_simulation.upgrades.voltage_upgrade_functions.sweep_and_choose_regcontrol_setting">
+<span class="sig-prename descclassname"><span class="pre">disco.extensions.upgrade_simulation.upgrades.voltage_upgrade_functions.</span></span><span class="sig-name descname"><span class="pre">sweep_and_choose_regcontrol_setting</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">voltage_config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">initial_regcontrols_df</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">upper_limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lower_limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">exclude_sub_ltc</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">only_sub_ltc</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dss_file_list</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dss_commands_list</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/extensions/upgrade_simulation/upgrades/voltage_upgrade_functions.html#sweep_and_choose_regcontrol_setting"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.extensions.upgrade_simulation.upgrades.voltage_upgrade_functions.sweep_and_choose_regcontrol_setting" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function combines the regcontrol settings sweep and choosing of best setting.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>voltage_config</strong> – </p></li>
+<li><p><strong>initial_regcontrols_df</strong> – </p></li>
+<li><p><strong>upper_limit</strong> – </p></li>
+<li><p><strong>lower_limit</strong> – </p></li>
+<li><p><strong>exclude_sub_ltc</strong> – </p></li>
+<li><p><strong>only_sub_ltc</strong> – </p></li>
+<li><p><strong>dss_file_list</strong> – </p></li>
+<li><p><strong>dss_commands_list</strong> – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.extensions.upgrade_simulation.upgrades.voltage_upgrade_functions.add_substation_xfmr">
+<span class="sig-prename descclassname"><span class="pre">disco.extensions.upgrade_simulation.upgrades.voltage_upgrade_functions.</span></span><span class="sig-name descname"><span class="pre">add_substation_xfmr</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">chosen_option_row</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_row</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/extensions/upgrade_simulation/upgrades/voltage_upgrade_functions.html#add_substation_xfmr"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.extensions.upgrade_simulation.upgrades.voltage_upgrade_functions.add_substation_xfmr" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.extensions.upgrade_simulation.upgrades.voltage_upgrade_functions.compare_objective_function">
+<span class="sig-prename descclassname"><span class="pre">disco.extensions.upgrade_simulation.upgrades.voltage_upgrade_functions.</span></span><span class="sig-name descname"><span class="pre">compare_objective_function</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/extensions/upgrade_simulation/upgrades/voltage_upgrade_functions.html#compare_objective_function"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.extensions.upgrade_simulation.upgrades.voltage_upgrade_functions.compare_objective_function" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.extensions.upgrade_simulation.upgrades.voltage_upgrade_functions.add_new_node_and_xfmr">
+<span class="sig-prename descclassname"><span class="pre">disco.extensions.upgrade_simulation.upgrades.voltage_upgrade_functions.</span></span><span class="sig-name descname"><span class="pre">add_new_node_and_xfmr</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">node</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">circuit_source</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sub_xfmr_conn_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">action_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'New'</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/extensions/upgrade_simulation/upgrades/voltage_upgrade_functions.html#add_new_node_and_xfmr"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.extensions.upgrade_simulation.upgrades.voltage_upgrade_functions.add_new_node_and_xfmr" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function adds a new transformer by creating a new node
+(before or after a line, depending on whether it is a substation xfmr)
+action_type parameter is ‘New’ by default, unless we’re redefining, and the ‘Edit’ has to be passed.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>node</strong> – </p></li>
+<li><p><strong>circuit_source</strong> – </p></li>
+<li><p><strong>sub_xfmr_conn_type</strong> – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.extensions.upgrade_simulation.upgrades.voltage_upgrade_functions.disable_new_xfmr_and_edit_line">
+<span class="sig-prename descclassname"><span class="pre">disco.extensions.upgrade_simulation.upgrades.voltage_upgrade_functions.</span></span><span class="sig-name descname"><span class="pre">disable_new_xfmr_and_edit_line</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">transformer_name_to_disable</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">line_name_to_modify</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/extensions/upgrade_simulation/upgrades/voltage_upgrade_functions.html#disable_new_xfmr_and_edit_line"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.extensions.upgrade_simulation.upgrades.voltage_upgrade_functions.disable_new_xfmr_and_edit_line" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function disables an added transformer in the feeder.
+since OpenDSS disables by transformer by opening the circuit instead of creating a short circuit,
+this function will remove the transformer by first disabling it, then it will connect the line properly to
+remove the islands. (note: we cant remove the element definition completely)
+Substation will always have a xfmr by this point so only regulator transformers have to be removed</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>transformer_name</strong> – </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.extensions.upgrade_simulation.upgrades.voltage_upgrade_functions.add_new_regcontrol_at_node">
+<span class="sig-prename descclassname"><span class="pre">disco.extensions.upgrade_simulation.upgrades.voltage_upgrade_functions.</span></span><span class="sig-name descname"><span class="pre">add_new_regcontrol_at_node</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">node</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default_regcontrol_settings</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nominal_voltage</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/extensions/upgrade_simulation/upgrades/voltage_upgrade_functions.html#add_new_regcontrol_at_node"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.extensions.upgrade_simulation.upgrades.voltage_upgrade_functions.add_new_regcontrol_at_node" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function adds a new regcontrol at a node. It identifies the correct transformer and places regcontrol there.
+Identify whether or not a reg contrl exists at the transformer connected to this bus - if not, place new regcontrol</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>node</strong> – </p></li>
+<li><p><strong>default_regcontrol_settings</strong> – </p></li>
+<li><p><strong>nominal_voltage</strong> – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.extensions.upgrade_simulation.upgrades.voltage_upgrade_functions.add_bus_nodes">
+<span class="sig-prename descclassname"><span class="pre">disco.extensions.upgrade_simulation.upgrades.voltage_upgrade_functions.</span></span><span class="sig-name descname"><span class="pre">add_bus_nodes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">G</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bus_coordinates_df</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/extensions/upgrade_simulation/upgrades/voltage_upgrade_functions.html#add_bus_nodes"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.extensions.upgrade_simulation.upgrades.voltage_upgrade_functions.add_bus_nodes" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.extensions.upgrade_simulation.upgrades.voltage_upgrade_functions.extract_common_element_from_lists">
+<span class="sig-prename descclassname"><span class="pre">disco.extensions.upgrade_simulation.upgrades.voltage_upgrade_functions.</span></span><span class="sig-name descname"><span class="pre">extract_common_element_from_lists</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">list_of_lists</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/extensions/upgrade_simulation/upgrades/voltage_upgrade_functions.html#extract_common_element_from_lists"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.extensions.upgrade_simulation.upgrades.voltage_upgrade_functions.extract_common_element_from_lists" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.extensions.upgrade_simulation.upgrades.voltage_upgrade_functions.identify_common_upstream_nodes">
+<span class="sig-prename descclassname"><span class="pre">disco.extensions.upgrade_simulation.upgrades.voltage_upgrade_functions.</span></span><span class="sig-name descname"><span class="pre">identify_common_upstream_nodes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">G</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">buses_list</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/extensions/upgrade_simulation/upgrades/voltage_upgrade_functions.html#identify_common_upstream_nodes"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.extensions.upgrade_simulation.upgrades.voltage_upgrade_functions.identify_common_upstream_nodes" title="Permalink to this definition">¶</a></dt>
+<dd><p>In this function the very first common upstream node and all upstream nodes for the members of the
+cluster are identified</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>G</strong> – </p></li>
+<li><p><strong>buses_list</strong> – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.extensions.upgrade_simulation.upgrades.voltage_upgrade_functions.test_new_regulator_placement_on_common_nodes">
+<span class="sig-prename descclassname"><span class="pre">disco.extensions.upgrade_simulation.upgrades.voltage_upgrade_functions.</span></span><span class="sig-name descname"><span class="pre">test_new_regulator_placement_on_common_nodes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">voltage_upper_limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">voltage_lower_limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nominal_voltage</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">common_upstream_nodes_list</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">circuit_source</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default_regcontrol_settings</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/extensions/upgrade_simulation/upgrades/voltage_upgrade_functions.html#test_new_regulator_placement_on_common_nodes"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.extensions.upgrade_simulation.upgrades.voltage_upgrade_functions.test_new_regulator_placement_on_common_nodes" title="Permalink to this definition">¶</a></dt>
+<dd><p>In each cluster group, place a new regulator control at each common upstream node, unless it is the source bus
+(since that already contains the LTC) or if it has a distribution transformer.</p>
+<p>If a transformer exists, simply add a new reg control -
+in fact calling the add_new_regctrl function will automatically check whether a reg control exists or not
+-  so only thing to be ensured is that a transformer should exist.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>voltage_upper_limit</strong> – </p></li>
+<li><p><strong>common_upstream_nodes_dict</strong> – </p></li>
+<li><p><strong>circuit_source</strong> – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.extensions.upgrade_simulation.upgrades.voltage_upgrade_functions.correct_node_coords">
+<span class="sig-prename descclassname"><span class="pre">disco.extensions.upgrade_simulation.upgrades.voltage_upgrade_functions.</span></span><span class="sig-name descname"><span class="pre">correct_node_coords</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">G</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">position_dict</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">circuit_source</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/extensions/upgrade_simulation/upgrades/voltage_upgrade_functions.html#correct_node_coords"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.extensions.upgrade_simulation.upgrades.voltage_upgrade_functions.correct_node_coords" title="Permalink to this definition">¶</a></dt>
+<dd><p>If node doesn’t have node attributes, attach parent or child node’s attributes
+:param G:
+:param position_dict:
+:param circuit_source:</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.extensions.upgrade_simulation.upgrades.voltage_upgrade_functions.get_full_distance_df">
+<span class="sig-prename descclassname"><span class="pre">disco.extensions.upgrade_simulation.upgrades.voltage_upgrade_functions.</span></span><span class="sig-name descname"><span class="pre">get_full_distance_df</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">upper_triang_paths_dict</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/extensions/upgrade_simulation/upgrades/voltage_upgrade_functions.html#get_full_distance_df"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.extensions.upgrade_simulation.upgrades.voltage_upgrade_functions.get_full_distance_df" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function creates full distance dictionary as a square array from the upper triangular dictionary.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>upper_triang_paths_dict</strong> – </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.extensions.upgrade_simulation.upgrades.voltage_upgrade_functions.generate_edges">
+<span class="sig-prename descclassname"><span class="pre">disco.extensions.upgrade_simulation.upgrades.voltage_upgrade_functions.</span></span><span class="sig-name descname"><span class="pre">generate_edges</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">G</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/extensions/upgrade_simulation/upgrades/voltage_upgrade_functions.html#generate_edges"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.extensions.upgrade_simulation.upgrades.voltage_upgrade_functions.generate_edges" title="Permalink to this definition">¶</a></dt>
+<dd><p>All lines, switches, reclosers etc are modeled as lines, so calling lines takes care of all of them.
+However we also need to loop over transformers as they form the edge between primary and secondary nodes</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>G</strong> – </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.extensions.upgrade_simulation.upgrades.voltage_upgrade_functions.get_upper_triangular_dist">
+<span class="sig-prename descclassname"><span class="pre">disco.extensions.upgrade_simulation.upgrades.voltage_upgrade_functions.</span></span><span class="sig-name descname"><span class="pre">get_upper_triangular_dist</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">G</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">buses_with_violations</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/extensions/upgrade_simulation/upgrades/voltage_upgrade_functions.html#get_upper_triangular_dist"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.extensions.upgrade_simulation.upgrades.voltage_upgrade_functions.get_upper_triangular_dist" title="Permalink to this definition">¶</a></dt>
+<dd><p>Identify shortest dijkstra paths between all buses with violations.
+Returns a dictionary of nodes with distances to other nodes (only upper triangular)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>G</strong> – </p></li>
+<li><p><strong>buses_with_violations</strong> – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.extensions.upgrade_simulation.upgrades.voltage_upgrade_functions.perform_clustering">
+<span class="sig-prename descclassname"><span class="pre">disco.extensions.upgrade_simulation.upgrades.voltage_upgrade_functions.</span></span><span class="sig-name descname"><span class="pre">perform_clustering</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">num_clusters</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">square_distance_array</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">buses_with_violations</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/extensions/upgrade_simulation/upgrades/voltage_upgrade_functions.html#perform_clustering"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.extensions.upgrade_simulation.upgrades.voltage_upgrade_functions.perform_clustering" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function performs clustering and returns a dictionary with cluster_number as key and
+list of buses in each cluster as values.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>num_clusters</strong> – </p></li>
+<li><p><strong>square_array</strong> – </p></li>
+<li><p><strong>buses_with_violations</strong> – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.extensions.upgrade_simulation.upgrades.voltage_upgrade_functions.per_cluster_group_regulator_analysis">
+<span class="sig-prename descclassname"><span class="pre">disco.extensions.upgrade_simulation.upgrades.voltage_upgrade_functions.</span></span><span class="sig-name descname"><span class="pre">per_cluster_group_regulator_analysis</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">G</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">buses_list</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">voltage_config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">voltage_upper_limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">voltage_lower_limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default_regcontrol_settings</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">circuit_source</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/extensions/upgrade_simulation/upgrades/voltage_upgrade_functions.html#per_cluster_group_regulator_analysis"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.extensions.upgrade_simulation.upgrades.voltage_upgrade_functions.per_cluster_group_regulator_analysis" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function performs analysis on one cluster group of buses with violations.
+It determines the common upstream buses for all the buses with violations in that cluster group.
+It places regulators on each of these common noeds, and determines the best node to place the regulator for that group.
+Also determines the best reg control settings with this newly added regulator.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>G</strong> (<em>_type_</em><em>, </em><em>optional</em>) – _description_. Defaults to None.</p></li>
+<li><p><strong>cluster_id</strong> (<em>_type_</em><em>, </em><em>optional</em>) – _description_. Defaults to None.</p></li>
+<li><p><strong>buses_list</strong> (<em>_type_</em><em>, </em><em>optional</em>) – _description_. Defaults to None.</p></li>
+<li><p><strong>voltage_config</strong> (<em>_type_</em><em>, </em><em>optional</em>) – _description_. Defaults to None.</p></li>
+<li><p><strong>voltage_upper_limit</strong> (<em>_type_</em><em>, </em><em>optional</em>) – _description_. Defaults to None.</p></li>
+<li><p><strong>voltage_lower_limit</strong> (<em>_type_</em><em>, </em><em>optional</em>) – _description_. Defaults to None.</p></li>
+<li><p><strong>default_regcontrol_settings</strong> (<em>_type_</em><em>, </em><em>optional</em>) – _description_. Defaults to None.</p></li>
+<li><p><strong>circuit_source</strong> (<em>_type_</em><em>, </em><em>optional</em>) – _description_. Defaults to None.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>_description_</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>_type_</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.extensions.upgrade_simulation.upgrades.voltage_upgrade_functions.cluster_and_place_regulator">
+<span class="sig-prename descclassname"><span class="pre">disco.extensions.upgrade_simulation.upgrades.voltage_upgrade_functions.</span></span><span class="sig-name descname"><span class="pre">cluster_and_place_regulator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">G</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">square_distance_df</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">buses_with_violations</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_clusters</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">voltage_config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">voltage_upper_limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">voltage_lower_limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default_regcontrol_settings</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">circuit_source</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/extensions/upgrade_simulation/upgrades/voltage_upgrade_functions.html#cluster_and_place_regulator"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.extensions.upgrade_simulation.upgrades.voltage_upgrade_functions.cluster_and_place_regulator" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.extensions.upgrade_simulation.upgrades.voltage_upgrade_functions.determine_new_regulator_location">
+<span class="sig-prename descclassname"><span class="pre">disco.extensions.upgrade_simulation.upgrades.voltage_upgrade_functions.</span></span><span class="sig-name descname"><span class="pre">determine_new_regulator_location</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">max_regs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">circuit_source</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">buses_with_violations</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">voltage_upper_limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">voltage_lower_limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">create_plot</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">voltage_config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default_regcontrol_settings</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/extensions/upgrade_simulation/upgrades/voltage_upgrade_functions.html#determine_new_regulator_location"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.extensions.upgrade_simulation.upgrades.voltage_upgrade_functions.determine_new_regulator_location" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.extensions.upgrade_simulation.upgrades.voltage_upgrade_functions.disable_previous_clustering_option">
+<span class="sig-prename descclassname"><span class="pre">disco.extensions.upgrade_simulation.upgrades.voltage_upgrade_functions.</span></span><span class="sig-name descname"><span class="pre">disable_previous_clustering_option</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cluster_group_info_dict</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/extensions/upgrade_simulation/upgrades/voltage_upgrade_functions.html#disable_previous_clustering_option"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.extensions.upgrade_simulation.upgrades.voltage_upgrade_functions.disable_previous_clustering_option" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.extensions.upgrade_simulation.upgrades.voltage_upgrade_functions.plot_heatmap_distmatrix">
+<span class="sig-prename descclassname"><span class="pre">disco.extensions.upgrade_simulation.upgrades.voltage_upgrade_functions.</span></span><span class="sig-name descname"><span class="pre">plot_heatmap_distmatrix</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">square_array</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fig_folder</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/extensions/upgrade_simulation/upgrades/voltage_upgrade_functions.html#plot_heatmap_distmatrix"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.extensions.upgrade_simulation.upgrades.voltage_upgrade_functions.plot_heatmap_distmatrix" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.extensions.upgrade_simulation.upgrades.voltage_upgrade_functions.plot_feeder">
+<span class="sig-prename descclassname"><span class="pre">disco.extensions.upgrade_simulation.upgrades.voltage_upgrade_functions.</span></span><span class="sig-name descname"><span class="pre">plot_feeder</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">G</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show_fig</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fig_folder</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/extensions/upgrade_simulation/upgrades/voltage_upgrade_functions.html#plot_feeder"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.extensions.upgrade_simulation.upgrades.voltage_upgrade_functions.plot_feeder" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.extensions.upgrade_simulation.upgrades.voltage_upgrade_functions.plot_voltage_violations">
+<span class="sig-prename descclassname"><span class="pre">disco.extensions.upgrade_simulation.upgrades.voltage_upgrade_functions.</span></span><span class="sig-name descname"><span class="pre">plot_voltage_violations</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">G</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">buses_with_violations</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fig_folder</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">circuit_source</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/extensions/upgrade_simulation/upgrades/voltage_upgrade_functions.html#plot_voltage_violations"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.extensions.upgrade_simulation.upgrades.voltage_upgrade_functions.plot_voltage_violations" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.extensions.upgrade_simulation.upgrades.voltage_upgrade_functions.plot_thermal_violations">
+<span class="sig-prename descclassname"><span class="pre">disco.extensions.upgrade_simulation.upgrades.voltage_upgrade_functions.</span></span><span class="sig-name descname"><span class="pre">plot_thermal_violations</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">G</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">edge_size_list</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">edge_pos_plt_dict</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">edge_to_plt_dict</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">DT_sec_coords</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">DT_sec_lst</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">DT_size_list</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fig_folder</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/extensions/upgrade_simulation/upgrades/voltage_upgrade_functions.html#plot_thermal_violations"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.extensions.upgrade_simulation.upgrades.voltage_upgrade_functions.plot_thermal_violations" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.extensions.upgrade_simulation.upgrades.voltage_upgrade_functions.plot_created_clusters">
+<span class="sig-prename descclassname"><span class="pre">disco.extensions.upgrade_simulation.upgrades.voltage_upgrade_functions.</span></span><span class="sig-name descname"><span class="pre">plot_created_clusters</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">G</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">clusters_dict</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">upstream_nodes_dict</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">upstream_reg_node</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cluster_nodes_list</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">optimal_clusters</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fig_folder</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/extensions/upgrade_simulation/upgrades/voltage_upgrade_functions.html#plot_created_clusters"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.extensions.upgrade_simulation.upgrades.voltage_upgrade_functions.plot_created_clusters" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.extensions.upgrade_simulation.upgrades.voltage_upgrade_functions.add_graph_bus_nodes">
+<span class="sig-prename descclassname"><span class="pre">disco.extensions.upgrade_simulation.upgrades.voltage_upgrade_functions.</span></span><span class="sig-name descname"><span class="pre">add_graph_bus_nodes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">G</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bus_coordinates_df</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/extensions/upgrade_simulation/upgrades/voltage_upgrade_functions.html#add_graph_bus_nodes"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.extensions.upgrade_simulation.upgrades.voltage_upgrade_functions.add_graph_bus_nodes" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.extensions.upgrade_simulation.upgrades.voltage_upgrade_functions.get_graph_edges_dataframe">
+<span class="sig-prename descclassname"><span class="pre">disco.extensions.upgrade_simulation.upgrades.voltage_upgrade_functions.</span></span><span class="sig-name descname"><span class="pre">get_graph_edges_dataframe</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">attr_fields</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/extensions/upgrade_simulation/upgrades/voltage_upgrade_functions.html#get_graph_edges_dataframe"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.extensions.upgrade_simulation.upgrades.voltage_upgrade_functions.get_graph_edges_dataframe" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>This function adds lines and transformers as edges to the graph</dt><dd><p>All lines, switches, reclosers etc are modeled as lines, so calling lines takes care of all of them.</p>
+</dd>
+</dl>
+<p>Transformers are also added as edges since they form the edge between primary and secondary nodes</p>
+<blockquote>
+<div><p>G</p>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.extensions.upgrade_simulation.upgrades.voltage_upgrade_functions.add_graph_edges">
+<span class="sig-prename descclassname"><span class="pre">disco.extensions.upgrade_simulation.upgrades.voltage_upgrade_functions.</span></span><span class="sig-name descname"><span class="pre">add_graph_edges</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">G</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">edges_df</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">attr_fields</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">source</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'bus1'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'bus2'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/extensions/upgrade_simulation/upgrades/voltage_upgrade_functions.html#add_graph_edges"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.extensions.upgrade_simulation.upgrades.voltage_upgrade_functions.add_graph_edges" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.extensions.upgrade_simulation.upgrades.voltage_upgrade_functions.searchDictKey">
+<span class="sig-prename descclassname"><span class="pre">disco.extensions.upgrade_simulation.upgrades.voltage_upgrade_functions.</span></span><span class="sig-name descname"><span class="pre">searchDictKey</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dct</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/extensions/upgrade_simulation/upgrades/voltage_upgrade_functions.html#searchDictKey"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.extensions.upgrade_simulation.upgrades.voltage_upgrade_functions.searchDictKey" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function returns a list of dictionary keys that have a certain value</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dct</strong> – </p></li>
+<li><p><strong>value</strong> – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.extensions.upgrade_simulation.upgrades.voltage_upgrade_functions.generate_networkx_representation">
+<span class="sig-prename descclassname"><span class="pre">disco.extensions.upgrade_simulation.upgrades.voltage_upgrade_functions.</span></span><span class="sig-name descname"><span class="pre">generate_networkx_representation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/extensions/upgrade_simulation/upgrades/voltage_upgrade_functions.html#generate_networkx_representation"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.extensions.upgrade_simulation.upgrades.voltage_upgrade_functions.generate_networkx_representation" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function generates a networkx graph of the circuit</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>kwargs</strong> – </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.extensions.upgrade_simulation.upgrades.voltage_upgrade_functions.correct_node_coordinates">
+<span class="sig-prename descclassname"><span class="pre">disco.extensions.upgrade_simulation.upgrades.voltage_upgrade_functions.</span></span><span class="sig-name descname"><span class="pre">correct_node_coordinates</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">G</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/extensions/upgrade_simulation/upgrades/voltage_upgrade_functions.html#correct_node_coordinates"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.extensions.upgrade_simulation.upgrades.voltage_upgrade_functions.correct_node_coordinates" title="Permalink to this definition">¶</a></dt>
+<dd><p>If node doesn’t have node attributes, attach parent or child node’s attributes
+:param G:
+:param circuit_source:</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.extensions.upgrade_simulation.upgrades.voltage_upgrade_functions.get_capacitor_upgrades">
+<span class="sig-prename descclassname"><span class="pre">disco.extensions.upgrade_simulation.upgrades.voltage_upgrade_functions.</span></span><span class="sig-name descname"><span class="pre">get_capacitor_upgrades</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">orig_capacitors_df</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">new_capacitors_df</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/extensions/upgrade_simulation/upgrades/voltage_upgrade_functions.html#get_capacitor_upgrades"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.extensions.upgrade_simulation.upgrades.voltage_upgrade_functions.get_capacitor_upgrades" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.extensions.upgrade_simulation.upgrades.voltage_upgrade_functions.check_substation_LTC">
+<span class="sig-prename descclassname"><span class="pre">disco.extensions.upgrade_simulation.upgrades.voltage_upgrade_functions.</span></span><span class="sig-name descname"><span class="pre">check_substation_LTC</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">new_ckt_info</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xfmr_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/extensions/upgrade_simulation/upgrades/voltage_upgrade_functions.html#check_substation_LTC"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.extensions.upgrade_simulation.upgrades.voltage_upgrade_functions.check_substation_LTC" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.extensions.upgrade_simulation.upgrades.voltage_upgrade_functions.get_regulator_upgrades">
+<span class="sig-prename descclassname"><span class="pre">disco.extensions.upgrade_simulation.upgrades.voltage_upgrade_functions.</span></span><span class="sig-name descname"><span class="pre">get_regulator_upgrades</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">orig_regcontrols_df</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">new_regcontrols_df</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">orig_xfmrs_df</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">new_ckt_info</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/extensions/upgrade_simulation/upgrades/voltage_upgrade_functions.html#get_regulator_upgrades"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.extensions.upgrade_simulation.upgrades.voltage_upgrade_functions.get_regulator_upgrades" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</section>
+<section id="module-disco.extensions.upgrade_simulation.upgrades">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-disco.extensions.upgrade_simulation.upgrades" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2019, NREL.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

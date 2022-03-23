@@ -1,0 +1,29 @@
+disco.sources.epri package
+==========================
+
+Submodules
+----------
+
+disco.sources.epri.download module
+----------------------------------
+
+.. automodule:: disco.sources.epri.download
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+disco.sources.epri.epri\_model module
+-------------------------------------
+
+.. automodule:: disco.sources.epri.epri_model
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: disco.sources.epri
+   :members:
+   :undoc-members:
+   :show-inheritance:

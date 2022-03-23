@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>disco.pydss.pydss_configuration_base &mdash; DISCO 0.1 documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link href="../../../_static/style.css" rel="stylesheet" type="text/css">
+
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../../index.html" class="icon icon-home"> DISCO
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">User Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../installation.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../installation.html#use-conda">Use Conda</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../installation.html#use-docker">Use Docker</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../overview.html">Overview</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../overview.html#data-sources">Data Sources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../overview.html#transform-model">Transform Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../overview.html#config-jobs">Config Jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../overview.html#submit-jobs">Submit Jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../overview.html#result-analysis">Result Analysis</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../quick-start.html">Quick Start</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../quick-start.html#source-data">Source Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../quick-start.html#transform-model">Transform Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../quick-start.html#config-jobs">Config Jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../quick-start.html#submit-jobs">Submit Jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../quick-start.html#result-analysis">Result Analysis</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../data-sources.html">Data Sources</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../data-sources/smart-ds-model-preparation.html">SMART-DS OpenDSS Model Preparation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../data-sources.html#gem-model">GEM Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../data-sources.html#epri-model">EPRI Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../data-sources.html#sourcetree1-model">SourceTree1 Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../data-sources.html#sourcetree2-model">SourceTree2 Model</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../pv-deployments.html">PV Deployments</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../pv-deployments.html#sourcetree1-pv-deployments">SourceTree1 PV Deployments</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../transform-models.html">Transform Models</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../transform-models.html#transform-model-help">Transform Model Help</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../transform-models.html#disco-model-in-depth">DISCO Model in Depth</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../analysis-workflows.html">Analysis Workflows</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../analysis-workflows/hosting-capacity-analysis.html">Hosting Capacity Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../analysis-workflows/upgrade-cost-analysis.html">Upgrade Cost Analysis</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../pipelines.html">Pipelines</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../pipelines.html#sourcetree1model">SourceTree1Model</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../debugging-issues.html">Debugging Issues</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../debugging-issues.html#using-jade">Using JADE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../debugging-issues.html#using-pydss">Using PyDSS</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../data-ingestion.html">Data Ingestion</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../data-ingestion.html#ingest-to-new-database">Ingest to New Database</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../data-ingestion.html#ingest-to-existing-database">Ingest to Existing Database</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../data-ingestion.html#run-database-queries">Run Database Queries</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../advanced-guide.html">Advanced Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../advanced-guide/analysis-deployment.html">Analysis Deployment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../advanced-guide/upgrade-cost-analysis-generic-models.html">Upgrade Cost Analysis JSON Schemas</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contribution</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../build-docs.html">Build docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../license.html">License</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">DISCO</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+      <li>disco.pydss.pydss_configuration_base</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for disco.pydss.pydss_configuration_base</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;Contains functionality to configure PyDss simulations.&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">copy</span>
+<span class="kn">import</span> <span class="nn">logging</span>
+<span class="kn">import</span> <span class="nn">os</span>
+
+<span class="kn">from</span> <span class="nn">jade.exceptions</span> <span class="kn">import</span> <span class="n">InvalidParameter</span>
+<span class="kn">from</span> <span class="nn">PyDSS.common</span> <span class="kn">import</span> <span class="n">ControllerType</span>
+<span class="kn">from</span> <span class="nn">PyDSS.registry</span> <span class="kn">import</span> <span class="n">Registry</span>
+
+<span class="kn">import</span> <span class="nn">disco</span>
+<span class="kn">from</span> <span class="nn">disco.distribution.distribution_configuration</span> <span class="kn">import</span> <span class="n">DistributionConfiguration</span>
+<span class="kn">from</span> <span class="nn">disco.enums</span> <span class="kn">import</span> <span class="n">AnalysisType</span><span class="p">,</span> <span class="n">get_enum_from_value</span><span class="p">,</span> <span class="n">SimulationType</span>
+<span class="kn">from</span> <span class="nn">disco.pydss.common</span> <span class="kn">import</span> <span class="n">ConfigType</span>
+
+
+<span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+
+<span class="n">DEFAULT_CONTROLLER_CONFIG_FILE</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="nb">getattr</span><span class="p">(</span><span class="n">disco</span><span class="p">,</span> <span class="s2">&quot;__path__&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]),</span> <span class="s2">&quot;disco&quot;</span><span class="p">,</span> <span class="s2">&quot;pydss&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;config&quot;</span><span class="p">,</span> <span class="s2">&quot;pv_controllers.toml&quot;</span>
+<span class="p">)</span>
+
+<span class="n">DEFAULT_CONTROLLER_CONFIGS</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">{</span>
+        <span class="s2">&quot;controller_type&quot;</span><span class="p">:</span> <span class="n">ControllerType</span><span class="o">.</span><span class="n">PV_CONTROLLER</span><span class="o">.</span><span class="n">value</span><span class="p">,</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;volt_var_1&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;filename&quot;</span><span class="p">:</span> <span class="n">DEFAULT_CONTROLLER_CONFIG_FILE</span>
+    <span class="p">}</span>
+<span class="p">]</span>
+
+<span class="n">DEFAULT_LOAD_SHAPE_START_TIME</span> <span class="o">=</span> <span class="s2">&quot;2021-01-01 00:00:00.0&quot;</span>
+
+<span class="n">DEFAULT_PYDSS_SIMULATION_CONFIG</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;project&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;start_time&quot;</span><span class="p">:</span> <span class="s2">&quot;2021-01-01 00:00:00.0&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;loadshape_start_time&quot;</span><span class="p">:</span> <span class="n">DEFAULT_LOAD_SHAPE_START_TIME</span><span class="p">,</span>
+        <span class="s2">&quot;simulation_duration_min&quot;</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">,</span>
+        <span class="s2">&quot;step_resolution_sec&quot;</span><span class="p">:</span> <span class="mf">900.0</span><span class="p">,</span>
+        <span class="s2">&quot;max_control_iterations&quot;</span><span class="p">:</span> <span class="mi">50</span><span class="p">,</span>
+        <span class="s2">&quot;error_tolerance&quot;</span><span class="p">:</span> <span class="mf">0.0001</span><span class="p">,</span>
+        <span class="s2">&quot;max_error_tolerance&quot;</span><span class="p">:</span> <span class="mf">0.01</span><span class="p">,</span>
+        <span class="s2">&quot;convergence_error_percent_threshold&quot;</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">,</span>
+        <span class="s2">&quot;skip_export_on_convergence_error&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+        <span class="s2">&quot;use_controller_registry&quot;</span><span class="p">:</span> <span class="kc">True</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;exports&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;export_results&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+        <span class="s2">&quot;export_elements&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+        <span class="s2">&quot;export_element_types&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Loads&quot;</span><span class="p">,</span> <span class="s2">&quot;PVSystems&quot;</span><span class="p">],</span>  <span class="c1"># Make this empty to export all types.</span>
+        <span class="s2">&quot;export_event_log&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+        <span class="s2">&quot;export_format&quot;</span><span class="p">:</span> <span class="s2">&quot;h5&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;export_compression&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+        <span class="s2">&quot;export_data_tables&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+        <span class="s2">&quot;export_pv_profiles&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;reports&quot;</span><span class="p">:</span> <span class="p">{},</span>
+<span class="p">}</span>
+
+<span class="n">DEFAULT_PYDSS_CONFIG</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="n">ConfigType</span><span class="o">.</span><span class="n">SIMULATION_CONFIG</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;default&quot;</span><span class="p">:</span> <span class="n">copy</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">(</span><span class="n">DEFAULT_PYDSS_SIMULATION_CONFIG</span><span class="p">),</span>
+    <span class="p">},</span>
+    <span class="n">ConfigType</span><span class="o">.</span><span class="n">CONTROLLER_CONFIG</span><span class="p">:</span> <span class="n">DEFAULT_CONTROLLER_CONFIGS</span><span class="p">,</span>
+    <span class="n">ConfigType</span><span class="o">.</span><span class="n">SCENARIOS</span><span class="p">:</span> <span class="p">[],</span>
+<span class="p">}</span>
+
+
+<div class="viewcode-block" id="get_default_exports_file"><a class="viewcode-back" href="../../../disco/disco.pydss.html#disco.pydss.pydss_configuration_base.get_default_exports_file">[docs]</a><span class="k">def</span> <span class="nf">get_default_exports_file</span><span class="p">(</span><span class="n">simulation_type</span><span class="p">:</span> <span class="n">SimulationType</span><span class="p">,</span> <span class="n">analysis_type</span><span class="p">:</span> <span class="n">AnalysisType</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Return the default exports file</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    simulation_type: SimulationType</span>
+<span class="sd">    analysis_type: AnalysisType</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    str</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">simulation_type</span> <span class="o">==</span> <span class="n">SimulationType</span><span class="o">.</span><span class="n">SNAPSHOT</span><span class="p">:</span>
+        <span class="n">filename</span> <span class="o">=</span> <span class="s2">&quot;snapshot-exports.toml&quot;</span>
+    <span class="k">elif</span> <span class="n">simulation_type</span> <span class="ow">in</span> <span class="p">(</span><span class="n">SimulationType</span><span class="o">.</span><span class="n">QSTS</span><span class="p">,</span> <span class="n">SimulationType</span><span class="o">.</span><span class="n">TIME_SERIES</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">analysis_type</span> <span class="o">==</span> <span class="n">AnalysisType</span><span class="o">.</span><span class="n">COST_BENEFIT</span><span class="p">:</span>
+            <span class="n">filename</span> <span class="o">=</span> <span class="s2">&quot;cba-exports.toml&quot;</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">filename</span> <span class="o">=</span> <span class="s2">&quot;exports.toml&quot;</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">assert</span> <span class="kc">False</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;Exports for </span><span class="si">{</span><span class="n">simulation_type</span><span class="si">}</span><span class="s2"> is not supported.&quot;</span>
+
+    <span class="k">return</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="nb">getattr</span><span class="p">(</span><span class="n">disco</span><span class="p">,</span> <span class="s2">&quot;__path__&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]),</span>
+        <span class="s2">&quot;disco&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;pydss&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;config&quot;</span><span class="p">,</span>
+        <span class="n">filename</span>
+    <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="get_default_reports_file"><a class="viewcode-back" href="../../../disco/disco.pydss.html#disco.pydss.pydss_configuration_base.get_default_reports_file">[docs]</a><span class="k">def</span> <span class="nf">get_default_reports_file</span><span class="p">(</span><span class="n">simulation_type</span><span class="p">:</span> <span class="n">SimulationType</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Return the default report file for the simulation type.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    simulation_type : SimulationType</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    str</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">simulation_type</span> <span class="ow">in</span> <span class="p">(</span><span class="n">SimulationType</span><span class="o">.</span><span class="n">QSTS</span><span class="p">,</span> <span class="n">SimulationType</span><span class="o">.</span><span class="n">TIME_SERIES</span><span class="p">):</span>
+        <span class="n">filename</span> <span class="o">=</span> <span class="s2">&quot;time_series_reports.toml&quot;</span>
+    <span class="k">elif</span> <span class="n">simulation_type</span> <span class="o">==</span> <span class="n">SimulationType</span><span class="o">.</span><span class="n">SNAPSHOT</span><span class="p">:</span>
+        <span class="n">filename</span> <span class="o">=</span> <span class="s2">&quot;snapshot_reports.toml&quot;</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">assert</span> <span class="kc">False</span><span class="p">,</span> <span class="n">simulation_type</span>
+
+    <span class="k">return</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="nb">getattr</span><span class="p">(</span><span class="n">disco</span><span class="p">,</span> <span class="s2">&quot;__path__&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]),</span>
+        <span class="s2">&quot;disco&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;extensions&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;pydss_simulation&quot;</span><span class="p">,</span>
+        <span class="n">filename</span><span class="p">,</span>
+    <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="PyDssConfigurationBase"><a class="viewcode-back" href="../../../disco/disco.pydss.html#disco.pydss.pydss_configuration_base.PyDssConfigurationBase">[docs]</a><span class="k">class</span> <span class="nc">PyDssConfigurationBase</span><span class="p">(</span><span class="n">DistributionConfiguration</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Represents the configuration options for a PyDSS simulation.&quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+                 <span class="c1">#add_pmpp_if_missing, # TODO</span>
+                 <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Constructs PyDssConfiguration.&quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">PyDssConfigurationBase</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+        <span class="c1"># Kinda hacky, but this enables PyDssConfiguration.deserialize().</span>
+        <span class="k">if</span> <span class="s2">&quot;pydss_inputs&quot;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="n">cfg</span> <span class="o">=</span> <span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;pydss_inputs&quot;</span><span class="p">]</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_pydss_inputs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">deserialize_pydss_inputs</span><span class="p">(</span><span class="n">cfg</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_pydss_inputs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_default_pydss_config</span><span class="p">()</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_ensure_pydss_controller_registry</span><span class="p">()</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">pydss_inputs</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Get the PyDSS inputs configuration.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        dict</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">copy</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_pydss_inputs</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_get_config</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config_type</span><span class="p">):</span>
+        <span class="n">config</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pydss_inputs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">config_type</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">config</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">InvalidParameter</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;invalid config_type=</span><span class="si">{</span><span class="n">config_type</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">config</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">_ensure_pydss_controller_registry</span><span class="p">():</span>
+        <span class="sd">&quot;&quot;&quot;Ensure DISCO&#39;s controllers registered in PyDSS.&quot;&quot;&quot;</span>
+        <span class="n">registry</span> <span class="o">=</span> <span class="n">Registry</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">DEFAULT_CONTROLLER_CONFIGS</span><span class="p">:</span>
+            <span class="n">registered</span> <span class="o">=</span> <span class="n">registry</span><span class="o">.</span><span class="n">is_controller_registered</span><span class="p">(</span>
+                <span class="n">controller_type</span><span class="o">=</span><span class="n">item</span><span class="p">[</span><span class="s2">&quot;controller_type&quot;</span><span class="p">],</span>
+                <span class="n">name</span><span class="o">=</span><span class="n">item</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span>
+            <span class="p">)</span>
+            <span class="k">if</span> <span class="n">registered</span><span class="p">:</span>
+                <span class="k">continue</span>
+            <span class="n">registry</span><span class="o">.</span><span class="n">register_controller</span><span class="p">(</span>
+                <span class="n">controller_type</span><span class="o">=</span><span class="n">item</span><span class="p">[</span><span class="s2">&quot;controller_type&quot;</span><span class="p">],</span>
+                <span class="n">controller</span><span class="o">=</span><span class="p">{</span>
+                    <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="n">item</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">],</span>
+                    <span class="s2">&quot;filename&quot;</span><span class="p">:</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">item</span><span class="p">[</span><span class="s2">&quot;filename&quot;</span><span class="p">])</span>
+                <span class="p">}</span>
+            <span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_serialize</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+        <span class="n">data</span><span class="p">[</span><span class="s2">&quot;pydss_inputs&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">serialize_pydss_inputs</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_pydss_inputs</span><span class="p">)</span>
+
+<div class="viewcode-block" id="PyDssConfigurationBase.get_pydss_config"><a class="viewcode-back" href="../../../disco/disco.pydss.html#disco.pydss.pydss_configuration_base.PyDssConfigurationBase.get_pydss_config">[docs]</a>    <span class="k">def</span> <span class="nf">get_pydss_config</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config_type</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Return the configuration for the given type.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        config_type : ConfigType</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        dict</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">copy</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_get_config</span><span class="p">(</span><span class="n">config_type</span><span class="p">))</span></div>
+
+<div class="viewcode-block" id="PyDssConfigurationBase.set_pydss_config"><a class="viewcode-back" href="../../../disco/disco.pydss.html#disco.pydss.pydss_configuration_base.PyDssConfigurationBase.set_pydss_config">[docs]</a>    <span class="k">def</span> <span class="nf">set_pydss_config</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config_type</span><span class="p">,</span> <span class="n">config</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Set the configuration for the given type.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        config_type : ConfigType</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        dict</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># This will validate config_type.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_get_config</span><span class="p">(</span><span class="n">config_type</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_pydss_inputs</span><span class="p">[</span><span class="n">config_type</span><span class="p">]</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;Set new PyDSS config for </span><span class="si">%s</span><span class="s2">: </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">config_type</span><span class="p">,</span> <span class="n">config</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="PyDssConfigurationBase.add_pydss_controller_config"><a class="viewcode-back" href="../../../disco/disco.pydss.html#disco.pydss.pydss_configuration_base.PyDssConfigurationBase.add_pydss_controller_config">[docs]</a>    <span class="k">def</span> <span class="nf">add_pydss_controller_config</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">controller_type</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Add a PyDSS controller to the configuration.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        controller_type : str</span>
+<span class="sd">            The PyDSS controller type</span>
+<span class="sd">        name : str</span>
+<span class="sd">            The PyDSS controller name</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">controllers</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pydss_inputs</span><span class="p">[</span><span class="n">ConfigType</span><span class="o">.</span><span class="n">CONTROLLER_CONFIG</span><span class="p">]</span>
+        <span class="k">for</span> <span class="n">controller</span> <span class="ow">in</span> <span class="n">controllers</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">controller</span><span class="p">[</span><span class="s2">&quot;controller_type&quot;</span><span class="p">]</span> <span class="o">!=</span> <span class="n">controller_type</span><span class="p">:</span>
+                <span class="k">continue</span>
+            <span class="k">if</span> <span class="n">controller</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="n">name</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="n">InvalidParameter</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;controller </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2"> is already stored&quot;</span><span class="p">)</span>
+
+        <span class="n">controller</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;controller_type&quot;</span><span class="p">:</span> <span class="n">controller_type</span><span class="p">,</span>
+            <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="n">name</span>
+        <span class="p">}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_pydss_inputs</span><span class="p">[</span><span class="n">ConfigType</span><span class="o">.</span><span class="n">CONTROLLER_CONFIG</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">controller</span><span class="p">)</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Added controller </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="PyDssConfigurationBase.remove_pydss_controller_config"><a class="viewcode-back" href="../../../disco/disco.pydss.html#disco.pydss.pydss_configuration_base.PyDssConfigurationBase.remove_pydss_controller_config">[docs]</a>    <span class="k">def</span> <span class="nf">remove_pydss_controller_config</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">controller_type</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Remove a PyDSS controller from the configuration.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        controller_type: str</span>
+<span class="sd">            The PyDSS controller type</span>
+<span class="sd">        name : str</span>
+<span class="sd">            The PyDSS controller name</span>
+
+<span class="sd">        Raises</span>
+<span class="sd">        ------</span>
+<span class="sd">        InvalidParameter</span>
+<span class="sd">            Raised if name is not stored.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">controllers</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pydss_inputs</span><span class="p">[</span><span class="n">ConfigType</span><span class="o">.</span><span class="n">CONTROLLER_CONFIG</span><span class="p">]</span>
+        <span class="n">controller_index</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">controller</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">controllers</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">controller</span><span class="p">[</span><span class="s2">&quot;controller_type&quot;</span><span class="p">]</span> <span class="o">!=</span> <span class="n">controller_type</span><span class="p">:</span>
+                <span class="k">continue</span>
+            <span class="k">if</span> <span class="n">controller</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="n">name</span><span class="p">:</span>
+                <span class="n">controller_index</span> <span class="o">=</span> <span class="n">i</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">controller_index</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">InvalidParameter</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2"> is not stored&quot;</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_pydss_inputs</span><span class="p">[</span><span class="n">ConfigType</span><span class="o">.</span><span class="n">CONTROLLER_CONFIG</span><span class="p">]</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">controller_index</span><span class="p">)</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Removed controller </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="PyDssConfigurationBase.add_pydss_simulation_config"><a class="viewcode-back" href="../../../disco/disco.pydss.html#disco.pydss.pydss_configuration_base.PyDssConfigurationBase.add_pydss_simulation_config">[docs]</a>    <span class="k">def</span> <span class="nf">add_pydss_simulation_config</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">simulation</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Add a PyDSS simulation config to the configuration.</span>
+
+<span class="sd">        Call PyDssConfigurationBase.get_default_pydss_simulation_config() for a</span>
+<span class="sd">        base simulation.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        name : str</span>
+<span class="sd">        simulation : dict</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_pydss_inputs</span><span class="p">[</span><span class="n">ConfigType</span><span class="o">.</span><span class="n">SIMULATION_CONFIG</span><span class="p">][</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">simulation</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Added simulation </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="PyDssConfigurationBase.remove_pydss_simulation_config"><a class="viewcode-back" href="../../../disco/disco.pydss.html#disco.pydss.pydss_configuration_base.PyDssConfigurationBase.remove_pydss_simulation_config">[docs]</a>    <span class="k">def</span> <span class="nf">remove_pydss_simulation_config</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Remove a PyDSS simulation config from the configuration.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        name : str</span>
+
+<span class="sd">        Raises</span>
+<span class="sd">        ------</span>
+<span class="sd">        InvalidParameter</span>
+<span class="sd">            Raised if name is not stored.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pydss_inputs</span><span class="p">[</span><span class="n">ConfigType</span><span class="o">.</span><span class="n">SIMULATION_CONFIG</span><span class="p">]:</span>
+            <span class="k">raise</span> <span class="n">InvalidParameter</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2"> is not stored&quot;</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_pydss_inputs</span><span class="p">[</span><span class="n">ConfigType</span><span class="o">.</span><span class="n">SIMULATION_CONFIG</span><span class="p">]</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Removed simulation </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="PyDssConfigurationBase.get_pydss_simulation_config"><a class="viewcode-back" href="../../../disco/disco.pydss.html#disco.pydss.pydss_configuration_base.PyDssConfigurationBase.get_pydss_simulation_config">[docs]</a>    <span class="k">def</span> <span class="nf">get_pydss_simulation_config</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Return the simulation config.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        name : str</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        dict</span>
+
+<span class="sd">        Raises</span>
+<span class="sd">        ------</span>
+<span class="sd">        InvalidParameter</span>
+<span class="sd">            Raised if name is not stored.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pydss_inputs</span><span class="p">[</span><span class="n">ConfigType</span><span class="o">.</span><span class="n">SIMULATION_CONFIG</span><span class="p">]:</span>
+            <span class="k">raise</span> <span class="n">InvalidParameter</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2"> is not stored&quot;</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pydss_inputs</span><span class="p">[</span><span class="n">ConfigType</span><span class="o">.</span><span class="n">SIMULATION_CONFIG</span><span class="p">][</span><span class="n">name</span><span class="p">]</span></div>
+
+<div class="viewcode-block" id="PyDssConfigurationBase.serialize_pydss_inputs"><a class="viewcode-back" href="../../../disco/disco.pydss.html#disco.pydss.pydss_configuration_base.PyDssConfigurationBase.serialize_pydss_inputs">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">serialize_pydss_inputs</span><span class="p">(</span><span class="n">inputs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Serializes PyDSS input configuration, replacing enums with values.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        inputs : dict</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        dict</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="p">{</span><span class="n">k</span><span class="o">.</span><span class="n">value</span><span class="p">:</span> <span class="n">v</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">inputs</span><span class="o">.</span><span class="n">items</span><span class="p">()}</span></div>
+
+<div class="viewcode-block" id="PyDssConfigurationBase.deserialize_pydss_inputs"><a class="viewcode-back" href="../../../disco/disco.pydss.html#disco.pydss.pydss_configuration_base.PyDssConfigurationBase.deserialize_pydss_inputs">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">deserialize_pydss_inputs</span><span class="p">(</span><span class="n">cfg</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Deserializes PyDSS input configuration, replacing values with enums.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        inputs : dict</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        dict</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="p">{</span><span class="n">get_enum_from_value</span><span class="p">(</span><span class="n">ConfigType</span><span class="p">,</span> <span class="n">k</span><span class="p">):</span> <span class="n">v</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">cfg</span><span class="o">.</span><span class="n">items</span><span class="p">()}</span></div>
+
+<div class="viewcode-block" id="PyDssConfigurationBase.get_default_pydss_config"><a class="viewcode-back" href="../../../disco/disco.pydss.html#disco.pydss.pydss_configuration_base.PyDssConfigurationBase.get_default_pydss_config">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">get_default_pydss_config</span><span class="p">():</span>
+        <span class="sd">&quot;&quot;&quot;Return the default PyDSS configuration.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        dict</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">config</span> <span class="o">=</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span> <span class="n">copy</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">(</span><span class="n">DEFAULT_PYDSS_CONFIG</span><span class="p">[</span><span class="n">k</span><span class="p">])</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">ConfigType</span><span class="p">}</span>
+        <span class="k">return</span> <span class="n">config</span></div>
+
+<div class="viewcode-block" id="PyDssConfigurationBase.get_default_pydss_simulation_config"><a class="viewcode-back" href="../../../disco/disco.pydss.html#disco.pydss.pydss_configuration_base.PyDssConfigurationBase.get_default_pydss_simulation_config">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">get_default_pydss_simulation_config</span><span class="p">():</span>
+        <span class="sd">&quot;&quot;&quot;Return the default PyDSS simulation configuration.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        dict</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">copy</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">(</span><span class="n">DEFAULT_PYDSS_SIMULATION_CONFIG</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="PyDssConfigurationBase.make_default_pydss_scenario"><a class="viewcode-back" href="../../../disco/disco.pydss.html#disco.pydss.pydss_configuration_base.PyDssConfigurationBase.make_default_pydss_scenario">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">make_default_pydss_scenario</span><span class="p">(</span><span class="n">scenario_name</span><span class="p">,</span> <span class="n">exports</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">post_process_infos</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Return a default scenario dictionary for a given name.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        scenario_name : str</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        dict</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="p">{</span>
+            <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="n">scenario_name</span><span class="p">,</span>
+            <span class="s2">&quot;exports&quot;</span><span class="p">:</span> <span class="p">{}</span> <span class="k">if</span> <span class="n">exports</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">exports</span><span class="p">,</span>
+            <span class="s2">&quot;post_process_infos&quot;</span><span class="p">:</span> <span class="p">[]</span> <span class="k">if</span> <span class="n">post_process_infos</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">post_process_infos</span><span class="p">,</span>
+        <span class="p">}</span></div></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2019, NREL.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

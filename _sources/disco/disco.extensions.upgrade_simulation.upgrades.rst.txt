@@ -1,0 +1,77 @@
+disco.extensions.upgrade\_simulation.upgrades package
+=====================================================
+
+Submodules
+----------
+
+disco.extensions.upgrade\_simulation.upgrades.automated\_thermal\_upgrades module
+---------------------------------------------------------------------------------
+
+.. automodule:: disco.extensions.upgrade_simulation.upgrades.automated_thermal_upgrades
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+disco.extensions.upgrade\_simulation.upgrades.automated\_voltage\_upgrades module
+---------------------------------------------------------------------------------
+
+.. automodule:: disco.extensions.upgrade_simulation.upgrades.automated_voltage_upgrades
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+disco.extensions.upgrade\_simulation.upgrades.common\_functions module
+----------------------------------------------------------------------
+
+.. automodule:: disco.extensions.upgrade_simulation.upgrades.common_functions
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+disco.extensions.upgrade\_simulation.upgrades.cost\_computation module
+----------------------------------------------------------------------
+
+.. automodule:: disco.extensions.upgrade_simulation.upgrades.cost_computation
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+disco.extensions.upgrade\_simulation.upgrades.fixed\_upgrade\_parameters module
+-------------------------------------------------------------------------------
+
+.. automodule:: disco.extensions.upgrade_simulation.upgrades.fixed_upgrade_parameters
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+disco.extensions.upgrade\_simulation.upgrades.pydss\_parameters module
+----------------------------------------------------------------------
+
+.. automodule:: disco.extensions.upgrade_simulation.upgrades.pydss_parameters
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+disco.extensions.upgrade\_simulation.upgrades.thermal\_upgrade\_functions module
+--------------------------------------------------------------------------------
+
+.. automodule:: disco.extensions.upgrade_simulation.upgrades.thermal_upgrade_functions
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+disco.extensions.upgrade\_simulation.upgrades.voltage\_upgrade\_functions module
+--------------------------------------------------------------------------------
+
+.. automodule:: disco.extensions.upgrade_simulation.upgrades.voltage_upgrade_functions
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: disco.extensions.upgrade_simulation.upgrades
+   :members:
+   :undoc-members:
+   :show-inheritance:

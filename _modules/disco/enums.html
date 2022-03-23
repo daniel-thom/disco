@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>disco.enums &mdash; DISCO 0.1 documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link href="../../_static/style.css" rel="stylesheet" type="text/css">
+
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> DISCO
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">User Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../installation.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../installation.html#use-conda">Use Conda</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../installation.html#use-docker">Use Docker</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../overview.html">Overview</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../overview.html#data-sources">Data Sources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../overview.html#transform-model">Transform Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../overview.html#config-jobs">Config Jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../overview.html#submit-jobs">Submit Jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../overview.html#result-analysis">Result Analysis</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../quick-start.html">Quick Start</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../quick-start.html#source-data">Source Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../quick-start.html#transform-model">Transform Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../quick-start.html#config-jobs">Config Jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../quick-start.html#submit-jobs">Submit Jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../quick-start.html#result-analysis">Result Analysis</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../data-sources.html">Data Sources</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../data-sources/smart-ds-model-preparation.html">SMART-DS OpenDSS Model Preparation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../data-sources.html#gem-model">GEM Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../data-sources.html#epri-model">EPRI Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../data-sources.html#sourcetree1-model">SourceTree1 Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../data-sources.html#sourcetree2-model">SourceTree2 Model</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../pv-deployments.html">PV Deployments</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../pv-deployments.html#sourcetree1-pv-deployments">SourceTree1 PV Deployments</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../transform-models.html">Transform Models</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../transform-models.html#transform-model-help">Transform Model Help</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../transform-models.html#disco-model-in-depth">DISCO Model in Depth</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../analysis-workflows.html">Analysis Workflows</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../analysis-workflows/hosting-capacity-analysis.html">Hosting Capacity Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../analysis-workflows/upgrade-cost-analysis.html">Upgrade Cost Analysis</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../pipelines.html">Pipelines</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../pipelines.html#sourcetree1model">SourceTree1Model</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../debugging-issues.html">Debugging Issues</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../debugging-issues.html#using-jade">Using JADE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../debugging-issues.html#using-pydss">Using PyDSS</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../data-ingestion.html">Data Ingestion</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../data-ingestion.html#ingest-to-new-database">Ingest to New Database</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../data-ingestion.html#ingest-to-existing-database">Ingest to Existing Database</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../data-ingestion.html#run-database-queries">Run Database Queries</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../advanced-guide.html">Advanced Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../advanced-guide/analysis-deployment.html">Analysis Deployment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../advanced-guide/upgrade-cost-analysis-generic-models.html">Upgrade Cost Analysis JSON Schemas</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contribution</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../build-docs.html">Build docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../license.html">License</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">DISCO</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../index.html">Module code</a> &raquo;</li>
+      <li>disco.enums</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for disco.enums</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;Enums for the disco package.&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">enum</span>
+<span class="kn">import</span> <span class="nn">re</span>
+
+<span class="kn">import</span> <span class="nn">toml</span>
+
+
+<div class="viewcode-block" id="Status"><a class="viewcode-back" href="../../disco/disco.html#disco.enums.Status">[docs]</a><span class="k">class</span> <span class="nc">Status</span><span class="p">(</span><span class="n">enum</span><span class="o">.</span><span class="n">Enum</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Return status.&quot;&quot;&quot;</span>
+    <span class="n">GOOD</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">ERROR</span> <span class="o">=</span> <span class="mi">1</span></div>
+
+
+<span class="c1"># Directories use these values.</span>
+<span class="n">DCAC_MAPPING</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="o">-</span><span class="mi">1</span><span class="p">:</span> <span class="s2">&quot;None&quot;</span><span class="p">,</span>
+    <span class="mf">0.8</span><span class="p">:</span> <span class="s2">&quot;DCAC0.8&quot;</span><span class="p">,</span>
+    <span class="mf">1.15</span><span class="p">:</span> <span class="s2">&quot;DCAC1.15&quot;</span><span class="p">,</span>
+<span class="p">}</span>
+
+
+<div class="viewcode-block" id="Scale"><a class="viewcode-back" href="../../disco/disco.html#disco.enums.Scale">[docs]</a><span class="k">class</span> <span class="nc">Scale</span><span class="p">(</span><span class="n">enum</span><span class="o">.</span><span class="n">Enum</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Possible values for scale&quot;&quot;&quot;</span>
+    <span class="n">SMALL</span> <span class="o">=</span> <span class="s2">&quot;small&quot;</span>
+    <span class="n">LARGE</span> <span class="o">=</span> <span class="s2">&quot;large&quot;</span></div>
+
+
+<span class="c1"># Directories use these values.</span>
+<span class="n">SCALE_MAPPING</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="n">Scale</span><span class="o">.</span><span class="n">SMALL</span><span class="p">:</span> <span class="s2">&quot;SmallScale&quot;</span><span class="p">,</span>
+    <span class="n">Scale</span><span class="o">.</span><span class="n">LARGE</span><span class="p">:</span> <span class="s2">&quot;LargeScale&quot;</span><span class="p">,</span>
+<span class="p">}</span>
+
+
+<div class="viewcode-block" id="get_scale_from_value"><a class="viewcode-back" href="../../disco/disco.html#disco.enums.get_scale_from_value">[docs]</a><span class="k">def</span> <span class="nf">get_scale_from_value</span><span class="p">(</span><span class="n">value</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Gets the enum for the given value.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    Scale</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">SCALE_MAPPING</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="k">if</span> <span class="n">val</span> <span class="o">==</span> <span class="n">value</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">key</span>
+    <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;Unknown value: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">value</span><span class="p">))</span></div>
+
+
+<div class="viewcode-block" id="Placement"><a class="viewcode-back" href="../../disco/disco.html#disco.enums.Placement">[docs]</a><span class="k">class</span> <span class="nc">Placement</span><span class="p">(</span><span class="n">enum</span><span class="o">.</span><span class="n">Enum</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Possible values for placement&quot;&quot;&quot;</span>
+    <span class="n">RANDOM</span> <span class="o">=</span> <span class="s2">&quot;random&quot;</span>
+    <span class="n">CLOSE</span> <span class="o">=</span> <span class="s2">&quot;close&quot;</span>
+    <span class="n">FAR</span> <span class="o">=</span> <span class="s2">&quot;far&quot;</span></div>
+
+
+<span class="c1"># TODO: we cannot support having placement values with upper and lower case.</span>
+<span class="c1"># need to change all directories where this is the case.</span>
+
+
+<div class="viewcode-block" id="get_placement_from_value"><a class="viewcode-back" href="../../disco/disco.html#disco.enums.get_placement_from_value">[docs]</a><span class="k">def</span> <span class="nf">get_placement_from_value</span><span class="p">(</span><span class="n">value</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Gets the enum for the given value.</span>
+
+<span class="sd">    Note: this performs a case-insensitive search because some input</span>
+<span class="sd">    directories are inconsistent.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    Placement</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">for</span> <span class="n">placement</span> <span class="ow">in</span> <span class="n">Placement</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">placement</span><span class="o">.</span><span class="n">value</span> <span class="o">==</span> <span class="n">value</span><span class="o">.</span><span class="n">lower</span><span class="p">():</span>
+            <span class="k">return</span> <span class="n">placement</span>
+    <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;Unknown value: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">value</span><span class="p">))</span></div>
+
+
+<div class="viewcode-block" id="Mode"><a class="viewcode-back" href="../../disco/disco.html#disco.enums.Mode">[docs]</a><span class="k">class</span> <span class="nc">Mode</span><span class="p">(</span><span class="n">enum</span><span class="o">.</span><span class="n">Enum</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Possible values for computational sequencing mode&quot;&quot;&quot;</span>
+    <span class="n">PARALLEL</span> <span class="o">=</span> <span class="s2">&quot;parallel&quot;</span>
+    <span class="n">SEQUENTIAL</span> <span class="o">=</span> <span class="s2">&quot;sequential&quot;</span></div>
+
+
+<div class="viewcode-block" id="SimulationHierarchy"><a class="viewcode-back" href="../../disco/disco.html#disco.enums.SimulationHierarchy">[docs]</a><span class="k">class</span> <span class="nc">SimulationHierarchy</span><span class="p">(</span><span class="n">enum</span><span class="o">.</span><span class="n">Enum</span><span class="p">):</span>
+    <span class="n">SUBSTATION</span> <span class="o">=</span> <span class="s2">&quot;substation&quot;</span>
+    <span class="n">FEEDER</span> <span class="o">=</span> <span class="s2">&quot;feeder&quot;</span></div>
+
+
+<div class="viewcode-block" id="SimulationOutputs"><a class="viewcode-back" href="../../disco/disco.html#disco.enums.SimulationOutputs">[docs]</a><span class="k">class</span> <span class="nc">SimulationOutputs</span><span class="p">(</span><span class="n">enum</span><span class="o">.</span><span class="n">Enum</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Defines the possible simulation output types.&quot;&quot;&quot;</span>
+    <span class="n">LINE_LOADINGS</span> <span class="o">=</span> <span class="s2">&quot;line_loadings&quot;</span>
+    <span class="n">LINE_LOSSES</span> <span class="o">=</span> <span class="s2">&quot;line_losses&quot;</span>
+    <span class="n">NODAL_VOLTAGES</span> <span class="o">=</span> <span class="s2">&quot;nodal_voltages&quot;</span>
+    <span class="n">PV_OUTPUTS</span> <span class="o">=</span> <span class="s2">&quot;pv_outputs&quot;</span>
+    <span class="n">TOTAL_CIRCUIT_POWER</span> <span class="o">=</span> <span class="s2">&quot;total_circuit_power&quot;</span>
+    <span class="n">TOTAL_LOSSES</span> <span class="o">=</span> <span class="s2">&quot;total_losses&quot;</span>
+    <span class="n">TRANSFORMER_LOADINGS</span> <span class="o">=</span> <span class="s2">&quot;transformer_loadings&quot;</span></div>
+
+
+<div class="viewcode-block" id="SimulationType"><a class="viewcode-back" href="../../disco/disco.html#disco.enums.SimulationType">[docs]</a><span class="k">class</span> <span class="nc">SimulationType</span><span class="p">(</span><span class="n">enum</span><span class="o">.</span><span class="n">Enum</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Defines the possible simulation types.&quot;&quot;&quot;</span>
+    <span class="n">SNAPSHOT</span> <span class="o">=</span> <span class="s2">&quot;snapshot&quot;</span>
+    <span class="n">QSTS</span> <span class="o">=</span> <span class="s2">&quot;QSTS&quot;</span>
+    <span class="n">TIME_SERIES</span> <span class="o">=</span> <span class="s2">&quot;time-series&quot;</span>  <span class="c1"># This should be duplicate with QSTS.</span>
+    <span class="n">UPGRADE</span> <span class="o">=</span> <span class="s2">&quot;upgrade&quot;</span></div>
+
+
+<div class="viewcode-block" id="AnalysisModelType"><a class="viewcode-back" href="../../disco/disco.html#disco.enums.AnalysisModelType">[docs]</a><span class="k">class</span> <span class="nc">AnalysisModelType</span><span class="p">(</span><span class="n">enum</span><span class="o">.</span><span class="n">Enum</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Represents the type of model used for each analysis type.&quot;&quot;&quot;</span>
+    <span class="c1"># ImpactAnalysis is improperly used here. Leaving for backwards compatibility.</span>
+    <span class="c1"># The same data model is used for time-series impact analysis and hosting capacity analysis.</span>
+    <span class="n">SnapshotImpactAnalysis</span> <span class="o">=</span> <span class="s2">&quot;SnapshotImpactAnalysis&quot;</span>
+    <span class="n">TimeSeriesImpactAnalysis</span> <span class="o">=</span> <span class="s2">&quot;TimeSeriesImpactAnalysis&quot;</span>
+    <span class="n">UpgradeCostAnalysis</span> <span class="o">=</span> <span class="s2">&quot;UpgradeCostAnalysis&quot;</span></div>
+
+
+<div class="viewcode-block" id="AnalysisType"><a class="viewcode-back" href="../../disco/disco.html#disco.enums.AnalysisType">[docs]</a><span class="k">class</span> <span class="nc">AnalysisType</span><span class="p">(</span><span class="n">enum</span><span class="o">.</span><span class="n">Enum</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;DISCO user analysis types&quot;&quot;&quot;</span>
+    <span class="n">IMPACT_ANALYSIS</span> <span class="o">=</span> <span class="s2">&quot;impact-analysis&quot;</span>
+    <span class="n">HOSTING_CAPACITY</span> <span class="o">=</span> <span class="s2">&quot;hosting-capacity&quot;</span>
+    <span class="n">COST_BENEFIT</span> <span class="o">=</span> <span class="s2">&quot;cost-benefit&quot;</span>
+    <span class="n">UPGRADE_ANALYSIS</span> <span class="o">=</span> <span class="s2">&quot;upgrade-analysis&quot;</span>
+    <span class="n">NONE</span> <span class="o">=</span> <span class="s2">&quot;none&quot;</span></div>
+
+
+<span class="n">ANALYSIS_MODEL_TYPES</span> <span class="o">=</span> <span class="p">[</span><span class="n">t</span><span class="o">.</span><span class="n">value</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">AnalysisModelType</span><span class="p">]</span>
+
+
+<span class="n">PUBLIC_ENUMS</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;AnalysisModelType&quot;</span><span class="p">:</span> <span class="n">AnalysisModelType</span><span class="p">,</span>
+    <span class="s2">&quot;Mode&quot;</span><span class="p">:</span> <span class="n">Mode</span><span class="p">,</span>
+    <span class="s2">&quot;Placement&quot;</span><span class="p">:</span> <span class="n">Placement</span><span class="p">,</span>
+    <span class="s2">&quot;Scale&quot;</span><span class="p">:</span> <span class="n">Scale</span><span class="p">,</span>
+    <span class="s2">&quot;SimulationOutputs&quot;</span><span class="p">:</span> <span class="n">SimulationOutputs</span><span class="p">,</span>
+    <span class="s2">&quot;SimulationType&quot;</span><span class="p">:</span> <span class="n">SimulationType</span><span class="p">,</span>
+<span class="p">}</span>
+
+
+<span class="n">_REGEX_ENUM</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;^(\w+)\.(\w+)$&quot;</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="get_enum_from_str"><a class="viewcode-back" href="../../disco/disco.html#disco.enums.get_enum_from_str">[docs]</a><span class="k">def</span> <span class="nf">get_enum_from_str</span><span class="p">(</span><span class="n">string</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Converts a enum that&#39;s been written as a string back to an enum.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    string : str</span>
+<span class="sd">        string to convert</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    tuple</span>
+<span class="sd">        converted, converted enum or original</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">converted</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="n">match</span> <span class="o">=</span> <span class="n">_REGEX_ENUM</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">string</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">match</span> <span class="ow">and</span> <span class="n">match</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="ow">in</span> <span class="n">PUBLIC_ENUMS</span><span class="p">:</span>
+        <span class="n">obj</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">PUBLIC_ENUMS</span><span class="p">[</span><span class="n">match</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">)],</span> <span class="n">match</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
+        <span class="n">converted</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">obj</span> <span class="o">=</span> <span class="n">string</span>
+
+    <span class="k">return</span> <span class="n">converted</span><span class="p">,</span> <span class="n">obj</span></div>
+
+
+<div class="viewcode-block" id="get_enum_from_value"><a class="viewcode-back" href="../../disco/disco.html#disco.enums.get_enum_from_value">[docs]</a><span class="k">def</span> <span class="nf">get_enum_from_value</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Gets the enum for the given value.&quot;&quot;&quot;</span>
+    <span class="k">for</span> <span class="n">enum_</span> <span class="ow">in</span> <span class="bp">cls</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">enum_</span><span class="o">.</span><span class="n">value</span> <span class="o">==</span> <span class="n">value</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">enum_</span>
+    <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;Unknown value: </span><span class="si">{}</span><span class="s2"> </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">value</span><span class="p">))</span></div>
+
+
+<div class="viewcode-block" id="EnumEncoder"><a class="viewcode-back" href="../../disco/disco.html#disco.enums.EnumEncoder">[docs]</a><span class="k">class</span> <span class="nc">EnumEncoder</span><span class="p">(</span><span class="n">toml</span><span class="o">.</span><span class="n">TomlEncoder</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Custom encoder for enums.&quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">_dict</span><span class="o">=</span><span class="nb">dict</span><span class="p">,</span> <span class="n">preserve</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">EnumEncoder</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">_dict</span><span class="p">,</span> <span class="n">preserve</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dump_funcs</span><span class="p">[</span><span class="n">enum</span><span class="o">.</span><span class="n">Enum</span><span class="p">]</span> <span class="o">=</span> <span class="n">EnumEncoder</span><span class="o">.</span><span class="n">dump_enum</span>
+
+<div class="viewcode-block" id="EnumEncoder.dump_enum"><a class="viewcode-back" href="../../disco/disco.html#disco.enums.EnumEncoder.dump_enum">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">dump_enum</span><span class="p">(</span><span class="n">val</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Return the enum value converted to string.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="n">val</span><span class="o">.</span><span class="n">value</span><span class="p">)</span></div></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2019, NREL.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

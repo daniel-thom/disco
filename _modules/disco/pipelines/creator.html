@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>disco.pipelines.creator &mdash; DISCO 0.1 documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link href="../../../_static/style.css" rel="stylesheet" type="text/css">
+
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../../index.html" class="icon icon-home"> DISCO
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">User Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../installation.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../installation.html#use-conda">Use Conda</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../installation.html#use-docker">Use Docker</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../overview.html">Overview</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../overview.html#data-sources">Data Sources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../overview.html#transform-model">Transform Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../overview.html#config-jobs">Config Jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../overview.html#submit-jobs">Submit Jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../overview.html#result-analysis">Result Analysis</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../quick-start.html">Quick Start</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../quick-start.html#source-data">Source Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../quick-start.html#transform-model">Transform Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../quick-start.html#config-jobs">Config Jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../quick-start.html#submit-jobs">Submit Jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../quick-start.html#result-analysis">Result Analysis</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../data-sources.html">Data Sources</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../data-sources/smart-ds-model-preparation.html">SMART-DS OpenDSS Model Preparation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../data-sources.html#gem-model">GEM Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../data-sources.html#epri-model">EPRI Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../data-sources.html#sourcetree1-model">SourceTree1 Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../data-sources.html#sourcetree2-model">SourceTree2 Model</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../pv-deployments.html">PV Deployments</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../pv-deployments.html#sourcetree1-pv-deployments">SourceTree1 PV Deployments</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../transform-models.html">Transform Models</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../transform-models.html#transform-model-help">Transform Model Help</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../transform-models.html#disco-model-in-depth">DISCO Model in Depth</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../analysis-workflows.html">Analysis Workflows</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../analysis-workflows/hosting-capacity-analysis.html">Hosting Capacity Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../analysis-workflows/upgrade-cost-analysis.html">Upgrade Cost Analysis</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../pipelines.html">Pipelines</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../pipelines.html#sourcetree1model">SourceTree1Model</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../debugging-issues.html">Debugging Issues</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../debugging-issues.html#using-jade">Using JADE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../debugging-issues.html#using-pydss">Using PyDSS</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../data-ingestion.html">Data Ingestion</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../data-ingestion.html#ingest-to-new-database">Ingest to New Database</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../data-ingestion.html#ingest-to-existing-database">Ingest to Existing Database</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../data-ingestion.html#run-database-queries">Run Database Queries</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../advanced-guide.html">Advanced Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../advanced-guide/analysis-deployment.html">Analysis Deployment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../advanced-guide/upgrade-cost-analysis-generic-models.html">Upgrade Cost Analysis JSON Schemas</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contribution</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../build-docs.html">Build docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../license.html">License</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">DISCO</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+      <li>disco.pipelines.creator</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for disco.pipelines.creator</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">logging</span>
+<span class="kn">import</span> <span class="nn">os</span>
+
+<span class="kn">from</span> <span class="nn">PyDSS.common</span> <span class="kn">import</span> <span class="n">SnapshotTimePointSelectionMode</span>
+<span class="kn">from</span> <span class="nn">PyDSS.reports.pv_reports</span> <span class="kn">import</span> <span class="n">PF1_SCENARIO</span><span class="p">,</span> <span class="n">CONTROL_MODE_SCENARIO</span>
+
+<span class="kn">import</span> <span class="nn">disco</span>
+<span class="kn">from</span> <span class="nn">disco.enums</span> <span class="kn">import</span> <span class="n">SimulationType</span><span class="p">,</span> <span class="n">AnalysisType</span>
+<span class="kn">from</span> <span class="nn">disco.pipelines.enums</span> <span class="kn">import</span> <span class="n">TemplateSection</span>
+<span class="kn">from</span> <span class="nn">disco.pipelines.base</span> <span class="kn">import</span> <span class="n">PipelineCreatorBase</span>
+<span class="kn">from</span> <span class="nn">disco.pydss.common</span> <span class="kn">import</span> <span class="n">TIME_SERIES_SCENARIOS</span>
+<span class="kn">from</span> <span class="nn">disco.pydss.pydss_configuration_base</span> <span class="kn">import</span> <span class="n">get_default_exports_file</span>
+<span class="kn">from</span> <span class="nn">jade.models.pipeline</span> <span class="kn">import</span> <span class="n">PipelineConfig</span>
+<span class="kn">from</span> <span class="nn">jade.utils.utils</span> <span class="kn">import</span> <span class="n">dump_data</span>
+
+<span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="SnapshotPipelineCreator"><a class="viewcode-back" href="../../../disco/disco.pipelines.html#disco.pipelines.creator.SnapshotPipelineCreator">[docs]</a><span class="k">class</span> <span class="nc">SnapshotPipelineCreator</span><span class="p">(</span><span class="n">PipelineCreatorBase</span><span class="p">):</span>
+
+<div class="viewcode-block" id="SnapshotPipelineCreator.create_pipeline"><a class="viewcode-back" href="../../../disco/disco.pipelines.html#disco.pipelines.creator.SnapshotPipelineCreator.create_pipeline">[docs]</a>    <span class="k">def</span> <span class="nf">create_pipeline</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config_file</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Make snapshot pipeline config file&quot;&quot;&quot;</span>
+        <span class="n">stages</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">make_simulation_stage</span><span class="p">()]</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">template</span><span class="o">.</span><span class="n">contains_postprocess</span><span class="p">():</span>
+            <span class="n">stages</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">make_postprocess_stage</span><span class="p">())</span>
+
+        <span class="n">config</span> <span class="o">=</span> <span class="n">PipelineConfig</span><span class="p">(</span><span class="n">stages</span><span class="o">=</span><span class="n">stages</span><span class="p">,</span> <span class="n">stage_num</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">config_file</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+            <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">json</span><span class="p">(</span><span class="n">indent</span><span class="o">=</span><span class="mi">2</span><span class="p">))</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Created pipeline config file - </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">config_file</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="SnapshotPipelineCreator.make_model_transform_command"><a class="viewcode-back" href="../../../disco/disco.pipelines.html#disco.pipelines.creator.SnapshotPipelineCreator.make_model_transform_command">[docs]</a>    <span class="k">def</span> <span class="nf">make_model_transform_command</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">options</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">template</span><span class="o">.</span><span class="n">get_transform_options</span><span class="p">(</span><span class="n">TemplateSection</span><span class="o">.</span><span class="n">MODEL</span><span class="p">)</span>
+        <span class="n">command</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;disco transform-model </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">template</span><span class="o">.</span><span class="n">inputs</span><span class="si">}</span><span class="s2"> snapshot </span><span class="si">{</span><span class="n">options</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Make command - &#39;</span><span class="si">%s</span><span class="s2">&#39;&quot;</span><span class="p">,</span> <span class="n">command</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">command</span></div>
+
+<div class="viewcode-block" id="SnapshotPipelineCreator.make_disco_config_command"><a class="viewcode-back" href="../../../disco/disco.pipelines.html#disco.pipelines.creator.SnapshotPipelineCreator.make_disco_config_command">[docs]</a>    <span class="k">def</span> <span class="nf">make_disco_config_command</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">section</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">template</span><span class="o">.</span><span class="n">preconfigured</span><span class="p">:</span>
+            <span class="n">model_inputs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">template</span><span class="o">.</span><span class="n">inputs</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">model_inputs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">template</span><span class="o">.</span><span class="n">get_model_transform_output</span><span class="p">()</span>
+        <span class="n">options</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">template</span><span class="o">.</span><span class="n">get_config_options</span><span class="p">(</span><span class="n">section</span><span class="p">)</span>
+        <span class="n">reports_filename</span> <span class="o">=</span> <span class="s2">&quot;generated_snapshot_reports.toml&quot;</span>
+        <span class="n">dump_data</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">template</span><span class="o">.</span><span class="n">reports</span><span class="p">,</span> <span class="n">reports_filename</span><span class="p">)</span>
+        <span class="n">exports_filename</span> <span class="o">=</span> <span class="n">get_default_exports_file</span><span class="p">(</span>
+            <span class="n">SimulationType</span><span class="o">.</span><span class="n">SNAPSHOT</span><span class="p">,</span>
+            <span class="n">AnalysisType</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">template</span><span class="o">.</span><span class="n">analysis_type</span><span class="p">),</span>
+        <span class="p">)</span>
+        <span class="n">command</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;disco config snapshot </span><span class="si">{</span><span class="n">model_inputs</span><span class="si">}</span><span class="s2"> &quot;</span>
+            <span class="sa">f</span><span class="s2">&quot;--reports-filename=</span><span class="si">{</span><span class="n">reports_filename</span><span class="si">}</span><span class="s2"> --exports-filename=</span><span class="si">{</span><span class="n">exports_filename</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">options</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="p">)</span>
+        <span class="k">return</span> <span class="n">command</span></div>
+
+<div class="viewcode-block" id="SnapshotPipelineCreator.make_prescreen_create_command"><a class="viewcode-back" href="../../../disco/disco.pipelines.html#disco.pipelines.creator.SnapshotPipelineCreator.make_prescreen_create_command">[docs]</a>    <span class="k">def</span> <span class="nf">make_prescreen_create_command</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">pass</span></div>
+
+<div class="viewcode-block" id="SnapshotPipelineCreator.make_prescreen_filter_command"><a class="viewcode-back" href="../../../disco/disco.pipelines.html#disco.pipelines.creator.SnapshotPipelineCreator.make_prescreen_filter_command">[docs]</a>    <span class="k">def</span> <span class="nf">make_prescreen_filter_command</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">pass</span></div>
+
+<div class="viewcode-block" id="SnapshotPipelineCreator.make_postprocess_command"><a class="viewcode-back" href="../../../disco/disco.pipelines.html#disco.pipelines.creator.SnapshotPipelineCreator.make_postprocess_command">[docs]</a>    <span class="k">def</span> <span class="nf">make_postprocess_command</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">commands</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">impact_analysis</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">template</span><span class="o">.</span><span class="n">analysis_type</span> <span class="o">==</span> <span class="n">AnalysisType</span><span class="o">.</span><span class="n">IMPACT_ANALYSIS</span><span class="o">.</span><span class="n">value</span>
+        <span class="n">hosting_capacity</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">template</span><span class="o">.</span><span class="n">analysis_type</span> <span class="o">==</span> <span class="n">AnalysisType</span><span class="o">.</span><span class="n">HOSTING_CAPACITY</span><span class="o">.</span><span class="n">value</span>
+        <span class="k">if</span> <span class="n">impact_analysis</span> <span class="ow">or</span> <span class="n">hosting_capacity</span><span class="p">:</span>
+            <span class="c1"># Postprocess to make summary tables</span>
+            <span class="n">inputs</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s2">&quot;$JADE_PIPELINE_OUTPUT_DIR&quot;</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;output-stage</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">stage_num</span><span class="o">-</span><span class="mi">1</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="n">commands</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;disco-internal make-summary-tables </span><span class="si">{</span><span class="n">inputs</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            
+            <span class="c1"># Postprocess to compute hosting capacity</span>
+            <span class="k">if</span> <span class="n">hosting_capacity</span><span class="p">:</span>
+                <span class="n">config_params</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">template</span><span class="o">.</span><span class="n">get_config_params</span><span class="p">(</span><span class="n">TemplateSection</span><span class="o">.</span><span class="n">SIMULATION</span><span class="p">)</span>
+                <span class="n">with_loadshape</span> <span class="o">=</span> <span class="n">config_params</span><span class="p">[</span><span class="s2">&quot;with_loadshape&quot;</span><span class="p">]</span>
+                <span class="n">auto_select_time_points</span> <span class="o">=</span> <span class="n">config_params</span><span class="p">[</span><span class="s2">&quot;auto_select_time_points&quot;</span><span class="p">]</span>
+                <span class="n">pf1</span> <span class="o">=</span> <span class="n">config_params</span><span class="p">[</span><span class="s2">&quot;pf1&quot;</span><span class="p">]</span>
+                <span class="n">base_cmd</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;disco-internal compute-hosting-capacity </span><span class="si">{</span><span class="n">inputs</span><span class="si">}</span><span class="s2">&quot;</span>
+                <span class="k">if</span> <span class="n">with_loadshape</span><span class="p">:</span>
+                    <span class="n">scenarios</span> <span class="o">=</span> <span class="p">[</span><span class="n">CONTROL_MODE_SCENARIO</span><span class="p">]</span>
+                    <span class="k">if</span> <span class="n">pf1</span><span class="p">:</span>
+                        <span class="n">scenarios</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">PF1_SCENARIO</span><span class="p">)</span>
+                    <span class="k">if</span> <span class="n">auto_select_time_points</span><span class="p">:</span>
+                        <span class="k">for</span> <span class="n">scenario</span> <span class="ow">in</span> <span class="n">scenarios</span><span class="p">:</span>
+                            <span class="k">for</span> <span class="n">mode</span> <span class="ow">in</span> <span class="n">SnapshotTimePointSelectionMode</span><span class="p">:</span>
+                                <span class="k">if</span> <span class="n">mode</span> <span class="o">!=</span> <span class="n">SnapshotTimePointSelectionMode</span><span class="o">.</span><span class="n">NONE</span><span class="p">:</span>
+                                    <span class="n">commands</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">base_cmd</span><span class="si">}</span><span class="s2"> --scenario=</span><span class="si">{</span><span class="n">scenario</span><span class="si">}</span><span class="s2"> --time-point=</span><span class="si">{</span><span class="n">mode</span><span class="o">.</span><span class="n">value</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="k">for</span> <span class="n">scenario</span> <span class="ow">in</span> <span class="n">scenarios</span><span class="p">:</span>
+                            <span class="n">commands</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">base_cmd</span><span class="si">}</span><span class="s2"> --scenario=</span><span class="si">{</span><span class="n">scenario</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">commands</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">base_cmd</span><span class="si">}</span><span class="s2"> --scenario=scenario&quot;</span><span class="p">)</span>
+
+            <span class="c1"># Postprocess to ingest results into sqlite database</span>
+            <span class="n">task_name</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">template</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;task_name&quot;</span><span class="p">]</span>
+            <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isabs</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">template</span><span class="o">.</span><span class="n">database</span><span class="p">):</span>
+                <span class="n">database</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">template</span><span class="o">.</span><span class="n">database</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">database</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">inputs</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">template</span><span class="o">.</span><span class="n">database</span><span class="p">)</span>
+            <span class="n">model_inputs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">template</span><span class="o">.</span><span class="n">inputs</span>
+            <span class="n">commands</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                <span class="s1">&#39;disco ingest-tables &#39;</span>
+                <span class="sa">f</span><span class="s1">&#39;--task-name &quot;</span><span class="si">{</span><span class="n">task_name</span><span class="si">}</span><span class="s1">&quot; &#39;</span>
+                <span class="sa">f</span><span class="s1">&#39;--database </span><span class="si">{</span><span class="n">database</span><span class="si">}</span><span class="s1"> &#39;</span>
+                <span class="sa">f</span><span class="s1">&#39;--model-inputs </span><span class="si">{</span><span class="n">model_inputs</span><span class="si">}</span><span class="s1"> &#39;</span>
+                <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">inputs</span><span class="si">}</span><span class="s1">&#39;</span>
+            <span class="p">)</span>
+
+        <span class="k">return</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">commands</span><span class="p">)</span></div></div>
+
+
+<div class="viewcode-block" id="TimeSeriesPipelineCreator"><a class="viewcode-back" href="../../../disco/disco.pipelines.html#disco.pipelines.creator.TimeSeriesPipelineCreator">[docs]</a><span class="k">class</span> <span class="nc">TimeSeriesPipelineCreator</span><span class="p">(</span><span class="n">PipelineCreatorBase</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Time-series pipeline creator class&quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="TimeSeriesPipelineCreator.create_pipeline"><a class="viewcode-back" href="../../../disco/disco.pipelines.html#disco.pipelines.creator.TimeSeriesPipelineCreator.create_pipeline">[docs]</a>    <span class="k">def</span> <span class="nf">create_pipeline</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config_file</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Make time-series pipeline config file&quot;&quot;&quot;</span>
+        <span class="n">stages</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">template</span><span class="o">.</span><span class="n">contains_prescreen</span><span class="p">():</span>
+            <span class="n">stages</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">make_prescreen_stage</span><span class="p">())</span>
+        <span class="n">stages</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">make_simulation_stage</span><span class="p">())</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">template</span><span class="o">.</span><span class="n">contains_postprocess</span><span class="p">():</span>
+            <span class="n">stages</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">make_postprocess_stage</span><span class="p">())</span>
+
+        <span class="n">config</span> <span class="o">=</span> <span class="n">PipelineConfig</span><span class="p">(</span><span class="n">stages</span><span class="o">=</span><span class="n">stages</span><span class="p">,</span> <span class="n">stage_num</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">config_file</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+            <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">json</span><span class="p">(</span><span class="n">indent</span><span class="o">=</span><span class="mi">2</span><span class="p">))</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Created pipeline config file - </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">config_file</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="TimeSeriesPipelineCreator.make_model_transform_command"><a class="viewcode-back" href="../../../disco/disco.pipelines.html#disco.pipelines.creator.TimeSeriesPipelineCreator.make_model_transform_command">[docs]</a>    <span class="k">def</span> <span class="nf">make_model_transform_command</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">options</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">template</span><span class="o">.</span><span class="n">get_transform_options</span><span class="p">(</span><span class="n">TemplateSection</span><span class="o">.</span><span class="n">MODEL</span><span class="p">)</span>
+        <span class="n">command</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;disco transform-model </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">template</span><span class="o">.</span><span class="n">inputs</span><span class="si">}</span><span class="s2"> time-series </span><span class="si">{</span><span class="n">options</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Make command - &#39;</span><span class="si">%s</span><span class="s2">&#39;&quot;</span><span class="p">,</span> <span class="n">command</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">command</span></div>
+
+<div class="viewcode-block" id="TimeSeriesPipelineCreator.make_disco_config_command"><a class="viewcode-back" href="../../../disco/disco.pipelines.html#disco.pipelines.creator.TimeSeriesPipelineCreator.make_disco_config_command">[docs]</a>    <span class="k">def</span> <span class="nf">make_disco_config_command</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">section</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">template</span><span class="o">.</span><span class="n">preconfigured</span><span class="p">:</span>
+            <span class="n">model_inputs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">template</span><span class="o">.</span><span class="n">inputs</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">model_inputs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">template</span><span class="o">.</span><span class="n">get_model_transform_output</span><span class="p">()</span>
+        <span class="n">options</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">template</span><span class="o">.</span><span class="n">get_config_options</span><span class="p">(</span><span class="n">section</span><span class="p">)</span>
+        <span class="n">reports_filename</span> <span class="o">=</span> <span class="s2">&quot;generated_time_series_reports.toml&quot;</span>
+        <span class="n">dump_data</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">template</span><span class="o">.</span><span class="n">reports</span><span class="p">,</span> <span class="n">reports_filename</span><span class="p">)</span>
+        <span class="n">command</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;disco config time-series </span><span class="si">{</span><span class="n">model_inputs</span><span class="si">}</span><span class="s2"> &quot;</span>
+            <span class="sa">f</span><span class="s2">&quot;--reports-filename=</span><span class="si">{</span><span class="n">reports_filename</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">options</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">template</span><span class="o">.</span><span class="n">analysis_type</span> <span class="o">==</span> <span class="n">AnalysisType</span><span class="o">.</span><span class="n">COST_BENEFIT</span><span class="o">.</span><span class="n">value</span><span class="p">:</span>
+            <span class="c1"># These must not be user-configurable and don&#39;t go in the template.</span>
+            <span class="n">command</span> <span class="o">+=</span> <span class="s2">&quot; --feeder-losses=false --thermal-metrics=false --voltage-metrics=false&quot;</span>
+
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Make command - &#39;</span><span class="si">%s</span><span class="s2">&#39;&quot;</span><span class="p">,</span> <span class="n">command</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">command</span></div>
+
+<div class="viewcode-block" id="TimeSeriesPipelineCreator.make_prescreen_create_command"><a class="viewcode-back" href="../../../disco/disco.pipelines.html#disco.pipelines.creator.TimeSeriesPipelineCreator.make_prescreen_create_command">[docs]</a>    <span class="k">def</span> <span class="nf">make_prescreen_create_command</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">config_params</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">template</span><span class="o">.</span><span class="n">get_config_params</span><span class="p">(</span><span class="n">TemplateSection</span><span class="o">.</span><span class="n">PRESCREEN</span><span class="p">)</span>
+        <span class="n">config_file</span> <span class="o">=</span> <span class="n">config_params</span><span class="p">[</span><span class="s2">&quot;config_file&quot;</span><span class="p">]</span>
+        <span class="n">prescreen_params</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">template</span><span class="o">.</span><span class="n">get_prescreen_params</span><span class="p">(</span><span class="n">TemplateSection</span><span class="o">.</span><span class="n">PRESCREEN</span><span class="p">)</span>
+        <span class="n">command</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;disco prescreen-pv-penetration-levels </span><span class="si">{</span><span class="n">config_file</span><span class="si">}</span><span class="s2"> &quot;</span>
+            <span class="sa">f</span><span class="s2">&quot;create --config-file=</span><span class="si">{</span><span class="n">prescreen_params</span><span class="p">[</span><span class="s1">&#39;prescreen_config_file&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="p">)</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Make command - &#39;</span><span class="si">%s</span><span class="s2">&#39;&quot;</span><span class="p">,</span> <span class="n">command</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">command</span></div>
+
+<div class="viewcode-block" id="TimeSeriesPipelineCreator.make_prescreen_filter_command"><a class="viewcode-back" href="../../../disco/disco.pipelines.html#disco.pipelines.creator.TimeSeriesPipelineCreator.make_prescreen_filter_command">[docs]</a>    <span class="k">def</span> <span class="nf">make_prescreen_filter_command</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">config_params</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">template</span><span class="o">.</span><span class="n">get_config_params</span><span class="p">(</span><span class="n">TemplateSection</span><span class="o">.</span><span class="n">PRESCREEN</span><span class="p">)</span>
+        <span class="n">config_file</span> <span class="o">=</span> <span class="n">config_params</span><span class="p">[</span><span class="s2">&quot;config_file&quot;</span><span class="p">]</span>
+
+        <span class="n">prescreen_params</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">template</span><span class="o">.</span><span class="n">get_prescreen_params</span><span class="p">(</span><span class="n">TemplateSection</span><span class="o">.</span><span class="n">PRESCREEN</span><span class="p">)</span>
+        <span class="n">prescreen_output</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s2">&quot;$JADE_PIPELINE_OUTPUT_DIR&quot;</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;output-stage</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">stage_num</span><span class="o">-</span><span class="mi">1</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">command</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;disco prescreen-pv-penetration-levels </span><span class="si">{</span><span class="n">config_file</span><span class="si">}</span><span class="s2"> &quot;</span>
+            <span class="sa">f</span><span class="s2">&quot;filter-config </span><span class="si">{</span><span class="n">prescreen_output</span><span class="si">}</span><span class="s2"> &quot;</span>
+            <span class="sa">f</span><span class="s2">&quot;--config-file=</span><span class="si">{</span><span class="n">prescreen_params</span><span class="p">[</span><span class="s1">&#39;filtered_config_file&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="p">)</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Make command - &#39;</span><span class="si">%s</span><span class="s2">&#39;&quot;</span><span class="p">,</span> <span class="n">command</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">command</span></div>
+
+<div class="viewcode-block" id="TimeSeriesPipelineCreator.make_postprocess_command"><a class="viewcode-back" href="../../../disco/disco.pipelines.html#disco.pipelines.creator.TimeSeriesPipelineCreator.make_postprocess_command">[docs]</a>    <span class="k">def</span> <span class="nf">make_postprocess_command</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">commands</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">impact_analysis</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">template</span><span class="o">.</span><span class="n">analysis_type</span> <span class="o">==</span> <span class="n">AnalysisType</span><span class="o">.</span><span class="n">IMPACT_ANALYSIS</span><span class="o">.</span><span class="n">value</span>
+        <span class="n">hosting_capacity</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">template</span><span class="o">.</span><span class="n">analysis_type</span> <span class="o">==</span> <span class="n">AnalysisType</span><span class="o">.</span><span class="n">HOSTING_CAPACITY</span><span class="o">.</span><span class="n">value</span>
+        <span class="k">if</span> <span class="n">impact_analysis</span> <span class="ow">or</span> <span class="n">hosting_capacity</span><span class="p">:</span>
+            <span class="n">inputs</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s2">&quot;$JADE_PIPELINE_OUTPUT_DIR&quot;</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;output-stage</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">stage_num</span><span class="o">-</span><span class="mi">1</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="n">commands</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;disco-internal make-summary-tables </span><span class="si">{</span><span class="n">inputs</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">hosting_capacity</span><span class="p">:</span>
+                <span class="k">for</span> <span class="n">scenario</span> <span class="ow">in</span> <span class="n">TIME_SERIES_SCENARIOS</span><span class="p">:</span>
+                    <span class="n">commands</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;disco-internal compute-hosting-capacity </span><span class="si">{</span><span class="n">inputs</span><span class="si">}</span><span class="s2"> --scenario=</span><span class="si">{</span><span class="n">scenario</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            
+            <span class="c1"># Postprocess to ingest results into sqlite database</span>
+            <span class="n">task_name</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">template</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;task_name&quot;</span><span class="p">]</span>
+            
+            <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isabs</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">template</span><span class="o">.</span><span class="n">database</span><span class="p">):</span>
+                <span class="n">database</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">template</span><span class="o">.</span><span class="n">database</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">database</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">inputs</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">template</span><span class="o">.</span><span class="n">database</span><span class="p">)</span>
+            <span class="n">model_inputs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">template</span><span class="o">.</span><span class="n">inputs</span>
+            <span class="n">commands</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                <span class="s1">&#39;disco ingest-tables &#39;</span>
+                <span class="sa">f</span><span class="s1">&#39;--task-name &quot;</span><span class="si">{</span><span class="n">task_name</span><span class="si">}</span><span class="s1">&quot; &#39;</span>
+                <span class="sa">f</span><span class="s1">&#39;--database </span><span class="si">{</span><span class="n">database</span><span class="si">}</span><span class="s1"> &#39;</span>
+                <span class="sa">f</span><span class="s1">&#39;--model-inputs </span><span class="si">{</span><span class="n">model_inputs</span><span class="si">}</span><span class="s1"> &#39;</span>
+                <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">inputs</span><span class="si">}</span><span class="s1">&#39;</span>
+            <span class="p">)</span>
+
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">template</span><span class="o">.</span><span class="n">analysis_type</span> <span class="o">==</span> <span class="n">AnalysisType</span><span class="o">.</span><span class="n">COST_BENEFIT</span><span class="o">.</span><span class="n">value</span><span class="p">:</span>
+            <span class="n">inputs</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s2">&quot;$JADE_PIPELINE_OUTPUT_DIR&quot;</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;output-stage</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">stage_num</span><span class="o">-</span><span class="mi">1</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="n">commands</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;disco-internal make-cba-tables </span><span class="si">{</span><span class="n">inputs</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        
+        <span class="k">return</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">commands</span><span class="p">)</span></div></div>
+
+
+<span class="k">class</span> <span class="nc">UpgradePipelineCreator</span><span class="p">(</span><span class="n">PipelineCreatorBase</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Upgrade pipeline creator class&quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">create_pipeline</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config_file</span><span class="p">):</span>
+        <span class="n">stages</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">make_simulation_stage</span><span class="p">()]</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">template</span><span class="o">.</span><span class="n">contains_postprocess</span><span class="p">():</span>
+            <span class="n">stages</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">make_postprocess_stage</span><span class="p">())</span>
+        
+        <span class="n">config</span> <span class="o">=</span> <span class="n">PipelineConfig</span><span class="p">(</span><span class="n">stages</span><span class="o">=</span><span class="n">stages</span><span class="p">,</span> <span class="n">stage_num</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">config_file</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+            <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">json</span><span class="p">(</span><span class="n">indent</span><span class="o">=</span><span class="mi">2</span><span class="p">))</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Created pipeline config file - </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">config_file</span><span class="p">)</span>
+    
+    <span class="k">def</span> <span class="nf">make_model_transform_command</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">options</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">template</span><span class="o">.</span><span class="n">get_transform_options</span><span class="p">(</span><span class="n">TemplateSection</span><span class="o">.</span><span class="n">MODEL</span><span class="p">)</span>
+        <span class="n">command</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;disco transform-model </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">template</span><span class="o">.</span><span class="n">inputs</span><span class="si">}</span><span class="s2"> upgrade </span><span class="si">{</span><span class="n">options</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Make command - &#39;</span><span class="si">%s</span><span class="s2">&#39;&quot;</span><span class="p">,</span> <span class="n">command</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">command</span>
+    
+    <span class="k">def</span> <span class="nf">make_prescreen_create_command</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">pass</span>
+
+    <span class="k">def</span> <span class="nf">make_prescreen_filter_command</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">pass</span>
+
+    <span class="k">def</span> <span class="nf">make_disco_config_command</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">section</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">template</span><span class="o">.</span><span class="n">preconfigured</span><span class="p">:</span>
+            <span class="n">model_inputs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">template</span><span class="o">.</span><span class="n">inputs</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">model_inputs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">template</span><span class="o">.</span><span class="n">get_model_transform_output</span><span class="p">()</span>
+        
+        <span class="n">options</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">template</span><span class="o">.</span><span class="n">get_config_options</span><span class="p">(</span><span class="n">section</span><span class="p">)</span>
+        <span class="n">command</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;disco config upgrade </span><span class="si">{</span><span class="n">model_inputs</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">options</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Make command - &#39;</span><span class="si">%s</span><span class="s2">&#39;&quot;</span><span class="p">,</span> <span class="n">command</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">command</span>
+
+    <span class="k">def</span> <span class="nf">make_postprocess_command</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">inputs</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s2">&quot;$JADE_PIPELINE_OUTPUT_DIR&quot;</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;output-stage</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">stage_num</span><span class="o">-</span><span class="mi">1</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">command</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;disco-internal make-upgrade-tables </span><span class="si">{</span><span class="n">inputs</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="k">return</span> <span class="n">command</span>
+
+
+<div class="viewcode-block" id="UpgradePipelineCreator"><a class="viewcode-back" href="../../../disco/disco.pipelines.html#disco.pipelines.creator.UpgradePipelineCreator">[docs]</a><span class="k">class</span> <span class="nc">UpgradePipelineCreator</span><span class="p">(</span><span class="n">PipelineCreatorBase</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Upgrade pipeline creator class&quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="UpgradePipelineCreator.create_pipeline"><a class="viewcode-back" href="../../../disco/disco.pipelines.html#disco.pipelines.creator.UpgradePipelineCreator.create_pipeline">[docs]</a>    <span class="k">def</span> <span class="nf">create_pipeline</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config_file</span><span class="p">):</span>
+        <span class="n">stages</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">make_simulation_stage</span><span class="p">()]</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">template</span><span class="o">.</span><span class="n">contains_postprocess</span><span class="p">():</span>
+            <span class="n">stages</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">make_postprocess_stage</span><span class="p">())</span>
+        
+        <span class="n">config</span> <span class="o">=</span> <span class="n">PipelineConfig</span><span class="p">(</span><span class="n">stages</span><span class="o">=</span><span class="n">stages</span><span class="p">,</span> <span class="n">stage_num</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">config_file</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+            <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">json</span><span class="p">(</span><span class="n">indent</span><span class="o">=</span><span class="mi">2</span><span class="p">))</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Created pipeline config file - </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">config_file</span><span class="p">)</span></div>
+    
+<div class="viewcode-block" id="UpgradePipelineCreator.make_model_transform_command"><a class="viewcode-back" href="../../../disco/disco.pipelines.html#disco.pipelines.creator.UpgradePipelineCreator.make_model_transform_command">[docs]</a>    <span class="k">def</span> <span class="nf">make_model_transform_command</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">options</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">template</span><span class="o">.</span><span class="n">get_transform_options</span><span class="p">(</span><span class="n">TemplateSection</span><span class="o">.</span><span class="n">MODEL</span><span class="p">)</span>
+        <span class="n">command</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;disco transform-model </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">template</span><span class="o">.</span><span class="n">inputs</span><span class="si">}</span><span class="s2"> upgrade </span><span class="si">{</span><span class="n">options</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Make command - &#39;</span><span class="si">%s</span><span class="s2">&#39;&quot;</span><span class="p">,</span> <span class="n">command</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">command</span></div>
+    
+<div class="viewcode-block" id="UpgradePipelineCreator.make_prescreen_create_command"><a class="viewcode-back" href="../../../disco/disco.pipelines.html#disco.pipelines.creator.UpgradePipelineCreator.make_prescreen_create_command">[docs]</a>    <span class="k">def</span> <span class="nf">make_prescreen_create_command</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">pass</span></div>
+
+<div class="viewcode-block" id="UpgradePipelineCreator.make_prescreen_filter_command"><a class="viewcode-back" href="../../../disco/disco.pipelines.html#disco.pipelines.creator.UpgradePipelineCreator.make_prescreen_filter_command">[docs]</a>    <span class="k">def</span> <span class="nf">make_prescreen_filter_command</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">pass</span></div>
+
+<div class="viewcode-block" id="UpgradePipelineCreator.make_disco_config_command"><a class="viewcode-back" href="../../../disco/disco.pipelines.html#disco.pipelines.creator.UpgradePipelineCreator.make_disco_config_command">[docs]</a>    <span class="k">def</span> <span class="nf">make_disco_config_command</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">section</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">template</span><span class="o">.</span><span class="n">preconfigured</span><span class="p">:</span>
+            <span class="n">model_inputs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">template</span><span class="o">.</span><span class="n">inputs</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">model_inputs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">template</span><span class="o">.</span><span class="n">get_model_transform_output</span><span class="p">()</span>
+        
+        <span class="n">options</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">template</span><span class="o">.</span><span class="n">get_config_options</span><span class="p">(</span><span class="n">section</span><span class="p">)</span>
+        <span class="n">command</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;disco config upgrade </span><span class="si">{</span><span class="n">model_inputs</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">options</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Make command - &#39;</span><span class="si">%s</span><span class="s2">&#39;&quot;</span><span class="p">,</span> <span class="n">command</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">command</span></div>
+
+<div class="viewcode-block" id="UpgradePipelineCreator.make_postprocess_command"><a class="viewcode-back" href="../../../disco/disco.pipelines.html#disco.pipelines.creator.UpgradePipelineCreator.make_postprocess_command">[docs]</a>    <span class="k">def</span> <span class="nf">make_postprocess_command</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">inputs</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s2">&quot;$JADE_PIPELINE_OUTPUT_DIR&quot;</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;output-stage</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">stage_num</span><span class="o">-</span><span class="mi">1</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">command</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;disco-internal make-upgrade-tables </span><span class="si">{</span><span class="n">inputs</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="k">return</span> <span class="n">command</span></div></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2019, NREL.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

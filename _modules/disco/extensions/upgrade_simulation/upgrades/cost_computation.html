@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>disco.extensions.upgrade_simulation.upgrades.cost_computation &mdash; DISCO 0.1 documentation</title>
+      <link rel="stylesheet" href="../../../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../../../" id="documentation_options" src="../../../../../_static/documentation_options.js"></script>
+        <script src="../../../../../_static/jquery.js"></script>
+        <script src="../../../../../_static/underscore.js"></script>
+        <script src="../../../../../_static/doctools.js"></script>
+    <script src="../../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../search.html" />
+    <link href="../../../../../_static/style.css" rel="stylesheet" type="text/css">
+
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../../../../index.html" class="icon icon-home"> DISCO
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">User Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../installation.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../installation.html#use-conda">Use Conda</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../installation.html#use-docker">Use Docker</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../overview.html">Overview</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../overview.html#data-sources">Data Sources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../overview.html#transform-model">Transform Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../overview.html#config-jobs">Config Jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../overview.html#submit-jobs">Submit Jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../overview.html#result-analysis">Result Analysis</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../quick-start.html">Quick Start</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../quick-start.html#source-data">Source Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../quick-start.html#transform-model">Transform Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../quick-start.html#config-jobs">Config Jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../quick-start.html#submit-jobs">Submit Jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../quick-start.html#result-analysis">Result Analysis</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../data-sources.html">Data Sources</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../data-sources/smart-ds-model-preparation.html">SMART-DS OpenDSS Model Preparation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../data-sources.html#gem-model">GEM Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../data-sources.html#epri-model">EPRI Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../data-sources.html#sourcetree1-model">SourceTree1 Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../data-sources.html#sourcetree2-model">SourceTree2 Model</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../pv-deployments.html">PV Deployments</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../pv-deployments.html#sourcetree1-pv-deployments">SourceTree1 PV Deployments</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../transform-models.html">Transform Models</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../transform-models.html#transform-model-help">Transform Model Help</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../transform-models.html#disco-model-in-depth">DISCO Model in Depth</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../analysis-workflows.html">Analysis Workflows</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../analysis-workflows/hosting-capacity-analysis.html">Hosting Capacity Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../analysis-workflows/upgrade-cost-analysis.html">Upgrade Cost Analysis</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../pipelines.html">Pipelines</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../pipelines.html#sourcetree1model">SourceTree1Model</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../debugging-issues.html">Debugging Issues</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../debugging-issues.html#using-jade">Using JADE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../debugging-issues.html#using-pydss">Using PyDSS</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../data-ingestion.html">Data Ingestion</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../data-ingestion.html#ingest-to-new-database">Ingest to New Database</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../data-ingestion.html#ingest-to-existing-database">Ingest to Existing Database</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../data-ingestion.html#run-database-queries">Run Database Queries</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../advanced-guide.html">Advanced Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../advanced-guide/analysis-deployment.html">Analysis Deployment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../advanced-guide/upgrade-cost-analysis-generic-models.html">Upgrade Cost Analysis JSON Schemas</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contribution</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../build-docs.html">Build docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../license.html">License</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../../index.html">DISCO</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../../../index.html">Module code</a> &raquo;</li>
+      <li>disco.extensions.upgrade_simulation.upgrades.cost_computation</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for disco.extensions.upgrade_simulation.upgrades.cost_computation</h1><div class="highlight"><pre>
+<span></span>
+<span class="kn">import</span> <span class="nn">logging</span>
+
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="kn">from</span> <span class="nn">disco.extensions.upgrade_simulation.upgrades.common_functions</span> <span class="kn">import</span> <span class="n">convert_list_string_to_list</span>
+
+<span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="compute_all_costs"><a class="viewcode-back" href="../../../../../disco/disco.extensions.upgrade_simulation.upgrades.html#disco.extensions.upgrade_simulation.upgrades.cost_computation.compute_all_costs">[docs]</a><span class="k">def</span> <span class="nf">compute_all_costs</span><span class="p">(</span>
+    <span class="n">output_csv_xfmr_upgrades_filepath</span><span class="p">,</span>
+    <span class="n">output_csv_line_upgrades_filepath</span><span class="p">,</span>
+    <span class="n">output_csv_voltage_upgrades_filepath</span><span class="p">,</span>
+    <span class="n">cost_database_filepath</span><span class="p">,</span>
+    <span class="n">thermal_cost_output_filepath</span><span class="p">,</span>
+    <span class="n">voltage_cost_output_filepath</span><span class="p">,</span>
+    <span class="n">total_cost_output_filepath</span>
+<span class="p">):</span>
+    <span class="c1"># upgrades files</span>
+    <span class="c1"># TODO add except statement for FileNotFoundError</span>
+    <span class="n">xfmr_upgrades_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">output_csv_xfmr_upgrades_filepath</span><span class="p">)</span>
+    <span class="n">line_upgrades_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">output_csv_line_upgrades_filepath</span><span class="p">)</span>
+    <span class="n">voltage_upgrades_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">output_csv_voltage_upgrades_filepath</span><span class="p">)</span>
+
+    <span class="c1"># unit cost database files</span>
+    <span class="n">xfmr_cost_database</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="n">cost_database_filepath</span><span class="p">,</span> <span class="s2">&quot;transformers&quot;</span><span class="p">)</span>
+    <span class="n">line_cost_database</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="n">cost_database_filepath</span><span class="p">,</span> <span class="s2">&quot;lines&quot;</span><span class="p">)</span>
+    <span class="n">controls_cost_database</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="n">cost_database_filepath</span><span class="p">,</span> <span class="s2">&quot;control_changes&quot;</span><span class="p">)</span>
+    <span class="n">voltage_regulators_cost_database</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span>
+        <span class="n">cost_database_filepath</span><span class="p">,</span> <span class="s2">&quot;voltage_regulators&quot;</span>
+    <span class="p">)</span>
+    <span class="n">misc_database</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="n">cost_database_filepath</span><span class="p">,</span> <span class="s2">&quot;misc&quot;</span><span class="p">)</span>
+
+    <span class="n">output_columns</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;type&quot;</span><span class="p">,</span> <span class="s2">&quot;count&quot;</span><span class="p">,</span> <span class="s2">&quot;total_cost_usd&quot;</span><span class="p">,</span> <span class="s2">&quot;comment&quot;</span><span class="p">]</span>
+
+    <span class="c1"># reformat data</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">xfmr_upgrades_df</span><span class="o">.</span><span class="n">empty</span><span class="p">:</span>
+        <span class="n">xfmr_upgrades_df</span><span class="p">,</span> <span class="n">xfmr_cost_database</span> <span class="o">=</span> <span class="n">reformat_xfmr_files</span><span class="p">(</span>
+            <span class="n">xfmr_upgrades_df</span><span class="o">=</span><span class="n">xfmr_upgrades_df</span><span class="p">,</span> <span class="n">xfmr_cost_database</span><span class="o">=</span><span class="n">xfmr_cost_database</span>
+        <span class="p">)</span>
+        <span class="c1"># compute thermal upgrade costs</span>
+        <span class="n">xfmr_cost_df</span> <span class="o">=</span> <span class="n">compute_transformer_costs</span><span class="p">(</span>
+            <span class="n">xfmr_upgrades_df</span><span class="o">=</span><span class="n">xfmr_upgrades_df</span><span class="p">,</span>
+            <span class="n">xfmr_cost_database</span><span class="o">=</span><span class="n">xfmr_cost_database</span><span class="p">,</span>
+            <span class="n">misc_database</span><span class="o">=</span><span class="n">misc_database</span><span class="p">,</span>
+        <span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">xfmr_cost_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="n">output_columns</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">line_upgrades_df</span><span class="o">.</span><span class="n">empty</span><span class="p">:</span>
+        <span class="n">line_upgrades_df</span><span class="p">,</span> <span class="n">line_cost_database</span> <span class="o">=</span> <span class="n">reformat_line_files</span><span class="p">(</span>
+            <span class="n">line_upgrades_df</span><span class="o">=</span><span class="n">line_upgrades_df</span><span class="p">,</span> <span class="n">line_cost_database</span><span class="o">=</span><span class="n">line_cost_database</span>
+        <span class="p">)</span>
+        <span class="n">line_cost_df</span> <span class="o">=</span> <span class="n">compute_line_costs</span><span class="p">(</span>
+            <span class="n">line_upgrades_df</span><span class="o">=</span><span class="n">line_upgrades_df</span><span class="p">,</span> <span class="n">line_cost_database</span><span class="o">=</span><span class="n">line_cost_database</span>
+        <span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">line_cost_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="n">output_columns</span><span class="p">)</span>
+
+    <span class="n">thermal_cost_df</span> <span class="o">=</span> <span class="n">xfmr_cost_df</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">line_cost_df</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">voltage_upgrades_df</span><span class="o">.</span><span class="n">empty</span><span class="p">:</span>
+        <span class="c1"># compute voltage upgrade costs</span>
+        <span class="n">cap_cost_df</span> <span class="o">=</span> <span class="n">compute_capcontrol_cost</span><span class="p">(</span><span class="n">voltage_upgrades_df</span><span class="o">=</span><span class="n">voltage_upgrades_df</span><span class="p">,</span>
+                                            <span class="n">controls_cost_database</span><span class="o">=</span><span class="n">controls_cost_database</span><span class="p">)</span>
+        <span class="n">reg_cost_df</span> <span class="o">=</span> <span class="n">compute_voltage_regcontrol_cost</span><span class="p">(</span><span class="n">voltage_upgrades_df</span><span class="o">=</span><span class="n">voltage_upgrades_df</span><span class="p">,</span>
+                                                    <span class="n">controls_cost_database</span><span class="o">=</span><span class="n">controls_cost_database</span><span class="p">)</span>
+        <span class="n">voltage_cost_df</span> <span class="o">=</span> <span class="n">cap_cost_df</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">reg_cost_df</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">voltage_cost_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="n">output_columns</span><span class="p">)</span>
+
+    <span class="n">total_cost_df</span> <span class="o">=</span> <span class="n">get_total_costs</span><span class="p">(</span><span class="n">thermal_cost_df</span><span class="p">,</span> <span class="n">voltage_cost_df</span><span class="p">)</span>
+
+    <span class="c1"># save files</span>
+    <span class="n">thermal_cost_df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">thermal_cost_output_filepath</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">voltage_cost_df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">voltage_cost_output_filepath</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">total_cost_df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">total_cost_output_filepath</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="compute_transformer_costs"><a class="viewcode-back" href="../../../../../disco/disco.extensions.upgrade_simulation.upgrades.html#disco.extensions.upgrade_simulation.upgrades.cost_computation.compute_transformer_costs">[docs]</a><span class="k">def</span> <span class="nf">compute_transformer_costs</span><span class="p">(</span><span class="n">xfmr_upgrades_df</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">xfmr_cost_database</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;This function computes the transformer costs.</span>
+<span class="sd">    -Unit equipment cost for new(parallel) and &quot;upgrade&quot; transformers are the same in the database.</span>
+<span class="sd">    The difference would be the fixed costs added (if present in misc_database)</span>
+<span class="sd">    -For transformers that are of ActionType &quot;upgrade&quot;:</span>
+<span class="sd">    transformers of old rating are removed, and that of upgraded rating is added.</span>
+<span class="sd">    -For transformers that are of ActionType &quot;new(parallel)&quot;:</span>
+<span class="sd">    A new transformer is placed in parallel with the existing transformer</span>
+<span class="sd">    -These are the properties considered while choosing unit cost:</span>
+<span class="sd">    [&quot;rated_kVA&quot;, &quot;phases&quot;, &quot;primary_kV&quot;, &quot;secondary_kV&quot;, &quot;primary_connection_type&quot;, &quot;secondary_connection_type&quot;,</span>
+<span class="sd">    &quot;num_windings&quot;]</span>
+<span class="sd">    -For a given transformer, if unit cost pertaining to these properties is not available,</span>
+<span class="sd">    then the closest &quot;rated_kVA&quot; unit cost is chosen.</span>
+<span class="sd">    User can decide if they want to choose backup based on another property.</span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    xfmr_upgrades_df</span>
+<span class="sd">    xfmr_cost_database</span>
+<span class="sd">    kwargs</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">output_cost_field</span> <span class="o">=</span> <span class="s2">&quot;total_cost_usd&quot;</span>
+    <span class="n">output_count_field</span> <span class="o">=</span> <span class="s2">&quot;count&quot;</span>
+    <span class="n">deciding_columns</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;rated_kVA&quot;</span><span class="p">,</span> <span class="s2">&quot;phases&quot;</span><span class="p">,</span> <span class="s2">&quot;primary_kV&quot;</span><span class="p">,</span> <span class="s2">&quot;secondary_kV&quot;</span><span class="p">,</span> <span class="s2">&quot;primary_connection_type&quot;</span><span class="p">,</span>
+                        <span class="s2">&quot;secondary_connection_type&quot;</span><span class="p">,</span> <span class="s2">&quot;num_windings&quot;</span><span class="p">]</span>
+    <span class="n">output_columns_list</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;type&quot;</span><span class="p">,</span> <span class="n">output_count_field</span><span class="p">,</span> <span class="n">output_cost_field</span><span class="p">,</span> <span class="s2">&quot;comment&quot;</span><span class="p">]</span>
+    <span class="c1"># output_columns_list = output_columns_list + deciding_columns</span>
+    <span class="n">backup_deciding_property</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;backup_deciding_property&quot;</span><span class="p">,</span> <span class="s2">&quot;rated_kVA&quot;</span><span class="p">)</span>
+    <span class="n">misc_database</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;misc_database&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+    <span class="c1"># choose which properties are to be saved</span>
+    <span class="n">properties_list</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">output_columns_list</span><span class="p">)</span> <span class="o">-</span> <span class="p">{</span><span class="s2">&quot;type&quot;</span><span class="p">})</span>
+    <span class="n">upgrade_type_list</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;upgrade&quot;</span><span class="p">,</span> <span class="s2">&quot;new (parallel)&quot;</span><span class="p">]</span>
+    <span class="n">added_xfmr_df</span> <span class="o">=</span> <span class="n">xfmr_upgrades_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="n">xfmr_upgrades_df</span><span class="p">[</span><span class="s2">&quot;Upgrade_Type&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">upgrade_type_list</span><span class="p">))</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">xfmr_upgrades_df</span><span class="p">[</span><span class="s2">&quot;Action&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;add&quot;</span><span class="p">)]</span>
+    <span class="n">computed_cost</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">added_xfmr_df</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
+        <span class="n">unit_cost</span> <span class="o">=</span> <span class="n">xfmr_cost_database</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="n">xfmr_cost_database</span><span class="p">[</span><span class="s2">&quot;rated_kVA&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;rated_kVA&quot;</span><span class="p">])</span> <span class="o">&amp;</span>
+                                           <span class="p">(</span><span class="n">xfmr_cost_database</span><span class="p">[</span><span class="s2">&quot;phases&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;phases&quot;</span><span class="p">])</span> <span class="o">&amp;</span>
+                                           <span class="p">(</span><span class="n">xfmr_cost_database</span><span class="p">[</span><span class="s2">&quot;primary_kV&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;primary_kV&quot;</span><span class="p">])</span> <span class="o">&amp;</span>
+                                           <span class="p">(</span><span class="n">xfmr_cost_database</span><span class="p">[</span><span class="s2">&quot;secondary_kV&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;secondary_kV&quot;</span><span class="p">])</span> <span class="o">&amp;</span>
+                                           <span class="p">(</span><span class="n">xfmr_cost_database</span><span class="p">[</span><span class="s2">&quot;primary_connection_type&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;primary_connection_type&quot;</span><span class="p">])</span> <span class="o">&amp;</span>
+                                           <span class="p">(</span><span class="n">xfmr_cost_database</span><span class="p">[</span><span class="s2">&quot;secondary_connection_type&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;secondary_connection_type&quot;</span><span class="p">])</span> <span class="o">&amp;</span>
+                                           <span class="p">(</span><span class="n">xfmr_cost_database</span><span class="p">[</span><span class="s2">&quot;num_windings&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;num_windings&quot;</span><span class="p">])</span>
+                                           <span class="p">][</span><span class="s2">&quot;cost&quot;</span><span class="p">]</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">unit_cost</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>  <span class="c1"># if there are more than one rows, the first one is chosen in random</span>
+            <span class="n">unit_cost</span> <span class="o">=</span> <span class="n">unit_cost</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="n">row</span><span class="p">[</span><span class="n">output_cost_field</span><span class="p">]</span> <span class="o">=</span> <span class="n">unit_cost</span>
+            <span class="n">row</span><span class="p">[</span><span class="s2">&quot;comment&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+            <span class="n">row</span><span class="p">[</span><span class="n">output_count_field</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="k">else</span><span class="p">:</span>  <span class="c1"># if costs are not present for this transformer, then choose closest rated_kVA</span>
+            <span class="c1"># (or whatever backup deciding property is passed) (ignore other properties)</span>
+            <span class="n">closest</span> <span class="o">=</span> <span class="n">xfmr_cost_database</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="nb">abs</span><span class="p">(</span><span class="n">xfmr_cost_database</span><span class="p">[</span><span class="n">backup_deciding_property</span><span class="p">]</span> <span class="o">-</span>
+                                                 <span class="n">row</span><span class="p">[</span><span class="n">backup_deciding_property</span><span class="p">])</span><span class="o">.</span><span class="n">idxmin</span><span class="p">()]</span>
+            <span class="n">row</span><span class="p">[</span><span class="n">output_cost_field</span><span class="p">]</span> <span class="o">=</span> <span class="n">closest</span><span class="p">[</span><span class="s2">&quot;cost&quot;</span><span class="p">]</span>
+            <span class="n">row</span><span class="p">[</span><span class="n">output_count_field</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+            <span class="n">comment_string</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;Transformer </span><span class="si">{</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;final_equipment_name&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">: Exact cost not available. &quot;</span> \
+                             <span class="sa">f</span><span class="s2">&quot;Unit cost for transformer with these parameters used &quot;</span> \
+                             <span class="sa">f</span><span class="s2">&quot;(based on closest </span><span class="si">{</span><span class="n">backup_deciding_property</span><span class="si">}</span><span class="s2">:  </span><span class="si">{</span><span class="nb">dict</span><span class="p">(</span><span class="n">closest</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="n">comment_string</span><span class="p">)</span>
+            <span class="n">row</span><span class="p">[</span><span class="s2">&quot;comment&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">comment_string</span>
+        <span class="c1"># add transformer fixed costs, if given in database. (depending on upgrade type)</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">misc_database</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="ow">not</span> <span class="n">misc_database</span><span class="o">.</span><span class="n">empty</span><span class="p">):</span>
+            <span class="n">misc_xfmr_fields</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;replace&quot;</span><span class="p">:</span> <span class="s2">&quot;Replace transformer (fixed cost)&quot;</span><span class="p">,</span>
+                                <span class="s2">&quot;new&quot;</span><span class="p">:</span> <span class="s2">&quot;Add new transformer (fixed cost)&quot;</span><span class="p">}</span>
+            <span class="c1"># if equipment is upgraded, and misc database contains fixed cost for replacing xfmr</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s2">&quot;Upgrade_Type&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s2">&quot;upgrade&quot;</span><span class="p">)</span> <span class="ow">and</span> \
+                    <span class="p">((</span><span class="n">misc_database</span><span class="p">[</span><span class="s2">&quot;Description&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="n">misc_xfmr_fields</span><span class="p">[</span><span class="s2">&quot;replace&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">any</span><span class="p">()):</span>
+                <span class="n">field_name</span> <span class="o">=</span> <span class="n">misc_xfmr_fields</span><span class="p">[</span><span class="s2">&quot;replace&quot;</span><span class="p">]</span>
+                <span class="n">fixed_cost</span> <span class="o">=</span> <span class="n">misc_database</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">misc_database</span><span class="p">[</span><span class="s2">&quot;Description&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="n">field_name</span><span class="p">]</span>
+            <span class="c1"># if equipment is new, and misc database contains fixed cost for adding new xfmr</span>
+            <span class="k">elif</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;Upgrade_Type&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s2">&quot;new (parallel)&quot;</span> <span class="ow">and</span> \
+                    <span class="p">((</span><span class="n">misc_database</span><span class="p">[</span><span class="s2">&quot;Description&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="n">misc_xfmr_fields</span><span class="p">[</span><span class="s2">&quot;new&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">any</span><span class="p">()):</span>
+                <span class="n">field_name</span> <span class="o">=</span> <span class="n">misc_xfmr_fields</span><span class="p">[</span><span class="s2">&quot;new&quot;</span><span class="p">]</span>
+                <span class="n">fixed_cost</span> <span class="o">=</span> <span class="n">misc_database</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">misc_database</span><span class="p">[</span><span class="s2">&quot;Description&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="n">field_name</span><span class="p">]</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">fixed_cost</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">fixed_cost</span><span class="o">.</span><span class="n">empty</span><span class="p">:</span>
+                <span class="n">row</span><span class="p">[</span><span class="n">output_cost_field</span><span class="p">]</span> <span class="o">+=</span> <span class="n">misc_database</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">misc_database</span><span class="p">[</span><span class="s2">&quot;Description&quot;</span><span class="p">]</span>
+                                                            <span class="o">==</span> <span class="n">field_name</span><span class="p">][</span><span class="s2">&quot;total_cost&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+        <span class="n">computed_cost</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="n">properties_list</span><span class="p">])</span>
+    <span class="n">xfmr_cost_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">computed_cost</span><span class="p">)</span>
+    <span class="n">xfmr_cost_df</span><span class="p">[</span><span class="s2">&quot;type&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;Transformer&quot;</span>
+    <span class="n">xfmr_cost_df</span> <span class="o">=</span> <span class="n">xfmr_cost_df</span><span class="p">[</span><span class="n">output_columns_list</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">xfmr_cost_df</span></div>
+
+
+<div class="viewcode-block" id="reformat_xfmr_files"><a class="viewcode-back" href="../../../../../disco/disco.extensions.upgrade_simulation.upgrades.html#disco.extensions.upgrade_simulation.upgrades.cost_computation.reformat_xfmr_files">[docs]</a><span class="k">def</span> <span class="nf">reformat_xfmr_files</span><span class="p">(</span><span class="n">xfmr_upgrades_df</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">xfmr_cost_database</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;This function renames, reformats transformer upgrades dataframe to match cost database columns</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    xfmr_upgrades_df</span>
+<span class="sd">    xfmr_cost_database</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">xfmr_upgrades_df</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;kVA&quot;</span><span class="p">:</span> <span class="s2">&quot;rated_kVA&quot;</span><span class="p">,</span> <span class="s2">&quot;windings&quot;</span><span class="p">:</span> <span class="s2">&quot;num_windings&quot;</span><span class="p">},</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">xfmr_upgrades_df</span><span class="p">[</span><span class="s2">&quot;conns&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">xfmr_upgrades_df</span><span class="p">[</span><span class="s2">&quot;conns&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">convert_list_string_to_list</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+    <span class="n">xfmr_upgrades_df</span><span class="p">[</span><span class="s2">&quot;kVs&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">xfmr_upgrades_df</span><span class="p">[</span><span class="s2">&quot;kVs&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">convert_list_string_to_list</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+    <span class="n">xfmr_upgrades_df</span><span class="p">[</span><span class="s2">&quot;rated_kVA&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">xfmr_upgrades_df</span><span class="p">[</span><span class="s2">&quot;rated_kVA&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
+    <span class="n">xfmr_upgrades_df</span><span class="p">[</span><span class="s2">&quot;num_windings&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">xfmr_upgrades_df</span><span class="p">[</span><span class="s2">&quot;num_windings&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+    <span class="n">xfmr_upgrades_df</span><span class="p">[</span><span class="s2">&quot;phases&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">xfmr_upgrades_df</span><span class="p">[</span><span class="s2">&quot;phases&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+    <span class="n">xfmr_upgrades_df</span><span class="p">[</span><span class="s2">&quot;primary_kV&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">xfmr_upgrades_df</span><span class="p">[</span><span class="s2">&quot;kVs&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
+    <span class="n">xfmr_upgrades_df</span><span class="p">[</span><span class="s2">&quot;secondary_kV&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">xfmr_upgrades_df</span><span class="p">[</span><span class="s2">&quot;kVs&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
+    <span class="n">xfmr_upgrades_df</span><span class="p">[</span><span class="s2">&quot;primary_connection_type&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">xfmr_upgrades_df</span><span class="p">[</span><span class="s2">&quot;conns&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">xfmr_upgrades_df</span><span class="p">[</span><span class="s2">&quot;secondary_connection_type&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">xfmr_upgrades_df</span><span class="p">[</span><span class="s2">&quot;conns&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+
+    <span class="n">xfmr_cost_database</span><span class="p">[</span><span class="s2">&quot;rated_kVA&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">xfmr_cost_database</span><span class="p">[</span><span class="s2">&quot;rated_kVA&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
+    <span class="n">xfmr_cost_database</span><span class="p">[</span><span class="s2">&quot;num_windings&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">xfmr_cost_database</span><span class="p">[</span><span class="s2">&quot;num_windings&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+    <span class="n">xfmr_cost_database</span><span class="p">[</span><span class="s2">&quot;phases&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">xfmr_cost_database</span><span class="p">[</span><span class="s2">&quot;phases&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+    <span class="n">xfmr_cost_database</span><span class="p">[</span><span class="s2">&quot;primary_kV&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">xfmr_cost_database</span><span class="p">[</span><span class="s2">&quot;primary_kV&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
+    <span class="n">xfmr_cost_database</span><span class="p">[</span><span class="s2">&quot;secondary_kV&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">xfmr_cost_database</span><span class="p">[</span><span class="s2">&quot;secondary_kV&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
+    <span class="n">xfmr_cost_database</span><span class="p">[</span><span class="s2">&quot;cost&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">xfmr_cost_database</span><span class="p">[</span><span class="s2">&quot;cost&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">xfmr_upgrades_df</span><span class="p">,</span> <span class="n">xfmr_cost_database</span></div>
+
+
+<div class="viewcode-block" id="compute_line_costs"><a class="viewcode-back" href="../../../../../disco/disco.extensions.upgrade_simulation.upgrades.html#disco.extensions.upgrade_simulation.upgrades.cost_computation.compute_line_costs">[docs]</a><span class="k">def</span> <span class="nf">compute_line_costs</span><span class="p">(</span><span class="n">line_upgrades_df</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">line_cost_database</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;This function computes the line costs.</span>
+<span class="sd">    -Unit equipment cost for new(parallel) and &quot;upgrade&quot; line are the not same in the database.</span>
+<span class="sd">    There are different costs given for reconductored and new lines</span>
+<span class="sd">    -For lines that are of ActionType &quot;upgrade&quot;: &quot;reconductored&quot; line unit costs need to be used</span>
+<span class="sd">    -For lines that are of ActionType &quot;new (parallel)&quot;: &quot;new&quot; line unit costs need to be used</span>
+<span class="sd">    -Upgraded lines and new lines run along existing circuit, so length is the same for both</span>
+<span class="sd">    -These are the properties considered while choosing unit cost:</span>
+<span class="sd">    [&quot;phases&quot;, &quot;voltage_kV&quot;, &quot;ampere_rating&quot;, &quot;line_placement&quot;, &quot;Description&quot; (i.e. whether new or reconductored)]</span>
+<span class="sd">    -For a given line, if unit cost pertaining to these properties is not available,</span>
+<span class="sd">    then the closest &quot;ampere_rating&quot; unit cost is chosen.</span>
+<span class="sd">    User can decide if they want to choose backup based on another property.</span>
+<span class="sd">    For 3 phase lines, voltage_kV should be LN voltage (# TODO check if this is correct)</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    line_upgrades_df</span>
+<span class="sd">    line_cost_database</span>
+<span class="sd">    kwargs</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">output_cost_field</span> <span class="o">=</span> <span class="s2">&quot;total_cost_usd&quot;</span>
+    <span class="n">output_count_field</span> <span class="o">=</span> <span class="s2">&quot;count&quot;</span>
+    <span class="n">deciding_columns</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;phases&quot;</span><span class="p">,</span> <span class="s2">&quot;voltage_kV&quot;</span><span class="p">,</span> <span class="s2">&quot;ampere_rating&quot;</span><span class="p">,</span> <span class="s2">&quot;line_placement&quot;</span><span class="p">,</span> <span class="s2">&quot;Description&quot;</span><span class="p">]</span>
+
+    <span class="n">output_columns_list</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;type&quot;</span><span class="p">,</span> <span class="n">output_count_field</span><span class="p">,</span> <span class="n">output_cost_field</span><span class="p">,</span> <span class="s2">&quot;comment&quot;</span><span class="p">]</span>
+    <span class="c1"># output_columns_list = output_columns_list + deciding_columns</span>
+
+    <span class="n">backup_deciding_property</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;backup_deciding_property&quot;</span><span class="p">,</span> <span class="s2">&quot;ampere_rating&quot;</span><span class="p">)</span>
+    <span class="c1"># Dictionary used to convert between different length units and meters, which are used for all the calculations.</span>
+    <span class="c1"># OpenDSS can output results in any of these lengths.</span>
+    <span class="n">length_conversion_to_metre</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;mi&quot;</span><span class="p">:</span> <span class="mf">1609.34</span><span class="p">,</span>
+        <span class="s2">&quot;kft&quot;</span><span class="p">:</span> <span class="mf">304.8</span><span class="p">,</span>
+        <span class="s2">&quot;km&quot;</span><span class="p">:</span> <span class="mi">1000</span><span class="p">,</span>
+        <span class="s2">&quot;ft&quot;</span><span class="p">:</span> <span class="mf">0.3048</span><span class="p">,</span>
+        <span class="s2">&quot;in&quot;</span><span class="p">:</span> <span class="mf">0.0254</span><span class="p">,</span>
+        <span class="s2">&quot;cm&quot;</span><span class="p">:</span> <span class="mf">0.01</span><span class="p">,</span>
+        <span class="s2">&quot;m&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="p">}</span>
+    <span class="c1"># choose which properties are to be saved</span>
+    <span class="n">properties_list</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">output_columns_list</span><span class="p">)</span> <span class="o">-</span> <span class="p">{</span><span class="s2">&quot;type&quot;</span><span class="p">})</span>
+    <span class="n">upgrade_type_list</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;upgrade&quot;</span><span class="p">,</span> <span class="s2">&quot;new (parallel)&quot;</span><span class="p">]</span>
+    <span class="n">added_line_df</span> <span class="o">=</span> <span class="n">line_upgrades_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="n">line_upgrades_df</span><span class="p">[</span><span class="s2">&quot;Upgrade_Type&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">upgrade_type_list</span><span class="p">))</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">line_upgrades_df</span><span class="p">[</span><span class="s2">&quot;Action&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;add&quot;</span><span class="p">)]</span>
+    <span class="n">computed_cost</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">added_line_df</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
+        <span class="k">if</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;Upgrade_Type&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;upgrade&quot;</span><span class="p">:</span>
+            <span class="n">description</span> <span class="o">=</span> <span class="s2">&quot;reconductored_line&quot;</span>
+        <span class="k">elif</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;Upgrade_Type&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;new (parallel)&quot;</span><span class="p">:</span>
+            <span class="n">description</span> <span class="o">=</span> <span class="s2">&quot;new_line&quot;</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># if anything else, by default, use new_line prices</span>
+            <span class="n">description</span> <span class="o">=</span> <span class="s2">&quot;new_line&quot;</span>
+        <span class="n">row</span><span class="p">[</span><span class="s2">&quot;Description&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">description</span>
+        <span class="n">unit_cost</span> <span class="o">=</span> <span class="n">line_cost_database</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="n">line_cost_database</span><span class="p">[</span><span class="s2">&quot;phases&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;phases&quot;</span><span class="p">])</span> <span class="o">&amp;</span>
+                                           <span class="p">(</span><span class="n">line_cost_database</span><span class="p">[</span><span class="s2">&quot;voltage_kV&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;voltage_kV&quot;</span><span class="p">])</span> <span class="o">&amp;</span>
+                                           <span class="p">(</span><span class="n">line_cost_database</span><span class="p">[</span><span class="s2">&quot;ampere_rating&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;ampere_rating&quot;</span><span class="p">])</span> <span class="o">&amp;</span>
+                                           <span class="p">(</span><span class="n">line_cost_database</span><span class="p">[</span><span class="s2">&quot;line_placement&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;line_placement&quot;</span><span class="p">])</span> <span class="o">&amp;</span>
+                                           <span class="p">(</span><span class="n">line_cost_database</span><span class="p">[</span><span class="s2">&quot;Description&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="n">description</span><span class="p">)</span>
+                                           <span class="p">][</span><span class="s2">&quot;cost_per_m&quot;</span><span class="p">]</span>
+        <span class="c1"># convert line length to metres</span>
+        <span class="n">line_length_m</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;length&quot;</span><span class="p">]</span> <span class="o">*</span> <span class="n">length_conversion_to_metre</span><span class="p">[</span><span class="n">row</span><span class="p">[</span><span class="s2">&quot;units&quot;</span><span class="p">]]</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">unit_cost</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>  <span class="c1"># if there are more than one rows, the first one is chosen in random</span>
+            <span class="n">unit_cost</span> <span class="o">=</span> <span class="n">unit_cost</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="n">row</span><span class="p">[</span><span class="n">output_cost_field</span><span class="p">]</span> <span class="o">=</span> <span class="n">unit_cost</span> <span class="o">*</span> <span class="n">line_length_m</span>
+            <span class="n">row</span><span class="p">[</span><span class="n">output_count_field</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+            <span class="n">row</span><span class="p">[</span><span class="s2">&quot;comment&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+        <span class="k">else</span><span class="p">:</span>  <span class="c1"># if costs are not present for this transformer, then choose closest ampere_rating</span>
+            <span class="c1"># (or whatever backup deciding property is passed) (ignore other properties)</span>
+            <span class="n">closest</span> <span class="o">=</span> <span class="n">line_cost_database</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="nb">abs</span><span class="p">(</span><span class="n">line_cost_database</span><span class="p">[</span><span class="n">backup_deciding_property</span><span class="p">]</span> <span class="o">-</span>
+                                                 <span class="n">row</span><span class="p">[</span><span class="n">backup_deciding_property</span><span class="p">])</span><span class="o">.</span><span class="n">idxmin</span><span class="p">()]</span>
+            <span class="n">row</span><span class="p">[</span><span class="n">output_cost_field</span><span class="p">]</span> <span class="o">=</span> <span class="n">closest</span><span class="p">[</span><span class="s2">&quot;cost_per_m&quot;</span><span class="p">]</span> <span class="o">*</span> <span class="n">line_length_m</span>
+            <span class="n">comment_string</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;Line </span><span class="si">{</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;final_equipment_name&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">: Exact cost not available. &quot;</span> \
+                             <span class="sa">f</span><span class="s2">&quot;Unit cost for line with these parameters used &quot;</span> \
+                             <span class="sa">f</span><span class="s2">&quot;(based on closest </span><span class="si">{</span><span class="n">backup_deciding_property</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="nb">dict</span><span class="p">(</span><span class="n">closest</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="n">comment_string</span><span class="p">)</span>
+            <span class="n">row</span><span class="p">[</span><span class="s2">&quot;comment&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">comment_string</span>
+            <span class="n">row</span><span class="p">[</span><span class="n">output_count_field</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="n">computed_cost</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="n">properties_list</span><span class="p">])</span>
+    <span class="n">line_cost_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">computed_cost</span><span class="p">)</span>
+    <span class="n">line_cost_df</span><span class="p">[</span><span class="s2">&quot;type&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;Line&quot;</span>
+    <span class="n">line_cost_df</span> <span class="o">=</span> <span class="n">line_cost_df</span><span class="p">[</span><span class="n">output_columns_list</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">line_cost_df</span></div>
+
+
+<div class="viewcode-block" id="reformat_line_files"><a class="viewcode-back" href="../../../../../disco/disco.extensions.upgrade_simulation.upgrades.html#disco.extensions.upgrade_simulation.upgrades.cost_computation.reformat_line_files">[docs]</a><span class="k">def</span> <span class="nf">reformat_line_files</span><span class="p">(</span><span class="n">line_upgrades_df</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">line_cost_database</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;This function renames, reformats line upgrades dataframe to match cost database columns</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    line_upgrades_df</span>
+<span class="sd">    line_cost_database</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">line_upgrades_df</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;normamps&quot;</span><span class="p">:</span> <span class="s2">&quot;ampere_rating&quot;</span><span class="p">,</span> <span class="s2">&quot;kV&quot;</span><span class="p">:</span> <span class="s2">&quot;voltage_kV&quot;</span><span class="p">},</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">line_upgrades_df</span><span class="p">[</span><span class="s2">&quot;ampere_rating&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">line_upgrades_df</span><span class="p">[</span><span class="s2">&quot;ampere_rating&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">line_upgrades_df</span><span class="p">[</span><span class="s2">&quot;phases&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">line_upgrades_df</span><span class="p">[</span><span class="s2">&quot;phases&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+    <span class="n">line_upgrades_df</span><span class="p">[</span><span class="s2">&quot;voltage_kV&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">line_upgrades_df</span><span class="p">[</span><span class="s2">&quot;voltage_kV&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+    <span class="c1"># assign original equipment length to new equipment</span>
+    <span class="n">line_upgrades_df</span><span class="p">[</span><span class="s2">&quot;length&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">line_upgrades_df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;original_equipment_name&quot;</span><span class="p">)[</span><span class="s2">&quot;length&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="s2">&quot;first&quot;</span><span class="p">)</span>
+
+    <span class="n">line_cost_database</span><span class="p">[</span><span class="s2">&quot;ampere_rating&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">line_cost_database</span><span class="p">[</span><span class="s2">&quot;ampere_rating&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">line_cost_database</span><span class="p">[</span><span class="s2">&quot;phases&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">line_cost_database</span><span class="p">[</span><span class="s2">&quot;phases&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+    <span class="n">line_cost_database</span><span class="p">[</span><span class="s2">&quot;voltage_kV&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">line_cost_database</span><span class="p">[</span><span class="s2">&quot;voltage_kV&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">line_cost_database</span><span class="p">[</span><span class="s2">&quot;cost_per_m&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">line_cost_database</span><span class="p">[</span><span class="s2">&quot;cost_per_m&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">line_upgrades_df</span><span class="p">,</span> <span class="n">line_cost_database</span></div>
+
+
+<div class="viewcode-block" id="compute_capcontrol_cost"><a class="viewcode-back" href="../../../../../disco/disco.extensions.upgrade_simulation.upgrades.html#disco.extensions.upgrade_simulation.upgrades.cost_computation.compute_capcontrol_cost">[docs]</a><span class="k">def</span> <span class="nf">compute_capcontrol_cost</span><span class="p">(</span><span class="n">voltage_upgrades_df</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">controls_cost_database</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;This function computes the capacitor controller related costs.</span>
+<span class="sd">    Note we currently are not adding new capacitors to integrate PV.</span>
+<span class="sd">    Considered here: new controllers, control setting changes</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    voltage_upgrades_df</span>
+<span class="sd">    controls_cost_database</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">output_cost_field</span> <span class="o">=</span> <span class="s2">&quot;total_cost_usd&quot;</span>
+    <span class="n">output_count_field</span> <span class="o">=</span> <span class="s2">&quot;count&quot;</span>
+    <span class="n">output_columns_list</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;type&quot;</span><span class="p">,</span> <span class="n">output_count_field</span><span class="p">,</span> <span class="n">output_cost_field</span><span class="p">,</span> <span class="s2">&quot;comment&quot;</span><span class="p">]</span>
+
+    <span class="n">output_rows</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;New capacitor controller&quot;</span><span class="p">,</span> <span class="s2">&quot;Capacitor controller setting change&quot;</span><span class="p">]</span>
+    <span class="n">capcontrol_fields</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;add_new_cap_controller&quot;</span><span class="p">:</span> <span class="s2">&quot;New controller added&quot;</span><span class="p">,</span>
+                         <span class="s2">&quot;change_cap_control&quot;</span><span class="p">:</span> <span class="s2">&quot;Controller settings modified&quot;</span><span class="p">}</span>
+    <span class="n">cost_database_fields</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;add_new_cap_controller&quot;</span><span class="p">:</span> <span class="s2">&quot;Add new capacitor controller&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;change_cap_control&quot;</span><span class="p">:</span> <span class="s2">&quot;Change capacitor controller settings&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;replace_cap_controller&quot;</span><span class="p">:</span> <span class="s2">&quot;Replace capacitor controller&quot;</span>
+                            <span class="p">}</span>
+    <span class="n">empty_cap_cost_dict</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="n">output_rows</span><span class="p">,</span>
+                           <span class="s2">&quot;count&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">output_rows</span><span class="p">),</span>  <span class="s2">&quot;total_cost_usd&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">output_rows</span><span class="p">)}</span>
+    <span class="n">zero_cost_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="o">.</span><span class="n">from_dict</span><span class="p">(</span><span class="n">empty_cap_cost_dict</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">voltage_upgrades_df</span><span class="o">.</span><span class="n">empty</span><span class="p">:</span>  <span class="c1"># if there are no voltage upgrades</span>
+        <span class="k">return</span> <span class="n">zero_cost_df</span>
+    <span class="n">cap_cols</span> <span class="o">=</span> <span class="n">voltage_upgrades_df</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s2">&quot;Capacitor&quot;</span><span class="p">)</span>
+    <span class="n">cap_upgrades_df</span> <span class="o">=</span> <span class="n">voltage_upgrades_df</span><span class="p">[</span><span class="n">voltage_upgrades_df</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="n">cap_cols</span><span class="p">]]</span>
+    <span class="k">if</span> <span class="n">cap_upgrades_df</span><span class="o">.</span><span class="n">empty</span><span class="p">:</span>  <span class="c1"># if there are no capacitor control upgrades</span>
+        <span class="k">return</span> <span class="n">zero_cost_df</span>
+    <span class="c1"># if there are capacitor controller upgrades</span>
+    <span class="n">count_new_controller</span> <span class="o">=</span> <span class="n">cap_upgrades_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">capcontrol_fields</span><span class="p">[</span><span class="s2">&quot;add_new_cap_controller&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+    <span class="n">unit_cost_new_controller</span> <span class="o">=</span> <span class="n">controls_cost_database</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">controls_cost_database</span><span class="p">[</span><span class="s2">&quot;Type&quot;</span><span class="p">]</span>
+                                                          <span class="o">==</span> <span class="n">cost_database_fields</span><span class="p">[</span><span class="s2">&quot;add_new_cap_controller&quot;</span><span class="p">]][</span><span class="s2">&quot;cost&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">total_cost_new_controller</span> <span class="o">=</span> <span class="n">count_new_controller</span> <span class="o">*</span> <span class="n">unit_cost_new_controller</span>
+
+    <span class="n">count_setting_changes</span> <span class="o">=</span> <span class="n">cap_upgrades_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">capcontrol_fields</span><span class="p">[</span><span class="s2">&quot;change_cap_control&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+    <span class="n">unit_cost_setting_changes</span> <span class="o">=</span> <span class="n">controls_cost_database</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">controls_cost_database</span><span class="p">[</span><span class="s2">&quot;Type&quot;</span><span class="p">]</span> <span class="o">==</span>
+                                                           <span class="n">cost_database_fields</span><span class="p">[</span><span class="s2">&quot;change_cap_control&quot;</span><span class="p">]][</span><span class="s2">&quot;cost&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">total_cost_setting_changes</span> <span class="o">=</span> <span class="n">count_setting_changes</span> <span class="o">*</span> <span class="n">unit_cost_setting_changes</span>
+
+    <span class="n">cap_cost_dict</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;new capacitor controller&quot;</span><span class="p">,</span> <span class="s2">&quot;capacitor controller setting changes&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;count&quot;</span><span class="p">:</span> <span class="p">[</span><span class="n">count_new_controller</span><span class="p">,</span> <span class="n">count_setting_changes</span><span class="p">],</span>
+        <span class="s2">&quot;total_cost_usd&quot;</span><span class="p">:</span> <span class="p">[</span><span class="n">total_cost_new_controller</span><span class="p">,</span> <span class="n">total_cost_setting_changes</span><span class="p">],</span>
+    <span class="p">}</span>
+    <span class="n">cap_cost_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="o">.</span><span class="n">from_dict</span><span class="p">(</span><span class="n">cap_cost_dict</span><span class="p">)</span>
+    <span class="n">cap_cost_df</span> <span class="o">=</span> <span class="n">cap_cost_df</span><span class="p">[</span><span class="n">output_columns_list</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">cap_cost_df</span></div>
+
+
+<div class="viewcode-block" id="compute_voltage_regcontrol_cost"><a class="viewcode-back" href="../../../../../disco/disco.extensions.upgrade_simulation.upgrades.html#disco.extensions.upgrade_simulation.upgrades.cost_computation.compute_voltage_regcontrol_cost">[docs]</a><span class="k">def</span> <span class="nf">compute_voltage_regcontrol_cost</span><span class="p">(</span><span class="n">voltage_upgrades_df</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">controls_cost_database</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">keyword</span><span class="o">=</span><span class="s2">&quot;RegControl&quot;</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;This function computes the voltage regulator controller related costs.</span>
+<span class="sd">    Considered here: new voltage regulator controllers, control setting changes</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    voltage_upgrades_df</span>
+<span class="sd">    controls_cost_database</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">output_cost_field</span> <span class="o">=</span> <span class="s2">&quot;total_cost_usd&quot;</span>
+    <span class="n">output_count_field</span> <span class="o">=</span> <span class="s2">&quot;count&quot;</span>
+    <span class="n">output_columns_list</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;type&quot;</span><span class="p">,</span> <span class="n">output_count_field</span><span class="p">,</span> <span class="n">output_cost_field</span><span class="p">,</span> <span class="s2">&quot;comment&quot;</span><span class="p">]</span>
+    <span class="n">upgrade_fields</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;add_new_reg_control&quot;</span><span class="p">:</span> <span class="s2">&quot;New controller added&quot;</span><span class="p">,</span>
+                      <span class="s2">&quot;change_reg_control&quot;</span><span class="p">:</span> <span class="s2">&quot;Controller settings modified&quot;</span><span class="p">,</span>
+                      <span class="s2">&quot;add_new_transformer&quot;</span><span class="p">:</span> <span class="s2">&quot;New transformer added&quot;</span><span class="p">,</span>
+                      <span class="s2">&quot;add_substation_ltc&quot;</span><span class="p">:</span> <span class="s2">&quot;Substation LTC&quot;</span><span class="p">,</span>
+                      <span class="s2">&quot;change_ltc_control&quot;</span><span class="p">:</span> <span class="s2">&quot;Controller settings modified&quot;</span><span class="p">,</span>
+                        <span class="p">}</span>
+    <span class="n">cost_database_fields</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;add_new_reg_control&quot;</span><span class="p">:</span> <span class="s2">&quot;Add new voltage regulator controller&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;change_reg_control&quot;</span><span class="p">:</span> <span class="s2">&quot;Change voltage regulator controller settings&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;replace_reg_control&quot;</span><span class="p">:</span> <span class="s2">&quot;Replace voltage regulator controller&quot;</span><span class="p">}</span>
+
+    <span class="n">output_rows</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;New in-line voltage regulator&quot;</span><span class="p">,</span> <span class="s2">&quot;In-line voltage regulator control setting change&quot;</span><span class="p">,</span>
+                   <span class="s2">&quot;Replace in-line voltage regulator controller&quot;</span><span class="p">,</span>
+                   <span class="s2">&quot;New substation LTC&quot;</span><span class="p">,</span> <span class="s2">&quot;Substation LTC setting change&quot;</span><span class="p">,</span>
+                   <span class="s2">&quot;new substation transformer&quot;</span><span class="p">]</span>
+
+    <span class="n">computation_fields</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;add_new_reg_control&quot;</span><span class="p">,</span> <span class="s2">&quot;change_reg_control&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">]</span>
+
+    <span class="n">empty_reg_cost_dict</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="n">output_rows</span><span class="p">,</span>
+                           <span class="s2">&quot;count&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">output_rows</span><span class="p">),</span>  <span class="s2">&quot;total_cost_usd&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">output_rows</span><span class="p">)}</span>
+    <span class="n">zero_cost_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="o">.</span><span class="n">from_dict</span><span class="p">(</span><span class="n">empty_reg_cost_dict</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">voltage_upgrades_df</span><span class="o">.</span><span class="n">empty</span><span class="p">:</span>  <span class="c1"># if there are no voltage upgrades</span>
+        <span class="k">return</span> <span class="n">zero_cost_df</span>
+    <span class="n">reg_cols</span> <span class="o">=</span> <span class="n">voltage_upgrades_df</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="n">keyword</span><span class="p">)</span>
+    <span class="n">reg_upgrades_df</span> <span class="o">=</span> <span class="n">voltage_upgrades_df</span><span class="p">[</span><span class="n">voltage_upgrades_df</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="n">reg_cols</span><span class="p">]]</span>
+    <span class="k">if</span> <span class="n">reg_upgrades_df</span><span class="o">.</span><span class="n">empty</span><span class="p">:</span>  <span class="c1"># if there are no regulator controller upgrades</span>
+        <span class="k">return</span> <span class="n">zero_cost_df</span>
+
+    <span class="n">cost_list</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="c1"># if there are regulator controller upgrades</span>
+    <span class="k">for</span> <span class="n">field</span> <span class="ow">in</span> <span class="n">computation_fields</span><span class="p">:</span>
+        <span class="n">count</span> <span class="o">=</span> <span class="n">reg_upgrades_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">upgrade_fields</span><span class="p">[</span><span class="n">field</span><span class="p">]]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+        <span class="n">unit_cost</span> <span class="o">=</span> <span class="n">controls_cost_database</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">controls_cost_database</span><span class="p">[</span><span class="s2">&quot;Type&quot;</span><span class="p">]</span>
+                                               <span class="o">==</span> <span class="n">cost_database_fields</span><span class="p">[</span><span class="n">field</span><span class="p">]][</span><span class="s2">&quot;cost&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">total_cost</span> <span class="o">=</span> <span class="n">count</span> <span class="o">*</span> <span class="n">unit_cost</span>
+        <span class="n">cost_list</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="n">field</span><span class="p">,</span> <span class="s2">&quot;count&quot;</span><span class="p">:</span> <span class="n">count</span><span class="p">,</span> <span class="s2">&quot;total_cost_usd&quot;</span><span class="p">:</span> <span class="n">total_cost</span><span class="p">})</span>
+
+    <span class="c1"># reg_cost_dict = {</span>
+    <span class="c1">#     &quot;type&quot;: [&quot;new voltage regulator controller&quot;, &quot;voltage regulator controller setting changes&quot;],</span>
+    <span class="c1">#     &quot;count&quot;: [count_new_controller, count_setting_changes],</span>
+    <span class="c1">#     &quot;total_cost_usd&quot;: [total_cost_new_controller, total_cost_setting_changes],</span>
+    <span class="c1"># }</span>
+    <span class="n">reg_cost_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">cost_list</span><span class="p">)</span>
+    <span class="n">reg_cost_df</span> <span class="o">=</span> <span class="n">reg_cost_df</span><span class="p">[</span><span class="n">output_columns_list</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">reg_cost_df</span></div>
+
+
+<div class="viewcode-block" id="get_total_costs"><a class="viewcode-back" href="../../../../../disco/disco.extensions.upgrade_simulation.upgrades.html#disco.extensions.upgrade_simulation.upgrades.cost_computation.get_total_costs">[docs]</a><span class="k">def</span> <span class="nf">get_total_costs</span><span class="p">(</span><span class="n">thermal_cost_df</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">voltage_cost_df</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="n">total_cost_df</span> <span class="o">=</span> <span class="n">thermal_cost_df</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">voltage_cost_df</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">total_cost_df</span></div>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">compute_all_costs</span><span class="p">()</span>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2019, NREL.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

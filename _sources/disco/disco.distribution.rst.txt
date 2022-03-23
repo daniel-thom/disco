@@ -1,0 +1,37 @@
+disco.distribution package
+==========================
+
+Submodules
+----------
+
+disco.distribution.deployment\_parameters module
+------------------------------------------------
+
+.. automodule:: disco.distribution.deployment_parameters
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+disco.distribution.distribution\_configuration module
+-----------------------------------------------------
+
+.. automodule:: disco.distribution.distribution_configuration
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+disco.distribution.distribution\_inputs module
+----------------------------------------------
+
+.. automodule:: disco.distribution.distribution_inputs
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: disco.distribution
+   :members:
+   :undoc-members:
+   :show-inheritance:

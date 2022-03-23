@@ -1,0 +1,904 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>disco.extensions.upgrade_simulation.upgrades.common_functions &mdash; DISCO 0.1 documentation</title>
+      <link rel="stylesheet" href="../../../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../../../" id="documentation_options" src="../../../../../_static/documentation_options.js"></script>
+        <script src="../../../../../_static/jquery.js"></script>
+        <script src="../../../../../_static/underscore.js"></script>
+        <script src="../../../../../_static/doctools.js"></script>
+    <script src="../../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../search.html" />
+    <link href="../../../../../_static/style.css" rel="stylesheet" type="text/css">
+
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../../../../index.html" class="icon icon-home"> DISCO
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">User Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../installation.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../installation.html#use-conda">Use Conda</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../installation.html#use-docker">Use Docker</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../overview.html">Overview</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../overview.html#data-sources">Data Sources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../overview.html#transform-model">Transform Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../overview.html#config-jobs">Config Jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../overview.html#submit-jobs">Submit Jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../overview.html#result-analysis">Result Analysis</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../quick-start.html">Quick Start</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../quick-start.html#source-data">Source Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../quick-start.html#transform-model">Transform Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../quick-start.html#config-jobs">Config Jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../quick-start.html#submit-jobs">Submit Jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../quick-start.html#result-analysis">Result Analysis</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../data-sources.html">Data Sources</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../data-sources/smart-ds-model-preparation.html">SMART-DS OpenDSS Model Preparation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../data-sources.html#gem-model">GEM Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../data-sources.html#epri-model">EPRI Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../data-sources.html#sourcetree1-model">SourceTree1 Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../data-sources.html#sourcetree2-model">SourceTree2 Model</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../pv-deployments.html">PV Deployments</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../pv-deployments.html#sourcetree1-pv-deployments">SourceTree1 PV Deployments</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../transform-models.html">Transform Models</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../transform-models.html#transform-model-help">Transform Model Help</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../transform-models.html#disco-model-in-depth">DISCO Model in Depth</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../analysis-workflows.html">Analysis Workflows</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../analysis-workflows/hosting-capacity-analysis.html">Hosting Capacity Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../analysis-workflows/upgrade-cost-analysis.html">Upgrade Cost Analysis</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../pipelines.html">Pipelines</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../pipelines.html#sourcetree1model">SourceTree1Model</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../debugging-issues.html">Debugging Issues</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../debugging-issues.html#using-jade">Using JADE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../debugging-issues.html#using-pydss">Using PyDSS</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../data-ingestion.html">Data Ingestion</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../data-ingestion.html#ingest-to-new-database">Ingest to New Database</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../data-ingestion.html#ingest-to-existing-database">Ingest to Existing Database</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../data-ingestion.html#run-database-queries">Run Database Queries</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../advanced-guide.html">Advanced Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../advanced-guide/analysis-deployment.html">Analysis Deployment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../advanced-guide/upgrade-cost-analysis-generic-models.html">Upgrade Cost Analysis JSON Schemas</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contribution</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../build-docs.html">Build docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../license.html">License</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../../index.html">DISCO</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../../../index.html">Module code</a> &raquo;</li>
+      <li>disco.extensions.upgrade_simulation.upgrades.common_functions</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for disco.extensions.upgrade_simulation.upgrades.common_functions</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">ast</span>
+<span class="kn">import</span> <span class="nn">math</span>
+<span class="kn">import</span> <span class="nn">logging</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">opendssdirect</span> <span class="k">as</span> <span class="nn">dss</span>
+
+<span class="kn">from</span> <span class="nn">.pydss_parameters</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="get_default_upgrade_cost_database"><a class="viewcode-back" href="../../../../../disco/disco.extensions.upgrade_simulation.upgrades.html#disco.extensions.upgrade_simulation.upgrades.common_functions.get_default_upgrade_cost_database">[docs]</a><span class="k">def</span> <span class="nf">get_default_upgrade_cost_database</span><span class="p">():</span>
+    <span class="k">return</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="vm">__file__</span><span class="p">),</span>
+        <span class="s2">&quot;Generic_DISCO_cost_database_v2.xlsx&quot;</span>
+    <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="get_default_upgrade_params_file"><a class="viewcode-back" href="../../../../../disco/disco.extensions.upgrade_simulation.upgrades.html#disco.extensions.upgrade_simulation.upgrades.common_functions.get_default_upgrade_params_file">[docs]</a><span class="k">def</span> <span class="nf">get_default_upgrade_params_file</span><span class="p">():</span>
+    <span class="k">return</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="vm">__file__</span><span class="p">),</span>
+        <span class="s2">&quot;upgrade_parameters.toml&quot;</span>
+    <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="reload_dss_circuit"><a class="viewcode-back" href="../../../../../disco/disco.extensions.upgrade_simulation.upgrades.html#disco.extensions.upgrade_simulation.upgrades.common_functions.reload_dss_circuit">[docs]</a><span class="k">def</span> <span class="nf">reload_dss_circuit</span><span class="p">(</span><span class="n">dss_file_list</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">commands_list</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;This function clears the circuit and loads dss files and commands.</span>
+<span class="sd">    Also solves the circuit and checks for convergence errors</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    dss_file_list</span>
+<span class="sd">    commands_list</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;-&gt; Reloading OpenDSS circuit&quot;</span><span class="p">)</span>
+    <span class="n">check_dss_run_command</span><span class="p">(</span><span class="s2">&quot;clear&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">dss_file_list</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;No OpenDSS files have been passed to be loaded.&quot;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">dss_file</span> <span class="ow">in</span> <span class="n">dss_file_list</span><span class="p">:</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Redirecting </span><span class="si">{</span><span class="n">dss_file</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
+        <span class="n">check_dss_run_command</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Redirect </span><span class="si">{</span><span class="n">dss_file</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">commands_list</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Running </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">commands_list</span><span class="p">)</span><span class="si">}</span><span class="s2"> dss commands&quot;</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">command_string</span> <span class="ow">in</span> <span class="n">commands_list</span><span class="p">:</span>
+            <span class="n">check_dss_run_command</span><span class="p">(</span><span class="n">command_string</span><span class="p">)</span>
+            <span class="k">if</span> <span class="s2">&quot;new&quot;</span> <span class="ow">in</span> <span class="n">command_string</span><span class="o">.</span><span class="n">lower</span><span class="p">():</span>
+                <span class="n">check_dss_run_command</span><span class="p">(</span><span class="s2">&quot;CalcVoltageBases&quot;</span><span class="p">)</span>
+    <span class="n">enable_pydss_solve</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;enable_pydss_solve&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">enable_pydss_solve</span><span class="p">:</span>
+        <span class="n">pydss_params</span> <span class="o">=</span> <span class="n">define_initial_pydss_settings</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="n">circuit_solve_and_check</span><span class="p">(</span><span class="n">raise_exception</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="o">**</span><span class="n">pydss_params</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">pydss_params</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">circuit_solve_and_check</span><span class="p">(</span><span class="n">raise_exception</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">kwargs</span></div>
+
+
+<div class="viewcode-block" id="run_selective_master_dss"><a class="viewcode-back" href="../../../../../disco/disco.extensions.upgrade_simulation.upgrades.html#disco.extensions.upgrade_simulation.upgrades.common_functions.run_selective_master_dss">[docs]</a><span class="k">def</span> <span class="nf">run_selective_master_dss</span><span class="p">(</span><span class="n">master_filepath</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;This function executes master.dss file line by line and ignores some commands that Solve yearly mode,</span>
+<span class="sd">    export or plot data.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    master_filepath</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">run_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()</span>
+    <span class="n">dss</span><span class="o">.</span><span class="n">run_command</span><span class="p">(</span><span class="s2">&quot;Clear&quot;</span><span class="p">)</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;--&gt;Redirecting master file:&quot;</span><span class="p">)</span>
+    <span class="c1"># dss.run_command(f&quot;Redirect {master_filepath}&quot;)</span>
+
+    <span class="c1"># do this instead of redirect master to ignore some lines (e.g., that solve for the whole year)</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">master_filepath</span><span class="p">))</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="n">master_filepath</span><span class="p">)</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">master_filepath</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fr</span><span class="p">:</span>
+        <span class="n">tlines</span> <span class="o">=</span> <span class="n">fr</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">tlines</span><span class="p">:</span>
+        <span class="k">if</span> <span class="p">(</span><span class="s1">&#39;Solve&#39;</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">in</span> <span class="n">line</span><span class="o">.</span><span class="n">lower</span><span class="p">())</span> <span class="ow">or</span> <span class="p">(</span><span class="s1">&#39;Export&#39;</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">in</span> <span class="n">line</span><span class="o">.</span><span class="n">lower</span><span class="p">())</span> <span class="ow">or</span> <span class="p">(</span><span class="s1">&#39;Plot&#39;</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">in</span> <span class="n">line</span><span class="o">.</span><span class="n">lower</span><span class="p">()):</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Skipping this line: </span><span class="si">{</span><span class="n">line</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="k">continue</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">r</span> <span class="o">=</span> <span class="n">dss</span><span class="o">.</span><span class="n">run_command</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">line</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">r</span> <span class="o">!=</span> <span class="s1">&#39;&#39;</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Error: </span><span class="si">{</span><span class="n">r</span><span class="si">}</span><span class="s2">. </span><span class="se">\n</span><span class="s2">Something went wrong: check </span><span class="si">{</span><span class="n">line</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">circuit_solve_and_check</span><span class="p">(</span><span class="n">raise_exception</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="n">run_dir</span><span class="p">)</span>
+    <span class="k">return</span></div>
+
+
+<div class="viewcode-block" id="circuit_solve_and_check"><a class="viewcode-back" href="../../../../../disco/disco.extensions.upgrade_simulation.upgrades.html#disco.extensions.upgrade_simulation.upgrades.common_functions.circuit_solve_and_check">[docs]</a><span class="k">def</span> <span class="nf">circuit_solve_and_check</span><span class="p">(</span><span class="n">raise_exception</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;This function solves the circuit (both OpenDSS and PyDSS-if enabled)</span>
+<span class="sd">    and can raise exception if convergence error occurs</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    raise_exception</span>
+<span class="sd">    kwargs</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">dss_pass_flag</span> <span class="o">=</span> <span class="n">dss_solve_and_check</span><span class="p">(</span><span class="n">raise_exception</span><span class="o">=</span><span class="n">raise_exception</span><span class="p">)</span>
+    <span class="n">pass_flag</span> <span class="o">=</span> <span class="n">dss_pass_flag</span>
+    <span class="n">enable_pydss_solve</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;enable_pydss_solve&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">enable_pydss_solve</span><span class="p">:</span>  <span class="c1"># if pydss solver is also to be used</span>
+        <span class="n">pydss_pass_flag</span> <span class="o">=</span> <span class="n">pydss_solve_and_check</span><span class="p">(</span><span class="n">raise_exception</span><span class="o">=</span><span class="n">raise_exception</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="n">pass_flag</span> <span class="o">=</span> <span class="n">dss_pass_flag</span> <span class="ow">and</span> <span class="n">pydss_pass_flag</span>
+    <span class="k">return</span> <span class="n">pass_flag</span></div>
+
+
+<div class="viewcode-block" id="dss_solve_and_check"><a class="viewcode-back" href="../../../../../disco/disco.extensions.upgrade_simulation.upgrades.html#disco.extensions.upgrade_simulation.upgrades.common_functions.dss_solve_and_check">[docs]</a><span class="k">def</span> <span class="nf">dss_solve_and_check</span><span class="p">(</span><span class="n">raise_exception</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;This function solves OpenDSS and returns bool flag which shows if it has converged or not.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    raise_exception</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    bool</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">dss</span><span class="o">.</span><span class="n">Solution</span><span class="o">.</span><span class="n">Solve</span><span class="p">()</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;Solving circuit using OpenDSS&quot;</span><span class="p">)</span>
+    <span class="c1"># dss.run_command(&#39;CalcVoltageBases&#39;)</span>
+    <span class="n">dss_pass_flag</span> <span class="o">=</span> <span class="n">dss</span><span class="o">.</span><span class="n">Solution</span><span class="o">.</span><span class="n">Converged</span><span class="p">()</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">dss_pass_flag</span><span class="p">:</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;OpenDSS Convergence Error&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">raise_exception</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;OpenDSS solution did not converge&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">dss_pass_flag</span></div>
+
+
+<div class="viewcode-block" id="dss_run_command_list"><a class="viewcode-back" href="../../../../../disco/disco.extensions.upgrade_simulation.upgrades.html#disco.extensions.upgrade_simulation.upgrades.common_functions.dss_run_command_list">[docs]</a><span class="k">def</span> <span class="nf">dss_run_command_list</span><span class="p">(</span><span class="n">command_list</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">command_string</span> <span class="ow">in</span> <span class="n">command_list</span><span class="p">:</span>
+        <span class="n">check_dss_run_command</span><span class="p">(</span><span class="n">command_string</span><span class="p">)</span>
+    <span class="k">return</span></div>
+
+
+<div class="viewcode-block" id="convert_list_string_to_list"><a class="viewcode-back" href="../../../../../disco/disco.extensions.upgrade_simulation.upgrades.html#disco.extensions.upgrade_simulation.upgrades.common_functions.convert_list_string_to_list">[docs]</a><span class="k">def</span> <span class="nf">convert_list_string_to_list</span><span class="p">(</span><span class="n">user_string</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;This function converts a string representation of a list to a type: list of elements</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    user_string</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    list</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">user_list</span> <span class="o">=</span> <span class="n">ast</span><span class="o">.</span><span class="n">literal_eval</span><span class="p">(</span><span class="n">user_string</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">user_list</span></div>
+
+
+<div class="viewcode-block" id="write_text_file"><a class="viewcode-back" href="../../../../../disco/disco.extensions.upgrade_simulation.upgrades.html#disco.extensions.upgrade_simulation.upgrades.common_functions.write_text_file">[docs]</a><span class="k">def</span> <span class="nf">write_text_file</span><span class="p">(</span><span class="n">string_list</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">text_file_path</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;This function writes the string contents of a list to a text file</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    string_list</span>
+<span class="sd">    text_file_path</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">textfile</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">text_file_path</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">element</span> <span class="ow">in</span> <span class="n">string_list</span><span class="p">:</span>
+        <span class="n">textfile</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">element</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">textfile</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+    <span class="k">return</span></div>
+
+
+<div class="viewcode-block" id="create_dataframe_from_nested_dict"><a class="viewcode-back" href="../../../../../disco/disco.extensions.upgrade_simulation.upgrades.html#disco.extensions.upgrade_simulation.upgrades.common_functions.create_dataframe_from_nested_dict">[docs]</a><span class="k">def</span> <span class="nf">create_dataframe_from_nested_dict</span><span class="p">(</span><span class="n">user_dict</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">index_names</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;This function creates dataframe from a nested dictionary</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    user_dict</span>
+<span class="sd">    index_names</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    DataFrame</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="o">.</span><span class="n">from_dict</span><span class="p">({(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">):</span> <span class="n">user_dict</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span>
+                                 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">user_dict</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+                                 <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">user_dict</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">keys</span><span class="p">()},</span>
+                                <span class="n">orient</span><span class="o">=</span><span class="s1">&#39;index&#39;</span><span class="p">)</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">names</span> <span class="o">=</span> <span class="n">index_names</span>
+    <span class="k">return</span> <span class="n">df</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="get_dictionary_of_duplicates"><a class="viewcode-back" href="../../../../../disco/disco.extensions.upgrade_simulation.upgrades.html#disco.extensions.upgrade_simulation.upgrades.common_functions.get_dictionary_of_duplicates">[docs]</a><span class="k">def</span> <span class="nf">get_dictionary_of_duplicates</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">subset</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">index_field</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;This creates a mapping dictionary of duplicate indices in a dataframe</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    df</span>
+<span class="sd">    subset</span>
+<span class="sd">    index_field</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    Dictionary</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="n">index_field</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">duplicated</span><span class="p">(</span><span class="n">keep</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">subset</span><span class="o">=</span><span class="n">subset</span><span class="p">)]</span>
+    <span class="n">tuple_list</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">subset</span><span class="p">)</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">index</span><span class="p">))</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+    <span class="n">mapping_dict</span> <span class="o">=</span> <span class="p">{</span><span class="n">v</span><span class="p">:</span> <span class="n">tup</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">tup</span> <span class="ow">in</span> <span class="n">tuple_list</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">tup</span><span class="p">}</span>
+    <span class="k">return</span> <span class="n">mapping_dict</span></div>
+
+
+<span class="c1"># to get metadata: source bus, feeder hear info, substation xfmr information</span>
+<div class="viewcode-block" id="get_circuit_info"><a class="viewcode-back" href="../../../../../disco/disco.extensions.upgrade_simulation.upgrades.html#disco.extensions.upgrade_simulation.upgrades.common_functions.get_circuit_info">[docs]</a><span class="k">def</span> <span class="nf">get_circuit_info</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;This collects circuit information</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    Dictionary</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">data_dict</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="n">dss</span><span class="o">.</span><span class="n">Vsources</span><span class="o">.</span><span class="n">First</span><span class="p">()</span>
+    <span class="n">data_dict</span><span class="p">[</span><span class="s1">&#39;source_bus&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dss</span><span class="o">.</span><span class="n">CktElement</span><span class="o">.</span><span class="n">BusNames</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">data_dict</span><span class="p">[</span><span class="s2">&quot;feeder_head_name&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dss</span><span class="o">.</span><span class="n">Circuit</span><span class="o">.</span><span class="n">Name</span><span class="p">()</span>
+    <span class="n">dss</span><span class="o">.</span><span class="n">Circuit</span><span class="o">.</span><span class="n">SetActiveBus</span><span class="p">(</span><span class="n">data_dict</span><span class="p">[</span><span class="s1">&#39;source_bus&#39;</span><span class="p">])</span>
+    <span class="n">data_dict</span><span class="p">[</span><span class="s2">&quot;feeder_head_basekv&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dss</span><span class="o">.</span><span class="n">Bus</span><span class="o">.</span><span class="n">kVBase</span><span class="p">()</span>
+    <span class="n">data_dict</span><span class="p">[</span><span class="s2">&quot;source_num_nodes&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dss</span><span class="o">.</span><span class="n">Bus</span><span class="o">.</span><span class="n">NumNodes</span><span class="p">()</span>
+    <span class="n">data_dict</span><span class="p">[</span><span class="s2">&quot;total_num_buses_in_circuit&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">dss</span><span class="o">.</span><span class="n">Circuit</span><span class="o">.</span><span class="n">AllBusNames</span><span class="p">())</span>
+    <span class="k">if</span> <span class="n">data_dict</span><span class="p">[</span><span class="s2">&quot;source_num_nodes&quot;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="n">data_dict</span><span class="p">[</span><span class="s2">&quot;feeder_head_basekv&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">data_dict</span><span class="p">[</span><span class="s2">&quot;feeder_head_basekv&quot;</span><span class="p">]</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">data_dict</span><span class="p">[</span><span class="s2">&quot;substation_xfmr&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="n">all_xfmr_df</span> <span class="o">=</span> <span class="n">get_all_transformer_info</span><span class="p">(</span><span class="n">compute_loading</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">all_xfmr_df</span><span class="p">[</span><span class="s2">&quot;substation_xfmr_flag&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">all_xfmr_df</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="nb">int</span><span class="p">(</span>
+        <span class="n">data_dict</span><span class="p">[</span><span class="s2">&quot;source_bus&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">in</span> <span class="n">x</span><span class="p">[</span><span class="s1">&#39;bus_names_only&#39;</span><span class="p">]),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">all_xfmr_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">all_xfmr_df</span><span class="p">[</span><span class="s2">&quot;substation_xfmr_flag&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="kc">True</span><span class="p">])</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">data_dict</span><span class="p">[</span><span class="s2">&quot;substation_xfmr&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">all_xfmr_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">all_xfmr_df</span><span class="p">[</span><span class="s2">&quot;substation_xfmr_flag&quot;</span><span class="p">]</span> <span class="o">==</span>
+                                                       <span class="kc">True</span><span class="p">]</span><span class="o">.</span><span class="n">to_dict</span><span class="p">(</span><span class="n">orient</span><span class="o">=</span><span class="s1">&#39;records&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">data_dict</span><span class="p">[</span><span class="s2">&quot;substation_xfmr&quot;</span><span class="p">][</span><span class="s2">&quot;kVs&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">convert_list_string_to_list</span><span class="p">(</span><span class="n">data_dict</span><span class="p">[</span><span class="s2">&quot;substation_xfmr&quot;</span><span class="p">][</span><span class="s2">&quot;kVs&quot;</span><span class="p">])</span>
+        <span class="c1"># this checks if the voltage kVs are the same for the substation transformer</span>
+        <span class="n">data_dict</span><span class="p">[</span><span class="s2">&quot;substation_xfmr&quot;</span><span class="p">][</span><span class="s2">&quot;is_autotransformer_flag&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">data_dict</span><span class="p">[</span><span class="s2">&quot;substation_xfmr&quot;</span><span class="p">][</span><span class="s2">&quot;kVs&quot;</span><span class="p">]))</span> <span class="o">&lt;=</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="n">data_dict</span></div>
+
+
+<div class="viewcode-block" id="get_all_transformer_info"><a class="viewcode-back" href="../../../../../disco/disco.extensions.upgrade_simulation.upgrades.html#disco.extensions.upgrade_simulation.upgrades.common_functions.get_all_transformer_info">[docs]</a><span class="k">def</span> <span class="nf">get_all_transformer_info</span><span class="p">(</span><span class="n">compute_loading</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">upper_limit</span><span class="o">=</span><span class="mf">1.5</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;This collects transformer information</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    DataFrame</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">all_df</span> <span class="o">=</span> <span class="n">dss</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">class_to_dataframe</span><span class="p">(</span><span class="s2">&quot;transformer&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">all_df</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
+    <span class="n">all_df</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">all_df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">str</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">all_df</span><span class="p">[</span><span class="s2">&quot;equipment_type&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">all_df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">str</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="c1"># extract only enabled lines</span>
+    <span class="n">all_df</span> <span class="o">=</span> <span class="n">all_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">all_df</span><span class="p">[</span><span class="s2">&quot;enabled&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="kc">True</span><span class="p">]</span>
+    <span class="n">all_df</span><span class="p">[[</span><span class="s2">&quot;wdg&quot;</span><span class="p">,</span> <span class="s2">&quot;phases&quot;</span><span class="p">]]</span> <span class="o">=</span> <span class="n">all_df</span><span class="p">[[</span><span class="s2">&quot;wdg&quot;</span><span class="p">,</span> <span class="s2">&quot;phases&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+    <span class="n">float_fields</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;kV&quot;</span><span class="p">,</span> <span class="s2">&quot;kVA&quot;</span><span class="p">,</span> <span class="s2">&quot;normhkVA&quot;</span><span class="p">,</span> <span class="s2">&quot;emerghkVA&quot;</span><span class="p">,</span> <span class="s2">&quot;</span><span class="si">%lo</span><span class="s2">adloss&quot;</span><span class="p">,</span> <span class="s2">&quot;%noloadloss&quot;</span><span class="p">,</span> <span class="s2">&quot;XHL&quot;</span><span class="p">,</span> <span class="s2">&quot;XHT&quot;</span><span class="p">,</span> <span class="s2">&quot;XLT&quot;</span><span class="p">,</span> <span class="s2">&quot;%R&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;Rneut&quot;</span><span class="p">,</span> <span class="s2">&quot;Xneut&quot;</span><span class="p">,</span> <span class="s2">&quot;X12&quot;</span><span class="p">,</span> <span class="s2">&quot;X13&quot;</span><span class="p">,</span> <span class="s2">&quot;X23&quot;</span><span class="p">,</span> <span class="s2">&quot;RdcOhms&quot;</span><span class="p">]</span>
+    <span class="n">all_df</span><span class="p">[</span><span class="n">float_fields</span><span class="p">]</span> <span class="o">=</span> <span class="n">all_df</span><span class="p">[</span><span class="n">float_fields</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
+    <span class="c1"># define empty new columns</span>
+    <span class="n">all_df</span><span class="p">[</span><span class="s1">&#39;bus_names_only&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">all_df</span><span class="p">[</span><span class="s2">&quot;amp_limit_per_phase&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+    <span class="k">if</span> <span class="n">compute_loading</span><span class="p">:</span>
+        <span class="n">all_df</span><span class="p">[</span><span class="s2">&quot;max_amp_loading&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+        <span class="n">all_df</span><span class="p">[</span><span class="s2">&quot;max_per_unit_loading&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+        <span class="n">all_df</span><span class="p">[</span><span class="s2">&quot;status&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+    <span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">all_df</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
+        <span class="c1"># convert type from list to tuple since they are hashable objects (and can be indexed)</span>
+        <span class="n">all_df</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="n">index</span><span class="p">,</span> <span class="s2">&quot;kVs&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="nb">float</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;kVs&quot;</span><span class="p">]]</span>
+        <span class="n">all_df</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="n">index</span><span class="p">,</span> <span class="s2">&quot;kVAs&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="nb">float</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;kVAs&quot;</span><span class="p">]]</span>
+        <span class="n">all_df</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="n">index</span><span class="p">,</span> <span class="s2">&quot;Xscarray&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="nb">float</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;Xscarray&quot;</span><span class="p">]]</span>
+        <span class="n">all_df</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="n">index</span><span class="p">,</span> <span class="s2">&quot;%Rs&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="nb">float</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;%Rs&quot;</span><span class="p">]]</span>
+        <span class="n">all_df</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="n">index</span><span class="p">,</span> <span class="s2">&quot;bus_names_only&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">a</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;buses&quot;</span><span class="p">]]</span>
+        <span class="c1"># first winding is considered primary winding</span>
+        <span class="n">primary_kv</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s2">&quot;kVs&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
+        <span class="n">primary_kva</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s2">&quot;kVAs&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
+        <span class="k">if</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;phases&quot;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">amp_limit_per_phase</span> <span class="o">=</span> <span class="n">primary_kva</span> <span class="o">/</span> <span class="p">(</span><span class="n">primary_kv</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span>
+        <span class="k">elif</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;phases&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">amp_limit_per_phase</span> <span class="o">=</span> <span class="n">primary_kva</span> <span class="o">/</span> <span class="n">primary_kv</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Incorrect number of phases for transformer </span><span class="si">{</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">all_df</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="n">index</span><span class="p">,</span> <span class="s2">&quot;amp_limit_per_phase&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">amp_limit_per_phase</span>
+        <span class="k">if</span> <span class="n">compute_loading</span><span class="p">:</span>
+            <span class="n">dss</span><span class="o">.</span><span class="n">Circuit</span><span class="o">.</span><span class="n">SetActiveElement</span><span class="p">(</span><span class="s2">&quot;Transformer.</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]))</span>
+            <span class="n">extract_magang</span> <span class="o">=</span> <span class="n">dss</span><span class="o">.</span><span class="n">CktElement</span><span class="o">.</span><span class="n">CurrentsMagAng</span><span class="p">()[:</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;phases&quot;</span><span class="p">]]</span>  <span class="c1"># extract elements based on num of ph</span>
+            <span class="n">xfmr_current_magnitude</span> <span class="o">=</span> <span class="n">extract_magang</span><span class="p">[::</span><span class="mi">2</span><span class="p">]</span>
+            <span class="n">max_amp_loading</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">xfmr_current_magnitude</span><span class="p">)</span>
+            <span class="n">max_per_unit_loading</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">max_amp_loading</span> <span class="o">/</span> <span class="n">amp_limit_per_phase</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+            <span class="n">all_df</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="n">index</span><span class="p">,</span> <span class="s2">&quot;max_amp_loading&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">max_amp_loading</span>
+            <span class="n">all_df</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="n">index</span><span class="p">,</span> <span class="s2">&quot;max_per_unit_loading&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">max_per_unit_loading</span>
+            <span class="k">if</span> <span class="n">max_per_unit_loading</span> <span class="o">&gt;</span> <span class="n">upper_limit</span><span class="p">:</span>
+                <span class="n">all_df</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="n">index</span><span class="p">,</span> <span class="s2">&quot;status&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;overloaded&quot;</span>
+            <span class="k">elif</span> <span class="n">max_per_unit_loading</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">all_df</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="n">index</span><span class="p">,</span> <span class="s2">&quot;status&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;unloaded&quot;</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">all_df</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="n">index</span><span class="p">,</span> <span class="s2">&quot;status&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;normal&quot;</span>
+    <span class="c1"># convert lists to string type (so they can be set as dataframe index later)</span>
+    <span class="n">all_df</span><span class="p">[[</span><span class="s1">&#39;conns&#39;</span><span class="p">,</span> <span class="s1">&#39;kVs&#39;</span><span class="p">]]</span> <span class="o">=</span> <span class="n">all_df</span><span class="p">[[</span><span class="s1">&#39;conns&#39;</span><span class="p">,</span> <span class="s1">&#39;kVs&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>
+    <span class="n">all_df</span> <span class="o">=</span> <span class="n">all_df</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">all_df</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="get_all_line_info"><a class="viewcode-back" href="../../../../../disco/disco.extensions.upgrade_simulation.upgrades.html#disco.extensions.upgrade_simulation.upgrades.common_functions.get_all_line_info">[docs]</a><span class="k">def</span> <span class="nf">get_all_line_info</span><span class="p">(</span><span class="n">compute_loading</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">upper_limit</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span> <span class="n">ignore_switch</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;This collects line information</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    DataFrame</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">all_df</span> <span class="o">=</span> <span class="n">dss</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">class_to_dataframe</span><span class="p">(</span><span class="s2">&quot;line&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">all_df</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
+    <span class="n">all_df</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">all_df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">str</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">all_df</span><span class="p">[</span><span class="s2">&quot;equipment_type&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">all_df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">str</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="c1"># extract only enabled lines</span>
+    <span class="n">all_df</span> <span class="o">=</span> <span class="n">all_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">all_df</span><span class="p">[</span><span class="s2">&quot;enabled&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="kc">True</span><span class="p">]</span>
+    <span class="n">all_df</span><span class="p">[</span><span class="s2">&quot;phases&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">all_df</span><span class="p">[</span><span class="s2">&quot;phases&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+    <span class="n">all_df</span><span class="p">[[</span><span class="s2">&quot;normamps&quot;</span><span class="p">,</span> <span class="s2">&quot;length&quot;</span><span class="p">]]</span> <span class="o">=</span> <span class="n">all_df</span><span class="p">[[</span><span class="s2">&quot;normamps&quot;</span><span class="p">,</span> <span class="s2">&quot;length&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
+    <span class="n">all_df</span><span class="p">[</span><span class="s2">&quot;line_definition_type&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;line_definition&quot;</span>
+    <span class="n">all_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">all_df</span><span class="p">[</span><span class="s2">&quot;linecode&quot;</span><span class="p">]</span> <span class="o">!=</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="s2">&quot;line_definition_type&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;linecode&quot;</span>
+    <span class="n">all_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">all_df</span><span class="p">[</span><span class="s2">&quot;geometry&quot;</span><span class="p">]</span> <span class="o">!=</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="s2">&quot;line_definition_type&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;geometry&quot;</span>
+    <span class="c1"># define empty new columns</span>
+    <span class="n">all_df</span><span class="p">[</span><span class="s2">&quot;kV&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+    <span class="n">all_df</span><span class="p">[</span><span class="s2">&quot;h&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+    <span class="n">all_df</span><span class="p">[</span><span class="s2">&quot;line_placement&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">compute_loading</span><span class="p">:</span>
+        <span class="n">all_df</span><span class="p">[</span><span class="s2">&quot;max_amp_loading&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+        <span class="n">all_df</span><span class="p">[</span><span class="s2">&quot;max_per_unit_loading&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+        <span class="n">all_df</span><span class="p">[</span><span class="s2">&quot;status&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+    <span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">all_df</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
+        <span class="n">dss</span><span class="o">.</span><span class="n">Circuit</span><span class="o">.</span><span class="n">SetActiveBus</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s2">&quot;bus1&quot;</span><span class="p">])</span>
+        <span class="n">kv_b1</span> <span class="o">=</span> <span class="n">dss</span><span class="o">.</span><span class="n">Bus</span><span class="o">.</span><span class="n">kVBase</span><span class="p">()</span>
+        <span class="n">dss</span><span class="o">.</span><span class="n">Circuit</span><span class="o">.</span><span class="n">SetActiveBus</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s2">&quot;bus2&quot;</span><span class="p">])</span>
+        <span class="n">kv_b2</span> <span class="o">=</span> <span class="n">dss</span><span class="o">.</span><span class="n">Bus</span><span class="o">.</span><span class="n">kVBase</span><span class="p">()</span>
+        <span class="n">dss</span><span class="o">.</span><span class="n">Circuit</span><span class="o">.</span><span class="n">SetActiveElement</span><span class="p">(</span><span class="s2">&quot;Line.</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]))</span>
+        <span class="k">if</span> <span class="nb">round</span><span class="p">(</span><span class="n">kv_b1</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">round</span><span class="p">(</span><span class="n">kv_b2</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;To and from bus voltages (</span><span class="si">{}</span><span class="s2"> </span><span class="si">{}</span><span class="s2">) do not match for line </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                <span class="n">kv_b2</span><span class="p">,</span> <span class="n">kv_b1</span><span class="p">,</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]))</span>
+        <span class="n">all_df</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="n">index</span><span class="p">,</span> <span class="s2">&quot;kV&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">kv_b1</span>
+        <span class="c1"># Distinguish between overhead and underground cables</span>
+        <span class="c1"># currently there is no way to distinguish directy using opendssdirect/pydss etc.</span>
+        <span class="c1"># It is done here using property &#39;height&#39; parameter and if string present in name</span>
+        <span class="k">if</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;line_definition_type&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;geometry&quot;</span><span class="p">:</span>
+            <span class="n">dss</span><span class="o">.</span><span class="n">Circuit</span><span class="o">.</span><span class="n">SetActiveClass</span><span class="p">(</span><span class="s2">&quot;linegeometry&quot;</span><span class="p">)</span>
+            <span class="n">dss</span><span class="o">.</span><span class="n">ActiveClass</span><span class="o">.</span><span class="n">Name</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s2">&quot;geometry&quot;</span><span class="p">])</span>
+            <span class="n">h</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">dss</span><span class="o">.</span><span class="n">Properties</span><span class="o">.</span><span class="n">Value</span><span class="p">(</span><span class="s2">&quot;h&quot;</span><span class="p">))</span>
+            <span class="n">all_df</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="n">index</span><span class="p">,</span> <span class="s2">&quot;h&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">h</span>
+            <span class="k">if</span> <span class="n">h</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">all_df</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="n">index</span><span class="p">,</span> <span class="s2">&quot;line_placement&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;overhead&quot;</span>
+            <span class="k">elif</span> <span class="n">h</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">all_df</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="n">index</span><span class="p">,</span> <span class="s2">&quot;line_placement&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;underground&quot;</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">if</span> <span class="p">(</span><span class="s2">&quot;oh&quot;</span> <span class="ow">in</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;geometry&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">lower</span><span class="p">())</span> <span class="ow">or</span> <span class="p">(</span><span class="s2">&quot;oh&quot;</span> <span class="ow">in</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;linecode&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">lower</span><span class="p">()):</span>
+                <span class="n">all_df</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="n">index</span><span class="p">,</span> <span class="s2">&quot;line_placement&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;overhead&quot;</span>
+            <span class="k">elif</span> <span class="p">(</span><span class="s2">&quot;ug&quot;</span> <span class="ow">in</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;geometry&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">lower</span><span class="p">())</span> <span class="ow">or</span> <span class="p">(</span><span class="s2">&quot;ug&quot;</span> <span class="ow">in</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;linecode&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">lower</span><span class="p">()):</span>
+                <span class="n">all_df</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="n">index</span><span class="p">,</span> <span class="s2">&quot;line_placement&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;underground&quot;</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">all_df</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="n">index</span><span class="p">,</span> <span class="s2">&quot;line_placement&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="c1"># if line loading is to be computed</span>
+        <span class="k">if</span> <span class="n">compute_loading</span><span class="p">:</span>
+            <span class="n">dss</span><span class="o">.</span><span class="n">Circuit</span><span class="o">.</span><span class="n">SetActiveElement</span><span class="p">(</span><span class="s2">&quot;Line.</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]))</span>
+            <span class="n">extract_magang</span> <span class="o">=</span> <span class="n">dss</span><span class="o">.</span><span class="n">CktElement</span><span class="o">.</span><span class="n">CurrentsMagAng</span><span class="p">()[:</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;phases&quot;</span><span class="p">]]</span>
+            <span class="n">line_current</span> <span class="o">=</span> <span class="n">extract_magang</span><span class="p">[::</span><span class="mi">2</span><span class="p">]</span>
+            <span class="n">max_amp_loading</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">line_current</span><span class="p">)</span>
+            <span class="n">max_per_unit_loading</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">max_amp_loading</span> <span class="o">/</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;normamps&quot;</span><span class="p">],</span> <span class="mi">2</span><span class="p">)</span>
+            <span class="n">all_df</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="n">index</span><span class="p">,</span> <span class="s2">&quot;max_amp_loading&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">max_amp_loading</span>
+            <span class="n">all_df</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="n">index</span><span class="p">,</span> <span class="s2">&quot;max_per_unit_loading&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">max_per_unit_loading</span>
+            <span class="k">if</span> <span class="n">max_per_unit_loading</span> <span class="o">&gt;</span> <span class="n">upper_limit</span><span class="p">:</span>
+                <span class="n">all_df</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="n">index</span><span class="p">,</span> <span class="s2">&quot;status&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;overloaded&quot;</span>
+            <span class="k">elif</span> <span class="n">max_per_unit_loading</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">all_df</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="n">index</span><span class="p">,</span> <span class="s2">&quot;status&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;unloaded&quot;</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">all_df</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="n">index</span><span class="p">,</span> <span class="s2">&quot;status&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;normal&quot;</span>
+    <span class="n">all_df</span> <span class="o">=</span> <span class="n">all_df</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">)</span>
+    <span class="c1"># if switch is to be ignored</span>
+    <span class="k">if</span> <span class="n">ignore_switch</span><span class="p">:</span>
+        <span class="n">all_df</span> <span class="o">=</span> <span class="n">all_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">all_df</span><span class="p">[</span><span class="s1">&#39;Switch&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="kc">False</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">all_df</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="get_regcontrol_info"><a class="viewcode-back" href="../../../../../disco/disco.extensions.upgrade_simulation.upgrades.html#disco.extensions.upgrade_simulation.upgrades.common_functions.get_regcontrol_info">[docs]</a><span class="k">def</span> <span class="nf">get_regcontrol_info</span><span class="p">(</span><span class="n">correct_PT_ratio</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">nominal_voltage</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;This collects regulator control information</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    DataFrame</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">all_df</span> <span class="o">=</span> <span class="n">dss</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">class_to_dataframe</span><span class="p">(</span><span class="s2">&quot;regcontrol&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">all_df</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
+    <span class="n">all_df</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">all_df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">str</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">all_df</span><span class="p">[</span><span class="s2">&quot;equipment_type&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">all_df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">str</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">float_columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;winding&#39;</span><span class="p">,</span> <span class="s1">&#39;vreg&#39;</span><span class="p">,</span> <span class="s1">&#39;band&#39;</span><span class="p">,</span> <span class="s1">&#39;ptratio&#39;</span><span class="p">,</span> <span class="s1">&#39;delay&#39;</span><span class="p">]</span>
+    <span class="n">all_df</span><span class="p">[</span><span class="n">float_columns</span><span class="p">]</span> <span class="o">=</span> <span class="n">all_df</span><span class="p">[</span><span class="n">float_columns</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
+    <span class="n">all_df</span><span class="p">[</span><span class="s1">&#39;at_substation_xfmr_flag&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span>  <span class="c1"># by default, reg control is considered to be not at substation xfmr</span>
+    <span class="n">ckt_info_dict</span> <span class="o">=</span> <span class="n">get_circuit_info</span><span class="p">()</span>
+    <span class="n">sub_xfmr_present</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="n">sub_xfmr_name</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="k">if</span> <span class="n">ckt_info_dict</span><span class="p">[</span><span class="s1">&#39;substation_xfmr&#39;</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">sub_xfmr_present</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="n">sub_xfmr_name</span> <span class="o">=</span> <span class="n">ckt_info_dict</span><span class="p">[</span><span class="s1">&#39;substation_xfmr&#39;</span><span class="p">][</span><span class="s1">&#39;name&#39;</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">all_df</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
+        <span class="n">dss</span><span class="o">.</span><span class="n">Circuit</span><span class="o">.</span><span class="n">SetActiveElement</span><span class="p">(</span><span class="s2">&quot;Regcontrol.</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]))</span>
+        <span class="n">reg_bus</span> <span class="o">=</span> <span class="n">dss</span><span class="o">.</span><span class="n">CktElement</span><span class="o">.</span><span class="n">BusNames</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">all_df</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="n">index</span><span class="p">,</span> <span class="s2">&quot;reg_bus&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">reg_bus</span>
+        <span class="n">dss</span><span class="o">.</span><span class="n">Circuit</span><span class="o">.</span><span class="n">SetActiveBus</span><span class="p">(</span><span class="n">reg_bus</span><span class="p">)</span>
+        <span class="n">all_df</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="n">index</span><span class="p">,</span> <span class="s2">&quot;bus_num_phases&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dss</span><span class="o">.</span><span class="n">CktElement</span><span class="o">.</span><span class="n">NumPhases</span><span class="p">()</span>
+        <span class="n">all_df</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="n">index</span><span class="p">,</span> <span class="s2">&quot;bus_kv&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dss</span><span class="o">.</span><span class="n">Bus</span><span class="o">.</span><span class="n">kVBase</span><span class="p">()</span>
+        <span class="n">dss</span><span class="o">.</span><span class="n">Circuit</span><span class="o">.</span><span class="n">SetActiveElement</span><span class="p">(</span><span class="s2">&quot;Transformer.</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s2">&quot;transformer&quot;</span><span class="p">]))</span>
+        <span class="n">all_df</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="n">index</span><span class="p">,</span> <span class="s2">&quot;transformer_kva&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">dss</span><span class="o">.</span><span class="n">Properties</span><span class="o">.</span><span class="n">Value</span><span class="p">(</span><span class="s2">&quot;kva&quot;</span><span class="p">))</span>
+        <span class="n">dss</span><span class="o">.</span><span class="n">Transformers</span><span class="o">.</span><span class="n">Wdg</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># setting winding to 1, to get kV for winding 1</span>
+        <span class="n">all_df</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="n">index</span><span class="p">,</span> <span class="s2">&quot;transformer_kv&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dss</span><span class="o">.</span><span class="n">Transformers</span><span class="o">.</span><span class="n">kV</span><span class="p">()</span>
+        <span class="n">all_df</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="n">index</span><span class="p">,</span> <span class="s2">&quot;transformer_bus1&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dss</span><span class="o">.</span><span class="n">CktElement</span><span class="o">.</span><span class="n">BusNames</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">all_df</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="n">index</span><span class="p">,</span> <span class="s2">&quot;transformer_bus2&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dss</span><span class="o">.</span><span class="n">CktElement</span><span class="o">.</span><span class="n">BusNames</span><span class="p">()[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">sub_xfmr_present</span> <span class="ow">and</span> <span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s2">&quot;transformer&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="n">sub_xfmr_name</span><span class="p">):</span>  <span class="c1"># if reg control is at substation xfmr</span>
+            <span class="n">all_df</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="n">index</span><span class="p">,</span> <span class="s1">&#39;at_substation_xfmr_flag&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="n">all_df</span> <span class="o">=</span> <span class="n">all_df</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">correct_PT_ratio</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">nominal_voltage</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;Nominal voltage not provided to correct regcontrol PT ratio.&quot;</span><span class="p">)</span>
+        <span class="n">all_df</span><span class="p">[</span><span class="s1">&#39;old_ptratio&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">all_df</span><span class="p">[</span><span class="s1">&#39;ptratio&#39;</span><span class="p">]</span>
+        <span class="c1"># If the winding is Wye, the line-to-neutral voltage is used. Else, the line-to-line voltage is used.</span>
+        <span class="c1"># Here, bus kV is taken from Bus.kVBase</span>
+        <span class="n">all_df</span><span class="p">[</span><span class="s2">&quot;ptratio&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">all_df</span><span class="p">[</span><span class="s1">&#39;bus_kv&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="mi">1000</span><span class="p">)</span> <span class="o">/</span> <span class="n">nominal_voltage</span>
+    <span class="k">return</span> <span class="n">all_df</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span></div>
+
+
+<span class="c1"># function to get capacitor information</span>
+<div class="viewcode-block" id="get_capacitor_info"><a class="viewcode-back" href="../../../../../disco/disco.extensions.upgrade_simulation.upgrades.html#disco.extensions.upgrade_simulation.upgrades.common_functions.get_capacitor_info">[docs]</a><span class="k">def</span> <span class="nf">get_capacitor_info</span><span class="p">(</span><span class="n">nominal_voltage</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">correct_PT_ratio</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    This collects capacitor information</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    DataFrame</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">all_df</span> <span class="o">=</span> <span class="n">dss</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">class_to_dataframe</span><span class="p">(</span><span class="s2">&quot;capacitor&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">all_df</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
+    <span class="n">all_df</span><span class="p">[</span><span class="s2">&quot;capacitor_name&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">all_df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">str</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">all_df</span><span class="p">[</span><span class="s2">&quot;equipment_type&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">all_df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">str</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">float_columns</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;phases&quot;</span><span class="p">,</span> <span class="s2">&quot;kv&quot;</span><span class="p">]</span>
+    <span class="n">all_df</span><span class="p">[</span><span class="n">float_columns</span><span class="p">]</span> <span class="o">=</span> <span class="n">all_df</span><span class="p">[</span><span class="n">float_columns</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
+    <span class="c1"># all_df[&quot;cap_bus&quot;] = None</span>
+    <span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">all_df</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
+        <span class="n">all_df</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="n">index</span><span class="p">,</span> <span class="s2">&quot;kvar&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="nb">float</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;kvar&quot;</span><span class="p">]][</span><span class="mi">0</span><span class="p">]</span>
+        <span class="c1"># dss.Circuit.SetActiveElement(index)</span>
+        <span class="c1"># cap_bus = dss.CktElement.BusNames()[0].split(&quot;.&quot;)[0]</span>
+        <span class="c1"># all_df.at[index, &quot;cap_bus&quot;] = cap_bus</span>
+    <span class="n">all_df</span> <span class="o">=</span> <span class="n">all_df</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s2">&quot;capacitor_name&quot;</span><span class="p">)</span>
+    <span class="c1"># collect capcontrol information to combine with capcontrols</span>
+    <span class="n">capcontrol_df</span> <span class="o">=</span> <span class="n">get_cap_control_info</span><span class="p">()</span>
+    <span class="n">capcontrol_df</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;capcontrol_name&#39;</span><span class="p">,</span> <span class="s1">&#39;capacitor&#39;</span><span class="p">:</span> <span class="s1">&#39;capacitor_name&#39;</span><span class="p">,</span> <span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="s1">&#39;capcontrol_type&#39;</span><span class="p">,</span>
+                                  <span class="s1">&#39;equipment_type&#39;</span><span class="p">:</span> <span class="s1">&#39;capcontrol_present&#39;</span><span class="p">},</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">capcontrol_df</span> <span class="o">=</span> <span class="n">capcontrol_df</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s2">&quot;capacitor_name&quot;</span><span class="p">)</span>
+    <span class="c1"># with capacitor name as index, concatenate capacitor information with cap controls</span>
+    <span class="c1"># TODO are any other checks needed before concatenating dataframes? i.e. if capacitor is not present</span>
+    <span class="n">all_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">all_df</span><span class="p">,</span> <span class="n">capcontrol_df</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">all_df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;capacitor_name&#39;</span>
+    <span class="n">all_df</span> <span class="o">=</span> <span class="n">all_df</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;capacitor_name&#39;</span><span class="p">)</span>
+
+    <span class="c1"># if capcontrol type is empty, then that capacitor does not have controls</span>
+    <span class="c1"># correct PT ratios for existing cap controls</span>
+    <span class="c1"># TODO: cap banks are 3 phase, 2 phase or 1 phase. 1 phase caps will have LN voltage</span>
+    <span class="k">if</span> <span class="n">correct_PT_ratio</span> <span class="ow">and</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">capcontrol_df</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">nominal_voltage</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;Nominal voltage not provided to correct capacitor bank PT ratio.&quot;</span><span class="p">)</span>
+        <span class="n">all_df</span><span class="p">[</span><span class="s1">&#39;old_PTratio&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">all_df</span><span class="p">[</span><span class="s1">&#39;PTratio&#39;</span><span class="p">]</span>
+        <span class="n">all_df</span><span class="p">[</span><span class="s2">&quot;PTratio&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">all_df</span><span class="p">[</span><span class="s1">&#39;kv&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="mi">1000</span><span class="p">)</span> <span class="o">/</span> <span class="n">nominal_voltage</span>
+    <span class="k">return</span> <span class="n">all_df</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span></div>
+
+
+<span class="c1"># function to get capacitor control information</span>
+<div class="viewcode-block" id="get_cap_control_info"><a class="viewcode-back" href="../../../../../disco/disco.extensions.upgrade_simulation.upgrades.html#disco.extensions.upgrade_simulation.upgrades.common_functions.get_cap_control_info">[docs]</a><span class="k">def</span> <span class="nf">get_cap_control_info</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;This collects capacitor control information</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    DataFrame</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">all_df</span> <span class="o">=</span> <span class="n">dss</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">class_to_dataframe</span><span class="p">(</span><span class="s2">&quot;capcontrol&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">all_df</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">capcontrol_columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="s1">&#39;capacitor&#39;</span><span class="p">,</span> <span class="s1">&#39;type&#39;</span><span class="p">,</span> <span class="s1">&#39;equipment_type&#39;</span><span class="p">]</span>
+        <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="n">capcontrol_columns</span><span class="p">)</span>
+    <span class="n">all_df</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">all_df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">str</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">all_df</span><span class="p">[</span><span class="s2">&quot;equipment_type&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">all_df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">str</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">float_columns</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;CTPhase&quot;</span><span class="p">,</span> <span class="s2">&quot;CTratio&quot;</span><span class="p">,</span> <span class="s2">&quot;DeadTime&quot;</span><span class="p">,</span> <span class="s2">&quot;Delay&quot;</span><span class="p">,</span> <span class="s2">&quot;DelayOFF&quot;</span><span class="p">,</span> <span class="s2">&quot;OFFsetting&quot;</span><span class="p">,</span> <span class="s2">&quot;ONsetting&quot;</span><span class="p">,</span> <span class="s2">&quot;PTratio&quot;</span><span class="p">,</span>
+                     <span class="s2">&quot;Vmax&quot;</span><span class="p">,</span> <span class="s2">&quot;Vmin&quot;</span><span class="p">]</span>
+    <span class="n">all_df</span><span class="p">[</span><span class="n">float_columns</span><span class="p">]</span> <span class="o">=</span> <span class="n">all_df</span><span class="p">[</span><span class="n">float_columns</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
+    <span class="n">all_df</span> <span class="o">=</span> <span class="n">all_df</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s2">&quot;name&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">all_df</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="get_line_geometry"><a class="viewcode-back" href="../../../../../disco/disco.extensions.upgrade_simulation.upgrades.html#disco.extensions.upgrade_simulation.upgrades.common_functions.get_line_geometry">[docs]</a><span class="k">def</span> <span class="nf">get_line_geometry</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;This collects all line geometry information</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    DataFrame</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">active_class_name</span> <span class="o">=</span> <span class="s1">&#39;linegeometry&#39;</span>
+    <span class="n">all_df</span> <span class="o">=</span> <span class="n">dss</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">class_to_dataframe</span><span class="p">(</span><span class="n">active_class_name</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">all_df</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
+    <span class="n">all_df</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">all_df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">str</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">all_df</span><span class="p">[</span><span class="s1">&#39;equipment_type&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">all_df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">str</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">all_df</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">all_df</span></div>
+
+
+<div class="viewcode-block" id="get_line_code"><a class="viewcode-back" href="../../../../../disco/disco.extensions.upgrade_simulation.upgrades.html#disco.extensions.upgrade_simulation.upgrades.common_functions.get_line_code">[docs]</a><span class="k">def</span> <span class="nf">get_line_code</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;This collects all line codes information</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    DataFrame</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">active_class_name</span> <span class="o">=</span> <span class="s1">&#39;linecode&#39;</span>
+    <span class="n">all_df</span> <span class="o">=</span> <span class="n">dss</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">class_to_dataframe</span><span class="p">(</span><span class="n">active_class_name</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">all_df</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
+    <span class="n">all_df</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">all_df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">str</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">all_df</span><span class="p">[</span><span class="s1">&#39;equipment_type&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">all_df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">str</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">all_df</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">all_df</span></div>
+
+
+<div class="viewcode-block" id="get_wire_data"><a class="viewcode-back" href="../../../../../disco/disco.extensions.upgrade_simulation.upgrades.html#disco.extensions.upgrade_simulation.upgrades.common_functions.get_wire_data">[docs]</a><span class="k">def</span> <span class="nf">get_wire_data</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;This collects all wire data information</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    DataFrame</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">active_class_name</span> <span class="o">=</span> <span class="s1">&#39;wiredata&#39;</span>
+    <span class="n">all_df</span> <span class="o">=</span> <span class="n">dss</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">class_to_dataframe</span><span class="p">(</span><span class="n">active_class_name</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">all_df</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
+    <span class="n">all_df</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">all_df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">str</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">all_df</span><span class="p">[</span><span class="s1">&#39;equipment_type&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">all_df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">str</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">all_df</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">all_df</span></div>
+
+
+<div class="viewcode-block" id="get_cn_data"><a class="viewcode-back" href="../../../../../disco/disco.extensions.upgrade_simulation.upgrades.html#disco.extensions.upgrade_simulation.upgrades.common_functions.get_cn_data">[docs]</a><span class="k">def</span> <span class="nf">get_cn_data</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;This collects all cn data information</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    DataFrame</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">active_class_name</span> <span class="o">=</span> <span class="s1">&#39;cndata&#39;</span>
+    <span class="n">all_df</span> <span class="o">=</span> <span class="n">dss</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">class_to_dataframe</span><span class="p">(</span><span class="n">active_class_name</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">all_df</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
+    <span class="n">all_df</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">all_df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">str</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">all_df</span><span class="p">[</span><span class="s1">&#39;equipment_type&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">all_df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">str</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">all_df</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">all_df</span></div>
+
+
+<div class="viewcode-block" id="check_dss_run_command"><a class="viewcode-back" href="../../../../../disco/disco.extensions.upgrade_simulation.upgrades.html#disco.extensions.upgrade_simulation.upgrades.common_functions.check_dss_run_command">[docs]</a><span class="k">def</span> <span class="nf">check_dss_run_command</span><span class="p">(</span><span class="n">command_string</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Runs dss command</span>
+<span class="sd">    And checks for exception</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    command_string : str</span>
+<span class="sd">        dss command to be run</span>
+
+<span class="sd">    Raises</span>
+<span class="sd">    -------</span>
+<span class="sd">    Exception</span>
+<span class="sd">        Raised if the command fails</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Running DSS command: </span><span class="si">{</span><span class="n">command_string</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">dss</span><span class="o">.</span><span class="n">run_command</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">command_string</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">result</span> <span class="o">!=</span> <span class="s2">&quot;&quot;</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;DSS run_command failed with message: </span><span class="si">{</span><span class="n">result</span><span class="si">}</span><span class="s2">. </span><span class="se">\n</span><span class="s2">Command: </span><span class="si">{</span><span class="n">command_string</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="get_bus_voltages"><a class="viewcode-back" href="../../../../../disco/disco.extensions.upgrade_simulation.upgrades.html#disco.extensions.upgrade_simulation.upgrades.common_functions.get_bus_voltages">[docs]</a><span class="k">def</span> <span class="nf">get_bus_voltages</span><span class="p">(</span><span class="n">voltage_upper_limit</span><span class="o">=</span><span class="mf">1.05</span><span class="p">,</span> <span class="n">voltage_lower_limit</span><span class="o">=</span><span class="mf">0.95</span><span class="p">,</span> <span class="n">raise_exception</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;This computes per unit voltages for all buses in network</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    DataFrame</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">all_dict</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="n">all_bus_names</span> <span class="o">=</span> <span class="n">dss</span><span class="o">.</span><span class="n">Circuit</span><span class="o">.</span><span class="n">AllBusNames</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">bus_name</span> <span class="ow">in</span> <span class="n">all_bus_names</span><span class="p">:</span>
+        <span class="n">dss</span><span class="o">.</span><span class="n">Circuit</span><span class="o">.</span><span class="n">SetActiveBus</span><span class="p">(</span><span class="n">bus_name</span><span class="p">)</span>
+        <span class="n">data_dict</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="n">bus_name</span><span class="p">,</span>
+            <span class="s2">&quot;voltages&quot;</span><span class="p">:</span> <span class="n">dss</span><span class="o">.</span><span class="n">Bus</span><span class="o">.</span><span class="n">puVmagAngle</span><span class="p">()[::</span><span class="mi">2</span><span class="p">]</span>
+        <span class="p">}</span>
+        <span class="n">data_dict</span><span class="p">[</span><span class="s2">&quot;Max per unit voltage&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">data_dict</span><span class="p">[</span><span class="s2">&quot;voltages&quot;</span><span class="p">])</span>
+        <span class="n">data_dict</span><span class="p">[</span><span class="s2">&quot;Min per unit voltage&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">data_dict</span><span class="p">[</span><span class="s2">&quot;voltages&quot;</span><span class="p">])</span>
+        <span class="n">data_dict</span><span class="p">[</span><span class="s1">&#39;Phase imbalance&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data_dict</span><span class="p">[</span><span class="s2">&quot;Max per unit voltage&quot;</span><span class="p">]</span> <span class="o">-</span> <span class="n">data_dict</span><span class="p">[</span><span class="s2">&quot;Min per unit voltage&quot;</span><span class="p">]</span>
+
+        <span class="c1"># check for overvoltage violation</span>
+        <span class="k">if</span> <span class="n">data_dict</span><span class="p">[</span><span class="s2">&quot;Max per unit voltage&quot;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">voltage_upper_limit</span><span class="p">:</span>
+            <span class="n">data_dict</span><span class="p">[</span><span class="s1">&#39;Overvoltage violation&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
+            <span class="n">data_dict</span><span class="p">[</span><span class="s2">&quot;Max voltage_deviation&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data_dict</span><span class="p">[</span><span class="s2">&quot;Max per unit voltage&quot;</span><span class="p">]</span> <span class="o">-</span> <span class="n">voltage_upper_limit</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">data_dict</span><span class="p">[</span><span class="s1">&#39;Overvoltage violation&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span>
+            <span class="n">data_dict</span><span class="p">[</span><span class="s2">&quot;Max voltage_deviation&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+
+        <span class="c1"># check for undervoltage violation</span>
+        <span class="k">if</span> <span class="n">data_dict</span><span class="p">[</span><span class="s2">&quot;Min per unit voltage&quot;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">voltage_lower_limit</span><span class="p">:</span>
+            <span class="n">data_dict</span><span class="p">[</span><span class="s1">&#39;Undervoltage violation&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
+            <span class="n">data_dict</span><span class="p">[</span><span class="s2">&quot;Min voltage_deviation&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">voltage_lower_limit</span> <span class="o">-</span> <span class="n">data_dict</span><span class="p">[</span><span class="s2">&quot;Min per unit voltage&quot;</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">data_dict</span><span class="p">[</span><span class="s1">&#39;Undervoltage violation&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span>
+            <span class="n">data_dict</span><span class="p">[</span><span class="s2">&quot;Min voltage_deviation&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">all_dict</span><span class="p">[</span><span class="n">data_dict</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]]</span> <span class="o">=</span> <span class="n">data_dict</span>
+
+    <span class="n">all_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="o">.</span><span class="n">from_dict</span><span class="p">(</span><span class="n">all_dict</span><span class="p">,</span> <span class="n">orient</span><span class="o">=</span><span class="s1">&#39;index&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">undervoltage_bus_list</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">all_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">all_df</span><span class="p">[</span><span class="s1">&#39;Undervoltage violation&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="kc">True</span><span class="p">][</span><span class="s1">&#39;name&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">())</span>
+    <span class="n">overvoltage_bus_list</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">all_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">all_df</span><span class="p">[</span><span class="s1">&#39;Overvoltage violation&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="kc">True</span><span class="p">][</span><span class="s1">&#39;name&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">())</span>
+    <span class="n">buses_with_violations</span> <span class="o">=</span> <span class="n">undervoltage_bus_list</span> <span class="o">+</span> <span class="n">overvoltage_bus_list</span>
+
+    <span class="n">circuit_solve_and_check</span><span class="p">(</span><span class="n">raise_exception</span><span class="o">=</span><span class="n">raise_exception</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>  <span class="c1"># this is added as a final check for convergence</span>
+    <span class="k">return</span> <span class="n">all_df</span><span class="p">,</span> <span class="n">undervoltage_bus_list</span><span class="p">,</span> <span class="n">overvoltage_bus_list</span><span class="p">,</span> <span class="n">buses_with_violations</span></div>
+
+
+<div class="viewcode-block" id="determine_available_line_upgrades"><a class="viewcode-back" href="../../../../../disco/disco.extensions.upgrade_simulation.upgrades.html#disco.extensions.upgrade_simulation.upgrades.common_functions.determine_available_line_upgrades">[docs]</a><span class="k">def</span> <span class="nf">determine_available_line_upgrades</span><span class="p">(</span><span class="n">line_loading_df</span><span class="p">):</span>
+    <span class="n">property_list</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;line_definition_type&#39;</span><span class="p">,</span> <span class="s1">&#39;linecode&#39;</span><span class="p">,</span> <span class="s1">&#39;phases&#39;</span><span class="p">,</span> <span class="s1">&#39;kV&#39;</span><span class="p">,</span> <span class="s1">&#39;Switch&#39;</span><span class="p">,</span>
+                     <span class="s1">&#39;normamps&#39;</span><span class="p">,</span> <span class="s1">&#39;r1&#39;</span><span class="p">,</span> <span class="s1">&#39;x1&#39;</span><span class="p">,</span> <span class="s1">&#39;r0&#39;</span><span class="p">,</span> <span class="s1">&#39;x0&#39;</span><span class="p">,</span> <span class="s1">&#39;C1&#39;</span><span class="p">,</span> <span class="s1">&#39;C0&#39;</span><span class="p">,</span>
+                     <span class="s1">&#39;rmatrix&#39;</span><span class="p">,</span> <span class="s1">&#39;xmatrix&#39;</span><span class="p">,</span> <span class="s1">&#39;cmatrix&#39;</span><span class="p">,</span> <span class="s1">&#39;Rg&#39;</span><span class="p">,</span> <span class="s1">&#39;Xg&#39;</span><span class="p">,</span> <span class="s1">&#39;rho&#39;</span><span class="p">,</span> <span class="s1">&#39;units&#39;</span><span class="p">,</span> <span class="s1">&#39;spacing&#39;</span><span class="p">,</span>
+                     <span class="c1"># &#39;wires&#39;, &#39;EarthModel&#39;, &#39;cncables&#39;, &#39;tscables&#39;, &#39;B1&#39;, &#39;B0&#39;, &#39;emergamps&#39;,</span>
+                     <span class="c1"># &#39;faultrate&#39;, &#39;pctperm&#39;, &#39;repair&#39;, &#39;basefreq&#39;, &#39;enabled&#39;, &#39;like&#39;,</span>
+                     <span class="s1">&#39;h&#39;</span><span class="p">,</span> <span class="s1">&#39;line_placement&#39;</span><span class="p">]</span>
+    <span class="n">line_upgrade_options</span> <span class="o">=</span> <span class="n">line_loading_df</span><span class="p">[</span><span class="n">property_list</span> <span class="o">+</span> <span class="p">[</span><span class="s1">&#39;geometry&#39;</span><span class="p">]]</span>
+    <span class="c1"># remove duplicate line upgrade options (that might have a different name, but same parameters)</span>
+    <span class="n">line_upgrade_options</span> <span class="o">=</span> <span class="n">line_upgrade_options</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">line_upgrade_options</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">(</span>
+        <span class="n">subset</span><span class="o">=</span><span class="n">property_list</span><span class="p">)</span><span class="o">.</span><span class="n">index</span><span class="p">]</span>
+    <span class="n">line_upgrade_options</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">line_upgrade_options</span> <span class="o">=</span> <span class="n">line_upgrade_options</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;index&#39;</span><span class="p">:</span> <span class="s1">&#39;name&#39;</span><span class="p">})</span>
+    <span class="n">line_upgrade_options</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;line_&#39;</span> <span class="o">+</span> <span class="n">line_upgrade_options</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">line_upgrade_options</span></div>
+
+
+<div class="viewcode-block" id="determine_available_xfmr_upgrades"><a class="viewcode-back" href="../../../../../disco/disco.extensions.upgrade_simulation.upgrades.html#disco.extensions.upgrade_simulation.upgrades.common_functions.determine_available_xfmr_upgrades">[docs]</a><span class="k">def</span> <span class="nf">determine_available_xfmr_upgrades</span><span class="p">(</span><span class="n">xfmr_loading_df</span><span class="p">):</span>
+    <span class="n">property_list</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;phases&#39;</span><span class="p">,</span> <span class="s1">&#39;windings&#39;</span><span class="p">,</span> <span class="s1">&#39;wdg&#39;</span><span class="p">,</span> <span class="s1">&#39;conn&#39;</span><span class="p">,</span> <span class="s1">&#39;kV&#39;</span><span class="p">,</span> <span class="s1">&#39;kVA&#39;</span><span class="p">,</span>
+                     <span class="s1">&#39;tap&#39;</span><span class="p">,</span> <span class="s1">&#39;%R&#39;</span><span class="p">,</span> <span class="s1">&#39;Rneut&#39;</span><span class="p">,</span> <span class="s1">&#39;Xneut&#39;</span><span class="p">,</span> <span class="s1">&#39;conns&#39;</span><span class="p">,</span> <span class="s1">&#39;kVs&#39;</span><span class="p">,</span> <span class="s1">&#39;kVAs&#39;</span><span class="p">,</span> <span class="s1">&#39;taps&#39;</span><span class="p">,</span> <span class="s1">&#39;XHL&#39;</span><span class="p">,</span> <span class="s1">&#39;XHT&#39;</span><span class="p">,</span>
+                     <span class="s1">&#39;XLT&#39;</span><span class="p">,</span> <span class="s1">&#39;Xscarray&#39;</span><span class="p">,</span> <span class="s1">&#39;thermal&#39;</span><span class="p">,</span> <span class="s1">&#39;n&#39;</span><span class="p">,</span> <span class="s1">&#39;m&#39;</span><span class="p">,</span> <span class="s1">&#39;flrise&#39;</span><span class="p">,</span> <span class="s1">&#39;hsrise&#39;</span><span class="p">,</span> <span class="s1">&#39;</span><span class="si">%lo</span><span class="s1">adloss&#39;</span><span class="p">,</span>
+                     <span class="s1">&#39;%noloadloss&#39;</span><span class="p">,</span> <span class="s1">&#39;normhkVA&#39;</span><span class="p">,</span> <span class="s1">&#39;emerghkVA&#39;</span><span class="p">,</span> <span class="s1">&#39;sub&#39;</span><span class="p">,</span> <span class="s1">&#39;MaxTap&#39;</span><span class="p">,</span> <span class="s1">&#39;MinTap&#39;</span><span class="p">,</span>
+                     <span class="s1">&#39;NumTaps&#39;</span><span class="p">,</span> <span class="s1">&#39;subname&#39;</span><span class="p">,</span> <span class="s1">&#39;</span><span class="si">%i</span><span class="s1">mag&#39;</span><span class="p">,</span> <span class="s1">&#39;ppm_antifloat&#39;</span><span class="p">,</span> <span class="s1">&#39;%Rs&#39;</span><span class="p">,</span> <span class="s1">&#39;bank&#39;</span><span class="p">,</span>
+                     <span class="s1">&#39;XfmrCode&#39;</span><span class="p">,</span> <span class="s1">&#39;XRConst&#39;</span><span class="p">,</span> <span class="s1">&#39;X12&#39;</span><span class="p">,</span> <span class="s1">&#39;X13&#39;</span><span class="p">,</span> <span class="s1">&#39;X23&#39;</span><span class="p">,</span> <span class="s1">&#39;LeadLag&#39;</span><span class="p">,</span>
+                     <span class="s1">&#39;Core&#39;</span><span class="p">,</span> <span class="s1">&#39;RdcOhms&#39;</span><span class="p">,</span> <span class="s1">&#39;normamps&#39;</span><span class="p">,</span> <span class="s1">&#39;emergamps&#39;</span><span class="p">,</span> <span class="s1">&#39;faultrate&#39;</span><span class="p">,</span> <span class="s1">&#39;pctperm&#39;</span><span class="p">,</span>
+                     <span class="s1">&#39;basefreq&#39;</span><span class="p">,</span> <span class="s1">&#39;amp_limit_per_phase&#39;</span><span class="p">]</span>
+    <span class="n">xfmr_upgrade_options</span> <span class="o">=</span> <span class="n">xfmr_loading_df</span><span class="p">[</span><span class="n">property_list</span><span class="p">]</span>
+    <span class="n">xfmr_upgrade_options</span> <span class="o">=</span> <span class="n">xfmr_upgrade_options</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">xfmr_upgrade_options</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">()</span><span class="o">.</span><span class="n">index</span><span class="p">]</span>
+    <span class="n">xfmr_upgrade_options</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">xfmr_upgrade_options</span> <span class="o">=</span> <span class="n">xfmr_upgrade_options</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;index&#39;</span><span class="p">:</span> <span class="s1">&#39;name&#39;</span><span class="p">})</span>
+    <span class="n">xfmr_upgrade_options</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;xfmr_&#39;</span> <span class="o">+</span> <span class="n">xfmr_upgrade_options</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">xfmr_upgrade_options</span></div>
+
+
+<div class="viewcode-block" id="get_pv_buses"><a class="viewcode-back" href="../../../../../disco/disco.extensions.upgrade_simulation.upgrades.html#disco.extensions.upgrade_simulation.upgrades.common_functions.get_pv_buses">[docs]</a><span class="k">def</span> <span class="nf">get_pv_buses</span><span class="p">(</span><span class="n">dss</span><span class="p">):</span>
+    <span class="n">pv_buses</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">flag</span> <span class="o">=</span> <span class="n">dss</span><span class="o">.</span><span class="n">PVsystems</span><span class="o">.</span><span class="n">First</span><span class="p">()</span>
+    <span class="k">while</span> <span class="n">flag</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">pv_buses</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">dss</span><span class="o">.</span><span class="n">Properties</span><span class="o">.</span><span class="n">Value</span><span class="p">(</span><span class="s1">&#39;bus1&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">])</span>
+        <span class="n">flag</span> <span class="o">=</span> <span class="n">dss</span><span class="o">.</span><span class="n">PVsystems</span><span class="o">.</span><span class="n">Next</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">pv_buses</span></div>
+
+
+<div class="viewcode-block" id="get_load_buses"><a class="viewcode-back" href="../../../../../disco/disco.extensions.upgrade_simulation.upgrades.html#disco.extensions.upgrade_simulation.upgrades.common_functions.get_load_buses">[docs]</a><span class="k">def</span> <span class="nf">get_load_buses</span><span class="p">(</span><span class="n">dss</span><span class="p">):</span>
+    <span class="n">load_buses</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">flag</span> <span class="o">=</span> <span class="n">dss</span><span class="o">.</span><span class="n">Loads</span><span class="o">.</span><span class="n">First</span><span class="p">()</span>
+    <span class="k">while</span> <span class="n">flag</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">load_buses</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">dss</span><span class="o">.</span><span class="n">Properties</span><span class="o">.</span><span class="n">Value</span><span class="p">(</span><span class="s1">&#39;bus1&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">])</span>
+        <span class="n">flag</span> <span class="o">=</span> <span class="n">dss</span><span class="o">.</span><span class="n">Loads</span><span class="o">.</span><span class="n">Next</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">load_buses</span></div>
+
+
+<div class="viewcode-block" id="get_bus_coordinates"><a class="viewcode-back" href="../../../../../disco/disco.extensions.upgrade_simulation.upgrades.html#disco.extensions.upgrade_simulation.upgrades.common_functions.get_bus_coordinates">[docs]</a><span class="k">def</span> <span class="nf">get_bus_coordinates</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;This function creates a dataframe of all buses in the circuit with their x and y coordinates</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">all_bus_names</span> <span class="o">=</span> <span class="n">dss</span><span class="o">.</span><span class="n">Circuit</span><span class="o">.</span><span class="n">AllBusNames</span><span class="p">()</span>
+    <span class="n">buses_list</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">b</span> <span class="ow">in</span> <span class="n">all_bus_names</span><span class="p">:</span>
+        <span class="n">bus_dict</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="n">dss</span><span class="o">.</span><span class="n">Circuit</span><span class="o">.</span><span class="n">SetActiveBus</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+        <span class="n">bus_dict</span><span class="p">[</span><span class="s1">&#39;bus_name&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">b</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+        <span class="n">bus_dict</span><span class="p">[</span><span class="s1">&#39;x_coordinate&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dss</span><span class="o">.</span><span class="n">Bus</span><span class="o">.</span><span class="n">X</span><span class="p">()</span>
+        <span class="n">bus_dict</span><span class="p">[</span><span class="s1">&#39;y_coordinate&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dss</span><span class="o">.</span><span class="n">Bus</span><span class="o">.</span><span class="n">Y</span><span class="p">()</span>
+        <span class="n">buses_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">bus_dict</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">buses_list</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="convert_summary_dict_to_df"><a class="viewcode-back" href="../../../../../disco/disco.extensions.upgrade_simulation.upgrades.html#disco.extensions.upgrade_simulation.upgrades.common_functions.convert_summary_dict_to_df">[docs]</a><span class="k">def</span> <span class="nf">convert_summary_dict_to_df</span><span class="p">(</span><span class="n">summary_dict</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="o">.</span><span class="n">from_dict</span><span class="p">(</span><span class="n">summary_dict</span><span class="p">,</span> <span class="n">orient</span><span class="o">=</span><span class="s1">&#39;index&#39;</span><span class="p">)</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;stage&quot;</span>
+    <span class="k">return</span> <span class="n">df</span></div>
+
+
+<div class="viewcode-block" id="filter_dictionary"><a class="viewcode-back" href="../../../../../disco/disco.extensions.upgrade_simulation.upgrades.html#disco.extensions.upgrade_simulation.upgrades.common_functions.filter_dictionary">[docs]</a><span class="k">def</span> <span class="nf">filter_dictionary</span><span class="p">(</span><span class="n">dict_data</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">wanted_keys</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span> <span class="n">dict_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">wanted_keys</span><span class="p">}</span></div>
+
+
+<div class="viewcode-block" id="compare_dict"><a class="viewcode-back" href="../../../../../disco/disco.extensions.upgrade_simulation.upgrades.html#disco.extensions.upgrade_simulation.upgrades.common_functions.compare_dict">[docs]</a><span class="k">def</span> <span class="nf">compare_dict</span><span class="p">(</span><span class="n">old</span><span class="p">,</span> <span class="n">new</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;function to compare two dictionaries with same format. </span>
+<span class="sd">    Only compares common elements present in both original and new dictionaries</span>
+<span class="sd">    </span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">field_list</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">change</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="n">sharedKeys</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">old</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span><span class="o">.</span><span class="n">intersection</span><span class="p">(</span><span class="n">new</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+    <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">sharedKeys</span><span class="p">:</span>
+        <span class="n">change_flag</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="k">for</span> <span class="n">sub_field</span> <span class="ow">in</span> <span class="n">old</span><span class="p">[</span><span class="n">key</span><span class="p">]:</span>
+            <span class="k">if</span> <span class="n">old</span><span class="p">[</span><span class="n">key</span><span class="p">][</span><span class="n">sub_field</span><span class="p">]</span> <span class="o">!=</span> <span class="n">new</span><span class="p">[</span><span class="n">key</span><span class="p">][</span><span class="n">sub_field</span><span class="p">]:</span>
+                <span class="n">change_flag</span> <span class="o">=</span> <span class="kc">True</span>
+                <span class="n">field_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">sub_field</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">change_flag</span><span class="p">:</span>
+            <span class="n">change</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">field_list</span>
+    <span class="k">return</span> <span class="n">change</span></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2019, NREL.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

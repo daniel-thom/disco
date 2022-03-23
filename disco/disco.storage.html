@@ -1,0 +1,1969 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>disco.storage package &mdash; DISCO 0.1 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link href="../_static/style.css" rel="stylesheet" type="text/css">
+
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> DISCO
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">User Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../installation.html#use-conda">Use Conda</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation.html#use-docker">Use Docker</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">Overview</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../overview.html#data-sources">Data Sources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview.html#transform-model">Transform Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview.html#config-jobs">Config Jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview.html#submit-jobs">Submit Jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview.html#result-analysis">Result Analysis</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../quick-start.html">Quick Start</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../quick-start.html#source-data">Source Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../quick-start.html#transform-model">Transform Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../quick-start.html#config-jobs">Config Jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../quick-start.html#submit-jobs">Submit Jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../quick-start.html#result-analysis">Result Analysis</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../data-sources.html">Data Sources</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../data-sources/smart-ds-model-preparation.html">SMART-DS OpenDSS Model Preparation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data-sources.html#gem-model">GEM Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data-sources.html#epri-model">EPRI Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data-sources.html#sourcetree1-model">SourceTree1 Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data-sources.html#sourcetree2-model">SourceTree2 Model</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../pv-deployments.html">PV Deployments</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../pv-deployments.html#sourcetree1-pv-deployments">SourceTree1 PV Deployments</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../transform-models.html">Transform Models</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../transform-models.html#transform-model-help">Transform Model Help</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../transform-models.html#disco-model-in-depth">DISCO Model in Depth</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../analysis-workflows.html">Analysis Workflows</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../analysis-workflows/hosting-capacity-analysis.html">Hosting Capacity Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../analysis-workflows/upgrade-cost-analysis.html">Upgrade Cost Analysis</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../pipelines.html">Pipelines</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../pipelines.html#sourcetree1model">SourceTree1Model</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../debugging-issues.html">Debugging Issues</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../debugging-issues.html#using-jade">Using JADE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../debugging-issues.html#using-pydss">Using PyDSS</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../data-ingestion.html">Data Ingestion</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../data-ingestion.html#ingest-to-new-database">Ingest to New Database</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data-ingestion.html#ingest-to-existing-database">Ingest to Existing Database</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data-ingestion.html#run-database-queries">Run Database Queries</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced-guide.html">Advanced Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../advanced-guide/analysis-deployment.html">Analysis Deployment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../advanced-guide/upgrade-cost-analysis-generic-models.html">Upgrade Cost Analysis JSON Schemas</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contribution</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../build-docs.html">Build docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../license.html">License</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">DISCO</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>disco.storage package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/disco/disco.storage.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="disco-storage-package">
+<h1>disco.storage package<a class="headerlink" href="#disco-storage-package" title="Permalink to this headline">¶</a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="module-disco.storage.core">
+<span id="disco-storage-core-module"></span><h2>disco.storage.core module<a class="headerlink" href="#module-disco.storage.core" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="disco.storage.core.PipelineStep">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">disco.storage.core.</span></span><span class="sig-name descname"><span class="pre">PipelineStep</span></span><a class="reference internal" href="../_modules/disco/storage/core.html#PipelineStep"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.storage.core.PipelineStep" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code></p>
+<p>Abstract pipeline step</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.storage.core.PipelineStep.execute">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">execute</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/storage/core.html#PipelineStep.execute"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.storage.core.PipelineStep.execute" title="Permalink to this definition">¶</a></dt>
+<dd><p>Execute the pipeline step</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="disco.storage.core.PipelineBase">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">disco.storage.core.</span></span><span class="sig-name descname"><span class="pre">PipelineBase</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">database</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/storage/core.html#PipelineBase"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.storage.core.PipelineBase" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code></p>
+<p>Abstract pipeline class</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.storage.core.PipelineBase.run">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/storage/core.html#PipelineBase.run"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.storage.core.PipelineBase.run" title="Permalink to this definition">¶</a></dt>
+<dd><p>Entry point of running pipeline steps</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="disco.storage.core.InitializationStep">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">disco.storage.core.</span></span><span class="sig-name descname"><span class="pre">InitializationStep</span></span><a class="reference internal" href="../_modules/disco/storage/core.html#InitializationStep"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.storage.core.InitializationStep" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#disco.storage.core.PipelineStep" title="disco.storage.core.PipelineStep"><code class="xref py py-class docutils literal notranslate"><span class="pre">disco.storage.core.PipelineStep</span></code></a></p>
+<p>A step for initializing and preparing data required by pipeline</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.storage.core.InitializationStep.execute">
+<span class="sig-name descname"><span class="pre">execute</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/storage/core.html#InitializationStep.execute"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.storage.core.InitializationStep.execute" title="Permalink to this definition">¶</a></dt>
+<dd><p>Execute this step to initialize pipeline</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.storage.core.InitializationStep.validate_task">
+<span class="sig-name descname"><span class="pre">validate_task</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/storage/core.html#InitializationStep.validate_task"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.storage.core.InitializationStep.validate_task" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return False if task_name already</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="disco.storage.core.OutputParsingStep">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">disco.storage.core.</span></span><span class="sig-name descname"><span class="pre">OutputParsingStep</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">output</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/storage/core.html#OutputParsingStep"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.storage.core.OutputParsingStep" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#disco.storage.core.PipelineStep" title="disco.storage.core.PipelineStep"><code class="xref py py-class docutils literal notranslate"><span class="pre">disco.storage.core.PipelineStep</span></code></a></p>
+<p>A step for parsing output of DISCO simulation/analysis</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.storage.core.OutputParsingStep.execute">
+<span class="sig-name descname"><span class="pre">execute</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/storage/core.html#OutputParsingStep.execute"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.storage.core.OutputParsingStep.execute" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parse desired data from output</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="disco.storage.core.ResultIngestionStep">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">disco.storage.core.</span></span><span class="sig-name descname"><span class="pre">ResultIngestionStep</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">database</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/storage/core.html#ResultIngestionStep"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.storage.core.ResultIngestionStep" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#disco.storage.core.PipelineStep" title="disco.storage.core.PipelineStep"><code class="xref py py-class docutils literal notranslate"><span class="pre">disco.storage.core.PipelineStep</span></code></a></p>
+<p>A step for ingesting parsed result into database</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.storage.core.ResultIngestionStep.execute">
+<span class="sig-name descname"><span class="pre">execute</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/storage/core.html#ResultIngestionStep.execute"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.storage.core.ResultIngestionStep.execute" title="Permalink to this definition">¶</a></dt>
+<dd><p>Ingest parsed data into database</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="disco.storage.core.FinalizatonStep">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">disco.storage.core.</span></span><span class="sig-name descname"><span class="pre">FinalizatonStep</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">output</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/storage/core.html#FinalizatonStep"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.storage.core.FinalizatonStep" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#disco.storage.core.PipelineStep" title="disco.storage.core.PipelineStep"><code class="xref py py-class docutils literal notranslate"><span class="pre">disco.storage.core.PipelineStep</span></code></a></p>
+<p>A step for closing pipeline</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.storage.core.FinalizatonStep.execute">
+<span class="sig-name descname"><span class="pre">execute</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/storage/core.html#FinalizatonStep.execute"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.storage.core.FinalizatonStep.execute" title="Permalink to this definition">¶</a></dt>
+<dd><p>Store indexes of db storage into JSON file</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="disco.storage.core.StoragePipeline">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">disco.storage.core.</span></span><span class="sig-name descname"><span class="pre">StoragePipeline</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">database</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/storage/core.html#StoragePipeline"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.storage.core.StoragePipeline" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#disco.storage.core.PipelineBase" title="disco.storage.core.PipelineBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">disco.storage.core.PipelineBase</span></code></a></p>
+<p>Pipeline class for parsing and ingesting DISCO simulation/analysis results</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.storage.core.StoragePipeline.run">
+<span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/storage/core.html#StoragePipeline.run"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.storage.core.StoragePipeline.run" title="Permalink to this definition">¶</a></dt>
+<dd><p>Execute pipeline steps in sequential order</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-disco.storage.db">
+<span id="disco-storage-db-module"></span><h2>disco.storage.db module<a class="headerlink" href="#module-disco.storage.db" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="disco.storage.db.Task">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">disco.storage.db.</span></span><span class="sig-name descname"><span class="pre">Task</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/storage/db.html#Task"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.storage.db.Task" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">sqlalchemy.orm.decl_api.Base</span></code></p>
+<p>A simple constructor that allows initialization from kwargs.</p>
+<p>Sets attributes on the constructed instance using the names and
+values in <code class="docutils literal notranslate"><span class="pre">kwargs</span></code>.</p>
+<p>Only keys that are present as
+attributes of the instance’s class are allowed. These could be,
+for example, any mapped columns or relationships.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.storage.db.Task.id">
+<span class="sig-name descname"><span class="pre">id</span></span><a class="headerlink" href="#disco.storage.db.Task.id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.storage.db.Task.name">
+<span class="sig-name descname"><span class="pre">name</span></span><a class="headerlink" href="#disco.storage.db.Task.name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.storage.db.Task.inputs">
+<span class="sig-name descname"><span class="pre">inputs</span></span><a class="headerlink" href="#disco.storage.db.Task.inputs" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.storage.db.Task.output">
+<span class="sig-name descname"><span class="pre">output</span></span><a class="headerlink" href="#disco.storage.db.Task.output" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.storage.db.Task.image_version">
+<span class="sig-name descname"><span class="pre">image_version</span></span><a class="headerlink" href="#disco.storage.db.Task.image_version" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.storage.db.Task.disco_version">
+<span class="sig-name descname"><span class="pre">disco_version</span></span><a class="headerlink" href="#disco.storage.db.Task.disco_version" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.storage.db.Task.jade_version">
+<span class="sig-name descname"><span class="pre">jade_version</span></span><a class="headerlink" href="#disco.storage.db.Task.jade_version" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.storage.db.Task.pydss_version">
+<span class="sig-name descname"><span class="pre">pydss_version</span></span><a class="headerlink" href="#disco.storage.db.Task.pydss_version" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.storage.db.Task.opendssdirect_version">
+<span class="sig-name descname"><span class="pre">opendssdirect_version</span></span><a class="headerlink" href="#disco.storage.db.Task.opendssdirect_version" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.storage.db.Task.opendss_version">
+<span class="sig-name descname"><span class="pre">opendss_version</span></span><a class="headerlink" href="#disco.storage.db.Task.opendss_version" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.storage.db.Task.notes">
+<span class="sig-name descname"><span class="pre">notes</span></span><a class="headerlink" href="#disco.storage.db.Task.notes" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.storage.db.Task.creation_time">
+<span class="sig-name descname"><span class="pre">creation_time</span></span><a class="headerlink" href="#disco.storage.db.Task.creation_time" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="disco.storage.db.Job">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">disco.storage.db.</span></span><span class="sig-name descname"><span class="pre">Job</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/storage/db.html#Job"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.storage.db.Job" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">sqlalchemy.orm.decl_api.Base</span></code></p>
+<p>A simple constructor that allows initialization from kwargs.</p>
+<p>Sets attributes on the constructed instance using the names and
+values in <code class="docutils literal notranslate"><span class="pre">kwargs</span></code>.</p>
+<p>Only keys that are present as
+attributes of the instance’s class are allowed. These could be,
+for example, any mapped columns or relationships.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.storage.db.Job.id">
+<span class="sig-name descname"><span class="pre">id</span></span><a class="headerlink" href="#disco.storage.db.Job.id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.storage.db.Job.task_id">
+<span class="sig-name descname"><span class="pre">task_id</span></span><a class="headerlink" href="#disco.storage.db.Job.task_id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.storage.db.Job.name">
+<span class="sig-name descname"><span class="pre">name</span></span><a class="headerlink" href="#disco.storage.db.Job.name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.storage.db.Job.project_path">
+<span class="sig-name descname"><span class="pre">project_path</span></span><a class="headerlink" href="#disco.storage.db.Job.project_path" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.storage.db.Job.return_code">
+<span class="sig-name descname"><span class="pre">return_code</span></span><a class="headerlink" href="#disco.storage.db.Job.return_code" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.storage.db.Job.status">
+<span class="sig-name descname"><span class="pre">status</span></span><a class="headerlink" href="#disco.storage.db.Job.status" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.storage.db.Job.exec_time_s">
+<span class="sig-name descname"><span class="pre">exec_time_s</span></span><a class="headerlink" href="#disco.storage.db.Job.exec_time_s" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.storage.db.Job.completion_time">
+<span class="sig-name descname"><span class="pre">completion_time</span></span><a class="headerlink" href="#disco.storage.db.Job.completion_time" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.storage.db.Job.task">
+<span class="sig-name descname"><span class="pre">task</span></span><a class="headerlink" href="#disco.storage.db.Job.task" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="disco.storage.db.Scenario">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">disco.storage.db.</span></span><span class="sig-name descname"><span class="pre">Scenario</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/storage/db.html#Scenario"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.storage.db.Scenario" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">sqlalchemy.orm.decl_api.Base</span></code></p>
+<p>A simple constructor that allows initialization from kwargs.</p>
+<p>Sets attributes on the constructed instance using the names and
+values in <code class="docutils literal notranslate"><span class="pre">kwargs</span></code>.</p>
+<p>Only keys that are present as
+attributes of the instance’s class are allowed. These could be,
+for example, any mapped columns or relationships.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.storage.db.Scenario.id">
+<span class="sig-name descname"><span class="pre">id</span></span><a class="headerlink" href="#disco.storage.db.Scenario.id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.storage.db.Scenario.job_id">
+<span class="sig-name descname"><span class="pre">job_id</span></span><a class="headerlink" href="#disco.storage.db.Scenario.job_id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.storage.db.Scenario.simulation_type">
+<span class="sig-name descname"><span class="pre">simulation_type</span></span><a class="headerlink" href="#disco.storage.db.Scenario.simulation_type" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.storage.db.Scenario.name">
+<span class="sig-name descname"><span class="pre">name</span></span><a class="headerlink" href="#disco.storage.db.Scenario.name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.storage.db.Scenario.start_time">
+<span class="sig-name descname"><span class="pre">start_time</span></span><a class="headerlink" href="#disco.storage.db.Scenario.start_time" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.storage.db.Scenario.end_time">
+<span class="sig-name descname"><span class="pre">end_time</span></span><a class="headerlink" href="#disco.storage.db.Scenario.end_time" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.storage.db.Scenario.job">
+<span class="sig-name descname"><span class="pre">job</span></span><a class="headerlink" href="#disco.storage.db.Scenario.job" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="disco.storage.db.SnapshotTimePoints">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">disco.storage.db.</span></span><span class="sig-name descname"><span class="pre">SnapshotTimePoints</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/storage/db.html#SnapshotTimePoints"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.storage.db.SnapshotTimePoints" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">sqlalchemy.orm.decl_api.Base</span></code></p>
+<p>A simple constructor that allows initialization from kwargs.</p>
+<p>Sets attributes on the constructed instance using the names and
+values in <code class="docutils literal notranslate"><span class="pre">kwargs</span></code>.</p>
+<p>Only keys that are present as
+attributes of the instance’s class are allowed. These could be,
+for example, any mapped columns or relationships.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.storage.db.SnapshotTimePoints.id">
+<span class="sig-name descname"><span class="pre">id</span></span><a class="headerlink" href="#disco.storage.db.SnapshotTimePoints.id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.storage.db.SnapshotTimePoints.job_id">
+<span class="sig-name descname"><span class="pre">job_id</span></span><a class="headerlink" href="#disco.storage.db.SnapshotTimePoints.job_id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.storage.db.SnapshotTimePoints.max_pv_load_ratio">
+<span class="sig-name descname"><span class="pre">max_pv_load_ratio</span></span><a class="headerlink" href="#disco.storage.db.SnapshotTimePoints.max_pv_load_ratio" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.storage.db.SnapshotTimePoints.max_load">
+<span class="sig-name descname"><span class="pre">max_load</span></span><a class="headerlink" href="#disco.storage.db.SnapshotTimePoints.max_load" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.storage.db.SnapshotTimePoints.daytime_min_load">
+<span class="sig-name descname"><span class="pre">daytime_min_load</span></span><a class="headerlink" href="#disco.storage.db.SnapshotTimePoints.daytime_min_load" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.storage.db.SnapshotTimePoints.pv_minus_load">
+<span class="sig-name descname"><span class="pre">pv_minus_load</span></span><a class="headerlink" href="#disco.storage.db.SnapshotTimePoints.pv_minus_load" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.storage.db.SnapshotTimePoints.job">
+<span class="sig-name descname"><span class="pre">job</span></span><a class="headerlink" href="#disco.storage.db.SnapshotTimePoints.job" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="disco.storage.db.Report">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">disco.storage.db.</span></span><span class="sig-name descname"><span class="pre">Report</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/storage/db.html#Report"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.storage.db.Report" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">sqlalchemy.orm.decl_api.Base</span></code></p>
+<p>A simple constructor that allows initialization from kwargs.</p>
+<p>Sets attributes on the constructed instance using the names and
+values in <code class="docutils literal notranslate"><span class="pre">kwargs</span></code>.</p>
+<p>Only keys that are present as
+attributes of the instance’s class are allowed. These could be,
+for example, any mapped columns or relationships.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.storage.db.Report.id">
+<span class="sig-name descname"><span class="pre">id</span></span><a class="headerlink" href="#disco.storage.db.Report.id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.storage.db.Report.task_id">
+<span class="sig-name descname"><span class="pre">task_id</span></span><a class="headerlink" href="#disco.storage.db.Report.task_id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.storage.db.Report.file_name">
+<span class="sig-name descname"><span class="pre">file_name</span></span><a class="headerlink" href="#disco.storage.db.Report.file_name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.storage.db.Report.file_path">
+<span class="sig-name descname"><span class="pre">file_path</span></span><a class="headerlink" href="#disco.storage.db.Report.file_path" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.storage.db.Report.file_size">
+<span class="sig-name descname"><span class="pre">file_size</span></span><a class="headerlink" href="#disco.storage.db.Report.file_size" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.storage.db.Report.creation_time">
+<span class="sig-name descname"><span class="pre">creation_time</span></span><a class="headerlink" href="#disco.storage.db.Report.creation_time" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.storage.db.Report.task">
+<span class="sig-name descname"><span class="pre">task</span></span><a class="headerlink" href="#disco.storage.db.Report.task" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="disco.storage.db.FeederHead">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">disco.storage.db.</span></span><span class="sig-name descname"><span class="pre">FeederHead</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/storage/db.html#FeederHead"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.storage.db.FeederHead" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">sqlalchemy.orm.decl_api.Base</span></code></p>
+<p>A simple constructor that allows initialization from kwargs.</p>
+<p>Sets attributes on the constructed instance using the names and
+values in <code class="docutils literal notranslate"><span class="pre">kwargs</span></code>.</p>
+<p>Only keys that are present as
+attributes of the instance’s class are allowed. These could be,
+for example, any mapped columns or relationships.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.storage.db.FeederHead.id">
+<span class="sig-name descname"><span class="pre">id</span></span><a class="headerlink" href="#disco.storage.db.FeederHead.id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.storage.db.FeederHead.report_id">
+<span class="sig-name descname"><span class="pre">report_id</span></span><a class="headerlink" href="#disco.storage.db.FeederHead.report_id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.storage.db.FeederHead.job_id">
+<span class="sig-name descname"><span class="pre">job_id</span></span><a class="headerlink" href="#disco.storage.db.FeederHead.job_id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.storage.db.FeederHead.name">
+<span class="sig-name descname"><span class="pre">name</span></span><a class="headerlink" href="#disco.storage.db.FeederHead.name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.storage.db.FeederHead.substation">
+<span class="sig-name descname"><span class="pre">substation</span></span><a class="headerlink" href="#disco.storage.db.FeederHead.substation" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.storage.db.FeederHead.feeder">
+<span class="sig-name descname"><span class="pre">feeder</span></span><a class="headerlink" href="#disco.storage.db.FeederHead.feeder" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.storage.db.FeederHead.placement">
+<span class="sig-name descname"><span class="pre">placement</span></span><a class="headerlink" href="#disco.storage.db.FeederHead.placement" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.storage.db.FeederHead.sample">
+<span class="sig-name descname"><span class="pre">sample</span></span><a class="headerlink" href="#disco.storage.db.FeederHead.sample" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.storage.db.FeederHead.penetration_level">
+<span class="sig-name descname"><span class="pre">penetration_level</span></span><a class="headerlink" href="#disco.storage.db.FeederHead.penetration_level" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.storage.db.FeederHead.scenario">
+<span class="sig-name descname"><span class="pre">scenario</span></span><a class="headerlink" href="#disco.storage.db.FeederHead.scenario" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.storage.db.FeederHead.line">
+<span class="sig-name descname"><span class="pre">line</span></span><a class="headerlink" href="#disco.storage.db.FeederHead.line" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.storage.db.FeederHead.loading">
+<span class="sig-name descname"><span class="pre">loading</span></span><a class="headerlink" href="#disco.storage.db.FeederHead.loading" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.storage.db.FeederHead.load_kw">
+<span class="sig-name descname"><span class="pre">load_kw</span></span><a class="headerlink" href="#disco.storage.db.FeederHead.load_kw" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.storage.db.FeederHead.load_kvar">
+<span class="sig-name descname"><span class="pre">load_kvar</span></span><a class="headerlink" href="#disco.storage.db.FeederHead.load_kvar" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.storage.db.FeederHead.reverse_power_flow">
+<span class="sig-name descname"><span class="pre">reverse_power_flow</span></span><a class="headerlink" href="#disco.storage.db.FeederHead.reverse_power_flow" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.storage.db.FeederHead.job">
+<span class="sig-name descname"><span class="pre">job</span></span><a class="headerlink" href="#disco.storage.db.FeederHead.job" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.storage.db.FeederHead.report">
+<span class="sig-name descname"><span class="pre">report</span></span><a class="headerlink" href="#disco.storage.db.FeederHead.report" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="disco.storage.db.FeederLosses">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">disco.storage.db.</span></span><span class="sig-name descname"><span class="pre">FeederLosses</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/storage/db.html#FeederLosses"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.storage.db.FeederLosses" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">sqlalchemy.orm.decl_api.Base</span></code></p>
+<p>A simple constructor that allows initialization from kwargs.</p>
+<p>Sets attributes on the constructed instance using the names and
+values in <code class="docutils literal notranslate"><span class="pre">kwargs</span></code>.</p>
+<p>Only keys that are present as
+attributes of the instance’s class are allowed. These could be,
+for example, any mapped columns or relationships.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.storage.db.FeederLosses.id">
+<span class="sig-name descname"><span class="pre">id</span></span><a class="headerlink" href="#disco.storage.db.FeederLosses.id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.storage.db.FeederLosses.report_id">
+<span class="sig-name descname"><span class="pre">report_id</span></span><a class="headerlink" href="#disco.storage.db.FeederLosses.report_id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.storage.db.FeederLosses.job_id">
+<span class="sig-name descname"><span class="pre">job_id</span></span><a class="headerlink" href="#disco.storage.db.FeederLosses.job_id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.storage.db.FeederLosses.name">
+<span class="sig-name descname"><span class="pre">name</span></span><a class="headerlink" href="#disco.storage.db.FeederLosses.name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.storage.db.FeederLosses.substation">
+<span class="sig-name descname"><span class="pre">substation</span></span><a class="headerlink" href="#disco.storage.db.FeederLosses.substation" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.storage.db.FeederLosses.feeder">
+<span class="sig-name descname"><span class="pre">feeder</span></span><a class="headerlink" href="#disco.storage.db.FeederLosses.feeder" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.storage.db.FeederLosses.placement">
+<span class="sig-name descname"><span class="pre">placement</span></span><a class="headerlink" href="#disco.storage.db.FeederLosses.placement" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.storage.db.FeederLosses.sample">
+<span class="sig-name descname"><span class="pre">sample</span></span><a class="headerlink" href="#disco.storage.db.FeederLosses.sample" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.storage.db.FeederLosses.penetration_level">
+<span class="sig-name descname"><span class="pre">penetration_level</span></span><a class="headerlink" href="#disco.storage.db.FeederLosses.penetration_level" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.storage.db.FeederLosses.scenario">
+<span class="sig-name descname"><span class="pre">scenario</span></span><a class="headerlink" href="#disco.storage.db.FeederLosses.scenario" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.storage.db.FeederLosses.total_losses_kwh">
+<span class="sig-name descname"><span class="pre">total_losses_kwh</span></span><a class="headerlink" href="#disco.storage.db.FeederLosses.total_losses_kwh" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.storage.db.FeederLosses.line_losses_kwh">
+<span class="sig-name descname"><span class="pre">line_losses_kwh</span></span><a class="headerlink" href="#disco.storage.db.FeederLosses.line_losses_kwh" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.storage.db.FeederLosses.transformer_losses_kwh">
+<span class="sig-name descname"><span class="pre">transformer_losses_kwh</span></span><a class="headerlink" href="#disco.storage.db.FeederLosses.transformer_losses_kwh" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.storage.db.FeederLosses.total_load_demand_kwh">
+<span class="sig-name descname"><span class="pre">total_load_demand_kwh</span></span><a class="headerlink" href="#disco.storage.db.FeederLosses.total_load_demand_kwh" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.storage.db.FeederLosses.job">
+<span class="sig-name descname"><span class="pre">job</span></span><a class="headerlink" href="#disco.storage.db.FeederLosses.job" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.storage.db.FeederLosses.report">
+<span class="sig-name descname"><span class="pre">report</span></span><a class="headerlink" href="#disco.storage.db.FeederLosses.report" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="disco.storage.db.Metadata">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">disco.storage.db.</span></span><span class="sig-name descname"><span class="pre">Metadata</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/storage/db.html#Metadata"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.storage.db.Metadata" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">sqlalchemy.orm.decl_api.Base</span></code></p>
+<p>A simple constructor that allows initialization from kwargs.</p>
+<p>Sets attributes on the constructed instance using the names and
+values in <code class="docutils literal notranslate"><span class="pre">kwargs</span></code>.</p>
+<p>Only keys that are present as
+attributes of the instance’s class are allowed. These could be,
+for example, any mapped columns or relationships.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.storage.db.Metadata.id">
+<span class="sig-name descname"><span class="pre">id</span></span><a class="headerlink" href="#disco.storage.db.Metadata.id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.storage.db.Metadata.report_id">
+<span class="sig-name descname"><span class="pre">report_id</span></span><a class="headerlink" href="#disco.storage.db.Metadata.report_id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.storage.db.Metadata.job_id">
+<span class="sig-name descname"><span class="pre">job_id</span></span><a class="headerlink" href="#disco.storage.db.Metadata.job_id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.storage.db.Metadata.name">
+<span class="sig-name descname"><span class="pre">name</span></span><a class="headerlink" href="#disco.storage.db.Metadata.name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.storage.db.Metadata.substation">
+<span class="sig-name descname"><span class="pre">substation</span></span><a class="headerlink" href="#disco.storage.db.Metadata.substation" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.storage.db.Metadata.feeder">
+<span class="sig-name descname"><span class="pre">feeder</span></span><a class="headerlink" href="#disco.storage.db.Metadata.feeder" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.storage.db.Metadata.placement">
+<span class="sig-name descname"><span class="pre">placement</span></span><a class="headerlink" href="#disco.storage.db.Metadata.placement" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.storage.db.Metadata.sample">
+<span class="sig-name descname"><span class="pre">sample</span></span><a class="headerlink" href="#disco.storage.db.Metadata.sample" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.storage.db.Metadata.penetration_level">
+<span class="sig-name descname"><span class="pre">penetration_level</span></span><a class="headerlink" href="#disco.storage.db.Metadata.penetration_level" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.storage.db.Metadata.scenario">
+<span class="sig-name descname"><span class="pre">scenario</span></span><a class="headerlink" href="#disco.storage.db.Metadata.scenario" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.storage.db.Metadata.pct_pv_to_load_ratio">
+<span class="sig-name descname"><span class="pre">pct_pv_to_load_ratio</span></span><a class="headerlink" href="#disco.storage.db.Metadata.pct_pv_to_load_ratio" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.storage.db.Metadata.pv_capacity_kw">
+<span class="sig-name descname"><span class="pre">pv_capacity_kw</span></span><a class="headerlink" href="#disco.storage.db.Metadata.pv_capacity_kw" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.storage.db.Metadata.load_capacity_kw">
+<span class="sig-name descname"><span class="pre">load_capacity_kw</span></span><a class="headerlink" href="#disco.storage.db.Metadata.load_capacity_kw" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.storage.db.Metadata.job">
+<span class="sig-name descname"><span class="pre">job</span></span><a class="headerlink" href="#disco.storage.db.Metadata.job" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.storage.db.Metadata.report">
+<span class="sig-name descname"><span class="pre">report</span></span><a class="headerlink" href="#disco.storage.db.Metadata.report" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="disco.storage.db.VoltageMetrics">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">disco.storage.db.</span></span><span class="sig-name descname"><span class="pre">VoltageMetrics</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/storage/db.html#VoltageMetrics"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.storage.db.VoltageMetrics" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">sqlalchemy.orm.decl_api.Base</span></code></p>
+<p>A simple constructor that allows initialization from kwargs.</p>
+<p>Sets attributes on the constructed instance using the names and
+values in <code class="docutils literal notranslate"><span class="pre">kwargs</span></code>.</p>
+<p>Only keys that are present as
+attributes of the instance’s class are allowed. These could be,
+for example, any mapped columns or relationships.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.storage.db.VoltageMetrics.id">
+<span class="sig-name descname"><span class="pre">id</span></span><a class="headerlink" href="#disco.storage.db.VoltageMetrics.id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.storage.db.VoltageMetrics.report_id">
+<span class="sig-name descname"><span class="pre">report_id</span></span><a class="headerlink" href="#disco.storage.db.VoltageMetrics.report_id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.storage.db.VoltageMetrics.job_id">
+<span class="sig-name descname"><span class="pre">job_id</span></span><a class="headerlink" href="#disco.storage.db.VoltageMetrics.job_id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.storage.db.VoltageMetrics.name">
+<span class="sig-name descname"><span class="pre">name</span></span><a class="headerlink" href="#disco.storage.db.VoltageMetrics.name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.storage.db.VoltageMetrics.substation">
+<span class="sig-name descname"><span class="pre">substation</span></span><a class="headerlink" href="#disco.storage.db.VoltageMetrics.substation" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.storage.db.VoltageMetrics.feeder">
+<span class="sig-name descname"><span class="pre">feeder</span></span><a class="headerlink" href="#disco.storage.db.VoltageMetrics.feeder" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.storage.db.VoltageMetrics.placement">
+<span class="sig-name descname"><span class="pre">placement</span></span><a class="headerlink" href="#disco.storage.db.VoltageMetrics.placement" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.storage.db.VoltageMetrics.sample">
+<span class="sig-name descname"><span class="pre">sample</span></span><a class="headerlink" href="#disco.storage.db.VoltageMetrics.sample" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.storage.db.VoltageMetrics.penetration_level">
+<span class="sig-name descname"><span class="pre">penetration_level</span></span><a class="headerlink" href="#disco.storage.db.VoltageMetrics.penetration_level" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.storage.db.VoltageMetrics.scenario">
+<span class="sig-name descname"><span class="pre">scenario</span></span><a class="headerlink" href="#disco.storage.db.VoltageMetrics.scenario" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.storage.db.VoltageMetrics.node_type">
+<span class="sig-name descname"><span class="pre">node_type</span></span><a class="headerlink" href="#disco.storage.db.VoltageMetrics.node_type" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.storage.db.VoltageMetrics.num_nodes_any_outside_ansi_b">
+<span class="sig-name descname"><span class="pre">num_nodes_any_outside_ansi_b</span></span><a class="headerlink" href="#disco.storage.db.VoltageMetrics.num_nodes_any_outside_ansi_b" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.storage.db.VoltageMetrics.num_time_points_with_ansi_b_violations">
+<span class="sig-name descname"><span class="pre">num_time_points_with_ansi_b_violations</span></span><a class="headerlink" href="#disco.storage.db.VoltageMetrics.num_time_points_with_ansi_b_violations" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.storage.db.VoltageMetrics.voltage_duration_between_ansi_a_and_b_minutes">
+<span class="sig-name descname"><span class="pre">voltage_duration_between_ansi_a_and_b_minutes</span></span><a class="headerlink" href="#disco.storage.db.VoltageMetrics.voltage_duration_between_ansi_a_and_b_minutes" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.storage.db.VoltageMetrics.max_per_node_voltage_duration_outside_ansi_a_minutes">
+<span class="sig-name descname"><span class="pre">max_per_node_voltage_duration_outside_ansi_a_minutes</span></span><a class="headerlink" href="#disco.storage.db.VoltageMetrics.max_per_node_voltage_duration_outside_ansi_a_minutes" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.storage.db.VoltageMetrics.moving_average_voltage_duration_outside_ansi_a_minutes">
+<span class="sig-name descname"><span class="pre">moving_average_voltage_duration_outside_ansi_a_minutes</span></span><a class="headerlink" href="#disco.storage.db.VoltageMetrics.moving_average_voltage_duration_outside_ansi_a_minutes" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.storage.db.VoltageMetrics.num_nodes_always_inside_ansi_a">
+<span class="sig-name descname"><span class="pre">num_nodes_always_inside_ansi_a</span></span><a class="headerlink" href="#disco.storage.db.VoltageMetrics.num_nodes_always_inside_ansi_a" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.storage.db.VoltageMetrics.num_nodes_any_outside_ansi_a_always_inside_ansi_b">
+<span class="sig-name descname"><span class="pre">num_nodes_any_outside_ansi_a_always_inside_ansi_b</span></span><a class="headerlink" href="#disco.storage.db.VoltageMetrics.num_nodes_any_outside_ansi_a_always_inside_ansi_b" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.storage.db.VoltageMetrics.min_voltage">
+<span class="sig-name descname"><span class="pre">min_voltage</span></span><a class="headerlink" href="#disco.storage.db.VoltageMetrics.min_voltage" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.storage.db.VoltageMetrics.max_voltage">
+<span class="sig-name descname"><span class="pre">max_voltage</span></span><a class="headerlink" href="#disco.storage.db.VoltageMetrics.max_voltage" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.storage.db.VoltageMetrics.job">
+<span class="sig-name descname"><span class="pre">job</span></span><a class="headerlink" href="#disco.storage.db.VoltageMetrics.job" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.storage.db.VoltageMetrics.report">
+<span class="sig-name descname"><span class="pre">report</span></span><a class="headerlink" href="#disco.storage.db.VoltageMetrics.report" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="disco.storage.db.ThermalMetrics">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">disco.storage.db.</span></span><span class="sig-name descname"><span class="pre">ThermalMetrics</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/storage/db.html#ThermalMetrics"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.storage.db.ThermalMetrics" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">sqlalchemy.orm.decl_api.Base</span></code></p>
+<p>A simple constructor that allows initialization from kwargs.</p>
+<p>Sets attributes on the constructed instance using the names and
+values in <code class="docutils literal notranslate"><span class="pre">kwargs</span></code>.</p>
+<p>Only keys that are present as
+attributes of the instance’s class are allowed. These could be,
+for example, any mapped columns or relationships.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.storage.db.ThermalMetrics.id">
+<span class="sig-name descname"><span class="pre">id</span></span><a class="headerlink" href="#disco.storage.db.ThermalMetrics.id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.storage.db.ThermalMetrics.report_id">
+<span class="sig-name descname"><span class="pre">report_id</span></span><a class="headerlink" href="#disco.storage.db.ThermalMetrics.report_id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.storage.db.ThermalMetrics.job_id">
+<span class="sig-name descname"><span class="pre">job_id</span></span><a class="headerlink" href="#disco.storage.db.ThermalMetrics.job_id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.storage.db.ThermalMetrics.name">
+<span class="sig-name descname"><span class="pre">name</span></span><a class="headerlink" href="#disco.storage.db.ThermalMetrics.name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.storage.db.ThermalMetrics.substation">
+<span class="sig-name descname"><span class="pre">substation</span></span><a class="headerlink" href="#disco.storage.db.ThermalMetrics.substation" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.storage.db.ThermalMetrics.feeder">
+<span class="sig-name descname"><span class="pre">feeder</span></span><a class="headerlink" href="#disco.storage.db.ThermalMetrics.feeder" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.storage.db.ThermalMetrics.placement">
+<span class="sig-name descname"><span class="pre">placement</span></span><a class="headerlink" href="#disco.storage.db.ThermalMetrics.placement" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.storage.db.ThermalMetrics.sample">
+<span class="sig-name descname"><span class="pre">sample</span></span><a class="headerlink" href="#disco.storage.db.ThermalMetrics.sample" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.storage.db.ThermalMetrics.penetration_level">
+<span class="sig-name descname"><span class="pre">penetration_level</span></span><a class="headerlink" href="#disco.storage.db.ThermalMetrics.penetration_level" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.storage.db.ThermalMetrics.scenario">
+<span class="sig-name descname"><span class="pre">scenario</span></span><a class="headerlink" href="#disco.storage.db.ThermalMetrics.scenario" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.storage.db.ThermalMetrics.line_max_instantaneous_loading_pct">
+<span class="sig-name descname"><span class="pre">line_max_instantaneous_loading_pct</span></span><a class="headerlink" href="#disco.storage.db.ThermalMetrics.line_max_instantaneous_loading_pct" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.storage.db.ThermalMetrics.line_max_moving_average_loading_pct">
+<span class="sig-name descname"><span class="pre">line_max_moving_average_loading_pct</span></span><a class="headerlink" href="#disco.storage.db.ThermalMetrics.line_max_moving_average_loading_pct" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.storage.db.ThermalMetrics.line_window_size_hours">
+<span class="sig-name descname"><span class="pre">line_window_size_hours</span></span><a class="headerlink" href="#disco.storage.db.ThermalMetrics.line_window_size_hours" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.storage.db.ThermalMetrics.line_num_time_points_with_instantaneous_violations">
+<span class="sig-name descname"><span class="pre">line_num_time_points_with_instantaneous_violations</span></span><a class="headerlink" href="#disco.storage.db.ThermalMetrics.line_num_time_points_with_instantaneous_violations" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.storage.db.ThermalMetrics.line_num_time_points_with_moving_average_violations">
+<span class="sig-name descname"><span class="pre">line_num_time_points_with_moving_average_violations</span></span><a class="headerlink" href="#disco.storage.db.ThermalMetrics.line_num_time_points_with_moving_average_violations" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.storage.db.ThermalMetrics.line_instantaneous_threshold">
+<span class="sig-name descname"><span class="pre">line_instantaneous_threshold</span></span><a class="headerlink" href="#disco.storage.db.ThermalMetrics.line_instantaneous_threshold" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.storage.db.ThermalMetrics.line_moving_average_threshold">
+<span class="sig-name descname"><span class="pre">line_moving_average_threshold</span></span><a class="headerlink" href="#disco.storage.db.ThermalMetrics.line_moving_average_threshold" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.storage.db.ThermalMetrics.transformer_max_instantaneous_loading_pct">
+<span class="sig-name descname"><span class="pre">transformer_max_instantaneous_loading_pct</span></span><a class="headerlink" href="#disco.storage.db.ThermalMetrics.transformer_max_instantaneous_loading_pct" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.storage.db.ThermalMetrics.transformer_max_moving_average_loading_pct">
+<span class="sig-name descname"><span class="pre">transformer_max_moving_average_loading_pct</span></span><a class="headerlink" href="#disco.storage.db.ThermalMetrics.transformer_max_moving_average_loading_pct" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.storage.db.ThermalMetrics.transformer_window_size_hours">
+<span class="sig-name descname"><span class="pre">transformer_window_size_hours</span></span><a class="headerlink" href="#disco.storage.db.ThermalMetrics.transformer_window_size_hours" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.storage.db.ThermalMetrics.transformer_num_time_points_with_instantaneous_violations">
+<span class="sig-name descname"><span class="pre">transformer_num_time_points_with_instantaneous_violations</span></span><a class="headerlink" href="#disco.storage.db.ThermalMetrics.transformer_num_time_points_with_instantaneous_violations" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.storage.db.ThermalMetrics.transformer_num_time_points_with_moving_average_violations">
+<span class="sig-name descname"><span class="pre">transformer_num_time_points_with_moving_average_violations</span></span><a class="headerlink" href="#disco.storage.db.ThermalMetrics.transformer_num_time_points_with_moving_average_violations" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.storage.db.ThermalMetrics.transformer_instantaneous_threshold">
+<span class="sig-name descname"><span class="pre">transformer_instantaneous_threshold</span></span><a class="headerlink" href="#disco.storage.db.ThermalMetrics.transformer_instantaneous_threshold" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.storage.db.ThermalMetrics.transformer_moving_average_threshold">
+<span class="sig-name descname"><span class="pre">transformer_moving_average_threshold</span></span><a class="headerlink" href="#disco.storage.db.ThermalMetrics.transformer_moving_average_threshold" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.storage.db.ThermalMetrics.job">
+<span class="sig-name descname"><span class="pre">job</span></span><a class="headerlink" href="#disco.storage.db.ThermalMetrics.job" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.storage.db.ThermalMetrics.report">
+<span class="sig-name descname"><span class="pre">report</span></span><a class="headerlink" href="#disco.storage.db.ThermalMetrics.report" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="disco.storage.db.HostingCapacity">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">disco.storage.db.</span></span><span class="sig-name descname"><span class="pre">HostingCapacity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/storage/db.html#HostingCapacity"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.storage.db.HostingCapacity" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">sqlalchemy.orm.decl_api.Base</span></code></p>
+<p>A simple constructor that allows initialization from kwargs.</p>
+<p>Sets attributes on the constructed instance using the names and
+values in <code class="docutils literal notranslate"><span class="pre">kwargs</span></code>.</p>
+<p>Only keys that are present as
+attributes of the instance’s class are allowed. These could be,
+for example, any mapped columns or relationships.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.storage.db.HostingCapacity.id">
+<span class="sig-name descname"><span class="pre">id</span></span><a class="headerlink" href="#disco.storage.db.HostingCapacity.id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.storage.db.HostingCapacity.task_id">
+<span class="sig-name descname"><span class="pre">task_id</span></span><a class="headerlink" href="#disco.storage.db.HostingCapacity.task_id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.storage.db.HostingCapacity.hc_type">
+<span class="sig-name descname"><span class="pre">hc_type</span></span><a class="headerlink" href="#disco.storage.db.HostingCapacity.hc_type" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.storage.db.HostingCapacity.metric_type">
+<span class="sig-name descname"><span class="pre">metric_type</span></span><a class="headerlink" href="#disco.storage.db.HostingCapacity.metric_type" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.storage.db.HostingCapacity.feeder">
+<span class="sig-name descname"><span class="pre">feeder</span></span><a class="headerlink" href="#disco.storage.db.HostingCapacity.feeder" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.storage.db.HostingCapacity.scenario">
+<span class="sig-name descname"><span class="pre">scenario</span></span><a class="headerlink" href="#disco.storage.db.HostingCapacity.scenario" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.storage.db.HostingCapacity.time_point">
+<span class="sig-name descname"><span class="pre">time_point</span></span><a class="headerlink" href="#disco.storage.db.HostingCapacity.time_point" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.storage.db.HostingCapacity.min_hc_pct">
+<span class="sig-name descname"><span class="pre">min_hc_pct</span></span><a class="headerlink" href="#disco.storage.db.HostingCapacity.min_hc_pct" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.storage.db.HostingCapacity.max_hc_pct">
+<span class="sig-name descname"><span class="pre">max_hc_pct</span></span><a class="headerlink" href="#disco.storage.db.HostingCapacity.max_hc_pct" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.storage.db.HostingCapacity.min_hc_kw">
+<span class="sig-name descname"><span class="pre">min_hc_kw</span></span><a class="headerlink" href="#disco.storage.db.HostingCapacity.min_hc_kw" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.storage.db.HostingCapacity.max_hc_kw">
+<span class="sig-name descname"><span class="pre">max_hc_kw</span></span><a class="headerlink" href="#disco.storage.db.HostingCapacity.max_hc_kw" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.storage.db.HostingCapacity.task">
+<span class="sig-name descname"><span class="pre">task</span></span><a class="headerlink" href="#disco.storage.db.HostingCapacity.task" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="disco.storage.db.PvDistances">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">disco.storage.db.</span></span><span class="sig-name descname"><span class="pre">PvDistances</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/storage/db.html#PvDistances"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.storage.db.PvDistances" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">sqlalchemy.orm.decl_api.Base</span></code></p>
+<p>A simple constructor that allows initialization from kwargs.</p>
+<p>Sets attributes on the constructed instance using the names and
+values in <code class="docutils literal notranslate"><span class="pre">kwargs</span></code>.</p>
+<p>Only keys that are present as
+attributes of the instance’s class are allowed. These could be,
+for example, any mapped columns or relationships.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.storage.db.PvDistances.job_name">
+<span class="sig-name descname"><span class="pre">job_name</span></span><a class="headerlink" href="#disco.storage.db.PvDistances.job_name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.storage.db.PvDistances.substation">
+<span class="sig-name descname"><span class="pre">substation</span></span><a class="headerlink" href="#disco.storage.db.PvDistances.substation" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.storage.db.PvDistances.feeder">
+<span class="sig-name descname"><span class="pre">feeder</span></span><a class="headerlink" href="#disco.storage.db.PvDistances.feeder" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.storage.db.PvDistances.placement">
+<span class="sig-name descname"><span class="pre">placement</span></span><a class="headerlink" href="#disco.storage.db.PvDistances.placement" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.storage.db.PvDistances.sample">
+<span class="sig-name descname"><span class="pre">sample</span></span><a class="headerlink" href="#disco.storage.db.PvDistances.sample" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.storage.db.PvDistances.penetration_level">
+<span class="sig-name descname"><span class="pre">penetration_level</span></span><a class="headerlink" href="#disco.storage.db.PvDistances.penetration_level" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.storage.db.PvDistances.weighted_average_pv_distance">
+<span class="sig-name descname"><span class="pre">weighted_average_pv_distance</span></span><a class="headerlink" href="#disco.storage.db.PvDistances.weighted_average_pv_distance" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.storage.db.PvDistances.option">
+<span class="sig-name descname"><span class="pre">option</span></span><a class="headerlink" href="#disco.storage.db.PvDistances.option" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.storage.db.create_engine">
+<span class="sig-prename descclassname"><span class="pre">disco.storage.db.</span></span><span class="sig-name descname"><span class="pre">create_engine</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">database</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/storage/db.html#create_engine"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.storage.db.create_engine" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.storage.db.create_database">
+<span class="sig-prename descclassname"><span class="pre">disco.storage.db.</span></span><span class="sig-name descname"><span class="pre">create_database</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">database</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/storage/db.html#create_database"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.storage.db.create_database" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</section>
+<section id="module-disco.storage.exceptions">
+<span id="disco-storage-exceptions-module"></span><h2>disco.storage.exceptions module<a class="headerlink" href="#module-disco.storage.exceptions" title="Permalink to this headline">¶</a></h2>
+<dl class="py exception">
+<dt class="sig sig-object py" id="disco.storage.exceptions.IngestionError">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">disco.storage.exceptions.</span></span><span class="sig-name descname"><span class="pre">IngestionError</span></span><a class="reference internal" href="../_modules/disco/storage/exceptions.html#IngestionError"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.storage.exceptions.IngestionError" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></p>
+<p>Raise when ingestion failed</p>
+</dd></dl>
+
+</section>
+<section id="module-disco.storage.ingesters">
+<span id="disco-storage-ingesters-module"></span><h2>disco.storage.ingesters module<a class="headerlink" href="#module-disco.storage.ingesters" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="disco.storage.ingesters.IngesterBase">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">disco.storage.ingesters.</span></span><span class="sig-name descname"><span class="pre">IngesterBase</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">database</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/storage/ingesters.html#IngesterBase"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.storage.ingesters.IngesterBase" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code></p>
+<p>Abstract ingester class</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.storage.ingesters.IngesterBase.data_class">
+<span class="sig-name descname"><span class="pre">data_class</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#disco.storage.ingesters.IngesterBase.data_class" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.storage.ingesters.IngesterBase.ingest">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ingest</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/storage/ingesters.html#IngesterBase.ingest"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.storage.ingesters.IngesterBase.ingest" title="Permalink to this definition">¶</a></dt>
+<dd><p>Ingest data into database via sqlalchemy</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="disco.storage.ingesters.TaskIngester">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">disco.storage.ingesters.</span></span><span class="sig-name descname"><span class="pre">TaskIngester</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">database</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/storage/ingesters.html#TaskIngester"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.storage.ingesters.TaskIngester" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#disco.storage.ingesters.IngesterBase" title="disco.storage.ingesters.IngesterBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">disco.storage.ingesters.IngesterBase</span></code></a></p>
+<p>Class used for ingesting parsed task into database</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.storage.ingesters.TaskIngester.data_class">
+<span class="sig-name descname"><span class="pre">data_class</span></span><a class="headerlink" href="#disco.storage.ingesters.TaskIngester.data_class" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <a class="reference internal" href="#disco.storage.db.Task" title="disco.storage.db.Task"><code class="xref py py-class docutils literal notranslate"><span class="pre">disco.storage.db.Task</span></code></a></p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.storage.ingesters.TaskIngester.ingest">
+<span class="sig-name descname"><span class="pre">ingest</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">task</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/storage/ingesters.html#TaskIngester.ingest"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.storage.ingesters.TaskIngester.ingest" title="Permalink to this definition">¶</a></dt>
+<dd><p>Ingest task data into task table in database</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="disco.storage.ingesters.ScenarioIngester">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">disco.storage.ingesters.</span></span><span class="sig-name descname"><span class="pre">ScenarioIngester</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">database</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/storage/ingesters.html#ScenarioIngester"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.storage.ingesters.ScenarioIngester" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#disco.storage.ingesters.IngesterBase" title="disco.storage.ingesters.IngesterBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">disco.storage.ingesters.IngesterBase</span></code></a></p>
+<p>Class used for ingesting parsed scenarios into database</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.storage.ingesters.ScenarioIngester.data_class">
+<span class="sig-name descname"><span class="pre">data_class</span></span><a class="headerlink" href="#disco.storage.ingesters.ScenarioIngester.data_class" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <a class="reference internal" href="#disco.storage.db.Scenario" title="disco.storage.db.Scenario"><code class="xref py py-class docutils literal notranslate"><span class="pre">disco.storage.db.Scenario</span></code></a></p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.storage.ingesters.ScenarioIngester.ingest">
+<span class="sig-name descname"><span class="pre">ingest</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">scenarios</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/storage/ingesters.html#ScenarioIngester.ingest"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.storage.ingesters.ScenarioIngester.ingest" title="Permalink to this definition">¶</a></dt>
+<dd><p>Ingest a list of scenarios into scenario table in database</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="disco.storage.ingesters.JobIngester">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">disco.storage.ingesters.</span></span><span class="sig-name descname"><span class="pre">JobIngester</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">database</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/storage/ingesters.html#JobIngester"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.storage.ingesters.JobIngester" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#disco.storage.ingesters.IngesterBase" title="disco.storage.ingesters.IngesterBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">disco.storage.ingesters.IngesterBase</span></code></a></p>
+<p>Class used for ingesting parsed jobs into database</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.storage.ingesters.JobIngester.data_class">
+<span class="sig-name descname"><span class="pre">data_class</span></span><a class="headerlink" href="#disco.storage.ingesters.JobIngester.data_class" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <a class="reference internal" href="#disco.storage.db.Job" title="disco.storage.db.Job"><code class="xref py py-class docutils literal notranslate"><span class="pre">disco.storage.db.Job</span></code></a></p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.storage.ingesters.JobIngester.ingest">
+<span class="sig-name descname"><span class="pre">ingest</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">jobs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/storage/ingesters.html#JobIngester.ingest"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.storage.ingesters.JobIngester.ingest" title="Permalink to this definition">¶</a></dt>
+<dd><p>Ingest a list of jobs into job table in database</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="disco.storage.ingesters.ReportIngester">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">disco.storage.ingesters.</span></span><span class="sig-name descname"><span class="pre">ReportIngester</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">database</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/storage/ingesters.html#ReportIngester"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.storage.ingesters.ReportIngester" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#disco.storage.ingesters.IngesterBase" title="disco.storage.ingesters.IngesterBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">disco.storage.ingesters.IngesterBase</span></code></a></p>
+<p>Class used for ingesting parsed reports into database</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.storage.ingesters.ReportIngester.data_class">
+<span class="sig-name descname"><span class="pre">data_class</span></span><a class="headerlink" href="#disco.storage.ingesters.ReportIngester.data_class" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <a class="reference internal" href="#disco.storage.db.Report" title="disco.storage.db.Report"><code class="xref py py-class docutils literal notranslate"><span class="pre">disco.storage.db.Report</span></code></a></p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.storage.ingesters.ReportIngester.ingest">
+<span class="sig-name descname"><span class="pre">ingest</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">reports</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/storage/ingesters.html#ReportIngester.ingest"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.storage.ingesters.ReportIngester.ingest" title="Permalink to this definition">¶</a></dt>
+<dd><p>Ingest parsed reports into report table in database</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="disco.storage.ingesters.TableIngesterMixin">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">disco.storage.ingesters.</span></span><span class="sig-name descname"><span class="pre">TableIngesterMixin</span></span><a class="reference internal" href="../_modules/disco/storage/ingesters.html#TableIngesterMixin"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.storage.ingesters.TableIngesterMixin" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Mixin class for handling report table ingestion</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.storage.ingesters.TableIngesterMixin.ingest">
+<span class="sig-name descname"><span class="pre">ingest</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">objects</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/storage/ingesters.html#TableIngesterMixin.ingest"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.storage.ingesters.TableIngesterMixin.ingest" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="disco.storage.ingesters.FeederHeadIngester">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">disco.storage.ingesters.</span></span><span class="sig-name descname"><span class="pre">FeederHeadIngester</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">database</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/storage/ingesters.html#FeederHeadIngester"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.storage.ingesters.FeederHeadIngester" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#disco.storage.ingesters.TableIngesterMixin" title="disco.storage.ingesters.TableIngesterMixin"><code class="xref py py-class docutils literal notranslate"><span class="pre">disco.storage.ingesters.TableIngesterMixin</span></code></a>, <a class="reference internal" href="#disco.storage.ingesters.IngesterBase" title="disco.storage.ingesters.IngesterBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">disco.storage.ingesters.IngesterBase</span></code></a></p>
+<p>Class used for ingesting feeder head data into database</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.storage.ingesters.FeederHeadIngester.data_class">
+<span class="sig-name descname"><span class="pre">data_class</span></span><a class="headerlink" href="#disco.storage.ingesters.FeederHeadIngester.data_class" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <a class="reference internal" href="#disco.storage.db.FeederHead" title="disco.storage.db.FeederHead"><code class="xref py py-class docutils literal notranslate"><span class="pre">disco.storage.db.FeederHead</span></code></a></p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="disco.storage.ingesters.FeederLossesIngester">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">disco.storage.ingesters.</span></span><span class="sig-name descname"><span class="pre">FeederLossesIngester</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">database</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/storage/ingesters.html#FeederLossesIngester"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.storage.ingesters.FeederLossesIngester" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#disco.storage.ingesters.TableIngesterMixin" title="disco.storage.ingesters.TableIngesterMixin"><code class="xref py py-class docutils literal notranslate"><span class="pre">disco.storage.ingesters.TableIngesterMixin</span></code></a>, <a class="reference internal" href="#disco.storage.ingesters.IngesterBase" title="disco.storage.ingesters.IngesterBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">disco.storage.ingesters.IngesterBase</span></code></a></p>
+<p>Class used for ingesting feeder losses data into database</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.storage.ingesters.FeederLossesIngester.data_class">
+<span class="sig-name descname"><span class="pre">data_class</span></span><a class="headerlink" href="#disco.storage.ingesters.FeederLossesIngester.data_class" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <a class="reference internal" href="#disco.storage.db.FeederLosses" title="disco.storage.db.FeederLosses"><code class="xref py py-class docutils literal notranslate"><span class="pre">disco.storage.db.FeederLosses</span></code></a></p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="disco.storage.ingesters.MetadataIngester">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">disco.storage.ingesters.</span></span><span class="sig-name descname"><span class="pre">MetadataIngester</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">database</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/storage/ingesters.html#MetadataIngester"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.storage.ingesters.MetadataIngester" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#disco.storage.ingesters.TableIngesterMixin" title="disco.storage.ingesters.TableIngesterMixin"><code class="xref py py-class docutils literal notranslate"><span class="pre">disco.storage.ingesters.TableIngesterMixin</span></code></a>, <a class="reference internal" href="#disco.storage.ingesters.IngesterBase" title="disco.storage.ingesters.IngesterBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">disco.storage.ingesters.IngesterBase</span></code></a></p>
+<p>Class used for ingesting metadata into database</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.storage.ingesters.MetadataIngester.data_class">
+<span class="sig-name descname"><span class="pre">data_class</span></span><a class="headerlink" href="#disco.storage.ingesters.MetadataIngester.data_class" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <a class="reference internal" href="#disco.storage.db.Metadata" title="disco.storage.db.Metadata"><code class="xref py py-class docutils literal notranslate"><span class="pre">disco.storage.db.Metadata</span></code></a></p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="disco.storage.ingesters.ThermalMetricsIngester">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">disco.storage.ingesters.</span></span><span class="sig-name descname"><span class="pre">ThermalMetricsIngester</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">database</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/storage/ingesters.html#ThermalMetricsIngester"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.storage.ingesters.ThermalMetricsIngester" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#disco.storage.ingesters.TableIngesterMixin" title="disco.storage.ingesters.TableIngesterMixin"><code class="xref py py-class docutils literal notranslate"><span class="pre">disco.storage.ingesters.TableIngesterMixin</span></code></a>, <a class="reference internal" href="#disco.storage.ingesters.IngesterBase" title="disco.storage.ingesters.IngesterBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">disco.storage.ingesters.IngesterBase</span></code></a></p>
+<p>Class used for ingesting thermal metrics into database</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.storage.ingesters.ThermalMetricsIngester.data_class">
+<span class="sig-name descname"><span class="pre">data_class</span></span><a class="headerlink" href="#disco.storage.ingesters.ThermalMetricsIngester.data_class" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <a class="reference internal" href="#disco.storage.db.ThermalMetrics" title="disco.storage.db.ThermalMetrics"><code class="xref py py-class docutils literal notranslate"><span class="pre">disco.storage.db.ThermalMetrics</span></code></a></p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="disco.storage.ingesters.VoltageMetricsIngester">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">disco.storage.ingesters.</span></span><span class="sig-name descname"><span class="pre">VoltageMetricsIngester</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">database</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/storage/ingesters.html#VoltageMetricsIngester"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.storage.ingesters.VoltageMetricsIngester" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#disco.storage.ingesters.TableIngesterMixin" title="disco.storage.ingesters.TableIngesterMixin"><code class="xref py py-class docutils literal notranslate"><span class="pre">disco.storage.ingesters.TableIngesterMixin</span></code></a>, <a class="reference internal" href="#disco.storage.ingesters.IngesterBase" title="disco.storage.ingesters.IngesterBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">disco.storage.ingesters.IngesterBase</span></code></a></p>
+<p>Class used for ingesting voltage metrics into database</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.storage.ingesters.VoltageMetricsIngester.data_class">
+<span class="sig-name descname"><span class="pre">data_class</span></span><a class="headerlink" href="#disco.storage.ingesters.VoltageMetricsIngester.data_class" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <a class="reference internal" href="#disco.storage.db.VoltageMetrics" title="disco.storage.db.VoltageMetrics"><code class="xref py py-class docutils literal notranslate"><span class="pre">disco.storage.db.VoltageMetrics</span></code></a></p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="disco.storage.ingesters.SnapshotTimePointsIngester">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">disco.storage.ingesters.</span></span><span class="sig-name descname"><span class="pre">SnapshotTimePointsIngester</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">database</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/storage/ingesters.html#SnapshotTimePointsIngester"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.storage.ingesters.SnapshotTimePointsIngester" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#disco.storage.ingesters.TableIngesterMixin" title="disco.storage.ingesters.TableIngesterMixin"><code class="xref py py-class docutils literal notranslate"><span class="pre">disco.storage.ingesters.TableIngesterMixin</span></code></a>, <a class="reference internal" href="#disco.storage.ingesters.IngesterBase" title="disco.storage.ingesters.IngesterBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">disco.storage.ingesters.IngesterBase</span></code></a></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.storage.ingesters.SnapshotTimePointsIngester.data_class">
+<span class="sig-name descname"><span class="pre">data_class</span></span><a class="headerlink" href="#disco.storage.ingesters.SnapshotTimePointsIngester.data_class" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <a class="reference internal" href="#disco.storage.db.SnapshotTimePoints" title="disco.storage.db.SnapshotTimePoints"><code class="xref py py-class docutils literal notranslate"><span class="pre">disco.storage.db.SnapshotTimePoints</span></code></a></p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="disco.storage.ingesters.HostingCapacityIngester">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">disco.storage.ingesters.</span></span><span class="sig-name descname"><span class="pre">HostingCapacityIngester</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">database</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/storage/ingesters.html#HostingCapacityIngester"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.storage.ingesters.HostingCapacityIngester" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#disco.storage.ingesters.IngesterBase" title="disco.storage.ingesters.IngesterBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">disco.storage.ingesters.IngesterBase</span></code></a></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.storage.ingesters.HostingCapacityIngester.data_class">
+<span class="sig-name descname"><span class="pre">data_class</span></span><a class="headerlink" href="#disco.storage.ingesters.HostingCapacityIngester.data_class" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <a class="reference internal" href="#disco.storage.db.HostingCapacity" title="disco.storage.db.HostingCapacity"><code class="xref py py-class docutils literal notranslate"><span class="pre">disco.storage.db.HostingCapacity</span></code></a></p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.storage.ingesters.HostingCapacityIngester.ingest">
+<span class="sig-name descname"><span class="pre">ingest</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">hc_results</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/storage/ingesters.html#HostingCapacityIngester.ingest"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.storage.ingesters.HostingCapacityIngester.ingest" title="Permalink to this definition">¶</a></dt>
+<dd><p>Ingest a list of hosting capacity results into hosting_capacity table in database</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="disco.storage.ingesters.PvDistancesIngester">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">disco.storage.ingesters.</span></span><span class="sig-name descname"><span class="pre">PvDistancesIngester</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">database</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/storage/ingesters.html#PvDistancesIngester"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.storage.ingesters.PvDistancesIngester" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#disco.storage.ingesters.TableIngesterMixin" title="disco.storage.ingesters.TableIngesterMixin"><code class="xref py py-class docutils literal notranslate"><span class="pre">disco.storage.ingesters.TableIngesterMixin</span></code></a>, <a class="reference internal" href="#disco.storage.ingesters.IngesterBase" title="disco.storage.ingesters.IngesterBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">disco.storage.ingesters.IngesterBase</span></code></a></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.storage.ingesters.PvDistancesIngester.data_class">
+<span class="sig-name descname"><span class="pre">data_class</span></span><a class="headerlink" href="#disco.storage.ingesters.PvDistancesIngester.data_class" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <a class="reference internal" href="#disco.storage.db.PvDistances" title="disco.storage.db.PvDistances"><code class="xref py py-class docutils literal notranslate"><span class="pre">disco.storage.db.PvDistances</span></code></a></p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="disco.storage.ingesters.OutputIngester">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">disco.storage.ingesters.</span></span><span class="sig-name descname"><span class="pre">OutputIngester</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">database</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/storage/ingesters.html#OutputIngester"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.storage.ingesters.OutputIngester" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#disco.storage.ingesters.IngesterBase" title="disco.storage.ingesters.IngesterBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">disco.storage.ingesters.IngesterBase</span></code></a></p>
+<p>Class used for ingesting all parsed results into SQLite database</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.storage.ingesters.OutputIngester.ingest">
+<span class="sig-name descname"><span class="pre">ingest</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/storage/ingesters.html#OutputIngester.ingest"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.storage.ingesters.OutputIngester.ingest" title="Permalink to this definition">¶</a></dt>
+<dd><p>Ingest DISCO results into SQLite3 database</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.storage.ingesters.dump_storage_index">
+<span class="sig-prename descclassname"><span class="pre">disco.storage.ingesters.</span></span><span class="sig-name descname"><span class="pre">dump_storage_index</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">output</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">indexes</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/storage/ingesters.html#dump_storage_index"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.storage.ingesters.dump_storage_index" title="Permalink to this definition">¶</a></dt>
+<dd><p>Dump storage indexes into a JSON file</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>output</strong> (<em>str</em>) – </p></li>
+<li><p><strong>indexes</strong> (<em>dict</em><em>(</em><em>str=dict</em><em>)</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-disco.storage.outputs">
+<span id="disco-storage-outputs-module"></span><h2>disco.storage.outputs module<a class="headerlink" href="#module-disco.storage.outputs" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="disco.storage.outputs.OutputType">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">disco.storage.outputs.</span></span><span class="sig-name descname"><span class="pre">OutputType</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/storage/outputs.html#OutputType"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.storage.outputs.OutputType" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">enum.Enum</span></code></p>
+<p>An enumeration.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.storage.outputs.OutputType.JADE">
+<span class="sig-name descname"><span class="pre">JADE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'jade'</span></em><a class="headerlink" href="#disco.storage.outputs.OutputType.JADE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.storage.outputs.OutputType.JADE_PIPELINE">
+<span class="sig-name descname"><span class="pre">JADE_PIPELINE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'jade-pipeline'</span></em><a class="headerlink" href="#disco.storage.outputs.OutputType.JADE_PIPELINE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.storage.outputs.OutputType.DERMS">
+<span class="sig-name descname"><span class="pre">DERMS</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'derms'</span></em><a class="headerlink" href="#disco.storage.outputs.OutputType.DERMS" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="disco.storage.outputs.OutputBase">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">disco.storage.outputs.</span></span><span class="sig-name descname"><span class="pre">OutputBase</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">output</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pathlib.Path</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/storage/outputs.html#OutputBase"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.storage.outputs.OutputBase" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code></p>
+<p>Abstract output class for handling JADE output directory</p>
+<dl class="py property">
+<dt class="sig sig-object py" id="disco.storage.outputs.OutputBase.output_type">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">output_type</span></span><a class="headerlink" href="#disco.storage.outputs.OutputBase.output_type" title="Permalink to this definition">¶</a></dt>
+<dd><p>The output type</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="disco.storage.outputs.OutputBase.creation_time">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">creation_time</span></span><a class="headerlink" href="#disco.storage.outputs.OutputBase.creation_time" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="disco.storage.outputs.OutputBase.config_file">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">config_file</span></span><a class="headerlink" href="#disco.storage.outputs.OutputBase.config_file" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="disco.storage.outputs.OutputBase.result_file">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">result_file</span></span><a class="headerlink" href="#disco.storage.outputs.OutputBase.result_file" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="disco.storage.outputs.OutputBase.job_outputs">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">job_outputs</span></span><a class="headerlink" href="#disco.storage.outputs.OutputBase.job_outputs" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="disco.storage.outputs.OutputBase.table_names">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">table_names</span></span><a class="headerlink" href="#disco.storage.outputs.OutputBase.table_names" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="disco.storage.outputs.OutputBase.feeder_head_table">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">feeder_head_table</span></span><a class="headerlink" href="#disco.storage.outputs.OutputBase.feeder_head_table" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="disco.storage.outputs.OutputBase.feeder_losses_table">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">feeder_losses_table</span></span><a class="headerlink" href="#disco.storage.outputs.OutputBase.feeder_losses_table" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="disco.storage.outputs.OutputBase.metadata_table">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">metadata_table</span></span><a class="headerlink" href="#disco.storage.outputs.OutputBase.metadata_table" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="disco.storage.outputs.OutputBase.thermal_metrics_table">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">thermal_metrics_table</span></span><a class="headerlink" href="#disco.storage.outputs.OutputBase.thermal_metrics_table" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="disco.storage.outputs.OutputBase.voltage_metrics_table">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">voltage_metrics_table</span></span><a class="headerlink" href="#disco.storage.outputs.OutputBase.voltage_metrics_table" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="disco.storage.outputs.OutputBase.snapshot_time_points_table">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">snapshot_time_points_table</span></span><a class="headerlink" href="#disco.storage.outputs.OutputBase.snapshot_time_points_table" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="disco.storage.outputs.OutputBase.hosting_capacity_results">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">hosting_capacity_results</span></span><a class="headerlink" href="#disco.storage.outputs.OutputBase.hosting_capacity_results" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="disco.storage.outputs.OutputBase.pv_distances">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">pv_distances</span></span><a class="headerlink" href="#disco.storage.outputs.OutputBase.pv_distances" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.storage.outputs.OutputBase.validate_output">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">validate_output</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">output</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/storage/outputs.html#OutputBase.validate_output"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.storage.outputs.OutputBase.validate_output" title="Permalink to this definition">¶</a></dt>
+<dd><p>Given an output, check if it contains desired reports</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>output</strong> (<em>pathlib.Path</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>str, the valid output directory containing tables.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="disco.storage.outputs.SimulationOutput">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">disco.storage.outputs.</span></span><span class="sig-name descname"><span class="pre">SimulationOutput</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">output</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pathlib.Path</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/storage/outputs.html#SimulationOutput"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.storage.outputs.SimulationOutput" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#disco.storage.outputs.OutputBase" title="disco.storage.outputs.OutputBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">disco.storage.outputs.OutputBase</span></code></a></p>
+<p>Output instance class for handling Jade output</p>
+<dl class="py property">
+<dt class="sig sig-object py" id="disco.storage.outputs.SimulationOutput.output_type">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">output_type</span></span><a class="headerlink" href="#disco.storage.outputs.SimulationOutput.output_type" title="Permalink to this definition">¶</a></dt>
+<dd><p>The output type</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.storage.outputs.SimulationOutput.validate_output">
+<span class="sig-name descname"><span class="pre">validate_output</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">output</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/storage/outputs.html#SimulationOutput.validate_output"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.storage.outputs.SimulationOutput.validate_output" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check if output containing all desired reports</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>output</strong> (<em>pathlib.Path</em>) – </p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="disco.storage.outputs.PipelineSimulationOutput">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">disco.storage.outputs.</span></span><span class="sig-name descname"><span class="pre">PipelineSimulationOutput</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">output</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pathlib.Path</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/storage/outputs.html#PipelineSimulationOutput"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.storage.outputs.PipelineSimulationOutput" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#disco.storage.outputs.OutputBase" title="disco.storage.outputs.OutputBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">disco.storage.outputs.OutputBase</span></code></a></p>
+<p>Output class for handling Jade pipeline output</p>
+<dl class="py property">
+<dt class="sig sig-object py" id="disco.storage.outputs.PipelineSimulationOutput.output_type">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">output_type</span></span><a class="headerlink" href="#disco.storage.outputs.PipelineSimulationOutput.output_type" title="Permalink to this definition">¶</a></dt>
+<dd><p>The output type</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.storage.outputs.PipelineSimulationOutput.validate_output">
+<span class="sig-name descname"><span class="pre">validate_output</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">output</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/storage/outputs.html#PipelineSimulationOutput.validate_output"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.storage.outputs.PipelineSimulationOutput.validate_output" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return stage output that contains desired reports</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>output</strong> (<em>str</em><em> or </em><em>pathlib.Path</em>) – </p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="disco.storage.outputs.DermsSimulationOutput">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">disco.storage.outputs.</span></span><span class="sig-name descname"><span class="pre">DermsSimulationOutput</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">output</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pathlib.Path</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/storage/outputs.html#DermsSimulationOutput"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.storage.outputs.DermsSimulationOutput" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#disco.storage.outputs.OutputBase" title="disco.storage.outputs.OutputBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">disco.storage.outputs.OutputBase</span></code></a></p>
+<dl class="py property">
+<dt class="sig sig-object py" id="disco.storage.outputs.DermsSimulationOutput.output_type">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">output_type</span></span><a class="headerlink" href="#disco.storage.outputs.DermsSimulationOutput.output_type" title="Permalink to this definition">¶</a></dt>
+<dd><p>The output type</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="disco.storage.outputs.DermsSimulationOutput.result_file">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">result_file</span></span><a class="headerlink" href="#disco.storage.outputs.DermsSimulationOutput.result_file" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="disco.storage.outputs.DermsSimulationOutput.derms_info_file">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">derms_info_file</span></span><a class="headerlink" href="#disco.storage.outputs.DermsSimulationOutput.derms_info_file" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.storage.outputs.DermsSimulationOutput.validate_output">
+<span class="sig-name descname"><span class="pre">validate_output</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">output</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/storage/outputs.html#DermsSimulationOutput.validate_output"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.storage.outputs.DermsSimulationOutput.validate_output" title="Permalink to this definition">¶</a></dt>
+<dd><p>Given an output, check if it contains desired reports</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>output</strong> (<em>pathlib.Path</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>str, the valid output directory containing tables.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.storage.outputs.get_creation_time">
+<span class="sig-prename descclassname"><span class="pre">disco.storage.outputs.</span></span><span class="sig-name descname"><span class="pre">get_creation_time</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dir_or_file</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/storage/outputs.html#get_creation_time"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.storage.outputs.get_creation_time" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.storage.outputs.is_from_pipeline">
+<span class="sig-prename descclassname"><span class="pre">disco.storage.outputs.</span></span><span class="sig-name descname"><span class="pre">is_from_pipeline</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">output</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/storage/outputs.html#is_from_pipeline"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.storage.outputs.is_from_pipeline" title="Permalink to this definition">¶</a></dt>
+<dd><p>Given an output, check if it’s from pipeline or not</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>output</strong> (<em>str</em><em> or </em><em>pathlib.Path</em>) – </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.storage.outputs.is_from_derms">
+<span class="sig-prename descclassname"><span class="pre">disco.storage.outputs.</span></span><span class="sig-name descname"><span class="pre">is_from_derms</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">output</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/storage/outputs.html#is_from_derms"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.storage.outputs.is_from_derms" title="Permalink to this definition">¶</a></dt>
+<dd><p>Given an output, check if it’s from DERMS simulation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>output</strong> (<em>str</em><em> or </em><em>pathlib.Path</em>) – </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.storage.outputs.get_simulation_output">
+<span class="sig-prename descclassname"><span class="pre">disco.storage.outputs.</span></span><span class="sig-name descname"><span class="pre">get_simulation_output</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">output</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/storage/outputs.html#get_simulation_output"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.storage.outputs.get_simulation_output" title="Permalink to this definition">¶</a></dt>
+<dd><p>Given an output directory, return an instance of SimulationOutput or PipelineSimulationOutput</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>output</strong> (<em>str</em><em> or </em><em>pathlib.Path</em>) – </p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-disco.storage.parsers">
+<span id="disco-storage-parsers-module"></span><h2>disco.storage.parsers module<a class="headerlink" href="#module-disco.storage.parsers" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="disco.storage.parsers.ParserBase">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">disco.storage.parsers.</span></span><span class="sig-name descname"><span class="pre">ParserBase</span></span><a class="reference internal" href="../_modules/disco/storage/parsers.html#ParserBase"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.storage.parsers.ParserBase" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code></p>
+<p>Abstract parser class</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.storage.parsers.ParserBase.parse">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">parse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">output</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/storage/parsers.html#ParserBase.parse"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.storage.parsers.ParserBase.parse" title="Permalink to this definition">¶</a></dt>
+<dd><p>Given output, parse result data from it</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="disco.storage.parsers.TaskParser">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">disco.storage.parsers.</span></span><span class="sig-name descname"><span class="pre">TaskParser</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model_inputs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">notes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/storage/parsers.html#TaskParser"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.storage.parsers.TaskParser" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#disco.storage.parsers.ParserBase" title="disco.storage.parsers.ParserBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">disco.storage.parsers.ParserBase</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.storage.parsers.TaskParser.parse">
+<span class="sig-name descname"><span class="pre">parse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">output</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/storage/parsers.html#TaskParser.parse"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.storage.parsers.TaskParser.parse" title="Permalink to this definition">¶</a></dt>
+<dd><p>Given output, parse result data from it</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="disco.storage.parsers.JobParser">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">disco.storage.parsers.</span></span><span class="sig-name descname"><span class="pre">JobParser</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">task</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/storage/parsers.html#JobParser"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.storage.parsers.JobParser" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#disco.storage.parsers.ParserBase" title="disco.storage.parsers.ParserBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">disco.storage.parsers.ParserBase</span></code></a></p>
+<p>Parse jobs data from output</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.storage.parsers.JobParser.parse">
+<span class="sig-name descname"><span class="pre">parse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">output</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/storage/parsers.html#JobParser.parse"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.storage.parsers.JobParser.parse" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parse jobs data from output</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="disco.storage.parsers.PyDssScenarioParser">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">disco.storage.parsers.</span></span><span class="sig-name descname"><span class="pre">PyDssScenarioParser</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">jobs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/storage/parsers.html#PyDssScenarioParser"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.storage.parsers.PyDssScenarioParser" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#disco.storage.parsers.ParserBase" title="disco.storage.parsers.ParserBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">disco.storage.parsers.ParserBase</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.storage.parsers.PyDssScenarioParser.parse">
+<span class="sig-name descname"><span class="pre">parse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config_file</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">snapshot_time_points_table</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/storage/parsers.html#PyDssScenarioParser.parse"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.storage.parsers.PyDssScenarioParser.parse" title="Permalink to this definition">¶</a></dt>
+<dd><p>Given output, parse result data from it</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="disco.storage.parsers.DermsScenaioParser">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">disco.storage.parsers.</span></span><span class="sig-name descname"><span class="pre">DermsScenaioParser</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">jobs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/storage/parsers.html#DermsScenaioParser"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.storage.parsers.DermsScenaioParser" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#disco.storage.parsers.ParserBase" title="disco.storage.parsers.ParserBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">disco.storage.parsers.ParserBase</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.storage.parsers.DermsScenaioParser.parse">
+<span class="sig-name descname"><span class="pre">parse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">derms_info_file</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/storage/parsers.html#DermsScenaioParser.parse"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.storage.parsers.DermsScenaioParser.parse" title="Permalink to this definition">¶</a></dt>
+<dd><p>Given output, parse result data from it</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="disco.storage.parsers.ReportParser">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">disco.storage.parsers.</span></span><span class="sig-name descname"><span class="pre">ReportParser</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">task</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/storage/parsers.html#ReportParser"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.storage.parsers.ReportParser" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#disco.storage.parsers.ParserBase" title="disco.storage.parsers.ParserBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">disco.storage.parsers.ParserBase</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.storage.parsers.ReportParser.parse">
+<span class="sig-name descname"><span class="pre">parse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">output</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/storage/parsers.html#ReportParser.parse"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.storage.parsers.ReportParser.parse" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parse reports information from output</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="disco.storage.parsers.TableParserMixin">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">disco.storage.parsers.</span></span><span class="sig-name descname"><span class="pre">TableParserMixin</span></span><a class="reference internal" href="../_modules/disco/storage/parsers.html#TableParserMixin"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.storage.parsers.TableParserMixin" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="disco.storage.parsers.FeederHeadParser">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">disco.storage.parsers.</span></span><span class="sig-name descname"><span class="pre">FeederHeadParser</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">report</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">jobs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/storage/parsers.html#FeederHeadParser"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.storage.parsers.FeederHeadParser" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#disco.storage.parsers.ParserBase" title="disco.storage.parsers.ParserBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">disco.storage.parsers.ParserBase</span></code></a>, <a class="reference internal" href="#disco.storage.parsers.TableParserMixin" title="disco.storage.parsers.TableParserMixin"><code class="xref py py-class docutils literal notranslate"><span class="pre">disco.storage.parsers.TableParserMixin</span></code></a></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.storage.parsers.FeederHeadParser.field_mappings">
+<span class="sig-name descname"><span class="pre">field_mappings</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{'FeederHeadLine':</span> <span class="pre">'line',</span> <span class="pre">'FeederHeadLoadKVar':</span> <span class="pre">'load_kvar',</span> <span class="pre">'FeederHeadLoadKW':</span> <span class="pre">'load_kw',</span> <span class="pre">'FeederHeadLoading':</span> <span class="pre">'loading',</span> <span class="pre">'ReversePowerFlow':</span> <span class="pre">'reverse_power_flow'}</span></em><a class="headerlink" href="#disco.storage.parsers.FeederHeadParser.field_mappings" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.storage.parsers.FeederHeadParser.parse">
+<span class="sig-name descname"><span class="pre">parse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">output</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/storage/parsers.html#FeederHeadParser.parse"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.storage.parsers.FeederHeadParser.parse" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parse feeder head data from output report file</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="disco.storage.parsers.FeederLossesParser">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">disco.storage.parsers.</span></span><span class="sig-name descname"><span class="pre">FeederLossesParser</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">report</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">jobs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/storage/parsers.html#FeederLossesParser"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.storage.parsers.FeederLossesParser" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#disco.storage.parsers.ParserBase" title="disco.storage.parsers.ParserBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">disco.storage.parsers.ParserBase</span></code></a>, <a class="reference internal" href="#disco.storage.parsers.TableParserMixin" title="disco.storage.parsers.TableParserMixin"><code class="xref py py-class docutils literal notranslate"><span class="pre">disco.storage.parsers.TableParserMixin</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.storage.parsers.FeederLossesParser.parse">
+<span class="sig-name descname"><span class="pre">parse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">output</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/storage/parsers.html#FeederLossesParser.parse"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.storage.parsers.FeederLossesParser.parse" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parse feeder losses data from output report file</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="disco.storage.parsers.MetadataParser">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">disco.storage.parsers.</span></span><span class="sig-name descname"><span class="pre">MetadataParser</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">report</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">jobs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/storage/parsers.html#MetadataParser"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.storage.parsers.MetadataParser" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#disco.storage.parsers.ParserBase" title="disco.storage.parsers.ParserBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">disco.storage.parsers.ParserBase</span></code></a>, <a class="reference internal" href="#disco.storage.parsers.TableParserMixin" title="disco.storage.parsers.TableParserMixin"><code class="xref py py-class docutils literal notranslate"><span class="pre">disco.storage.parsers.TableParserMixin</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.storage.parsers.MetadataParser.parse">
+<span class="sig-name descname"><span class="pre">parse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">output</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/storage/parsers.html#MetadataParser.parse"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.storage.parsers.MetadataParser.parse" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parse metadata data from output report file</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="disco.storage.parsers.ThermalMetricsParser">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">disco.storage.parsers.</span></span><span class="sig-name descname"><span class="pre">ThermalMetricsParser</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">report</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">jobs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/storage/parsers.html#ThermalMetricsParser"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.storage.parsers.ThermalMetricsParser" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#disco.storage.parsers.ParserBase" title="disco.storage.parsers.ParserBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">disco.storage.parsers.ParserBase</span></code></a>, <a class="reference internal" href="#disco.storage.parsers.TableParserMixin" title="disco.storage.parsers.TableParserMixin"><code class="xref py py-class docutils literal notranslate"><span class="pre">disco.storage.parsers.TableParserMixin</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.storage.parsers.ThermalMetricsParser.parse">
+<span class="sig-name descname"><span class="pre">parse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">output</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/storage/parsers.html#ThermalMetricsParser.parse"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.storage.parsers.ThermalMetricsParser.parse" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parse thermal metrics data from output report file</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="disco.storage.parsers.VoltageMetricsParser">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">disco.storage.parsers.</span></span><span class="sig-name descname"><span class="pre">VoltageMetricsParser</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">report</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">jobs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/storage/parsers.html#VoltageMetricsParser"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.storage.parsers.VoltageMetricsParser" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#disco.storage.parsers.ParserBase" title="disco.storage.parsers.ParserBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">disco.storage.parsers.ParserBase</span></code></a>, <a class="reference internal" href="#disco.storage.parsers.TableParserMixin" title="disco.storage.parsers.TableParserMixin"><code class="xref py py-class docutils literal notranslate"><span class="pre">disco.storage.parsers.TableParserMixin</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.storage.parsers.VoltageMetricsParser.parse">
+<span class="sig-name descname"><span class="pre">parse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">output</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/storage/parsers.html#VoltageMetricsParser.parse"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.storage.parsers.VoltageMetricsParser.parse" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parse voltage metrics data from output report file</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="disco.storage.parsers.SnapshotTimePointsParser">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">disco.storage.parsers.</span></span><span class="sig-name descname"><span class="pre">SnapshotTimePointsParser</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">report</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">jobs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/storage/parsers.html#SnapshotTimePointsParser"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.storage.parsers.SnapshotTimePointsParser" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#disco.storage.parsers.ParserBase" title="disco.storage.parsers.ParserBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">disco.storage.parsers.ParserBase</span></code></a>, <a class="reference internal" href="#disco.storage.parsers.TableParserMixin" title="disco.storage.parsers.TableParserMixin"><code class="xref py py-class docutils literal notranslate"><span class="pre">disco.storage.parsers.TableParserMixin</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.storage.parsers.SnapshotTimePointsParser.parse">
+<span class="sig-name descname"><span class="pre">parse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">output</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/storage/parsers.html#SnapshotTimePointsParser.parse"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.storage.parsers.SnapshotTimePointsParser.parse" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parse time points data for snapshot simulation</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="disco.storage.parsers.HostingCapacityParser">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">disco.storage.parsers.</span></span><span class="sig-name descname"><span class="pre">HostingCapacityParser</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">task</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/storage/parsers.html#HostingCapacityParser"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.storage.parsers.HostingCapacityParser" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#disco.storage.parsers.ParserBase" title="disco.storage.parsers.ParserBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">disco.storage.parsers.ParserBase</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.storage.parsers.HostingCapacityParser.parse">
+<span class="sig-name descname"><span class="pre">parse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">output</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/storage/parsers.html#HostingCapacityParser.parse"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.storage.parsers.HostingCapacityParser.parse" title="Permalink to this definition">¶</a></dt>
+<dd><p>Given output, parse result data from it</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="disco.storage.parsers.PvDistancesParser">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">disco.storage.parsers.</span></span><span class="sig-name descname"><span class="pre">PvDistancesParser</span></span><a class="reference internal" href="../_modules/disco/storage/parsers.html#PvDistancesParser"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.storage.parsers.PvDistancesParser" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#disco.storage.parsers.ParserBase" title="disco.storage.parsers.ParserBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">disco.storage.parsers.ParserBase</span></code></a>, <a class="reference internal" href="#disco.storage.parsers.TableParserMixin" title="disco.storage.parsers.TableParserMixin"><code class="xref py py-class docutils literal notranslate"><span class="pre">disco.storage.parsers.TableParserMixin</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.storage.parsers.PvDistancesParser.parse">
+<span class="sig-name descname"><span class="pre">parse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model_inputs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/storage/parsers.html#PvDistancesParser.parse"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.storage.parsers.PvDistancesParser.parse" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parse PV distances data from output report file</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="disco.storage.parsers.OutputParser">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">disco.storage.parsers.</span></span><span class="sig-name descname"><span class="pre">OutputParser</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">task_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model_inputs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">notes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/storage/parsers.html#OutputParser"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.storage.parsers.OutputParser" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#disco.storage.parsers.ParserBase" title="disco.storage.parsers.ParserBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">disco.storage.parsers.ParserBase</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.storage.parsers.OutputParser.parse">
+<span class="sig-name descname"><span class="pre">parse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">output</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/storage/parsers.html#OutputParser.parse"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.storage.parsers.OutputParser.parse" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parse task, jobs, and reports data from output</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.storage.parsers.OutputParser.parse_task">
+<span class="sig-name descname"><span class="pre">parse_task</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">output</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/storage/parsers.html#OutputParser.parse_task"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.storage.parsers.OutputParser.parse_task" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.storage.parsers.OutputParser.parse_jobs">
+<span class="sig-name descname"><span class="pre">parse_jobs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">task</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/storage/parsers.html#OutputParser.parse_jobs"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.storage.parsers.OutputParser.parse_jobs" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.storage.parsers.OutputParser.parse_scenarios">
+<span class="sig-name descname"><span class="pre">parse_scenarios</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">jobs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/storage/parsers.html#OutputParser.parse_scenarios"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.storage.parsers.OutputParser.parse_scenarios" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.storage.parsers.OutputParser.parse_reports">
+<span class="sig-name descname"><span class="pre">parse_reports</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">task</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/storage/parsers.html#OutputParser.parse_reports"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.storage.parsers.OutputParser.parse_reports" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.storage.parsers.OutputParser.parse_feeder_head">
+<span class="sig-name descname"><span class="pre">parse_feeder_head</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">report</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">jobs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/storage/parsers.html#OutputParser.parse_feeder_head"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.storage.parsers.OutputParser.parse_feeder_head" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.storage.parsers.OutputParser.parse_feeder_losses">
+<span class="sig-name descname"><span class="pre">parse_feeder_losses</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">report</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">jobs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/storage/parsers.html#OutputParser.parse_feeder_losses"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.storage.parsers.OutputParser.parse_feeder_losses" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.storage.parsers.OutputParser.parse_metadata">
+<span class="sig-name descname"><span class="pre">parse_metadata</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">report</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">jobs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/storage/parsers.html#OutputParser.parse_metadata"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.storage.parsers.OutputParser.parse_metadata" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.storage.parsers.OutputParser.parse_thermal_metrics">
+<span class="sig-name descname"><span class="pre">parse_thermal_metrics</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">report</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">jobs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/storage/parsers.html#OutputParser.parse_thermal_metrics"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.storage.parsers.OutputParser.parse_thermal_metrics" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.storage.parsers.OutputParser.parse_voltage_metrics">
+<span class="sig-name descname"><span class="pre">parse_voltage_metrics</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">report</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">jobs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/storage/parsers.html#OutputParser.parse_voltage_metrics"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.storage.parsers.OutputParser.parse_voltage_metrics" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.storage.parsers.OutputParser.parse_snapshot_time_points">
+<span class="sig-name descname"><span class="pre">parse_snapshot_time_points</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">report</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">jobs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/storage/parsers.html#OutputParser.parse_snapshot_time_points"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.storage.parsers.OutputParser.parse_snapshot_time_points" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.storage.parsers.OutputParser.parse_hosting_capacity">
+<span class="sig-name descname"><span class="pre">parse_hosting_capacity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">task</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/storage/parsers.html#OutputParser.parse_hosting_capacity"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.storage.parsers.OutputParser.parse_hosting_capacity" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.storage.parsers.OutputParser.parse_pv_distances">
+<span class="sig-name descname"><span class="pre">parse_pv_distances</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model_inputs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/storage/parsers.html#OutputParser.parse_pv_distances"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.storage.parsers.OutputParser.parse_pv_distances" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-disco.storage">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-disco.storage" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2019, NREL.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>disco.sources package &mdash; DISCO 0.1 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link href="../_static/style.css" rel="stylesheet" type="text/css">
+
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> DISCO
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">User Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../installation.html#use-conda">Use Conda</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation.html#use-docker">Use Docker</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">Overview</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../overview.html#data-sources">Data Sources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview.html#transform-model">Transform Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview.html#config-jobs">Config Jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview.html#submit-jobs">Submit Jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview.html#result-analysis">Result Analysis</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../quick-start.html">Quick Start</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../quick-start.html#source-data">Source Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../quick-start.html#transform-model">Transform Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../quick-start.html#config-jobs">Config Jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../quick-start.html#submit-jobs">Submit Jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../quick-start.html#result-analysis">Result Analysis</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../data-sources.html">Data Sources</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../data-sources/smart-ds-model-preparation.html">SMART-DS OpenDSS Model Preparation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data-sources.html#gem-model">GEM Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data-sources.html#epri-model">EPRI Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data-sources.html#sourcetree1-model">SourceTree1 Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data-sources.html#sourcetree2-model">SourceTree2 Model</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../pv-deployments.html">PV Deployments</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../pv-deployments.html#sourcetree1-pv-deployments">SourceTree1 PV Deployments</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../transform-models.html">Transform Models</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../transform-models.html#transform-model-help">Transform Model Help</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../transform-models.html#disco-model-in-depth">DISCO Model in Depth</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../analysis-workflows.html">Analysis Workflows</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../analysis-workflows/hosting-capacity-analysis.html">Hosting Capacity Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../analysis-workflows/upgrade-cost-analysis.html">Upgrade Cost Analysis</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../pipelines.html">Pipelines</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../pipelines.html#sourcetree1model">SourceTree1Model</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../debugging-issues.html">Debugging Issues</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../debugging-issues.html#using-jade">Using JADE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../debugging-issues.html#using-pydss">Using PyDSS</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../data-ingestion.html">Data Ingestion</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../data-ingestion.html#ingest-to-new-database">Ingest to New Database</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data-ingestion.html#ingest-to-existing-database">Ingest to Existing Database</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data-ingestion.html#run-database-queries">Run Database Queries</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced-guide.html">Advanced Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../advanced-guide/analysis-deployment.html">Analysis Deployment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../advanced-guide/upgrade-cost-analysis-generic-models.html">Upgrade Cost Analysis JSON Schemas</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contribution</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../build-docs.html">Build docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../license.html">License</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">DISCO</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>disco.sources package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/disco/disco.sources.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="disco-sources-package">
+<h1>disco.sources package<a class="headerlink" href="#disco-sources-package" title="Permalink to this headline">¶</a></h1>
+<section id="subpackages">
+<h2>Subpackages<a class="headerlink" href="#subpackages" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="disco.sources.epri.html">disco.sources.epri package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="disco.sources.epri.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="disco.sources.epri.html#module-disco.sources.epri.download">disco.sources.epri.download module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="disco.sources.epri.html#module-disco.sources.epri.epri_model">disco.sources.epri.epri_model module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="disco.sources.epri.html#module-disco.sources.epri">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="disco.sources.gem.html">disco.sources.gem package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="disco.sources.gem.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="disco.sources.gem.html#module-disco.sources.gem.factory">disco.sources.gem.factory module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="disco.sources.gem.html#module-disco.sources.gem.gem_model">disco.sources.gem.gem_model module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="disco.sources.gem.html#module-disco.sources.gem.make_element_bus_mapping">disco.sources.gem.make_element_bus_mapping module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="disco.sources.gem.html#module-disco.sources.gem.model_input_interface">disco.sources.gem.model_input_interface module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="disco.sources.gem.html#module-disco.sources.gem.open_dss_generator">disco.sources.gem.open_dss_generator module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="disco.sources.gem.html#module-disco.sources.gem">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="disco.sources.source_tree_1.html">disco.sources.source_tree_1 package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="disco.sources.source_tree_1.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="disco.sources.source_tree_1.html#module-disco.sources.source_tree_1.pv_deployments">disco.sources.source_tree_1.pv_deployments module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="disco.sources.source_tree_1.html#module-disco.sources.source_tree_1.source_tree_1_model">disco.sources.source_tree_1.source_tree_1_model module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="disco.sources.source_tree_1.html#module-disco.sources.source_tree_1.source_tree_1_model_inputs">disco.sources.source_tree_1.source_tree_1_model_inputs module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="disco.sources.source_tree_1.html#module-disco.sources.source_tree_1">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="disco.sources.source_tree_2.html">disco.sources.source_tree_2 package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="disco.sources.source_tree_2.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="disco.sources.source_tree_2.html#module-disco.sources.source_tree_2.source_tree_2_model">disco.sources.source_tree_2.source_tree_2_model module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="disco.sources.source_tree_2.html#module-disco.sources.source_tree_2.source_tree_2_model_inputs">disco.sources.source_tree_2.source_tree_2_model_inputs module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="disco.sources.source_tree_2.html#module-disco.sources.source_tree_2">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="module-disco.sources.base">
+<span id="disco-sources-base-module"></span><h2>disco.sources.base module<a class="headerlink" href="#module-disco.sources.base" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="disco.sources.base.BaseSourceDataModel">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">disco.sources.base.</span></span><span class="sig-name descname"><span class="pre">BaseSourceDataModel</span></span><a class="reference internal" href="../_modules/disco/sources/base.html#BaseSourceDataModel"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.sources.base.BaseSourceDataModel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code></p>
+<p>Base class for source data models</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.sources.base.BaseSourceDataModel.get_transform_subcommand">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_transform_subcommand</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/sources/base.html#BaseSourceDataModel.get_transform_subcommand"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.sources.base.BaseSourceDataModel.get_transform_subcommand" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the click transform-model command.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>click.command</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.sources.base.BaseSourceDataModel.list_transform_subcommands">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">list_transform_subcommands</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/sources/base.html#BaseSourceDataModel.list_transform_subcommands"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.sources.base.BaseSourceDataModel.list_transform_subcommands" title="Permalink to this definition">¶</a></dt>
+<dd><p>List the available click transform-model subcommands.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>List of click command objects</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.sources.base.BaseSourceDataModel.transform">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">transform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">simulation_model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_path</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/sources/base.html#BaseSourceDataModel.transform"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.sources.base.BaseSourceDataModel.transform" title="Permalink to this definition">¶</a></dt>
+<dd><p>Transform the input data to a DISCO data model.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>config</strong> (<em>dict</em>) – </p></li>
+<li><p><strong>simulation_model</strong> (<a class="reference internal" href="disco.models.html#disco.models.base.BaseAnalysisModel" title="disco.models.base.BaseAnalysisModel"><em>BaseAnalysisModel</em></a>) – </p></li>
+<li><p><strong>output_path</strong> (<em>str</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="disco.sources.base.BaseOpenDssModel">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">disco.sources.base.</span></span><span class="sig-name descname"><span class="pre">BaseOpenDssModel</span></span><a class="reference internal" href="../_modules/disco/sources/base.html#BaseOpenDssModel"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.sources.base.BaseOpenDssModel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#disco.sources.base.BaseSourceDataModel" title="disco.sources.base.BaseSourceDataModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">disco.sources.base.BaseSourceDataModel</span></code></a>, <code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code></p>
+<p>Base model for a single OpenDSS configuration</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.sources.base.BaseOpenDssModel.REGEX_LOAD_SHAPE_DATA_FILE">
+<span class="sig-name descname"><span class="pre">REGEX_LOAD_SHAPE_DATA_FILE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">re.compile('file=([\\.\\w/\\\\-]+)')</span></em><a class="headerlink" href="#disco.sources.base.BaseOpenDssModel.REGEX_LOAD_SHAPE_DATA_FILE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="disco.sources.base.BaseOpenDssModel.substation">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">substation</span></span><a class="headerlink" href="#disco.sources.base.BaseOpenDssModel.substation" title="Permalink to this definition">¶</a></dt>
+<dd><p>The substation name</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="disco.sources.base.BaseOpenDssModel.feeder">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">feeder</span></span><a class="headerlink" href="#disco.sources.base.BaseOpenDssModel.feeder" title="Permalink to this definition">¶</a></dt>
+<dd><p>The feeder name</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="disco.sources.base.BaseOpenDssModel.dc_ac_ratio">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">dc_ac_ratio</span></span><a class="headerlink" href="#disco.sources.base.BaseOpenDssModel.dc_ac_ratio" title="Permalink to this definition">¶</a></dt>
+<dd><p>The DC/AC ratio</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="disco.sources.base.BaseOpenDssModel.kva_to_kw_rating">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">kva_to_kw_rating</span></span><a class="headerlink" href="#disco.sources.base.BaseOpenDssModel.kva_to_kw_rating" title="Permalink to this definition">¶</a></dt>
+<dd><p>The kva_to_kw_rating</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="disco.sources.base.BaseOpenDssModel.name">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">name</span></span><a class="headerlink" href="#disco.sources.base.BaseOpenDssModel.name" title="Permalink to this definition">¶</a></dt>
+<dd><p>The name of the deployment</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="disco.sources.base.BaseOpenDssModel.loadshape_directory">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">loadshape_directory</span></span><a class="headerlink" href="#disco.sources.base.BaseOpenDssModel.loadshape_directory" title="Permalink to this definition">¶</a></dt>
+<dd><p>The directory containing load shapes</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="disco.sources.base.BaseOpenDssModel.opendss_directory">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">opendss_directory</span></span><a class="headerlink" href="#disco.sources.base.BaseOpenDssModel.opendss_directory" title="Permalink to this definition">¶</a></dt>
+<dd><p>The directory of OpenDSS model</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="disco.sources.base.BaseOpenDssModel.master_file">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">master_file</span></span><a class="headerlink" href="#disco.sources.base.BaseOpenDssModel.master_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>Master file of OpenDSS model</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="disco.sources.base.BaseOpenDssModel.metadata_directory">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">metadata_directory</span></span><a class="headerlink" href="#disco.sources.base.BaseOpenDssModel.metadata_directory" title="Permalink to this definition">¶</a></dt>
+<dd><p>The directory of project metadata</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="disco.sources.base.BaseOpenDssModel.project_data">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">project_data</span></span><a class="headerlink" href="#disco.sources.base.BaseOpenDssModel.project_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>PyDSS controllers</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="disco.sources.base.BaseOpenDssModel.pydss_controllers">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">pydss_controllers</span></span><a class="headerlink" href="#disco.sources.base.BaseOpenDssModel.pydss_controllers" title="Permalink to this definition">¶</a></dt>
+<dd><p>PyDSS controllers</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="disco.sources.base.BaseOpenDssModel.pv_locations">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">pv_locations</span></span><a class="headerlink" href="#disco.sources.base.BaseOpenDssModel.pv_locations" title="Permalink to this definition">¶</a></dt>
+<dd><p>PV systems file of OpenDSS model.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.sources.base.BaseOpenDssModel.create_base_case">
+<span class="sig-name descname"><span class="pre">create_base_case</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">outdir</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">copy_load_shape_data_files</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/sources/base.html#BaseOpenDssModel.create_base_case"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.sources.base.BaseOpenDssModel.create_base_case" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a base case with no added PV.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>str</em>) – The job name</p></li>
+<li><p><strong>outdir</strong> (<em>str</em>) – The base directory of opendss feeder model.</p></li>
+<li><p><strong>copy_load_shape_data_files</strong> (<em>bool</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="disco.models.html#disco.models.base.OpenDssDeploymentModel" title="disco.models.base.OpenDssDeploymentModel">OpenDssDeploymentModel</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.sources.base.BaseOpenDssModel.create_substation_base_case">
+<span class="sig-name descname"><span class="pre">create_substation_base_case</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">outdir</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">copy_load_shape_data_files</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/sources/base.html#BaseOpenDssModel.create_substation_base_case"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.sources.base.BaseOpenDssModel.create_substation_base_case" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a base case with no added PV.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>str</em>) – The job name</p></li>
+<li><p><strong>outdir</strong> (<em>str</em>) – The base directory of opendss substation model.</p></li>
+<li><p><strong>copy_load_shape_data_files</strong> (<em>bool</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="disco.models.html#disco.models.base.OpenDssDeploymentModel" title="disco.models.base.OpenDssDeploymentModel">OpenDssDeploymentModel</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.sources.base.BaseOpenDssModel.create_deployment">
+<span class="sig-name descname"><span class="pre">create_deployment</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">outdir</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hierarchy</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pv_profile</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">copy_load_shape_data_files</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/sources/base.html#BaseOpenDssModel.create_deployment"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.sources.base.BaseOpenDssModel.create_deployment" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create the deployment.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>str</em>) – The deployment name</p></li>
+<li><p><strong>outdir</strong> (<em>str</em>) – The base directory of opendss feeder model.</p></li>
+<li><p><strong>hierarchy</strong> (<a class="reference internal" href="disco.html#disco.enums.SimulationHierarchy" title="disco.enums.SimulationHierarchy"><em>SimulationHierarchy</em></a>) – </p></li>
+<li><p><strong>pv_profile</strong> (<em>str</em>) – Optional load shape profile name to apply to all PVSystems</p></li>
+<li><p><strong>copy_load_shape_data_files</strong> (<em>bool</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="disco.models.html#disco.models.base.OpenDssDeploymentModel" title="disco.models.base.OpenDssDeploymentModel">OpenDssDeploymentModel</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.sources.base.BaseOpenDssModel.copy_any_load_shape_data_files">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">copy_any_load_shape_data_files</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">src_file</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dst_file</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/sources/base.html#BaseOpenDssModel.copy_any_load_shape_data_files"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.sources.base.BaseOpenDssModel.copy_any_load_shape_data_files" title="Permalink to this definition">¶</a></dt>
+<dd><p>Copy any referenced load shape data file into the destination directory.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>src_file</strong> (<em>Path</em>) – </p></li>
+<li><p><strong>dst_file</strong> (<em>Path</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.sources.base.BaseOpenDssModel.make_data_file_references_absolute">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">make_data_file_references_absolute</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">src_dir</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filename</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/sources/base.html#BaseOpenDssModel.make_data_file_references_absolute"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.sources.base.BaseOpenDssModel.make_data_file_references_absolute" title="Permalink to this definition">¶</a></dt>
+<dd><p>Change the path to any data file referenced in a .dss file to its
+absolute path.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="disco.sources.base.OpenDssSubstationWorkspace">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">disco.sources.base.</span></span><span class="sig-name descname"><span class="pre">OpenDssSubstationWorkspace</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">substation_directory</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/sources/base.html#OpenDssSubstationWorkspace"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.sources.base.OpenDssSubstationWorkspace" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Defines a substation and all dependent OpenDSS files.</p>
+<dl class="py property">
+<dt class="sig sig-object py" id="disco.sources.base.OpenDssSubstationWorkspace.opendss_directory">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">opendss_directory</span></span><a class="headerlink" href="#disco.sources.base.OpenDssSubstationWorkspace.opendss_directory" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="disco.sources.base.OpenDssSubstationWorkspace.profiles_directory">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">profiles_directory</span></span><a class="headerlink" href="#disco.sources.base.OpenDssSubstationWorkspace.profiles_directory" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="disco.sources.base.OpenDssSubstationWorkspace.pv_deployments_directory">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">pv_deployments_directory</span></span><a class="headerlink" href="#disco.sources.base.OpenDssSubstationWorkspace.pv_deployments_directory" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="disco.sources.base.OpenDssSubstationWorkspace.master_file">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">master_file</span></span><a class="headerlink" href="#disco.sources.base.OpenDssSubstationWorkspace.master_file" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="disco.sources.base.OpenDssSubstationWorkspace.substation_directory">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">substation_directory</span></span><a class="headerlink" href="#disco.sources.base.OpenDssSubstationWorkspace.substation_directory" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="disco.sources.base.OpenDssFeederWorkspace">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">disco.sources.base.</span></span><span class="sig-name descname"><span class="pre">OpenDssFeederWorkspace</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">feeder_directory</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/sources/base.html#OpenDssFeederWorkspace"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.sources.base.OpenDssFeederWorkspace" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Defines a feeder and all dependent OpenDSS files.</p>
+<dl class="py property">
+<dt class="sig sig-object py" id="disco.sources.base.OpenDssFeederWorkspace.feeder_directory">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">feeder_directory</span></span><a class="headerlink" href="#disco.sources.base.OpenDssFeederWorkspace.feeder_directory" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="disco.sources.base.OpenDssFeederWorkspace.loadshape_directory">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">loadshape_directory</span></span><a class="headerlink" href="#disco.sources.base.OpenDssFeederWorkspace.loadshape_directory" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="disco.sources.base.OpenDssFeederWorkspace.opendss_directory">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">opendss_directory</span></span><a class="headerlink" href="#disco.sources.base.OpenDssFeederWorkspace.opendss_directory" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="disco.sources.base.OpenDssFeederWorkspace.profiles_directory">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">profiles_directory</span></span><a class="headerlink" href="#disco.sources.base.OpenDssFeederWorkspace.profiles_directory" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="disco.sources.base.OpenDssFeederWorkspace.pv_deployments_directory">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">pv_deployments_directory</span></span><a class="headerlink" href="#disco.sources.base.OpenDssFeederWorkspace.pv_deployments_directory" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="disco.sources.base.OpenDssFeederWorkspace.master_file">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">master_file</span></span><a class="headerlink" href="#disco.sources.base.OpenDssFeederWorkspace.master_file" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="disco.sources.base.OpenDssFeederWorkspace.metadata_directory">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">metadata_directory</span></span><a class="headerlink" href="#disco.sources.base.OpenDssFeederWorkspace.metadata_directory" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-disco.sources.factory">
+<span id="disco-sources-factory-module"></span><h2>disco.sources.factory module<a class="headerlink" href="#module-disco.sources.factory" title="Permalink to this headline">¶</a></h2>
+<p>Factory functions to create source models from source data</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.sources.factory.list_subcommands">
+<span class="sig-prename descclassname"><span class="pre">disco.sources.factory.</span></span><span class="sig-name descname"><span class="pre">list_subcommands</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_path</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/sources/factory.html#list_subcommands"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.sources.factory.list_subcommands" title="Permalink to this definition">¶</a></dt>
+<dd><p>List the available transform subcommands for the source model.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>input_path</strong> (<em>str</em>) – filename or directory, depending on source data type</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.sources.factory.make_source_model">
+<span class="sig-prename descclassname"><span class="pre">disco.sources.factory.</span></span><span class="sig-name descname"><span class="pre">make_source_model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_path</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/sources/factory.html#make_source_model"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.sources.factory.make_source_model" title="Permalink to this definition">¶</a></dt>
+<dd><p>Construct the correct source model for input_path.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>input_path</strong> (<em>str</em>) – filename or directory, depending on source data type</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>derived from BaseSourceDataModel</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>class</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>InvalidConfiguration</strong> – Raised if the format is not specified or supported.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-disco.sources">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-disco.sources" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2019, NREL.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,1390 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>disco.sources.source_tree_1 package &mdash; DISCO 0.1 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link href="../_static/style.css" rel="stylesheet" type="text/css">
+
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> DISCO
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">User Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../installation.html#use-conda">Use Conda</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation.html#use-docker">Use Docker</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">Overview</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../overview.html#data-sources">Data Sources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview.html#transform-model">Transform Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview.html#config-jobs">Config Jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview.html#submit-jobs">Submit Jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview.html#result-analysis">Result Analysis</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../quick-start.html">Quick Start</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../quick-start.html#source-data">Source Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../quick-start.html#transform-model">Transform Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../quick-start.html#config-jobs">Config Jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../quick-start.html#submit-jobs">Submit Jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../quick-start.html#result-analysis">Result Analysis</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../data-sources.html">Data Sources</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../data-sources/smart-ds-model-preparation.html">SMART-DS OpenDSS Model Preparation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data-sources.html#gem-model">GEM Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data-sources.html#epri-model">EPRI Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data-sources.html#sourcetree1-model">SourceTree1 Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data-sources.html#sourcetree2-model">SourceTree2 Model</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../pv-deployments.html">PV Deployments</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../pv-deployments.html#sourcetree1-pv-deployments">SourceTree1 PV Deployments</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../transform-models.html">Transform Models</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../transform-models.html#transform-model-help">Transform Model Help</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../transform-models.html#disco-model-in-depth">DISCO Model in Depth</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../analysis-workflows.html">Analysis Workflows</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../analysis-workflows/hosting-capacity-analysis.html">Hosting Capacity Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../analysis-workflows/upgrade-cost-analysis.html">Upgrade Cost Analysis</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../pipelines.html">Pipelines</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../pipelines.html#sourcetree1model">SourceTree1Model</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../debugging-issues.html">Debugging Issues</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../debugging-issues.html#using-jade">Using JADE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../debugging-issues.html#using-pydss">Using PyDSS</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../data-ingestion.html">Data Ingestion</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../data-ingestion.html#ingest-to-new-database">Ingest to New Database</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data-ingestion.html#ingest-to-existing-database">Ingest to Existing Database</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data-ingestion.html#run-database-queries">Run Database Queries</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced-guide.html">Advanced Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../advanced-guide/analysis-deployment.html">Analysis Deployment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../advanced-guide/upgrade-cost-analysis-generic-models.html">Upgrade Cost Analysis JSON Schemas</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contribution</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../build-docs.html">Build docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../license.html">License</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">DISCO</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>disco.sources.source_tree_1 package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/disco/disco.sources.source_tree_1.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="disco-sources-source-tree-1-package">
+<h1>disco.sources.source_tree_1 package<a class="headerlink" href="#disco-sources-source-tree-1-package" title="Permalink to this headline">¶</a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="module-disco.sources.source_tree_1.pv_deployments">
+<span id="disco-sources-source-tree-1-pv-deployments-module"></span><h2>disco.sources.source_tree_1.pv_deployments module<a class="headerlink" href="#module-disco.sources.source_tree_1.pv_deployments" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="disco.sources.source_tree_1.pv_deployments.DeploymentHierarchy">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">disco.sources.source_tree_1.pv_deployments.</span></span><span class="sig-name descname"><span class="pre">DeploymentHierarchy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/sources/source_tree_1/pv_deployments.html#DeploymentHierarchy"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.sources.source_tree_1.pv_deployments.DeploymentHierarchy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">enum.Enum</span></code></p>
+<p>An enumeration.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.sources.source_tree_1.pv_deployments.DeploymentHierarchy.FEEDER">
+<span class="sig-name descname"><span class="pre">FEEDER</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'feeder'</span></em><a class="headerlink" href="#disco.sources.source_tree_1.pv_deployments.DeploymentHierarchy.FEEDER" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.sources.source_tree_1.pv_deployments.DeploymentHierarchy.SUBSTATION">
+<span class="sig-name descname"><span class="pre">SUBSTATION</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'substation'</span></em><a class="headerlink" href="#disco.sources.source_tree_1.pv_deployments.DeploymentHierarchy.SUBSTATION" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.sources.source_tree_1.pv_deployments.DeploymentHierarchy.REGION">
+<span class="sig-name descname"><span class="pre">REGION</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'region'</span></em><a class="headerlink" href="#disco.sources.source_tree_1.pv_deployments.DeploymentHierarchy.REGION" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.sources.source_tree_1.pv_deployments.DeploymentHierarchy.CITY">
+<span class="sig-name descname"><span class="pre">CITY</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'city'</span></em><a class="headerlink" href="#disco.sources.source_tree_1.pv_deployments.DeploymentHierarchy.CITY" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="disco.sources.source_tree_1.pv_deployments.DeploymentCategory">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">disco.sources.source_tree_1.pv_deployments.</span></span><span class="sig-name descname"><span class="pre">DeploymentCategory</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/sources/source_tree_1/pv_deployments.html#DeploymentCategory"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.sources.source_tree_1.pv_deployments.DeploymentCategory" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">enum.Enum</span></code></p>
+<p>An enumeration.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.sources.source_tree_1.pv_deployments.DeploymentCategory.MIXED">
+<span class="sig-name descname"><span class="pre">MIXED</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'mixed'</span></em><a class="headerlink" href="#disco.sources.source_tree_1.pv_deployments.DeploymentCategory.MIXED" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.sources.source_tree_1.pv_deployments.DeploymentCategory.SMALL">
+<span class="sig-name descname"><span class="pre">SMALL</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'small'</span></em><a class="headerlink" href="#disco.sources.source_tree_1.pv_deployments.DeploymentCategory.SMALL" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.sources.source_tree_1.pv_deployments.DeploymentCategory.LARGE">
+<span class="sig-name descname"><span class="pre">LARGE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'large'</span></em><a class="headerlink" href="#disco.sources.source_tree_1.pv_deployments.DeploymentCategory.LARGE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.sources.source_tree_1.pv_deployments.get_subdir_names">
+<span class="sig-prename descclassname"><span class="pre">disco.sources.source_tree_1.pv_deployments.</span></span><span class="sig-name descname"><span class="pre">get_subdir_names</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span></span></span><a class="reference internal" href="../_modules/disco/sources/source_tree_1/pv_deployments.html#get_subdir_names"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.sources.source_tree_1.pv_deployments.get_subdir_names" title="Permalink to this definition">¶</a></dt>
+<dd><p>Given an input path, return directory names under the path.
+Used to parse substation names, and feeder names under input path.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="disco.sources.source_tree_1.pv_deployments.PVDSSInstance">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">disco.sources.source_tree_1.pv_deployments.</span></span><span class="sig-name descname"><span class="pre">PVDSSInstance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">master_file</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/sources/source_tree_1/pv_deployments.html#PVDSSInstance"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.sources.source_tree_1.pv_deployments.PVDSSInstance" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>OpenDSS file handler for PV deployments.</p>
+<dl class="py property">
+<dt class="sig sig-object py" id="disco.sources.source_tree_1.pv_deployments.PVDSSInstance.feeder_name">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">feeder_name</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#disco.sources.source_tree_1.pv_deployments.PVDSSInstance.feeder_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parse feeder name from master file path</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="disco.sources.source_tree_1.pv_deployments.PVDSSInstance.feeder_path">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">feeder_path</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#disco.sources.source_tree_1.pv_deployments.PVDSSInstance.feeder_path" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parse feeder path from master file path</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.sources.source_tree_1.pv_deployments.PVDSSInstance.convert_to_ascii">
+<span class="sig-name descname"><span class="pre">convert_to_ascii</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/disco/sources/source_tree_1/pv_deployments.html#PVDSSInstance.convert_to_ascii"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.sources.source_tree_1.pv_deployments.PVDSSInstance.convert_to_ascii" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert unicode data in ASCII characters for representation</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.sources.source_tree_1.pv_deployments.PVDSSInstance.disable_loadshapes_redirect">
+<span class="sig-name descname"><span class="pre">disable_loadshapes_redirect</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/disco/sources/source_tree_1/pv_deployments.html#PVDSSInstance.disable_loadshapes_redirect"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.sources.source_tree_1.pv_deployments.PVDSSInstance.disable_loadshapes_redirect" title="Permalink to this definition">¶</a></dt>
+<dd><p>To comment out ‘Redirect LoadShapes.dss’ in Master.dss file</p>
+<p>Redirect LoadShapes.dss is time consuming during OpenDSS loads the feeder, which
+make the PV deployments take a long to run. However, LoadShapes is not in use during
+PV deployments. To speed up, we’ll comment out the redirect and revert it back after
+PV deployments finished.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.sources.source_tree_1.pv_deployments.PVDSSInstance.load_feeder">
+<span class="sig-name descname"><span class="pre">load_feeder</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/disco/sources/source_tree_1/pv_deployments.html#PVDSSInstance.load_feeder"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.sources.source_tree_1.pv_deployments.PVDSSInstance.load_feeder" title="Permalink to this definition">¶</a></dt>
+<dd><p>OpenDSS redirect master DSS file</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.sources.source_tree_1.pv_deployments.PVDSSInstance.search_head_line">
+<span class="sig-name descname"><span class="pre">search_head_line</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/disco/sources/source_tree_1/pv_deployments.html#PVDSSInstance.search_head_line"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.sources.source_tree_1.pv_deployments.PVDSSInstance.search_head_line" title="Permalink to this definition">¶</a></dt>
+<dd><p>Search head line from DSS topology</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.sources.source_tree_1.pv_deployments.PVDSSInstance.ensure_energy_meter">
+<span class="sig-name descname"><span class="pre">ensure_energy_meter</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="../_modules/disco/sources/source_tree_1/pv_deployments.html#PVDSSInstance.ensure_energy_meter"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.sources.source_tree_1.pv_deployments.PVDSSInstance.ensure_energy_meter" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.sources.source_tree_1.pv_deployments.PVDSSInstance.check_energy_meter_status">
+<span class="sig-name descname"><span class="pre">check_energy_meter_status</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">bool</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">bool</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/disco/sources/source_tree_1/pv_deployments.html#PVDSSInstance.check_energy_meter_status"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.sources.source_tree_1.pv_deployments.PVDSSInstance.check_energy_meter_status" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check if energy meter in dss is missing or misplaced</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.sources.source_tree_1.pv_deployments.PVDSSInstance.place_new_energy_meter">
+<span class="sig-name descname"><span class="pre">place_new_energy_meter</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/disco/sources/source_tree_1/pv_deployments.html#PVDSSInstance.place_new_energy_meter"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.sources.source_tree_1.pv_deployments.PVDSSInstance.place_new_energy_meter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Place new energy meter if it’s missing from master dss file</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.sources.source_tree_1.pv_deployments.PVDSSInstance.move_energy_meter_location">
+<span class="sig-name descname"><span class="pre">move_energy_meter_location</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/disco/sources/source_tree_1/pv_deployments.html#PVDSSInstance.move_energy_meter_location"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.sources.source_tree_1.pv_deployments.PVDSSInstance.move_energy_meter_location" title="Permalink to this definition">¶</a></dt>
+<dd><p>Move energy meter location if it’s misplaced in master dss file</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.sources.source_tree_1.pv_deployments.PVDSSInstance.get_total_loads">
+<span class="sig-name descname"><span class="pre">get_total_loads</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">types.SimpleNamespace</span></span></span><a class="reference internal" href="../_modules/disco/sources/source_tree_1/pv_deployments.html#PVDSSInstance.get_total_loads"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.sources.source_tree_1.pv_deployments.PVDSSInstance.get_total_loads" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return total loads</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.sources.source_tree_1.pv_deployments.PVDSSInstance.get_customer_distance">
+<span class="sig-name descname"><span class="pre">get_customer_distance</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">types.SimpleNamespace</span></span></span><a class="reference internal" href="../_modules/disco/sources/source_tree_1/pv_deployments.html#PVDSSInstance.get_customer_distance"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.sources.source_tree_1.pv_deployments.PVDSSInstance.get_customer_distance" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return custmer distance</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.sources.source_tree_1.pv_deployments.PVDSSInstance.get_highv_buses">
+<span class="sig-name descname"><span class="pre">get_highv_buses</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">kv_min</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">types.SimpleNamespace</span></span></span><a class="reference internal" href="../_modules/disco/sources/source_tree_1/pv_deployments.html#PVDSSInstance.get_highv_buses"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.sources.source_tree_1.pv_deployments.PVDSSInstance.get_highv_buses" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return highv buses</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.sources.source_tree_1.pv_deployments.PVDSSInstance.get_existing_pvs">
+<span class="sig-name descname"><span class="pre">get_existing_pvs</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">types.SimpleNamespace</span></span></span><a class="reference internal" href="../_modules/disco/sources/source_tree_1/pv_deployments.html#PVDSSInstance.get_existing_pvs"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.sources.source_tree_1.pv_deployments.PVDSSInstance.get_existing_pvs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return existing pvs</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.sources.source_tree_1.pv_deployments.PVDSSInstance.combine_bus_distances">
+<span class="sig-name descname"><span class="pre">combine_bus_distances</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">customer_distance</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">types.SimpleNamespace</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">highv_buses</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">types.SimpleNamespace</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="reference internal" href="../_modules/disco/sources/source_tree_1/pv_deployments.html#PVDSSInstance.combine_bus_distances"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.sources.source_tree_1.pv_deployments.PVDSSInstance.combine_bus_distances" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the combined bus distance</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.sources.source_tree_1.pv_deployments.PVDSSInstance.get_feeder_stats">
+<span class="sig-name descname"><span class="pre">get_feeder_stats</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">total_loads</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">types.SimpleNamespace</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">existing_pvs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">types.SimpleNamespace</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">types.SimpleNamespace</span></span></span><a class="reference internal" href="../_modules/disco/sources/source_tree_1/pv_deployments.html#PVDSSInstance.get_feeder_stats"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.sources.source_tree_1.pv_deployments.PVDSSInstance.get_feeder_stats" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return feeder stats</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="disco.sources.source_tree_1.pv_deployments.PVScenarioGeneratorBase">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">disco.sources.source_tree_1.pv_deployments.</span></span><span class="sig-name descname"><span class="pre">PVScenarioGeneratorBase</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">feeder_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">types.SimpleNamespace</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/sources/source_tree_1/pv_deployments.html#PVScenarioGeneratorBase"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.sources.source_tree_1.pv_deployments.PVScenarioGeneratorBase" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code></p>
+<p>Initialize PV scenario generator class</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>feeder_path</strong> (<em>str</em><em>, </em><em>the input path of a feeder model.</em>) – </p></li>
+<li><p><strong>config</strong> (<em>SimpleNamespace</em><em>, </em><em>the pv deployment config namespace.</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py property">
+<dt class="sig sig-object py" id="disco.sources.source_tree_1.pv_deployments.PVScenarioGeneratorBase.deployment_cycles">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">deployment_cycles</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">list</span></em><a class="headerlink" href="#disco.sources.source_tree_1.pv_deployments.PVScenarioGeneratorBase.deployment_cycles" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a list of cicyles for generating pv scenarios</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.sources.source_tree_1.pv_deployments.PVScenarioGeneratorBase.get_feeder_name">
+<span class="sig-name descname"><span class="pre">get_feeder_name</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="../_modules/disco/sources/source_tree_1/pv_deployments.html#PVScenarioGeneratorBase.get_feeder_name"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.sources.source_tree_1.pv_deployments.PVScenarioGeneratorBase.get_feeder_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the feeder name</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.sources.source_tree_1.pv_deployments.PVScenarioGeneratorBase.get_master_file">
+<span class="sig-name descname"><span class="pre">get_master_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/disco/sources/source_tree_1/pv_deployments.html#PVScenarioGeneratorBase.get_master_file"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.sources.source_tree_1.pv_deployments.PVScenarioGeneratorBase.get_master_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the full path of master file</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.sources.source_tree_1.pv_deployments.PVScenarioGeneratorBase.load_pvdss_instance">
+<span class="sig-name descname"><span class="pre">load_pvdss_instance</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#disco.sources.source_tree_1.pv_deployments.PVDSSInstance" title="disco.sources.source_tree_1.pv_deployments.PVDSSInstance"><span class="pre">disco.sources.source_tree_1.pv_deployments.PVDSSInstance</span></a></span></span><a class="reference internal" href="../_modules/disco/sources/source_tree_1/pv_deployments.html#PVScenarioGeneratorBase.load_pvdss_instance"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.sources.source_tree_1.pv_deployments.PVScenarioGeneratorBase.load_pvdss_instance" title="Permalink to this definition">¶</a></dt>
+<dd><p>Setup DSS handler for master dss file processing</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.sources.source_tree_1.pv_deployments.PVScenarioGeneratorBase.deploy_all_pv_scenarios">
+<span class="sig-name descname"><span class="pre">deploy_all_pv_scenarios</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="reference internal" href="../_modules/disco/sources/source_tree_1/pv_deployments.html#PVScenarioGeneratorBase.deploy_all_pv_scenarios"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.sources.source_tree_1.pv_deployments.PVScenarioGeneratorBase.deploy_all_pv_scenarios" title="Permalink to this definition">¶</a></dt>
+<dd><p>Given a feeder path, generate all PV scenarios for the feeder</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.sources.source_tree_1.pv_deployments.PVScenarioGeneratorBase.get_metadata_directory">
+<span class="sig-name descname"><span class="pre">get_metadata_directory</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/sources/source_tree_1/pv_deployments.html#PVScenarioGeneratorBase.get_metadata_directory"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.sources.source_tree_1.pv_deployments.PVScenarioGeneratorBase.get_metadata_directory" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the metadata directory of the feeder</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.sources.source_tree_1.pv_deployments.PVScenarioGeneratorBase.get_pv_deployments_path">
+<span class="sig-name descname"><span class="pre">get_pv_deployments_path</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/sources/source_tree_1/pv_deployments.html#PVScenarioGeneratorBase.get_pv_deployments_path"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.sources.source_tree_1.pv_deployments.PVScenarioGeneratorBase.get_pv_deployments_path" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the root path of PV deployments</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.sources.source_tree_1.pv_deployments.PVScenarioGeneratorBase.get_deployment_placement_paths">
+<span class="sig-name descname"><span class="pre">get_deployment_placement_paths</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="../_modules/disco/sources/source_tree_1/pv_deployments.html#PVScenarioGeneratorBase.get_deployment_placement_paths"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.sources.source_tree_1.pv_deployments.PVScenarioGeneratorBase.get_deployment_placement_paths" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the placement path of PV deployments</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.sources.source_tree_1.pv_deployments.PVScenarioGeneratorBase.get_pv_systems_file">
+<span class="sig-name descname"><span class="pre">get_pv_systems_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sample</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">penetration</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="../_modules/disco/sources/source_tree_1/pv_deployments.html#PVScenarioGeneratorBase.get_pv_systems_file"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.sources.source_tree_1.pv_deployments.PVScenarioGeneratorBase.get_pv_systems_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the path of PV depployment file</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.sources.source_tree_1.pv_deployments.PVScenarioGeneratorBase.deploy_pv_scenario">
+<span class="sig-name descname"><span class="pre">deploy_pv_scenario</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">types.SimpleNamespace</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="reference internal" href="../_modules/disco/sources/source_tree_1/pv_deployments.html#PVScenarioGeneratorBase.deploy_pv_scenario"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.sources.source_tree_1.pv_deployments.PVScenarioGeneratorBase.deploy_pv_scenario" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate PV deployments dss file in scenario</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>data</strong> (<em>SimpleNamespace</em><em>, </em><em>the data used for defining PV scenario</em>) – </p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The updated existing_pv</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.sources.source_tree_1.pv_deployments.PVScenarioGeneratorBase.get_total_pv">
+<span class="sig-name descname"><span class="pre">get_total_pv</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">types.SimpleNamespace</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="reference internal" href="../_modules/disco/sources/source_tree_1/pv_deployments.html#PVScenarioGeneratorBase.get_total_pv"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.sources.source_tree_1.pv_deployments.PVScenarioGeneratorBase.get_total_pv" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return total PV, including PV already installed and remaining to install</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.sources.source_tree_1.pv_deployments.PVScenarioGeneratorBase.get_all_remaining_pv_to_install">
+<span class="sig-name descname"><span class="pre">get_all_remaining_pv_to_install</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">types.SimpleNamespace</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="reference internal" href="../_modules/disco/sources/source_tree_1/pv_deployments.html#PVScenarioGeneratorBase.get_all_remaining_pv_to_install"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.sources.source_tree_1.pv_deployments.PVScenarioGeneratorBase.get_all_remaining_pv_to_install" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return all remaining PV to install</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.sources.source_tree_1.pv_deployments.PVScenarioGeneratorBase.get_priority_buses">
+<span class="sig-name descname"><span class="pre">get_priority_buses</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">types.SimpleNamespace</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span></span></span><a class="reference internal" href="../_modules/disco/sources/source_tree_1/pv_deployments.html#PVScenarioGeneratorBase.get_priority_buses"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.sources.source_tree_1.pv_deployments.PVScenarioGeneratorBase.get_priority_buses" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a list of priority buses.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.sources.source_tree_1.pv_deployments.PVScenarioGeneratorBase.get_categorical_remaining_pvs">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_categorical_remaining_pvs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">types.SimpleNamespace</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="reference internal" href="../_modules/disco/sources/source_tree_1/pv_deployments.html#PVScenarioGeneratorBase.get_categorical_remaining_pvs"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.sources.source_tree_1.pv_deployments.PVScenarioGeneratorBase.get_categorical_remaining_pvs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return remaining sall, large PV to install</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.sources.source_tree_1.pv_deployments.PVScenarioGeneratorBase.get_bus_distances">
+<span class="sig-name descname"><span class="pre">get_bus_distances</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">types.SimpleNamespace</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="reference internal" href="../_modules/disco/sources/source_tree_1/pv_deployments.html#PVScenarioGeneratorBase.get_bus_distances"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.sources.source_tree_1.pv_deployments.PVScenarioGeneratorBase.get_bus_distances" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return bus distance of large/small category</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.sources.source_tree_1.pv_deployments.PVScenarioGeneratorBase.get_customer_bus_map">
+<span class="sig-name descname"><span class="pre">get_customer_bus_map</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">types.SimpleNamespace</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="reference internal" href="../_modules/disco/sources/source_tree_1/pv_deployments.html#PVScenarioGeneratorBase.get_customer_bus_map"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.sources.source_tree_1.pv_deployments.PVScenarioGeneratorBase.get_customer_bus_map" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.sources.source_tree_1.pv_deployments.PVScenarioGeneratorBase.get_maximum_pv_size">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_maximum_pv_size</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bus</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">types.SimpleNamespace</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="reference internal" href="../_modules/disco/sources/source_tree_1/pv_deployments.html#PVScenarioGeneratorBase.get_maximum_pv_size"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.sources.source_tree_1.pv_deployments.PVScenarioGeneratorBase.get_maximum_pv_size" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return maximum pv size</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.sources.source_tree_1.pv_deployments.PVScenarioGeneratorBase.generate_pv_size_from_pdf">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">generate_pv_size_from_pdf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">min_size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pdf</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Sequence</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="reference internal" href="../_modules/disco/sources/source_tree_1/pv_deployments.html#PVScenarioGeneratorBase.generate_pv_size_from_pdf"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.sources.source_tree_1.pv_deployments.PVScenarioGeneratorBase.generate_pv_size_from_pdf" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.sources.source_tree_1.pv_deployments.PVScenarioGeneratorBase.add_pv_string">
+<span class="sig-name descname"><span class="pre">add_pv_string</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bus</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pv_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pv_size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pv_string</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="../_modules/disco/sources/source_tree_1/pv_deployments.html#PVScenarioGeneratorBase.add_pv_string"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.sources.source_tree_1.pv_deployments.PVScenarioGeneratorBase.add_pv_string" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add PV string to exiting string</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.sources.source_tree_1.pv_deployments.PVScenarioGeneratorBase.generate_pv_name">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">generate_pv_name</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bus</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pv_type</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/sources/source_tree_1/pv_deployments.html#PVScenarioGeneratorBase.generate_pv_name"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.sources.source_tree_1.pv_deployments.PVScenarioGeneratorBase.generate_pv_name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.sources.source_tree_1.pv_deployments.PVScenarioGeneratorBase.write_pv_string">
+<span class="sig-name descname"><span class="pre">write_pv_string</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pv_string</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">types.SimpleNamespace</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/disco/sources/source_tree_1/pv_deployments.html#PVScenarioGeneratorBase.write_pv_string"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.sources.source_tree_1.pv_deployments.PVScenarioGeneratorBase.write_pv_string" title="Permalink to this definition">¶</a></dt>
+<dd><p>Write PV string to PV deployment file.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.sources.source_tree_1.pv_deployments.PVScenarioGeneratorBase.get_pv_bus_subset">
+<span class="sig-name descname"><span class="pre">get_pv_bus_subset</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bus_distance</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">subset_idx</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">priority_buses</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span></span></span><a class="reference internal" href="../_modules/disco/sources/source_tree_1/pv_deployments.html#PVScenarioGeneratorBase.get_pv_bus_subset"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.sources.source_tree_1.pv_deployments.PVScenarioGeneratorBase.get_pv_bus_subset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return candidate buses</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.sources.source_tree_1.pv_deployments.PVScenarioGeneratorBase.compute_average_pv_distance">
+<span class="sig-name descname"><span class="pre">compute_average_pv_distance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bus_distance</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">existing_pv</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="reference internal" href="../_modules/disco/sources/source_tree_1/pv_deployments.html#PVScenarioGeneratorBase.compute_average_pv_distance"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.sources.source_tree_1.pv_deployments.PVScenarioGeneratorBase.compute_average_pv_distance" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute the average PV distance</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.sources.source_tree_1.pv_deployments.PVScenarioGeneratorBase.get_pv_shapes_file">
+<span class="sig-name descname"><span class="pre">get_pv_shapes_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="../_modules/disco/sources/source_tree_1/pv_deployments.html#PVScenarioGeneratorBase.get_pv_shapes_file"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.sources.source_tree_1.pv_deployments.PVScenarioGeneratorBase.get_pv_shapes_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the loadshapes file in feeder path</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.sources.source_tree_1.pv_deployments.PVScenarioGeneratorBase.create_all_pv_configs">
+<span class="sig-name descname"><span class="pre">create_all_pv_configs</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/disco/sources/source_tree_1/pv_deployments.html#PVScenarioGeneratorBase.create_all_pv_configs"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.sources.source_tree_1.pv_deployments.PVScenarioGeneratorBase.create_all_pv_configs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create PV configs JSON file</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.sources.source_tree_1.pv_deployments.PVScenarioGeneratorBase.get_customer_types">
+<span class="sig-name descname"><span class="pre">get_customer_types</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/sources/source_tree_1/pv_deployments.html#PVScenarioGeneratorBase.get_customer_types"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.sources.source_tree_1.pv_deployments.PVScenarioGeneratorBase.get_customer_types" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.sources.source_tree_1.pv_deployments.PVScenarioGeneratorBase.assign_profile">
+<span class="sig-name descname"><span class="pre">assign_profile</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pv_systems_file</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pv_shapes_file</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pv_systems</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">set</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">5</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="reference internal" href="../_modules/disco/sources/source_tree_1/pv_deployments.html#PVScenarioGeneratorBase.assign_profile"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.sources.source_tree_1.pv_deployments.PVScenarioGeneratorBase.assign_profile" title="Permalink to this definition">¶</a></dt>
+<dd><p>Assign PV profile to PV systems.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.sources.source_tree_1.pv_deployments.PVScenarioGeneratorBase.get_bus_customer_type">
+<span class="sig-name descname"><span class="pre">get_bus_customer_type</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bus</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/sources/source_tree_1/pv_deployments.html#PVScenarioGeneratorBase.get_bus_customer_type"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.sources.source_tree_1.pv_deployments.PVScenarioGeneratorBase.get_bus_customer_type" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.sources.source_tree_1.pv_deployments.PVScenarioGeneratorBase.get_pvsys">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_pvsys</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pv_systems_file</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="reference internal" href="../_modules/disco/sources/source_tree_1/pv_deployments.html#PVScenarioGeneratorBase.get_pvsys"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.sources.source_tree_1.pv_deployments.PVScenarioGeneratorBase.get_pvsys" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a mapping of PV systems</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.sources.source_tree_1.pv_deployments.PVScenarioGeneratorBase.get_shape_list">
+<span class="sig-name descname"><span class="pre">get_shape_list</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pv_shapes_file</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span></span></span><a class="reference internal" href="../_modules/disco/sources/source_tree_1/pv_deployments.html#PVScenarioGeneratorBase.get_shape_list"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.sources.source_tree_1.pv_deployments.PVScenarioGeneratorBase.get_shape_list" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a list of loadshapes</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.sources.source_tree_1.pv_deployments.PVScenarioGeneratorBase.save_pv_config">
+<span class="sig-name descname"><span class="pre">save_pv_config</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pv_config</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sample_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/disco/sources/source_tree_1/pv_deployments.html#PVScenarioGeneratorBase.save_pv_config"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.sources.source_tree_1.pv_deployments.PVScenarioGeneratorBase.save_pv_config" title="Permalink to this definition">¶</a></dt>
+<dd><p>Save PV configuration to JSON file</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.sources.source_tree_1.pv_deployments.PVScenarioGeneratorBase.attach_profile">
+<span class="sig-name descname"><span class="pre">attach_profile</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pv_systems_file</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pv_profiles</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/disco/sources/source_tree_1/pv_deployments.html#PVScenarioGeneratorBase.attach_profile"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.sources.source_tree_1.pv_deployments.PVScenarioGeneratorBase.attach_profile" title="Permalink to this definition">¶</a></dt>
+<dd><p>Attach PV profile to each system with ‘yearly=&lt;pv-profile&gt;’ in PVSystems.dss</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.sources.source_tree_1.pv_deployments.PVScenarioGeneratorBase.create_pv_systems_sum_group_file">
+<span class="sig-name descname"><span class="pre">create_pv_systems_sum_group_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pv_config_files</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/sources/source_tree_1/pv_deployments.html#PVScenarioGeneratorBase.create_pv_systems_sum_group_file"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.sources.source_tree_1.pv_deployments.PVScenarioGeneratorBase.create_pv_systems_sum_group_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>Walk through all PV configs created in each sample, and generate a sum group JSON file
+at the feeder level.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>pv_config_files</strong> (<em>list</em><em>,</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>str,</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.sources.source_tree_1.pv_deployments.PVScenarioGeneratorBase.create_loads_sum_group_file">
+<span class="sig-name descname"><span class="pre">create_loads_sum_group_file</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/sources/source_tree_1/pv_deployments.html#PVScenarioGeneratorBase.create_loads_sum_group_file"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.sources.source_tree_1.pv_deployments.PVScenarioGeneratorBase.create_loads_sum_group_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a sum group file for loads based on customer types</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="disco.sources.source_tree_1.pv_deployments.LargePVScenarioGenerator">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">disco.sources.source_tree_1.pv_deployments.</span></span><span class="sig-name descname"><span class="pre">LargePVScenarioGenerator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">feeder_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">types.SimpleNamespace</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/sources/source_tree_1/pv_deployments.html#LargePVScenarioGenerator"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.sources.source_tree_1.pv_deployments.LargePVScenarioGenerator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#disco.sources.source_tree_1.pv_deployments.PVScenarioGeneratorBase" title="disco.sources.source_tree_1.pv_deployments.PVScenarioGeneratorBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">disco.sources.source_tree_1.pv_deployments.PVScenarioGeneratorBase</span></code></a></p>
+<p>Initialize PV scenario generator class</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>feeder_path</strong> (<em>str</em><em>, </em><em>the input path of a feeder model.</em>) – </p></li>
+<li><p><strong>config</strong> (<em>SimpleNamespace</em><em>, </em><em>the pv deployment config namespace.</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py property">
+<dt class="sig sig-object py" id="disco.sources.source_tree_1.pv_deployments.LargePVScenarioGenerator.deployment_cycles">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">deployment_cycles</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">list</span></em><a class="headerlink" href="#disco.sources.source_tree_1.pv_deployments.LargePVScenarioGenerator.deployment_cycles" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a list of cicyles for generating pv scenarios</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.sources.source_tree_1.pv_deployments.LargePVScenarioGenerator.get_categorical_remaining_pvs">
+<span class="sig-name descname"><span class="pre">get_categorical_remaining_pvs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">types.SimpleNamespace</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="reference internal" href="../_modules/disco/sources/source_tree_1/pv_deployments.html#LargePVScenarioGenerator.get_categorical_remaining_pvs"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.sources.source_tree_1.pv_deployments.LargePVScenarioGenerator.get_categorical_remaining_pvs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return remaining sall, large PV to install</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.sources.source_tree_1.pv_deployments.LargePVScenarioGenerator.get_maximum_pv_size">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_maximum_pv_size</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bus</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">types.SimpleNamespace</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="reference internal" href="../_modules/disco/sources/source_tree_1/pv_deployments.html#LargePVScenarioGenerator.get_maximum_pv_size"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.sources.source_tree_1.pv_deployments.LargePVScenarioGenerator.get_maximum_pv_size" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return maximum pv size</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="disco.sources.source_tree_1.pv_deployments.SmallPVScenarioGenerator">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">disco.sources.source_tree_1.pv_deployments.</span></span><span class="sig-name descname"><span class="pre">SmallPVScenarioGenerator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">feeder_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">types.SimpleNamespace</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/sources/source_tree_1/pv_deployments.html#SmallPVScenarioGenerator"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.sources.source_tree_1.pv_deployments.SmallPVScenarioGenerator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#disco.sources.source_tree_1.pv_deployments.PVScenarioGeneratorBase" title="disco.sources.source_tree_1.pv_deployments.PVScenarioGeneratorBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">disco.sources.source_tree_1.pv_deployments.PVScenarioGeneratorBase</span></code></a></p>
+<p>Initialize PV scenario generator class</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>feeder_path</strong> (<em>str</em><em>, </em><em>the input path of a feeder model.</em>) – </p></li>
+<li><p><strong>config</strong> (<em>SimpleNamespace</em><em>, </em><em>the pv deployment config namespace.</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py property">
+<dt class="sig sig-object py" id="disco.sources.source_tree_1.pv_deployments.SmallPVScenarioGenerator.deployment_cycles">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">deployment_cycles</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">list</span></em><a class="headerlink" href="#disco.sources.source_tree_1.pv_deployments.SmallPVScenarioGenerator.deployment_cycles" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a list of cicyles for generating pv scenarios</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.sources.source_tree_1.pv_deployments.SmallPVScenarioGenerator.get_categorical_remaining_pvs">
+<span class="sig-name descname"><span class="pre">get_categorical_remaining_pvs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">types.SimpleNamespace</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="reference internal" href="../_modules/disco/sources/source_tree_1/pv_deployments.html#SmallPVScenarioGenerator.get_categorical_remaining_pvs"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.sources.source_tree_1.pv_deployments.SmallPVScenarioGenerator.get_categorical_remaining_pvs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return remaining sall, large PV to install</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.sources.source_tree_1.pv_deployments.SmallPVScenarioGenerator.get_maximum_pv_size">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_maximum_pv_size</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bus</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">types.SimpleNamespace</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_load_factor</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">3.1</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="reference internal" href="../_modules/disco/sources/source_tree_1/pv_deployments.html#SmallPVScenarioGenerator.get_maximum_pv_size"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.sources.source_tree_1.pv_deployments.SmallPVScenarioGenerator.get_maximum_pv_size" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return maximum pv size</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="disco.sources.source_tree_1.pv_deployments.MixedPVScenarioGenerator">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">disco.sources.source_tree_1.pv_deployments.</span></span><span class="sig-name descname"><span class="pre">MixedPVScenarioGenerator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">feeder_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">types.SimpleNamespace</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/sources/source_tree_1/pv_deployments.html#MixedPVScenarioGenerator"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.sources.source_tree_1.pv_deployments.MixedPVScenarioGenerator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#disco.sources.source_tree_1.pv_deployments.PVScenarioGeneratorBase" title="disco.sources.source_tree_1.pv_deployments.PVScenarioGeneratorBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">disco.sources.source_tree_1.pv_deployments.PVScenarioGeneratorBase</span></code></a></p>
+<p>Initialize PV scenario generator class</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>feeder_path</strong> (<em>str</em><em>, </em><em>the input path of a feeder model.</em>) – </p></li>
+<li><p><strong>config</strong> (<em>SimpleNamespace</em><em>, </em><em>the pv deployment config namespace.</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py property">
+<dt class="sig sig-object py" id="disco.sources.source_tree_1.pv_deployments.MixedPVScenarioGenerator.deployment_cycles">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">deployment_cycles</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">list</span></em><a class="headerlink" href="#disco.sources.source_tree_1.pv_deployments.MixedPVScenarioGenerator.deployment_cycles" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a list of cicyles for generating pv scenarios</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.sources.source_tree_1.pv_deployments.MixedPVScenarioGenerator.get_categorical_remaining_pvs">
+<span class="sig-name descname"><span class="pre">get_categorical_remaining_pvs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">types.SimpleNamespace</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="reference internal" href="../_modules/disco/sources/source_tree_1/pv_deployments.html#MixedPVScenarioGenerator.get_categorical_remaining_pvs"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.sources.source_tree_1.pv_deployments.MixedPVScenarioGenerator.get_categorical_remaining_pvs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return remaining sall, large PV to install</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.sources.source_tree_1.pv_deployments.MixedPVScenarioGenerator.get_maximum_pv_size">
+<span class="sig-name descname"><span class="pre">get_maximum_pv_size</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bus</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">types.SimpleNamespace</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="reference internal" href="../_modules/disco/sources/source_tree_1/pv_deployments.html#MixedPVScenarioGenerator.get_maximum_pv_size"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.sources.source_tree_1.pv_deployments.MixedPVScenarioGenerator.get_maximum_pv_size" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return maximum pv size</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.sources.source_tree_1.pv_deployments.get_pv_scenario_generator">
+<span class="sig-prename descclassname"><span class="pre">disco.sources.source_tree_1.pv_deployments.</span></span><span class="sig-name descname"><span class="pre">get_pv_scenario_generator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">feeder_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">types.SimpleNamespace</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/sources/source_tree_1/pv_deployments.html#get_pv_scenario_generator"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.sources.source_tree_1.pv_deployments.get_pv_scenario_generator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a PV scenario generator instnace</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="disco.sources.source_tree_1.pv_deployments.PVDataStorage">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">disco.sources.source_tree_1.pv_deployments.</span></span><span class="sig-name descname"><span class="pre">PVDataStorage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hierarchy</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#disco.sources.source_tree_1.pv_deployments.DeploymentHierarchy" title="disco.sources.source_tree_1.pv_deployments.DeploymentHierarchy"><span class="pre">disco.sources.source_tree_1.pv_deployments.DeploymentHierarchy</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">types.SimpleNamespace</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/sources/source_tree_1/pv_deployments.html#PVDataStorage"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.sources.source_tree_1.pv_deployments.PVDataStorage" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>A class for handling PV data storage on file system</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.sources.source_tree_1.pv_deployments.PVDataStorage.get_region_paths">
+<span class="sig-name descname"><span class="pre">get_region_paths</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">city_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span></span></span><a class="reference internal" href="../_modules/disco/sources/source_tree_1/pv_deployments.html#PVDataStorage.get_region_paths"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.sources.source_tree_1.pv_deployments.PVDataStorage.get_region_paths" title="Permalink to this definition">¶</a></dt>
+<dd><p>Given a city path, return all region paths of the city</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.sources.source_tree_1.pv_deployments.PVDataStorage.get_substation_paths">
+<span class="sig-name descname"><span class="pre">get_substation_paths</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span></span></span><a class="reference internal" href="../_modules/disco/sources/source_tree_1/pv_deployments.html#PVDataStorage.get_substation_paths"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.sources.source_tree_1.pv_deployments.PVDataStorage.get_substation_paths" title="Permalink to this definition">¶</a></dt>
+<dd><p>Given an input path, return a list of substation paths</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.sources.source_tree_1.pv_deployments.PVDataStorage.get_feeder_paths">
+<span class="sig-name descname"><span class="pre">get_feeder_paths</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span></span></span><a class="reference internal" href="../_modules/disco/sources/source_tree_1/pv_deployments.html#PVDataStorage.get_feeder_paths"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.sources.source_tree_1.pv_deployments.PVDataStorage.get_feeder_paths" title="Permalink to this definition">¶</a></dt>
+<dd><p>Given an input path, return a list of feeder paths</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.sources.source_tree_1.pv_deployments.PVDataStorage.get_deployment_path">
+<span class="sig-name descname"><span class="pre">get_deployment_path</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">feeder_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="../_modules/disco/sources/source_tree_1/pv_deployments.html#PVDataStorage.get_deployment_path"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.sources.source_tree_1.pv_deployments.PVDataStorage.get_deployment_path" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the deployment path</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.sources.source_tree_1.pv_deployments.PVDataStorage.get_placement_paths">
+<span class="sig-name descname"><span class="pre">get_placement_paths</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">feeder_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">placement</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="disco.html#disco.enums.Placement" title="disco.enums.Placement"><span class="pre">disco.enums.Placement</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/sources/source_tree_1/pv_deployments.html#PVDataStorage.get_placement_paths"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.sources.source_tree_1.pv_deployments.PVDataStorage.get_placement_paths" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the placement path in deployment</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.sources.source_tree_1.pv_deployments.PVDataStorage.get_sample_paths">
+<span class="sig-name descname"><span class="pre">get_sample_paths</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">feeder_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">placement</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="disco.html#disco.enums.Placement" title="disco.enums.Placement"><span class="pre">disco.enums.Placement</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/sources/source_tree_1/pv_deployments.html#PVDataStorage.get_sample_paths"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.sources.source_tree_1.pv_deployments.PVDataStorage.get_sample_paths" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the sample path in deployment</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.sources.source_tree_1.pv_deployments.PVDataStorage.get_pv_config_file">
+<span class="sig-name descname"><span class="pre">get_pv_config_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sample_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/sources/source_tree_1/pv_deployments.html#PVDataStorage.get_pv_config_file"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.sources.source_tree_1.pv_deployments.PVDataStorage.get_pv_config_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return PV config file</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="disco.sources.source_tree_1.pv_deployments.PVDataManager">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">disco.sources.source_tree_1.pv_deployments.</span></span><span class="sig-name descname"><span class="pre">PVDataManager</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hierarchy</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#disco.sources.source_tree_1.pv_deployments.DeploymentHierarchy" title="disco.sources.source_tree_1.pv_deployments.DeploymentHierarchy"><span class="pre">disco.sources.source_tree_1.pv_deployments.DeploymentHierarchy</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">types.SimpleNamespace</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/sources/source_tree_1/pv_deployments.html#PVDataManager"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.sources.source_tree_1.pv_deployments.PVDataManager" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#disco.sources.source_tree_1.pv_deployments.PVDataStorage" title="disco.sources.source_tree_1.pv_deployments.PVDataStorage"><code class="xref py py-class docutils literal notranslate"><span class="pre">disco.sources.source_tree_1.pv_deployments.PVDataStorage</span></code></a></p>
+<p>Initialize pv data manager class</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>hierarchy</strong> (<a class="reference internal" href="#disco.sources.source_tree_1.pv_deployments.DeploymentHierarchy" title="disco.sources.source_tree_1.pv_deployments.DeploymentHierarchy"><em>DeploymentHierarchy</em></a><em>, </em><em>the predefined hierarchy</em>) – </p></li>
+<li><p><strong>input_path</strong> (<em>str</em><em>, </em><em>the input path of raw dss data for generating pv deployments.</em>) – </p></li>
+<li><p><strong>config</strong> (<em>SimpleNamespace</em><em>, </em><em>the pv deployment configuration namespace.</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.sources.source_tree_1.pv_deployments.PVDataManager.redirect">
+<span class="sig-name descname"><span class="pre">redirect</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="../_modules/disco/sources/source_tree_1/pv_deployments.html#PVDataManager.redirect"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.sources.source_tree_1.pv_deployments.PVDataManager.redirect" title="Permalink to this definition">¶</a></dt>
+<dd><p>Given a path, update the master file by redirecting PVShapes.dss</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.sources.source_tree_1.pv_deployments.PVDataManager.redirect_substation_pv_shapes">
+<span class="sig-name descname"><span class="pre">redirect_substation_pv_shapes</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/disco/sources/source_tree_1/pv_deployments.html#PVDataManager.redirect_substation_pv_shapes"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.sources.source_tree_1.pv_deployments.PVDataManager.redirect_substation_pv_shapes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Run PVShapes redirect in substation directories in parallel</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.sources.source_tree_1.pv_deployments.PVDataManager.redirect_feeder_pv_shapes">
+<span class="sig-name descname"><span class="pre">redirect_feeder_pv_shapes</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/disco/sources/source_tree_1/pv_deployments.html#PVDataManager.redirect_feeder_pv_shapes"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.sources.source_tree_1.pv_deployments.PVDataManager.redirect_feeder_pv_shapes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Run PVShapes redirect in feeder directories in parallel</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.sources.source_tree_1.pv_deployments.PVDataManager.rename">
+<span class="sig-name descname"><span class="pre">rename</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">feeder_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/disco/sources/source_tree_1/pv_deployments.html#PVDataManager.rename"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.sources.source_tree_1.pv_deployments.PVDataManager.rename" title="Permalink to this definition">¶</a></dt>
+<dd><p>Rename transformed/original Loads files</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.sources.source_tree_1.pv_deployments.PVDataManager.rename_feeder_loads">
+<span class="sig-name descname"><span class="pre">rename_feeder_loads</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">feeder_paths</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/disco/sources/source_tree_1/pv_deployments.html#PVDataManager.rename_feeder_loads"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.sources.source_tree_1.pv_deployments.PVDataManager.rename_feeder_loads" title="Permalink to this definition">¶</a></dt>
+<dd><p>Rename transformed Loads.dss to PV_Loads.dss</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.sources.source_tree_1.pv_deployments.PVDataManager.revert">
+<span class="sig-name descname"><span class="pre">revert</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">feeder_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/sources/source_tree_1/pv_deployments.html#PVDataManager.revert"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.sources.source_tree_1.pv_deployments.PVDataManager.revert" title="Permalink to this definition">¶</a></dt>
+<dd><p>Enable LoadShapes redirect by removing the starting symbol !.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.sources.source_tree_1.pv_deployments.PVDataManager.revert_master_files">
+<span class="sig-name descname"><span class="pre">revert_master_files</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">feeder_paths</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/disco/sources/source_tree_1/pv_deployments.html#PVDataManager.revert_master_files"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.sources.source_tree_1.pv_deployments.PVDataManager.revert_master_files" title="Permalink to this definition">¶</a></dt>
+<dd><p>Revert master files with LoadShapes.dss redirect enabled</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.sources.source_tree_1.pv_deployments.PVDataManager.restore_feeder_data">
+<span class="sig-name descname"><span class="pre">restore_feeder_data</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/disco/sources/source_tree_1/pv_deployments.html#PVDataManager.restore_feeder_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.sources.source_tree_1.pv_deployments.PVDataManager.restore_feeder_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>After PV deployments, we need to restore feeder data tranformed during PV deployments
+1) rename transformed Loads.dss to PV_Loads.dss;
+2) uncomment on LoadShapes.dss redirect in master file.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.sources.source_tree_1.pv_deployments.PVDataManager.transform">
+<span class="sig-name descname"><span class="pre">transform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">feeder_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/disco/sources/source_tree_1/pv_deployments.html#PVDataManager.transform"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.sources.source_tree_1.pv_deployments.PVDataManager.transform" title="Permalink to this definition">¶</a></dt>
+<dd><p>Transform feeder Loads.dss</p>
+<p>change load model to suitable center-tap schema if needed</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.sources.source_tree_1.pv_deployments.PVDataManager.restore_loads_file">
+<span class="sig-name descname"><span class="pre">restore_loads_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">original_loads_file</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="../_modules/disco/sources/source_tree_1/pv_deployments.html#PVDataManager.restore_loads_file"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.sources.source_tree_1.pv_deployments.PVDataManager.restore_loads_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>Restore Loads file from backup</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.sources.source_tree_1.pv_deployments.PVDataManager.backup_loads_file">
+<span class="sig-name descname"><span class="pre">backup_loads_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">loads_file</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="../_modules/disco/sources/source_tree_1/pv_deployments.html#PVDataManager.backup_loads_file"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.sources.source_tree_1.pv_deployments.PVDataManager.backup_loads_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a backup of Loads.dss file</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.sources.source_tree_1.pv_deployments.PVDataManager.strip_pv_profile">
+<span class="sig-name descname"><span class="pre">strip_pv_profile</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">load_lines</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span></span></span><a class="reference internal" href="../_modules/disco/sources/source_tree_1/pv_deployments.html#PVDataManager.strip_pv_profile"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.sources.source_tree_1.pv_deployments.PVDataManager.strip_pv_profile" title="Permalink to this definition">¶</a></dt>
+<dd><p>To strip ‘yearly=&lt;pv-profile&gt;’ from load lines during PV deployments</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.sources.source_tree_1.pv_deployments.PVDataManager.get_attribute">
+<span class="sig-name descname"><span class="pre">get_attribute</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">line</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">attribute_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="../_modules/disco/sources/source_tree_1/pv_deployments.html#PVDataManager.get_attribute"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.sources.source_tree_1.pv_deployments.PVDataManager.get_attribute" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the attribute from line string.</p>
+<p>Attribute ID
+for kv: ‘kv=’
+for name: ‘new load.’ (load example)
+for bus: ‘bus1=’
+for kw: ‘kw=’</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.sources.source_tree_1.pv_deployments.PVDataManager.build_load_dictionary">
+<span class="sig-name descname"><span class="pre">build_load_dictionary</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">load_lines</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="reference internal" href="../_modules/disco/sources/source_tree_1/pv_deployments.html#PVDataManager.build_load_dictionary"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.sources.source_tree_1.pv_deployments.PVDataManager.build_load_dictionary" title="Permalink to this definition">¶</a></dt>
+<dd><p>Util function for building dict from load lines.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.sources.source_tree_1.pv_deployments.PVDataManager.update_loads">
+<span class="sig-name descname"><span class="pre">update_loads</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lines</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rekeyed_load_dict</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span></span></span><a class="reference internal" href="../_modules/disco/sources/source_tree_1/pv_deployments.html#PVDataManager.update_loads"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.sources.source_tree_1.pv_deployments.PVDataManager.update_loads" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update load lines based on given load dict</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.sources.source_tree_1.pv_deployments.PVDataManager.transform_feeder_loads">
+<span class="sig-name descname"><span class="pre">transform_feeder_loads</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/disco/sources/source_tree_1/pv_deployments.html#PVDataManager.transform_feeder_loads"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.sources.source_tree_1.pv_deployments.PVDataManager.transform_feeder_loads" title="Permalink to this definition">¶</a></dt>
+<dd><p>Before PV deployments, transform Loads.dss</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="disco.sources.source_tree_1.pv_deployments.PVDeploymentManager">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">disco.sources.source_tree_1.pv_deployments.</span></span><span class="sig-name descname"><span class="pre">PVDeploymentManager</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hierarchy</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#disco.sources.source_tree_1.pv_deployments.DeploymentHierarchy" title="disco.sources.source_tree_1.pv_deployments.DeploymentHierarchy"><span class="pre">disco.sources.source_tree_1.pv_deployments.DeploymentHierarchy</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">types.SimpleNamespace</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/sources/source_tree_1/pv_deployments.html#PVDeploymentManager"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.sources.source_tree_1.pv_deployments.PVDeploymentManager" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#disco.sources.source_tree_1.pv_deployments.PVDataStorage" title="disco.sources.source_tree_1.pv_deployments.PVDataStorage"><code class="xref py py-class docutils literal notranslate"><span class="pre">disco.sources.source_tree_1.pv_deployments.PVDataStorage</span></code></a></p>
+<p>Initialize pv deployment manager class</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>hierarchy</strong> (<a class="reference internal" href="#disco.sources.source_tree_1.pv_deployments.DeploymentHierarchy" title="disco.sources.source_tree_1.pv_deployments.DeploymentHierarchy"><em>DeploymentHierarchy</em></a><em>, </em><em>the predefined hierarchy</em>) – </p></li>
+<li><p><strong>input_path</strong> (<em>str</em><em>, </em><em>the input path of raw dss data for generating pv deployments.</em>) – </p></li>
+<li><p><strong>config</strong> (<em>SimpleNamespace</em><em>, </em><em>the pv deployment configuration namespace.</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.sources.source_tree_1.pv_deployments.PVDeploymentManager.generate_pv_deployments">
+<span class="sig-name descname"><span class="pre">generate_pv_deployments</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="reference internal" href="../_modules/disco/sources/source_tree_1/pv_deployments.html#PVDeploymentManager.generate_pv_deployments"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.sources.source_tree_1.pv_deployments.PVDeploymentManager.generate_pv_deployments" title="Permalink to this definition">¶</a></dt>
+<dd><p>Given input path, generate pv deployments</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.sources.source_tree_1.pv_deployments.PVDeploymentManager.remove_pv_deployments">
+<span class="sig-name descname"><span class="pre">remove_pv_deployments</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">placement</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="disco.html#disco.enums.Placement" title="disco.enums.Placement"><span class="pre">disco.enums.Placement</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span></span></span><a class="reference internal" href="../_modules/disco/sources/source_tree_1/pv_deployments.html#PVDeploymentManager.remove_pv_deployments"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.sources.source_tree_1.pv_deployments.PVDeploymentManager.remove_pv_deployments" title="Permalink to this definition">¶</a></dt>
+<dd><p>Given input path, remove all pv deployments of all placements</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.sources.source_tree_1.pv_deployments.PVDeploymentManager.check_pv_deployments">
+<span class="sig-name descname"><span class="pre">check_pv_deployments</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">placement</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="disco.html#disco.enums.Placement" title="disco.enums.Placement"><span class="pre">disco.enums.Placement</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">types.SimpleNamespace</span></span></span><a class="reference internal" href="../_modules/disco/sources/source_tree_1/pv_deployments.html#PVDeploymentManager.check_pv_deployments"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.sources.source_tree_1.pv_deployments.PVDeploymentManager.check_pv_deployments" title="Permalink to this definition">¶</a></dt>
+<dd><p>Given input path, check if all pv deployments status</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.sources.source_tree_1.pv_deployments.PVDeploymentManager.get_missing_placements">
+<span class="sig-name descname"><span class="pre">get_missing_placements</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">feeder_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">placement</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="disco.html#disco.enums.Placement" title="disco.enums.Placement"><span class="pre">disco.enums.Placement</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="reference internal" href="../_modules/disco/sources/source_tree_1/pv_deployments.html#PVDeploymentManager.get_missing_placements"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.sources.source_tree_1.pv_deployments.PVDeploymentManager.get_missing_placements" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return missing placement information in PV deployments on feeder.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.sources.source_tree_1.pv_deployments.PVDeploymentManager.get_missing_samples">
+<span class="sig-name descname"><span class="pre">get_missing_samples</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">feeder_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">placement</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="disco.html#disco.enums.Placement" title="disco.enums.Placement"><span class="pre">disco.enums.Placement</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="reference internal" href="../_modules/disco/sources/source_tree_1/pv_deployments.html#PVDeploymentManager.get_missing_samples"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.sources.source_tree_1.pv_deployments.PVDeploymentManager.get_missing_samples" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return missing sample information in PV deployments on feeder.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.sources.source_tree_1.pv_deployments.PVDeploymentManager.get_missing_penetrations">
+<span class="sig-name descname"><span class="pre">get_missing_penetrations</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">feeder_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">placement</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="disco.html#disco.enums.Placement" title="disco.enums.Placement"><span class="pre">disco.enums.Placement</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/sources/source_tree_1/pv_deployments.html#PVDeploymentManager.get_missing_penetrations"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.sources.source_tree_1.pv_deployments.PVDeploymentManager.get_missing_penetrations" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return missing penetration information in PV deployments on feeder.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.sources.source_tree_1.pv_deployments.PVDeploymentManager.generate_pv_creation_jobs">
+<span class="sig-name descname"><span class="pre">generate_pv_creation_jobs</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/sources/source_tree_1/pv_deployments.html#PVDeploymentManager.generate_pv_creation_jobs"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.sources.source_tree_1.pv_deployments.PVDeploymentManager.generate_pv_creation_jobs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate PV creation jobs at feeder hierarchy</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="disco.sources.source_tree_1.pv_deployments.PVConfigManager">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">disco.sources.source_tree_1.pv_deployments.</span></span><span class="sig-name descname"><span class="pre">PVConfigManager</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hierarchy</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#disco.sources.source_tree_1.pv_deployments.DeploymentHierarchy" title="disco.sources.source_tree_1.pv_deployments.DeploymentHierarchy"><span class="pre">disco.sources.source_tree_1.pv_deployments.DeploymentHierarchy</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">types.SimpleNamespace</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/sources/source_tree_1/pv_deployments.html#PVConfigManager"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.sources.source_tree_1.pv_deployments.PVConfigManager" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#disco.sources.source_tree_1.pv_deployments.PVDataStorage" title="disco.sources.source_tree_1.pv_deployments.PVDataStorage"><code class="xref py py-class docutils literal notranslate"><span class="pre">disco.sources.source_tree_1.pv_deployments.PVDataStorage</span></code></a></p>
+<p>Initialize pv config manager class</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>hierarchy</strong> (<a class="reference internal" href="#disco.sources.source_tree_1.pv_deployments.DeploymentHierarchy" title="disco.sources.source_tree_1.pv_deployments.DeploymentHierarchy"><em>DeploymentHierarchy</em></a><em>, </em><em>the predefined hierarchy</em>) – </p></li>
+<li><p><strong>input_path</strong> (<em>str</em><em>, </em><em>the input path of raw dss data for generating pv deployments.</em>) – </p></li>
+<li><p><strong>config</strong> (<em>SimpleNamespace</em><em>, </em><em>the pv deployment configuration namespace.</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.sources.source_tree_1.pv_deployments.PVConfigManager.generate_pv_configs">
+<span class="sig-name descname"><span class="pre">generate_pv_configs</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span></span></span><a class="reference internal" href="../_modules/disco/sources/source_tree_1/pv_deployments.html#PVConfigManager.generate_pv_configs"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.sources.source_tree_1.pv_deployments.PVConfigManager.generate_pv_configs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate pv config JSON files based on PV deployments</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.sources.source_tree_1.pv_deployments.PVConfigManager.remove_pv_configs">
+<span class="sig-name descname"><span class="pre">remove_pv_configs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">placement</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="disco.html#disco.enums.Placement" title="disco.enums.Placement"><span class="pre">disco.enums.Placement</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span></span></span><a class="reference internal" href="../_modules/disco/sources/source_tree_1/pv_deployments.html#PVConfigManager.remove_pv_configs"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.sources.source_tree_1.pv_deployments.PVConfigManager.remove_pv_configs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove pv config JSON files from PV deployments</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.sources.source_tree_1.pv_deployments.PVConfigManager.check_pv_configs">
+<span class="sig-name descname"><span class="pre">check_pv_configs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">placement</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="disco.html#disco.enums.Placement" title="disco.enums.Placement"><span class="pre">disco.enums.Placement</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="reference internal" href="../_modules/disco/sources/source_tree_1/pv_deployments.html#PVConfigManager.check_pv_configs"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.sources.source_tree_1.pv_deployments.PVConfigManager.check_pv_configs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check pv config existence in pv deployments</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.sources.source_tree_1.pv_deployments.PVConfigManager.generate_pv_config_jobs">
+<span class="sig-name descname"><span class="pre">generate_pv_config_jobs</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/sources/source_tree_1/pv_deployments.html#PVConfigManager.generate_pv_config_jobs"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.sources.source_tree_1.pv_deployments.PVConfigManager.generate_pv_config_jobs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate PV configs jobs at feeder hierarchy</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-disco.sources.source_tree_1.source_tree_1_model">
+<span id="disco-sources-source-tree-1-source-tree-1-model-module"></span><h2>disco.sources.source_tree_1.source_tree_1_model module<a class="headerlink" href="#module-disco.sources.source_tree_1.source_tree_1_model" title="Permalink to this headline">¶</a></h2>
+<p>Model for Source Type 1 feeder input data</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.sources.source_tree_1.source_tree_1_model.SubstationKey">
+<span class="sig-prename descclassname"><span class="pre">disco.sources.source_tree_1.source_tree_1_model.</span></span><span class="sig-name descname"><span class="pre">SubstationKey</span></span><a class="headerlink" href="#disco.sources.source_tree_1.source_tree_1_model.SubstationKey" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">disco.sources.source_tree_1.source_tree_1_model.SampleKey</span></code></p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.sources.source_tree_1.source_tree_1_model.common_options">
+<span class="sig-prename descclassname"><span class="pre">disco.sources.source_tree_1.source_tree_1_model.</span></span><span class="sig-name descname"><span class="pre">common_options</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">func</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/sources/source_tree_1/source_tree_1_model.html#common_options"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.sources.source_tree_1.source_tree_1_model.common_options" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="disco.sources.source_tree_1.source_tree_1_model.SourceTree1Model">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">disco.sources.source_tree_1.source_tree_1_model.</span></span><span class="sig-name descname"><span class="pre">SourceTree1Model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/sources/source_tree_1/source_tree_1_model.html#SourceTree1Model"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.sources.source_tree_1.source_tree_1_model.SourceTree1Model" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="disco.sources.html#disco.sources.base.BaseOpenDssModel" title="disco.sources.base.BaseOpenDssModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">disco.sources.base.BaseOpenDssModel</span></code></a></p>
+<p>OpenDSS Model for Source Tree 1</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.sources.source_tree_1.source_tree_1_model.SourceTree1Model.DEPLOYMENT_FILE">
+<span class="sig-name descname"><span class="pre">DEPLOYMENT_FILE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'PVSystems.dss'</span></em><a class="headerlink" href="#disco.sources.source_tree_1.source_tree_1_model.SourceTree1Model.DEPLOYMENT_FILE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.sources.source_tree_1.source_tree_1_model.SourceTree1Model.TRANSFORM_SUBCOMMANDS">
+<span class="sig-name descname"><span class="pre">TRANSFORM_SUBCOMMANDS</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{'snapshot':</span> <span class="pre">&lt;Command</span> <span class="pre">snapshot&gt;,</span> <span class="pre">'time-series':</span> <span class="pre">&lt;Command</span> <span class="pre">time-series&gt;,</span> <span class="pre">'upgrade':</span> <span class="pre">&lt;Command</span> <span class="pre">upgrade&gt;}</span></em><a class="headerlink" href="#disco.sources.source_tree_1.source_tree_1_model.SourceTree1Model.TRANSFORM_SUBCOMMANDS" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.sources.source_tree_1.source_tree_1_model.SourceTree1Model.get_transform_subcommand">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_transform_subcommand</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/sources/source_tree_1/source_tree_1_model.html#SourceTree1Model.get_transform_subcommand"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.sources.source_tree_1.source_tree_1_model.SourceTree1Model.get_transform_subcommand" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the click transform-model command.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>click.command</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.sources.source_tree_1.source_tree_1_model.SourceTree1Model.list_transform_subcommands">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">list_transform_subcommands</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/sources/source_tree_1/source_tree_1_model.html#SourceTree1Model.list_transform_subcommands"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.sources.source_tree_1.source_tree_1_model.SourceTree1Model.list_transform_subcommands" title="Permalink to this definition">¶</a></dt>
+<dd><p>List the available click transform-model subcommands.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>List of click command objects</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="disco.sources.source_tree_1.source_tree_1_model.SourceTree1Model.substation">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">substation</span></span><a class="headerlink" href="#disco.sources.source_tree_1.source_tree_1_model.SourceTree1Model.substation" title="Permalink to this definition">¶</a></dt>
+<dd><p>The substation name</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="disco.sources.source_tree_1.source_tree_1_model.SourceTree1Model.feeder">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">feeder</span></span><a class="headerlink" href="#disco.sources.source_tree_1.source_tree_1_model.SourceTree1Model.feeder" title="Permalink to this definition">¶</a></dt>
+<dd><p>The feeder name</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="disco.sources.source_tree_1.source_tree_1_model.SourceTree1Model.dc_ac_ratio">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">dc_ac_ratio</span></span><a class="headerlink" href="#disco.sources.source_tree_1.source_tree_1_model.SourceTree1Model.dc_ac_ratio" title="Permalink to this definition">¶</a></dt>
+<dd><p>The DC/AC ratio</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="disco.sources.source_tree_1.source_tree_1_model.SourceTree1Model.loadshape_directory">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">loadshape_directory</span></span><a class="headerlink" href="#disco.sources.source_tree_1.source_tree_1_model.SourceTree1Model.loadshape_directory" title="Permalink to this definition">¶</a></dt>
+<dd><p>The directory containing load shapes</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="disco.sources.source_tree_1.source_tree_1_model.SourceTree1Model.opendss_directory">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">opendss_directory</span></span><a class="headerlink" href="#disco.sources.source_tree_1.source_tree_1_model.SourceTree1Model.opendss_directory" title="Permalink to this definition">¶</a></dt>
+<dd><p>The directory of OpenDSS model</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="disco.sources.source_tree_1.source_tree_1_model.SourceTree1Model.master_file">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">master_file</span></span><a class="headerlink" href="#disco.sources.source_tree_1.source_tree_1_model.SourceTree1Model.master_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>Master file of OpenDSS model</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="disco.sources.source_tree_1.source_tree_1_model.SourceTree1Model.metadata_directory">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">metadata_directory</span></span><a class="headerlink" href="#disco.sources.source_tree_1.source_tree_1_model.SourceTree1Model.metadata_directory" title="Permalink to this definition">¶</a></dt>
+<dd><p>The directory of project metadata</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="disco.sources.source_tree_1.source_tree_1_model.SourceTree1Model.name">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">name</span></span><a class="headerlink" href="#disco.sources.source_tree_1.source_tree_1_model.SourceTree1Model.name" title="Permalink to this definition">¶</a></dt>
+<dd><p>The name of the deployment</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="disco.sources.source_tree_1.source_tree_1_model.SourceTree1Model.pv_locations">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">pv_locations</span></span><a class="headerlink" href="#disco.sources.source_tree_1.source_tree_1_model.SourceTree1Model.pv_locations" title="Permalink to this definition">¶</a></dt>
+<dd><p>PV systems file of OpenDSS model.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="disco.sources.source_tree_1.source_tree_1_model.SourceTree1Model.pydss_controllers">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">pydss_controllers</span></span><a class="headerlink" href="#disco.sources.source_tree_1.source_tree_1_model.SourceTree1Model.pydss_controllers" title="Permalink to this definition">¶</a></dt>
+<dd><p>PyDSS controllers</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.sources.source_tree_1.source_tree_1_model.SourceTree1Model.get_transform_defaults">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_transform_defaults</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/sources/source_tree_1/source_tree_1_model.html#SourceTree1Model.get_transform_defaults"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.sources.source_tree_1.source_tree_1_model.SourceTree1Model.get_transform_defaults" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.sources.source_tree_1.source_tree_1_model.SourceTree1Model.transform">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">transform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hierarchy</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">simulation_model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">simulation_params</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">substations</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">('all',)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">feeders</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">('all',)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">placements</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">('all',)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">samples</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">('all',)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">penetration_levels</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">('all',)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">master_file</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Master.dss'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">copy_load_shape_data_files</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pv_deployments_dirname</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'hc_pv_deployments'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/sources/source_tree_1/source_tree_1_model.html#SourceTree1Model.transform"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.sources.source_tree_1.source_tree_1_model.SourceTree1Model.transform" title="Permalink to this definition">¶</a></dt>
+<dd><p>Transform the input data to a DISCO data model.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>config</strong> (<em>dict</em>) – </p></li>
+<li><p><strong>simulation_model</strong> (<a class="reference internal" href="disco.models.html#disco.models.base.BaseAnalysisModel" title="disco.models.base.BaseAnalysisModel"><em>BaseAnalysisModel</em></a>) – </p></li>
+<li><p><strong>output_path</strong> (<em>str</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.sources.source_tree_1.source_tree_1_model.SourceTree1Model.make_name">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">make_name</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">substation</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">feeder</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">placement</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sample</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">penetration_level</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/sources/source_tree_1/source_tree_1_model.html#SourceTree1Model.make_name"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.sources.source_tree_1.source_tree_1_model.SourceTree1Model.make_name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.sources.source_tree_1.source_tree_1_model.SourceTree1Model.make_substation_job_name">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">make_substation_job_name</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">disco.sources.source_tree_1.source_tree_1_model.SampleKey</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/sources/source_tree_1/source_tree_1_model.html#SourceTree1Model.make_substation_job_name"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.sources.source_tree_1.source_tree_1_model.SourceTree1Model.make_substation_job_name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.sources.source_tree_1.source_tree_1_model.SourceTree1Model.make_feeder_base_case_name">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">make_feeder_base_case_name</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">substation</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">feeder</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/sources/source_tree_1/source_tree_1_model.html#SourceTree1Model.make_feeder_base_case_name"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.sources.source_tree_1.source_tree_1_model.SourceTree1Model.make_feeder_base_case_name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.sources.source_tree_1.source_tree_1_model.SourceTree1Model.make_substation_base_case_name">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">make_substation_base_case_name</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">substation</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/sources/source_tree_1/source_tree_1_model.html#SourceTree1Model.make_substation_base_case_name"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.sources.source_tree_1.source_tree_1_model.SourceTree1Model.make_substation_base_case_name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.sources.source_tree_1.source_tree_1_model.make_substation_pv_deployments">
+<span class="sig-prename descclassname"><span class="pre">disco.sources.source_tree_1.source_tree_1_model.</span></span><span class="sig-name descname"><span class="pre">make_substation_pv_deployments</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">output_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">deployment_files</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/sources/source_tree_1/source_tree_1_model.html#make_substation_pv_deployments"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.sources.source_tree_1.source_tree_1_model.make_substation_pv_deployments" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.sources.source_tree_1.source_tree_1_model.substation_key_to_dss_filename">
+<span class="sig-prename descclassname"><span class="pre">disco.sources.source_tree_1.source_tree_1_model.</span></span><span class="sig-name descname"><span class="pre">substation_key_to_dss_filename</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">output_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/sources/source_tree_1/source_tree_1_model.html#substation_key_to_dss_filename"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.sources.source_tree_1.source_tree_1_model.substation_key_to_dss_filename" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.sources.source_tree_1.source_tree_1_model.get_pydss_controller_and_profiles">
+<span class="sig-prename descclassname"><span class="pre">disco.sources.source_tree_1.source_tree_1_model.</span></span><span class="sig-name descname"><span class="pre">get_pydss_controller_and_profiles</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pv_configs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/sources/source_tree_1/source_tree_1_model.html#get_pydss_controller_and_profiles"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.sources.source_tree_1.source_tree_1_model.get_pydss_controller_and_profiles" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.sources.source_tree_1.source_tree_1_model.fix_substation_master_file">
+<span class="sig-prename descclassname"><span class="pre">disco.sources.source_tree_1.source_tree_1_model.</span></span><span class="sig-name descname"><span class="pre">fix_substation_master_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/sources/source_tree_1/source_tree_1_model.html#fix_substation_master_file"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.sources.source_tree_1.source_tree_1_model.fix_substation_master_file" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</section>
+<section id="module-disco.sources.source_tree_1.source_tree_1_model_inputs">
+<span id="disco-sources-source-tree-1-source-tree-1-model-inputs-module"></span><h2>disco.sources.source_tree_1.source_tree_1_model_inputs module<a class="headerlink" href="#module-disco.sources.source_tree_1.source_tree_1_model_inputs" title="Permalink to this headline">¶</a></h2>
+<p>Implements functionality for QSTS inputs.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="disco.sources.source_tree_1.source_tree_1_model_inputs.SourceTree1ModelInputs">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">disco.sources.source_tree_1.source_tree_1_model_inputs.</span></span><span class="sig-name descname"><span class="pre">SourceTree1ModelInputs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">base_directory</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pv_deployments_dirname</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/sources/source_tree_1/source_tree_1_model_inputs.html#SourceTree1ModelInputs"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.sources.source_tree_1.source_tree_1_model_inputs.SourceTree1ModelInputs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">jade.jobs.job_inputs_interface.JobInputsInterface</span></code></p>
+<p>Implements functionality for Source Type 1 inputs.</p>
+<p>Constructs SourceTree1ModelInputs.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>base_directory</strong> (<em>str</em>) – </p>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.sources.source_tree_1.source_tree_1_model_inputs.SourceTree1ModelInputs.SUBSTATION_DELIMITER">
+<span class="sig-name descname"><span class="pre">SUBSTATION_DELIMITER</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'--'</span></em><a class="headerlink" href="#disco.sources.source_tree_1.source_tree_1_model_inputs.SourceTree1ModelInputs.SUBSTATION_DELIMITER" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="disco.sources.source_tree_1.source_tree_1_model_inputs.SourceTree1ModelInputs.base_directory">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">base_directory</span></span><a class="headerlink" href="#disco.sources.source_tree_1.source_tree_1_model_inputs.SourceTree1ModelInputs.base_directory" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the base directory.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.sources.source_tree_1.source_tree_1_model_inputs.SourceTree1ModelInputs.create_key">
+<span class="sig-name descname"><span class="pre">create_key</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">substation</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">feeder</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">placement</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/sources/source_tree_1/source_tree_1_model_inputs.html#SourceTree1ModelInputs.create_key"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.sources.source_tree_1.source_tree_1_model_inputs.SourceTree1ModelInputs.create_key" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a parameter key for accessing samples and penetration
+levels.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>substation</strong> (<em>str</em>) – </p></li>
+<li><p><strong>feeder</strong> (<em>str</em>) – </p></li>
+<li><p><strong>placement</strong> (<a class="reference internal" href="disco.html#disco.enums.Placement" title="disco.enums.Placement"><em>Placement</em></a>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>namedtuple</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.sources.source_tree_1.source_tree_1_model_inputs.SourceTree1ModelInputs.get_available_parameters">
+<span class="sig-name descname"><span class="pre">get_available_parameters</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/sources/source_tree_1/source_tree_1_model_inputs.html#SourceTree1ModelInputs.get_available_parameters"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.sources.source_tree_1.source_tree_1_model_inputs.SourceTree1ModelInputs.get_available_parameters" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a dictionary containing all available parameters.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><p>dictionary layout:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="p">(</span><span class="n">Substation</span><span class="p">,</span> <span class="n">Feeder</span><span class="p">,</span> <span class="n">Placement</span><span class="p">)</span> <span class="p">:</span> <span class="p">{</span>
+        <span class="n">samples</span><span class="p">:</span> <span class="n">Set</span><span class="p">(</span>
+            <span class="n">penetration_levels</span><span class="p">,</span>
+        <span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.sources.source_tree_1.source_tree_1_model_inputs.SourceTree1ModelInputs.get_metadata_directory">
+<span class="sig-name descname"><span class="pre">get_metadata_directory</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">substation</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">feeder</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/sources/source_tree_1/source_tree_1_model_inputs.html#SourceTree1ModelInputs.get_metadata_directory"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.sources.source_tree_1.source_tree_1_model_inputs.SourceTree1ModelInputs.get_metadata_directory" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the path of feeder metadata directory</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.sources.source_tree_1.source_tree_1_model_inputs.SourceTree1ModelInputs.get_deployment_file">
+<span class="sig-name descname"><span class="pre">get_deployment_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sample</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">penetration_level</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/sources/source_tree_1/source_tree_1_model_inputs.html#SourceTree1ModelInputs.get_deployment_file"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.sources.source_tree_1.source_tree_1_model_inputs.SourceTree1ModelInputs.get_deployment_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the path to an input deployment file for the given parameters.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>key</strong> (<em>namedtuple</em>) – </p></li>
+<li><p><strong>sample</strong> (<em>int</em>) – </p></li>
+<li><p><strong>penetration_level</strong> (<em>int</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>full path to file</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.sources.source_tree_1.source_tree_1_model_inputs.SourceTree1ModelInputs.get_dss_filename">
+<span class="sig-name descname"><span class="pre">get_dss_filename</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">substation</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">feeder</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filename</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/sources/source_tree_1/source_tree_1_model_inputs.html#SourceTree1ModelInputs.get_dss_filename"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.sources.source_tree_1.source_tree_1_model_inputs.SourceTree1ModelInputs.get_dss_filename" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the path to DSS file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>substation</strong> (<em>str</em>) – </p></li>
+<li><p><strong>feeder</strong> (<em>str</em>) – </p></li>
+<li><p><strong>filename</strong> (<em>str</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>path to file</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>InvalidParameter</strong> – Raised if the file does not exist.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.sources.source_tree_1.source_tree_1_model_inputs.SourceTree1ModelInputs.get_loadshapes_filename">
+<span class="sig-name descname"><span class="pre">get_loadshapes_filename</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">substation</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">feeder</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/sources/source_tree_1/source_tree_1_model_inputs.html#SourceTree1ModelInputs.get_loadshapes_filename"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.sources.source_tree_1.source_tree_1_model_inputs.SourceTree1ModelInputs.get_loadshapes_filename" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the path to the load shapes file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>feeder</strong> (<em>str</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.sources.source_tree_1.source_tree_1_model_inputs.SourceTree1ModelInputs.get_substation_opendss_directory">
+<span class="sig-name descname"><span class="pre">get_substation_opendss_directory</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">substation</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/sources/source_tree_1/source_tree_1_model_inputs.html#SourceTree1ModelInputs.get_substation_opendss_directory"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.sources.source_tree_1.source_tree_1_model_inputs.SourceTree1ModelInputs.get_substation_opendss_directory" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the path to the OpenDSS files.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>substation</strong> (<em>str</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.sources.source_tree_1.source_tree_1_model_inputs.SourceTree1ModelInputs.get_opendss_directory">
+<span class="sig-name descname"><span class="pre">get_opendss_directory</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">substation</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">feeder</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/sources/source_tree_1/source_tree_1_model_inputs.html#SourceTree1ModelInputs.get_opendss_directory"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.sources.source_tree_1.source_tree_1_model_inputs.SourceTree1ModelInputs.get_opendss_directory" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the path to the OpenDSS files.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>substation</strong> (<em>str</em>) – </p></li>
+<li><p><strong>feeder</strong> (<em>str</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.sources.source_tree_1.source_tree_1_model_inputs.SourceTree1ModelInputs.list_substations">
+<span class="sig-name descname"><span class="pre">list_substations</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/sources/source_tree_1/source_tree_1_model_inputs.html#SourceTree1ModelInputs.list_substations"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.sources.source_tree_1.source_tree_1_model_inputs.SourceTree1ModelInputs.list_substations" title="Permalink to this definition">¶</a></dt>
+<dd><p>List available substations.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>available substations</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>list of str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.sources.source_tree_1.source_tree_1_model_inputs.SourceTree1ModelInputs.list_feeders">
+<span class="sig-name descname"><span class="pre">list_feeders</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">substation</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/sources/source_tree_1/source_tree_1_model_inputs.html#SourceTree1ModelInputs.list_feeders"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.sources.source_tree_1.source_tree_1_model_inputs.SourceTree1ModelInputs.list_feeders" title="Permalink to this definition">¶</a></dt>
+<dd><p>List available feeders.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>substation</strong> (<em>str</em>) – </p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>available feeders</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>list of str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.sources.source_tree_1.source_tree_1_model_inputs.SourceTree1ModelInputs.list_placements">
+<span class="sig-name descname"><span class="pre">list_placements</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/sources/source_tree_1/source_tree_1_model_inputs.html#SourceTree1ModelInputs.list_placements"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.sources.source_tree_1.source_tree_1_model_inputs.SourceTree1ModelInputs.list_placements" title="Permalink to this definition">¶</a></dt>
+<dd><p>List available placements.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>available placements</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>list of Placement</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.sources.source_tree_1.source_tree_1_model_inputs.SourceTree1ModelInputs.list_samples">
+<span class="sig-name descname"><span class="pre">list_samples</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/sources/source_tree_1/source_tree_1_model_inputs.html#SourceTree1ModelInputs.list_samples"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.sources.source_tree_1.source_tree_1_model_inputs.SourceTree1ModelInputs.list_samples" title="Permalink to this definition">¶</a></dt>
+<dd><p>List available samples.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>key</strong> (<em>namedtuple</em>) – </p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>available samples</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>list of int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.sources.source_tree_1.source_tree_1_model_inputs.SourceTree1ModelInputs.list_penetration_levels">
+<span class="sig-name descname"><span class="pre">list_penetration_levels</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sample</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/sources/source_tree_1/source_tree_1_model_inputs.html#SourceTree1ModelInputs.list_penetration_levels"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.sources.source_tree_1.source_tree_1_model_inputs.SourceTree1ModelInputs.list_penetration_levels" title="Permalink to this definition">¶</a></dt>
+<dd><p>List available penetration levels.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>key</strong> (<em>namedtuple</em>) – </p></li>
+<li><p><strong>sample</strong> (<em>int</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>available penetration levels</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>list of int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.sources.source_tree_1.source_tree_1_model_inputs.SourceTree1ModelInputs.list_pv_configs">
+<span class="sig-name descname"><span class="pre">list_pv_configs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">substation</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">feeder</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">placement</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sample</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/sources/source_tree_1/source_tree_1_model_inputs.html#SourceTree1ModelInputs.list_pv_configs"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.sources.source_tree_1.source_tree_1_model_inputs.SourceTree1ModelInputs.list_pv_configs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the configurations for each PVSystem.
+:param substation:
+:type substation: str
+:param feeder:
+:type feeder: str
+:param placement:
+:type placement: Placement
+:param sample:
+:type sample: int</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-disco.sources.source_tree_1">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-disco.sources.source_tree_1" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2019, NREL.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

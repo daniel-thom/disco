@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Python Module Index &mdash; DISCO 0.1 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+
+    <link href="_static/style.css" rel="stylesheet" type="text/css">
+
+
+
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> DISCO
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">User Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#use-conda">Use Conda</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#use-docker">Use Docker</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#data-sources">Data Sources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#transform-model">Transform Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#config-jobs">Config Jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#submit-jobs">Submit Jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#result-analysis">Result Analysis</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="quick-start.html">Quick Start</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="quick-start.html#source-data">Source Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quick-start.html#transform-model">Transform Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quick-start.html#config-jobs">Config Jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quick-start.html#submit-jobs">Submit Jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quick-start.html#result-analysis">Result Analysis</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="data-sources.html">Data Sources</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="data-sources/smart-ds-model-preparation.html">SMART-DS OpenDSS Model Preparation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data-sources.html#gem-model">GEM Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data-sources.html#epri-model">EPRI Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data-sources.html#sourcetree1-model">SourceTree1 Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data-sources.html#sourcetree2-model">SourceTree2 Model</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="pv-deployments.html">PV Deployments</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pv-deployments.html#sourcetree1-pv-deployments">SourceTree1 PV Deployments</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="transform-models.html">Transform Models</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="transform-models.html#transform-model-help">Transform Model Help</a></li>
+<li class="toctree-l2"><a class="reference internal" href="transform-models.html#disco-model-in-depth">DISCO Model in Depth</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="analysis-workflows.html">Analysis Workflows</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="analysis-workflows/hosting-capacity-analysis.html">Hosting Capacity Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="analysis-workflows/upgrade-cost-analysis.html">Upgrade Cost Analysis</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="pipelines.html">Pipelines</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pipelines.html#sourcetree1model">SourceTree1Model</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="debugging-issues.html">Debugging Issues</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="debugging-issues.html#using-jade">Using JADE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="debugging-issues.html#using-pydss">Using PyDSS</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="data-ingestion.html">Data Ingestion</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="data-ingestion.html#ingest-to-new-database">Ingest to New Database</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data-ingestion.html#ingest-to-existing-database">Ingest to Existing Database</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data-ingestion.html#run-database-queries">Run Database Queries</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="advanced-guide.html">Advanced Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="advanced-guide/analysis-deployment.html">Analysis Deployment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="advanced-guide/upgrade-cost-analysis-generic-models.html">Upgrade Cost Analysis JSON Schemas</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contribution</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="build-docs.html">Build docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">DISCO</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Python Module Index</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+
+   <h1>Python Module Index</h1>
+
+   <div class="modindex-jumpbox">
+   <a href="#cap-d"><strong>d</strong></a>
+   </div>
+
+   <table class="indextable modindextable">
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-d"><td></td><td>
+       <strong>d</strong></td><td></td></tr>
+     <tr>
+       <td><img src="_static/minus.png" class="toggler"
+              id="toggle-1" style="display: none" alt="-" /></td>
+       <td>
+       <a href="disco/disco.html#module-disco"><code class="xref">disco</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="disco/disco.analysis.html#module-disco.analysis"><code class="xref">disco.analysis</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="disco/disco.analysis.html#module-disco.analysis.analysis"><code class="xref">disco.analysis.analysis</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="disco/disco.analysis.html#module-disco.analysis.configure"><code class="xref">disco.analysis.configure</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="disco/disco.analysis.html#module-disco.analysis.input"><code class="xref">disco.analysis.input</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="disco/disco.analysis.html#module-disco.analysis.option"><code class="xref">disco.analysis.option</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="disco/disco.analysis.html#module-disco.analysis.postprocess_time_series"><code class="xref">disco.analysis.postprocess_time_series</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="disco/disco.analysis.html#module-disco.analysis.snapshot_impact_analysis"><code class="xref">disco.analysis.snapshot_impact_analysis</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="disco/disco.analysis.html#module-disco.analysis.time_series_impact_analysis"><code class="xref">disco.analysis.time_series_impact_analysis</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="disco/disco.cli.html#module-disco.cli"><code class="xref">disco.cli</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="disco/disco.cli.html#module-disco.cli.cba_post_process"><code class="xref">disco.cli.cba_post_process</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="disco/disco.cli.html#module-disco.cli.collect_feeder_stats"><code class="xref">disco.cli.collect_feeder_stats</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="disco/disco.cli.html#module-disco.cli.common"><code class="xref">disco.cli.common</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="disco/disco.cli.html#module-disco.cli.compute_hosting_capacity"><code class="xref">disco.cli.compute_hosting_capacity</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="disco/disco.cli.html#module-disco.cli.compute_pv_swad"><code class="xref">disco.cli.compute_pv_swad</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="disco/disco.cli.html#module-disco.cli.compute_snapshot_hosting_capacity"><code class="xref">disco.cli.compute_snapshot_hosting_capacity</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="disco/disco.cli.html#module-disco.cli.compute_snapshot_impact_analysis"><code class="xref">disco.cli.compute_snapshot_impact_analysis</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="disco/disco.cli.html#module-disco.cli.compute_time_series_hosting_capacity"><code class="xref">disco.cli.compute_time_series_hosting_capacity</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="disco/disco.cli.html#module-disco.cli.compute_time_series_impact_analysis"><code class="xref">disco.cli.compute_time_series_impact_analysis</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="disco/disco.cli.html#module-disco.cli.config"><code class="xref">disco.cli.config</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="disco/disco.cli.html#module-disco.cli.config_snapshot"><code class="xref">disco.cli.config_snapshot</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="disco/disco.cli.html#module-disco.cli.config_time_series"><code class="xref">disco.cli.config_time_series</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="disco/disco.cli.html#module-disco.cli.config_upgrade"><code class="xref">disco.cli.config_upgrade</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="disco/disco.cli.html#module-disco.cli.configure_analysis"><code class="xref">disco.cli.configure_analysis</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="disco/disco.cli.html#module-disco.cli.create_pipeline"><code class="xref">disco.cli.create_pipeline</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="disco/disco.cli.html#module-disco.cli.disco"><code class="xref">disco.cli.disco</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="disco/disco.cli.html#module-disco.cli.disco_internal"><code class="xref">disco.cli.disco_internal</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="disco/disco.cli.html#module-disco.cli.download_source"><code class="xref">disco.cli.download_source</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="disco/disco.cli.html#module-disco.cli.ingest_tables"><code class="xref">disco.cli.ingest_tables</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="disco/disco.cli.html#module-disco.cli.make_cba_tables"><code class="xref">disco.cli.make_cba_tables</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="disco/disco.cli.html#module-disco.cli.make_summary_tables"><code class="xref">disco.cli.make_summary_tables</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="disco/disco.cli.html#module-disco.cli.make_upgrade_tables"><code class="xref">disco.cli.make_upgrade_tables</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="disco/disco.cli.html#module-disco.cli.prescreen_pv_penetration_levels"><code class="xref">disco.cli.prescreen_pv_penetration_levels</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="disco/disco.cli.html#module-disco.cli.pv_deployments"><code class="xref">disco.cli.pv_deployments</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="disco/disco.cli.html#module-disco.cli.simulation_models"><code class="xref">disco.cli.simulation_models</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="disco/disco.cli.html#module-disco.cli.summarize_hosting_capacity"><code class="xref">disco.cli.summarize_hosting_capacity</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="disco/disco.cli.html#module-disco.cli.transform_model"><code class="xref">disco.cli.transform_model</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="disco/disco.cli.html#module-disco.cli.upgrade_cost_analysis"><code class="xref">disco.cli.upgrade_cost_analysis</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="disco/disco.html#module-disco.common"><code class="xref">disco.common</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="disco/disco.distribution.html#module-disco.distribution"><code class="xref">disco.distribution</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="disco/disco.distribution.html#module-disco.distribution.deployment_parameters"><code class="xref">disco.distribution.deployment_parameters</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="disco/disco.distribution.html#module-disco.distribution.distribution_configuration"><code class="xref">disco.distribution.distribution_configuration</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="disco/disco.distribution.html#module-disco.distribution.distribution_inputs"><code class="xref">disco.distribution.distribution_inputs</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="disco/disco.html#module-disco.enums"><code class="xref">disco.enums</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="disco/disco.html#module-disco.events"><code class="xref">disco.events</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="disco/disco.html#module-disco.exceptions"><code class="xref">disco.exceptions</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="disco/disco.extensions.html#module-disco.extensions"><code class="xref">disco.extensions</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="disco/disco.extensions.pydss_simulation.html#module-disco.extensions.pydss_simulation"><code class="xref">disco.extensions.pydss_simulation</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="disco/disco.extensions.pydss_simulation.html#module-disco.extensions.pydss_simulation.cli"><code class="xref">disco.extensions.pydss_simulation.cli</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="disco/disco.extensions.pydss_simulation.html#module-disco.extensions.pydss_simulation.estimate_run_minutes"><code class="xref">disco.extensions.pydss_simulation.estimate_run_minutes</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="disco/disco.extensions.pydss_simulation.html#module-disco.extensions.pydss_simulation.pydss_configuration"><code class="xref">disco.extensions.pydss_simulation.pydss_configuration</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="disco/disco.extensions.pydss_simulation.html#module-disco.extensions.pydss_simulation.pydss_inputs"><code class="xref">disco.extensions.pydss_simulation.pydss_inputs</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="disco/disco.extensions.pydss_simulation.html#module-disco.extensions.pydss_simulation.pydss_simulation"><code class="xref">disco.extensions.pydss_simulation.pydss_simulation</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="disco/disco.extensions.pydss_simulation.html#module-disco.extensions.pydss_simulation.time_series_impact_analysis_configuration"><code class="xref">disco.extensions.pydss_simulation.time_series_impact_analysis_configuration</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="disco/disco.extensions.upgrade_simulation.html#module-disco.extensions.upgrade_simulation"><code class="xref">disco.extensions.upgrade_simulation</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="disco/disco.extensions.upgrade_simulation.html#module-disco.extensions.upgrade_simulation.cli"><code class="xref">disco.extensions.upgrade_simulation.cli</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="disco/disco.extensions.upgrade_simulation.html#module-disco.extensions.upgrade_simulation.upgrade_configuration"><code class="xref">disco.extensions.upgrade_simulation.upgrade_configuration</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="disco/disco.extensions.upgrade_simulation.html#module-disco.extensions.upgrade_simulation.upgrade_inputs"><code class="xref">disco.extensions.upgrade_simulation.upgrade_inputs</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="disco/disco.extensions.upgrade_simulation.html#module-disco.extensions.upgrade_simulation.upgrade_parameters"><code class="xref">disco.extensions.upgrade_simulation.upgrade_parameters</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="disco/disco.extensions.upgrade_simulation.html#module-disco.extensions.upgrade_simulation.upgrade_simulation"><code class="xref">disco.extensions.upgrade_simulation.upgrade_simulation</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="disco/disco.extensions.upgrade_simulation.upgrades.html#module-disco.extensions.upgrade_simulation.upgrades"><code class="xref">disco.extensions.upgrade_simulation.upgrades</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="disco/disco.extensions.upgrade_simulation.upgrades.html#module-disco.extensions.upgrade_simulation.upgrades.automated_thermal_upgrades"><code class="xref">disco.extensions.upgrade_simulation.upgrades.automated_thermal_upgrades</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="disco/disco.extensions.upgrade_simulation.upgrades.html#module-disco.extensions.upgrade_simulation.upgrades.automated_voltage_upgrades"><code class="xref">disco.extensions.upgrade_simulation.upgrades.automated_voltage_upgrades</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="disco/disco.extensions.upgrade_simulation.upgrades.html#module-disco.extensions.upgrade_simulation.upgrades.common_functions"><code class="xref">disco.extensions.upgrade_simulation.upgrades.common_functions</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="disco/disco.extensions.upgrade_simulation.upgrades.html#module-disco.extensions.upgrade_simulation.upgrades.cost_computation"><code class="xref">disco.extensions.upgrade_simulation.upgrades.cost_computation</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="disco/disco.extensions.upgrade_simulation.upgrades.html#module-disco.extensions.upgrade_simulation.upgrades.fixed_upgrade_parameters"><code class="xref">disco.extensions.upgrade_simulation.upgrades.fixed_upgrade_parameters</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="disco/disco.extensions.upgrade_simulation.upgrades.html#module-disco.extensions.upgrade_simulation.upgrades.pydss_parameters"><code class="xref">disco.extensions.upgrade_simulation.upgrades.pydss_parameters</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="disco/disco.extensions.upgrade_simulation.upgrades.html#module-disco.extensions.upgrade_simulation.upgrades.thermal_upgrade_functions"><code class="xref">disco.extensions.upgrade_simulation.upgrades.thermal_upgrade_functions</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="disco/disco.extensions.upgrade_simulation.upgrades.html#module-disco.extensions.upgrade_simulation.upgrades.voltage_upgrade_functions"><code class="xref">disco.extensions.upgrade_simulation.upgrades.voltage_upgrade_functions</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="disco/disco.models.html#module-disco.models"><code class="xref">disco.models</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="disco/disco.models.html#module-disco.models.base"><code class="xref">disco.models.base</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="disco/disco.models.html#module-disco.models.factory"><code class="xref">disco.models.factory</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="disco/disco.models.html#module-disco.models.snapshot_impact_analysis_model"><code class="xref">disco.models.snapshot_impact_analysis_model</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="disco/disco.models.html#module-disco.models.time_series_analysis_model"><code class="xref">disco.models.time_series_analysis_model</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="disco/disco.models.html#module-disco.models.upgrade_cost_analysis_generic_model"><code class="xref">disco.models.upgrade_cost_analysis_generic_model</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="disco/disco.models.html#module-disco.models.upgrade_cost_analysis_model"><code class="xref">disco.models.upgrade_cost_analysis_model</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="disco/disco.models.html#module-disco.models.utils"><code class="xref">disco.models.utils</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="disco/disco.pipelines.html#module-disco.pipelines"><code class="xref">disco.pipelines</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="disco/disco.pipelines.html#module-disco.pipelines.auto_config"><code class="xref">disco.pipelines.auto_config</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="disco/disco.pipelines.html#module-disco.pipelines.base"><code class="xref">disco.pipelines.base</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="disco/disco.pipelines.html#module-disco.pipelines.creator"><code class="xref">disco.pipelines.creator</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="disco/disco.pipelines.html#module-disco.pipelines.enums"><code class="xref">disco.pipelines.enums</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="disco/disco.pipelines.html#module-disco.pipelines.factory"><code class="xref">disco.pipelines.factory</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="disco/disco.pipelines.html#module-disco.pipelines.update_config"><code class="xref">disco.pipelines.update_config</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="disco/disco.pipelines.html#module-disco.pipelines.utils"><code class="xref">disco.pipelines.utils</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="disco/disco.postprocess.html#module-disco.postprocess"><code class="xref">disco.postprocess</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="disco/disco.postprocess.config.html#module-disco.postprocess.config"><code class="xref">disco.postprocess.config</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="disco/disco.postprocess.html#module-disco.postprocess.hcdb"><code class="xref">disco.postprocess.hcdb</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="disco/disco.postprocess.html#module-disco.postprocess.hosting_capacity"><code class="xref">disco.postprocess.hosting_capacity</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="disco/disco.pydss.html#module-disco.pydss"><code class="xref">disco.pydss</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="disco/disco.pydss.html#module-disco.pydss.common"><code class="xref">disco.pydss.common</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="disco/disco.pydss.html#module-disco.pydss.prescreen_pv_penetration_levels"><code class="xref">disco.pydss.prescreen_pv_penetration_levels</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="disco/disco.pydss.html#module-disco.pydss.pydss_analysis"><code class="xref">disco.pydss.pydss_analysis</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="disco/disco.pydss.html#module-disco.pydss.pydss_configuration_base"><code class="xref">disco.pydss.pydss_configuration_base</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="disco/disco.pydss.html#module-disco.pydss.pydss_simulation_base"><code class="xref">disco.pydss.pydss_simulation_base</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="disco/disco.pydss.html#module-disco.pydss.pydss_utils"><code class="xref">disco.pydss.pydss_utils</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="disco/disco.sources.html#module-disco.sources"><code class="xref">disco.sources</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="disco/disco.sources.html#module-disco.sources.base"><code class="xref">disco.sources.base</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="disco/disco.sources.epri.html#module-disco.sources.epri"><code class="xref">disco.sources.epri</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="disco/disco.sources.epri.html#module-disco.sources.epri.download"><code class="xref">disco.sources.epri.download</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="disco/disco.sources.epri.html#module-disco.sources.epri.epri_model"><code class="xref">disco.sources.epri.epri_model</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="disco/disco.sources.html#module-disco.sources.factory"><code class="xref">disco.sources.factory</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="disco/disco.sources.gem.html#module-disco.sources.gem"><code class="xref">disco.sources.gem</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="disco/disco.sources.gem.html#module-disco.sources.gem.factory"><code class="xref">disco.sources.gem.factory</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="disco/disco.sources.gem.html#module-disco.sources.gem.gem_model"><code class="xref">disco.sources.gem.gem_model</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="disco/disco.sources.gem.html#module-disco.sources.gem.make_element_bus_mapping"><code class="xref">disco.sources.gem.make_element_bus_mapping</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="disco/disco.sources.gem.html#module-disco.sources.gem.model_input_interface"><code class="xref">disco.sources.gem.model_input_interface</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="disco/disco.sources.gem.html#module-disco.sources.gem.open_dss_generator"><code class="xref">disco.sources.gem.open_dss_generator</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="disco/disco.sources.source_tree_1.html#module-disco.sources.source_tree_1"><code class="xref">disco.sources.source_tree_1</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="disco/disco.sources.source_tree_1.html#module-disco.sources.source_tree_1.pv_deployments"><code class="xref">disco.sources.source_tree_1.pv_deployments</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="disco/disco.sources.source_tree_1.html#module-disco.sources.source_tree_1.source_tree_1_model"><code class="xref">disco.sources.source_tree_1.source_tree_1_model</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="disco/disco.sources.source_tree_1.html#module-disco.sources.source_tree_1.source_tree_1_model_inputs"><code class="xref">disco.sources.source_tree_1.source_tree_1_model_inputs</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="disco/disco.sources.source_tree_2.html#module-disco.sources.source_tree_2"><code class="xref">disco.sources.source_tree_2</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="disco/disco.sources.source_tree_2.html#module-disco.sources.source_tree_2.source_tree_2_model"><code class="xref">disco.sources.source_tree_2.source_tree_2_model</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="disco/disco.sources.source_tree_2.html#module-disco.sources.source_tree_2.source_tree_2_model_inputs"><code class="xref">disco.sources.source_tree_2.source_tree_2_model_inputs</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="disco/disco.storage.html#module-disco.storage"><code class="xref">disco.storage</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="disco/disco.storage.html#module-disco.storage.core"><code class="xref">disco.storage.core</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="disco/disco.storage.html#module-disco.storage.db"><code class="xref">disco.storage.db</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="disco/disco.storage.html#module-disco.storage.exceptions"><code class="xref">disco.storage.exceptions</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="disco/disco.storage.html#module-disco.storage.ingesters"><code class="xref">disco.storage.ingesters</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="disco/disco.storage.html#module-disco.storage.outputs"><code class="xref">disco.storage.outputs</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="disco/disco.storage.html#module-disco.storage.parsers"><code class="xref">disco.storage.parsers</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="disco/disco.utils.html#module-disco.utils"><code class="xref">disco.utils</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="disco/disco.utils.html#module-disco.utils.custom_type"><code class="xref">disco.utils.custom_type</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="disco/disco.utils.html#module-disco.utils.dss_utils"><code class="xref">disco.utils.dss_utils</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="disco/disco.utils.html#module-disco.utils.failing_test_bisector"><code class="xref">disco.utils.failing_test_bisector</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="disco/disco.html#module-disco.version"><code class="xref">disco.version</code></a></td><td>
+       <em></em></td></tr>
+   </table>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2019, NREL.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

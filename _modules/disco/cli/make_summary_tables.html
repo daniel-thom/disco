@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>disco.cli.make_summary_tables &mdash; DISCO 0.1 documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link href="../../../_static/style.css" rel="stylesheet" type="text/css">
+
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../../index.html" class="icon icon-home"> DISCO
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">User Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../installation.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../installation.html#use-conda">Use Conda</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../installation.html#use-docker">Use Docker</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../overview.html">Overview</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../overview.html#data-sources">Data Sources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../overview.html#transform-model">Transform Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../overview.html#config-jobs">Config Jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../overview.html#submit-jobs">Submit Jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../overview.html#result-analysis">Result Analysis</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../quick-start.html">Quick Start</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../quick-start.html#source-data">Source Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../quick-start.html#transform-model">Transform Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../quick-start.html#config-jobs">Config Jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../quick-start.html#submit-jobs">Submit Jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../quick-start.html#result-analysis">Result Analysis</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../data-sources.html">Data Sources</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../data-sources/smart-ds-model-preparation.html">SMART-DS OpenDSS Model Preparation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../data-sources.html#gem-model">GEM Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../data-sources.html#epri-model">EPRI Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../data-sources.html#sourcetree1-model">SourceTree1 Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../data-sources.html#sourcetree2-model">SourceTree2 Model</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../pv-deployments.html">PV Deployments</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../pv-deployments.html#sourcetree1-pv-deployments">SourceTree1 PV Deployments</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../transform-models.html">Transform Models</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../transform-models.html#transform-model-help">Transform Model Help</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../transform-models.html#disco-model-in-depth">DISCO Model in Depth</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../analysis-workflows.html">Analysis Workflows</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../analysis-workflows/hosting-capacity-analysis.html">Hosting Capacity Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../analysis-workflows/upgrade-cost-analysis.html">Upgrade Cost Analysis</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../pipelines.html">Pipelines</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../pipelines.html#sourcetree1model">SourceTree1Model</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../debugging-issues.html">Debugging Issues</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../debugging-issues.html#using-jade">Using JADE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../debugging-issues.html#using-pydss">Using PyDSS</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../data-ingestion.html">Data Ingestion</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../data-ingestion.html#ingest-to-new-database">Ingest to New Database</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../data-ingestion.html#ingest-to-existing-database">Ingest to Existing Database</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../data-ingestion.html#run-database-queries">Run Database Queries</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../advanced-guide.html">Advanced Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../advanced-guide/analysis-deployment.html">Analysis Deployment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../advanced-guide/upgrade-cost-analysis-generic-models.html">Upgrade Cost Analysis JSON Schemas</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contribution</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../build-docs.html">Build docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../license.html">License</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">DISCO</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+      <li>disco.cli.make_summary_tables</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for disco.cli.make_summary_tables</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;Make hosting capacity summary tables for all jobs in a batch.&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">csv</span>
+<span class="kn">import</span> <span class="nn">itertools</span>
+<span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">import</span> <span class="nn">logging</span>
+<span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">namedtuple</span>
+<span class="kn">from</span> <span class="nn">concurrent.futures</span> <span class="kn">import</span> <span class="n">ProcessPoolExecutor</span>
+<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+
+<span class="kn">import</span> <span class="nn">click</span>
+
+<span class="kn">from</span> <span class="nn">jade.common</span> <span class="kn">import</span> <span class="n">CONFIG_FILE</span><span class="p">,</span> <span class="n">JOBS_OUTPUT_DIR</span>
+<span class="kn">from</span> <span class="nn">jade.jobs.job_configuration_factory</span> <span class="kn">import</span> <span class="n">create_config_from_file</span>
+<span class="kn">from</span> <span class="nn">jade.loggers</span> <span class="kn">import</span> <span class="n">setup_logging</span>
+<span class="kn">from</span> <span class="nn">jade.jobs.results_aggregator</span> <span class="kn">import</span> <span class="n">ResultsAggregator</span>
+
+<span class="kn">from</span> <span class="nn">PyDSS.node_voltage_metrics</span> <span class="kn">import</span> <span class="n">VOLTAGE_METRIC_FIELDS_TO_INCLUDE_AS_PASS_CRITERIA</span>
+<span class="kn">from</span> <span class="nn">PyDSS.pydss_results</span> <span class="kn">import</span> <span class="n">PyDssResults</span><span class="p">,</span> <span class="n">PyDssScenarioResults</span>
+<span class="kn">from</span> <span class="nn">PyDSS.reports.pv_reports</span> <span class="kn">import</span> <span class="n">PF1_SCENARIO</span><span class="p">,</span> <span class="n">CONTROL_MODE_SCENARIO</span>
+<span class="kn">from</span> <span class="nn">PyDSS.thermal_metrics</span> <span class="kn">import</span> <span class="n">create_summary_from_dict</span>
+
+<span class="kn">from</span> <span class="nn">disco.pipelines.utils</span> <span class="kn">import</span> <span class="n">ensure_jade_pipeline_output_dir</span>
+<span class="kn">from</span> <span class="nn">disco.pydss.common</span> <span class="kn">import</span> <span class="n">SCENARIO_NAME_DELIMITER</span>
+
+
+<span class="n">JobInfo</span> <span class="o">=</span> <span class="n">namedtuple</span><span class="p">(</span>
+    <span class="s2">&quot;JobInfo&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">,</span> <span class="s2">&quot;substation&quot;</span><span class="p">,</span> <span class="s2">&quot;feeder&quot;</span><span class="p">,</span> <span class="s2">&quot;placement&quot;</span><span class="p">,</span> <span class="s2">&quot;sample&quot;</span><span class="p">,</span> <span class="s2">&quot;penetration_level&quot;</span><span class="p">]</span>
+<span class="p">)</span>
+<span class="n">SNAPSHOT_TIME_POINT_MAPPING</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;max_pv_load_ratio&quot;</span><span class="p">:</span> <span class="s2">&quot;Max PV to Load Ratio&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;max_load&quot;</span><span class="p">:</span> <span class="s2">&quot;Max Load&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;daytime_min_load&quot;</span><span class="p">:</span> <span class="s2">&quot;Min Daytime Load&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;pv_minus_load&quot;</span><span class="p">:</span> <span class="s2">&quot;Max PV minus Load&quot;</span><span class="p">,</span>
+<span class="p">}</span>
+
+
+<span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="parse_batch_results"><a class="viewcode-back" href="../../../disco/disco.cli.html#disco.cli.make_summary_tables.parse_batch_results">[docs]</a><span class="k">def</span> <span class="nf">parse_batch_results</span><span class="p">(</span><span class="n">output_dir</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Parse the results from all jobs in a JADE output directory.&quot;&quot;&quot;</span>
+    <span class="n">output_path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">output_dir</span><span class="p">)</span>
+    <span class="n">config</span> <span class="o">=</span> <span class="n">create_config_from_file</span><span class="p">(</span><span class="n">output_path</span> <span class="o">/</span> <span class="n">CONFIG_FILE</span><span class="p">)</span>
+    <span class="n">jobs</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">results</span> <span class="o">=</span> <span class="n">ResultsAggregator</span><span class="o">.</span><span class="n">list_results</span><span class="p">(</span><span class="n">output_dir</span><span class="p">)</span>
+    <span class="n">result_lookup</span> <span class="o">=</span> <span class="p">{</span><span class="n">x</span><span class="o">.</span><span class="n">name</span><span class="p">:</span> <span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">results</span><span class="p">}</span>
+    <span class="k">for</span> <span class="n">job</span> <span class="ow">in</span> <span class="n">config</span><span class="o">.</span><span class="n">iter_pydss_simulation_jobs</span><span class="p">():</span>
+        <span class="k">if</span> <span class="n">job</span><span class="o">.</span><span class="n">name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">result_lookup</span><span class="p">:</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Skip missing job </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">job</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+            <span class="k">continue</span>
+        <span class="k">if</span> <span class="n">result_lookup</span><span class="p">[</span><span class="n">job</span><span class="o">.</span><span class="n">name</span><span class="p">]</span><span class="o">.</span><span class="n">return_code</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Skip failed job </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">job</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+            <span class="k">continue</span>
+        <span class="n">jobs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">job</span><span class="p">)</span>
+
+    <span class="n">feeder_head_table</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">feeder_losses_table</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">metadata_table</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">thermal_metrics_table</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">voltage_metrics_table</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">snapshot_time_points_table</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="c1"># This will create flattened tables for each metric across jobs and PyDSS scenarios</span>
+    <span class="c1"># within eah job.</span>
+    <span class="c1"># Every table contains job name, substation, feeder, etc., and scenario name, as</span>
+    <span class="c1"># well as the metrics.</span>
+    <span class="k">with</span> <span class="n">ProcessPoolExecutor</span><span class="p">()</span> <span class="k">as</span> <span class="n">executor</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">result</span> <span class="ow">in</span> <span class="n">executor</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">parse_job_results</span><span class="p">,</span> <span class="n">jobs</span><span class="p">,</span> <span class="n">itertools</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">output_path</span><span class="p">)):</span>
+            <span class="n">feeder_head_table</span> <span class="o">+=</span> <span class="n">result</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="n">feeder_losses_table</span> <span class="o">+=</span> <span class="n">result</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+            <span class="n">metadata_table</span> <span class="o">+=</span> <span class="n">result</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+            <span class="n">thermal_metrics_table</span> <span class="o">+=</span> <span class="n">result</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
+            <span class="n">voltage_metrics_table</span> <span class="o">+=</span> <span class="n">result</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span>
+            <span class="n">snapshot_time_points_table</span> <span class="o">+=</span> <span class="n">result</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span>
+
+    <span class="n">serialize_table</span><span class="p">(</span><span class="n">feeder_head_table</span><span class="p">,</span> <span class="n">output_path</span> <span class="o">/</span> <span class="s2">&quot;feeder_head_table.csv&quot;</span><span class="p">)</span>
+    <span class="n">serialize_table</span><span class="p">(</span><span class="n">feeder_losses_table</span><span class="p">,</span> <span class="n">output_path</span> <span class="o">/</span> <span class="s2">&quot;feeder_losses_table.csv&quot;</span><span class="p">)</span>
+    <span class="n">serialize_table</span><span class="p">(</span><span class="n">metadata_table</span><span class="p">,</span> <span class="n">output_path</span> <span class="o">/</span> <span class="s2">&quot;metadata_table.csv&quot;</span><span class="p">)</span>
+    <span class="n">serialize_table</span><span class="p">(</span><span class="n">thermal_metrics_table</span><span class="p">,</span> <span class="n">output_path</span> <span class="o">/</span> <span class="s2">&quot;thermal_metrics_table.csv&quot;</span><span class="p">)</span>
+    <span class="n">serialize_table</span><span class="p">(</span><span class="n">voltage_metrics_table</span><span class="p">,</span> <span class="n">output_path</span> <span class="o">/</span> <span class="s2">&quot;voltage_metrics_table.csv&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">jobs</span> <span class="ow">and</span> <span class="n">jobs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">model_type</span> <span class="o">==</span> <span class="s2">&quot;SnapshotImpactAnalysisModel&quot;</span><span class="p">:</span>
+        <span class="n">serialize_table</span><span class="p">(</span><span class="n">snapshot_time_points_table</span><span class="p">,</span> <span class="n">output_path</span> <span class="o">/</span> <span class="s2">&quot;snapshot_time_points_table.csv&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="parse_job_results"><a class="viewcode-back" href="../../../disco/disco.cli.html#disco.cli.make_summary_tables.parse_job_results">[docs]</a><span class="k">def</span> <span class="nf">parse_job_results</span><span class="p">(</span><span class="n">job</span><span class="p">,</span> <span class="n">output_path</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Return the tables for a single job.&quot;&quot;&quot;</span>
+    <span class="n">job_path</span> <span class="o">=</span> <span class="n">output_path</span> <span class="o">/</span> <span class="n">JOBS_OUTPUT_DIR</span> <span class="o">/</span> <span class="n">job</span><span class="o">.</span><span class="n">name</span> <span class="o">/</span> <span class="s2">&quot;pydss_project&quot;</span>
+    <span class="n">deployment</span> <span class="o">=</span> <span class="n">job</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">deployment</span>
+    <span class="k">if</span> <span class="n">job</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">is_base_case</span><span class="p">:</span>
+        <span class="n">job_info</span> <span class="o">=</span> <span class="n">JobInfo</span><span class="p">(</span>
+            <span class="n">name</span><span class="o">=</span><span class="n">job</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+            <span class="n">substation</span><span class="o">=</span><span class="n">deployment</span><span class="o">.</span><span class="n">substation</span><span class="p">,</span>
+            <span class="n">feeder</span><span class="o">=</span><span class="n">deployment</span><span class="o">.</span><span class="n">feeder</span><span class="p">,</span>
+            <span class="n">placement</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+            <span class="n">sample</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+            <span class="n">penetration_level</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+        <span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">job_info</span> <span class="o">=</span> <span class="n">JobInfo</span><span class="p">(</span>
+            <span class="n">name</span><span class="o">=</span><span class="n">job</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+            <span class="n">substation</span><span class="o">=</span><span class="n">deployment</span><span class="o">.</span><span class="n">substation</span><span class="p">,</span>
+            <span class="n">feeder</span><span class="o">=</span><span class="n">deployment</span><span class="o">.</span><span class="n">feeder</span><span class="p">,</span>
+            <span class="n">placement</span><span class="o">=</span><span class="n">deployment</span><span class="o">.</span><span class="n">project_data</span><span class="p">[</span><span class="s2">&quot;placement&quot;</span><span class="p">],</span>
+            <span class="n">sample</span><span class="o">=</span><span class="n">deployment</span><span class="o">.</span><span class="n">project_data</span><span class="p">[</span><span class="s2">&quot;sample&quot;</span><span class="p">],</span>
+            <span class="n">penetration_level</span><span class="o">=</span><span class="n">deployment</span><span class="o">.</span><span class="n">project_data</span><span class="p">[</span><span class="s2">&quot;penetration_level&quot;</span><span class="p">],</span>
+        <span class="p">)</span>
+    <span class="n">results</span> <span class="o">=</span> <span class="n">PyDssResults</span><span class="p">(</span><span class="n">job_path</span><span class="p">)</span>
+    <span class="n">metadata_table</span> <span class="o">=</span> <span class="n">get_metadata_table</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="n">job_info</span><span class="p">)</span>
+    <span class="n">feeder_head_table</span> <span class="o">=</span> <span class="n">get_feeder_head_info</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="n">job_info</span><span class="p">)</span>
+    <span class="n">feeder_losses_table</span> <span class="o">=</span> <span class="n">get_feeder_losses</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="n">job_info</span><span class="p">)</span>
+    <span class="n">thermal_metrics_table</span> <span class="o">=</span> <span class="n">get_thermal_metrics</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="n">job_info</span><span class="p">)</span>
+    <span class="n">voltage_metrics_table</span> <span class="o">=</span> <span class="n">get_voltage_metrics</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="n">job_info</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">job</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">model_type</span> <span class="o">==</span> <span class="s2">&quot;SnapshotImpactAnalysisModel&quot;</span><span class="p">:</span>
+        <span class="n">snapshot_time_points_table</span> <span class="o">=</span> <span class="n">get_snapshot_time_points_table</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="n">job_info</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">snapshot_time_points_table</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">return</span> <span class="p">(</span>
+        <span class="n">feeder_head_table</span><span class="p">,</span>
+        <span class="n">feeder_losses_table</span><span class="p">,</span>
+        <span class="n">metadata_table</span><span class="p">,</span>
+        <span class="n">thermal_metrics_table</span><span class="p">,</span>
+        <span class="n">voltage_metrics_table</span><span class="p">,</span>
+        <span class="n">snapshot_time_points_table</span><span class="p">,</span>
+    <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="add_scenario"><a class="viewcode-back" href="../../../disco/disco.cli.html#disco.cli.make_summary_tables.add_scenario">[docs]</a><span class="k">def</span> <span class="nf">add_scenario</span><span class="p">(</span><span class="n">row</span><span class="p">,</span> <span class="n">scenario_name</span><span class="p">,</span> <span class="n">include_time_point</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Splits the PyDSS scenario name into name and time point.</span>
+<span class="sd">    Only applicable to loadshape-based snapshot simulations.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">SCENARIO_NAME_DELIMITER</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">scenario_name</span><span class="p">:</span>
+        <span class="n">row</span><span class="p">[</span><span class="s2">&quot;scenario&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">scenario_name</span>
+        <span class="k">return</span>
+
+    <span class="n">name</span><span class="p">,</span> <span class="n">time_point</span> <span class="o">=</span> <span class="n">scenario_name</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">SCENARIO_NAME_DELIMITER</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">(</span><span class="n">CONTROL_MODE_SCENARIO</span><span class="p">,</span> <span class="n">PF1_SCENARIO</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Unexpected parsing of scenario name: </span><span class="si">{</span><span class="n">scenario_name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">row</span><span class="p">[</span><span class="s2">&quot;scenario&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">name</span>
+    <span class="k">if</span> <span class="n">include_time_point</span><span class="p">:</span>
+        <span class="n">row</span><span class="p">[</span><span class="s2">&quot;time_point&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">time_point</span></div>
+
+
+<div class="viewcode-block" id="get_metadata_table"><a class="viewcode-back" href="../../../disco/disco.cli.html#disco.cli.make_summary_tables.get_metadata_table">[docs]</a><span class="k">def</span> <span class="nf">get_metadata_table</span><span class="p">(</span><span class="n">results</span><span class="p">:</span> <span class="n">PyDssResults</span><span class="p">,</span> <span class="n">job_info</span><span class="p">:</span> <span class="n">JobInfo</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Return capacity stats for each scenario in the PyDSS project&quot;&quot;&quot;</span>
+    <span class="n">metadata_table</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">scenario</span> <span class="ow">in</span> <span class="n">results</span><span class="o">.</span><span class="n">scenarios</span><span class="p">:</span>
+        <span class="n">total_pv</span> <span class="o">=</span> <span class="n">compute_total_pv_kw</span><span class="p">(</span><span class="n">scenario</span><span class="p">)</span>
+        <span class="n">total_load</span> <span class="o">=</span> <span class="n">compute_total_load_kw</span><span class="p">(</span><span class="n">scenario</span><span class="p">)</span>
+        <span class="n">pct_pv_to_load_ratio</span> <span class="o">=</span> <span class="mi">100</span> <span class="o">*</span> <span class="n">total_pv</span> <span class="o">/</span> <span class="nb">max</span><span class="p">(</span><span class="n">total_load</span><span class="p">,</span> <span class="mf">1e-3</span><span class="p">)</span>
+        <span class="n">row</span> <span class="o">=</span> <span class="n">job_info</span><span class="o">.</span><span class="n">_asdict</span><span class="p">()</span>
+        <span class="n">row</span><span class="o">.</span><span class="n">update</span><span class="p">(</span>
+            <span class="p">{</span>
+                <span class="s2">&quot;pct_pv_to_load_ratio&quot;</span><span class="p">:</span> <span class="n">pct_pv_to_load_ratio</span><span class="p">,</span>
+                <span class="s2">&quot;pv_capacity_kw&quot;</span><span class="p">:</span> <span class="n">total_pv</span><span class="p">,</span>
+                <span class="s2">&quot;load_capacity_kw&quot;</span><span class="p">:</span> <span class="n">total_load</span><span class="p">,</span>
+            <span class="p">}</span>
+        <span class="p">)</span>
+        <span class="n">add_scenario</span><span class="p">(</span><span class="n">row</span><span class="p">,</span> <span class="n">scenario</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">include_time_point</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="n">metadata_table</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">metadata_table</span></div>
+
+
+<div class="viewcode-block" id="get_feeder_losses"><a class="viewcode-back" href="../../../disco/disco.cli.html#disco.cli.make_summary_tables.get_feeder_losses">[docs]</a><span class="k">def</span> <span class="nf">get_feeder_losses</span><span class="p">(</span><span class="n">results</span><span class="p">:</span> <span class="n">PyDssResults</span><span class="p">,</span> <span class="n">job_info</span><span class="p">:</span> <span class="n">JobInfo</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Return feeder losses for all scenarios.&quot;&quot;&quot;</span>
+    <span class="n">feeder_losses_table</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">results</span><span class="o">.</span><span class="n">read_file</span><span class="p">(</span><span class="s2">&quot;Reports/feeder_losses.json&quot;</span><span class="p">))</span>
+    <span class="k">for</span> <span class="n">scenario</span><span class="p">,</span> <span class="n">values</span> <span class="ow">in</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;scenarios&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="n">row</span> <span class="o">=</span> <span class="n">job_info</span><span class="o">.</span><span class="n">_asdict</span><span class="p">()</span>
+        <span class="n">add_scenario</span><span class="p">(</span><span class="n">row</span><span class="p">,</span> <span class="n">scenario</span><span class="p">)</span>
+        <span class="n">row</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">values</span><span class="p">)</span>
+        <span class="n">feeder_losses_table</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">feeder_losses_table</span></div>
+
+
+<div class="viewcode-block" id="get_feeder_head_info"><a class="viewcode-back" href="../../../disco/disco.cli.html#disco.cli.make_summary_tables.get_feeder_head_info">[docs]</a><span class="k">def</span> <span class="nf">get_feeder_head_info</span><span class="p">(</span><span class="n">results</span><span class="p">:</span> <span class="n">PyDssResults</span><span class="p">,</span> <span class="n">job_info</span><span class="p">:</span> <span class="n">JobInfo</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Return feeder head info for the control_mode scenario.&quot;&quot;&quot;</span>
+    <span class="n">feeder_head_table</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">scenario</span> <span class="ow">in</span> <span class="n">results</span><span class="o">.</span><span class="n">scenarios</span><span class="p">:</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">results</span><span class="o">.</span><span class="n">read_file</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Exports/</span><span class="si">{</span><span class="n">scenario</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">/FeederHeadInfo.json&quot;</span><span class="p">))</span>
+        <span class="n">row</span> <span class="o">=</span> <span class="n">job_info</span><span class="o">.</span><span class="n">_asdict</span><span class="p">()</span>
+        <span class="n">add_scenario</span><span class="p">(</span><span class="n">row</span><span class="p">,</span> <span class="n">scenario</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+        <span class="n">row</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+        <span class="n">feeder_head_table</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">feeder_head_table</span></div>
+
+
+<div class="viewcode-block" id="get_thermal_metrics"><a class="viewcode-back" href="../../../disco/disco.cli.html#disco.cli.make_summary_tables.get_thermal_metrics">[docs]</a><span class="k">def</span> <span class="nf">get_thermal_metrics</span><span class="p">(</span><span class="n">results</span><span class="p">:</span> <span class="n">PyDssResults</span><span class="p">,</span> <span class="n">job_info</span><span class="p">:</span> <span class="n">JobInfo</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Return the thermal metrics for all scenarios.&quot;&quot;&quot;</span>
+    <span class="n">thermal_metrics_table</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">results</span><span class="o">.</span><span class="n">read_file</span><span class="p">(</span><span class="s2">&quot;Reports/thermal_metrics.json&quot;</span><span class="p">))</span>
+    <span class="k">for</span> <span class="n">scenario</span><span class="p">,</span> <span class="n">metrics</span> <span class="ow">in</span> <span class="n">create_summary_from_dict</span><span class="p">(</span><span class="n">data</span><span class="p">)</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="n">row</span> <span class="o">=</span> <span class="n">job_info</span><span class="o">.</span><span class="n">_asdict</span><span class="p">()</span>
+        <span class="n">add_scenario</span><span class="p">(</span><span class="n">row</span><span class="p">,</span> <span class="n">scenario</span><span class="p">)</span>
+        <span class="n">row</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">metrics</span><span class="p">)</span>
+        <span class="n">thermal_metrics_table</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">thermal_metrics_table</span></div>
+
+
+<div class="viewcode-block" id="get_voltage_metrics"><a class="viewcode-back" href="../../../disco/disco.cli.html#disco.cli.make_summary_tables.get_voltage_metrics">[docs]</a><span class="k">def</span> <span class="nf">get_voltage_metrics</span><span class="p">(</span><span class="n">results</span><span class="p">:</span> <span class="n">PyDssResults</span><span class="p">,</span> <span class="n">job_info</span><span class="p">:</span> <span class="n">JobInfo</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Return the voltage metrics for all scenarios.&quot;&quot;&quot;</span>
+    <span class="n">voltage_metrics_table</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">results</span><span class="o">.</span><span class="n">read_file</span><span class="p">(</span><span class="s2">&quot;Reports/voltage_metrics.json&quot;</span><span class="p">))</span>
+    <span class="k">for</span> <span class="n">scenario</span> <span class="ow">in</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;scenarios&quot;</span><span class="p">]:</span>
+        <span class="k">for</span> <span class="n">node_type</span> <span class="ow">in</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;scenarios&quot;</span><span class="p">][</span><span class="n">scenario</span><span class="p">]:</span>
+            <span class="n">row</span> <span class="o">=</span> <span class="n">job_info</span><span class="o">.</span><span class="n">_asdict</span><span class="p">()</span>
+            <span class="n">add_scenario</span><span class="p">(</span><span class="n">row</span><span class="p">,</span> <span class="n">scenario</span><span class="p">)</span>
+            <span class="n">row</span><span class="p">[</span><span class="s2">&quot;node_type&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">node_type</span>
+            <span class="k">for</span> <span class="n">field</span> <span class="ow">in</span> <span class="n">VOLTAGE_METRIC_FIELDS_TO_INCLUDE_AS_PASS_CRITERIA</span><span class="p">:</span>
+                <span class="n">summary</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="n">field</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;scenarios&quot;</span><span class="p">][</span><span class="n">scenario</span><span class="p">][</span><span class="n">node_type</span><span class="p">][</span><span class="s2">&quot;summary&quot;</span><span class="p">]</span>
+                <span class="k">if</span> <span class="n">summary</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                    <span class="n">row</span><span class="p">[</span><span class="n">field</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;scenarios&quot;</span><span class="p">][</span><span class="n">scenario</span><span class="p">][</span><span class="n">node_type</span><span class="p">][</span><span class="s2">&quot;summary&quot;</span><span class="p">][</span><span class="n">field</span><span class="p">]</span>
+            <span class="n">voltage_metrics_table</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">voltage_metrics_table</span></div>
+
+
+<div class="viewcode-block" id="get_snapshot_time_points_table"><a class="viewcode-back" href="../../../disco/disco.cli.html#disco.cli.make_summary_tables.get_snapshot_time_points_table">[docs]</a><span class="k">def</span> <span class="nf">get_snapshot_time_points_table</span><span class="p">(</span><span class="n">results</span><span class="p">:</span> <span class="n">PyDssResults</span><span class="p">,</span> <span class="n">job_info</span><span class="p">:</span> <span class="n">JobInfo</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Return the snapshot time points determined by each job.&quot;&quot;&quot;</span>
+    <span class="n">snapshot_time_points_table</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">results</span><span class="o">.</span><span class="n">read_file</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Exports/snapshot_time_points.json&quot;</span><span class="p">))</span>
+    <span class="n">row</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="n">job_info</span><span class="o">.</span><span class="n">name</span><span class="p">}</span>
+    <span class="k">for</span> <span class="n">time_point</span> <span class="ow">in</span> <span class="n">SNAPSHOT_TIME_POINT_MAPPING</span><span class="p">:</span>
+        <span class="n">timestamp</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">SNAPSHOT_TIME_POINT_MAPPING</span><span class="p">[</span><span class="n">time_point</span><span class="p">])</span>
+        <span class="k">if</span> <span class="n">timestamp</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">timestamp</span> <span class="o">=</span> <span class="n">timestamp</span><span class="p">[</span><span class="s2">&quot;Timepoints&quot;</span><span class="p">]</span>
+        <span class="n">row</span><span class="p">[</span><span class="n">time_point</span><span class="p">]</span> <span class="o">=</span> <span class="n">timestamp</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">row</span><span class="p">]</span></div>
+
+
+<div class="viewcode-block" id="compute_total_pv_kw"><a class="viewcode-back" href="../../../disco/disco.cli.html#disco.cli.make_summary_tables.compute_total_pv_kw">[docs]</a><span class="k">def</span> <span class="nf">compute_total_pv_kw</span><span class="p">(</span><span class="n">scenario</span><span class="p">:</span> <span class="n">PyDssScenarioResults</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Return the total PV capacity in kw.&quot;&quot;&quot;</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">scenario</span><span class="o">.</span><span class="n">read_element_info_file</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Exports/</span><span class="si">{</span><span class="n">scenario</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">/PVSystemsInfo.csv&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="s2">&quot;Name&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span> <span class="ow">or</span> <span class="n">df</span><span class="o">.</span><span class="n">Name</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">all</span><span class="p">():</span>
+        <span class="k">return</span> <span class="mi">0</span>
+    <span class="k">return</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;Pmpp&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="compute_total_load_kw"><a class="viewcode-back" href="../../../disco/disco.cli.html#disco.cli.make_summary_tables.compute_total_load_kw">[docs]</a><span class="k">def</span> <span class="nf">compute_total_load_kw</span><span class="p">(</span><span class="n">scenario</span><span class="p">:</span> <span class="n">PyDssScenarioResults</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Return the total load capacity in kw.&quot;&quot;&quot;</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">scenario</span><span class="o">.</span><span class="n">read_element_info_file</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Exports/</span><span class="si">{</span><span class="n">scenario</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">/LoadsInfo.csv&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;kW&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="serialize_table"><a class="viewcode-back" href="../../../disco/disco.cli.html#disco.cli.make_summary_tables.serialize_table">[docs]</a><span class="k">def</span> <span class="nf">serialize_table</span><span class="p">(</span><span class="n">table</span><span class="p">,</span> <span class="n">filename</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Serialize a list of dictionaries to a CSV file.&quot;&quot;&quot;</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="k">assert</span> <span class="n">table</span><span class="p">,</span> <span class="n">filename</span>
+        <span class="n">fields</span> <span class="o">=</span> <span class="n">table</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+        <span class="n">writer</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">DictWriter</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">fieldnames</span><span class="o">=</span><span class="n">fields</span><span class="p">)</span>
+        <span class="n">writer</span><span class="o">.</span><span class="n">writeheader</span><span class="p">()</span>
+        <span class="n">writer</span><span class="o">.</span><span class="n">writerows</span><span class="p">(</span><span class="n">table</span><span class="p">)</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Wrote </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span></div>
+
+
+<span class="nd">@click</span><span class="o">.</span><span class="n">command</span><span class="p">()</span>
+<span class="nd">@click</span><span class="o">.</span><span class="n">argument</span><span class="p">(</span><span class="s2">&quot;output_dir&quot;</span><span class="p">)</span>
+<span class="nd">@click</span><span class="o">.</span><span class="n">option</span><span class="p">(</span>
+    <span class="s2">&quot;--verbose&quot;</span><span class="p">,</span> <span class="n">is_flag</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">show_default</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Enable verbose logging&quot;</span>
+<span class="p">)</span>
+<span class="k">def</span> <span class="nf">make_summary_tables</span><span class="p">(</span><span class="n">output_dir</span><span class="p">,</span> <span class="n">verbose</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Make hosting capacity summary tables for all jobs in a batch.&quot;&quot;&quot;</span>
+    <span class="n">level</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">DEBUG</span> <span class="k">if</span> <span class="n">verbose</span> <span class="k">else</span> <span class="n">logging</span><span class="o">.</span><span class="n">INFO</span>
+    <span class="n">setup_logging</span><span class="p">(</span><span class="vm">__name__</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="n">console_level</span><span class="o">=</span><span class="n">level</span><span class="p">)</span>
+    <span class="n">output_dir</span> <span class="o">=</span> <span class="n">ensure_jade_pipeline_output_dir</span><span class="p">(</span><span class="n">output_dir</span><span class="p">)</span>
+    <span class="n">parse_batch_results</span><span class="p">(</span><span class="n">output_dir</span><span class="p">)</span>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2019, NREL.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>disco.extensions.upgrade_simulation.upgrade_simulation &mdash; DISCO 0.1 documentation</title>
+      <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+    <link href="../../../../_static/style.css" rel="stylesheet" type="text/css">
+
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../../../index.html" class="icon icon-home"> DISCO
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">User Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../installation.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../installation.html#use-conda">Use Conda</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../installation.html#use-docker">Use Docker</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../overview.html">Overview</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../overview.html#data-sources">Data Sources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../overview.html#transform-model">Transform Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../overview.html#config-jobs">Config Jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../overview.html#submit-jobs">Submit Jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../overview.html#result-analysis">Result Analysis</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../quick-start.html">Quick Start</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../quick-start.html#source-data">Source Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../quick-start.html#transform-model">Transform Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../quick-start.html#config-jobs">Config Jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../quick-start.html#submit-jobs">Submit Jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../quick-start.html#result-analysis">Result Analysis</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../data-sources.html">Data Sources</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../data-sources/smart-ds-model-preparation.html">SMART-DS OpenDSS Model Preparation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../data-sources.html#gem-model">GEM Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../data-sources.html#epri-model">EPRI Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../data-sources.html#sourcetree1-model">SourceTree1 Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../data-sources.html#sourcetree2-model">SourceTree2 Model</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../pv-deployments.html">PV Deployments</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../pv-deployments.html#sourcetree1-pv-deployments">SourceTree1 PV Deployments</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../transform-models.html">Transform Models</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../transform-models.html#transform-model-help">Transform Model Help</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../transform-models.html#disco-model-in-depth">DISCO Model in Depth</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../analysis-workflows.html">Analysis Workflows</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../analysis-workflows/hosting-capacity-analysis.html">Hosting Capacity Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../analysis-workflows/upgrade-cost-analysis.html">Upgrade Cost Analysis</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../pipelines.html">Pipelines</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../pipelines.html#sourcetree1model">SourceTree1Model</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../debugging-issues.html">Debugging Issues</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../debugging-issues.html#using-jade">Using JADE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../debugging-issues.html#using-pydss">Using PyDSS</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../data-ingestion.html">Data Ingestion</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../data-ingestion.html#ingest-to-new-database">Ingest to New Database</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../data-ingestion.html#ingest-to-existing-database">Ingest to Existing Database</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../data-ingestion.html#run-database-queries">Run Database Queries</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../advanced-guide.html">Advanced Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../advanced-guide/analysis-deployment.html">Analysis Deployment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../advanced-guide/upgrade-cost-analysis-generic-models.html">Upgrade Cost Analysis JSON Schemas</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contribution</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../build-docs.html">Build docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../license.html">License</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">DISCO</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../../index.html">Module code</a> &raquo;</li>
+      <li>disco.extensions.upgrade_simulation.upgrade_simulation</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for disco.extensions.upgrade_simulation.upgrade_simulation</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">os</span>
+
+<span class="kn">from</span> <span class="nn">jade.common</span> <span class="kn">import</span> <span class="n">OUTPUT_DIR</span>
+
+<span class="kn">from</span> <span class="nn">.upgrades.automated_thermal_upgrades</span> <span class="kn">import</span> <span class="n">determine_thermal_upgrades</span>
+<span class="kn">from</span> <span class="nn">.upgrades.automated_voltage_upgrades</span> <span class="kn">import</span> <span class="n">determine_voltage_upgrades</span>
+<span class="kn">from</span> <span class="nn">.upgrades.cost_computation</span> <span class="kn">import</span> <span class="n">compute_all_costs</span>
+
+
+<div class="viewcode-block" id="UpgradeSimulation"><a class="viewcode-back" href="../../../../disco/disco.extensions.upgrade_simulation.html#disco.extensions.upgrade_simulation.upgrade_simulation.UpgradeSimulation">[docs]</a><span class="k">class</span> <span class="nc">UpgradeSimulation</span><span class="p">:</span>
+    
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">job</span><span class="p">,</span> <span class="n">job_global_config</span><span class="p">,</span> <span class="n">output</span><span class="o">=</span><span class="n">OUTPUT_DIR</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">job</span> <span class="o">=</span> <span class="n">job</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">job_global_config</span> <span class="o">=</span> <span class="n">job_global_config</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">output</span> <span class="o">=</span> <span class="n">output</span>
+    
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">model</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">job</span><span class="o">.</span><span class="n">model</span>
+    
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">job_output</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">output</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+    
+<div class="viewcode-block" id="UpgradeSimulation.get_thermal_upgrades_directory"><a class="viewcode-back" href="../../../../disco/disco.extensions.upgrade_simulation.html#disco.extensions.upgrade_simulation.upgrade_simulation.UpgradeSimulation.get_thermal_upgrades_directory">[docs]</a>    <span class="k">def</span> <span class="nf">get_thermal_upgrades_directory</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">thermal_upgrades</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">job_output</span><span class="p">,</span> <span class="s2">&quot;ThermalUpgrades&quot;</span><span class="p">)</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">thermal_upgrades</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">thermal_upgrades</span></div>
+    
+<div class="viewcode-block" id="UpgradeSimulation.get_voltage_upgrades_directory"><a class="viewcode-back" href="../../../../disco/disco.extensions.upgrade_simulation.html#disco.extensions.upgrade_simulation.upgrade_simulation.UpgradeSimulation.get_voltage_upgrades_directory">[docs]</a>    <span class="k">def</span> <span class="nf">get_voltage_upgrades_directory</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">voltage_upgrades</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">job_output</span><span class="p">,</span> <span class="s2">&quot;VoltageUpgrades&quot;</span><span class="p">)</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">voltage_upgrades</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">voltage_upgrades</span></div>
+
+<div class="viewcode-block" id="UpgradeSimulation.get_upgrade_costs_directory"><a class="viewcode-back" href="../../../../disco/disco.extensions.upgrade_simulation.html#disco.extensions.upgrade_simulation.upgrade_simulation.UpgradeSimulation.get_upgrade_costs_directory">[docs]</a>    <span class="k">def</span> <span class="nf">get_upgrade_costs_directory</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">upgrade_costs</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">job_output</span><span class="p">,</span> <span class="s2">&quot;UpgradeCosts&quot;</span><span class="p">)</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">upgrade_costs</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">upgrade_costs</span></div>
+
+<div class="viewcode-block" id="UpgradeSimulation.get_thermal_upgrades_dss_file"><a class="viewcode-back" href="../../../../disco/disco.extensions.upgrade_simulation.html#disco.extensions.upgrade_simulation.upgrade_simulation.UpgradeSimulation.get_thermal_upgrades_dss_file">[docs]</a>    <span class="k">def</span> <span class="nf">get_thermal_upgrades_dss_file</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">thermal_upgrades</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_thermal_upgrades_directory</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">thermal_upgrades</span><span class="p">,</span> <span class="s2">&quot;thermal_upgrades.dss&quot;</span><span class="p">)</span></div>
+    
+<div class="viewcode-block" id="UpgradeSimulation.get_voltage_upgrades_dss_file"><a class="viewcode-back" href="../../../../disco/disco.extensions.upgrade_simulation.html#disco.extensions.upgrade_simulation.upgrade_simulation.UpgradeSimulation.get_voltage_upgrades_dss_file">[docs]</a>    <span class="k">def</span> <span class="nf">get_voltage_upgrades_dss_file</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">voltage_upgrades</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_voltage_upgrades_directory</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">voltage_upgrades</span><span class="p">,</span> <span class="s2">&quot;voltage_upgrades.dss&quot;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="UpgradeSimulation.get_line_upgrades_csv_file"><a class="viewcode-back" href="../../../../disco/disco.extensions.upgrade_simulation.html#disco.extensions.upgrade_simulation.upgrade_simulation.UpgradeSimulation.get_line_upgrades_csv_file">[docs]</a>    <span class="k">def</span> <span class="nf">get_line_upgrades_csv_file</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">thermal_upgrades</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_thermal_upgrades_directory</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">thermal_upgrades</span><span class="p">,</span> <span class="s2">&quot;line_upgrades.csv&quot;</span><span class="p">)</span></div>
+    
+<div class="viewcode-block" id="UpgradeSimulation.get_transformer_upgrades_csv_file"><a class="viewcode-back" href="../../../../disco/disco.extensions.upgrade_simulation.html#disco.extensions.upgrade_simulation.upgrade_simulation.UpgradeSimulation.get_transformer_upgrades_csv_file">[docs]</a>    <span class="k">def</span> <span class="nf">get_transformer_upgrades_csv_file</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">thermal_upgrades</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_thermal_upgrades_directory</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">thermal_upgrades</span><span class="p">,</span> <span class="s2">&quot;transformer_upgrades.csv&quot;</span><span class="p">)</span></div>
+    
+<div class="viewcode-block" id="UpgradeSimulation.get_voltage_upgrades_csv_file"><a class="viewcode-back" href="../../../../disco/disco.extensions.upgrade_simulation.html#disco.extensions.upgrade_simulation.upgrade_simulation.UpgradeSimulation.get_voltage_upgrades_csv_file">[docs]</a>    <span class="k">def</span> <span class="nf">get_voltage_upgrades_csv_file</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">voltage_upgrades</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_voltage_upgrades_directory</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">voltage_upgrades</span><span class="p">,</span> <span class="s2">&quot;voltage_upgrades.csv&quot;</span><span class="p">)</span></div>
+    
+<div class="viewcode-block" id="UpgradeSimulation.get_thermal_summary_csv_file"><a class="viewcode-back" href="../../../../disco/disco.extensions.upgrade_simulation.html#disco.extensions.upgrade_simulation.upgrade_simulation.UpgradeSimulation.get_thermal_summary_csv_file">[docs]</a>    <span class="k">def</span> <span class="nf">get_thermal_summary_csv_file</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">thermal_upgrades</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_thermal_upgrades_directory</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">thermal_upgrades</span><span class="p">,</span> <span class="s2">&quot;thermal_summary.csv&quot;</span><span class="p">)</span></div>
+    
+<div class="viewcode-block" id="UpgradeSimulation.get_voltage_summary_csv_file"><a class="viewcode-back" href="../../../../disco/disco.extensions.upgrade_simulation.html#disco.extensions.upgrade_simulation.upgrade_simulation.UpgradeSimulation.get_voltage_summary_csv_file">[docs]</a>    <span class="k">def</span> <span class="nf">get_voltage_summary_csv_file</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">voltage_upgrades</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_voltage_upgrades_directory</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">voltage_upgrades</span><span class="p">,</span> <span class="s2">&quot;voltage_summary.csv&quot;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="UpgradeSimulation.get_line_upgrade_options_file"><a class="viewcode-back" href="../../../../disco/disco.extensions.upgrade_simulation.html#disco.extensions.upgrade_simulation.upgrade_simulation.UpgradeSimulation.get_line_upgrade_options_file">[docs]</a>    <span class="k">def</span> <span class="nf">get_line_upgrade_options_file</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">thermal_upgrades</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_thermal_upgrades_directory</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">thermal_upgrades</span><span class="p">,</span> <span class="s2">&quot;line_upgrade_options.csv&quot;</span><span class="p">)</span></div>
+    
+<div class="viewcode-block" id="UpgradeSimulation.get_transformer_upgrade_options_file"><a class="viewcode-back" href="../../../../disco/disco.extensions.upgrade_simulation.html#disco.extensions.upgrade_simulation.upgrade_simulation.UpgradeSimulation.get_transformer_upgrade_options_file">[docs]</a>    <span class="k">def</span> <span class="nf">get_transformer_upgrade_options_file</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">thermal_upgrades</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_thermal_upgrades_directory</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">thermal_upgrades</span><span class="p">,</span> <span class="s2">&quot;xfmr_upgrade_options.csv&quot;</span><span class="p">)</span></div>
+    
+<div class="viewcode-block" id="UpgradeSimulation.get_thermal_upgrade_costs_file"><a class="viewcode-back" href="../../../../disco/disco.extensions.upgrade_simulation.html#disco.extensions.upgrade_simulation.upgrade_simulation.UpgradeSimulation.get_thermal_upgrade_costs_file">[docs]</a>    <span class="k">def</span> <span class="nf">get_thermal_upgrade_costs_file</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">upgrade_costs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_upgrade_costs_directory</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">upgrade_costs</span><span class="p">,</span> <span class="s2">&quot;thermal_upgrade_costs.csv&quot;</span><span class="p">)</span></div>
+    
+<div class="viewcode-block" id="UpgradeSimulation.get_voltage_upgrade_costs_file"><a class="viewcode-back" href="../../../../disco/disco.extensions.upgrade_simulation.html#disco.extensions.upgrade_simulation.upgrade_simulation.UpgradeSimulation.get_voltage_upgrade_costs_file">[docs]</a>    <span class="k">def</span> <span class="nf">get_voltage_upgrade_costs_file</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">upgrade_costs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_upgrade_costs_directory</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">upgrade_costs</span><span class="p">,</span> <span class="s2">&quot;voltage_upgrade_costs.csv&quot;</span><span class="p">)</span></div>
+    
+<div class="viewcode-block" id="UpgradeSimulation.get_total_upgrade_costs_file"><a class="viewcode-back" href="../../../../disco/disco.extensions.upgrade_simulation.html#disco.extensions.upgrade_simulation.upgrade_simulation.UpgradeSimulation.get_total_upgrade_costs_file">[docs]</a>    <span class="k">def</span> <span class="nf">get_total_upgrade_costs_file</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">upgrade_costs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_upgrade_costs_directory</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">upgrade_costs</span><span class="p">,</span> <span class="s2">&quot;total_upgrade_costs.csv&quot;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="UpgradeSimulation.generate_command"><a class="viewcode-back" href="../../../../disco/disco.extensions.upgrade_simulation.html#disco.extensions.upgrade_simulation.upgrade_simulation.UpgradeSimulation.generate_command">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">generate_command</span><span class="p">(</span><span class="n">job</span><span class="p">,</span> <span class="n">output</span><span class="p">,</span> <span class="n">config_file</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        job: UpgradeParameters</span>
+<span class="sd">            The instance of upgradeParameters</span>
+<span class="sd">        output: str</span>
+<span class="sd">            The output directory of jobs, e.g output/job-outputs</span>
+<span class="sd">        config_file: str</span>
+<span class="sd">            The path of config file during runtime</span>
+<span class="sd">        verbose: bool</span>
+<span class="sd">            Enable verbose logging if True</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">command</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="s2">&quot;jade-internal run upgrade_simulation&quot;</span><span class="p">,</span>
+            <span class="sa">f</span><span class="s2">&quot;--name=</span><span class="si">{</span><span class="n">job</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+            <span class="sa">f</span><span class="s2">&quot;--output=</span><span class="si">{</span><span class="n">output</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+            <span class="sa">f</span><span class="s2">&quot;--config-file=</span><span class="si">{</span><span class="n">config_file</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="p">]</span>
+
+        <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
+            <span class="n">command</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--verbose&quot;</span><span class="p">)</span>
+        
+        <span class="k">return</span> <span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">command</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="UpgradeSimulation.run"><a class="viewcode-back" href="../../../../disco/disco.extensions.upgrade_simulation.html#disco.extensions.upgrade_simulation.upgrade_simulation.UpgradeSimulation.run">[docs]</a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">enable_pydss_solve</span><span class="p">,</span>
+        <span class="n">pydss_controller_model</span><span class="p">,</span>
+        <span class="n">thermal_config</span><span class="p">,</span>
+        <span class="n">voltage_config</span><span class="p">,</span>
+        <span class="n">cost_database_filepath</span><span class="p">,</span>
+        <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span>
+    <span class="p">):</span>
+        <span class="n">determine_thermal_upgrades</span><span class="p">(</span>
+            <span class="n">master_path</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">deployment</span><span class="o">.</span><span class="n">deployment_file</span><span class="p">,</span>
+            <span class="n">enable_pydss_solve</span><span class="o">=</span><span class="n">enable_pydss_solve</span><span class="p">,</span>
+            <span class="n">thermal_config</span><span class="o">=</span><span class="n">thermal_config</span><span class="p">,</span>
+            <span class="n">pydss_volt_var_model</span><span class="o">=</span><span class="n">pydss_controller_model</span><span class="p">,</span>
+            <span class="n">line_upgrade_options_file</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">get_line_upgrade_options_file</span><span class="p">(),</span>
+            <span class="n">xfmr_upgrade_options_file</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">get_transformer_upgrade_options_file</span><span class="p">(),</span>
+            <span class="n">thermal_summary_file</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">get_thermal_summary_csv_file</span><span class="p">(),</span>
+            <span class="n">thermal_upgrades_dss_filepath</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">get_thermal_upgrades_dss_file</span><span class="p">(),</span>
+            <span class="n">output_csv_line_upgrades_filepath</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">get_line_upgrades_csv_file</span><span class="p">(),</span>
+            <span class="n">output_csv_xfmr_upgrades_filepath</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">get_transformer_upgrades_csv_file</span><span class="p">(),</span>
+            <span class="n">verbose</span><span class="o">=</span><span class="n">verbose</span>
+        <span class="p">)</span>
+        <span class="n">determine_voltage_upgrades</span><span class="p">(</span>
+            <span class="n">master_path</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">deployment</span><span class="o">.</span><span class="n">deployment_file</span><span class="p">,</span>
+            <span class="n">enable_pydss_solve</span><span class="o">=</span><span class="n">enable_pydss_solve</span><span class="p">,</span>
+            <span class="n">pydss_volt_var_model</span><span class="o">=</span><span class="n">pydss_controller_model</span><span class="p">,</span>
+            <span class="n">thermal_config</span><span class="o">=</span><span class="n">thermal_config</span><span class="p">,</span>
+            <span class="n">voltage_config</span><span class="o">=</span><span class="n">voltage_config</span><span class="p">,</span>
+            <span class="n">thermal_upgrades_dss_filepath</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">get_thermal_upgrades_dss_file</span><span class="p">(),</span>
+            <span class="n">voltage_upgrades_dss_filepath</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">get_voltage_upgrades_dss_file</span><span class="p">(),</span>
+            <span class="n">voltage_summary_file</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">get_voltage_summary_csv_file</span><span class="p">(),</span>
+            <span class="n">output_csv_voltage_upgrades_filepath</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_voltage_upgrades_csv_file</span><span class="p">(),</span>
+            <span class="n">output_folder</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">job_output</span><span class="p">,</span>
+            <span class="n">verbose</span><span class="o">=</span><span class="n">verbose</span>
+        <span class="p">)</span>
+        <span class="n">compute_all_costs</span><span class="p">(</span>
+            <span class="n">output_csv_xfmr_upgrades_filepath</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">get_transformer_upgrades_csv_file</span><span class="p">(),</span>
+            <span class="n">output_csv_line_upgrades_filepath</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">get_line_upgrades_csv_file</span><span class="p">(),</span>
+            <span class="n">output_csv_voltage_upgrades_filepath</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">get_voltage_upgrades_csv_file</span><span class="p">(),</span>
+            <span class="n">cost_database_filepath</span><span class="o">=</span><span class="n">cost_database_filepath</span><span class="p">,</span>
+            <span class="n">thermal_cost_output_filepath</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">get_thermal_upgrade_costs_file</span><span class="p">(),</span>
+            <span class="n">voltage_cost_output_filepath</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">get_voltage_upgrade_costs_file</span><span class="p">(),</span>
+            <span class="n">total_cost_output_filepath</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">get_total_upgrade_costs_file</span><span class="p">()</span>
+        <span class="p">)</span></div></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2019, NREL.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

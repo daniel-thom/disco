@@ -1,0 +1,40 @@
+disco.sources package
+=====================
+
+Subpackages
+-----------
+
+.. toctree::
+   :maxdepth: 4
+
+   disco.sources.epri
+   disco.sources.gem
+   disco.sources.source_tree_1
+   disco.sources.source_tree_2
+
+Submodules
+----------
+
+disco.sources.base module
+-------------------------
+
+.. automodule:: disco.sources.base
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+disco.sources.factory module
+----------------------------
+
+.. automodule:: disco.sources.factory
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: disco.sources
+   :members:
+   :undoc-members:
+   :show-inheritance:

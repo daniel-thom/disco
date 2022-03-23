@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>disco.sources.gem package &mdash; DISCO 0.1 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link href="../_static/style.css" rel="stylesheet" type="text/css">
+
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> DISCO
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">User Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../installation.html#use-conda">Use Conda</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation.html#use-docker">Use Docker</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">Overview</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../overview.html#data-sources">Data Sources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview.html#transform-model">Transform Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview.html#config-jobs">Config Jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview.html#submit-jobs">Submit Jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview.html#result-analysis">Result Analysis</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../quick-start.html">Quick Start</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../quick-start.html#source-data">Source Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../quick-start.html#transform-model">Transform Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../quick-start.html#config-jobs">Config Jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../quick-start.html#submit-jobs">Submit Jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../quick-start.html#result-analysis">Result Analysis</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../data-sources.html">Data Sources</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../data-sources/smart-ds-model-preparation.html">SMART-DS OpenDSS Model Preparation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data-sources.html#gem-model">GEM Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data-sources.html#epri-model">EPRI Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data-sources.html#sourcetree1-model">SourceTree1 Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data-sources.html#sourcetree2-model">SourceTree2 Model</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../pv-deployments.html">PV Deployments</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../pv-deployments.html#sourcetree1-pv-deployments">SourceTree1 PV Deployments</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../transform-models.html">Transform Models</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../transform-models.html#transform-model-help">Transform Model Help</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../transform-models.html#disco-model-in-depth">DISCO Model in Depth</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../analysis-workflows.html">Analysis Workflows</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../analysis-workflows/hosting-capacity-analysis.html">Hosting Capacity Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../analysis-workflows/upgrade-cost-analysis.html">Upgrade Cost Analysis</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../pipelines.html">Pipelines</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../pipelines.html#sourcetree1model">SourceTree1Model</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../debugging-issues.html">Debugging Issues</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../debugging-issues.html#using-jade">Using JADE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../debugging-issues.html#using-pydss">Using PyDSS</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../data-ingestion.html">Data Ingestion</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../data-ingestion.html#ingest-to-new-database">Ingest to New Database</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data-ingestion.html#ingest-to-existing-database">Ingest to Existing Database</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data-ingestion.html#run-database-queries">Run Database Queries</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced-guide.html">Advanced Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../advanced-guide/analysis-deployment.html">Analysis Deployment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../advanced-guide/upgrade-cost-analysis-generic-models.html">Upgrade Cost Analysis JSON Schemas</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contribution</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../build-docs.html">Build docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../license.html">License</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">DISCO</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>disco.sources.gem package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/disco/disco.sources.gem.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="disco-sources-gem-package">
+<h1>disco.sources.gem package<a class="headerlink" href="#disco-sources-gem-package" title="Permalink to this headline">¶</a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="module-disco.sources.gem.factory">
+<span id="disco-sources-gem-factory-module"></span><h2>disco.sources.gem.factory module<a class="headerlink" href="#module-disco.sources.gem.factory" title="Permalink to this headline">¶</a></h2>
+<p>Factory functions for creating data generators.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.sources.gem.factory.read_config_data">
+<span class="sig-prename descclassname"><span class="pre">disco.sources.gem.factory.</span></span><span class="sig-name descname"><span class="pre">read_config_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config_file</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/sources/gem/factory.html#read_config_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.sources.gem.factory.read_config_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a model generator based on the config file.</p>
+</dd></dl>
+
+</section>
+<section id="module-disco.sources.gem.gem_model">
+<span id="disco-sources-gem-gem-model-module"></span><h2>disco.sources.gem.gem_model module<a class="headerlink" href="#module-disco.sources.gem.gem_model" title="Permalink to this headline">¶</a></h2>
+<p>Model for GEM feeder input data.
+The model can be transformed into DISCO OpenDSS model with PV deployments.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.sources.gem.gem_model.common_options">
+<span class="sig-prename descclassname"><span class="pre">disco.sources.gem.gem_model.</span></span><span class="sig-name descname"><span class="pre">common_options</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">func</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/sources/gem/gem_model.html#common_options"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.sources.gem.gem_model.common_options" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="disco.sources.gem.gem_model.GemModel">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">disco.sources.gem.gem_model.</span></span><span class="sig-name descname"><span class="pre">GemModel</span></span><a class="reference internal" href="../_modules/disco/sources/gem/gem_model.html#GemModel"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.sources.gem.gem_model.GemModel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="disco.sources.html#disco.sources.base.BaseOpenDssModel" title="disco.sources.base.BaseOpenDssModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">disco.sources.base.BaseOpenDssModel</span></code></a></p>
+<p>GEM Feeder Model Inputs Class</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.sources.gem.gem_model.GemModel.TRANSFORM_SUBCOMMANDS">
+<span class="sig-name descname"><span class="pre">TRANSFORM_SUBCOMMANDS</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{'snapshot':</span> <span class="pre">&lt;Command</span> <span class="pre">snapshot&gt;}</span></em><a class="headerlink" href="#disco.sources.gem.gem_model.GemModel.TRANSFORM_SUBCOMMANDS" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="disco.sources.gem.gem_model.GemModel.substation">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">substation</span></span><a class="headerlink" href="#disco.sources.gem.gem_model.GemModel.substation" title="Permalink to this definition">¶</a></dt>
+<dd><p>The substation name</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.sources.gem.gem_model.GemModel.get_transform_subcommand">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_transform_subcommand</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/sources/gem/gem_model.html#GemModel.get_transform_subcommand"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.sources.gem.gem_model.GemModel.get_transform_subcommand" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a click command for name.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.sources.gem.gem_model.GemModel.list_transform_subcommands">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">list_transform_subcommands</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/sources/gem/gem_model.html#GemModel.list_transform_subcommands"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.sources.gem.gem_model.GemModel.list_transform_subcommands" title="Permalink to this definition">¶</a></dt>
+<dd><p>List the available click transform-model subcommands.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>List of click command objects</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.sources.gem.gem_model.GemModel.transform">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">transform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_file</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">simulation_model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">include_pv_systems</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/sources/gem/gem_model.html#GemModel.transform"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.sources.gem.gem_model.GemModel.transform" title="Permalink to this definition">¶</a></dt>
+<dd><p>Transform GEM input data to a DISCO data model.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>input_file</strong> (<em>str</em>) – </p></li>
+<li><p><strong>output_path</strong> (<em>str</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-disco.sources.gem.make_element_bus_mapping">
+<span id="disco-sources-gem-make-element-bus-mapping-module"></span><h2>disco.sources.gem.make_element_bus_mapping module<a class="headerlink" href="#module-disco.sources.gem.make_element_bus_mapping" title="Permalink to this headline">¶</a></h2>
+<p>Maps elements to attached buses for each feeder in a path.</p>
+<dl class="py exception">
+<dt class="sig sig-object py" id="disco.sources.gem.make_element_bus_mapping.MissingBus">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">disco.sources.gem.make_element_bus_mapping.</span></span><span class="sig-name descname"><span class="pre">MissingBus</span></span><a class="reference internal" href="../_modules/disco/sources/gem/make_element_bus_mapping.html#MissingBus"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.sources.gem.make_element_bus_mapping.MissingBus" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></p>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="disco.sources.gem.make_element_bus_mapping.BadFormat">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">disco.sources.gem.make_element_bus_mapping.</span></span><span class="sig-name descname"><span class="pre">BadFormat</span></span><a class="reference internal" href="../_modules/disco/sources/gem/make_element_bus_mapping.html#BadFormat"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.sources.gem.make_element_bus_mapping.BadFormat" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.sources.gem.make_element_bus_mapping.get_bus_to_element">
+<span class="sig-prename descclassname"><span class="pre">disco.sources.gem.make_element_bus_mapping.</span></span><span class="sig-name descname"><span class="pre">get_bus_to_element</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bus_to_elems</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">feeder_mapping</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">element_type</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/sources/gem/make_element_bus_mapping.html#get_bus_to_element"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.sources.gem.make_element_bus_mapping.get_bus_to_element" title="Permalink to this definition">¶</a></dt>
+<dd><p>Builds a dict that maps bus names to a list of attached elements.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>feeder_mapping</strong> (<em>dict</em>) – dictionary created by this module at a feeder level</p></li>
+<li><p><strong>element_type</strong> (<em>str</em>) – Only consider this element type.</p></li>
+<li><p><strong>bus_to_elems</strong> (<em>dict</em>) – Output dictionary to fill in.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><p>Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="mi">123456</span><span class="p">:</span> <span class="p">[{</span><span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;pv_systems&quot;</span><span class="p">,</span> <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;pv_123456&quot;</span><span class="p">}]}</span>
+</pre></div>
+</div>
+</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.sources.gem.make_element_bus_mapping.get_element_coordinates">
+<span class="sig-prename descclassname"><span class="pre">disco.sources.gem.make_element_bus_mapping.</span></span><span class="sig-name descname"><span class="pre">get_element_coordinates</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">feeder_mapping</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">element_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/sources/gem/make_element_bus_mapping.html#get_element_coordinates"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.sources.gem.make_element_bus_mapping.get_element_coordinates" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the coordinates of the bus to which the element is attached.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>feeder_mapping</strong> (<em>dict</em>) – dictionary created by this module at a feeder level</p></li>
+<li><p><strong>element_type</strong> (<em>str</em>) – capacitors, lines, loads, etc.</p></li>
+<li><p><strong>name</strong> (<em>str</em>) – Element name</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><p>None is returned if no coordinates are stored.</p>
+<p>Example output:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s1">&#39;x&#39;</span><span class="p">:</span> <span class="s1">&#39;34374.509&#39;</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">:</span> <span class="s1">&#39;206624.15&#39;</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>If element_type == ‘lines’
+{‘from’: None, ‘to’: {‘x’: ‘34802.251’, ‘y’: ‘206769.654’}}</p>
+</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>dict | None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.sources.gem.make_element_bus_mapping.make_element_bus_mapping_file">
+<span class="sig-prename descclassname"><span class="pre">disco.sources.gem.make_element_bus_mapping.</span></span><span class="sig-name descname"><span class="pre">make_element_bus_mapping_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_obj</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_file</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/sources/gem/make_element_bus_mapping.html#make_element_bus_mapping_file"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.sources.gem.make_element_bus_mapping.make_element_bus_mapping_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>Make a mapping of elements to attached buses in a model-inputs path.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>text</strong> (<em>str</em>) – Text of a .dss file</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.sources.gem.make_element_bus_mapping.merge_feeder_mappings">
+<span class="sig-prename descclassname"><span class="pre">disco.sources.gem.make_element_bus_mapping.</span></span><span class="sig-name descname"><span class="pre">merge_feeder_mappings</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mapping_main</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mapping_new</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/sources/gem/make_element_bus_mapping.html#merge_feeder_mappings"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.sources.gem.make_element_bus_mapping.merge_feeder_mappings" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.sources.gem.make_element_bus_mapping.make_element_bus_mapping">
+<span class="sig-prename descclassname"><span class="pre">disco.sources.gem.make_element_bus_mapping.</span></span><span class="sig-name descname"><span class="pre">make_element_bus_mapping</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/sources/gem/make_element_bus_mapping.html#make_element_bus_mapping"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.sources.gem.make_element_bus_mapping.make_element_bus_mapping" title="Permalink to this definition">¶</a></dt>
+<dd><p>Make a mapping of elements to attached buses in a model-inputs path.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>path</strong> (<em>str</em>) – Path to model-inputs directory (created by generate-input-data)</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Maps feeder name to feeder mapping file.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.sources.gem.make_element_bus_mapping.write_element_bus_mapping">
+<span class="sig-prename descclassname"><span class="pre">disco.sources.gem.make_element_bus_mapping.</span></span><span class="sig-name descname"><span class="pre">write_element_bus_mapping</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mapping</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_file</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/sources/gem/make_element_bus_mapping.html#write_element_bus_mapping"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.sources.gem.make_element_bus_mapping.write_element_bus_mapping" title="Permalink to this definition">¶</a></dt>
+<dd><p>Write the mapping to output_file.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.sources.gem.make_element_bus_mapping.main">
+<span class="sig-prename descclassname"><span class="pre">disco.sources.gem.make_element_bus_mapping.</span></span><span class="sig-name descname"><span class="pre">main</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/sources/gem/make_element_bus_mapping.html#main"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.sources.gem.make_element_bus_mapping.main" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</section>
+<section id="module-disco.sources.gem.model_input_interface">
+<span id="disco-sources-gem-model-input-interface-module"></span><h2>disco.sources.gem.model_input_interface module<a class="headerlink" href="#module-disco.sources.gem.model_input_interface" title="Permalink to this headline">¶</a></h2>
+<p>Defines interface for model input data.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="disco.sources.gem.model_input_interface.ModelInputDataInterface">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">disco.sources.gem.model_input_interface.</span></span><span class="sig-name descname"><span class="pre">ModelInputDataInterface</span></span><a class="reference internal" href="../_modules/disco/sources/gem/model_input_interface.html#ModelInputDataInterface"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.sources.gem.model_input_interface.ModelInputDataInterface" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code></p>
+<p>Defines interface for model input data.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.sources.gem.model_input_interface.ModelInputDataInterface.generate_output_data">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">generate_output_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">output_dir</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">include_pv_systems</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/sources/gem/model_input_interface.html#ModelInputDataInterface.generate_output_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.sources.gem.model_input_interface.ModelInputDataInterface.generate_output_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate output data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>output_dir</strong> (<em>str</em>) – Directory in which to generate output data.</p></li>
+<li><p><strong>include_pv_systems</strong> (<em>bool</em>) – Whether to include PVSystems.dss in the simulation.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-disco.sources.gem.open_dss_generator">
+<span id="disco-sources-gem-open-dss-generator-module"></span><h2>disco.sources.gem.open_dss_generator module<a class="headerlink" href="#module-disco.sources.gem.open_dss_generator" title="Permalink to this headline">¶</a></h2>
+<p>Generates OpenDSS data for distribution simulations.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="disco.sources.gem.open_dss_generator.OpenDssGenerator">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">disco.sources.gem.open_dss_generator.</span></span><span class="sig-name descname"><span class="pre">OpenDssGenerator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/sources/gem/open_dss_generator.html#OpenDssGenerator"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.sources.gem.open_dss_generator.OpenDssGenerator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#disco.sources.gem.model_input_interface.ModelInputDataInterface" title="disco.sources.gem.model_input_interface.ModelInputDataInterface"><code class="xref py py-class docutils literal notranslate"><span class="pre">disco.sources.gem.model_input_interface.ModelInputDataInterface</span></code></a></p>
+<p>Generates OpenDSS data for distribution simulations.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.sources.gem.open_dss_generator.OpenDssGenerator.generate_output_data">
+<span class="sig-name descname"><span class="pre">generate_output_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">output_dir</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">include_pv_systems</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">simulation_model</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/sources/gem/open_dss_generator.html#OpenDssGenerator.generate_output_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.sources.gem.open_dss_generator.OpenDssGenerator.generate_output_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate output data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>output_dir</strong> (<em>str</em>) – Directory in which to generate output data.</p></li>
+<li><p><strong>include_pv_systems</strong> (<em>bool</em>) – Whether to include PVSystems.dss in the simulation.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.sources.gem.open_dss_generator.OpenDssGenerator.make_data_file_references_absolute">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">make_data_file_references_absolute</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">src_dir</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filename</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/sources/gem/open_dss_generator.html#OpenDssGenerator.make_data_file_references_absolute"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.sources.gem.open_dss_generator.OpenDssGenerator.make_data_file_references_absolute" title="Permalink to this definition">¶</a></dt>
+<dd><p>Change the path to any data file referenced in a .dss file to its
+absolute path.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="disco.sources.gem.open_dss_generator.Feeder">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">disco.sources.gem.open_dss_generator.</span></span><span class="sig-name descname"><span class="pre">Feeder</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/sources/gem/open_dss_generator.html#Feeder"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.sources.gem.open_dss_generator.Feeder" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Defines a feeder.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.sources.gem.open_dss_generator.Feeder.create_feeder_tag">
+<span class="sig-name descname"><span class="pre">create_feeder_tag</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/sources/gem/open_dss_generator.html#Feeder.create_feeder_tag"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.sources.gem.open_dss_generator.Feeder.create_feeder_tag" title="Permalink to this definition">¶</a></dt>
+<dd><p>A TEMP solution of creating feeder tag from opendss_location.</p>
+<p>Suppose the directory structure is like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">opendss_location</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="s2">&quot;/project/xxx/run2/distribution/xxx/feeder_models/&quot;</span>
+    <span class="s2">&quot;opendss/xxx/scenarios/xxx/&quot;</span>
+    <span class="s2">&quot;2050/2010-07-10_15-00-00-000/X/456/xxx&quot;</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>The tag would become “2050__2010-07-10_15-00-00-000__X__456”</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="disco.sources.gem.open_dss_generator.Deployment">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">disco.sources.gem.open_dss_generator.</span></span><span class="sig-name descname"><span class="pre">Deployment</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/sources/gem/open_dss_generator.html#Deployment"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.sources.gem.open_dss_generator.Deployment" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Defines a deployment.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.sources.gem.open_dss_generator.DeploymentInputs">
+<span class="sig-prename descclassname"><span class="pre">disco.sources.gem.open_dss_generator.</span></span><span class="sig-name descname"><span class="pre">DeploymentInputs</span></span><a class="headerlink" href="#disco.sources.gem.open_dss_generator.DeploymentInputs" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">disco.sources.gem.open_dss_generator.Inputs</span></code></p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.sources.gem.open_dss_generator.comment_out_pv_systems">
+<span class="sig-prename descclassname"><span class="pre">disco.sources.gem.open_dss_generator.</span></span><span class="sig-name descname"><span class="pre">comment_out_pv_systems</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">line</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">_</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/sources/gem/open_dss_generator.html#comment_out_pv_systems"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.sources.gem.open_dss_generator.comment_out_pv_systems" title="Permalink to this definition">¶</a></dt>
+<dd><p>Comments out the redirect to a given string.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.sources.gem.open_dss_generator.comment_out_solve">
+<span class="sig-prename descclassname"><span class="pre">disco.sources.gem.open_dss_generator.</span></span><span class="sig-name descname"><span class="pre">comment_out_solve</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">line</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">_</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/sources/gem/open_dss_generator.html#comment_out_solve"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.sources.gem.open_dss_generator.comment_out_solve" title="Permalink to this definition">¶</a></dt>
+<dd><p>Comments out the Solve command.</p>
+</dd></dl>
+
+</section>
+<section id="module-disco.sources.gem">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-disco.sources.gem" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2019, NREL.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

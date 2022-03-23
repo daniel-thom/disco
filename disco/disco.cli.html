@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>disco.cli package &mdash; DISCO 0.1 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link href="../_static/style.css" rel="stylesheet" type="text/css">
+
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> DISCO
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">User Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../installation.html#use-conda">Use Conda</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation.html#use-docker">Use Docker</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">Overview</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../overview.html#data-sources">Data Sources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview.html#transform-model">Transform Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview.html#config-jobs">Config Jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview.html#submit-jobs">Submit Jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview.html#result-analysis">Result Analysis</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../quick-start.html">Quick Start</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../quick-start.html#source-data">Source Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../quick-start.html#transform-model">Transform Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../quick-start.html#config-jobs">Config Jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../quick-start.html#submit-jobs">Submit Jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../quick-start.html#result-analysis">Result Analysis</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../data-sources.html">Data Sources</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../data-sources/smart-ds-model-preparation.html">SMART-DS OpenDSS Model Preparation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data-sources.html#gem-model">GEM Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data-sources.html#epri-model">EPRI Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data-sources.html#sourcetree1-model">SourceTree1 Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data-sources.html#sourcetree2-model">SourceTree2 Model</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../pv-deployments.html">PV Deployments</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../pv-deployments.html#sourcetree1-pv-deployments">SourceTree1 PV Deployments</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../transform-models.html">Transform Models</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../transform-models.html#transform-model-help">Transform Model Help</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../transform-models.html#disco-model-in-depth">DISCO Model in Depth</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../analysis-workflows.html">Analysis Workflows</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../analysis-workflows/hosting-capacity-analysis.html">Hosting Capacity Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../analysis-workflows/upgrade-cost-analysis.html">Upgrade Cost Analysis</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../pipelines.html">Pipelines</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../pipelines.html#sourcetree1model">SourceTree1Model</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../debugging-issues.html">Debugging Issues</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../debugging-issues.html#using-jade">Using JADE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../debugging-issues.html#using-pydss">Using PyDSS</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../data-ingestion.html">Data Ingestion</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../data-ingestion.html#ingest-to-new-database">Ingest to New Database</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data-ingestion.html#ingest-to-existing-database">Ingest to Existing Database</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data-ingestion.html#run-database-queries">Run Database Queries</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced-guide.html">Advanced Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../advanced-guide/analysis-deployment.html">Analysis Deployment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../advanced-guide/upgrade-cost-analysis-generic-models.html">Upgrade Cost Analysis JSON Schemas</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contribution</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../build-docs.html">Build docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../license.html">License</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">DISCO</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>disco.cli package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/disco/disco.cli.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="disco-cli-package">
+<h1>disco.cli package<a class="headerlink" href="#disco-cli-package" title="Permalink to this headline">¶</a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="module-disco.cli.cba_post_process">
+<span id="disco-cli-cba-post-process-module"></span><h2>disco.cli.cba_post_process module<a class="headerlink" href="#module-disco.cli.cba_post_process" title="Permalink to this headline">¶</a></h2>
+<p>Adds PV Curtailment columns to CBA output table.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.cli.cba_post_process.add_curtailment_columns">
+<span class="sig-prename descclassname"><span class="pre">disco.cli.cba_post_process.</span></span><span class="sig-name descname"><span class="pre">add_curtailment_columns</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">curtailment_tolerance</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/cli/cba_post_process.html#add_curtailment_columns"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.cli.cba_post_process.add_curtailment_columns" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add PV Curtailment columns to the file.</p>
+</dd></dl>
+
+</section>
+<section id="module-disco.cli.collect_feeder_stats">
+<span id="disco-cli-collect-feeder-stats-module"></span><h2>disco.cli.collect_feeder_stats module<a class="headerlink" href="#module-disco.cli.collect_feeder_stats" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.cli.collect_feeder_stats.count_element_types">
+<span class="sig-prename descclassname"><span class="pre">disco.cli.collect_feeder_stats.</span></span><span class="sig-name descname"><span class="pre">count_element_types</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pathlib.Path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">element</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/cli/collect_feeder_stats.html#count_element_types"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.cli.collect_feeder_stats.count_element_types" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.cli.collect_feeder_stats.sum_pmpps">
+<span class="sig-prename descclassname"><span class="pre">disco.cli.collect_feeder_stats.</span></span><span class="sig-name descname"><span class="pre">sum_pmpps</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pathlib.Path</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/cli/collect_feeder_stats.html#sum_pmpps"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.cli.collect_feeder_stats.sum_pmpps" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.cli.collect_feeder_stats.collect_feeder_counts">
+<span class="sig-prename descclassname"><span class="pre">disco.cli.collect_feeder_stats.</span></span><span class="sig-name descname"><span class="pre">collect_feeder_counts</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pathlib.Path</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/cli/collect_feeder_stats.html#collect_feeder_counts"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.cli.collect_feeder_stats.collect_feeder_counts" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.cli.collect_feeder_stats.main">
+<span class="sig-prename descclassname"><span class="pre">disco.cli.collect_feeder_stats.</span></span><span class="sig-name descname"><span class="pre">main</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/cli/collect_feeder_stats.html#main"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.cli.collect_feeder_stats.main" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</section>
+<section id="module-disco.cli.common">
+<span id="disco-cli-common-module"></span><h2>disco.cli.common module<a class="headerlink" href="#module-disco.cli.common" title="Permalink to this headline">¶</a></h2>
+<p>Common functions for CLI scripts</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.cli.common.handle_enum_input">
+<span class="sig-prename descclassname"><span class="pre">disco.cli.common.</span></span><span class="sig-name descname"><span class="pre">handle_enum_input</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">_</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">param</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/cli/common.html#handle_enum_input"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.cli.common.handle_enum_input" title="Permalink to this definition">¶</a></dt>
+<dd><p>Converts inputs to enums.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.cli.common.handle_existing_dir">
+<span class="sig-prename descclassname"><span class="pre">disco.cli.common.</span></span><span class="sig-name descname"><span class="pre">handle_existing_dir</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">directory</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">force</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/cli/common.html#handle_existing_dir"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.cli.common.handle_existing_dir" title="Permalink to this definition">¶</a></dt>
+<dd><p>Deletes existing directory if force is True.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.cli.common.proceed_with_user_permission">
+<span class="sig-prename descclassname"><span class="pre">disco.cli.common.</span></span><span class="sig-name descname"><span class="pre">proceed_with_user_permission</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ctx</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">message</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/cli/common.html#proceed_with_user_permission"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.cli.common.proceed_with_user_permission" title="Permalink to this definition">¶</a></dt>
+<dd><p>Pauses execution to prompt user for permission to proceed.</p>
+</dd></dl>
+
+</section>
+<section id="module-disco.cli.compute_hosting_capacity">
+<span id="disco-cli-compute-hosting-capacity-module"></span><h2>disco.cli.compute_hosting_capacity module<a class="headerlink" href="#module-disco.cli.compute_hosting_capacity" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="module-disco.cli.compute_pv_swad">
+<span id="disco-cli-compute-pv-swad-module"></span><h2>disco.cli.compute_pv_swad module<a class="headerlink" href="#module-disco.cli.compute_pv_swad" title="Permalink to this headline">¶</a></h2>
+<p>Created on Thu Feb 24 15:26:33 2022</p>
+<p>&#64;author: senam</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.cli.compute_pv_swad.get_load_info">
+<span class="sig-prename descclassname"><span class="pre">disco.cli.compute_pv_swad.</span></span><span class="sig-name descname"><span class="pre">get_load_info</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/cli/compute_pv_swad.html#get_load_info"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.cli.compute_pv_swad.get_load_info" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>This function returns the following information pertaining to loads on a feeder:</dt><dd><p>load name
+bus where each load is connected
+kW load capacity
+number of phases</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.cli.compute_pv_swad.get_existing_pvs">
+<span class="sig-prename descclassname"><span class="pre">disco.cli.compute_pv_swad.</span></span><span class="sig-name descname"><span class="pre">get_existing_pvs</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/cli/compute_pv_swad.html#get_existing_pvs"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.cli.compute_pv_swad.get_existing_pvs" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.cli.compute_pv_swad.compute_weighted_average_pv_distance">
+<span class="sig-prename descclassname"><span class="pre">disco.cli.compute_pv_swad.</span></span><span class="sig-name descname"><span class="pre">compute_weighted_average_pv_distance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">load_info</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">option</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'size'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/cli/compute_pv_swad.html#compute_weighted_average_pv_distance"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.cli.compute_pv_swad.compute_weighted_average_pv_distance" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.cli.compute_pv_swad.collect_weighted_average_pv_distance">
+<span class="sig-prename descclassname"><span class="pre">disco.cli.compute_pv_swad.</span></span><span class="sig-name descname"><span class="pre">collect_weighted_average_pv_distance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pathlib.Path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">option</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/cli/compute_pv_swad.html#collect_weighted_average_pv_distance"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.cli.compute_pv_swad.collect_weighted_average_pv_distance" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.cli.compute_pv_swad.collect_weighted_average_pv_distances">
+<span class="sig-prename descclassname"><span class="pre">disco.cli.compute_pv_swad.</span></span><span class="sig-name descname"><span class="pre">collect_weighted_average_pv_distances</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pathlib.Path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">option</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/cli/compute_pv_swad.html#collect_weighted_average_pv_distances"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.cli.compute_pv_swad.collect_weighted_average_pv_distances" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</section>
+<section id="module-disco.cli.compute_snapshot_hosting_capacity">
+<span id="disco-cli-compute-snapshot-hosting-capacity-module"></span><h2>disco.cli.compute_snapshot_hosting_capacity module<a class="headerlink" href="#module-disco.cli.compute_snapshot_hosting_capacity" title="Permalink to this headline">¶</a></h2>
+<p>Computes hosting capacity</p>
+</section>
+<section id="module-disco.cli.compute_snapshot_impact_analysis">
+<span id="disco-cli-compute-snapshot-impact-analysis-module"></span><h2>disco.cli.compute_snapshot_impact_analysis module<a class="headerlink" href="#module-disco.cli.compute_snapshot_impact_analysis" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="module-disco.cli.compute_time_series_hosting_capacity">
+<span id="disco-cli-compute-time-series-hosting-capacity-module"></span><h2>disco.cli.compute_time_series_hosting_capacity module<a class="headerlink" href="#module-disco.cli.compute_time_series_hosting_capacity" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="module-disco.cli.compute_time_series_impact_analysis">
+<span id="disco-cli-compute-time-series-impact-analysis-module"></span><h2>disco.cli.compute_time_series_impact_analysis module<a class="headerlink" href="#module-disco.cli.compute_time_series_impact_analysis" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="module-disco.cli.config">
+<span id="disco-cli-config-module"></span><h2>disco.cli.config module<a class="headerlink" href="#module-disco.cli.config" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="module-disco.cli.config_snapshot">
+<span id="disco-cli-config-snapshot-module"></span><h2>disco.cli.config_snapshot module<a class="headerlink" href="#module-disco.cli.config_snapshot" title="Permalink to this headline">¶</a></h2>
+<p>Creates JADE configuration for stage 1 of pydss_simulation pipeline.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.cli.config_snapshot.switch_snapshot_to_qsts">
+<span class="sig-prename descclassname"><span class="pre">disco.cli.config_snapshot.</span></span><span class="sig-name descname"><span class="pre">switch_snapshot_to_qsts</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/cli/config_snapshot.html#switch_snapshot_to_qsts"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.cli.config_snapshot.switch_snapshot_to_qsts" title="Permalink to this definition">¶</a></dt>
+<dd><p>Use QSTS at one time point to perform SNAPSHOT simulation with loadshape profile</p>
+</dd></dl>
+
+</section>
+<section id="module-disco.cli.config_time_series">
+<span id="disco-cli-config-time-series-module"></span><h2>disco.cli.config_time_series module<a class="headerlink" href="#module-disco.cli.config_time_series" title="Permalink to this headline">¶</a></h2>
+<p>Creates JADE configuration for stage 1 of pydss_simulation pipeline.</p>
+</section>
+<section id="module-disco.cli.config_upgrade">
+<span id="disco-cli-config-upgrade-module"></span><h2>disco.cli.config_upgrade module<a class="headerlink" href="#module-disco.cli.config_upgrade" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="module-disco.cli.configure_analysis">
+<span id="disco-cli-configure-analysis-module"></span><h2>disco.cli.configure_analysis module<a class="headerlink" href="#module-disco.cli.configure_analysis" title="Permalink to this headline">¶</a></h2>
+<p>CLI to automatically create an anlysis configuration.</p>
+</section>
+<section id="module-disco.cli.create_pipeline">
+<span id="disco-cli-create-pipeline-module"></span><h2>disco.cli.create_pipeline module<a class="headerlink" href="#module-disco.cli.create_pipeline" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="module-disco.cli.disco">
+<span id="disco-cli-disco-module"></span><h2>disco.cli.disco module<a class="headerlink" href="#module-disco.cli.disco" title="Permalink to this headline">¶</a></h2>
+<p>Main CLI command for disco.</p>
+</section>
+<section id="module-disco.cli.disco_internal">
+<span id="disco-cli-disco-internal-module"></span><h2>disco.cli.disco_internal module<a class="headerlink" href="#module-disco.cli.disco_internal" title="Permalink to this headline">¶</a></h2>
+<p>Main CLI command for disco.</p>
+</section>
+<section id="module-disco.cli.download_source">
+<span id="disco-cli-download-source-module"></span><h2>disco.cli.download_source module<a class="headerlink" href="#module-disco.cli.download_source" title="Permalink to this headline">¶</a></h2>
+<p>Command to download input data.</p>
+</section>
+<section id="module-disco.cli.ingest_tables">
+<span id="disco-cli-ingest-tables-module"></span><h2>disco.cli.ingest_tables module<a class="headerlink" href="#module-disco.cli.ingest_tables" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="module-disco.cli.make_cba_tables">
+<span id="disco-cli-make-cba-tables-module"></span><h2>disco.cli.make_cba_tables module<a class="headerlink" href="#module-disco.cli.make_cba_tables" title="Permalink to this headline">¶</a></h2>
+<p>Make cost benefit analysis summary tables for all jobs in a batch.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="disco.cli.make_cba_tables.JobInfo">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">disco.cli.make_cba_tables.</span></span><span class="sig-name descname"><span class="pre">JobInfo</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">substation</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">feeder</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">placement</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sample</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">penetration_level</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#disco.cli.make_cba_tables.JobInfo" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">tuple</span></code></p>
+<p>Create new instance of JobInfo(name, substation, feeder, placement, sample, penetration_level)</p>
+<dl class="py property">
+<dt class="sig sig-object py" id="disco.cli.make_cba_tables.JobInfo.feeder">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">feeder</span></span><a class="headerlink" href="#disco.cli.make_cba_tables.JobInfo.feeder" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 2</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="disco.cli.make_cba_tables.JobInfo.name">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">name</span></span><a class="headerlink" href="#disco.cli.make_cba_tables.JobInfo.name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 0</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="disco.cli.make_cba_tables.JobInfo.penetration_level">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">penetration_level</span></span><a class="headerlink" href="#disco.cli.make_cba_tables.JobInfo.penetration_level" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 5</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="disco.cli.make_cba_tables.JobInfo.placement">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">placement</span></span><a class="headerlink" href="#disco.cli.make_cba_tables.JobInfo.placement" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 3</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="disco.cli.make_cba_tables.JobInfo.sample">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">sample</span></span><a class="headerlink" href="#disco.cli.make_cba_tables.JobInfo.sample" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 4</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="disco.cli.make_cba_tables.JobInfo.substation">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">substation</span></span><a class="headerlink" href="#disco.cli.make_cba_tables.JobInfo.substation" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 1</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.cli.make_cba_tables.parse_batch_results">
+<span class="sig-prename descclassname"><span class="pre">disco.cli.make_cba_tables.</span></span><span class="sig-name descname"><span class="pre">parse_batch_results</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">output_dir</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/cli/make_cba_tables.html#parse_batch_results"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.cli.make_cba_tables.parse_batch_results" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parse the results from all jobs in a JADE output directory.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.cli.make_cba_tables.parse_job_results">
+<span class="sig-prename descclassname"><span class="pre">disco.cli.make_cba_tables.</span></span><span class="sig-name descname"><span class="pre">parse_job_results</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">job</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_path</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/cli/make_cba_tables.html#parse_job_results"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.cli.make_cba_tables.parse_job_results" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the tables for a single job.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.cli.make_cba_tables.get_powers_table">
+<span class="sig-prename descclassname"><span class="pre">disco.cli.make_cba_tables.</span></span><span class="sig-name descname"><span class="pre">get_powers_table</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">results</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">PyDSS.pydss_results.PyDssResults</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">job_info</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#disco.cli.make_cba_tables.JobInfo" title="disco.cli.make_cba_tables.JobInfo"><span class="pre">disco.cli.make_cba_tables.JobInfo</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/cli/make_cba_tables.html#get_powers_table"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.cli.make_cba_tables.get_powers_table" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return pd.DataFrame containing all power data.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.cli.make_cba_tables.get_pv_power_value">
+<span class="sig-prename descclassname"><span class="pre">disco.cli.make_cba_tables.</span></span><span class="sig-name descname"><span class="pre">get_pv_power_value</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">val</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/cli/make_cba_tables.html#get_pv_power_value"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.cli.make_cba_tables.get_pv_power_value" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.cli.make_cba_tables.get_capacitor_table">
+<span class="sig-prename descclassname"><span class="pre">disco.cli.make_cba_tables.</span></span><span class="sig-name descname"><span class="pre">get_capacitor_table</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">results</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">PyDSS.pydss_results.PyDssResults</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">job_info</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#disco.cli.make_cba_tables.JobInfo" title="disco.cli.make_cba_tables.JobInfo"><span class="pre">disco.cli.make_cba_tables.JobInfo</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/cli/make_cba_tables.html#get_capacitor_table"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.cli.make_cba_tables.get_capacitor_table" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return capacitor state changes for all scenarios.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.cli.make_cba_tables.get_reg_control_table">
+<span class="sig-prename descclassname"><span class="pre">disco.cli.make_cba_tables.</span></span><span class="sig-name descname"><span class="pre">get_reg_control_table</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">results</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">PyDSS.pydss_results.PyDssResults</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">job_info</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#disco.cli.make_cba_tables.JobInfo" title="disco.cli.make_cba_tables.JobInfo"><span class="pre">disco.cli.make_cba_tables.JobInfo</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/cli/make_cba_tables.html#get_reg_control_table"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.cli.make_cba_tables.get_reg_control_table" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return reg_control state changes for all scenarios.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.cli.make_cba_tables.get_sum_group_files">
+<span class="sig-prename descclassname"><span class="pre">disco.cli.make_cba_tables.</span></span><span class="sig-name descname"><span class="pre">get_sum_group_files</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">results</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">PyDSS.pydss_results.PyDssResults</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/cli/make_cba_tables.html#get_sum_group_files"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.cli.make_cba_tables.get_sum_group_files" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a set of filenames defining sum_groups and Load/PV customer types.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.cli.make_cba_tables.make_customer_type_table">
+<span class="sig-prename descclassname"><span class="pre">disco.cli.make_cba_tables.</span></span><span class="sig-name descname"><span class="pre">make_customer_type_table</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sum_group_files</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">element_type</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/cli/make_cba_tables.html#make_customer_type_table"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.cli.make_cba_tables.make_customer_type_table" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a dict of customer type to set of element names.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.cli.make_cba_tables.serialize_table">
+<span class="sig-prename descclassname"><span class="pre">disco.cli.make_cba_tables.</span></span><span class="sig-name descname"><span class="pre">serialize_table</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">table</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filename</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/cli/make_cba_tables.html#serialize_table"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.cli.make_cba_tables.serialize_table" title="Permalink to this definition">¶</a></dt>
+<dd><p>Serialize a list of dictionaries to a CSV file.</p>
+</dd></dl>
+
+</section>
+<section id="module-disco.cli.make_summary_tables">
+<span id="disco-cli-make-summary-tables-module"></span><h2>disco.cli.make_summary_tables module<a class="headerlink" href="#module-disco.cli.make_summary_tables" title="Permalink to this headline">¶</a></h2>
+<p>Make hosting capacity summary tables for all jobs in a batch.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="disco.cli.make_summary_tables.JobInfo">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">disco.cli.make_summary_tables.</span></span><span class="sig-name descname"><span class="pre">JobInfo</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">substation</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">feeder</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">placement</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sample</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">penetration_level</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#disco.cli.make_summary_tables.JobInfo" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">tuple</span></code></p>
+<p>Create new instance of JobInfo(name, substation, feeder, placement, sample, penetration_level)</p>
+<dl class="py property">
+<dt class="sig sig-object py" id="disco.cli.make_summary_tables.JobInfo.feeder">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">feeder</span></span><a class="headerlink" href="#disco.cli.make_summary_tables.JobInfo.feeder" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 2</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="disco.cli.make_summary_tables.JobInfo.name">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">name</span></span><a class="headerlink" href="#disco.cli.make_summary_tables.JobInfo.name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 0</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="disco.cli.make_summary_tables.JobInfo.penetration_level">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">penetration_level</span></span><a class="headerlink" href="#disco.cli.make_summary_tables.JobInfo.penetration_level" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 5</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="disco.cli.make_summary_tables.JobInfo.placement">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">placement</span></span><a class="headerlink" href="#disco.cli.make_summary_tables.JobInfo.placement" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 3</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="disco.cli.make_summary_tables.JobInfo.sample">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">sample</span></span><a class="headerlink" href="#disco.cli.make_summary_tables.JobInfo.sample" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 4</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="disco.cli.make_summary_tables.JobInfo.substation">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">substation</span></span><a class="headerlink" href="#disco.cli.make_summary_tables.JobInfo.substation" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 1</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.cli.make_summary_tables.parse_batch_results">
+<span class="sig-prename descclassname"><span class="pre">disco.cli.make_summary_tables.</span></span><span class="sig-name descname"><span class="pre">parse_batch_results</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">output_dir</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/cli/make_summary_tables.html#parse_batch_results"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.cli.make_summary_tables.parse_batch_results" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parse the results from all jobs in a JADE output directory.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.cli.make_summary_tables.parse_job_results">
+<span class="sig-prename descclassname"><span class="pre">disco.cli.make_summary_tables.</span></span><span class="sig-name descname"><span class="pre">parse_job_results</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">job</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_path</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/cli/make_summary_tables.html#parse_job_results"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.cli.make_summary_tables.parse_job_results" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the tables for a single job.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.cli.make_summary_tables.add_scenario">
+<span class="sig-prename descclassname"><span class="pre">disco.cli.make_summary_tables.</span></span><span class="sig-name descname"><span class="pre">add_scenario</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">row</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scenario_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">include_time_point</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/cli/make_summary_tables.html#add_scenario"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.cli.make_summary_tables.add_scenario" title="Permalink to this definition">¶</a></dt>
+<dd><p>Splits the PyDSS scenario name into name and time point.
+Only applicable to loadshape-based snapshot simulations.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.cli.make_summary_tables.get_metadata_table">
+<span class="sig-prename descclassname"><span class="pre">disco.cli.make_summary_tables.</span></span><span class="sig-name descname"><span class="pre">get_metadata_table</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">results</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">PyDSS.pydss_results.PyDssResults</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">job_info</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#disco.cli.make_summary_tables.JobInfo" title="disco.cli.make_summary_tables.JobInfo"><span class="pre">disco.cli.make_summary_tables.JobInfo</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/cli/make_summary_tables.html#get_metadata_table"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.cli.make_summary_tables.get_metadata_table" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return capacity stats for each scenario in the PyDSS project</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.cli.make_summary_tables.get_feeder_losses">
+<span class="sig-prename descclassname"><span class="pre">disco.cli.make_summary_tables.</span></span><span class="sig-name descname"><span class="pre">get_feeder_losses</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">results</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">PyDSS.pydss_results.PyDssResults</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">job_info</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#disco.cli.make_summary_tables.JobInfo" title="disco.cli.make_summary_tables.JobInfo"><span class="pre">disco.cli.make_summary_tables.JobInfo</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/cli/make_summary_tables.html#get_feeder_losses"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.cli.make_summary_tables.get_feeder_losses" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return feeder losses for all scenarios.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.cli.make_summary_tables.get_feeder_head_info">
+<span class="sig-prename descclassname"><span class="pre">disco.cli.make_summary_tables.</span></span><span class="sig-name descname"><span class="pre">get_feeder_head_info</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">results</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">PyDSS.pydss_results.PyDssResults</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">job_info</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#disco.cli.make_summary_tables.JobInfo" title="disco.cli.make_summary_tables.JobInfo"><span class="pre">disco.cli.make_summary_tables.JobInfo</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/cli/make_summary_tables.html#get_feeder_head_info"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.cli.make_summary_tables.get_feeder_head_info" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return feeder head info for the control_mode scenario.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.cli.make_summary_tables.get_thermal_metrics">
+<span class="sig-prename descclassname"><span class="pre">disco.cli.make_summary_tables.</span></span><span class="sig-name descname"><span class="pre">get_thermal_metrics</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">results</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">PyDSS.pydss_results.PyDssResults</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">job_info</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#disco.cli.make_summary_tables.JobInfo" title="disco.cli.make_summary_tables.JobInfo"><span class="pre">disco.cli.make_summary_tables.JobInfo</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/cli/make_summary_tables.html#get_thermal_metrics"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.cli.make_summary_tables.get_thermal_metrics" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the thermal metrics for all scenarios.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.cli.make_summary_tables.get_voltage_metrics">
+<span class="sig-prename descclassname"><span class="pre">disco.cli.make_summary_tables.</span></span><span class="sig-name descname"><span class="pre">get_voltage_metrics</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">results</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">PyDSS.pydss_results.PyDssResults</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">job_info</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#disco.cli.make_summary_tables.JobInfo" title="disco.cli.make_summary_tables.JobInfo"><span class="pre">disco.cli.make_summary_tables.JobInfo</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/cli/make_summary_tables.html#get_voltage_metrics"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.cli.make_summary_tables.get_voltage_metrics" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the voltage metrics for all scenarios.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.cli.make_summary_tables.get_snapshot_time_points_table">
+<span class="sig-prename descclassname"><span class="pre">disco.cli.make_summary_tables.</span></span><span class="sig-name descname"><span class="pre">get_snapshot_time_points_table</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">results</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">PyDSS.pydss_results.PyDssResults</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">job_info</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#disco.cli.make_summary_tables.JobInfo" title="disco.cli.make_summary_tables.JobInfo"><span class="pre">disco.cli.make_summary_tables.JobInfo</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/cli/make_summary_tables.html#get_snapshot_time_points_table"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.cli.make_summary_tables.get_snapshot_time_points_table" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the snapshot time points determined by each job.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.cli.make_summary_tables.compute_total_pv_kw">
+<span class="sig-prename descclassname"><span class="pre">disco.cli.make_summary_tables.</span></span><span class="sig-name descname"><span class="pre">compute_total_pv_kw</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">scenario</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">PyDSS.pydss_results.PyDssScenarioResults</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/cli/make_summary_tables.html#compute_total_pv_kw"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.cli.make_summary_tables.compute_total_pv_kw" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the total PV capacity in kw.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.cli.make_summary_tables.compute_total_load_kw">
+<span class="sig-prename descclassname"><span class="pre">disco.cli.make_summary_tables.</span></span><span class="sig-name descname"><span class="pre">compute_total_load_kw</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">scenario</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">PyDSS.pydss_results.PyDssScenarioResults</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/cli/make_summary_tables.html#compute_total_load_kw"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.cli.make_summary_tables.compute_total_load_kw" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the total load capacity in kw.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.cli.make_summary_tables.serialize_table">
+<span class="sig-prename descclassname"><span class="pre">disco.cli.make_summary_tables.</span></span><span class="sig-name descname"><span class="pre">serialize_table</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">table</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filename</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/cli/make_summary_tables.html#serialize_table"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.cli.make_summary_tables.serialize_table" title="Permalink to this definition">¶</a></dt>
+<dd><p>Serialize a list of dictionaries to a CSV file.</p>
+</dd></dl>
+
+</section>
+<section id="module-disco.cli.make_upgrade_tables">
+<span id="disco-cli-make-upgrade-tables-module"></span><h2>disco.cli.make_upgrade_tables module<a class="headerlink" href="#module-disco.cli.make_upgrade_tables" title="Permalink to this headline">¶</a></h2>
+<p>Make new upgrade cost analysis tables for all jobs in a batch.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="disco.cli.make_upgrade_tables.JobInfo">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">disco.cli.make_upgrade_tables.</span></span><span class="sig-name descname"><span class="pre">JobInfo</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">substation</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">feeder</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">placement</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sample</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">penetration_level</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#disco.cli.make_upgrade_tables.JobInfo" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">tuple</span></code></p>
+<p>Create new instance of JobInfo(name, substation, feeder, placement, sample, penetration_level)</p>
+<dl class="py property">
+<dt class="sig sig-object py" id="disco.cli.make_upgrade_tables.JobInfo.feeder">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">feeder</span></span><a class="headerlink" href="#disco.cli.make_upgrade_tables.JobInfo.feeder" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 2</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="disco.cli.make_upgrade_tables.JobInfo.name">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">name</span></span><a class="headerlink" href="#disco.cli.make_upgrade_tables.JobInfo.name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 0</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="disco.cli.make_upgrade_tables.JobInfo.penetration_level">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">penetration_level</span></span><a class="headerlink" href="#disco.cli.make_upgrade_tables.JobInfo.penetration_level" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 5</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="disco.cli.make_upgrade_tables.JobInfo.placement">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">placement</span></span><a class="headerlink" href="#disco.cli.make_upgrade_tables.JobInfo.placement" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 3</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="disco.cli.make_upgrade_tables.JobInfo.sample">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">sample</span></span><a class="headerlink" href="#disco.cli.make_upgrade_tables.JobInfo.sample" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 4</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="disco.cli.make_upgrade_tables.JobInfo.substation">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">substation</span></span><a class="headerlink" href="#disco.cli.make_upgrade_tables.JobInfo.substation" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 1</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.cli.make_upgrade_tables.parse_batch_results">
+<span class="sig-prename descclassname"><span class="pre">disco.cli.make_upgrade_tables.</span></span><span class="sig-name descname"><span class="pre">parse_batch_results</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">output_dir</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/cli/make_upgrade_tables.html#parse_batch_results"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.cli.make_upgrade_tables.parse_batch_results" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parse the results from all jobs in a JADE output directory.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.cli.make_upgrade_tables.parse_job_results">
+<span class="sig-prename descclassname"><span class="pre">disco.cli.make_upgrade_tables.</span></span><span class="sig-name descname"><span class="pre">parse_job_results</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">job</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_path</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/cli/make_upgrade_tables.html#parse_job_results"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.cli.make_upgrade_tables.parse_job_results" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.cli.make_upgrade_tables.get_upgrade_summary_table">
+<span class="sig-prename descclassname"><span class="pre">disco.cli.make_upgrade_tables.</span></span><span class="sig-name descname"><span class="pre">get_upgrade_summary_table</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">job_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">job_info</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/cli/make_upgrade_tables.html#get_upgrade_summary_table"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.cli.make_upgrade_tables.get_upgrade_summary_table" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.cli.make_upgrade_tables.get_total_upgrade_costs_table">
+<span class="sig-prename descclassname"><span class="pre">disco.cli.make_upgrade_tables.</span></span><span class="sig-name descname"><span class="pre">get_total_upgrade_costs_table</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">job_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">job_info</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/cli/make_upgrade_tables.html#get_total_upgrade_costs_table"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.cli.make_upgrade_tables.get_total_upgrade_costs_table" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.cli.make_upgrade_tables.serialize_table">
+<span class="sig-prename descclassname"><span class="pre">disco.cli.make_upgrade_tables.</span></span><span class="sig-name descname"><span class="pre">serialize_table</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">table</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filename</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/cli/make_upgrade_tables.html#serialize_table"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.cli.make_upgrade_tables.serialize_table" title="Permalink to this definition">¶</a></dt>
+<dd><p>Serialize a list of dictionaries to a CSV file.</p>
+</dd></dl>
+
+</section>
+<section id="module-disco.cli.prescreen_pv_penetration_levels">
+<span id="disco-cli-prescreen-pv-penetration-levels-module"></span><h2>disco.cli.prescreen_pv_penetration_levels module<a class="headerlink" href="#module-disco.cli.prescreen_pv_penetration_levels" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="module-disco.cli.pv_deployments">
+<span id="disco-cli-pv-deployments-module"></span><h2>disco.cli.pv_deployments module<a class="headerlink" href="#module-disco.cli.pv_deployments" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.cli.pv_deployments.create_pv_deployments">
+<span class="sig-prename descclassname"><span class="pre">disco.cli.pv_deployments.</span></span><span class="sig-name descname"><span class="pre">create_pv_deployments</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hierarchy</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/cli/pv_deployments.html#create_pv_deployments"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.cli.pv_deployments.create_pv_deployments" title="Permalink to this definition">¶</a></dt>
+<dd><p>A method for generating pv deployments</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.cli.pv_deployments.create_pv_configs">
+<span class="sig-prename descclassname"><span class="pre">disco.cli.pv_deployments.</span></span><span class="sig-name descname"><span class="pre">create_pv_configs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hierarchy</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/cli/pv_deployments.html#create_pv_configs"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.cli.pv_deployments.create_pv_configs" title="Permalink to this definition">¶</a></dt>
+<dd><p>A method for generating pv config JSON files</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.cli.pv_deployments.remove_pv_deployments">
+<span class="sig-prename descclassname"><span class="pre">disco.cli.pv_deployments.</span></span><span class="sig-name descname"><span class="pre">remove_pv_deployments</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hierarchy</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/cli/pv_deployments.html#remove_pv_deployments"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.cli.pv_deployments.remove_pv_deployments" title="Permalink to this definition">¶</a></dt>
+<dd><p>A method for removing deployed pv systems</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.cli.pv_deployments.check_pv_deployments">
+<span class="sig-prename descclassname"><span class="pre">disco.cli.pv_deployments.</span></span><span class="sig-name descname"><span class="pre">check_pv_deployments</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hierarchy</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/cli/pv_deployments.html#check_pv_deployments"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.cli.pv_deployments.check_pv_deployments" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.cli.pv_deployments.remove_pv_configs">
+<span class="sig-prename descclassname"><span class="pre">disco.cli.pv_deployments.</span></span><span class="sig-name descname"><span class="pre">remove_pv_configs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hierarchy</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/cli/pv_deployments.html#remove_pv_configs"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.cli.pv_deployments.remove_pv_configs" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.cli.pv_deployments.check_pv_configs">
+<span class="sig-prename descclassname"><span class="pre">disco.cli.pv_deployments.</span></span><span class="sig-name descname"><span class="pre">check_pv_configs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hierarchy</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/cli/pv_deployments.html#check_pv_configs"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.cli.pv_deployments.check_pv_configs" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.cli.pv_deployments.list_feeder_paths">
+<span class="sig-prename descclassname"><span class="pre">disco.cli.pv_deployments.</span></span><span class="sig-name descname"><span class="pre">list_feeder_paths</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hierarchy</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/cli/pv_deployments.html#list_feeder_paths"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.cli.pv_deployments.list_feeder_paths" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.cli.pv_deployments.redirect_pv_shapes">
+<span class="sig-prename descclassname"><span class="pre">disco.cli.pv_deployments.</span></span><span class="sig-name descname"><span class="pre">redirect_pv_shapes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hierarchy</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/cli/pv_deployments.html#redirect_pv_shapes"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.cli.pv_deployments.redirect_pv_shapes" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.cli.pv_deployments.generate_pv_deployment_jobs">
+<span class="sig-prename descclassname"><span class="pre">disco.cli.pv_deployments.</span></span><span class="sig-name descname"><span class="pre">generate_pv_deployment_jobs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hierarchy</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/cli/pv_deployments.html#generate_pv_deployment_jobs"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.cli.pv_deployments.generate_pv_deployment_jobs" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.cli.pv_deployments.restore_feeder_data">
+<span class="sig-prename descclassname"><span class="pre">disco.cli.pv_deployments.</span></span><span class="sig-name descname"><span class="pre">restore_feeder_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hierarchy</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/cli/pv_deployments.html#restore_feeder_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.cli.pv_deployments.restore_feeder_data" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.cli.pv_deployments.transform_feeder_loads">
+<span class="sig-prename descclassname"><span class="pre">disco.cli.pv_deployments.</span></span><span class="sig-name descname"><span class="pre">transform_feeder_loads</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hierarchy</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/cli/pv_deployments.html#transform_feeder_loads"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.cli.pv_deployments.transform_feeder_loads" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</section>
+<section id="module-disco.cli.simulation_models">
+<span id="disco-cli-simulation-models-module"></span><h2>disco.cli.simulation_models module<a class="headerlink" href="#module-disco.cli.simulation_models" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.cli.simulation_models.get_model_class">
+<span class="sig-prename descclassname"><span class="pre">disco.cli.simulation_models.</span></span><span class="sig-name descname"><span class="pre">get_model_class</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ctx</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">param</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/cli/simulation_models.html#get_model_class"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.cli.simulation_models.get_model_class" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</section>
+<section id="module-disco.cli.summarize_hosting_capacity">
+<span id="disco-cli-summarize-hosting-capacity-module"></span><h2>disco.cli.summarize_hosting_capacity module<a class="headerlink" href="#module-disco.cli.summarize_hosting_capacity" title="Permalink to this headline">¶</a></h2>
+<p>Create summary files for hosting capacity results.</p>
+</section>
+<section id="module-disco.cli.transform_model">
+<span id="disco-cli-transform-model-module"></span><h2>disco.cli.transform_model module<a class="headerlink" href="#module-disco.cli.transform_model" title="Permalink to this headline">¶</a></h2>
+<p>CLI commands for transforming source data</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="disco.cli.transform_model.TransformCli">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">disco.cli.transform_model.</span></span><span class="sig-name descname"><span class="pre">TransformCli</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/cli/transform_model.html#TransformCli"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.cli.transform_model.TransformCli" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">click.core.MultiCommand</span></code></p>
+<p>Custom CLI to dynamically detect subcommands from an input argument.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.cli.transform_model.TransformCli.list_commands">
+<span class="sig-name descname"><span class="pre">list_commands</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ctx</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/cli/transform_model.html#TransformCli.list_commands"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.cli.transform_model.TransformCli.list_commands" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a list of subcommand names in the order they should
+appear.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.cli.transform_model.TransformCli.get_command">
+<span class="sig-name descname"><span class="pre">get_command</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ctx</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/cli/transform_model.html#TransformCli.get_command"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.cli.transform_model.TransformCli.get_command" title="Permalink to this definition">¶</a></dt>
+<dd><p>Given a context and a command name, this returns a
+<code class="xref py py-class docutils literal notranslate"><span class="pre">Command</span></code> object if it exists or returns <cite>None</cite>.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.cli.transform_model.TransformCli.check_input_path">
+<span class="sig-name descname"><span class="pre">check_input_path</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/cli/transform_model.html#TransformCli.check_input_path"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.cli.transform_model.TransformCli.check_input_path" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.cli.transform_model.TransformCli.show_subcommand_help_and_exit">
+<span class="sig-name descname"><span class="pre">show_subcommand_help_and_exit</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/cli/transform_model.html#TransformCli.show_subcommand_help_and_exit"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.cli.transform_model.TransformCli.show_subcommand_help_and_exit" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.cli.transform_model.input_path_cb">
+<span class="sig-prename descclassname"><span class="pre">disco.cli.transform_model.</span></span><span class="sig-name descname"><span class="pre">input_path_cb</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ctx</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">param</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/cli/transform_model.html#input_path_cb"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.cli.transform_model.input_path_cb" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.cli.transform_model.show_help_and_exit">
+<span class="sig-prename descclassname"><span class="pre">disco.cli.transform_model.</span></span><span class="sig-name descname"><span class="pre">show_help_and_exit</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/cli/transform_model.html#show_help_and_exit"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.cli.transform_model.show_help_and_exit" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</section>
+<section id="module-disco.cli.upgrade_cost_analysis">
+<span id="disco-cli-upgrade-cost-analysis-module"></span><h2>disco.cli.upgrade_cost_analysis module<a class="headerlink" href="#module-disco.cli.upgrade_cost_analysis" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="disco.cli.upgrade_cost_analysis.JobInfo">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">disco.cli.upgrade_cost_analysis.</span></span><span class="sig-name descname"><span class="pre">JobInfo</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#disco.cli.upgrade_cost_analysis.JobInfo" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">tuple</span></code></p>
+<p>Create new instance of JobInfo(name,)</p>
+<dl class="py property">
+<dt class="sig sig-object py" id="disco.cli.upgrade_cost_analysis.JobInfo.name">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">name</span></span><a class="headerlink" href="#disco.cli.upgrade_cost_analysis.JobInfo.name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 0</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.cli.upgrade_cost_analysis.run_job">
+<span class="sig-prename descclassname"><span class="pre">disco.cli.upgrade_cost_analysis.</span></span><span class="sig-name descname"><span class="pre">run_job</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">job</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">jobs_output_dir</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/cli/upgrade_cost_analysis.html#run_job"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.cli.upgrade_cost_analysis.run_job" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</section>
+<section id="module-disco.cli">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-disco.cli" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2019, NREL.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

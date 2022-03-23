@@ -1,0 +1,10 @@
+disco.postprocess.config package
+================================
+
+Module contents
+---------------
+
+.. automodule:: disco.postprocess.config
+   :members:
+   :undoc-members:
+   :show-inheritance:

@@ -1,0 +1,69 @@
+disco.analysis package
+======================
+
+Submodules
+----------
+
+disco.analysis.analysis module
+------------------------------
+
+.. automodule:: disco.analysis.analysis
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+disco.analysis.configure module
+-------------------------------
+
+.. automodule:: disco.analysis.configure
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+disco.analysis.input module
+---------------------------
+
+.. automodule:: disco.analysis.input
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+disco.analysis.option module
+----------------------------
+
+.. automodule:: disco.analysis.option
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+disco.analysis.postprocess\_time\_series module
+-----------------------------------------------
+
+.. automodule:: disco.analysis.postprocess_time_series
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+disco.analysis.snapshot\_impact\_analysis module
+------------------------------------------------
+
+.. automodule:: disco.analysis.snapshot_impact_analysis
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+disco.analysis.time\_series\_impact\_analysis module
+----------------------------------------------------
+
+.. automodule:: disco.analysis.time_series_impact_analysis
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: disco.analysis
+   :members:
+   :undoc-members:
+   :show-inheritance:

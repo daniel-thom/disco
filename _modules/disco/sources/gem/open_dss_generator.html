@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>disco.sources.gem.open_dss_generator &mdash; DISCO 0.1 documentation</title>
+      <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+    <link href="../../../../_static/style.css" rel="stylesheet" type="text/css">
+
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../../../index.html" class="icon icon-home"> DISCO
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">User Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../installation.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../installation.html#use-conda">Use Conda</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../installation.html#use-docker">Use Docker</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../overview.html">Overview</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../overview.html#data-sources">Data Sources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../overview.html#transform-model">Transform Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../overview.html#config-jobs">Config Jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../overview.html#submit-jobs">Submit Jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../overview.html#result-analysis">Result Analysis</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../quick-start.html">Quick Start</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../quick-start.html#source-data">Source Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../quick-start.html#transform-model">Transform Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../quick-start.html#config-jobs">Config Jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../quick-start.html#submit-jobs">Submit Jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../quick-start.html#result-analysis">Result Analysis</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../data-sources.html">Data Sources</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../data-sources/smart-ds-model-preparation.html">SMART-DS OpenDSS Model Preparation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../data-sources.html#gem-model">GEM Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../data-sources.html#epri-model">EPRI Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../data-sources.html#sourcetree1-model">SourceTree1 Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../data-sources.html#sourcetree2-model">SourceTree2 Model</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../pv-deployments.html">PV Deployments</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../pv-deployments.html#sourcetree1-pv-deployments">SourceTree1 PV Deployments</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../transform-models.html">Transform Models</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../transform-models.html#transform-model-help">Transform Model Help</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../transform-models.html#disco-model-in-depth">DISCO Model in Depth</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../analysis-workflows.html">Analysis Workflows</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../analysis-workflows/hosting-capacity-analysis.html">Hosting Capacity Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../analysis-workflows/upgrade-cost-analysis.html">Upgrade Cost Analysis</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../pipelines.html">Pipelines</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../pipelines.html#sourcetree1model">SourceTree1Model</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../debugging-issues.html">Debugging Issues</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../debugging-issues.html#using-jade">Using JADE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../debugging-issues.html#using-pydss">Using PyDSS</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../data-ingestion.html">Data Ingestion</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../data-ingestion.html#ingest-to-new-database">Ingest to New Database</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../data-ingestion.html#ingest-to-existing-database">Ingest to Existing Database</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../data-ingestion.html#run-database-queries">Run Database Queries</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../advanced-guide.html">Advanced Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../advanced-guide/analysis-deployment.html">Analysis Deployment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../advanced-guide/upgrade-cost-analysis-generic-models.html">Upgrade Cost Analysis JSON Schemas</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contribution</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../build-docs.html">Build docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../license.html">License</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">DISCO</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../../index.html">Module code</a> &raquo;</li>
+      <li>disco.sources.gem.open_dss_generator</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for disco.sources.gem.open_dss_generator</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;Generates OpenDSS data for distribution simulations.&quot;&quot;&quot;</span>
+
+<span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">namedtuple</span>
+<span class="kn">import</span> <span class="nn">fileinput</span>
+<span class="kn">import</span> <span class="nn">itertools</span>
+<span class="kn">import</span> <span class="nn">logging</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">pathlib</span>
+<span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">import</span> <span class="nn">shutil</span>
+
+<span class="kn">from</span> <span class="nn">jade.exceptions</span> <span class="kn">import</span> <span class="n">InvalidParameter</span>
+<span class="kn">from</span> <span class="nn">jade.utils.timing_utils</span> <span class="kn">import</span> <span class="n">timed_info</span>
+<span class="kn">from</span> <span class="nn">jade.utils.utils</span> <span class="kn">import</span> <span class="n">dump_data</span><span class="p">,</span> <span class="n">modify_file</span><span class="p">,</span> <span class="n">get_filenames_by_ext</span><span class="p">,</span> \
+    <span class="n">ExtendedJSONEncoder</span>
+<span class="kn">from</span> <span class="nn">disco.enums</span> <span class="kn">import</span> <span class="n">SimulationType</span>
+<span class="kn">from</span> <span class="nn">disco.models.base</span> <span class="kn">import</span> <span class="n">OpenDssDeploymentModel</span><span class="p">,</span> <span class="n">PyDSSControllerModel</span><span class="p">,</span> \
+    <span class="n">ImpactAnalysisBaseModel</span>
+<span class="kn">from</span> <span class="nn">disco.sources.base</span> <span class="kn">import</span> <span class="n">SOURCE_CONFIGURATION_FILENAME</span>
+<span class="kn">from</span> <span class="nn">disco.sources.gem.model_input_interface</span> <span class="kn">import</span> <span class="n">ModelInputDataInterface</span>
+
+
+<span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="OpenDssGenerator"><a class="viewcode-back" href="../../../../disco/disco.sources.gem.html#disco.sources.gem.open_dss_generator.OpenDssGenerator">[docs]</a><span class="k">class</span> <span class="nc">OpenDssGenerator</span><span class="p">(</span><span class="n">ModelInputDataInterface</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Generates OpenDSS data for distribution simulations.&quot;&quot;&quot;</span>
+
+    <span class="n">_loadshapes_file</span> <span class="o">=</span> <span class="s2">&quot;LoadShapes.dss&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_feeders</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_include_voltage_deviation</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;include_voltage_deviation&#39;</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">feeder</span> <span class="ow">in</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;feeders&quot;</span><span class="p">]:</span>
+            <span class="k">if</span> <span class="n">feeder</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;&quot;</span><span class="p">:</span>
+                <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;Feeder name is empty; skipping </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">feeder</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="s2">&quot;DEAD&quot;</span> <span class="ow">in</span> <span class="n">feeder</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">upper</span><span class="p">():</span>
+                <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;Skipping &#39;dead&#39; feeder </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">feeder</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">])</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_feeders</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Feeder</span><span class="p">(</span><span class="n">feeder</span><span class="p">))</span>
+
+        <span class="n">feeder_dirnames</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">feeder</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_feeders</span><span class="p">:</span>
+            <span class="n">feeder_dirname</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_feeder_dirname</span><span class="p">(</span><span class="n">feeder</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">feeder_dirname</span> <span class="ow">in</span> <span class="n">feeder_dirnames</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="n">InvalidParameter</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;duplicate feeder dirname: </span><span class="si">{</span><span class="n">feeder_dirname</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="n">feeder_dirnames</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">feeder_dirname</span><span class="p">)</span>
+
+            <span class="n">deployment_names</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+            <span class="k">for</span> <span class="n">deployment</span> <span class="ow">in</span> <span class="n">feeder</span><span class="o">.</span><span class="n">deployments</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">deployment</span><span class="o">.</span><span class="n">name</span> <span class="ow">in</span> <span class="n">deployment_names</span><span class="p">:</span>
+                    <span class="k">raise</span> <span class="n">InvalidParameter</span><span class="p">(</span>
+                        <span class="sa">f</span><span class="s2">&quot;duplicate deployment found: </span><span class="si">{</span><span class="n">deployment</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">&quot;</span>
+                    <span class="p">)</span>
+                <span class="n">deployment_names</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">deployment</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_modified_master_files</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_output_dir</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">_create_name</span><span class="p">(</span><span class="n">inputs</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s2">&quot;__&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="nb">str</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="p">[</span><span class="n">inputs</span><span class="o">.</span><span class="n">feeder</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+                                           <span class="n">inputs</span><span class="o">.</span><span class="n">feeder</span><span class="o">.</span><span class="n">tag</span><span class="p">,</span>
+                                           <span class="n">inputs</span><span class="o">.</span><span class="n">deployment</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+                                           <span class="n">inputs</span><span class="o">.</span><span class="n">dc_ac_ratio</span><span class="p">,</span>
+                                           <span class="n">inputs</span><span class="o">.</span><span class="n">kva_to_kw_rating</span><span class="p">]])</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">_feeder_dirname</span><span class="p">(</span><span class="n">feeder</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">feeder</span><span class="o">.</span><span class="n">name</span> <span class="o">+</span> <span class="s2">&quot;__&quot;</span> <span class="o">+</span> <span class="n">feeder</span><span class="o">.</span><span class="n">tag</span>
+
+    <span class="k">def</span> <span class="nf">_feeder_dir</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">output_dir</span><span class="p">,</span> <span class="n">feeder</span><span class="p">):</span>
+        <span class="n">feeder_dirname</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_feeder_dirname</span><span class="p">(</span><span class="n">feeder</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">output_dir</span><span class="p">,</span> <span class="n">feeder_dirname</span><span class="p">)</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">_opendss_dir</span><span class="p">(</span><span class="n">feeder_dir</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">feeder_dir</span><span class="p">,</span> <span class="s2">&quot;OpenDSS&quot;</span><span class="p">)</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">_loadshapes_dir</span><span class="p">(</span><span class="n">feeder_dir</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">feeder_dir</span><span class="p">,</span> <span class="s2">&quot;LoadShapes&quot;</span><span class="p">)</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">_deployment_dir</span><span class="p">(</span><span class="n">feeder_dir</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">feeder_dir</span><span class="p">,</span> <span class="s2">&quot;PVDeployments&quot;</span><span class="p">)</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">_deployment_file</span><span class="p">(</span><span class="n">deployment_dir</span><span class="p">,</span> <span class="n">deployment</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">deployment_dir</span><span class="p">,</span> <span class="n">deployment</span><span class="o">.</span><span class="n">name</span> <span class="o">+</span> <span class="s2">&quot;.dss&quot;</span><span class="p">)</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">_master_file</span><span class="p">(</span><span class="n">feeder_dir</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">OpenDssGenerator</span><span class="o">.</span><span class="n">_opendss_dir</span><span class="p">(</span><span class="n">feeder_dir</span><span class="p">),</span>
+                            <span class="s2">&quot;Master.dss&quot;</span><span class="p">)</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">_new_master_file</span><span class="p">(</span><span class="n">feeder_dir</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">OpenDssGenerator</span><span class="o">.</span><span class="n">_opendss_dir</span><span class="p">(</span><span class="n">feeder_dir</span><span class="p">),</span>
+                            <span class="s2">&quot;MasterDisco.dss&quot;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_configurations_dir</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_output_dir</span><span class="p">,</span> <span class="s2">&quot;configurations&quot;</span><span class="p">)</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">_get_pattern</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">pattern_type</span><span class="p">):</span>
+        <span class="k">assert</span> <span class="n">pattern_type</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">&quot;dc_ac_ratio_patterns&quot;</span><span class="p">,</span> <span class="s2">&quot;kva_to_kw_rating_patterns&quot;</span><span class="p">)</span>
+        <span class="n">patterns</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">data</span><span class="p">[</span><span class="n">pattern_type</span><span class="p">]:</span>
+            <span class="n">val</span> <span class="o">=</span> <span class="kc">None</span>
+            <span class="n">string</span> <span class="o">=</span> <span class="kc">None</span>
+            <span class="k">if</span> <span class="s2">&quot;all&quot;</span> <span class="ow">in</span> <span class="n">item</span><span class="p">:</span>
+                <span class="n">val</span> <span class="o">=</span> <span class="n">item</span><span class="p">[</span><span class="s2">&quot;all&quot;</span><span class="p">]</span>
+                <span class="n">string</span> <span class="o">=</span> <span class="s2">&quot;all_&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">val</span><span class="p">)</span>
+            <span class="n">pattern</span> <span class="o">=</span> <span class="p">(</span><span class="n">val</span><span class="p">,</span> <span class="n">string</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">pattern</span> <span class="ow">in</span> <span class="n">patterns</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="n">InvalidParameter</span><span class="p">(</span><span class="s2">&quot;duplicate </span><span class="si">{pattern_type}</span><span class="s2"> </span><span class="si">{pattern}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="n">patterns</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">pattern</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="n">patterns</span><span class="p">)</span>
+
+<div class="viewcode-block" id="OpenDssGenerator.generate_output_data"><a class="viewcode-back" href="../../../../disco/disco.sources.gem.html#disco.sources.gem.open_dss_generator.OpenDssGenerator.generate_output_data">[docs]</a>    <span class="nd">@timed_info</span>
+    <span class="k">def</span> <span class="nf">generate_output_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">output_dir</span><span class="p">,</span> <span class="n">include_pv_systems</span><span class="p">,</span> <span class="n">simulation_model</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_output_dir</span> <span class="o">=</span> <span class="n">output_dir</span>
+
+        <span class="n">jobs</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">feeder</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_feeders</span><span class="p">:</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_check_required_feeder_files</span><span class="p">(</span><span class="n">feeder</span><span class="p">):</span>
+                <span class="k">continue</span>
+            <span class="n">feeder_dir</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_feeder_dir</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_output_dir</span><span class="p">,</span> <span class="n">feeder</span><span class="p">)</span>
+            <span class="n">opendss_dir</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_opendss_dir</span><span class="p">(</span><span class="n">feeder_dir</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_copy_dss_files</span><span class="p">(</span><span class="n">feeder</span><span class="o">.</span><span class="n">opendss_location</span><span class="p">,</span> <span class="n">opendss_dir</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">deployment</span> <span class="ow">in</span> <span class="n">feeder</span><span class="o">.</span><span class="n">deployments</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_copy_deployment_data</span><span class="p">(</span><span class="n">deployment</span><span class="p">,</span> <span class="n">feeder_dir</span><span class="p">,</span>
+                                           <span class="n">include_pv_systems</span><span class="p">)</span>
+                <span class="k">for</span> <span class="n">args</span> <span class="ow">in</span> <span class="n">itertools</span><span class="o">.</span><span class="n">product</span><span class="p">(</span><span class="n">deployment</span><span class="o">.</span><span class="n">dc_ac_ratios</span><span class="p">,</span>
+                                              <span class="n">deployment</span><span class="o">.</span><span class="n">kva_to_kw_ratings</span><span class="p">):</span>
+                    <span class="n">inputs</span> <span class="o">=</span> <span class="n">DeploymentInputs</span><span class="p">(</span><span class="n">feeder</span><span class="p">,</span> <span class="n">deployment</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">)</span>
+                    <span class="n">job</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_generate_job</span><span class="p">(</span><span class="n">inputs</span><span class="p">,</span> <span class="n">output_dir</span><span class="p">,</span> <span class="n">feeder_dir</span><span class="p">,</span> <span class="n">simulation_model</span><span class="p">)</span>
+                    <span class="n">jobs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">job</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">jobs</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_create_config_file</span><span class="p">(</span><span class="n">jobs</span><span class="p">)</span>
+
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Done generating data in </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">output_dir</span><span class="p">)</span></div>
+
+    <span class="k">def</span> <span class="nf">_create_config_file</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">jobs</span><span class="p">):</span>
+        <span class="n">config_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_output_dir</span><span class="p">,</span> <span class="n">SOURCE_CONFIGURATION_FILENAME</span><span class="p">)</span>
+        <span class="n">dump_data</span><span class="p">(</span><span class="n">jobs</span><span class="p">,</span> <span class="n">config_file</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="bp">cls</span><span class="o">=</span><span class="n">ExtendedJSONEncoder</span><span class="p">)</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">_check_required_feeder_files</span><span class="p">(</span><span class="n">feeder</span><span class="p">):</span>
+        <span class="n">is_valid</span> <span class="o">=</span> <span class="kc">True</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">feeder</span><span class="o">.</span><span class="n">opendss_location</span><span class="p">):</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span>
+                <span class="s2">&quot;Possible bad feeder </span><span class="si">%s</span><span class="s2"> - tag </span><span class="si">%s</span><span class="s2">. Path isn&#39;t present: </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span>
+                <span class="n">feeder</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">feeder</span><span class="o">.</span><span class="n">tag</span><span class="p">,</span> <span class="n">feeder</span><span class="o">.</span><span class="n">opendss_location</span>
+            <span class="p">)</span>
+            <span class="n">is_valid</span> <span class="o">=</span> <span class="kc">False</span>
+
+        <span class="n">required</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Master.dss&quot;</span><span class="p">]</span>
+        <span class="k">for</span> <span class="n">filename</span> <span class="ow">in</span> <span class="n">required</span><span class="p">:</span>
+            <span class="n">path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">feeder</span><span class="o">.</span><span class="n">opendss_location</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
+                <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span>
+                    <span class="s2">&quot;Feeder-tag=</span><span class="si">%s</span><span class="s2">-</span><span class="si">%s</span><span class="s2"> </span><span class="si">%s</span><span class="s2"> does not exist in </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span>
+                    <span class="n">feeder</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">feeder</span><span class="o">.</span><span class="n">tag</span><span class="p">,</span> <span class="n">filename</span><span class="p">,</span> <span class="n">feeder</span><span class="o">.</span><span class="n">opendss_location</span>
+                <span class="p">)</span>
+                <span class="n">is_valid</span> <span class="o">=</span> <span class="kc">False</span>
+
+        <span class="k">return</span> <span class="n">is_valid</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">_copy_dss_files</span><span class="p">(</span><span class="n">src</span><span class="p">,</span> <span class="n">dst</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Copy .dss files recursively, fixing data-file paths as necessary.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        src : str</span>
+<span class="sd">            source directory</span>
+<span class="sd">        dst : str</span>
+<span class="sd">            destination directory</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">dst</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">target_dirs</span> <span class="o">=</span> <span class="nb">set</span><span class="p">([</span><span class="n">dst</span><span class="p">])</span>
+
+        <span class="k">for</span> <span class="n">path</span> <span class="ow">in</span> <span class="n">get_filenames_by_ext</span><span class="p">(</span><span class="n">src</span><span class="p">,</span> <span class="s2">&quot;.dss&quot;</span><span class="p">):</span>
+            <span class="n">relpath</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">relpath</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">src</span><span class="p">)</span>
+            <span class="n">target_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">dst</span><span class="p">,</span> <span class="n">relpath</span><span class="p">)</span>
+            <span class="n">dirname</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">target_path</span><span class="p">)</span>
+            <span class="c1"># This tracks directory creations in memory in order to reduce</span>
+            <span class="c1"># fileystem operations which could be slow on distributed systems</span>
+            <span class="c1"># like Lustre.</span>
+            <span class="k">if</span> <span class="n">dirname</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">target_dirs</span><span class="p">:</span>
+                <span class="n">os</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">dirname</span><span class="p">)</span>
+                <span class="n">target_dirs</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">dirname</span><span class="p">)</span>
+            <span class="n">shutil</span><span class="o">.</span><span class="n">copyfile</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">target_path</span><span class="p">)</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;Copied </span><span class="si">%s</span><span class="s2"> to </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="n">target_path</span><span class="p">)</span>
+
+            <span class="n">src_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">path</span><span class="p">))</span>
+            <span class="c1"># TODO: add support for copying data files if we use this source model again.</span>
+            <span class="n">OpenDssGenerator</span><span class="o">.</span><span class="n">make_data_file_references_absolute</span><span class="p">(</span><span class="n">src_dir</span><span class="p">,</span> <span class="n">target_path</span><span class="p">)</span>
+
+<div class="viewcode-block" id="OpenDssGenerator.make_data_file_references_absolute"><a class="viewcode-back" href="../../../../disco/disco.sources.gem.html#disco.sources.gem.open_dss_generator.OpenDssGenerator.make_data_file_references_absolute">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">make_data_file_references_absolute</span><span class="p">(</span><span class="n">src_dir</span><span class="p">,</span> <span class="n">filename</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Change the path to any data file referenced in a .dss file to its</span>
+<span class="sd">        absolute path.&quot;&quot;&quot;</span>
+        <span class="c1"># Example line:</span>
+        <span class="c1"># New Loadshape.Residential1234 npts=123456 minterval=5 mult=[file=../BuildingData/Dataset_12_34/Residential/RES1234/LoadProfiles/12345.csv, col=1, header=no]</span>
+        <span class="n">regex</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;file=(.*), col=&quot;</span><span class="p">)</span>
+        <span class="k">def</span> <span class="nf">replace_func</span><span class="p">(</span><span class="n">match</span><span class="p">):</span>
+            <span class="n">path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">normpath</span><span class="p">(</span><span class="n">match</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">&quot;</span><span class="p">,</span> <span class="s2">&quot;/&quot;</span><span class="p">))</span>
+            <span class="n">new_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">normpath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">src_dir</span><span class="p">,</span> <span class="n">path</span><span class="p">))</span>
+            <span class="k">return</span> <span class="s2">&quot;file=&quot;</span> <span class="o">+</span> <span class="n">new_path</span> <span class="o">+</span> <span class="s2">&quot;, col=&quot;</span>
+
+        <span class="k">with</span> <span class="n">fileinput</span><span class="o">.</span><span class="n">input</span><span class="p">(</span><span class="n">files</span><span class="o">=</span><span class="p">[</span><span class="n">filename</span><span class="p">],</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="k">as</span> <span class="n">f_in</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">f_in</span><span class="p">:</span>
+                <span class="n">line</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="n">regex</span><span class="p">,</span> <span class="n">replace_func</span><span class="p">,</span> <span class="n">line</span><span class="p">)</span>
+                <span class="nb">print</span><span class="p">(</span><span class="n">line</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+                <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;line=</span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">line</span><span class="p">)</span></div>
+
+    <span class="k">def</span> <span class="nf">_copy_deployment_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">deployment</span><span class="p">,</span> <span class="n">feeder_dir</span><span class="p">,</span> <span class="n">include_pv_systems</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_attach_pv_deployment</span><span class="p">(</span><span class="n">deployment</span><span class="p">,</span> <span class="n">feeder_dir</span><span class="p">)</span>
+
+        <span class="n">new_master_file</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_new_master_file</span><span class="p">(</span><span class="n">feeder_dir</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">new_master_file</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_modified_master_files</span><span class="p">:</span>
+            <span class="n">path_master_file</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_master_file</span><span class="p">(</span><span class="n">feeder_dir</span><span class="p">)</span>
+            <span class="c1"># Solve will be called from the PV deployment file.</span>
+            <span class="n">regex_solve</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;^\s*Solve\s*$&quot;</span><span class="p">)</span>
+            <span class="n">modify_file</span><span class="p">(</span><span class="n">path_master_file</span><span class="p">,</span> <span class="n">comment_out_solve</span><span class="p">,</span> <span class="n">regex_solve</span><span class="p">)</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">include_pv_systems</span><span class="p">:</span>
+                <span class="c1"># Comment out any PVSystems file in the original data. The QSTS</span>
+                <span class="c1"># code reads from the PVDeployments folder instead. The new</span>
+                <span class="c1"># masterfile is named &quot;MasterDisco.dss&quot;</span>
+                <span class="n">modify_file</span><span class="p">(</span><span class="n">path_master_file</span><span class="p">,</span> <span class="n">comment_out_pv_systems</span><span class="p">,</span>
+                            <span class="s2">&quot;PVSystems.dss&quot;</span><span class="p">)</span>
+                <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;Comment out existing PVSystems file. </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span>
+                             <span class="n">path_master_file</span><span class="p">)</span>
+
+            <span class="n">shutil</span><span class="o">.</span><span class="n">move</span><span class="p">(</span><span class="n">path_master_file</span><span class="p">,</span> <span class="n">new_master_file</span><span class="p">)</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;Moved </span><span class="si">%s</span><span class="s2"> to </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">path_master_file</span><span class="p">,</span> <span class="n">new_master_file</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_modified_master_files</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">new_master_file</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_attach_pv_deployment</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">deployment</span><span class="p">,</span> <span class="n">feeder_dir</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Add redirects to the master file file within the PV deployment.&quot;&quot;&quot;</span>
+        <span class="n">deployment_dir</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_deployment_dir</span><span class="p">(</span><span class="n">feeder_dir</span><span class="p">)</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">deployment_dir</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+        <span class="c1"># Copy the PV file to the deployments folder with deployment.name as</span>
+        <span class="c1"># the file name.</span>
+        <span class="n">pv_file</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_deployment_file</span><span class="p">(</span><span class="n">deployment_dir</span><span class="p">,</span> <span class="n">deployment</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">pv_file</span><span class="p">):</span>
+            <span class="k">return</span>
+
+        <span class="n">master_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">feeder_dir</span><span class="p">,</span> <span class="s2">&quot;OpenDSS&quot;</span><span class="p">,</span> <span class="s2">&quot;MasterDisco.dss&quot;</span><span class="p">)</span>
+
+        <span class="c1"># Below Solve is added to the file because OpenDSS will not properly</span>
+        <span class="c1"># initialized internal memory structures unless Solve is called after</span>
+        <span class="c1"># all new elements have been added.</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">deployment</span><span class="o">.</span><span class="n">pv_locations</span><span class="p">:</span>
+            <span class="c1"># TODO: hack</span>
+            <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">pv_file</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f_out</span><span class="p">:</span>
+                <span class="n">f_out</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Redirect </span><span class="si">{</span><span class="n">master_file</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+                <span class="n">f_out</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Solve</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="k">return</span>
+
+        <span class="n">pv_locations</span> <span class="o">=</span> <span class="n">deployment</span><span class="o">.</span><span class="n">pv_locations</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">pv_locations</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+            <span class="n">pv_locations</span> <span class="o">=</span> <span class="p">[</span><span class="n">pv_locations</span><span class="p">]</span>
+
+        <span class="k">with</span> <span class="n">fileinput</span><span class="o">.</span><span class="n">input</span><span class="p">(</span><span class="n">pv_locations</span><span class="p">)</span> <span class="k">as</span> <span class="n">fr</span><span class="p">,</span> <span class="nb">open</span><span class="p">(</span><span class="n">pv_file</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fw</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">fr</span><span class="p">:</span>
+                <span class="n">fw</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+
+        <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;Copied </span><span class="si">%s</span><span class="s2"> to </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">deployment</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">pv_file</span><span class="p">)</span>
+
+        <span class="c1"># Include MasterDisco.dss within this file.</span>
+        <span class="n">tmp</span> <span class="o">=</span> <span class="n">pv_file</span> <span class="o">+</span> <span class="s2">&quot;.tmp&quot;</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">tmp</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fp_out</span><span class="p">:</span>
+            <span class="n">fp_out</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Redirect </span><span class="si">{</span><span class="n">master_file</span><span class="si">}</span><span class="se">\n\n</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">pv_file</span><span class="p">)</span> <span class="k">as</span> <span class="n">fp_in</span><span class="p">:</span>
+                <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">fp_in</span><span class="p">:</span>
+                    <span class="n">fp_out</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+            <span class="n">fp_out</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Solve</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">shutil</span><span class="o">.</span><span class="n">move</span><span class="p">(</span><span class="n">tmp</span><span class="p">,</span> <span class="n">pv_file</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_generate_job</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">inputs</span><span class="p">,</span> <span class="n">output</span><span class="p">,</span> <span class="n">feeder_dir</span><span class="p">,</span> <span class="n">simulation_model</span><span class="p">):</span>
+        <span class="n">deployment_dir</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_deployment_dir</span><span class="p">(</span><span class="n">feeder_dir</span><span class="p">)</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">deployment_dir</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">feeder</span> <span class="o">=</span> <span class="n">inputs</span><span class="o">.</span><span class="n">feeder</span>
+        <span class="n">deployment</span> <span class="o">=</span> <span class="n">inputs</span><span class="o">.</span><span class="n">deployment</span>
+        <span class="n">opendss_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">feeder_dir</span><span class="p">,</span> <span class="s2">&quot;OpenDSS&quot;</span><span class="p">)</span>
+
+        <span class="n">project_data</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;penetration&quot;</span><span class="p">:</span> <span class="n">deployment</span><span class="o">.</span><span class="n">penetration</span><span class="p">,</span>
+            <span class="s2">&quot;placement_type&quot;</span><span class="p">:</span> <span class="n">deployment</span><span class="o">.</span><span class="n">placement_type</span><span class="p">,</span>
+            <span class="s2">&quot;sample&quot;</span><span class="p">:</span> <span class="n">deployment</span><span class="o">.</span><span class="n">sample</span><span class="p">,</span>
+        <span class="p">}</span>
+        <span class="n">project_data</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">deployment</span><span class="o">.</span><span class="n">project_data</span><span class="p">)</span>
+        <span class="n">simulation_params</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;simulation_type&quot;</span><span class="p">:</span> <span class="n">feeder</span><span class="o">.</span><span class="n">simulation_type</span><span class="o">.</span><span class="n">value</span><span class="p">,</span>
+            <span class="s2">&quot;start_time&quot;</span><span class="p">:</span> <span class="n">feeder</span><span class="o">.</span><span class="n">start_time</span><span class="p">,</span>
+            <span class="s2">&quot;end_time&quot;</span><span class="p">:</span> <span class="n">feeder</span><span class="o">.</span><span class="n">end_time</span><span class="p">,</span>
+            <span class="s2">&quot;step_resolution&quot;</span><span class="p">:</span> <span class="n">feeder</span><span class="o">.</span><span class="n">step_resolution</span><span class="p">,</span>
+        <span class="p">}</span>
+        <span class="n">feeder_dirname</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_feeder_dirname</span><span class="p">(</span><span class="n">feeder</span><span class="p">)</span>
+        <span class="n">deployment_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">output</span><span class="p">,</span> <span class="n">feeder_dirname</span><span class="p">,</span> <span class="s2">&quot;PVDeployments&quot;</span><span class="p">,</span> <span class="n">deployment</span><span class="o">.</span><span class="n">name</span> <span class="o">+</span> <span class="s2">&quot;.dss&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">deployment</span><span class="o">.</span><span class="n">pydss_controllers</span><span class="p">:</span>
+            <span class="n">pydss_controllers</span> <span class="o">=</span> <span class="p">[</span>
+                <span class="n">PyDSSControllerModel</span><span class="p">(</span>
+                    <span class="n">controller_type</span><span class="o">=</span><span class="n">x</span><span class="p">[</span><span class="s2">&quot;controller_type&quot;</span><span class="p">],</span>
+                    <span class="n">name</span><span class="o">=</span><span class="n">x</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">],</span>
+                <span class="p">)</span>
+                <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">deployment</span><span class="o">.</span><span class="n">pydss_controllers</span>
+            <span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">pydss_controllers</span> <span class="o">=</span> <span class="kc">None</span>
+
+        <span class="n">deployment_model</span> <span class="o">=</span> <span class="n">OpenDssDeploymentModel</span><span class="o">.</span><span class="n">validate</span><span class="p">(</span>
+            <span class="nb">dict</span><span class="p">(</span>
+                <span class="n">deployment_file</span><span class="o">=</span><span class="n">deployment_file</span><span class="p">,</span>
+                <span class="n">feeder</span><span class="o">=</span><span class="n">feeder</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+                <span class="n">dc_ac_ratio</span><span class="o">=</span><span class="n">inputs</span><span class="o">.</span><span class="n">dc_ac_ratio</span><span class="p">,</span>
+                <span class="n">kva_to_kw_rating</span><span class="o">=</span><span class="n">inputs</span><span class="o">.</span><span class="n">kva_to_kw_rating</span><span class="p">,</span>
+                <span class="n">directory</span><span class="o">=</span><span class="n">output</span><span class="p">,</span>
+                <span class="n">project_data</span><span class="o">=</span><span class="n">project_data</span><span class="p">,</span>
+                <span class="n">pydss_controllers</span><span class="o">=</span><span class="n">pydss_controllers</span><span class="p">,</span>
+            <span class="p">)</span>
+        <span class="p">)</span>
+
+        <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;__&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span>
+            <span class="n">feeder_dirname</span><span class="p">,</span>
+            <span class="nb">str</span><span class="p">(</span><span class="n">inputs</span><span class="o">.</span><span class="n">dc_ac_ratio</span><span class="p">),</span>
+            <span class="nb">str</span><span class="p">(</span><span class="n">inputs</span><span class="o">.</span><span class="n">kva_to_kw_rating</span><span class="p">),</span>
+            <span class="n">deployment</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+            <span class="nb">str</span><span class="p">(</span><span class="n">deployment</span><span class="o">.</span><span class="n">job_order</span><span class="p">)</span>
+        <span class="p">])</span>
+
+        <span class="n">data</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;deployment&quot;</span><span class="p">:</span> <span class="n">deployment_model</span><span class="p">,</span>
+            <span class="s2">&quot;simulation&quot;</span><span class="p">:</span> <span class="n">simulation_params</span><span class="p">,</span>
+            <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="n">name</span><span class="p">,</span>
+            <span class="s2">&quot;model_type&quot;</span><span class="p">:</span> <span class="n">simulation_model</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,</span>
+            <span class="s2">&quot;job_order&quot;</span><span class="p">:</span> <span class="n">deployment</span><span class="o">.</span><span class="n">job_order</span>
+        <span class="p">}</span>
+        <span class="k">if</span> <span class="nb">issubclass</span><span class="p">(</span><span class="n">simulation_model</span><span class="p">,</span> <span class="n">ImpactAnalysisBaseModel</span><span class="p">):</span>
+            <span class="n">data</span><span class="p">[</span><span class="s2">&quot;base_case&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">inputs</span><span class="o">.</span><span class="n">feeder</span><span class="o">.</span><span class="n">base_case</span>
+
+        <span class="k">return</span> <span class="n">simulation_model</span><span class="o">.</span><span class="n">validate</span><span class="p">(</span><span class="n">data</span><span class="p">)</span><span class="o">.</span><span class="n">dict</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="Feeder"><a class="viewcode-back" href="../../../../disco/disco.sources.gem.html#disco.sources.gem.open_dss_generator.Feeder">[docs]</a><span class="k">class</span> <span class="nc">Feeder</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Defines a feeder.&quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">tag</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;tag&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">base_case</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;base_case&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">deployments</span> <span class="o">=</span> <span class="p">[</span><span class="n">Deployment</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;deployments&quot;</span><span class="p">]]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">opendss_location</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;opendss_location&quot;</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">loadshape_location</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;loadshape_location&quot;</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">simulation_type</span> <span class="o">=</span> <span class="n">SimulationType</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;simulation_type&quot;</span><span class="p">,</span> <span class="s2">&quot;Snapshot&quot;</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">start_time</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;start_time&quot;</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">end_time</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;end_time&quot;</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">step_resolution</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;step_resolution&quot;</span><span class="p">]</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">simulation_type</span> <span class="o">==</span> <span class="n">SimulationType</span><span class="o">.</span><span class="n">SNAPSHOT</span><span class="p">:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">start_time</span> <span class="o">!=</span> <span class="bp">self</span><span class="o">.</span><span class="n">end_time</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="n">InvalidParameter</span><span class="p">(</span>
+                    <span class="s2">&quot;start_time and end_time must be the same for snapshot &quot;</span>
+                    <span class="sa">f</span><span class="s2">&quot;simulations: </span><span class="si">{</span><span class="n">data</span><span class="si">}</span><span class="s2">&quot;</span>
+                <span class="p">)</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">tag</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">tag</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_feeder_tag</span><span class="p">()</span>
+
+<div class="viewcode-block" id="Feeder.create_feeder_tag"><a class="viewcode-back" href="../../../../disco/disco.sources.gem.html#disco.sources.gem.open_dss_generator.Feeder.create_feeder_tag">[docs]</a>    <span class="k">def</span> <span class="nf">create_feeder_tag</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;A TEMP solution of creating feeder tag from opendss_location.</span>
+
+<span class="sd">        Suppose the directory structure is like this::</span>
+
+<span class="sd">            opendss_location = (</span>
+<span class="sd">                &quot;/project/xxx/run2/distribution/xxx/feeder_models/&quot;</span>
+<span class="sd">                &quot;opendss/xxx/scenarios/xxx/&quot;</span>
+<span class="sd">                &quot;2050/2010-07-10_15-00-00-000/X/456/xxx&quot;</span>
+<span class="sd">            )</span>
+
+<span class="sd">        The tag would become &quot;2050__2010-07-10_15-00-00-000__X__456&quot;</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">path</span> <span class="o">=</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">opendss_location</span><span class="p">)</span>
+        <span class="n">parents</span> <span class="o">=</span> <span class="p">[</span><span class="n">p</span><span class="o">.</span><span class="n">name</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">path</span><span class="o">.</span><span class="n">parents</span> <span class="k">if</span> <span class="n">p</span><span class="o">.</span><span class="n">name</span><span class="p">]</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">parents</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">4</span><span class="p">:</span>
+            <span class="n">tag</span> <span class="o">=</span> <span class="s2">&quot;__&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">reversed</span><span class="p">(</span><span class="n">parents</span><span class="p">[:</span><span class="mi">4</span><span class="p">]))</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">tag</span> <span class="o">=</span> <span class="s2">&quot;__&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">reversed</span><span class="p">(</span><span class="n">parents</span><span class="p">))</span>
+        <span class="k">return</span> <span class="n">tag</span></div></div>
+
+
+<div class="viewcode-block" id="Deployment"><a class="viewcode-back" href="../../../../disco/disco.sources.gem.html#disco.sources.gem.open_dss_generator.Deployment">[docs]</a><span class="k">class</span> <span class="nc">Deployment</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Defines a deployment.&quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dc_ac_ratios</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;dc_ac_ratios&quot;</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">kva_to_kw_ratings</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;kva_to_kw_ratings&quot;</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">loadshape_file</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;loadshape_file&quot;</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">loadshape_location</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;loadshape_location&quot;</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">job_order</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;job_order&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+
+        <span class="c1"># Handle legacy formats.</span>
+        <span class="k">if</span> <span class="s2">&quot;pv_location&quot;</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">pv_locations</span> <span class="o">=</span> <span class="p">[</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;pv_location&quot;</span><span class="p">]]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">pv_locations</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;pv_locations&quot;</span><span class="p">,</span> <span class="p">[])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">pydss_controllers</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;pydss_controllers&quot;</span><span class="p">,</span> <span class="p">[])</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">pydss_controllers</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">pydss_controllers</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">pydss_controllers</span><span class="p">]</span>
+
+        <span class="k">for</span> <span class="n">param</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">&quot;dc_ac_ratios&quot;</span><span class="p">,</span> <span class="s2">&quot;kva_to_kw_ratings&quot;</span><span class="p">):</span>
+            <span class="n">val</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">param</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">val</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">val</span> <span class="o">==</span> <span class="p">[]:</span>
+                <span class="nb">setattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">param</span><span class="p">,</span> <span class="p">[</span><span class="kc">None</span><span class="p">])</span>
+
+        <span class="c1"># Optional</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">penetration</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;penetration&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sample</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;sample&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">placement_type</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;placement_type&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">project_data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;project_data&quot;</span><span class="p">,</span> <span class="p">{})</span></div>
+
+
+<span class="n">DeploymentInputs</span> <span class="o">=</span> <span class="n">namedtuple</span><span class="p">(</span>
+    <span class="s2">&quot;Inputs&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;feeder, deployment, dc_ac_ratio, kva_to_kw_rating&quot;</span>
+<span class="p">)</span>
+
+
+<div class="viewcode-block" id="comment_out_pv_systems"><a class="viewcode-back" href="../../../../disco/disco.sources.gem.html#disco.sources.gem.open_dss_generator.comment_out_pv_systems">[docs]</a><span class="k">def</span> <span class="nf">comment_out_pv_systems</span><span class="p">(</span><span class="n">line</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">_</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Comments out the redirect to a given string.&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">line</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;Redirect &quot;</span> <span class="o">+</span> <span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="s2">&quot;!Redirect &quot;</span> <span class="o">+</span> <span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span></div>
+
+
+<div class="viewcode-block" id="comment_out_solve"><a class="viewcode-back" href="../../../../disco/disco.sources.gem.html#disco.sources.gem.open_dss_generator.comment_out_solve">[docs]</a><span class="k">def</span> <span class="nf">comment_out_solve</span><span class="p">(</span><span class="n">line</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">_</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Comments out the Solve command.&quot;&quot;&quot;</span>
+    <span class="n">regex</span> <span class="o">=</span> <span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">match</span> <span class="o">=</span> <span class="n">regex</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">match</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s2">&quot;!Solve&quot;</span>
+    <span class="k">return</span> <span class="n">line</span></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2019, NREL.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

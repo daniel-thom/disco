@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>disco.sources.source_tree_2.source_tree_2_model_inputs &mdash; DISCO 0.1 documentation</title>
+      <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+    <link href="../../../../_static/style.css" rel="stylesheet" type="text/css">
+
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../../../index.html" class="icon icon-home"> DISCO
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">User Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../installation.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../installation.html#use-conda">Use Conda</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../installation.html#use-docker">Use Docker</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../overview.html">Overview</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../overview.html#data-sources">Data Sources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../overview.html#transform-model">Transform Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../overview.html#config-jobs">Config Jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../overview.html#submit-jobs">Submit Jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../overview.html#result-analysis">Result Analysis</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../quick-start.html">Quick Start</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../quick-start.html#source-data">Source Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../quick-start.html#transform-model">Transform Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../quick-start.html#config-jobs">Config Jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../quick-start.html#submit-jobs">Submit Jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../quick-start.html#result-analysis">Result Analysis</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../data-sources.html">Data Sources</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../data-sources/smart-ds-model-preparation.html">SMART-DS OpenDSS Model Preparation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../data-sources.html#gem-model">GEM Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../data-sources.html#epri-model">EPRI Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../data-sources.html#sourcetree1-model">SourceTree1 Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../data-sources.html#sourcetree2-model">SourceTree2 Model</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../pv-deployments.html">PV Deployments</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../pv-deployments.html#sourcetree1-pv-deployments">SourceTree1 PV Deployments</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../transform-models.html">Transform Models</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../transform-models.html#transform-model-help">Transform Model Help</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../transform-models.html#disco-model-in-depth">DISCO Model in Depth</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../analysis-workflows.html">Analysis Workflows</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../analysis-workflows/hosting-capacity-analysis.html">Hosting Capacity Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../analysis-workflows/upgrade-cost-analysis.html">Upgrade Cost Analysis</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../pipelines.html">Pipelines</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../pipelines.html#sourcetree1model">SourceTree1Model</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../debugging-issues.html">Debugging Issues</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../debugging-issues.html#using-jade">Using JADE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../debugging-issues.html#using-pydss">Using PyDSS</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../data-ingestion.html">Data Ingestion</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../data-ingestion.html#ingest-to-new-database">Ingest to New Database</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../data-ingestion.html#ingest-to-existing-database">Ingest to Existing Database</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../data-ingestion.html#run-database-queries">Run Database Queries</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../advanced-guide.html">Advanced Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../advanced-guide/analysis-deployment.html">Analysis Deployment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../advanced-guide/upgrade-cost-analysis-generic-models.html">Upgrade Cost Analysis JSON Schemas</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contribution</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../build-docs.html">Build docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../license.html">License</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">DISCO</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../../index.html">Module code</a> &raquo;</li>
+      <li>disco.sources.source_tree_2.source_tree_2_model_inputs</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for disco.sources.source_tree_2.source_tree_2_model_inputs</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;Implements functionality for QSTS inputs.&quot;&quot;&quot;</span>
+
+
+<span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">namedtuple</span>
+<span class="kn">import</span> <span class="nn">enum</span>
+<span class="kn">import</span> <span class="nn">logging</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">re</span>
+
+<span class="kn">from</span> <span class="nn">jade.jobs.job_inputs_interface</span> <span class="kn">import</span> <span class="n">JobInputsInterface</span>
+<span class="kn">from</span> <span class="nn">jade.exceptions</span> <span class="kn">import</span> <span class="n">InvalidParameter</span>
+<span class="kn">from</span> <span class="nn">jade.utils.utils</span> <span class="kn">import</span> <span class="n">handle_file_not_found</span><span class="p">,</span> <span class="n">handle_key_error</span>
+<span class="kn">from</span> <span class="nn">disco.enums</span> <span class="kn">import</span> <span class="n">get_placement_from_value</span><span class="p">,</span> <span class="n">get_scale_from_value</span><span class="p">,</span> \
+    <span class="n">SCALE_MAPPING</span>
+
+
+<span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="SourceTree2ModelInputs"><a class="viewcode-back" href="../../../../disco/disco.sources.source_tree_2.html#disco.sources.source_tree_2.source_tree_2_model_inputs.SourceTree2ModelInputs">[docs]</a><span class="k">class</span> <span class="nc">SourceTree2ModelInputs</span><span class="p">(</span><span class="n">JobInputsInterface</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Implements functionality for Source Tree 2 inputs.&quot;&quot;&quot;</span>
+
+    <span class="n">_PV_DEPLOYMENTS</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s2">&quot;PVDeployments&quot;</span><span class="p">,</span> <span class="s2">&quot;new&quot;</span><span class="p">)</span>
+    <span class="n">_REGEX_DCAC_RATIO</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;DCAC([\d\.]+)&quot;</span><span class="p">)</span>
+    <span class="n">_KEYS_TYPE</span> <span class="o">=</span> <span class="n">namedtuple</span><span class="p">(</span>
+        <span class="s2">&quot;SourceTree2Keys&quot;</span><span class="p">,</span> <span class="s2">&quot;feeder, dcac_ratio, scale, placement&quot;</span>
+    <span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">base_directory</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Constructs SourceTree2ModelInputs.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        base_directory : str</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_base</span> <span class="o">=</span> <span class="n">base_directory</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_inputs_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_base</span><span class="p">,</span> <span class="s2">&quot;inputs&quot;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_base</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="n">InvalidParameter</span><span class="p">(</span><span class="s2">&quot;inputs directory does not exist: </span><span class="si">{}</span><span class="s2">&quot;</span>
+                                   <span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_base</span><span class="p">))</span>
+
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_parameters</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parse_directories</span><span class="p">()</span>
+
+        <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;Created </span><span class="si">%s</span><span class="s2"> at </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,</span>
+                     <span class="bp">self</span><span class="o">.</span><span class="n">_base</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">base_directory</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_base</span>
+
+<div class="viewcode-block" id="SourceTree2ModelInputs.create_key"><a class="viewcode-back" href="../../../../disco/disco.sources.source_tree_2.html#disco.sources.source_tree_2.source_tree_2_model_inputs.SourceTree2ModelInputs.create_key">[docs]</a>    <span class="k">def</span> <span class="nf">create_key</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">feeder</span><span class="p">,</span> <span class="n">dcac_ratio</span><span class="p">,</span> <span class="n">scale</span><span class="p">,</span> <span class="n">placement</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Create a parameter key for accessing deployments and penetration</span>
+<span class="sd">        levels.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        feeder : str</span>
+<span class="sd">        dcac_ratio : float</span>
+<span class="sd">        scale : Scale</span>
+<span class="sd">        placement : Placement</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        namedtuple</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_KEYS_TYPE</span><span class="o">.</span><span class="n">_make</span><span class="p">((</span><span class="n">feeder</span><span class="p">,</span> <span class="n">dcac_ratio</span><span class="p">,</span> <span class="n">scale</span><span class="p">,</span> <span class="n">placement</span><span class="p">))</span></div>
+
+<div class="viewcode-block" id="SourceTree2ModelInputs.get_available_parameters"><a class="viewcode-back" href="../../../../disco/disco.sources.source_tree_2.html#disco.sources.source_tree_2.source_tree_2_model_inputs.SourceTree2ModelInputs.get_available_parameters">[docs]</a>    <span class="k">def</span> <span class="nf">get_available_parameters</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Return a dictionary containing all available parameters.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        dict</span>
+<span class="sd">            dictionary layout::</span>
+
+<span class="sd">                {</span>
+<span class="sd">                    (Feeder, DcacRatio, Scale, Placement) : {</span>
+<span class="sd">                        deployments: Set(</span>
+<span class="sd">                            penetration_levels,</span>
+<span class="sd">                        )</span>
+<span class="sd">                    }</span>
+<span class="sd">                }</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parameters</span></div>
+
+<div class="viewcode-block" id="SourceTree2ModelInputs.get_deployment_file"><a class="viewcode-back" href="../../../../disco/disco.sources.source_tree_2.html#disco.sources.source_tree_2.source_tree_2_model_inputs.SourceTree2ModelInputs.get_deployment_file">[docs]</a>    <span class="k">def</span> <span class="nf">get_deployment_file</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">deployment</span><span class="p">,</span> <span class="n">penetration_level</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Get the path to an input deployment file for the given parameters.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        key : namedtuple</span>
+<span class="sd">        deployment : int</span>
+<span class="sd">        penetration_level : int</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        str</span>
+<span class="sd">            full path to file</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">filename</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_inputs_dir</span><span class="p">,</span>
+            <span class="n">key</span><span class="o">.</span><span class="n">feeder</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_PV_DEPLOYMENTS</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_get_dcac_directory</span><span class="p">(</span><span class="n">key</span><span class="o">.</span><span class="n">dcac_ratio</span><span class="p">),</span>
+            <span class="n">SCALE_MAPPING</span><span class="p">[</span><span class="n">key</span><span class="o">.</span><span class="n">scale</span><span class="p">],</span>
+            <span class="n">key</span><span class="o">.</span><span class="n">placement</span><span class="o">.</span><span class="n">value</span><span class="p">,</span>
+            <span class="nb">str</span><span class="p">(</span><span class="n">deployment</span><span class="p">),</span>
+            <span class="sa">f</span><span class="s2">&quot;PV_Gen_</span><span class="si">{</span><span class="n">deployment</span><span class="si">}</span><span class="s2">_</span><span class="si">{</span><span class="n">penetration_level</span><span class="si">}</span><span class="s2">.txt&quot;</span>
+        <span class="p">)</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="n">InvalidParameter</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;file does not exist: </span><span class="si">{</span><span class="n">filename</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">filename</span></div>
+
+<div class="viewcode-block" id="SourceTree2ModelInputs.get_dss_filename"><a class="viewcode-back" href="../../../../disco/disco.sources.source_tree_2.html#disco.sources.source_tree_2.source_tree_2_model_inputs.SourceTree2ModelInputs.get_dss_filename">[docs]</a>    <span class="k">def</span> <span class="nf">get_dss_filename</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">feeder</span><span class="p">,</span> <span class="n">filename</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Return the path to DSS file.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        feeder : str</span>
+<span class="sd">        filename : str</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        str</span>
+<span class="sd">            path to file</span>
+
+<span class="sd">        Raises</span>
+<span class="sd">        ------</span>
+<span class="sd">        InvalidParameter</span>
+<span class="sd">            Raised if the file does not exist.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">dss_filename</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_inputs_dir</span><span class="p">,</span> <span class="n">feeder</span><span class="p">,</span> <span class="s2">&quot;OpenDSS&quot;</span><span class="p">,</span>
+                                    <span class="n">filename</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">dss_filename</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="n">InvalidParameter</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;file does not exist: </span><span class="si">{</span><span class="n">dss_filename</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">dss_filename</span></div>
+
+<div class="viewcode-block" id="SourceTree2ModelInputs.get_loadshape_directory"><a class="viewcode-back" href="../../../../disco/disco.sources.source_tree_2.html#disco.sources.source_tree_2.source_tree_2_model_inputs.SourceTree2ModelInputs.get_loadshape_directory">[docs]</a>    <span class="k">def</span> <span class="nf">get_loadshape_directory</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">feeder</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Return the path to the load shape files.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        feeder : str</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        str</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_inputs_dir</span><span class="p">,</span> <span class="n">feeder</span><span class="p">,</span> <span class="s2">&quot;LoadShapes&quot;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="SourceTree2ModelInputs.get_opendss_directory"><a class="viewcode-back" href="../../../../disco/disco.sources.source_tree_2.html#disco.sources.source_tree_2.source_tree_2_model_inputs.SourceTree2ModelInputs.get_opendss_directory">[docs]</a>    <span class="k">def</span> <span class="nf">get_opendss_directory</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">feeder</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Return the path to the OpenDSS files.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        feeder : str</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        str</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_inputs_dir</span><span class="p">,</span> <span class="n">feeder</span><span class="p">,</span> <span class="s2">&quot;OpenDSS&quot;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="SourceTree2ModelInputs.list_feeders"><a class="viewcode-back" href="../../../../disco/disco.sources.source_tree_2.html#disco.sources.source_tree_2.source_tree_2_model_inputs.SourceTree2ModelInputs.list_feeders">[docs]</a>    <span class="k">def</span> <span class="nf">list_feeders</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;List available feeders.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        list of str</span>
+<span class="sd">            available feeders</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_list_available_params</span><span class="p">(</span><span class="s2">&quot;feeder&quot;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="SourceTree2ModelInputs.list_dcac_ratios"><a class="viewcode-back" href="../../../../disco/disco.sources.source_tree_2.html#disco.sources.source_tree_2.source_tree_2_model_inputs.SourceTree2ModelInputs.list_dcac_ratios">[docs]</a>    <span class="k">def</span> <span class="nf">list_dcac_ratios</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;List available DC/AC ratios.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        list of float</span>
+<span class="sd">            available DC/AC ratios</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_list_available_params</span><span class="p">(</span><span class="s2">&quot;dcac_ratio&quot;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="SourceTree2ModelInputs.list_scales"><a class="viewcode-back" href="../../../../disco/disco.sources.source_tree_2.html#disco.sources.source_tree_2.source_tree_2_model_inputs.SourceTree2ModelInputs.list_scales">[docs]</a>    <span class="k">def</span> <span class="nf">list_scales</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;List available scales.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        list of Scale</span>
+<span class="sd">            available scales</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_list_available_params</span><span class="p">(</span><span class="s2">&quot;scale&quot;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="SourceTree2ModelInputs.list_placements"><a class="viewcode-back" href="../../../../disco/disco.sources.source_tree_2.html#disco.sources.source_tree_2.source_tree_2_model_inputs.SourceTree2ModelInputs.list_placements">[docs]</a>    <span class="k">def</span> <span class="nf">list_placements</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;List available placements.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        list of Placement</span>
+<span class="sd">            available placements</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_list_available_params</span><span class="p">(</span><span class="s2">&quot;placement&quot;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="SourceTree2ModelInputs.list_deployments"><a class="viewcode-back" href="../../../../disco/disco.sources.source_tree_2.html#disco.sources.source_tree_2.source_tree_2_model_inputs.SourceTree2ModelInputs.list_deployments">[docs]</a>    <span class="nd">@handle_key_error</span>
+    <span class="k">def</span> <span class="nf">list_deployments</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;List available deployments.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        key : namedtuple</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        list of int</span>
+<span class="sd">            available deployments</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">deployments</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_parameters</span><span class="p">[</span><span class="n">key</span><span class="p">]</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+        <span class="n">deployments</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">deployments</span></div>
+
+<div class="viewcode-block" id="SourceTree2ModelInputs.list_penetration_levels"><a class="viewcode-back" href="../../../../disco/disco.sources.source_tree_2.html#disco.sources.source_tree_2.source_tree_2_model_inputs.SourceTree2ModelInputs.list_penetration_levels">[docs]</a>    <span class="nd">@handle_key_error</span>
+    <span class="k">def</span> <span class="nf">list_penetration_levels</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">deployment</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;List available penetration levels.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        key : namedtuple</span>
+<span class="sd">        deployment : int</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        list of int</span>
+<span class="sd">            available penetration levels</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">levels</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_parameters</span><span class="p">[</span><span class="n">key</span><span class="p">][</span><span class="n">deployment</span><span class="p">])</span>
+        <span class="n">levels</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">levels</span></div>
+
+<div class="viewcode-block" id="SourceTree2ModelInputs.list_penetration_levels_by_step"><a class="viewcode-back" href="../../../../disco/disco.sources.source_tree_2.html#disco.sources.source_tree_2.source_tree_2_model_inputs.SourceTree2ModelInputs.list_penetration_levels_by_step">[docs]</a>    <span class="k">def</span> <span class="nf">list_penetration_levels_by_step</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">deployment</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">10</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;List available penetration levels by step.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        key : namedtuple</span>
+<span class="sd">        deployment : int</span>
+<span class="sd">        step : int</span>
+<span class="sd">            Must be a multiple of 5.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        list of int</span>
+<span class="sd">            available penetration levels</span>
+
+<span class="sd">        Raises</span>
+<span class="sd">        ------</span>
+<span class="sd">        InvalidParameter</span>
+<span class="sd">            Raised if key or deployment is not valid.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">available_levels</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">list_penetration_levels</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">deployment</span><span class="p">)</span>
+
+        <span class="n">start</span> <span class="o">=</span> <span class="n">available_levels</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">stop</span> <span class="o">=</span> <span class="n">available_levels</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span>
+
+        <span class="c1"># Convert to set for faster searches.</span>
+        <span class="n">available_levels</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">available_levels</span><span class="p">)</span>
+
+        <span class="n">levels</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">level</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">stop</span><span class="p">,</span> <span class="n">step</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">level</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">available_levels</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="n">InvalidParameter</span><span class="p">(</span>
+                    <span class="s2">&quot;penetration level </span><span class="si">{}</span><span class="s2"> is not available for </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                        <span class="n">level</span><span class="p">,</span> <span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">deployment</span><span class="p">))</span>
+                <span class="p">)</span>
+
+            <span class="n">levels</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">level</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">levels</span></div>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">_get_items_from_directory</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Basically just strips out files like README.md.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">x</span><span class="p">))]</span>
+
+    <span class="k">def</span> <span class="nf">_get_dcac_ratios_from_directory</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">):</span>
+        <span class="n">ratios</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_items_from_directory</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
+            <span class="n">match</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_REGEX_DCAC_RATIO</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">match</span><span class="p">:</span>
+                <span class="n">ratios</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">match</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">)))</span>
+        <span class="k">return</span> <span class="n">ratios</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">_get_dcac_directory</span><span class="p">(</span><span class="n">dcac_ratio</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s2">&quot;DCAC&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">dcac_ratio</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_list_available_params</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">param</span><span class="p">):</span>
+        <span class="n">params</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+        <span class="n">is_enum</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parameters</span><span class="p">:</span>
+            <span class="n">value</span> <span class="o">=</span> <span class="n">key</span><span class="o">.</span><span class="n">_asdict</span><span class="p">()[</span><span class="n">param</span><span class="p">]</span>
+            <span class="k">assert</span> <span class="n">value</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+            <span class="n">params</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">enum</span><span class="o">.</span><span class="n">Enum</span><span class="p">):</span>
+                <span class="n">is_enum</span> <span class="o">=</span> <span class="kc">True</span>
+
+        <span class="n">key</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="k">if</span> <span class="n">is_enum</span><span class="p">:</span>
+            <span class="n">key</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">value</span>
+        <span class="k">return</span> <span class="nb">sorted</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">params</span><span class="p">),</span> <span class="n">key</span><span class="o">=</span><span class="n">key</span><span class="p">)</span>
+
+    <span class="nd">@handle_file_not_found</span>
+    <span class="k">def</span> <span class="nf">_list_feeders</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">feeders</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_items_from_directory</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_inputs_dir</span><span class="p">)</span>
+        <span class="n">feeders</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">feeders</span>
+
+    <span class="nd">@handle_file_not_found</span>
+    <span class="k">def</span> <span class="nf">_list_dcac_ratios</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">feeder</span><span class="p">):</span>
+        <span class="n">dcac_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_inputs_dir</span><span class="p">,</span>
+            <span class="n">feeder</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_PV_DEPLOYMENTS</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="n">ratios</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_dcac_ratios_from_directory</span><span class="p">(</span><span class="n">dcac_path</span><span class="p">)</span>
+
+        <span class="n">ratios</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">ratios</span>
+
+    <span class="nd">@handle_file_not_found</span>
+    <span class="k">def</span> <span class="nf">_list_scales</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">feeder</span><span class="p">,</span> <span class="n">dcac_ratio</span><span class="p">):</span>
+        <span class="n">scale_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_inputs_dir</span><span class="p">,</span>
+            <span class="n">feeder</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_PV_DEPLOYMENTS</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_get_dcac_directory</span><span class="p">(</span><span class="n">dcac_ratio</span><span class="p">),</span>
+        <span class="p">)</span>
+        <span class="n">scales</span> <span class="o">=</span> <span class="p">[</span><span class="n">get_scale_from_value</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+                  <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_items_from_directory</span><span class="p">(</span><span class="n">scale_path</span><span class="p">)]</span>
+        <span class="n">scales</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">scales</span>
+
+    <span class="nd">@handle_file_not_found</span>
+    <span class="k">def</span> <span class="nf">_list_placements</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">feeder</span><span class="p">,</span> <span class="n">dcac</span><span class="p">,</span> <span class="n">scale</span><span class="p">):</span>
+        <span class="n">placement_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_inputs_dir</span><span class="p">,</span>
+            <span class="n">feeder</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_PV_DEPLOYMENTS</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_get_dcac_directory</span><span class="p">(</span><span class="n">dcac</span><span class="p">),</span>
+            <span class="n">SCALE_MAPPING</span><span class="p">[</span><span class="n">scale</span><span class="p">],</span>
+        <span class="p">)</span>
+        <span class="n">placements</span> <span class="o">=</span> <span class="p">[</span><span class="n">get_placement_from_value</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+                      <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_items_from_directory</span><span class="p">(</span>
+                          <span class="n">placement_path</span><span class="p">)]</span>
+        <span class="n">placements</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">placements</span>
+
+    <span class="nd">@handle_file_not_found</span>
+    <span class="k">def</span> <span class="nf">_list_deployments</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">feeder</span><span class="p">,</span> <span class="n">dcac</span><span class="p">,</span> <span class="n">scale</span><span class="p">,</span> <span class="n">placement</span><span class="p">):</span>
+        <span class="n">deployment_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_inputs_dir</span><span class="p">,</span>
+            <span class="n">feeder</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_PV_DEPLOYMENTS</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_get_dcac_directory</span><span class="p">(</span><span class="n">dcac</span><span class="p">),</span>
+            <span class="n">SCALE_MAPPING</span><span class="p">[</span><span class="n">scale</span><span class="p">],</span>
+            <span class="n">placement</span><span class="o">.</span><span class="n">value</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="n">deployments</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_items_from_directory</span><span class="p">(</span><span class="n">deployment_path</span><span class="p">)</span>
+        <span class="k">return</span> <span class="nb">sorted</span><span class="p">([</span><span class="nb">int</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">deployments</span><span class="p">])</span>
+
+    <span class="nd">@handle_file_not_found</span>
+    <span class="k">def</span> <span class="nf">_list_penetration_levels</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">feeder</span><span class="p">,</span> <span class="n">dcac</span><span class="p">,</span> <span class="n">scale</span><span class="p">,</span> <span class="n">placement</span><span class="p">,</span>
+                                 <span class="n">deployment</span><span class="p">):</span>
+        <span class="n">penetration_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_inputs_dir</span><span class="p">,</span>
+            <span class="n">feeder</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_PV_DEPLOYMENTS</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_get_dcac_directory</span><span class="p">(</span><span class="n">dcac</span><span class="p">),</span>
+            <span class="n">SCALE_MAPPING</span><span class="p">[</span><span class="n">scale</span><span class="p">],</span>
+            <span class="n">placement</span><span class="o">.</span><span class="n">value</span><span class="p">,</span>
+            <span class="nb">str</span><span class="p">(</span><span class="n">deployment</span><span class="p">),</span>
+        <span class="p">)</span>
+
+        <span class="n">levels</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">regex</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;PV_Gen_</span><span class="si">{}</span><span class="s2">_(\d+)\.txt&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">deployment</span><span class="p">))</span>
+        <span class="k">for</span> <span class="n">filename</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">penetration_path</span><span class="p">):</span>
+            <span class="n">match</span> <span class="o">=</span> <span class="n">regex</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">match</span><span class="p">:</span>
+                <span class="n">levels</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">match</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">)))</span>
+
+        <span class="k">return</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">levels</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_parse_directories</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">for</span> <span class="n">feeder</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_list_feeders</span><span class="p">():</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_parse_dcacs</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">feeder</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">data</span>
+
+    <span class="k">def</span> <span class="nf">_parse_dcacs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">feeder</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">dcac</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_list_dcac_ratios</span><span class="p">(</span><span class="n">feeder</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_parse_scales</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">feeder</span><span class="p">,</span> <span class="n">dcac</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_parse_scales</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">feeder</span><span class="p">,</span> <span class="n">dcac</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">scale</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_list_scales</span><span class="p">(</span><span class="n">feeder</span><span class="p">,</span> <span class="n">dcac</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_parse_placements</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">feeder</span><span class="p">,</span> <span class="n">dcac</span><span class="p">,</span> <span class="n">scale</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_parse_placements</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">feeder</span><span class="p">,</span> <span class="n">dcac</span><span class="p">,</span> <span class="n">scale</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">placement</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_list_placements</span><span class="p">(</span><span class="n">feeder</span><span class="p">,</span> <span class="n">dcac</span><span class="p">,</span> <span class="n">scale</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_parse_deployments</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">feeder</span><span class="p">,</span> <span class="n">dcac</span><span class="p">,</span> <span class="n">scale</span><span class="p">,</span> <span class="n">placement</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_parse_deployments</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">feeder</span><span class="p">,</span> <span class="n">dcac</span><span class="p">,</span> <span class="n">scale</span><span class="p">,</span> <span class="n">placement</span><span class="p">):</span>
+        <span class="n">key</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_KEYS_TYPE</span><span class="p">(</span><span class="n">feeder</span><span class="p">,</span> <span class="n">dcac</span><span class="p">,</span> <span class="n">scale</span><span class="p">,</span> <span class="n">placement</span><span class="p">)</span>
+        <span class="n">data</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">for</span> <span class="n">deployment</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_list_deployments</span><span class="p">(</span><span class="n">feeder</span><span class="p">,</span> <span class="n">dcac</span><span class="p">,</span> <span class="n">scale</span><span class="p">,</span>
+                                                 <span class="n">placement</span><span class="p">):</span>
+            <span class="n">data</span><span class="p">[</span><span class="n">key</span><span class="p">][</span><span class="n">deployment</span><span class="p">]</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_parse_penetrations</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">key</span><span class="p">][</span><span class="n">deployment</span><span class="p">],</span> <span class="n">feeder</span><span class="p">,</span> <span class="n">dcac</span><span class="p">,</span>
+                                     <span class="n">scale</span><span class="p">,</span> <span class="n">placement</span><span class="p">,</span> <span class="n">deployment</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_parse_penetrations</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">feeder</span><span class="p">,</span> <span class="n">dcac</span><span class="p">,</span> <span class="n">scale</span><span class="p">,</span> <span class="n">placement</span><span class="p">,</span>
+                            <span class="n">deployment</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">level</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_list_penetration_levels</span><span class="p">(</span><span class="n">feeder</span><span class="p">,</span> <span class="n">dcac</span><span class="p">,</span> <span class="n">scale</span><span class="p">,</span>
+                                                   <span class="n">placement</span><span class="p">,</span> <span class="n">deployment</span><span class="p">):</span>
+            <span class="n">data</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">level</span><span class="p">)</span></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2019, NREL.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

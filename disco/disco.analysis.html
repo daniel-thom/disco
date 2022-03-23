@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>disco.analysis package &mdash; DISCO 0.1 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link href="../_static/style.css" rel="stylesheet" type="text/css">
+
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> DISCO
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">User Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../installation.html#use-conda">Use Conda</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation.html#use-docker">Use Docker</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">Overview</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../overview.html#data-sources">Data Sources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview.html#transform-model">Transform Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview.html#config-jobs">Config Jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview.html#submit-jobs">Submit Jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview.html#result-analysis">Result Analysis</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../quick-start.html">Quick Start</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../quick-start.html#source-data">Source Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../quick-start.html#transform-model">Transform Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../quick-start.html#config-jobs">Config Jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../quick-start.html#submit-jobs">Submit Jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../quick-start.html#result-analysis">Result Analysis</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../data-sources.html">Data Sources</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../data-sources/smart-ds-model-preparation.html">SMART-DS OpenDSS Model Preparation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data-sources.html#gem-model">GEM Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data-sources.html#epri-model">EPRI Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data-sources.html#sourcetree1-model">SourceTree1 Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data-sources.html#sourcetree2-model">SourceTree2 Model</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../pv-deployments.html">PV Deployments</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../pv-deployments.html#sourcetree1-pv-deployments">SourceTree1 PV Deployments</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../transform-models.html">Transform Models</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../transform-models.html#transform-model-help">Transform Model Help</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../transform-models.html#disco-model-in-depth">DISCO Model in Depth</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../analysis-workflows.html">Analysis Workflows</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../analysis-workflows/hosting-capacity-analysis.html">Hosting Capacity Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../analysis-workflows/upgrade-cost-analysis.html">Upgrade Cost Analysis</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../pipelines.html">Pipelines</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../pipelines.html#sourcetree1model">SourceTree1Model</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../debugging-issues.html">Debugging Issues</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../debugging-issues.html#using-jade">Using JADE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../debugging-issues.html#using-pydss">Using PyDSS</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../data-ingestion.html">Data Ingestion</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../data-ingestion.html#ingest-to-new-database">Ingest to New Database</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data-ingestion.html#ingest-to-existing-database">Ingest to Existing Database</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data-ingestion.html#run-database-queries">Run Database Queries</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced-guide.html">Advanced Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../advanced-guide/analysis-deployment.html">Analysis Deployment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../advanced-guide/upgrade-cost-analysis-generic-models.html">Upgrade Cost Analysis JSON Schemas</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contribution</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../build-docs.html">Build docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../license.html">License</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">DISCO</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>disco.analysis package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/disco/disco.analysis.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="disco-analysis-package">
+<h1>disco.analysis package<a class="headerlink" href="#disco-analysis-package" title="Permalink to this headline">¶</a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="module-disco.analysis.analysis">
+<span id="disco-analysis-analysis-module"></span><h2>disco.analysis.analysis module<a class="headerlink" href="#module-disco.analysis.analysis" title="Permalink to this headline">¶</a></h2>
+<p>Defines Analysis objects.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="disco.analysis.analysis.Analysis">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">disco.analysis.analysis.</span></span><span class="sig-name descname"><span class="pre">Analysis</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">overrides</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">job_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/analysis/analysis.html#Analysis"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.analysis.analysis.Analysis" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code></p>
+<p>Base Analysis class containing required inputs and options</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.analysis.analysis.Analysis.inputs">
+<span class="sig-name descname"><span class="pre">inputs</span></span><a class="headerlink" href="#disco.analysis.analysis.Analysis.inputs" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>list (default empty list)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.analysis.analysis.Analysis.options">
+<span class="sig-name descname"><span class="pre">options</span></span><a class="headerlink" href="#disco.analysis.analysis.Analysis.options" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>list (default empty list)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.analysis.analysis.Analysis.INPUTS">
+<span class="sig-name descname"><span class="pre">INPUTS</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[]</span></em><a class="headerlink" href="#disco.analysis.analysis.Analysis.INPUTS" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.analysis.analysis.Analysis.OPTIONS">
+<span class="sig-name descname"><span class="pre">OPTIONS</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[]</span></em><a class="headerlink" href="#disco.analysis.analysis.Analysis.OPTIONS" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.analysis.analysis.Analysis.run">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/analysis/analysis.html#Analysis.run"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.analysis.analysis.Analysis.run" title="Permalink to this definition">¶</a></dt>
+<dd><p>Function to run when analysis has been built</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.analysis.analysis.Analysis.get_option">
+<span class="sig-name descname"><span class="pre">get_option</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">option_name</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/analysis/analysis.html#Analysis.get_option"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.analysis.analysis.Analysis.get_option" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return option with given name
+:param option_name:
+:type option_name: str</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#disco.analysis.option.Option" title="disco.analysis.option.Option">Option</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.analysis.analysis.Analysis.get_input">
+<span class="sig-name descname"><span class="pre">get_input</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_name</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/analysis/analysis.html#Analysis.get_input"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.analysis.analysis.Analysis.get_input" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return input with given name
+:param input_name:
+:type input_name: str</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#disco.analysis.input.Input" title="disco.analysis.input.Input">Input</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.analysis.analysis.Analysis.print_inputs">
+<span class="sig-name descname"><span class="pre">print_inputs</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/analysis/analysis.html#Analysis.print_inputs"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.analysis.analysis.Analysis.print_inputs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Prints name, type and default values for all inputs</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.analysis.analysis.Analysis.get_options">
+<span class="sig-name descname"><span class="pre">get_options</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/analysis/analysis.html#Analysis.get_options"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.analysis.analysis.Analysis.get_options" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return option list</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.analysis.analysis.Analysis.get_inputs">
+<span class="sig-name descname"><span class="pre">get_inputs</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/analysis/analysis.html#Analysis.get_inputs"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.analysis.analysis.Analysis.get_inputs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return input list</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.analysis.analysis.Analysis.serialize_inputs">
+<span class="sig-name descname"><span class="pre">serialize_inputs</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/analysis/analysis.html#Analysis.serialize_inputs"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.analysis.analysis.Analysis.serialize_inputs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return serialized input list</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.analysis.analysis.Analysis.set_option_overrides">
+<span class="sig-name descname"><span class="pre">set_option_overrides</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">overrides</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/analysis/analysis.html#Analysis.set_option_overrides"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.analysis.analysis.Analysis.set_option_overrides" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set option values, given optional list of overrides</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>overrides</strong> (<em>list</em>) – list of overrides</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.analysis.analysis.Analysis.set_config_overrides">
+<span class="sig-name descname"><span class="pre">set_config_overrides</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">overrides</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/analysis/analysis.html#Analysis.set_config_overrides"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.analysis.analysis.Analysis.set_config_overrides" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set config values, given dict of overrides</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>overrides</strong> (<em>dict</em>) – </p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>ValueError</strong> – Raised if given input does not match type of current content</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.analysis.analysis.Analysis.get_results">
+<span class="sig-name descname"><span class="pre">get_results</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/analysis/analysis.html#Analysis.get_results"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.analysis.analysis.Analysis.get_results" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns analysis results</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="disco.analysis.analysis.Analysis.serialized_data">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">serialized_data</span></span><a class="headerlink" href="#disco.analysis.analysis.Analysis.serialized_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns all INPUTS, user or defaults, as a dictionary</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.analysis.analysis.load_config_file">
+<span class="sig-prename descclassname"><span class="pre">disco.analysis.analysis.</span></span><span class="sig-name descname"><span class="pre">load_config_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">_</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">__</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/analysis/analysis.html#load_config_file"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.analysis.analysis.load_config_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load config file
+:param value: config file location
+:type value: str</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>loaded config file</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.analysis.analysis.load_custom_overrides">
+<span class="sig-prename descclassname"><span class="pre">disco.analysis.analysis.</span></span><span class="sig-name descname"><span class="pre">load_custom_overrides</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">_</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">__</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/analysis/analysis.html#load_custom_overrides"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.analysis.analysis.load_custom_overrides" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load custom overrides from user
+:param value: list of str (override_name=override_value)
+:type value: list</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>user overrides</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.analysis.analysis.serialize_results">
+<span class="sig-prename descclassname"><span class="pre">disco.analysis.analysis.</span></span><span class="sig-name descname"><span class="pre">serialize_results</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/analysis/analysis.html#serialize_results"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.analysis.analysis.serialize_results" title="Permalink to this definition">¶</a></dt>
+<dd><p>Serialize results to JSON parse-able values</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>data</strong> (<em>dict</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-disco.analysis.configure">
+<span id="disco-analysis-configure-module"></span><h2>disco.analysis.configure module<a class="headerlink" href="#module-disco.analysis.configure" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.analysis.configure.create_analysis_config">
+<span class="sig-prename descclassname"><span class="pre">disco.analysis.configure.</span></span><span class="sig-name descname"><span class="pre">create_analysis_config</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">analysis_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">overrides</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/analysis/configure.html#create_analysis_config"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.analysis.configure.create_analysis_config" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</section>
+<section id="module-disco.analysis.input">
+<span id="disco-analysis-input-module"></span><h2>disco.analysis.input module<a class="headerlink" href="#module-disco.analysis.input" title="Permalink to this headline">¶</a></h2>
+<p>Defines Input objects.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="disco.analysis.input.Input">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">disco.analysis.input.</span></span><span class="sig-name descname"><span class="pre">Input</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">input_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/analysis/input.html#Input"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.analysis.input.Input" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Input class used to store analysis input values</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.analysis.input.Input.serialize">
+<span class="sig-name descname"><span class="pre">serialize</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/analysis/input.html#Input.serialize"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.analysis.input.Input.serialize" title="Permalink to this definition">¶</a></dt>
+<dd><p>Serializes input to dict</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="disco.analysis.input.Input.current_value">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">current_value</span></span><a class="headerlink" href="#disco.analysis.input.Input.current_value" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get Input current value (converted if necessary)</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.analysis.input.Input.to_json">
+<span class="sig-name descname"><span class="pre">to_json</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/analysis/input.html#Input.to_json"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.analysis.input.Input.to_json" title="Permalink to this definition">¶</a></dt>
+<dd><p>Output variables to json string</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-disco.analysis.option">
+<span id="disco-analysis-option-module"></span><h2>disco.analysis.option module<a class="headerlink" href="#module-disco.analysis.option" title="Permalink to this headline">¶</a></h2>
+<p>Defines Option objects.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="disco.analysis.option.Option">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">disco.analysis.option.</span></span><span class="sig-name descname"><span class="pre">Option</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/analysis/option.html#Option"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.analysis.option.Option" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Option class used to store analysis option values</p>
+</dd></dl>
+
+</section>
+<section id="module-disco.analysis.postprocess_time_series">
+<span id="disco-analysis-postprocess-time-series-module"></span><h2>disco.analysis.postprocess_time_series module<a class="headerlink" href="#module-disco.analysis.postprocess_time_series" title="Permalink to this headline">¶</a></h2>
+<p>Created on Fri Feb  5 07:46:25 2021</p>
+<p>&#64;author: senam</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.analysis.postprocess_time_series.combine_metrics">
+<span class="sig-prename descclassname"><span class="pre">disco.analysis.postprocess_time_series.</span></span><span class="sig-name descname"><span class="pre">combine_metrics</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">project_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scenario</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'control_mode'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/analysis/postprocess_time_series.html#combine_metrics"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.analysis.postprocess_time_series.combine_metrics" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.analysis.postprocess_time_series.get_absolute_changes">
+<span class="sig-prename descclassname"><span class="pre">disco.analysis.postprocess_time_series.</span></span><span class="sig-name descname"><span class="pre">get_absolute_changes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">property_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">base_case</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'base_case'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/analysis/postprocess_time_series.html#get_absolute_changes"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.analysis.postprocess_time_series.get_absolute_changes" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.analysis.postprocess_time_series.aggregate_deployments">
+<span class="sig-prename descclassname"><span class="pre">disco.analysis.postprocess_time_series.</span></span><span class="sig-name descname"><span class="pre">aggregate_deployments</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">job_outputs_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tolerance</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.05</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/analysis/postprocess_time_series.html#aggregate_deployments"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.analysis.postprocess_time_series.aggregate_deployments" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.analysis.postprocess_time_series.assess_deployments">
+<span class="sig-prename descclassname"><span class="pre">disco.analysis.postprocess_time_series.</span></span><span class="sig-name descname"><span class="pre">assess_deployments</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tolerance</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/analysis/postprocess_time_series.html#assess_deployments"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.analysis.postprocess_time_series.assess_deployments" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.analysis.postprocess_time_series.get_total_pv_kilowatts">
+<span class="sig-prename descclassname"><span class="pre">disco.analysis.postprocess_time_series.</span></span><span class="sig-name descname"><span class="pre">get_total_pv_kilowatts</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">job_path</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/analysis/postprocess_time_series.html#get_total_pv_kilowatts"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.analysis.postprocess_time_series.get_total_pv_kilowatts" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.analysis.postprocess_time_series.get_total_load_kilowatts">
+<span class="sig-prename descclassname"><span class="pre">disco.analysis.postprocess_time_series.</span></span><span class="sig-name descname"><span class="pre">get_total_load_kilowatts</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">job_path</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/analysis/postprocess_time_series.html#get_total_load_kilowatts"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.analysis.postprocess_time_series.get_total_load_kilowatts" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="disco.analysis.postprocess_time_series.compute_hosting_capacity">
+<span class="sig-prename descclassname"><span class="pre">disco.analysis.postprocess_time_series.</span></span><span class="sig-name descname"><span class="pre">compute_hosting_capacity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dfs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">job_outputs_path</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/analysis/postprocess_time_series.html#compute_hosting_capacity"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.analysis.postprocess_time_series.compute_hosting_capacity" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</section>
+<section id="module-disco.analysis.snapshot_impact_analysis">
+<span id="disco-analysis-snapshot-impact-analysis-module"></span><h2>disco.analysis.snapshot_impact_analysis module<a class="headerlink" href="#module-disco.analysis.snapshot_impact_analysis" title="Permalink to this headline">¶</a></h2>
+<p>Defines Snapshot Impact Analysis object.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="disco.analysis.snapshot_impact_analysis.SnapshotImpactAnalysis">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">disco.analysis.snapshot_impact_analysis.</span></span><span class="sig-name descname"><span class="pre">SnapshotImpactAnalysis</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">feeder</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/analysis/snapshot_impact_analysis.html#SnapshotImpactAnalysis"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.analysis.snapshot_impact_analysis.SnapshotImpactAnalysis" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#disco.analysis.analysis.Analysis" title="disco.analysis.analysis.Analysis"><code class="xref py py-class docutils literal notranslate"><span class="pre">disco.analysis.analysis.Analysis</span></code></a></p>
+<p>Snapshot impact analysis class with default values</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.analysis.snapshot_impact_analysis.SnapshotImpactAnalysis.INPUTS">
+<span class="sig-name descname"><span class="pre">INPUTS</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[&lt;disco.analysis.input.Input</span> <span class="pre">object&gt;,</span> <span class="pre">&lt;disco.analysis.input.Input</span> <span class="pre">object&gt;,</span> <span class="pre">&lt;disco.analysis.input.Input</span> <span class="pre">object&gt;,</span> <span class="pre">&lt;disco.analysis.input.Input</span> <span class="pre">object&gt;,</span> <span class="pre">&lt;disco.analysis.input.Input</span> <span class="pre">object&gt;,</span> <span class="pre">&lt;disco.analysis.input.Input</span> <span class="pre">object&gt;,</span> <span class="pre">&lt;disco.analysis.input.Input</span> <span class="pre">object&gt;,</span> <span class="pre">&lt;disco.analysis.input.Input</span> <span class="pre">object&gt;]</span></em><a class="headerlink" href="#disco.analysis.snapshot_impact_analysis.SnapshotImpactAnalysis.INPUTS" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.analysis.snapshot_impact_analysis.SnapshotImpactAnalysis.run">
+<span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">output</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/analysis/snapshot_impact_analysis.html#SnapshotImpactAnalysis.run"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.analysis.snapshot_impact_analysis.SnapshotImpactAnalysis.run" title="Permalink to this definition">¶</a></dt>
+<dd><p>Run snapshot impact analysis</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>output</strong> (<em>directory containing job outputs</em>) – </p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-disco.analysis.time_series_impact_analysis">
+<span id="disco-analysis-time-series-impact-analysis-module"></span><h2>disco.analysis.time_series_impact_analysis module<a class="headerlink" href="#module-disco.analysis.time_series_impact_analysis" title="Permalink to this headline">¶</a></h2>
+<p>Defines Time Series Impact Analysis object.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="disco.analysis.time_series_impact_analysis.TimeSeriesImpactAnalysis">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">disco.analysis.time_series_impact_analysis.</span></span><span class="sig-name descname"><span class="pre">TimeSeriesImpactAnalysis</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">overrides</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">job_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/analysis/time_series_impact_analysis.html#TimeSeriesImpactAnalysis"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.analysis.time_series_impact_analysis.TimeSeriesImpactAnalysis" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#disco.analysis.analysis.Analysis" title="disco.analysis.analysis.Analysis"><code class="xref py py-class docutils literal notranslate"><span class="pre">disco.analysis.analysis.Analysis</span></code></a></p>
+<p>Snapshot impact analysis class with default values</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="disco.analysis.time_series_impact_analysis.TimeSeriesImpactAnalysis.INPUTS">
+<span class="sig-name descname"><span class="pre">INPUTS</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[&lt;disco.analysis.input.Input</span> <span class="pre">object&gt;,</span> <span class="pre">&lt;disco.analysis.input.Input</span> <span class="pre">object&gt;,</span> <span class="pre">&lt;disco.analysis.input.Input</span> <span class="pre">object&gt;,</span> <span class="pre">&lt;disco.analysis.input.Input</span> <span class="pre">object&gt;,</span> <span class="pre">&lt;disco.analysis.input.Input</span> <span class="pre">object&gt;,</span> <span class="pre">&lt;disco.analysis.input.Input</span> <span class="pre">object&gt;,</span> <span class="pre">&lt;disco.analysis.input.Input</span> <span class="pre">object&gt;,</span> <span class="pre">&lt;disco.analysis.input.Input</span> <span class="pre">object&gt;]</span></em><a class="headerlink" href="#disco.analysis.time_series_impact_analysis.TimeSeriesImpactAnalysis.INPUTS" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="disco.analysis.time_series_impact_analysis.TimeSeriesImpactAnalysis.run">
+<span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">output</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/disco/analysis/time_series_impact_analysis.html#TimeSeriesImpactAnalysis.run"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#disco.analysis.time_series_impact_analysis.TimeSeriesImpactAnalysis.run" title="Permalink to this definition">¶</a></dt>
+<dd><p>Run time series impact analysis</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-disco.analysis">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-disco.analysis" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2019, NREL.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
